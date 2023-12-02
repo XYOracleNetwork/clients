@@ -1,0 +1,62 @@
+version: "3.8"
+
+services:
+  mongo:
+    container_name: mongo
+    image: mongo:6.0.3
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: archivist
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "/usr/bin/mongosh",
+          "-u",
+          "root",
+          "-p",
+          "example",
+          "--quiet",
+          "/opt/mongo/joinReplicaSet.js",
+        ]
+      interval: 5s
+      timeout: 10s
+      retries: 3
+      start_period: 1s
+    volumes:
+      - ./scripts/mongo/opt/mongo:/opt/mongo
+      - ./scripts/mongo/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    command:
+      [
+        "--auth",
+        "--bind_ip_all",
+        "--keyFile",
+        "/tmp/mongodb.key",
+        "--replSet",
+        "dbrs",
+      ]
+
+  # ipfs:
+  #   image: ipfs/kubo:latest
+  #   container_name: ipfs
+  #   restart: unless-stopped
+  # environment:
+  # IPFS_PROFILE: server
+  # IPFS_PROFILE: default-networking
+  # IPFS_PROFILE: flatfs
+  # ports:
+  #   - "4001:4001"
+  #   - "5001:5001"
+  #   - "8080:8080"
+  # ipfs-gateway:
+  #   image: ipfs/bifrost-gateway:release
+  #   container_name: ipfs-gateway
+  #   restart: unless-stopped
+  #   environment:
+  #     PROXY_GATEWAY_URL: http://ipfs:8080
+  #   ports:
+  #     - "8081:8081"

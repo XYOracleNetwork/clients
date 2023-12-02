@@ -1,0 +1,135 @@
+{
+  "author": {
+    "email": "support@xyo.network",
+    "name": "XYO Development Team",
+    "url": "https://xyo.network"
+  },
+  "bugs": {
+    "email": "support@xyo.network",
+    "url": "https://github.com/XYOracleNetwork/clients/issues"
+  },
+  "workspaces": [
+    "packages/**/*"
+  ],
+  "dependencies": {
+    "@xyo-network/automation-witness-server": "workspace:~",
+    "@xyo-network/cli": "workspace:~",
+    "@xyo-network/express-node": "workspace:~"
+  },
+  "description": "Primary SDK for using XYO Protocol 2.0",
+  "devDependencies": {
+    "@babel/core": "^7.23.5",
+    "@babel/preset-env": "^7.23.5",
+    "@babel/preset-typescript": "^7.23.3",
+    "@types/jest": "^29.5.10",
+    "@types/supertest": "^2.0.16",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "@xylabs/eslint-config": "^3.2.10",
+    "@xylabs/ts-scripts-yarn3": "^3.2.10",
+    "@xylabs/tsconfig": "^3.2.10",
+    "@xylabs/tsconfig-dom-jest": "^3.2.10",
+    "babel-jest": "^29.7.0",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.55.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-deprecation": "^2.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "jest": "^29.7.0",
+    "jest-docblock": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jest-extended": "^4.0.2",
+    "jest-runner": "^29.7.0",
+    "jest-runner-groups": "^2.2.0",
+    "jest-sorted": "^1.0.14",
+    "nodemon": "^3.0.2",
+    "reflect-metadata": "^0.1.13",
+    "supertest": "^6.3.3",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2"
+  },
+  "resolutions": {
+    "axios": "^1",
+    "bn.js": "^5",
+    "quick-lru": "^5",
+    "typescript": "5.2.2"
+  },
+  "exports": {
+    ".": {
+      "browser": {
+        "require": {
+          "types": "./dist/browser/index.d.cts",
+          "default": "./dist/browser/index.cjs"
+        },
+        "import": {
+          "types": "./dist/browser/index.d.mts",
+          "default": "./dist/browser/index.js"
+        }
+      },
+      "node": {
+        "require": {
+          "types": "./dist/node/index.d.cts",
+          "default": "./dist/node/index.cjs"
+        },
+        "import": {
+          "types": "./dist/node/index.d.mts",
+          "default": "./dist/node/index.js"
+        }
+      }
+    },
+    "./package.json": "./package.json",
+    "./README.md": "./README.md"
+  },
+  "main": "./dist/node/index.cjs",
+  "module": "./dist/node/index.js",
+  "types": "./dist/node/index.d.cts",
+  "homepage": "https://xyo.network",
+  "license": "LGPL-3.0-only",
+  "name": "@xyo-network/clients",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/XYOracleNetwork/clients.git"
+  },
+  "scripts": {
+    "coverage": "yarn jest --coverage --forceExit",
+    "compile": "./scripts/clear-scrollback-buffer.sh && yarn xy compile",
+    "build": "xy build && xy statics",
+    "deploy": "xy deploy",
+    "lint-pkg": "npmPkgJsonLint .",
+    "start": "nodemon",
+    "start-cjs": "node ./packages/node/packages/core/packages/app/dist/node/app.js",
+    "start-esm": "node ./packages/node/packages/core/packages/app/dist/node/app.mjs",
+    "start-cli-cjs": "node ./packages/cli/dist/xyo.js",
+    "start-cli-esm": "node ./packages/cli/dist/xyo.mjs",
+    "perf": "yarn jest -c jest.config.perf.cjs",
+    "test-esm": "node $(yarn jest --no-cache --forceExit)",
+    "test": "jest --no-cache --forceExit",
+    "test:no-slow": "jest . --passWithNoTests --forceExit -- --group=-slow",
+    "test:module": "jest . --passWithNoTests --forceExit -- --group=module",
+    "test:sentinel": "jest . --passWithNoTests --forceExit -- --group=sentinel",
+    "test:thumbnail": "jest . --passWithNoTests --forceExit -- --group=thumbnail",
+    "test:no-mongo": "jest ${0} --passWithNoTests --forceExit -c ./jest.config.no-mongo.ts -- --group=-mongo",
+    "testx": "jest ${0} --passWithNoTests --forceExit -c ./jest.config.no-mongo.ts -- --group=-mongo",
+    "test:hash-perf": "jest packages/protocol/packages/core/packages/hash/src/spec/PayloadHasher.bigobj.perf.spec.ts -c ./jest.config.no-mongo.ts",
+    "test:hash-perf-parallel": "jest packages/protocol/packages/core/packages/hash/src/spec/PayloadHasher.bigobj-parallel.perf.spec.ts -c ./jest.config.no-mongo.ts",
+    "test:ci": "jest --runInBand --coverage --forceExit --passWithNoTests",
+    "xyo": "node ./packages/cli/dist/cjs/index.js",
+    "xyo-ts": "yarn workspace @xyo-network/node-cli xyo-ts",
+    "free-8080": "kill -9 $(lsof -t -i :8080)",
+    "free-3033": "kill -9 $(lsof -t -i :3033)",
+    "free-mongo": "kill -9 $(lsof -t -i :55391) && kill -9 $(lsof -t -i :55393)",
+    "build-typedoc-site": "xy gen-docs @xyo-network/clients"
+  },
+  "sideEffects": false,
+  "version": "~2.81.14",
+  "packageManager": "yarn@4.0.2",
+  "volta": {
+    "node": "18.19.0",
+    "yarn": "1.22.19"
+  },
+  "type": "module"
+}
