@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "~2.81.14",
+  "version": "2.82.0",
   "description": "XYO Express Node Lib",
   "sideeffects": false,
   "engines": {
@@ -44,8 +44,8 @@
     "@aws-sdk/client-secrets-manager": "^3.465.0",
     "@xylabs/assert": "^2.13.20",
     "@xylabs/sdk-api-express-ecs": "^1.4.0",
-    "@xyo-network/module-model": "~2.81.14",
-    "@xyo-network/node-model": "~2.81.14",
+    "@xyo-network/module-model": "^2.82.0",
+    "@xyo-network/node-model": "^2.82.0",
     "@xyo-network/payload-mongodb": "workspace:~",
     "body-parser": "^1.20.2",
     "express": "^4.18.2",
