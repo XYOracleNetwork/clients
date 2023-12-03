@@ -1,4 +1,4 @@
 export const ARCHIVIST_TYPES = {
-  Archivist: Symbol('Archivist'),
-  ThumbnailArchivist: Symbol('ThumbnailArchivist'),
+  Archivist: 'Archivist',
+  ThumbnailArchivist: 'ThumbnailArchivist',
 }

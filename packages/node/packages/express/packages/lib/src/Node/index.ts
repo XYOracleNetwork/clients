@@ -1,1 +1,1 @@
-export * from './resolveBySymbol'
+export * from './resolveByName'

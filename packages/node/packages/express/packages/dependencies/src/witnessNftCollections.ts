@@ -31,32 +31,17 @@ const maxNfts = 200_000
 const filePath = './nftData/beta/nftCollectionDisplaySlugInfos.json'
 
 export const witnessNftCollections = async (node: NodeInstance) => {
-  const archivistMod = assertEx(await node.resolve(TYPES.Archivist.description), `Resolving: ${TYPES.Archivist.description}`)
-  const archivist = assertEx(asArchivistInstance(archivistMod), `Creating: ${TYPES.Archivist.description}`)
+  const archivistMod = assertEx(await node.resolve(TYPES.Archivist), `Resolving: ${TYPES.Archivist}`)
+  const archivist = assertEx(asArchivistInstance(archivistMod), `Creating: ${TYPES.Archivist}`)
 
-  const nftCollectionScoreDivinerMod = assertEx(
-    await node.resolve(TYPES.NftCollectionScoreDiviner.description),
-    `Resolving: ${TYPES.NftCollectionScoreDiviner.description}`,
-  )
-  const nftCollectionScoreDiviner = assertEx(
-    asDivinerInstance(nftCollectionScoreDivinerMod),
-    `Creating: ${TYPES.NftCollectionScoreDiviner.description}`,
-  )
+  const nftCollectionScoreDivinerMod = assertEx(await node.resolve(TYPES.NftCollectionScoreDiviner), `Resolving: ${TYPES.NftCollectionScoreDiviner}`)
+  const nftCollectionScoreDiviner = assertEx(asDivinerInstance(nftCollectionScoreDivinerMod), `Creating: ${TYPES.NftCollectionScoreDiviner}`)
 
-  const nftCollectionInfoWitnessMod = assertEx(
-    await node.resolve(TYPES.CryptoNftCollectionWitness.description),
-    `Resolving: ${TYPES.CryptoNftCollectionWitness.description}`,
-  )
-  const nftCollectionInfoWitness = assertEx(
-    asWitnessInstance(nftCollectionInfoWitnessMod),
-    `Creating: ${TYPES.CryptoNftCollectionWitness.description}`,
-  )
+  const nftCollectionInfoWitnessMod = assertEx(await node.resolve(TYPES.CryptoNftCollectionWitness), `Resolving: ${TYPES.CryptoNftCollectionWitness}`)
+  const nftCollectionInfoWitness = assertEx(asWitnessInstance(nftCollectionInfoWitnessMod), `Creating: ${TYPES.CryptoNftCollectionWitness}`)
 
-  const imageThumbnailWitnessMod = assertEx(
-    await node.resolve(TYPES.ImageThumbnailWitness.description),
-    `Resolving: ${TYPES.ImageThumbnailWitness.description}`,
-  )
-  const imageThumbnailWitness = assertEx(asWitnessInstance(imageThumbnailWitnessMod), `Creating: ${TYPES.ImageThumbnailWitness.description}`)
+  const imageThumbnailWitnessMod = assertEx(await node.resolve(TYPES.ImageThumbnailWitness), `Resolving: ${TYPES.ImageThumbnailWitness}`)
+  const imageThumbnailWitness = assertEx(asWitnessInstance(imageThumbnailWitnessMod), `Creating: ${TYPES.ImageThumbnailWitness}`)
 
   try {
     console.log('Getting NFT Collections')

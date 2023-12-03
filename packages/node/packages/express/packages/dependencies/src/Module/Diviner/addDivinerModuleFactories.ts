@@ -30,7 +30,7 @@ const getMemoryForecastingDiviner = () => {
       accountDerivationPath: WALLET_PATHS.Diviners.Forecasting,
       forecastingMethod,
       jsonPathExpression,
-      name: TYPES.ForecastingDiviner.description,
+      name: TYPES.ForecastingDiviner,
       schema: MemoryForecastingDiviner.configSchema,
       witnessSchema,
     },

@@ -128,7 +128,7 @@ export class MongoDBBoundWitnessStatsDiviner extends MongoDBDivinerBase implemen
 
   private divineAddressesBatch = async () => {
     this.logger?.log(`${moduleName}.DivineAddressesBatch: Updating Addresses`)
-    const addressSpaceDiviners = await this.upResolver.resolve({ name: [assertEx(TYPES.AddressSpaceDiviner.description)] })
+    const addressSpaceDiviners = await this.upResolver.resolve({ name: [assertEx(TYPES.AddressSpaceDiviner)] })
     const addressSpaceDiviner = asDivinerInstance(addressSpaceDiviners.pop(), `${moduleName}.DivineAddressesBatch: Missing AddressSpaceDiviner`)
     const result = (await addressSpaceDiviner.divine([])) || []
     const addresses = result.filter<AddressPayload>((x): x is AddressPayload => x.schema === AddressSchema).map((x) => x.address)
