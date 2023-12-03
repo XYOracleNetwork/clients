@@ -12,9 +12,9 @@ export const TYPES = {
   ...MODULE_TYPES,
   ...SENTINEL_TYPES,
   ...WITNESS_TYPES,
-  AccountMnemonic: Symbol('AccountMnemonic'),
-  Logger: Symbol('Logger'),
-  ModuleFactoryLocator: Symbol('ModuleFactoryLocator'),
+  AccountMnemonic: 'AccountMnemonic',
+  Logger: 'Logger',
+  ModuleFactoryLocator: 'ModuleFactoryLocator',
 }
 
 export * from './Wallet'
