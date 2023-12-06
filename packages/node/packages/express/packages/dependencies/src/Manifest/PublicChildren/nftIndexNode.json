@@ -8,8 +8,7 @@
         "schema": "network.xyo.node.config"
       },
       "modules": {
-        "private": [],
-        "public": [
+        "private": [
           {
             "config": {
               "language": "javascript",
@@ -188,7 +187,9 @@
               "name": "NftIndexQueryResponseToNftQueryResponseDiviner",
               "schema": "network.xyo.diviner.config"
             }
-          },
+          }
+        ],
+        "public": [
           {
             "config": {
               "indexStore": {
