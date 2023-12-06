@@ -23,8 +23,8 @@
     "@babel/preset-typescript": "^7.23.3",
     "@types/jest": "^29.5.10",
     "@types/supertest": "^2.0.16",
-    "@typescript-eslint/eslint-plugin": "^6.13.1",
-    "@typescript-eslint/parser": "^6.13.1",
+    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/parser": "^6.13.2",
     "@xylabs/eslint-config": "^3.2.10",
     "@xylabs/ts-scripts-yarn3": "^3.2.10",
     "@xylabs/tsconfig": "^3.2.10",
@@ -47,6 +47,7 @@
     "supertest": "^6.3.3",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
+    "typedoc": "^0.25.4",
     "typescript": "^5.3.2"
   },
   "resolutions": {
@@ -122,7 +123,7 @@
     "free-8080": "kill -9 $(lsof -t -i :8080)",
     "free-3033": "kill -9 $(lsof -t -i :3033)",
     "free-mongo": "kill -9 $(lsof -t -i :55391) && kill -9 $(lsof -t -i :55393)",
-    "build-typedoc-site": "xy gen-docs @xyo-network/clients"
+    "build-typedoc-site": "typedoc"
   },
   "sideEffects": false,
   "version": "2.82.0",

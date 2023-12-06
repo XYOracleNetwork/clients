@@ -1,10 +1,13 @@
-import { Task } from '@xyo-network/shared'
-import { EventEmitter } from 'stream'
+import type { EventEmitter } from 'node:stream'
 
+import { Task } from '@xyo-network/shared'
+
+/** @internal */
 export interface DefineOptions {
   lockLifetime?: number
 }
 
+/** @internal */
 export interface JobQueue extends EventEmitter {
   define: (name: string, options: DefineOptions, processor: Task) => void
   every: (

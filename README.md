@@ -1,6 +1,6 @@
 [![logo][]](https://xyo.network)
 
-# sdk-xyo-client-js
+# clients
 
 [![main-build][]][main-build-link]
 [![npm-badge][]][npm-link]
@@ -32,13 +32,13 @@
 Using npm:
 
 ```sh
-npm i --save @xyo-network/sdk-xyo-client-js
+npm i --save @xyo-network/clients
 ```
 
 Using yarn:
 
 ```sh
-yarn add @xyo-network/sdk-xyo-client-js
+yarn add @xyo-network/clients
 ```
 
 ## Building the sdk locally
@@ -66,7 +66,7 @@ yarn xy compile
 
 ## License
 
-> See the [LICENSE](https://raw.githubusercontent.com/XYOracleNetwork/sdk-xyo-client-js/main/LICENSE)
+> See the [LICENSE](https://raw.githubusercontent.com/XYOracleNetwork/clients/main/LICENSE)
 > file for license details
 
 ## Credits
@@ -75,20 +75,20 @@ yarn xy compile
 
 [logo]: https://cdn.xy.company/img/brand/XYO_full_colored.png
 
-[main-build]: https://github.com/XYOracleNetwork/sdk-xyo-client-js/actions/workflows/build.yml/badge.svg
-[main-build-link]: https://github.com/XYOracleNetwork/sdk-xyo-client-js/actions/workflows/build.yml
+[main-build]: https://github.com/XYOracleNetwork/clients/actions/workflows/build.yml/badge.svg
+[main-build-link]: https://github.com/XYOracleNetwork/clients/actions/workflows/build.yml
 
-[npm-badge]: https://img.shields.io/npm/v/@xyo-network/sdk-xyo-client-js.svg
-[npm-link]: https://www.npmjs.com/package/@xyo-network/sdk-xyo-client-js
+[npm-badge]: https://img.shields.io/npm/v/@xyo-network/clients.svg
+[npm-link]: https://www.npmjs.com/package/@xyo-network/clients
 
-[codacy-badge]: https://app.codacy.com/project/badge/Grade/ba1f344ae34e4bfe999331cf4e27b9f5
-[codacy-link]: https://www.codacy.com/gh/XYOracleNetwork/sdk-xyo-client-js/dashboard?utm_source=github.com&utm_medium=referral&utm_content=XYOracleNetwork/sdk-xyo-client-js&utm_campaign=Badge_Grade
+[codacy-badge]: https://app.codacy.com/project/badge/Grade/3aa7776c45aa42a3a8bba8be302fc363
+[codacy-link]: https://www.codacy.com/gh/XYOracleNetwork/clients/dashboard?utm_source=github.com&utm_medium=referral&utm_content=XYOracleNetwork/clients&utm_campaign=Badge_Grade
 
-[codeclimate-badge]: https://api.codeclimate.com/v1/badges/0e76349c9541f3866948/maintainability
-[codeclimate-link]: https://codeclimate.com/github/XYOracleNetwork/sdk-xyo-client-js/maintainability
+[codeclimate-badge]: https://api.codeclimate.com/v1/badges/8e85bbe6e7dc563efa7a/maintainability
+[codeclimate-link]: https://codeclimate.com/github/XYOracleNetwork/clients/maintainability
 
-[snyk-badge]: https://snyk.io/test/github/XYOracleNetwork/sdk-xyo-client-js/badge.svg?targetFile=package.json
-[snyk-link]: https://snyk.io/test/github/XYOracleNetwork/sdk-xyo-client-js?targetFile=package.json
+[snyk-badge]: https://snyk.io/test/github/XYOracleNetwork/clients/badge.svg?targetFile=package.json
+[snyk-link]: https://snyk.io/test/github/XYOracleNetwork/clients?targetFile=package.json
 
-[license-badge]: https://img.shields.io/github/license/XYOracleNetwork/sdk-xyo-client-js
-[license-link]: https://github.com/XYOracleNetwork/sdk-xyo-client-js/blob/main/LICENSE
+[license-badge]: https://img.shields.io/github/license/XYOracleNetwork/clients
+[license-link]: https://github.com/XYOracleNetwork/clients/blob/main/LICENSE
