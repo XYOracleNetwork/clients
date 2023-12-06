@@ -2,6 +2,8 @@
 
 # sdk-xyo-client-js
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9a6d0c3862c2483a84c2972b101c74ff)](https://app.codacy.com/gh/XYOracleNetwork/clients?utm_source=github.com&utm_medium=referral&utm_content=XYOracleNetwork/clients&utm_campaign=Badge_Grade)
+
 [![main-build][]][main-build-link]
 [![npm-badge][]][npm-link]
 [![codacy-badge][]][codacy-link]
