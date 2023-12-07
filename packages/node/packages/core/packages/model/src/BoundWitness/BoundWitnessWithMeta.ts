@@ -1,6 +1,6 @@
 /* eslint-disable import/no-deprecated */
 import { BoundWitness } from '@xyo-network/boundwitness-model'
-import { AnyObject } from '@xyo-network/core'
+import { AnyObject } from '@xyo-network/object'
 
 import { PayloadWithPartialMeta } from '../Payload'
 import { BoundWitnessMetaBase } from './BoundWitnessMeta'

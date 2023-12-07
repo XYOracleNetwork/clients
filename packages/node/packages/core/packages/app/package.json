@@ -40,17 +40,17 @@
   "main": "dist/node/index.js",
   "module": "dist/node/index.mjs",
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.465.0",
+    "@aws-sdk/client-secrets-manager": "^3.468.0",
     "@xylabs/assert": "^2.13.20",
     "@xylabs/sdk-api-express-ecs": "^1.4.0",
-    "@xyo-network/account": "^2.82.0",
-    "@xyo-network/account-model": "^2.82.0",
+    "@xyo-network/account": "^2.83.2",
+    "@xyo-network/account-model": "^2.83.2",
     "@xyo-network/express-node-server": "workspace:~",
     "@xyo-network/node-core-types": "workspace:~",
-    "@xyo-network/node-memory": "^2.82.0",
-    "@xyo-network/node-model": "^2.82.0",
-    "@xyo-network/payload-validator": "^2.82.0",
-    "@xyo-network/schema-name-validator": "^2.82.0",
+    "@xyo-network/node-memory": "^2.83.2",
+    "@xyo-network/node-model": "^2.83.2",
+    "@xyo-network/payload-validator": "^2.83.2",
+    "@xyo-network/schema-name-validator": "^2.83.2",
     "body-parser": "^1.20.2",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
@@ -64,7 +64,7 @@
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.2.10",
     "@xylabs/tsconfig": "^3.2.10",
-    "typescript": "^5.3.2"
+    "typescript": "^5.3.3"
   },
   "author": "Arie Trouw",
   "license": "LGPL-3.0-only",
