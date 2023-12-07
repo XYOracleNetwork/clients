@@ -1,3 +1,4 @@
+import { AnyObject } from '@xyo-network/core'
 import { PayloadDiviner } from '@xyo-network/diviner-payload-abstract'
 import { isPayloadDivinerQueryPayload, PayloadDivinerConfigSchema, PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
 import { DefaultLimit, DefaultMaxTimeMS, DefaultOrder, MongoDBModuleMixin, removeId } from '@xyo-network/module-abstract-mongodb'
@@ -20,7 +21,8 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
     const parsedOrder = order || DefaultOrder
     const parsedOffset = offset || 0
     const sort: { [key: string]: SortDirection } = { _timestamp: parsedOrder === 'asc' ? 1 : -1 }
-    const filter: Filter<PayloadWithMeta> = {}
+    //TODO: Joel, why is AnyObject needed?
+    const filter: Filter<AnyObject> = {}
     if (timestamp) {
       const parsedTimestamp = timestamp ? timestamp : parsedOrder === 'desc' ? Date.now() : 0
       filter._timestamp = parsedOrder === 'desc' ? { $lt: parsedTimestamp } : { $gt: parsedTimestamp }
@@ -28,6 +30,7 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
     if (hash) filter._hash = hash
     // TODO: Optimize for single schema supplied too
     if (schemas?.length) filter.schema = { $in: schemas }
+    
 
     // Add additional filter criteria
     if (Object.keys(props).length > 0) {

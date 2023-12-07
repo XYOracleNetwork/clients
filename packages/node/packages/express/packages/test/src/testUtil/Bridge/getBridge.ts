@@ -1,10 +1,10 @@
 import { assertEx } from '@xylabs/assert'
 import { HDWallet } from '@xyo-network/account'
-import { BridgeInstance } from '@xyo-network/bridge-model'
+import { BridgeInstance, BridgeParams } from '@xyo-network/bridge-model'
 import { HttpBridge, HttpBridgeConfig, HttpBridgeConfigSchema, HttpBridgeParams } from '@xyo-network/http-bridge'
 import path from 'path'
 
-let bridge: HttpBridge
+let bridge: HttpBridge<BridgeParams>
 
 export const getBridge = async (): Promise<BridgeInstance> => {
   if (bridge) return bridge

@@ -1,5 +1,5 @@
 import { HDWallet } from '@xyo-network/account'
-import { HttpBridge } from '@xyo-network/http-bridge'
+import { HttpBridge, HttpBridgeParams } from '@xyo-network/http-bridge'
 
 import { printError } from '../../lib'
 import { BaseArguments } from '../BaseArguments'
@@ -9,7 +9,7 @@ import { getBridgeConfig } from './getBridgeConfig'
 const accountDerivationPath = "m/44'/60'/0"
 let wallet: HDWallet | undefined = undefined
 
-export const getBridge = async (args: BaseArguments): Promise<HttpBridge> => {
+export const getBridge = async (args: BaseArguments): Promise<HttpBridge<HttpBridgeParams>> => {
   const { verbose } = args
   try {
     if (!wallet) {

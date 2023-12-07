@@ -7,12 +7,17 @@
     "dist",
     "node_modules",
     "docs",
+    "spec",
     "coverage",
+    "scripts",
+    "packages",
     "docker",
     "nftData",
     "testData.json",
     "*.stories.*",
     "swagger.json",
+    "jest*",
+    ".*",
     ".yarn"
   ],
   "rules": {
@@ -22,6 +27,7 @@
       {
         "paths": [
           "@xyo-network/bridge",
+          "@xyo-network/core",
           "@xyo-network/module",
           "@xyo-network/modules",
           "@xyo-network/node",

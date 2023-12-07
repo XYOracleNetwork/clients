@@ -3,7 +3,7 @@ import { Payload } from '@xyo-network/payload-model'
 
 import { BoundWitnessWithPartialMeta } from './BoundWitnessWithMeta'
 
-export type BoundWitnessMapResult = [Array<BoundWitness>, Array<Payload>]
+export type BoundWitnessMapResult = [BoundWitness[], Payload[]]
 
 export const flatMapBoundWitness = (boundWitness: BoundWitnessWithPartialMeta): BoundWitnessMapResult => {
   const all = flatten(boundWitness)

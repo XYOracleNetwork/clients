@@ -1,4 +1,4 @@
-import { uuid } from '@xyo-network/core'
+import { v4 as uuid } from 'uuid'
 
 export const testSchemaPrefix = 'network.xyo.test.'
 
