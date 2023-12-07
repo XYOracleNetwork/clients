@@ -1,8 +1,8 @@
-import type { BoundWitnessMeta, BoundWitnessWithMeta, BoundWitnessWithPartialMeta, PayloadMeta, PayloadWithMeta } from '@xyo-network/payload-mongodb'
+import type { BoundWitnessMeta, BoundWitnessWithMeta, BoundWitnessWithPartialMeta, PayloadMeta, PayloadWithMeta, PayloadWithPartialMeta } from '@xyo-network/payload-mongodb'
 import { BoundWitnessMapResult, flatMapBoundWitness } from '@xyo-network/payload-mongodb'
 
 import { augmentWithMetadata } from './augmentWithMetadata'
-import { removePayloads } from './removePayloads'
+import { removeMetaPayloads } from './removeMetaPayloads'
 
 export interface PrepareBoundWitnessesResult {
   payloads: PayloadWithMeta[]
@@ -17,7 +17,10 @@ export const prepareBoundWitnesses = async (
   const flattened: BoundWitnessMapResult = boundWitnesses
     .map(flatMapBoundWitness)
     .reduce((prev, curr) => [prev[0].concat(curr[0]), prev[1].concat(curr[1])], [[], []])
-  const sanitized: BoundWitnessWithMeta[] = removePayloads(await augmentWithMetadata(flattened[0], boundWitnessMetaData))
+  const rawBoundWitnesses: BoundWitnessWithPartialMeta[] = flattened[0]
+  const rawPayloads: PayloadWithPartialMeta[] = flattened[1]
+  const boundWitnessesWithMeta: BoundWitnessWithMeta[] = await augmentWithMetadata(rawBoundWitnesses, boundWitnessMetaData)
+  const sanitized: BoundWitnessWithMeta[] = removeMetaPayloads(boundWitnessesWithMeta)
   const payloads: PayloadWithMeta[] = await augmentWithMetadata(flattened[1], payloadMetaData)
   return { payloads, sanitized }
 }

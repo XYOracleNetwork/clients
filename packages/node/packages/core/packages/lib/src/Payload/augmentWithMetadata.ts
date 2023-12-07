@@ -1,3 +1,4 @@
+import { PayloadHasher } from '@xyo-network/core'
 import type {
   BoundWitnessMeta,
   BoundWitnessWithMeta,
@@ -6,20 +7,27 @@ import type {
   PayloadWithMeta,
   PayloadWithPartialMeta,
 } from '@xyo-network/payload-mongodb'
-import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
-export const augmentWithMetadata = async <T extends PayloadWithPartialMeta[] | BoundWitnessWithPartialMeta[]>(
-  payloads: T,
-  meta: T extends PayloadWithPartialMeta[] ? PayloadMeta : BoundWitnessMeta,
-): Promise<T extends PayloadWithPartialMeta ? PayloadWithMeta[] : BoundWitnessWithMeta[]> => {
-  return await Promise.all(
+export async function augmentWithMetadata(
+  payloads: BoundWitnessWithPartialMeta[],
+  meta: BoundWitnessMeta,
+): Promise<BoundWitnessWithMeta[]>
+export async function augmentWithMetadata(
+  payloads: PayloadWithPartialMeta[],
+  meta: PayloadMeta,
+): Promise<PayloadWithMeta[]>
+export async function augmentWithMetadata(
+  payloads: PayloadWithPartialMeta[],
+  meta: PayloadMeta,
+): Promise<PayloadWithMeta[]> {
+  const result = await Promise.all(
     payloads.map(async (payload) => {
-      const wrapper = PayloadWrapper.wrap(payload)
       return {
         ...payload,
         ...meta,
-        _hash: await wrapper.hashAsync(),
-      } as T extends PayloadWithPartialMeta ? PayloadWithMeta : BoundWitnessWithMeta
+        _hash: await PayloadHasher.hashAsync(payload),
+      }
     }),
   )
+  return result
 }

@@ -10,15 +10,15 @@
     "url": "https://github.com/XYOracleNetwork/sdk-xyo-client-js/issues"
   },
   "dependencies": {
-    "@xyo-network/boundwitness-model": "^2.83.2",
-    "@xyo-network/core": "^2.83.2",
-    "@xyo-network/payload-model": "^2.83.2"
+    "@xyo-network/boundwitness-model": "^2.83.3",
+    "@xyo-network/core": "^2.83.3",
+    "@xyo-network/payload-model": "^2.83.3"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.2.10",
     "@xylabs/tsconfig": "^3.2.10",
-    "@xyo-network/boundwitness-builder": "^2.83.2",
-    "@xyo-network/payload-builder": "^2.83.2",
+    "@xyo-network/boundwitness-builder": "^2.83.3",
+    "@xyo-network/payload-builder": "^2.83.3",
     "fake-indexeddb": "^4.0.2",
     "typescript": "^5.3.3"
   },

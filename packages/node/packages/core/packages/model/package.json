@@ -40,14 +40,14 @@
   "author": "Arie Trouw",
   "license": "LGPL-3.0-only",
   "dependencies": {
-    "@xyo-network/archivist-model": "^2.83.2",
-    "@xyo-network/boundwitness-model": "^2.83.2",
-    "@xyo-network/core": "^2.83.2",
-    "@xyo-network/diviner-payload-model": "^2.83.2",
-    "@xyo-network/module-abstract": "^2.83.2",
-    "@xyo-network/payload-model": "^2.83.2",
+    "@xyo-network/archivist-model": "^2.83.3",
+    "@xyo-network/boundwitness-model": "^2.83.3",
+    "@xyo-network/core": "^2.83.3",
+    "@xyo-network/diviner-payload-model": "^2.83.3",
+    "@xyo-network/module-abstract": "^2.83.3",
+    "@xyo-network/payload-model": "^2.83.3",
     "@xyo-network/payload-mongodb": "workspace:~",
-    "@xyo-network/shared": "^2.83.2",
+    "@xyo-network/shared": "^2.83.3",
     "ajv": "^8.12.0"
   },
   "devDependencies": {

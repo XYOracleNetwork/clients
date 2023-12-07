@@ -100,6 +100,8 @@
     "compile": "./scripts/clear-scrollback-buffer.sh && yarn xy compile",
     "build": "xy build && xy statics",
     "deploy": "xy deploy",
+    "cycle": "NODE_OPTIONS=--max-old-space-size=8092 xy cycle",
+    "lint": "NODE_OPTIONS=--max-old-space-size=8092 xy lint",
     "lint-pkg": "npmPkgJsonLint .",
     "start": "nodemon",
     "start-cjs": "node ./packages/node/packages/core/packages/app/dist/node/app.js",

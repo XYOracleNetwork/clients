@@ -1,4 +1,4 @@
 export * from './augmentWithMetadata'
 export * from './prepareBoundWitnesses'
-export * from './removePayloads'
+export * from './removeMetaPayloads'
 export * from './scrubBoundWitnesses'
