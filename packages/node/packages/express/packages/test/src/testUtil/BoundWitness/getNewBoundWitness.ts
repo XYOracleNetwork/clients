@@ -10,10 +10,10 @@ const config: BoundWitnessBuilderConfig = { inlinePayloads: false, timestamp: tr
 
 export const getNewBoundWitness = async (
   signers?: AccountInstance[],
-  payloads: Payload[] = getNewPayloads(1),
+  payloads?: Payload[],
 ): Promise<[BoundWitness, Payload[], ModuleError[]]> => {
   return await new BoundWitnessBuilder(config)
-    .payloads(payloads)
+    .payloads(payloads ?? await getNewPayloads(1))
     .witnesses(signers ?? [await unitTestSigningAccount()])
     .build()
 }
@@ -25,7 +25,7 @@ export const getNewBoundWitnesses = async (
 ): Promise<[BoundWitness, Payload[], ModuleError[]][]> => {
   const response: [BoundWitness, Payload[], ModuleError[]][] = []
   for (let i = 0; i < numBoundWitnesses; i++) {
-    response.push(await getNewBoundWitness(signers ?? [await unitTestSigningAccount()], getNewPayloads(numPayloads)))
+    response.push(await getNewBoundWitness(signers ?? [await unitTestSigningAccount()], await getNewPayloads(numPayloads)))
   }
   return response
 }

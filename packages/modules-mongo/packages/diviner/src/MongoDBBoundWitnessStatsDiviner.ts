@@ -82,7 +82,7 @@ export class MongoDBBoundWitnessStatsDiviner extends MongoDBDivinerBase implemen
     const query = payloads?.find<BoundWitnessStatsQueryPayload>(isBoundWitnessStatsQueryPayload)
     const addresses = query?.address ? (Array.isArray(query?.address) ? query.address : [query.address]) : undefined
     const counts = addresses ? await Promise.all(addresses.map((address) => this.divineAddress(address))) : [await this.divineAllAddresses()]
-    return counts.map((count) => new PayloadBuilder<BoundWitnessStatsPayload>({ schema: BoundWitnessStatsDivinerSchema }).fields({ count }).build())
+    return await Promise.all(counts.map(async (count) => await new PayloadBuilder<BoundWitnessStatsPayload>({ schema: BoundWitnessStatsDivinerSchema }).fields({ count }).build()))
   }
 
   protected override async startHandler() {

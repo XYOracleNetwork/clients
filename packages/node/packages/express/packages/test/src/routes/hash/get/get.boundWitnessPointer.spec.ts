@@ -43,7 +43,7 @@ const createPointer = async (
   const timestampRule: PayloadTimestampDirectionRule = { direction, timestamp }
   reference.push([timestampRule])
 
-  const pointer = new PayloadBuilder<BoundWitnessPointerPayload>({ schema: BoundWitnessPointerSchema }).fields({ reference }).build()
+  const pointer = await new PayloadBuilder<BoundWitnessPointerPayload>({ schema: BoundWitnessPointerSchema }).fields({ reference }).build()
   const pointerResponse = await insertPayload(pointer)
   expect(pointerResponse).toBeArrayOfSize(1)
   //expect(pointerResponse.map((bw) => bw.payload_schemas.includes(BoundWitnessPointerSchema)).some((x) => x)).toBeTrue()
@@ -144,19 +144,17 @@ describe('/:hash', () => {
     })
     describe('schema', () => {
       const account = Account.randomSync()
-      const payloadBaseA = getNewPayload()
       const schemaA = getTestSchemaName()
-      payloadBaseA.schema = schemaA
-      const payloadA: PayloadWrapper = PayloadWrapper.wrap(payloadBaseA)
-      const payloadBaseB = getNewPayload()
       const schemaB = getTestSchemaName()
-      payloadBaseB.schema = schemaB
-      const payloadB: PayloadWrapper = PayloadWrapper.wrap(payloadBaseB)
+      const payloadBaseA = (async () => ({...(await getNewPayload()), schema: schemaA}))()
+      const payloadA: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseA))()
+      const payloadBaseB = (async () => ({...(await getNewPayload()), schema: schemaB}))()
+      const payloadB: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseB))()
       const schemas = [schemaA, schemaB]
       const boundWitnesses: BoundWitness[] = []
       beforeAll(async () => {
-        const [bwA] = await getNewBoundWitness([account], [payloadA.payload()])
-        const [bwB] = await getNewBoundWitness([account], [payloadB.payload()])
+        const [bwA] = await getNewBoundWitness([account], [(await payloadA).jsonPayload()])
+        const [bwB] = await getNewBoundWitness([account], [(await payloadB).jsonPayload()])
         boundWitnesses.push(...[bwA, bwB])
         const payloadResponse = await insertBlock(boundWitnesses, account)
         expect(payloadResponse.length).toBe(boundWitnesses.length)
@@ -175,14 +173,14 @@ describe('/:hash', () => {
       describe('multiple schema rules', () => {
         describe('combined serially', () => {
           it('returns BoundWitness of Payload for either schema', async () => {
-            const pointerHash = await createPointer([[account.address]], [[payloadA.schema(), payloadB.schema()]])
+            const pointerHash = await createPointer([[account.address]], [[(await payloadA).schema(), (await payloadB).schema()]])
             const result = await getHash<BoundWitness>(pointerHash)
             expect(schemas).toIncludeAllMembers(result.payload_schemas)
           })
         })
         describe('combined in parallel', () => {
           it('returns BoundWitness of Payload for either schema', async () => {
-            const pointerHash = await createPointer([[account.address]], [[payloadA.schema()], [payloadB.schema()]])
+            const pointerHash = await createPointer([[account.address]], [[(await payloadA).schema()], [(await payloadB).schema()]])
             const result = await getHash<BoundWitness>(pointerHash)
             expect(schemas).toIncludeAllMembers(result.payload_schemas)
           })

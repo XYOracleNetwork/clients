@@ -19,7 +19,7 @@ export class MongoDBSchemaListDiviner extends MongoDBDivinerBase {
     const query = payloads?.find<SchemaListQueryPayload>(isSchemaListQueryPayload)
     const addresses = query?.address ? (Array.isArray(query?.address) ? query.address : [query.address]) : undefined
     const counts = addresses ? await Promise.all(addresses.map((address) => this.divineAddress(address))) : [await this.divineAllAddresses()]
-    return counts.map((schemas) => new PayloadBuilder<SchemaListPayload>({ schema: SchemaListDivinerSchema }).fields({ schemas }).build())
+    return await Promise.all(counts.map((schemas) => new PayloadBuilder<SchemaListPayload>({ schema: SchemaListDivinerSchema }).fields({ schemas }).build()))
   }
 
   protected override async startHandler() {

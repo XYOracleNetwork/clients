@@ -7,7 +7,6 @@
     "dist",
     "node_modules",
     "docs",
-    "spec",
     "coverage",
     "scripts",
     "packages",

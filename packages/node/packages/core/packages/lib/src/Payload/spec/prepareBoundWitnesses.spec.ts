@@ -32,8 +32,8 @@ const payloadMeta = async (): Promise<PayloadMeta> => ({
   _user_agent,
 })
 
-const getPayloads = (numPayloads: number): Payload[] => {
-  return new Array(numPayloads).fill(0).map(() => new PayloadBuilder({ schema: 'network.xyo.test' }).fields({ ...payloadMeta, uid: uuid() }).build())
+const getPayloads = async (numPayloads: number): Promise<Payload[]> => {
+  return await Promise.all(new Array(numPayloads).fill(0).map(() => new PayloadBuilder({ schema: 'network.xyo.test' }).fields({ ...payloadMeta, uid: uuid() }).build()))
 }
 
 const getNewBlockWithBoundWitnessesWithPayloads = (
@@ -42,7 +42,7 @@ const getNewBlockWithBoundWitnessesWithPayloads = (
 ): Promise<Array<BoundWitnessWithPartialMeta & PayloadWithPartialMeta>> => {
   return Promise.all(
     new Array(numBoundWitnesses).fill(0).map(async () => {
-      return (await new BoundWitnessBuilder({ inlinePayloads: true }).payloads(getPayloads(numPayloads)).build(true))[0]
+      return (await new BoundWitnessBuilder({ inlinePayloads: true }).payloads(await getPayloads(numPayloads)).build(true))[0]
     }),
   )
 }

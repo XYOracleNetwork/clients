@@ -29,7 +29,7 @@ describeIf(hasMongoDBConfig())('MongoDBPayloadDiviner', () => {
       logger,
     })
     // TODO: Insert via archivist
-    const payload = new PayloadBuilder<{ schema: string; url: string }>({ schema: testSchema }).fields({ url }).build()
+    const payload = await new PayloadBuilder<{ schema: string; url: string }>({ schema: testSchema }).fields({ url }).build()
     await payloadSdk.insertOne(payload as unknown as PayloadWithMeta)
   })
   describe('divine', () => {

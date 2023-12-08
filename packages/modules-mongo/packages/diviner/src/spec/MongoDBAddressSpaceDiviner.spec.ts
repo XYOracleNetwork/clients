@@ -34,7 +34,7 @@ describeIf(hasMongoDBConfig())('MongoDBAddressSpaceDiviner', () => {
       logger,
     })
     // TODO: Insert via archivist
-    const payload = new PayloadBuilder({ schema: 'network.xyo.test' }).build()
+    const payload = await new PayloadBuilder({ schema: 'network.xyo.test' }).build()
     const bw = (await new BoundWitnessBuilder().payload(payload).witness(account).build())[0]
     await boundWitnessSdk.insertOne(bw as unknown as BoundWitnessWithMeta)
   })

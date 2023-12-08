@@ -113,7 +113,7 @@ export class MongoDBSchemaStatsDiviner extends MongoDBDivinerBase implements Job
     const query = payloads?.find<SchemaStatsQueryPayload>(isSchemaStatsQueryPayload)
     const addresses = query?.address ? (Array.isArray(query?.address) ? query.address : [query.address]) : undefined
     const counts = addresses ? await Promise.all(addresses.map((address) => this.divineAddress(address))) : [await this.divineAllAddresses()]
-    return counts.map((count) => new PayloadBuilder<SchemaStatsPayload>({ schema: SchemaStatsDivinerSchema }).fields({ count }).build())
+    return await Promise.all(counts.map((count) => new PayloadBuilder<SchemaStatsPayload>({ schema: SchemaStatsDivinerSchema }).fields({ count }).build()))
   }
 
   protected override async startHandler() {
