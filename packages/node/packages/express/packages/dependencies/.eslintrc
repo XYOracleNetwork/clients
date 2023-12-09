@@ -1,7 +1,4 @@
 {
-  "extends": [
-    "@xylabs"
-  ],
   "ignorePatterns": [
     "imageThumbnailNode.json",
     "nftContractNode.json",

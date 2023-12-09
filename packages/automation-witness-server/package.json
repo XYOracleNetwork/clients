@@ -7,9 +7,6 @@
   "version": "2.82.0",
   "description": "XYO Automation Witness",
   "sideeffects": false,
-  "engines": {
-    "node": ">=16 <17"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/XYOracleNetwork/sdk-xyo-client-js.git"
@@ -103,9 +100,5 @@
     "typescript": "^5.3.3"
   },
   "types": "dist/node/index.d.ts",
-  "volta": {
-    "node": "16.15.1",
-    "yarn": "1.22.19"
-  },
   "type": "module"
 }

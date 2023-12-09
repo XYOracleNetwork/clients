@@ -7,27 +7,24 @@
   "version": "2.82.0",
   "description": "XYO Express Node Dependencies",
   "sideeffects": false,
-  "engines": {
-    "node": ">=16 <17"
-  },
   "types": "dist/node/index.d.ts",
   "exports": {
     ".": {
       "node": {
         "require": {
-          "types": "./dist/node/index.d.ts",
-          "default": "./dist/node/index.js"
+          "types": "./dist/node/index.d.cts",
+          "default": "./dist/node/index.cjs"
         },
         "import": {
           "types": "./dist/node/index.d.mts",
-          "default": "./dist/node/index.mjs"
+          "default": "./dist/node/index.js"
         }
       }
     },
     "./package.json": "./package.json"
   },
-  "main": "dist/node/index.js",
-  "module": "dist/node/index.mjs",
+  "main": "dist/node/index.cjs",
+  "module": "dist/node/index.js",
   "author": "Arie Trouw",
   "license": "LGPL-3.0-only",
   "dependencies": {
@@ -86,5 +83,6 @@
     "@xylabs/ts-scripts-yarn3": "^3.2.10",
     "@xylabs/tsconfig": "^3.2.10",
     "typescript": "^5.3.3"
-  }
+  },
+  "type": "module"
 }

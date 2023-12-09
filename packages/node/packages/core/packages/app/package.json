@@ -7,14 +7,11 @@
   "version": "2.82.0",
   "description": "XYO Node App",
   "sideeffects": false,
-  "engines": {
-    "node": ">=16 <17"
-  },
   "exports": {
     ".": {
       "node": {
         "require": {
-          "types": "./dist/node/index.d.ts",
+          "types": "./dist/node/index.d.cts",
           "default": "./dist/node/index.js"
         },
         "import": {
@@ -26,7 +23,7 @@
     "./app": {
       "node": {
         "require": {
-          "types": "./dist/node/app.d.ts",
+          "types": "./dist/node/app.d.cts",
           "default": "./dist/node/app.js"
         },
         "import": {
