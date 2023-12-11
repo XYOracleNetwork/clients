@@ -146,9 +146,9 @@ describe('/:hash', () => {
       const account = Account.randomSync()
       const schemaA = getTestSchemaName()
       const schemaB = getTestSchemaName()
-      const payloadBaseA = (async () => ({...(await getNewPayload()), schema: schemaA}))()
+      const payloadBaseA = (async () => ({ ...(await getNewPayload()), schema: schemaA }))()
       const payloadA: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseA))()
-      const payloadBaseB = (async () => ({...(await getNewPayload()), schema: schemaB}))()
+      const payloadBaseB = (async () => ({ ...(await getNewPayload()), schema: schemaB }))()
       const payloadB: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseB))()
       const schemas = [schemaA, schemaB]
       const boundWitnesses: BoundWitness[] = []

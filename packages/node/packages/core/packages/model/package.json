@@ -39,8 +39,8 @@
   "dependencies": {
     "@xyo-network/archivist-model": "^2.84.0",
     "@xyo-network/boundwitness-model": "^2.84.0",
-    "@xyo-network/core": "^2.84.0",
     "@xyo-network/diviner-payload-model": "^2.84.0",
+    "@xyo-network/hash": "^2.84.0",
     "@xyo-network/module-abstract": "^2.84.0",
     "@xyo-network/payload-model": "^2.84.0",
     "@xyo-network/payload-mongodb": "workspace:~",
@@ -48,8 +48,8 @@
     "ajv": "^8.12.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.2.10",
-    "@xylabs/tsconfig": "^3.2.10",
+    "@xylabs/ts-scripts-yarn3": "^3.2.11",
+    "@xylabs/tsconfig": "^3.2.11",
     "typescript": "^5.3.3"
   },
   "type": "module"

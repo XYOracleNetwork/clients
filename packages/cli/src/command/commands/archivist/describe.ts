@@ -1,4 +1,4 @@
-import { EmptyObject } from '@xyo-network/core'
+import { EmptyObject } from '@xyo-network/object'
 import { Argv, CommandBuilder, CommandModule } from 'yargs'
 
 import { printError, printLine } from '../../../lib'

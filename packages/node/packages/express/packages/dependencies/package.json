@@ -35,7 +35,6 @@
     "@xyo-network/account": "^2.84.0",
     "@xyo-network/archivist": "^2.84.0",
     "@xyo-network/archivist-model": "^2.84.0",
-    "@xyo-network/core": "^2.84.0",
     "@xyo-network/crypto-contract-function-read-plugin": "^2.84.0",
     "@xyo-network/crypto-nft-collection-diviner-score-plugin": "^2.84.0",
     "@xyo-network/crypto-nft-collection-payload-plugin": "^2.84.0",
@@ -53,6 +52,7 @@
     "@xyo-network/diviner-payload-stats": "^2.84.0",
     "@xyo-network/diviner-schema-list": "^2.84.0",
     "@xyo-network/diviner-schema-stats": "^2.84.0",
+    "@xyo-network/hash": "^2.84.0",
     "@xyo-network/image-thumbnail-plugin": "^2.84.0",
     "@xyo-network/manifest": "^2.84.0",
     "@xyo-network/manifest-model": "^2.84.0",
@@ -80,8 +80,8 @@
     "winston-transport": "^4.6.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.2.10",
-    "@xylabs/tsconfig": "^3.2.10",
+    "@xylabs/ts-scripts-yarn3": "^3.2.11",
+    "@xylabs/tsconfig": "^3.2.11",
     "typescript": "^5.3.3"
   },
   "type": "module"

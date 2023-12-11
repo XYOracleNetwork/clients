@@ -1,7 +1,6 @@
 /* eslint-disable max-statements */
 import { assertEx } from '@xylabs/assert'
 import { ArchivistInstance, asArchivistInstance } from '@xyo-network/archivist-model'
-import { PayloadHasher } from '@xyo-network/core'
 import {
   isNftCollectionInfo,
   isNftCollectionScore,
@@ -10,6 +9,7 @@ import {
 } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import { isNftInfo } from '@xyo-network/crypto-nft-payload-plugin'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
+import { PayloadHasher } from '@xyo-network/hash'
 import { TYPES } from '@xyo-network/node-core-types'
 import { NodeInstance } from '@xyo-network/node-model'
 import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'

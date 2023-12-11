@@ -11,13 +11,16 @@ describe('/:hash', () => {
     const account = Account.randomSync()
     const schemaA = getTestSchemaName()
     const schemaB = getTestSchemaName()
-    const payloadBaseA = (async () => ({...(await getNewPayload()), schema: schemaA}))()
+    const payloadBaseA = (async () => ({ ...(await getNewPayload()), schema: schemaA }))()
     const payloadA: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseA))()
-    const payloadBaseB = (async () => ({...(await getNewPayload()), schema: schemaB}))()
+    const payloadBaseB = (async () => ({ ...(await getNewPayload()), schema: schemaB }))()
     const payloadB: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseB))()
     const schemas = [schemaA, schemaB]
     beforeAll(async () => {
-      const [bw] = await new BoundWitnessBuilder().payloads([(await payloadA).jsonPayload(), (await payloadB).jsonPayload()]).witness(account).build()
+      const [bw] = await new BoundWitnessBuilder()
+        .payloads([(await payloadA).jsonPayload(), (await payloadB).jsonPayload()])
+        .witness(account)
+        .build()
       const payloads: Payload[] = [bw, (await payloadA).jsonPayload(), (await payloadB).jsonPayload()]
       const payloadResponse = await insertPayload(payloads, account)
       expect(payloadResponse.length).toBe(payloads.length)

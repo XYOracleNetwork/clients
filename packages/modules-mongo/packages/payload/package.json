@@ -11,12 +11,12 @@
   },
   "dependencies": {
     "@xyo-network/boundwitness-model": "^2.84.0",
-    "@xyo-network/core": "^2.84.0",
+    "@xyo-network/object": "^2.84.0",
     "@xyo-network/payload-model": "^2.84.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.2.10",
-    "@xylabs/tsconfig": "^3.2.10",
+    "@xylabs/ts-scripts-yarn3": "^3.2.11",
+    "@xylabs/tsconfig": "^3.2.11",
     "@xyo-network/boundwitness-builder": "^2.84.0",
     "@xyo-network/payload-builder": "^2.84.0",
     "fake-indexeddb": "^4.0.2",

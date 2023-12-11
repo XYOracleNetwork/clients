@@ -7,7 +7,7 @@ import { getNewPayload } from './getNewPayload'
 
 export const insertPayload = async (payloads?: Payload | Payload[], account?: AccountInstance): Promise<Payload[]> => {
   const archivist = await getArchivist(account ?? (await unitTestSigningAccount()))
-  const workingPayloads = payloads ?? await getNewPayload()
+  const workingPayloads = payloads ?? (await getNewPayload())
   const data = Array.isArray(workingPayloads) ? workingPayloads : [workingPayloads]
   return archivist.insert(data)
 }

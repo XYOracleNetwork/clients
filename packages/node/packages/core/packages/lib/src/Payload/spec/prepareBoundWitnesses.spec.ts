@@ -1,10 +1,10 @@
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { BoundWitnessSchema } from '@xyo-network/boundwitness-model'
-import { v4 as uuid } from 'uuid'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
 import { BoundWitnessMeta, BoundWitnessWithPartialMeta, PayloadMeta, PayloadWithPartialMeta } from '@xyo-network/payload-mongodb'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
+import { v4 as uuid } from 'uuid'
 
 import { prepareBoundWitnesses, PrepareBoundWitnessesResult } from '../prepareBoundWitnesses'
 
@@ -33,7 +33,9 @@ const payloadMeta = async (): Promise<PayloadMeta> => ({
 })
 
 const getPayloads = async (numPayloads: number): Promise<Payload[]> => {
-  return await Promise.all(new Array(numPayloads).fill(0).map(() => new PayloadBuilder({ schema: 'network.xyo.test' }).fields({ ...payloadMeta, uid: uuid() }).build()))
+  return await Promise.all(
+    new Array(numPayloads).fill(0).map(() => new PayloadBuilder({ schema: 'network.xyo.test' }).fields({ ...payloadMeta, uid: uuid() }).build()),
+  )
 }
 
 const getNewBlockWithBoundWitnessesWithPayloads = (

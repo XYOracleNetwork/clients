@@ -1,6 +1,6 @@
 import { ArchivistGetQuerySchema, ArchivistInsertQuerySchema, ArchivistInstance } from '@xyo-network/archivist'
 import { BoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
-import { PayloadHasher } from '@xyo-network/core'
+import { PayloadHasher } from '@xyo-network/hash'
 import { PayloadWrapper, PayloadWrapperBase } from '@xyo-network/payload-wrapper'
 
 import { getArchivist, getNewBoundWitness, getNewPayload, nonExistentHash, unitTestSigningAccount, validateDiscoverResponse } from '../../testUtil'

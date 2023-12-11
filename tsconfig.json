@@ -1,11 +1,16 @@
 {
   "compilerOptions": {
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "esModuleInterop": true,
+    "experimentalDecorators": true,
     "typeRoots": []
   },
-  "exclude": [".*", "dist", "node_modules", "storybook-static", "build", "docs"],
+  "exclude": [".*", "dist", "node_modules", "storybook-static", "build", "docs",
+  "packages/modules-mongo",
+  "packages/modules-mongo/packages/archivist",
+  "packages/modules-mongo/packages/diviner",
+  "packages/modules-mongo/packages/module",
+  "packages/modules-mongo/packages/payload"],
   "extends": "@xylabs/tsconfig",
   "ts-node": {
     "compilerOptions": {

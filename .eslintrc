@@ -6,18 +6,21 @@
   "ignorePatterns": [
     "dist",
     "node_modules",
+    "packages/modules-mongo",
+    "packages/modules-mongo/packages/archivist",
+    "packages/modules-mongo/packages/diviner",
+    "packages/modules-mongo/packages/module",
+    "packages/modules-mongo/packages/payload",
     "docs",
     "coverage",
-    "scripts",
-    "packages",
     "docker",
     "nftData",
+    "scripts",
     "testData.json",
     "*.stories.*",
     "swagger.json",
-    "jest*",
-    ".*",
-    ".yarn"
+    ".yarn",
+    ".*"
   ],
   "rules": {
     "@typescript-eslint/explicit-member-accessibility": ["warn", { "accessibility": "no-public" }],

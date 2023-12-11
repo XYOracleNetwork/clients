@@ -1,8 +1,8 @@
 import { Account } from '@xyo-network/account'
 import { ArchivistInstance } from '@xyo-network/archivist-model'
-import { PayloadHasher } from '@xyo-network/core'
 import { DivinerDivineQuerySchema, DivinerInstance } from '@xyo-network/diviner'
 import { AddressHistoryQueryPayload, AddressHistoryQuerySchema } from '@xyo-network/diviner-address-history-model'
+import { PayloadHasher } from '@xyo-network/hash'
 
 import { getArchivist, getDivinerByName, getNewBoundWitnesses, validateDiscoverResponse } from '../../testUtil'
 

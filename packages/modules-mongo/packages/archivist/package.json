@@ -25,13 +25,13 @@
     "@xyo-network/sdk-xyo-mongo-js": "workspace:~"
   },
   "devDependencies": {
+    "@xylabs/arraybuffer": "^2.13.20",
     "@xylabs/jest-helpers": "^2.13.20",
-    "@xylabs/ts-scripts-yarn3": "^3.2.10",
-    "@xylabs/tsconfig": "^3.2.10",
+    "@xylabs/ts-scripts-yarn3": "^3.2.11",
+    "@xylabs/tsconfig": "^3.2.11",
     "@xyo-network/account": "^2.84.0",
     "@xyo-network/account-model": "^2.84.0",
     "@xyo-network/archivist-wrapper": "^2.84.0",
-    "@xyo-network/core": "^2.84.0",
     "@xyo-network/payload-builder": "^2.84.0",
     "@xyo-network/sdk-xyo-mongo-js": "workspace:~",
     "fake-indexeddb": "^4.0.2",

@@ -46,7 +46,9 @@ describe(`/${moduleName}`, () => {
     beforeAll(async () => {
       const boundWitnessA = BoundWitnessWrapper.parse((await getNewBoundWitness([accountA], [await getNewPayload()]))[0])
       const boundWitnessB = BoundWitnessWrapper.parse((await getNewBoundWitness([accountB], [await getNewPayload()]))[0])
-      const boundWitnessC = BoundWitnessWrapper.parse((await getNewBoundWitness([accountA, accountB], [await getNewPayload(), await getNewPayload()]))[0])
+      const boundWitnessC = BoundWitnessWrapper.parse(
+        (await getNewBoundWitness([accountA, accountB], [await getNewPayload(), await getNewPayload()]))[0],
+      )
       boundWitnesses.push(boundWitnessA, boundWitnessB, boundWitnessC)
       await archivist.insert(boundWitnesses.map((b) => b.boundwitness))
     })
@@ -137,15 +139,17 @@ describe(`/${moduleName}`, () => {
     describe('payload_schemas', () => {
       const schemaA = getTestSchemaName()
       const schemaB = getTestSchemaName()
-      const payloadBaseA = (async () => ({...(await getNewPayload()), schema: schemaA}))()
+      const payloadBaseA = (async () => ({ ...(await getNewPayload()), schema: schemaA }))()
       const payloadA: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseA))()
-      const payloadBaseB = (async () => ({...(await getNewPayload()), schema: schemaB}))()
+      const payloadBaseB = (async () => ({ ...(await getNewPayload()), schema: schemaB }))()
       const payloadB: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseB))()
       const boundWitnesses: BoundWitnessWrapper[] = []
       beforeAll(async () => {
         const boundWitnessA = BoundWitnessWrapper.parse((await getNewBoundWitness([account], [(await payloadA).jsonPayload()]))[0])
         const boundWitnessB = BoundWitnessWrapper.parse((await getNewBoundWitness([account], [(await payloadB).jsonPayload()]))[0])
-        const boundWitnessC = BoundWitnessWrapper.parse((await getNewBoundWitness([account], [(await payloadA).jsonPayload(), (await payloadB).jsonPayload()]))[0])
+        const boundWitnessC = BoundWitnessWrapper.parse(
+          (await getNewBoundWitness([account], [(await payloadA).jsonPayload(), (await payloadB).jsonPayload()]))[0],
+        )
         boundWitnesses.push(boundWitnessA, boundWitnessB, boundWitnessC)
         await archivist.insert(boundWitnesses.map((b) => b.payload()))
       })
