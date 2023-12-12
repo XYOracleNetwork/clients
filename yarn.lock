@@ -5109,6 +5109,7 @@ __metadata:
     "@xyo-network/payload-model": "npm:^2.84.0"
     "@xyo-network/payload-mongodb": "workspace:~"
     "@xyo-network/payload-wrapper": "npm:^2.84.0"
+    "@xyo-network/sdk-xyo-mongo-js": "workspace:~"
     fake-indexeddb: "npm:^4.0.2"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.3.3"
@@ -7267,7 +7268,6 @@ __metadata:
   resolution: "@xyo-network/node-core-modules-mongo@workspace:packages/modules-mongo"
   dependencies:
     "@xylabs/assert": "npm:^2.13.20"
-    "@xylabs/crypto": "npm:^2.13.20"
     "@xylabs/exists": "npm:^2.13.20"
     "@xylabs/jest-helpers": "npm:^2.13.20"
     "@xylabs/ts-scripts-yarn3": "npm:^3.2.11"
