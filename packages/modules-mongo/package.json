@@ -54,7 +54,8 @@
     "@xyo-network/shared": "^2.84.0",
     "agenda": "^5.0.0",
     "inversify": "^6.0.2",
-    "mongodb": "^6.3.0"
+    "mongodb": "^6.3.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@xylabs/jest-helpers": "^2.13.20",
