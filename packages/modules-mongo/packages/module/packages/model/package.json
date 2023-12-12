@@ -13,12 +13,11 @@
     "@xyo-network/module-model": "^2.84.0",
     "@xyo-network/node-core-model": "workspace:~",
     "@xyo-network/payload-mongodb": "workspace:~",
-    "@xyo-network/sdk-xyo-mongo-js": "^2"
+    "@xyo-network/sdk-xyo-mongo-js": "workspace:~"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.2.11",
     "@xylabs/tsconfig": "^3.2.11",
-    "@xyo-network/sdk-xyo-mongo-js": "workspace:~",
     "fake-indexeddb": "^4.0.2",
     "typescript": "^5.3.3"
   },

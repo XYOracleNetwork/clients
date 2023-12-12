@@ -20,14 +20,6 @@
     "@xyo-network/payload-mongodb": "workspace:~",
     "mongodb": "^6.3.0"
   },
-  "peerDependencies": {
-    "@xyo-network/sdk-xyo-mongo-js": "workspace:~"
-  },
-  "peerDependenciesMeta": {
-    "@xyo-network/sdk-xyo-mongo-js": {
-      "optional": true
-    }
-  },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.2.11",
     "@xylabs/tsconfig": "^3.2.11",

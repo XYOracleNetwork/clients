@@ -11,8 +11,7 @@
   },
   "dependencies": {
     "@xyo-network/module-abstract-mongodb": "workspace:~",
-    "@xyo-network/module-model-mongodb": "workspace:~",
-    "@xyo-network/sdk-xyo-mongo-js": "workspace:~"
+    "@xyo-network/module-model-mongodb": "workspace:~"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.2.11",
