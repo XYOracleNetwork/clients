@@ -1,8 +1,6 @@
 {
   "root": true,
-  "extends": [
-    "@xylabs"
-  ],
+  "extends": ["@xylabs"],
   "ignorePatterns": [
     "dist",
     "node_modules",
@@ -23,7 +21,10 @@
     ".*"
   ],
   "rules": {
-    "@typescript-eslint/explicit-member-accessibility": ["warn", { "accessibility": "no-public" }],
+    "@typescript-eslint/explicit-member-accessibility": [
+      "warn",
+      { "accessibility": "no-public" }
+    ],
     "no-restricted-imports": [
       "warn",
       {
@@ -53,13 +54,9 @@
       }
     ],
     "import/no-internal-modules": [
-      "warn", {
-        "allow": [
-          "source-map-support/*",
-          "lodash/*",
-          "aws-sdk/**/*",
-          "types/*"
-        ]
+      "warn",
+      {
+        "allow": ["source-map-support/*", "lodash/*", "aws-sdk/**/*", "types/*"]
       }
     ]
   }
