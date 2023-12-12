@@ -12,11 +12,7 @@
     "storybook-static",
     "build",
     "docs",
-    "packages/modules-mongo",
-    "packages/modules-mongo/packages/archivist",
-    "packages/modules-mongo/packages/diviner",
-    "packages/modules-mongo/packages/module",
-    "packages/modules-mongo/packages/payload"
+    "packages/modules-mongo"
   ],
   "extends": "@xylabs/tsconfig",
   "ts-node": {
