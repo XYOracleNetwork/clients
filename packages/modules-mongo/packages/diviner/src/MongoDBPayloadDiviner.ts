@@ -1,9 +1,8 @@
-import { AnyObject } from '@xyo-network/core'
 import { PayloadDiviner } from '@xyo-network/diviner-payload-abstract'
 import { isPayloadDivinerQueryPayload, PayloadDivinerConfigSchema, PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
 import { DefaultLimit, DefaultMaxTimeMS, DefaultOrder, MongoDBModuleMixin, removeId } from '@xyo-network/module-abstract-mongodb'
+import { AnyObject } from '@xyo-network/object'
 import { Payload } from '@xyo-network/payload-model'
-import { PayloadWithMeta } from '@xyo-network/payload-mongodb'
 import { Filter, SortDirection } from 'mongodb'
 
 const MongoDBDivinerBase = MongoDBModuleMixin(PayloadDiviner)
@@ -30,7 +29,6 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
     if (hash) filter._hash = hash
     // TODO: Optimize for single schema supplied too
     if (schemas?.length) filter.schema = { $in: schemas }
-    
 
     // Add additional filter criteria
     if (Object.keys(props).length > 0) {

@@ -1,15 +1,15 @@
-{
-  "root": true,
+const finalConfig = {
   "extends": ["@xylabs"],
+  parser: '@typescript-eslint/parser',
+  parserOptions: { ecmaVersion: 'latest', project: ['./tsconfig.eslint.json'], tsconfigRootDir: __dirname },
+  "root": true,
   "ignorePatterns": [
     "dist",
     "node_modules",
-    "packages/modules-mongo",
     "docs",
     "coverage",
     "docker",
     "nftData",
-    "scripts",
     "testData.json",
     "*.stories.*",
     "swagger.json",
@@ -17,10 +17,7 @@
     ".*"
   ],
   "rules": {
-    "@typescript-eslint/explicit-member-accessibility": [
-      "warn",
-      { "accessibility": "no-public" }
-    ],
+    "@typescript-eslint/explicit-member-accessibility": ["warn", { "accessibility": "no-public" }],
     "no-restricted-imports": [
       "warn",
       {
@@ -50,10 +47,16 @@
       }
     ],
     "import/no-internal-modules": [
-      "warn",
-      {
-        "allow": ["source-map-support/*", "lodash/*", "aws-sdk/**/*", "types/*"]
+      "warn", {
+        "allow": [
+          "source-map-support/*",
+          "lodash/*",
+          "aws-sdk/**/*",
+          "types/*"
+        ]
       }
     ]
   }
 }
+
+module.exports = finalConfig
