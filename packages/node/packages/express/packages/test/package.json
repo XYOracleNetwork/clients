@@ -64,8 +64,8 @@
   "devDependencies": {
     "@types/jest": "^29.5.11",
     "@types/uuid": "^9.0.7",
-    "@xylabs/ts-scripts-yarn3": "^3.2.17",
-    "@xylabs/tsconfig-jest": "^3.2.17",
+    "@xylabs/ts-scripts-yarn3": "^3.2.19",
+    "@xylabs/tsconfig-jest": "^3.2.19",
     "@xyo-network/archivist": "^2.84.2",
     "@xyo-network/boundwitness-wrapper": "^2.84.2",
     "@xyo-network/diviner": "^2.84.2",

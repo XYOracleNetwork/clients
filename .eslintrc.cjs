@@ -1,7 +1,7 @@
 const finalConfig = {
   "extends": ["@xylabs"],
   parser: '@typescript-eslint/parser',
-  parserOptions: { ecmaVersion: 'latest', project: ['./tsconfig.eslint.json'], tsconfigRootDir: __dirname },
+  parserOptions: { ecmaVersion: 'latest', project: null, tsconfigRootDir: __dirname, extraFileExtensions: ['json'] },
   "root": true,
   "ignorePatterns": [
     "dist",
