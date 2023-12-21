@@ -50,7 +50,7 @@ export class MongoDBAddressSpaceBatchDiviner extends MongoDBDivinerBase {
         const toStore = [...newAddresses].map((address) => {
           return { address, schema: AddressSchema }
         })
-        const archivistMod = await this.writeArchivist()
+        const archivistMod = await this.getArchivist()
         // Save the paginated address response to the respective archivist
         const archivist = ArchivistWrapper.wrap(archivistMod, this.paginationAccount)
         for (let j = 0; j < toStore.length; j += this.batchSize) {
@@ -76,7 +76,7 @@ export class MongoDBAddressSpaceBatchDiviner extends MongoDBDivinerBase {
   protected async initializeArchivist() {
     try {
       // Create a paginationAccount per archivist
-      const archivistMod = await this.writeArchivist()
+      const archivistMod = await this.getArchivist()
       assertEx(archivistMod, `${moduleName}.Start: No archivists found`)
       const archivist = ArchivistWrapper.wrap(archivistMod, this.account)
       // Pre-mint response payload pointer for dereferencing results

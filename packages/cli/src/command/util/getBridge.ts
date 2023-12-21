@@ -6,7 +6,7 @@ import { BaseArguments } from '../BaseArguments'
 import { getBridgeConfig } from './getBridgeConfig'
 
 // TODO: Grab from config, rethink default path, use hardened path?
-const accountDerivationPath = "m/44'/60'/0"
+const accountPath = "m/44'/60'/0"
 let wallet: HDWallet | undefined = undefined
 
 export const getBridge = async (args: BaseArguments): Promise<HttpBridge<HttpBridgeParams>> => {
@@ -17,7 +17,7 @@ export const getBridge = async (args: BaseArguments): Promise<HttpBridge<HttpBri
       wallet = mnemonic ? await HDWallet.fromPhrase(mnemonic) : await HDWallet.random()
     }
     const config = await getBridgeConfig(args)
-    const bridge = await HttpBridge.create({ config: { ...config, accountDerivationPath }, wallet })
+    const bridge = await HttpBridge.create({ account: await wallet.derivePath(accountPath), config })
     return bridge
   } catch (error) {
     if (verbose) printError(JSON.stringify(error))
