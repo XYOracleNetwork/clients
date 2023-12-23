@@ -421,7 +421,7 @@
               "language": "javascript",
               "name": "Erc721NameWitness",
               "params": [],
-              "schema": "network.xyo.crypto.contract.function.read.config"
+              "schema": "network.xyo.evm.call.witness.config"
             }
           },
           {
@@ -433,7 +433,7 @@
               "language": "javascript",
               "name": "Erc721SymbolWitness",
               "params": [],
-              "schema": "network.xyo.crypto.contract.function.read.config"
+              "schema": "network.xyo.evm.call.witness.config"
             }
           },
           {
@@ -444,7 +444,7 @@
               },
               "language": "javascript",
               "name": "Erc721TokenURIWitness",
-              "schema": "network.xyo.crypto.contract.function.read.config"
+              "schema": "network.xyo.evm.call.witness.config"
             }
           },
           {
@@ -455,7 +455,7 @@
               },
               "language": "javascript",
               "name": "Erc721OwnerOfWitness",
-              "schema": "network.xyo.crypto.contract.function.read.config"
+              "schema": "network.xyo.evm.call.witness.config"
             }
           },
           {
@@ -467,7 +467,7 @@
               "language": "javascript",
               "name": "Erc721TotalSupplyWitness",
               "params": [],
-              "schema": "network.xyo.crypto.contract.function.read.config"
+              "schema": "network.xyo.evm.call.witness.config"
             }
           },
           {
@@ -478,7 +478,7 @@
               },
               "language": "javascript",
               "name": "Erc721TokenByIndexWitness",
-              "schema": "network.xyo.crypto.contract.function.read.config"
+              "schema": "network.xyo.evm.call.witness.config"
             }
           },
           {
@@ -490,21 +490,21 @@
               "language": "javascript",
               "name": "Erc1155UriWitness",
               "params": [],
-              "schema": "network.xyo.crypto.contract.function.read.config"
+              "schema": "network.xyo.evm.call.witness.config"
             }
           },
           {
             "config": {
               "language": "javascript",
               "name": "Erc721ContractInfoDiviner",
-              "schema": "network.xyo.crypto.contract.diviner.config"
+              "schema": "network.xyo.evm.call.diviner.config"
             }
           },
           {
             "config": {
               "language": "javascript",
               "name": "Erc1155ContractInfoDiviner",
-              "schema": "network.xyo.crypto.contract.diviner.config"
+              "schema": "network.xyo.evm.call.diviner.config"
             }
           },
           {

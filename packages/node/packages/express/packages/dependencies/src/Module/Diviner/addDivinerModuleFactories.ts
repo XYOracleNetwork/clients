@@ -1,4 +1,3 @@
-import { CryptoContractDiviner } from '@xyo-network/crypto-contract-function-read-plugin'
 import { NftCollectionScoreDiviner } from '@xyo-network/crypto-nft-collection-diviner-score-plugin'
 import { NftScoreDiviner } from '@xyo-network/crypto-nft-diviner-score-plugin'
 import { AddressHistoryDiviner } from '@xyo-network/diviner-address-history'
@@ -10,6 +9,7 @@ import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload'
 import { MemoryPayloadStatsDiviner } from '@xyo-network/diviner-payload-stats'
 import { MemorySchemaListDiviner } from '@xyo-network/diviner-schema-list'
 import { MemorySchemaStatsDiviner } from '@xyo-network/diviner-schema-stats'
+import { EvmCallDiviner } from '@xyo-network/evm-call-witness'
 import {
   ImageThumbnailDiviner,
   ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner,
@@ -18,7 +18,7 @@ import {
   ImageThumbnailStateToIndexCandidateDiviner,
 } from '@xyo-network/image-thumbnail-plugin'
 import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
-import { TYPES, WALLET_PATHS } from '@xyo-network/node-core-types'
+import { TYPES } from '@xyo-network/node-core-types'
 import { Container } from 'inversify'
 
 const getMemoryForecastingDiviner = () => {
@@ -27,7 +27,7 @@ const getMemoryForecastingDiviner = () => {
   const witnessSchema = 'network.xyo.blockchain.ethereum.gas'
   const params: ForecastingDivinerParams = {
     config: {
-      accountPath: WALLET_PATHS.Diviners.Forecasting,
+      //accountPath: WALLET_PATHS.Diviners.Forecasting,
       forecastingMethod,
       jsonPathExpression,
       name: TYPES.ForecastingDiviner,
@@ -56,5 +56,5 @@ export const addDivinerModuleFactories = (container: Container) => {
   locator.register(MemorySchemaStatsDiviner)
   locator.register(NftCollectionScoreDiviner)
   locator.register(NftScoreDiviner)
-  locator.register(CryptoContractDiviner)
+  locator.register(EvmCallDiviner)
 }
