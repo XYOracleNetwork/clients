@@ -1,5 +1,5 @@
-import { AbstractDiviner } from '@xyo-network/abstract-diviner'
 import { ArchivistInstance } from '@xyo-network/archivist-model'
+import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { mock } from 'jest-mock-extended'
 
 import { CoinCurrentUserWitnessPayload, CoinCurrentUserWitnessSchema, MemoryCoinUserLocationsDiviner } from '../UserLocationsDiviner'
