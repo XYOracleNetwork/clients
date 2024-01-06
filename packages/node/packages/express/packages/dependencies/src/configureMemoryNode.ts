@@ -10,8 +10,7 @@ import { NodeInstance } from '@xyo-network/node-model'
 import { readFile } from 'fs/promises'
 import { Container } from 'inversify'
 
-import { nftContractNode, nftMetadataNode } from './Manifest'
-import defaultNode from './node.json'
+import { defaultNode, nftContractNode, nftMetadataNode } from './Manifest'
 import { witnessNftCollections } from './witnessNftCollections'
 
 // TODO: How to inject account for node that is to be created from config?
