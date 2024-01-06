@@ -11,16 +11,15 @@
         "private": [
           {
             "config": {
-              "accountPath": "3'/1'/1'",
               "boundWitnessSdkConfig": {
-                "collection": "address_state_bound_witnesses"
+                "collection": "nft_metadata_address_state_bound_witnesses"
               },
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
               "name": "NftMetadataAddressStateArchivist",
               "payloadSdkConfig": {
-                "collection": "address_state_payloads"
+                "collection": "nft_metadata_address_state_payloads"
               },
               "schema": "network.xyo.archivist.config",
               "storage": {
@@ -29,13 +28,13 @@
                     "key": {
                       "_hash": 1
                     },
-                    "name": "address_state_bound_witnesses.IX__hash"
+                    "name": "nft_metadata_address_state_bound_witnesses.IX__hash"
                   },
                   {
                     "key": {
                       "_hash": 1
                     },
-                    "name": "address_state_payloads.IX__hash"
+                    "name": "nft_metadata_address_state_payloads.IX__hash"
                   }
                 ]
               }
@@ -43,17 +42,16 @@
           },
           {
             "config": {
-              "accountPath": "3'/2'/19'",
               "archivist": "NftMetadataAddressStateArchivist",
               "boundWitnessSdkConfig": {
-                "collection": "address_state_bound_witnesses"
+                "collection": "nft_metadata_address_state_bound_witnesses"
               },
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
-              "name": "AddressStateBoundWitnessDiviner",
+              "name": "NftMetadataAddressStateBoundWitnessDiviner",
               "payloadSdkConfig": {
-                "collection": "address_state_payloads"
+                "collection": "nft_metadata_address_state_payloads"
               },
               "schema": "network.xyo.diviner.boundwitness.config",
               "storage": {
@@ -63,26 +61,26 @@
                       "_timestamp": -1,
                       "addresses": 1
                     },
-                    "name": "address_state_bound_witnesses.IX__timestamp_addresses"
+                    "name": "nft_metadata_address_state_bound_witnesses.IX__timestamp_addresses"
                   },
                   {
                     "key": {
                       "addresses": 1,
                       "_timestamp": -1
                     },
-                    "name": "address_state_bound_witnesses.IX_addresses__timestamp"
+                    "name": "nft_metadata_address_state_bound_witnesses.IX_addresses__timestamp"
                   },
                   {
                     "key": {
                       "addresses": 1
                     },
-                    "name": "address_state_bound_witnesses.IX_addresses"
+                    "name": "nft_metadata_address_state_bound_witnesses.IX_addresses"
                   },
                   {
                     "key": {
                       "payload_hashes": 1
                     },
-                    "name": "address_state_bound_witnesses.IX_payload_hashes"
+                    "name": "nft_metadata_address_state_bound_witnesses.IX_payload_hashes"
                   }
                 ]
               }
@@ -90,17 +88,16 @@
           },
           {
             "config": {
-              "accountPath": "3'/2'/20'",
               "archivist": "NftMetadataAddressStateArchivist",
               "boundWitnessSdkConfig": {
-                "collection": "address_state_bound_witnesses"
+                "collection": "nft_metadata_address_state_bound_witnesses"
               },
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
-              "name": "AddressStatePayloadDiviner",
+              "name": "NftMetadataAddressStatePayloadDiviner",
               "payloadSdkConfig": {
-                "collection": "address_state_payloads"
+                "collection": "nft_metadata_address_state_payloads"
               },
               "schema": "network.xyo.diviner.payload.config",
               "storage": {
@@ -109,14 +106,14 @@
                     "key": {
                       "_timestamp": 1
                     },
-                    "name": "address_state_payloads.IX__timestamp"
+                    "name": "nft_metadata_address_state_payloads.IX__timestamp"
                   },
                   {
                     "key": {
                       "schema": 1,
                       "_timestamp": -1
                     },
-                    "name": "address_state_payloads.IX_schema__timestamp"
+                    "name": "nft_metadata_address_state_payloads.IX_schema__timestamp"
                   }
                 ]
               }
@@ -124,22 +121,122 @@
           },
           {
             "config": {
-              "name": "IndexArchivist",
-              "schema": "network.xyo.archivist.config"
+              "boundWitnessSdkConfig": {
+                "collection": "nft_metadata_index_bound_witnesses"
+              },
+              "labels": {
+                "network.xyo.storage.class": "mongodb"
+              },
+              "language": "javascript",
+              "name": "NftMetadataIndexArchivist",
+              "payloadSdkConfig": {
+                "collection": "nft_metadata_index_payloads"
+              },
+              "schema": "network.xyo.archivist.config",
+              "storage": {
+                "indexes": [
+                  {
+                    "key": {
+                      "_hash": 1
+                    },
+                    "name": "nft_metadata_index_bound_witnesses.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "_hash": 1
+                    },
+                    "name": "nft_metadata_index_payloads.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "uri": 1,
+                      "_timestamp": 1
+                    },
+                    "name": "nft_metadata_index_payloads.IX_uri__timestamp"
+                  }
+                ]
+              }
             }
           },
           {
             "config": {
-              "archivist": "IndexArchivist",
-              "name": "IndexBoundWitnessDiviner",
-              "schema": "network.xyo.diviner.boundwitness.config"
+              "archivist": "NftMetadataIndexArchivist",
+              "boundWitnessSdkConfig": {
+                "collection": "nft_metadata_index_bound_witnesses"
+              },
+              "labels": {
+                "network.xyo.storage.class": "mongodb"
+              },
+              "language": "javascript",
+              "name": "NftMetadataIndexBoundWitnessDiviner",
+              "payloadSdkConfig": {
+                "collection": "nft_metadata_index_payloads"
+              },
+              "schema": "network.xyo.diviner.boundwitness.config",
+              "storage": {
+                "indexes": [
+                  {
+                    "key": {
+                      "_timestamp": -1,
+                      "addresses": 1
+                    },
+                    "name": "nft_metadata_index_bound_witnesses.IX__timestamp_addresses"
+                  },
+                  {
+                    "key": {
+                      "addresses": 1,
+                      "_timestamp": -1
+                    },
+                    "name": "nft_metadata_index_bound_witnesses.IX_addresses__timestamp"
+                  },
+                  {
+                    "key": {
+                      "addresses": 1
+                    },
+                    "name": "nft_metadata_index_bound_witnesses.IX_addresses"
+                  },
+                  {
+                    "key": {
+                      "payload_hashes": 1
+                    },
+                    "name": "nft_metadata_index_bound_witnesses.IX_payload_hashes"
+                  }
+                ]
+              }
             }
           },
           {
             "config": {
-              "archivist": "IndexArchivist",
-              "name": "IndexPayloadDiviner",
-              "schema": "network.xyo.diviner.payload.config"
+              "archivist": "NftMetadataIndexArchivist",
+              "boundWitnessSdkConfig": {
+                "collection": "nft_metadata_index_bound_witnesses"
+              },
+              "labels": {
+                "network.xyo.storage.class": "mongodb"
+              },
+              "language": "javascript",
+              "name": "NftMetadataIndexPayloadDiviner",
+              "payloadSdkConfig": {
+                "collection": "nft_metadata_index_payloads"
+              },
+              "schema": "network.xyo.diviner.payload.config",
+              "storage": {
+                "indexes": [
+                  {
+                    "key": {
+                      "_timestamp": 1
+                    },
+                    "name": "nft_metadata_index_payloads.IX__timestamp"
+                  },
+                  {
+                    "key": {
+                      "schema": 1,
+                      "_timestamp": -1
+                    },
+                    "name": "nft_metadata_index_payloads.IX_schema__timestamp"
+                  }
+                ]
+              }
             }
           },
           {
@@ -237,44 +334,9 @@
               "name": "ApiCallWitness",
               "schema": "network.xyo.api.call.witness.config"
             }
-          }
-        ],
-        "public": [
-          {
-            "config": {
-              "accountPath": "3'/1'/4'",
-              "boundWitnessSdkConfig": {
-                "collection": "nft_metadata_bound_witnesses"
-              },
-              "labels": {
-                "network.xyo.storage.class": "mongodb"
-              },
-              "name": "NftMetadataArchivist",
-              "payloadSdkConfig": {
-                "collection": "nft_metadata_payloads"
-              },
-              "schema": "network.xyo.archivist.config",
-              "storage": {
-                "indexes": [
-                  {
-                    "key": {
-                      "_hash": 1
-                    },
-                    "name": "nft_metadata_bound_witnesses.IX__hash"
-                  },
-                  {
-                    "key": {
-                      "_hash": 1
-                    },
-                    "name": "nft_metadata_payloads.IX__hash"
-                  }
-                ]
-              }
-            }
           },
           {
             "config": {
-              "accountPath": "3'/2'/4'",
               "archivist": "NftMetadataArchivist",
               "labels": {
                 "network.xyo.storage.class": "mongodb"
@@ -305,7 +367,6 @@
           },
           {
             "config": {
-              "accountPath": "3'/2'/3'",
               "archivist": "NftMetadataArchivist",
               "boundWitnessSdkConfig": {
                 "collection": "nft_metadata_bound_witnesses"
@@ -346,13 +407,48 @@
                 ]
               }
             }
+          }
+        ],
+        "public": [
+          {
+            "config": {
+              "accountPath": "3'/1'/4'",
+              "boundWitnessSdkConfig": {
+                "collection": "nft_metadata_bound_witnesses"
+              },
+              "labels": {
+                "network.xyo.storage.class": "mongodb"
+              },
+              "name": "NftMetadataArchivist",
+              "payloadSdkConfig": {
+                "collection": "nft_metadata_payloads"
+              },
+              "schema": "network.xyo.archivist.config",
+              "storage": {
+                "indexes": [
+                  {
+                    "key": {
+                      "_hash": 1
+                    },
+                    "name": "nft_metadata_bound_witnesses.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "_hash": 1
+                    },
+                    "name": "nft_metadata_payloads.IX__hash"
+                  }
+                ]
+              }
+            }
           },
           {
             "config": {
+              "accountPath": "3'/2'/21'",
               "indexStore": {
-                "archivist": "IndexArchivist",
-                "boundWitnessDiviner": "IndexBoundWitnessDiviner",
-                "payloadDiviner": "IndexPayloadDiviner"
+                "archivist": "NftMetadataIndexArchivist",
+                "boundWitnessDiviner": "NftMetadataIndexBoundWitnessDiviner",
+                "payloadDiviner": "NftMetadataIndexPayloadDiviner"
               },
               "indexingDivinerStages": {
                 "divinerQueryToIndexQueryDiviner": "QueryToIndexQueryDiviner",
@@ -360,18 +456,19 @@
                 "indexQueryResponseToDivinerQueryResponseDiviner": "IndexQueryResponseToQueryResponseDiviner",
                 "stateToIndexCandidateDiviner": "StateToIndexCandidateDiviner"
               },
-              "name": "IndexDiviner",
-              "pollFrequency": 1,
+              "name": "NftMetadataIndexDiviner",
+              "pollFrequency": 100,
               "schema": "network.xyo.diviner.indexing.temporal.config",
               "stateStore": {
                 "archivist": "NftMetadataAddressStateArchivist",
-                "boundWitnessDiviner": "AddressStateBoundWitnessDiviner",
-                "payloadDiviner": "AddressStatePayloadDiviner"
+                "boundWitnessDiviner": "NftMetadataAddressStateBoundWitnessDiviner",
+                "payloadDiviner": "NftMetadataAddressStatePayloadDiviner"
               }
             }
           },
           {
             "config": {
+              "accountPath": "3'/3'/3'",
               "archiving": {
                 "archivists": ["NftMetadataArchivist"]
               },
