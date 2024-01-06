@@ -45,6 +45,7 @@ export const WALLET_PATHS = {
     ImageThumbnailDivinerIndexPayloadDiviner: `${ModulePath.Diviner}/18'` as const,
     AddressStateBoundWitnessDiviner: `${ModulePath.Diviner}/19'` as const,
     AddressStatePayloadDiviner: `${ModulePath.Diviner}/20'` as const,
+    NftMetadataIndexDiviner: `${ModulePath.Diviner}/21'` as const,
   } as const,
   Witnesses: {
     Witness: `${ModulePath.Witness}/0'` as const,
@@ -58,5 +59,6 @@ export const WALLET_PATHS = {
     Sentinel: `${ModulePath.Sentinel}/0'` as const,
     ImageThumbnailSentinel: `${ModulePath.Sentinel}/1'` as const,
     NftContractInfoSentinel: `${ModulePath.Sentinel}/2'` as const,
+    NftMetadataSentinel: `${ModulePath.Sentinel}/3'` as const,
   } as const,
 } as const
