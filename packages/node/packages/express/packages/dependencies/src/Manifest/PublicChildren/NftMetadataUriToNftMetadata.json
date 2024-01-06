@@ -3,7 +3,8 @@
   "nodes": [
     {
       "config": {
-        "name": "NftTokenUriNode",
+        "accountPath": "3'/0'/3'",
+        "name": "NftMetadataNode",
         "schema": "network.xyo.node.config"
       },
       "modules": {
@@ -147,27 +148,6 @@
           }
         ],
         "public": [
-          {
-            "config": {
-              "name": "Archivist",
-              "schema": "network.xyo.archivist.config",
-              "storeQueries": false
-            }
-          },
-          {
-            "config": {
-              "archivist": "Archivist",
-              "name": "BoundWitnessDiviner",
-              "schema": "network.xyo.diviner.boundwitness.config"
-            }
-          },
-          {
-            "config": {
-              "archivist": "Archivist",
-              "name": "PayloadDiviner",
-              "schema": "network.xyo.diviner.payload.config"
-            }
-          },
           {
             "config": {
               "indexStore": {

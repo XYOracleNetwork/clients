@@ -3,7 +3,7 @@
   "nodes": [
     {
       "config": {
-        "accountPath": "m/44'/60'/3'/0'/1'",
+        "accountPath": "3'/0'/1'",
         "name": "ImageThumbnailNode",
         "schema": "network.xyo.node.config"
       },
@@ -18,7 +18,6 @@
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
-              "language": "javascript",
               "name": "AddressStateArchivist",
               "payloadSdkConfig": {
                 "collection": "address_state_payloads"
@@ -52,7 +51,6 @@
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
-              "language": "javascript",
               "name": "AddressStateBoundWitnessDiviner",
               "payloadSdkConfig": {
                 "collection": "address_state_payloads"
@@ -100,7 +98,6 @@
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
-              "language": "javascript",
               "name": "AddressStatePayloadDiviner",
               "payloadSdkConfig": {
                 "collection": "address_state_payloads"
@@ -134,7 +131,6 @@
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
-              "language": "javascript",
               "name": "ImageThumbnailArchivist",
               "payloadSdkConfig": {
                 "collection": "payloads"
@@ -168,7 +164,6 @@
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
-              "language": "javascript",
               "name": "ImageThumbnailBoundWitnessDiviner",
               "payloadSdkConfig": {
                 "collection": "payloads"
@@ -222,7 +217,6 @@
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
-              "language": "javascript",
               "name": "ImageThumbnailPayloadDiviner",
               "payloadSdkConfig": {
                 "collection": "payloads"
@@ -256,7 +250,6 @@
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
-              "language": "javascript",
               "name": "ImageThumbnailDivinerIndexArchivist",
               "payloadSdkConfig": {
                 "collection": "thumbnail_payloads"
@@ -299,7 +292,6 @@
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
-              "language": "javascript",
               "name": "ImageThumbnailDivinerIndexBoundWitnessDiviner",
               "payloadSdkConfig": {
                 "collection": "thumbnail_payloads"
@@ -347,7 +339,6 @@
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
-              "language": "javascript",
               "name": "ImageThumbnailDivinerIndexPayloadDiviner",
               "payloadSdkConfig": {
                 "collection": "thumbnail_payloads"
@@ -378,7 +369,6 @@
                 "network.xyo.diviner.stage": "stateToIndexCandidateDiviner",
                 "network.xyo.image.thumbnail": "diviner"
               },
-              "language": "javascript",
               "name": "ImageThumbnailStateToIndexCandidateDiviner",
               "payloadStore": {
                 "archivist": "ImageThumbnailArchivist",
@@ -394,7 +384,6 @@
                 "network.xyo.diviner.stage": "indexCandidateToIndexDiviner",
                 "network.xyo.image.thumbnail": "diviner"
               },
-              "language": "javascript",
               "name": "ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner",
               "schema": "network.xyo.diviner.config"
             }
@@ -405,7 +394,6 @@
                 "network.xyo.diviner.stage": "divinerQueryToIndexQueryDiviner",
                 "network.xyo.image.thumbnail": "diviner"
               },
-              "language": "javascript",
               "name": "ImageThumbnailQueryToImageThumbnailIndexQueryDiviner",
               "schema": "network.xyo.diviner.config"
             }
@@ -416,7 +404,6 @@
                 "network.xyo.diviner.stage": "indexQueryResponseToDivinerQueryResponseDiviner",
                 "network.xyo.image.thumbnail": "diviner"
               },
-              "language": "javascript",
               "name": "ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner",
               "schema": "network.xyo.diviner.config"
             }
@@ -437,7 +424,6 @@
                 "indexQueryResponseToDivinerQueryResponseDiviner": "ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner",
                 "stateToIndexCandidateDiviner": "ImageThumbnailStateToIndexCandidateDiviner"
               },
-              "language": "javascript",
               "name": "ImageThumbnailDiviner",
               "pollFrequency": 1000,
               "schema": "network.xyo.diviner.indexing.config",
@@ -452,7 +438,6 @@
             "config": {
               "accountPath": "m/44'/60'/3'/4'/4'",
               "archivist": "ImageThumbnailArchivist",
-              "language": "javascript",
               "name": "ImageThumbnailWitness",
               "schema": "network.xyo.image.thumbnail.witness.config"
             }
@@ -461,7 +446,6 @@
             "config": {
               "accountPath": "m/44'/60'/3'/4'/5'",
               "archivist": "ImageThumbnailArchivist",
-              "language": "javascript",
               "name": "TimestampWitness",
               "schema": "network.xyo.witness.timestamp.config"
             }
@@ -473,7 +457,6 @@
                 "archivists": ["ImageThumbnailArchivist"]
               },
               "archivist": "ImageThumbnailArchivist",
-              "language": "javascript",
               "name": "ImageThumbnailSentinel",
               "schema": "network.xyo.sentinel.config",
               "tasks": [
