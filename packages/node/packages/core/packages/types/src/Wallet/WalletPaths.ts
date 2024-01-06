@@ -21,6 +21,7 @@ export const WALLET_PATHS = {
     AddressStateArchivist: `${ModulePath.Archivist}/1'` as const,
     ImageThumbnailArchivist: `${ModulePath.Archivist}/2'` as const,
     ImageThumbnailDivinerIndexArchivist: `${ModulePath.Archivist}/3'` as const,
+    NftMetadataArchivist: `${ModulePath.Archivist}/4'` as const,
   } as const,
   Diviners: {
     Diviner: `${ModulePath.Diviner}/0'` as const,
