@@ -1,3 +1,4 @@
+import { ApiCallWitness, ApiCallWitnessConfigSchema } from '@xyo-network/api-call-witness'
 import { CryptoNftCollectionWitness } from '@xyo-network/crypto-nft-collection-witness-plugin'
 import { CryptoWalletNftWitness } from '@xyo-network/crypto-nft-witness-wallet-plugin'
 import { EvmCallWitness } from '@xyo-network/evm-call-witness'
@@ -47,5 +48,11 @@ export const addWitnessModuleFactories = (container: Container) => {
       providers: () => getProvidersFromEnv(8),
     }),
     { 'network.xyo.evm.interface': 'Erc1155' },
+  )
+  locator.register(
+    new ModuleFactory(ApiCallWitness, {
+      config: { schema: ApiCallWitnessConfigSchema },
+      ipfsGateway: '5d7b6582.beta.decentralnetworkservices.com',
+    }),
   )
 }
