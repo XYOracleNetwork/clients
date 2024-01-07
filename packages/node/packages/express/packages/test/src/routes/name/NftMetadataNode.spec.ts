@@ -44,12 +44,21 @@ describe(`${nodeName}`, () => {
       archivist = await getArchivistByNameFromChildNode(archivistName, nodeName)
       expect(archivist).toBeDefined()
     })
-    it('queries NFT metadata URI', async () => {
+    it('indexes NFT metadata by URI', async () => {
       const query = { schema: 'network.xyo.diviner.payload.query', uri }
-      const result = (await diviner.divine([query])) as unknown as Payload<{ uri: string }>[]
-      expect(result).toBeDefined()
-      expect(result).toBeArrayOfSize(1)
-      expect(result[0].uri).toBe(uri)
+      const results = (await diviner.divine([query])) as unknown as Payload<{ sources: string[]; uri: string }>[]
+      expect(results).toBeDefined()
+      expect(results).toBeArrayOfSize(1)
+      const result = results[0]
+      expect(result.uri).toBe(uri)
+      expect(result.sources).toBeArray()
+      expect(result.sources.length).toBeGreaterThan(0)
+      const sources = await archivist.get(result.sources)
+      expect(sources).toBeArrayOfSize(result.sources.length)
+      const responses = sources.filter((p) => p.schema === 'network.xyo.api.call.result') as Payload<{ call: string; data: object }>[]
+      expect(responses).toBeArrayOfSize(1)
+      expect(responses[0]?.call).toBe(uri)
+      expect(responses[0]?.data).toBeObject()
     })
   })
 })
