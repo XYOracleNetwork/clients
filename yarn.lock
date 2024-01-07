@@ -5247,7 +5247,7 @@ __metadata:
     "@xyo-network/gas-price-plugin": "npm:^2.86.1"
     "@xyo-network/http-bridge": "npm:^2.86.1"
     "@xyo-network/module-model": "npm:^2.86.1"
-    "@xyo-network/node-core-model": "npm:^2.82.0"
+    "@xyo-network/node-core-model": "npm:^2.83.0"
     "@xyo-network/node-memory": "npm:^2.86.1"
     "@xyo-network/payload-builder": "npm:^2.86.1"
     "@xyo-network/payload-model": "npm:^2.86.1"
@@ -7466,7 +7466,7 @@ __metadata:
     "@xyo-network/boundwitness-builder": "npm:^2.86.1"
     "@xyo-network/boundwitness-model": "npm:^2.86.1"
     "@xyo-network/hash": "npm:^2.86.1"
-    "@xyo-network/node-core-model": "npm:^2.82.0"
+    "@xyo-network/node-core-model": "npm:^2.83.0"
     "@xyo-network/payload-builder": "npm:^2.86.1"
     "@xyo-network/payload-model": "npm:^2.86.1"
     "@xyo-network/payload-mongodb": "workspace:~"
@@ -7479,7 +7479,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xyo-network/node-core-model@npm:^2.82.0, @xyo-network/node-core-model@workspace:packages/node/packages/core/packages/model, @xyo-network/node-core-model@workspace:~":
+"@xyo-network/node-core-model@npm:^2.83.0, @xyo-network/node-core-model@workspace:packages/node/packages/core/packages/model, @xyo-network/node-core-model@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xyo-network/node-core-model@workspace:packages/node/packages/core/packages/model"
   dependencies:
