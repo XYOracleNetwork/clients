@@ -9,6 +9,13 @@ import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload'
 import { MemoryPayloadStatsDiviner } from '@xyo-network/diviner-payload-stats'
 import { MemorySchemaListDiviner } from '@xyo-network/diviner-schema-list'
 import { MemorySchemaStatsDiviner } from '@xyo-network/diviner-schema-stats'
+import {
+  TemporalIndexingDiviner,
+  TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner,
+  TemporalIndexingDivinerIndexCandidateToIndexDiviner,
+  TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner,
+  TemporalIndexingDivinerStateToIndexCandidateDiviner,
+} from '@xyo-network/diviner-temporal-indexing'
 import { EvmCallDiviner } from '@xyo-network/evm-call-witness'
 import {
   ImageThumbnailDiviner,
@@ -57,4 +64,9 @@ export const addDivinerModuleFactories = (container: Container) => {
   locator.register(NftCollectionScoreDiviner)
   locator.register(NftScoreDiviner)
   locator.register(EvmCallDiviner)
+  locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner)
+  locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner)
+  locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner)
+  locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner)
+  locator.register(TemporalIndexingDiviner)
 }

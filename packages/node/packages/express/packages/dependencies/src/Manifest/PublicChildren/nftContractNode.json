@@ -17,7 +17,6 @@
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
-              "language": "javascript",
               "name": "NftContractDivinerAddressStateArchivist",
               "payloadSdkConfig": {
                 "collection": "nft_contract_diviner_address_state_payloads"
@@ -50,7 +49,6 @@
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
-              "language": "javascript",
               "name": "NftContractDivinerAddressStateBoundWitnessDiviner",
               "payloadSdkConfig": {
                 "collection": "nft_contract_diviner_address_state_payloads"
@@ -97,7 +95,6 @@
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
-              "language": "javascript",
               "name": "NftContractDivinerAddressStatePayloadDiviner",
               "payloadSdkConfig": {
                 "collection": "nft_contract_diviner_address_state_payloads"
@@ -130,7 +127,6 @@
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
-              "language": "javascript",
               "name": "NftContractArchivist",
               "payloadSdkConfig": {
                 "collection": "payloads"
@@ -163,7 +159,6 @@
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
-              "language": "javascript",
               "name": "NftContractBoundWitnessDiviner",
               "payloadSdkConfig": {
                 "collection": "payloads"
@@ -216,7 +211,6 @@
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
-              "language": "javascript",
               "name": "NftContractPayloadDiviner",
               "payloadSdkConfig": {
                 "collection": "payloads"
@@ -249,7 +243,6 @@
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
-              "language": "javascript",
               "name": "NftContractDivinerIndexArchivist",
               "payloadSdkConfig": {
                 "collection": "nft_contract_payloads"
@@ -291,7 +284,6 @@
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
-              "language": "javascript",
               "name": "NftContractDivinerIndexBoundWitnessDiviner",
               "payloadSdkConfig": {
                 "collection": "nft_contract_payloads"
@@ -338,7 +330,6 @@
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
-              "language": "javascript",
               "name": "NftContractDivinerIndexPayloadDiviner",
               "payloadSdkConfig": {
                 "collection": "nft_contract_payloads"
@@ -369,7 +360,6 @@
                 "network.xyo.diviner.stage": "stateToIndexCandidateDiviner",
                 "network.xyo.image.thumbnail": "diviner"
               },
-              "language": "javascript",
               "name": "NftContractStateToIndexCandidateDiviner",
               "payloadStore": {
                 "archivist": "NftContractArchivist",
@@ -385,7 +375,6 @@
                 "network.xyo.diviner.stage": "indexCandidateToIndexDiviner",
                 "network.xyo.image.thumbnail": "diviner"
               },
-              "language": "javascript",
               "name": "NftContractIndexCandidateToNftContractIndexDiviner",
               "schema": "network.xyo.diviner.config"
             }
@@ -396,7 +385,6 @@
                 "network.xyo.diviner.stage": "divinerQueryToIndexQueryDiviner",
                 "network.xyo.image.thumbnail": "diviner"
               },
-              "language": "javascript",
               "name": "NftContractQueryToNftContractIndexQueryDiviner",
               "schema": "network.xyo.diviner.config"
             }
@@ -407,7 +395,6 @@
                 "network.xyo.diviner.stage": "indexQueryResponseToDivinerQueryResponseDiviner",
                 "network.xyo.image.thumbnail": "diviner"
               },
-              "language": "javascript",
               "name": "NftContractIndexQueryResponseToNftContractQueryResponseDiviner",
               "schema": "network.xyo.diviner.config"
             }
@@ -418,7 +405,6 @@
               "labels": {
                 "network.xyo.evm.interface": "Erc721"
               },
-              "language": "javascript",
               "name": "Erc721NameWitness",
               "params": [],
               "schema": "network.xyo.evm.call.witness.config"
@@ -430,7 +416,6 @@
               "labels": {
                 "network.xyo.evm.interface": "Erc721"
               },
-              "language": "javascript",
               "name": "Erc721SymbolWitness",
               "params": [],
               "schema": "network.xyo.evm.call.witness.config"
@@ -442,7 +427,6 @@
               "labels": {
                 "network.xyo.evm.interface": "Erc721"
               },
-              "language": "javascript",
               "name": "Erc721TokenURIWitness",
               "schema": "network.xyo.evm.call.witness.config"
             }
@@ -453,7 +437,6 @@
               "labels": {
                 "network.xyo.evm.interface": "Erc721"
               },
-              "language": "javascript",
               "name": "Erc721OwnerOfWitness",
               "schema": "network.xyo.evm.call.witness.config"
             }
@@ -464,7 +447,6 @@
               "labels": {
                 "network.xyo.evm.interface": "Erc721Enumerable"
               },
-              "language": "javascript",
               "name": "Erc721TotalSupplyWitness",
               "params": [],
               "schema": "network.xyo.evm.call.witness.config"
@@ -476,7 +458,6 @@
               "labels": {
                 "network.xyo.evm.interface": "Erc721Enumerable"
               },
-              "language": "javascript",
               "name": "Erc721TokenByIndexWitness",
               "schema": "network.xyo.evm.call.witness.config"
             }
@@ -487,7 +468,6 @@
               "labels": {
                 "network.xyo.evm.interface": "Erc1155"
               },
-              "language": "javascript",
               "name": "Erc1155UriWitness",
               "params": [],
               "schema": "network.xyo.evm.call.witness.config"
@@ -510,7 +490,6 @@
           {
             "config": {
               "_TODO": "Should we combine this with the public sentinel below?",
-              "language": "javascript",
               "name": "Erc721EnumerableSentinel",
               "schema": "network.xyo.sentinel.config",
               "synchronous": "true",
@@ -527,7 +506,6 @@
           {
             "config": {
               "accountPath": "3'/3'/2'",
-              "language": "javascript",
               "name": "NftContractInfoSentinel",
               "schema": "network.xyo.sentinel.config",
               "synchronous": "true",
@@ -557,9 +535,7 @@
                   "module": "Erc721ContractInfoDiviner"
                 },
                 {
-                  "input": [
-                    "Erc1155UriWitness"
-                  ],
+                  "input": ["Erc1155UriWitness"],
                   "module": "Erc1155ContractInfoDiviner"
                 }
               ]

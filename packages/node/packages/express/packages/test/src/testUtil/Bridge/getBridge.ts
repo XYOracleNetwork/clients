@@ -16,3 +16,14 @@ export const getBridge = async (): Promise<BridgeInstance> => {
   bridge = await HttpBridge.create(params)
   return bridge
 }
+
+export const getBridgeToChildNode = async (childNodeName: string): Promise<BridgeInstance> => {
+  if (bridge) return bridge
+  const nodeUrl = path.join(assertEx(process.env.API_DOMAIN, 'Missing API_DOMAIN'), `/${childNodeName}`)
+  const schema = HttpBridgeConfigSchema
+  const security = { allowAnonymous: true }
+  const config: HttpBridgeConfig = { nodeUrl, schema, security }
+  const params: HttpBridgeParams = { account: await HDWallet.random(), config }
+  bridge = await HttpBridge.create(params)
+  return bridge
+}

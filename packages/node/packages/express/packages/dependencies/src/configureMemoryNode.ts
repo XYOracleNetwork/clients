@@ -10,8 +10,7 @@ import { NodeInstance } from '@xyo-network/node-model'
 import { readFile } from 'fs/promises'
 import { Container } from 'inversify'
 
-import { nftContractNode } from './Manifest'
-import defaultNode from './node.json'
+import { defaultNode, nftContractNode, nftMetadataNode } from './Manifest'
 import { witnessNftCollections } from './witnessNftCollections'
 
 // TODO: How to inject account for node that is to be created from config?
@@ -50,7 +49,7 @@ const loadNodeFromConfig = async (container: Container, config?: string) => {
     : (defaultNode as PackageManifestPayload)
   // TODO: Import all public children from manifest once we're OK to move the image thumbnail
   // modules from the main node to a child node
-  const manifestPublicChildren: PackageManifestPayload[] = config ? [] : [nftContractNode]
+  const manifestPublicChildren: PackageManifestPayload[] = config ? [] : [nftContractNode, nftMetadataNode]
   const mnemonic = container.get<string>(TYPES.AccountMnemonic)
   const wallet = await HDWallet.fromPhrase(mnemonic)
   const locator = container.get<ModuleFactoryLocator>(TYPES.ModuleFactoryLocator)
