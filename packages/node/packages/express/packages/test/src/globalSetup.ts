@@ -11,13 +11,15 @@ import { SchemaNameValidator } from '@xyo-network/schema-name-validator'
 import { Express } from 'express'
 import { Config } from 'jest'
 import { MongoMemoryReplSet } from 'mongodb-memory-server'
-import supertest, { SuperTest, Test } from 'supertest'
+import supertest from 'supertest'
+// eslint-disable-next-line import/no-internal-modules
+import TestAgent from 'supertest/lib/agent'
 
 // Augment global scope with shared variables (must be var)
 declare global {
   var app: Express
   var mongo: MongoMemoryReplSet
-  var req: SuperTest<Test>
+  var req: TestAgent
 }
 
 const database = process.env.MONGO_DATABASE || 'archivist'
