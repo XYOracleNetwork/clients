@@ -1,7 +1,0 @@
-{
-  "ignorePatterns": [
-    "imageThumbnailNode.json",
-    "nftContractNode.json",
-    "node.json"
-  ]
-}
