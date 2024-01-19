@@ -12,11 +12,11 @@
       "node": {
         "require": {
           "types": "./dist/node/index.d.cts",
-          "default": "./dist/node/index.cjs"
+          "default": "./dist/node/index.js"
         },
         "import": {
           "types": "./dist/node/index.d.mts",
-          "default": "./dist/node/index.js"
+          "default": "./dist/node/index.mjs"
         }
       }
     },
@@ -24,18 +24,18 @@
       "node": {
         "require": {
           "types": "./dist/node/app.d.cts",
-          "default": "./dist/node/app.cjs"
+          "default": "./dist/node/app.js"
         },
         "import": {
           "types": "./dist/node/app.d.mts",
-          "default": "./dist/node/app.js"
+          "default": "./dist/node/app.mjs"
         }
       }
     },
     "./package.json": "./package.json"
   },
-  "main": "dist/node/index.cjs",
-  "module": "dist/node/index.js",
+  "main": "dist/node/index.js",
+  "module": "dist/node/index.mjs",
   "types": "dist/node/index.d.ts",
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.495.0",
@@ -66,5 +66,5 @@
   },
   "author": "Arie Trouw",
   "license": "LGPL-3.0-only",
-  "type": "module"
+  "type": "commonjs"
 }
