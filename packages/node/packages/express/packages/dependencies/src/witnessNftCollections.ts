@@ -9,9 +9,9 @@ import {
 } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import { isNftInfo } from '@xyo-network/crypto-nft-payload-plugin'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
-import { PayloadHasher } from '@xyo-network/hash'
 import { TYPES } from '@xyo-network/node-core-types'
 import { NodeInstance } from '@xyo-network/node-model'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
 import { asWitnessInstance, WitnessInstance } from '@xyo-network/witness-model'
 import { readFile, writeFile } from 'fs/promises'
@@ -67,7 +67,7 @@ export const witnessNftCollections = async (node: NodeInstance) => {
           console.log(`${address}(${name}): Collection Score: Divine`)
           const nftCollectionScoreResult = await nftCollectionScoreDiviner.divine([nftCollectionInfo])
           const nftCollectionScore = assertEx(nftCollectionScoreResult?.[0], `${address}(${name}): ERROR: Collection Score: Divine: Invalid length`)
-          score = await PayloadHasher.hashAsync(nftCollectionScore)
+          score = await PayloadBuilder.dataHash(nftCollectionScore)
           console.log(`${address}(${name}): Collection Score: Store`)
           await archivist.insert([nftCollectionScore])
         }
@@ -127,7 +127,7 @@ const generateThumbnail = async (
         const imageThumbnail = assertEx(imageThumbnailResult?.[0], `${address}(${name}): ERROR: Collection Thumbnail: Witness: Invalid length`)
         console.log(`${address}(${name}): Collection Thumbnail: Store`)
         await archivist.insert([imageThumbnail])
-        return await PayloadHasher.hashAsync(imageThumbnail)
+        return await PayloadBuilder.dataHash(imageThumbnail)
       } catch (error) {
         console.log(`${address}(${name}): ERROR: Collection Thumbnail: ${error}`)
       }

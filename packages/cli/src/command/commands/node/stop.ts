@@ -1,4 +1,4 @@
-import { EmptyObject } from '@xyo-network/object'
+import { EmptyObject } from '@xylabs/object'
 import { ArgumentsCamelCase, CommandBuilder, CommandModule } from 'yargs'
 
 import { stop } from '../../../lib'

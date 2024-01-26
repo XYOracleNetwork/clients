@@ -56,9 +56,9 @@
     "access": "public"
   },
   "dependencies": {
-    "@xylabs/assert": "^2.13.25",
-    "@xylabs/delay": "^2.13.25",
-    "@xylabs/forget": "^2.13.25",
+    "@xylabs/assert": "^2.13.29",
+    "@xylabs/delay": "^2.13.29",
+    "@xylabs/forget": "^2.13.29",
     "async-mutex": "^0.4.1",
     "mongodb": "^6.3.0"
   },

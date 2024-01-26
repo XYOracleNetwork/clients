@@ -4,6 +4,7 @@ import { AbstractArchivist } from '@xyo-network/archivist-abstract'
 import { ArchivistConfigSchema, ArchivistInsertQuerySchema } from '@xyo-network/archivist-model'
 import { MongoDBArchivistConfigSchema } from '@xyo-network/archivist-model-mongodb'
 import { MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
 import { PayloadWithPartialMeta } from '@xyo-network/payload-mongodb'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
@@ -19,7 +20,7 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
 
   override async head(): Promise<Payload | undefined> {
     const head = await (await this.payloads.find({})).sort({ _timestamp: -1 }).limit(1).toArray()
-    return head[0] ? PayloadWrapper.wrap(head[0]).body() : undefined
+    return head[0] ? (await PayloadWrapper.wrap(head[0])).jsonPayload() : undefined
   }
 
   protected override async getHandler(hashes: string[]): Promise<Payload[]> {
@@ -30,11 +31,12 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
     return succeeded.filter(exists).map(toReturnValue)
   }
 
-  protected override async insertHandler(payloads?: Payload[]): Promise<Payload[]> {
+  protected override async insertHandler(payloads: Payload[]): Promise<Payload[]> {
+    const payloadsWithMeta = await Promise.all(payloads.map(async (payload) => await PayloadBuilder.build(payload)))
     const [bw, p] = await validByType(payloads)
-    const payloadsWithMeta = await Promise.all(p.map((x) => toPayloadWithMeta(x)))
+    const payloadsWithExternalMeta = await Promise.all(p.map((x) => toPayloadWithMeta(x)))
     if (payloadsWithMeta.length) {
-      const payloadsResult = await this.payloads.insertMany(payloadsWithMeta)
+      const payloadsResult = await this.payloads.insertMany(payloadsWithExternalMeta)
       if (!payloadsResult.acknowledged || payloadsResult.insertedCount !== payloadsWithMeta.length)
         throw new Error('MongoDBDeterministicArchivist: Error inserting Payloads')
     }

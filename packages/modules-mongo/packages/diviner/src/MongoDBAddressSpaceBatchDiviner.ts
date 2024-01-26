@@ -7,7 +7,6 @@ import { AddressSchema } from '@xyo-network/address-payload-plugin'
 import { ArchivistWrapper } from '@xyo-network/archivist-wrapper'
 import { AddressSpaceDiviner } from '@xyo-network/diviner-address-space-abstract'
 import { AddressSpaceBatchDivinerConfigSchema } from '@xyo-network/diviner-models'
-import { PayloadHasher } from '@xyo-network/hash'
 import { COLLECTIONS, DATABASES, DefaultMaxTimeMS, MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
 import { BoundWitnessPointerPayload, BoundWitnessPointerSchema } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
@@ -84,7 +83,7 @@ export class MongoDBAddressSpaceBatchDiviner extends MongoDBDivinerBase {
         .fields({ reference: [[{ address: this.paginationAccount.address }], [{ schema: AddressSchema }]] })
         .build()
       // Ensure the pointer exists in the archivist (but don't insert it twice)
-      const divinedAnswerPointerExists = (await archivist.get([await PayloadHasher.hashAsync(divinedAnswerPointer)]))?.length > 0
+      const divinedAnswerPointerExists = (await archivist.get([await PayloadBuilder.dataHash(divinedAnswerPointer)]))?.length > 0
       if (!divinedAnswerPointerExists) await archivist.insert([divinedAnswerPointer])
       // Save the pointer to return to callers
       this.response = divinedAnswerPointer

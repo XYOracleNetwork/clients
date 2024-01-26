@@ -1,5 +1,5 @@
+import { EmptyObject } from '@xylabs/object'
 import { NodeInstance } from '@xyo-network/node-model'
-import { EmptyObject } from '@xyo-network/object'
 import { CommandBuilder, CommandModule } from 'yargs'
 
 import { printError, printLine } from '../../../../lib'

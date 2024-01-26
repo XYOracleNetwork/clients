@@ -6,12 +6,7 @@ import { unitTestSigningAccount } from '../Account'
 import { getNewPayloads } from '../Payload'
 
 export const getNewBlock = async (...payloads: Payload[]): Promise<BoundWitnessWithPartialMeta & PayloadWithPartialMeta> => {
-  return (
-    await new BoundWitnessBuilder({ inlinePayloads: true })
-      .witness(await unitTestSigningAccount())
-      .payloads(payloads)
-      .build()
-  )[0]
+  return (await (await new BoundWitnessBuilder({ inlinePayloads: true }).witness(await unitTestSigningAccount()).payloads(payloads)).build())[0]
 }
 
 export const getNewBlockWithPayloads = async (numPayloads = 1) => {
@@ -35,10 +30,9 @@ export const getNewBlocksWithPayloads = async (
   return await Promise.all(
     new Array(numBoundWitnesses).fill(0).map(async () => {
       return (
-        await new BoundWitnessBuilder({ inlinePayloads: true })
-          .witness(await unitTestSigningAccount())
-          .payloads(await getNewPayloads(numPayloads))
-          .build()
+        await (
+          await new BoundWitnessBuilder({ inlinePayloads: true }).witness(await unitTestSigningAccount()).payloads(await getNewPayloads(numPayloads))
+        ).build()
       )[0]
     }),
   )

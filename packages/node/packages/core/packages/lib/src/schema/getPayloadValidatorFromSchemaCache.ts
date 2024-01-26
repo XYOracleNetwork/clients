@@ -1,7 +1,7 @@
 import type { GetValidator } from '@xyo-network/node-core-model'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload } from '@xyo-network/payload-model'
 import type { PayloadWithPartialMeta } from '@xyo-network/payload-mongodb'
-import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { SchemaCache } from '@xyo-network/schema-cache'
 import { SchemaPayload } from '@xyo-network/schema-payload-plugin'
 // eslint-disable-next-line import/no-named-as-default
@@ -17,7 +17,7 @@ export const getPayloadValidatorFromSchemaCache: GetValidator<Payload> = async (
   const { definition, _hash } = schemaPayload
   // Use the schema cache payload hash as the AJV cache key to memoize
   // the AJV validator
-  const key = _hash || (await PayloadWrapper.hashAsync(schemaPayload))
+  const key = _hash || (await PayloadBuilder.dataHash(schemaPayload))
   // Check if we already cached the validator
   const validate = ajv.getSchema(key)
   // Return the cached validator for this schema

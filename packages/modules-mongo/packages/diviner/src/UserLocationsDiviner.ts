@@ -60,12 +60,12 @@ export class MemoryCoinUserLocationsDiviner<
     )
     // If this is a query we support
     if (user) {
-      const wrapper = PayloadWrapper.wrap(user)
+      const wrapper = await PayloadWrapper.wrap(user)
       // TODO: Extract relevant query values here
       this.logger?.log('CoinUserLocationsDiviner.Divine: Processing query')
       // Simulating work
       const diviner = this.params.bws
-      const filter = { payload_hashes: [await wrapper.hashAsync()], schema: BoundWitnessDivinerQuerySchema }
+      const filter = { payload_hashes: [await wrapper.dataHash()], schema: BoundWitnessDivinerQuerySchema }
       const bwList = ((await diviner.divine([filter])) as BoundWitness[]) || []
       const locationHashes = bwList
         .map((bw) => {

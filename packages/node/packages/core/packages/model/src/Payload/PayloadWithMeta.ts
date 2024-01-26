@@ -1,5 +1,5 @@
 /* eslint-disable import/no-deprecated */
-import { AnyObject } from '@xyo-network/object'
+import { AnyObject } from '@xylabs/object'
 import { Payload } from '@xyo-network/payload-model'
 
 import { PayloadMetaBase } from './PayloadMeta'

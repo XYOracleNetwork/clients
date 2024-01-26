@@ -1,4 +1,4 @@
-import { PayloadHasher } from '@xyo-network/hash'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type {
   BoundWitnessMeta,
   BoundWitnessWithMeta,
@@ -16,7 +16,7 @@ export async function augmentWithMetadata(payloads: PayloadWithPartialMeta[], me
       return {
         ...payload,
         ...meta,
-        _hash: await PayloadHasher.hashAsync(payload),
+        _hash: await PayloadBuilder.dataHash(payload),
       }
     }),
   )
