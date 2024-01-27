@@ -10,7 +10,7 @@ import {
 } from '@xyo-network/diviner-address-history'
 import { DefaultLimit, DefaultMaxTimeMS, MongoDBModuleMixin, removeId } from '@xyo-network/module-abstract-mongodb'
 import { Payload } from '@xyo-network/payload-model'
-import { BoundWitnessWithMeta } from '@xyo-network/payload-mongodb'
+import { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { Filter } from 'mongodb'
 
 const MongoDBDivinerBase = MongoDBModuleMixin(AddressHistoryDiviner)
@@ -41,11 +41,11 @@ export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
     return true
   }
 
-  private getBlocks = async (hash: string, address: string, limit: number): Promise<BoundWitnessWithMeta[]> => {
+  private getBlocks = async (hash: string, address: string, limit: number): Promise<BoundWitnessWithMongoMeta[]> => {
     let nextHash = hash
-    const blocks: BoundWitnessWithMeta[] = []
+    const blocks: BoundWitnessWithMongoMeta[] = []
     for (let i = 0; i < limit; i++) {
-      const filter: Filter<BoundWitnessWithMeta> = { addresses: address }
+      const filter: Filter<BoundWitnessWithMongoMeta> = { addresses: address }
       if (nextHash) filter._hash = nextHash
       const block = (await (await this.boundWitnesses.find(filter)).sort({ _timestamp: -1 }).limit(1).maxTimeMS(DefaultMaxTimeMS).toArray()).pop()
       if (!block) break

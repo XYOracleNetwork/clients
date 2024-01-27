@@ -3,7 +3,7 @@ import { merge } from '@xylabs/lodash'
 import { staticImplements } from '@xylabs/static-implements'
 import { Module } from '@xyo-network/module-model'
 import { MongoDBModule, MongoDBModuleParams, MongoDBModuleStatic, MongoDBStorageClassLabels } from '@xyo-network/module-model-mongodb'
-import { BoundWitnessWithMeta, PayloadWithMeta } from '@xyo-network/payload-mongodb'
+import { BoundWitnessWithMongoMeta, PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk, BaseMongoSdkConfig } from '@xyo-network/sdk-xyo-mongo-js'
 import { MongoServerError } from 'mongodb'
 
@@ -23,8 +23,8 @@ export const MongoDBModuleMixin = <
   @staticImplements<MongoDBModuleStatic>()
   abstract class MongoModuleBase extends ModuleBase implements MongoDBModule {
     static labels = MongoDBStorageClassLabels
-    _boundWitnessSdk: BaseMongoSdk<BoundWitnessWithMeta> | undefined
-    _payloadSdk: BaseMongoSdk<PayloadWithMeta> | undefined
+    _boundWitnessSdk: BaseMongoSdk<BoundWitnessWithMongoMeta> | undefined
+    _payloadSdk: BaseMongoSdk<PayloadWithMongoMeta> | undefined
 
     get boundWitnessSdkConfig(): BaseMongoSdkConfig {
       const config = { collection: COLLECTIONS.BoundWitnesses, ...getBaseMongoSdkPrivateConfig() }
@@ -34,7 +34,7 @@ export const MongoDBModuleMixin = <
     }
 
     get boundWitnesses() {
-      this._boundWitnessSdk = this._boundWitnessSdk ?? new BaseMongoSdk<BoundWitnessWithMeta>(this.boundWitnessSdkConfig)
+      this._boundWitnessSdk = this._boundWitnessSdk ?? new BaseMongoSdk<BoundWitnessWithMongoMeta>(this.boundWitnessSdkConfig)
       return assertEx(this._boundWitnessSdk)
     }
 
@@ -50,7 +50,7 @@ export const MongoDBModuleMixin = <
     }
 
     get payloads() {
-      this._payloadSdk = this._payloadSdk ?? new BaseMongoSdk<PayloadWithMeta>(this.payloadSdkConfig)
+      this._payloadSdk = this._payloadSdk ?? new BaseMongoSdk<PayloadWithMongoMeta>(this.payloadSdkConfig)
       return assertEx(this._payloadSdk)
     }
 
@@ -73,7 +73,7 @@ export const MongoDBModuleMixin = <
  * @param configIndexes The indexes to ensure exist on the collection
  */
 const ensureIndexesExistOnCollection = async (
-  sdk: BaseMongoSdk<PayloadWithMeta> | BaseMongoSdk<BoundWitnessWithMeta>,
+  sdk: BaseMongoSdk<PayloadWithMongoMeta> | BaseMongoSdk<BoundWitnessWithMongoMeta>,
   configIndexes: IndexDescription[],
 ) => {
   await sdk.useCollection(async (collection) => {

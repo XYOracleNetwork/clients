@@ -6,7 +6,7 @@ import { BoundWitnessSchema } from '@xyo-network/boundwitness-model'
 import { AddressHistoryDivinerConfigSchema, AddressHistoryQueryPayload, AddressHistoryQuerySchema } from '@xyo-network/diviner-address-history'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { BoundWitnessWithMeta, BoundWitnessWithPartialMeta } from '@xyo-network/payload-mongodb'
+import { BoundWitnessWithMongoMeta, BoundWitnessWithPartialMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock } from 'jest-mock-extended'
 
@@ -21,7 +21,7 @@ describeIf(hasMongoDBConfig())('MongoDBAddressHistoryDiviner', () => {
   let account: AccountInstance
   let address: string
   const logger = mock<Console>()
-  const boundWitnessSdk = new BaseMongoSdk<BoundWitnessWithMeta>({
+  const boundWitnessSdk = new BaseMongoSdk<BoundWitnessWithMongoMeta>({
     collection: COLLECTIONS.BoundWitnesses,
     dbConnectionString: process.env.MONGO_CONNECTION_STRING,
   })
@@ -36,8 +36,8 @@ describeIf(hasMongoDBConfig())('MongoDBAddressHistoryDiviner', () => {
     })
     // TODO: Insert via archivist
     const payload = await new PayloadBuilder({ schema: 'network.xyo.test' }).build()
-    const bw = (await new BoundWitnessBuilder().payload(payload).witness(account).build())[0]
-    await boundWitnessSdk.insertOne(bw as unknown as BoundWitnessWithMeta)
+    const bw = (await (await new BoundWitnessBuilder().payload(payload)).witness(account).build())[0]
+    await boundWitnessSdk.insertOne(bw as unknown as BoundWitnessWithMongoMeta)
   })
   describe('divine', () => {
     describe('with valid query', () => {
@@ -45,7 +45,7 @@ describeIf(hasMongoDBConfig())('MongoDBAddressHistoryDiviner', () => {
         const query: AddressHistoryQueryPayload = { address, limit: 1, schema: AddressHistoryQuerySchema }
         const result = await sut.divine([query])
         expect(result).toBeArrayOfSize(1)
-        const actual = result[0] as BoundWitnessWithPartialMeta
+        const actual = result[0] as BoundWitnessWithPartialMongoMeta
         expect(actual).toBeObject()
         expect(actual.schema).toBe(BoundWitnessSchema)
       })

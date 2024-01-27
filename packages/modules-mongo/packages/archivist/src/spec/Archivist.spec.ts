@@ -10,6 +10,7 @@ import { ArchivistWrapper } from '@xyo-network/archivist-wrapper'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { BoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
 import { PayloadWrapper, PayloadWrapperBase } from '@xyo-network/payload-wrapper'
 import { BaseMongoSdkConfig } from '@xyo-network/sdk-xyo-mongo-js'
@@ -57,23 +58,23 @@ describeIf(hasMongoDBConfig())('DeterministicArchivist', () => {
     expect(module.address).toBe(moduleAccount.address)
     expect(module.address).toBe('daddab0e0468c920bd5aff4b14fd94c20a598055')
     archivist = ArchivistWrapper.wrap(module, archiveAccount)
-    const payload1 = { nonce: 1, schema: 'network.xyo.debug' }
-    const payload2 = { nonce: 2, schema: 'network.xyo.test' }
-    const payload3 = { nonce: 3, schema: 'network.xyo.debug' }
-    const payload4 = { nonce: 4, schema: 'network.xyo.test' }
-    const payloadWrapper1 = PayloadWrapper.wrap(payload1)
-    const payloadWrapper2 = PayloadWrapper.wrap(payload2)
-    const payloadWrapper3 = PayloadWrapper.wrap(payload3)
-    const payloadWrapper4 = PayloadWrapper.wrap(payload4)
+    const payload1 = await PayloadBuilder.build({ nonce: 1, schema: 'network.xyo.debug' })
+    const payload2 = await PayloadBuilder.build({ nonce: 2, schema: 'network.xyo.test' })
+    const payload3 = await PayloadBuilder.build({ nonce: 3, schema: 'network.xyo.debug' })
+    const payload4 = await PayloadBuilder.build({ nonce: 4, schema: 'network.xyo.test' })
+    const payloadWrapper1 = await PayloadWrapper.wrap(payload1)
+    const payloadWrapper2 = await PayloadWrapper.wrap(payload2)
+    const payloadWrapper3 = await PayloadWrapper.wrap(payload3)
+    const payloadWrapper4 = await PayloadWrapper.wrap(payload4)
     payloadWrappers.push(payloadWrapper1, payloadWrapper2, payloadWrapper3, payloadWrapper4)
-    const boundWitness1 = (await new BoundWitnessBuilder().payload(payloadWrapper1.payload()).witness(userAccount).build())[0]
-    const boundWitness2 = (await new BoundWitnessBuilder().payload(payloadWrapper2.payload()).witness(userAccount).build())[0]
+    const boundWitness1 = (await (await new BoundWitnessBuilder().payload(payloadWrapper1.jsonPayload())).witness(userAccount).build())[0]
+    const boundWitness2 = (await (await new BoundWitnessBuilder().payload(payloadWrapper2.jsonPayload())).witness(userAccount).build())[0]
     const boundWitness3 = (
-      await new BoundWitnessBuilder().payloads([payloadWrapper3.payload(), payloadWrapper4.payload()]).witness(userAccount).build()
+      await (await new BoundWitnessBuilder().payloads([payloadWrapper3.jsonPayload(), payloadWrapper4.jsonPayload()])).witness(userAccount).build()
     )[0]
-    const boundWitnessWrapper1 = BoundWitnessWrapper.parse(boundWitness1, [payload1])
-    const boundWitnessWrapper2 = BoundWitnessWrapper.parse(boundWitness2, [payload2])
-    const boundWitnessWrapper3 = BoundWitnessWrapper.parse(boundWitness3, [payload3, payload4])
+    const boundWitnessWrapper1 = await BoundWitnessWrapper.parse(boundWitness1, [payload1])
+    const boundWitnessWrapper2 = await BoundWitnessWrapper.parse(boundWitness2, [payload2])
+    const boundWitnessWrapper3 = await BoundWitnessWrapper.parse(boundWitness3, [payload3, payload4])
 
     boundWitnessWrappers.push(boundWitnessWrapper1, boundWitnessWrapper2, boundWitnessWrapper3)
     const insertions = [
@@ -148,15 +149,21 @@ describeIf(hasMongoDBConfig())('DeterministicArchivist', () => {
       ['gets multiple boundwitness', () => [boundWitnessWrappers[0], boundWitnessWrappers[1], boundWitnessWrappers[2]]],
     ]
     it.each(cases)('%s', async (_title, getData) => {
-      const payloads = getData()
-      const results = await archivist.get(payloads.map((p) => p.hashSync()))
+      const payloads = getData().map((w) => w.jsonPayload())
+      const dataHashes = await PayloadBuilder.dataHashes(payloads)
+      const hashes = await PayloadBuilder.hashes(payloads)
+      const dataResults = await archivist.get(dataHashes)
+      const results = await archivist.get(hashes)
       expect(results).toBeTruthy()
       expect(results).toBeArrayOfSize(payloads.length)
-      const resultPayloads = results.map((result) => PayloadWrapper.wrap(result as Payload))
-      const resultHashes = await Promise.all(resultPayloads.map((p) => p.hashAsync()))
-      payloads.map((p) => {
-        expect(resultHashes).toInclude(p.hashSync())
-      })
+      const resultHashes = await PayloadBuilder.hashes(results)
+      const dataResultHashes = await PayloadBuilder.dataHashes(dataResults)
+      await Promise.all(
+        payloads.map(async (p) => {
+          expect(resultHashes).toInclude(await PayloadBuilder.hash(p))
+          expect(dataResultHashes).toInclude(await PayloadBuilder.dataHash(p))
+        }),
+      )
       expect(results).toMatchSnapshot()
     })
   })

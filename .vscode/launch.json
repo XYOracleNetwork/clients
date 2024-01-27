@@ -99,7 +99,7 @@
         "--forceExit",
         "--runInBand",
         "--testTimeout=120000",
-        "packages/node/packages/express/packages/test/src/routes/name/NftMetadataNode.spec.ts"
+        "packages/modules-mongo/packages/archivist/src/spec/Archivist.spec.ts"
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
@@ -121,7 +121,7 @@
         "--runInBand",
         "--testTimeout=120000",
         "-c=./jest.config.no-mongo.ts",
-        "packages/protocol/packages/account/src/spec/PrivateKey.spec.ts"
+        "packages/modules-mongo/packages/payload/src/BoundWitness/spec/flatMapBoundWitness.spec.ts"
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",

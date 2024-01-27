@@ -15,7 +15,7 @@ import { COLLECTIONS, DATABASES, MongoDBModuleMixin } from '@xyo-network/module-
 import { TYPES } from '@xyo-network/node-core-types'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
-import { BoundWitnessWithMeta } from '@xyo-network/payload-mongodb'
+import { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { MongoClientWrapper } from '@xyo-network/sdk-xyo-mongo-js'
 import { Job, JobProvider } from '@xyo-network/shared'
 import { ChangeStream, ChangeStreamInsertDocument, ChangeStreamOptions, ResumeToken, UpdateOptions } from 'mongodb'
@@ -183,7 +183,7 @@ export class MongoDBPayloadStatsDiviner extends MongoDBDivinerBase implements Pa
 
   private divineAllAddresses = () => this.payloads.useCollection((collection) => collection.estimatedDocumentCount())
 
-  private processChange = (change: ChangeStreamInsertDocument<BoundWitnessWithMeta>) => {
+  private processChange = (change: ChangeStreamInsertDocument<BoundWitnessWithMongoMeta>) => {
     this.resumeAfter = change._id
     const addresses = change.fullDocument.addresses
     const count = change.fullDocument?.payload_hashes?.length || 0

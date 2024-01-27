@@ -3,6 +3,7 @@ import { ArchivistInstance } from '@xyo-network/archivist-model'
 import { BoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
 import { DivinerDivineQuerySchema, DivinerInstance } from '@xyo-network/diviner'
 import { PayloadDivinerQueryPayload, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 import {
@@ -38,8 +39,8 @@ describe(`/${moduleName}`, () => {
     const accountB = Account.randomSync()
     describe.skip('address', () => {
       it('divines Payloads by address', async () => {
-        const wrapper: PayloadWrapper = PayloadWrapper.wrap(await getNewPayload())
-        const boundWitness: BoundWitnessWrapper = BoundWitnessWrapper.parse((await getNewBoundWitness([accountA], [wrapper.payload()]))[0])
+        const wrapper: PayloadWrapper = await PayloadWrapper.wrap(await getNewPayload())
+        const boundWitness: BoundWitnessWrapper = await BoundWitnessWrapper.parse((await getNewBoundWitness([accountA], [wrapper.payload()]))[0])
         await archivist.insert([boundWitness.payload(), wrapper.payload()])
 
         const address = accountA.address
@@ -50,8 +51,10 @@ describe(`/${moduleName}`, () => {
         expect(response.length).toBeGreaterThan(0)
       })
       it('divines Payloads by addresses', async () => {
-        const wrapper: PayloadWrapper = PayloadWrapper.wrap(await getNewPayload())
-        const boundWitness: BoundWitnessWrapper = BoundWitnessWrapper.parse((await getNewBoundWitness([accountA, accountB], [wrapper.payload()]))[0])
+        const wrapper: PayloadWrapper = await PayloadWrapper.wrap(await getNewPayload())
+        const boundWitness: BoundWitnessWrapper = await BoundWitnessWrapper.parse(
+          (await getNewBoundWitness([accountA, accountB], [wrapper.payload()]))[0],
+        )
         await archivist.insert([boundWitness.payload(), wrapper.payload()])
         const address = [accountA.address, accountB.address] as unknown as (string | string[]) & (string | [string])
         const query: PayloadDivinerQueryPayload = { address: address, schema }
@@ -64,17 +67,17 @@ describe(`/${moduleName}`, () => {
       const payload: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await getNewPayload()))()
       beforeAll(async () => {
         await archivist.insert([(await payload).payload()])
-        const hash = await (await payload).hashAsync()
+        const hash = await (await payload).dataHash()
         const payloads = await archivist.get([hash])
         expect(payloads).toBeArrayOfSize(1)
       })
       it('divines Payloads by hash', async () => {
-        const hash = await (await payload).hashAsync()
+        const hash = await (await payload).dataHash()
         const query: PayloadDivinerQueryPayload = { hash, schema }
         const response = await diviner.divine([query])
         expect(response).toBeArrayOfSize(1)
-        const responseHashes = await Promise.all(response.map((p) => PayloadWrapper.hashAsync(p)))
-        expect(responseHashes).toContainAllValues([await (await payload).hashAsync()])
+        const responseHashes = await Promise.all(response.map((p) => PayloadBuilder.dataHash(p)))
+        expect(responseHashes).toContainAllValues([await (await payload).dataHash()])
       })
       it('returns empty array for non-existent hash', async () => {
         const hash = nonExistentHash
@@ -132,7 +135,7 @@ describe(`/${moduleName}`, () => {
           const query: PayloadDivinerQueryPayload = { schema, schemas }
           const response = await diviner.divine([query])
           expect(response).toBeArrayOfSize(payloads.length)
-          const responseHashes = await Promise.all(response.map((p) => PayloadWrapper.hashAsync(p)))
+          const responseHashes = await Promise.all(response.map((p) => PayloadBuilder.dataHash(p)))
           expect(responseHashes).toContainAllValues(payloads.map((p) => p.hashSync()))
         })
       })
@@ -143,7 +146,7 @@ describe(`/${moduleName}`, () => {
           const query: PayloadDivinerQueryPayload = { schema, schemas }
           const response = await diviner.divine([query])
           expect(response).toBeArrayOfSize(payloads.length)
-          const responseHashes = await Promise.all(response.map((p) => PayloadWrapper.hashAsync(p)))
+          const responseHashes = await Promise.all(response.map((p) => PayloadBuilder.dataHash(p)))
           expect(responseHashes).toContainAllValues(payloads.map((p) => p.hashSync()))
         })
       })

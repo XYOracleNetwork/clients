@@ -10,7 +10,7 @@ import {
 } from '@xyo-network/diviner-boundwitness-model'
 import { DefaultLimit, DefaultMaxTimeMS, DefaultOrder, MongoDBModuleMixin, removeId } from '@xyo-network/module-abstract-mongodb'
 import { Payload } from '@xyo-network/payload-model'
-import { BoundWitnessWithMeta } from '@xyo-network/payload-mongodb'
+import { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { Filter, SortDirection } from 'mongodb'
 
 const MongoDBDivinerBase = MongoDBModuleMixin(BoundWitnessDiviner)
@@ -18,7 +18,7 @@ const MongoDBDivinerBase = MongoDBModuleMixin(BoundWitnessDiviner)
 export class MongoDBBoundWitnessDiviner extends MongoDBDivinerBase {
   static override configSchemas = [BoundWitnessDivinerConfigSchema]
 
-  protected override async divineHandler(payloads?: Payload[]): Promise<Payload<BoundWitness>[]> {
+  protected override async divineHandler(payloads?: Payload[]): Promise<BoundWitness[]> {
     const query = payloads?.find<BoundWitnessDivinerQueryPayload>(isBoundWitnessDivinerQueryPayload)
     // TODO: Support multiple queries
     if (!query) return []
@@ -29,7 +29,7 @@ export class MongoDBBoundWitnessDiviner extends MongoDBDivinerBase {
     const parsedOrder = order || DefaultOrder
     const parsedOffset = offset || 0
     const sort: { [key: string]: SortDirection } = { _timestamp: parsedOrder === 'asc' ? 1 : -1 }
-    const filter: Filter<BoundWitnessWithMeta> = {}
+    const filter: Filter<BoundWitnessWithMongoMeta> = {}
     if (timestamp) {
       // TODO: Should we sort by timestamp instead of _timestamp here as well?
       filter.timestamp = parsedOrder === 'desc' ? { $exists: true, $lt: timestamp } : { $exists: true, $gt: timestamp }

@@ -11,7 +11,7 @@ import {
 } from '@xyo-network/diviner-schema-list-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { BoundWitnessWithMeta } from '@xyo-network/payload-mongodb'
+import { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock } from 'jest-mock-extended'
 
@@ -26,7 +26,7 @@ describeIf(hasMongoDBConfig())('MongoDBSchemaListDiviner', () => {
   let address: string
   const phrase = 'guide drop pole matter mandate sand social chest toe scene primary alien'
   const logger = mock<Console>()
-  const boundWitnessSdk: BaseMongoSdk<BoundWitnessWithMeta> = new BaseMongoSdk<BoundWitnessWithMeta>({
+  const boundWitnessSdk: BaseMongoSdk<BoundWitnessWithMongoMeta> = new BaseMongoSdk<BoundWitnessWithMongoMeta>({
     collection: COLLECTIONS.BoundWitnesses,
     dbConnectionString: process.env.MONGO_CONNECTION_STRING,
   })
@@ -41,8 +41,8 @@ describeIf(hasMongoDBConfig())('MongoDBSchemaListDiviner', () => {
     })
     // TODO: Insert via archivist
     const payload = await new PayloadBuilder({ schema: 'network.xyo.test' }).build()
-    const bw = (await new BoundWitnessBuilder().payload(payload).witness(account).build())[0]
-    await boundWitnessSdk.insertOne(bw as unknown as BoundWitnessWithMeta)
+    const bw = (await (await new BoundWitnessBuilder().payload(payload)).witness(account).build())[0]
+    await boundWitnessSdk.insertOne(bw as unknown as BoundWitnessWithMongoMeta)
   })
   describe('divine', () => {
     describe('with address supplied in query', () => {

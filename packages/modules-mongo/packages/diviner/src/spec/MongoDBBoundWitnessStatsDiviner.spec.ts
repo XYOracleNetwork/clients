@@ -13,7 +13,7 @@ import { DivinerInstance } from '@xyo-network/diviner-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { JobQueue } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { BoundWitnessWithMeta } from '@xyo-network/payload-mongodb'
+import { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock, MockProxy } from 'jest-mock-extended'
 
@@ -28,7 +28,7 @@ describeIf(hasMongoDBConfig())('MongoDBBoundWitnessStatsDiviner', () => {
   let account: AccountInstance
   let address: string
   const logger = mock<Console>()
-  const boundWitnessSdk = new BaseMongoSdk<BoundWitnessWithMeta>({
+  const boundWitnessSdk = new BaseMongoSdk<BoundWitnessWithMongoMeta>({
     collection: COLLECTIONS.BoundWitnesses,
     dbConnectionString: process.env.MONGO_CONNECTION_STRING,
   })
@@ -45,8 +45,8 @@ describeIf(hasMongoDBConfig())('MongoDBBoundWitnessStatsDiviner', () => {
     })
     // TODO: Insert via archivist
     const payload = await new PayloadBuilder({ schema: 'network.xyo.test' }).build()
-    const bw = (await new BoundWitnessBuilder().payload(payload).witness(account).build())[0]
-    await boundWitnessSdk.insertOne(bw as unknown as BoundWitnessWithMeta)
+    const bw = (await (await new BoundWitnessBuilder().payload(payload)).witness(account).build())[0]
+    await boundWitnessSdk.insertOne(bw as unknown as BoundWitnessWithMongoMeta)
   })
   describe('divine', () => {
     describe('with address supplied in query', () => {

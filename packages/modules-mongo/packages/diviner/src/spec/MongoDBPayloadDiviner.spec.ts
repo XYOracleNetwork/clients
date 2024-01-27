@@ -3,7 +3,7 @@ import { Account } from '@xyo-network/account'
 import { PayloadDivinerConfigSchema, PayloadDivinerQueryPayload, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { PayloadWithMeta } from '@xyo-network/payload-mongodb'
+import { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock } from 'jest-mock-extended'
 
@@ -16,7 +16,7 @@ import { MongoDBPayloadDiviner } from '../MongoDBPayloadDiviner'
 describeIf(hasMongoDBConfig())('MongoDBPayloadDiviner', () => {
   const testSchema = 'network.xyo.test'
   const logger = mock<Console>()
-  const payloadSdk: BaseMongoSdk<PayloadWithMeta> = new BaseMongoSdk<PayloadWithMeta>({
+  const payloadSdk: BaseMongoSdk<PayloadWithMongoMeta> = new BaseMongoSdk<PayloadWithMongoMeta>({
     collection: COLLECTIONS.Payloads,
     dbConnectionString: process.env.MONGO_CONNECTION_STRING,
   })
@@ -30,7 +30,7 @@ describeIf(hasMongoDBConfig())('MongoDBPayloadDiviner', () => {
     })
     // TODO: Insert via archivist
     const payload = await new PayloadBuilder<{ schema: string; url: string }>({ schema: testSchema }).fields({ url }).build()
-    await payloadSdk.insertOne(payload as unknown as PayloadWithMeta)
+    await payloadSdk.insertOne(payload as unknown as PayloadWithMongoMeta)
   })
   describe('divine', () => {
     describe('with valid query', () => {

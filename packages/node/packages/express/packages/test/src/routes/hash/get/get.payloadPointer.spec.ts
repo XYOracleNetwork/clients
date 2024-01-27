@@ -11,7 +11,6 @@ import {
 } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
-import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 
 import { getHash, getNewBoundWitness, insertBlock, insertPayload } from '../../../testUtil'
@@ -44,7 +43,7 @@ export const createPointer = async (
   const pointer = await new PayloadBuilder<PayloadPointerPayload>({ schema: PayloadPointerSchema }).fields({ reference }).build()
   const pointerResponse = await insertPayload(pointer)
   expect(pointerResponse).toBeArrayOfSize(1)
-  return await PayloadWrapper.hashAsync(pointer)
+  return await PayloadBuilder.dataHash(pointer)
 }
 
 export const expectError = (result: Payload, detail: string, status: string, title?: string) => {
