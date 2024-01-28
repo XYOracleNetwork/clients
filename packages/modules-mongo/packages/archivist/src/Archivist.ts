@@ -44,7 +44,7 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
     const bwsHashes = bws.map((payload) => payload._hash)
     remainingHashes = remainingHashes.filter((hash) => !bwsHashes.includes(hash))
 
-    const foundPayloads = [...dataPayloads, ...dataBws, ...payloads, ...bws] as PayloadWithMongoMeta<Payload & { _$meta?: unknown; _$hash: Hash }>[]
+    const foundPayloads = [...dataPayloads, ...dataBws, ...payloads, ...bws] as PayloadWithMongoMeta<Payload & { _$hash: Hash; _$meta?: unknown }>[]
     return foundPayloads.map(({ _$hash, _$meta, ...other }) => ({ $hash: _$hash, $meta: _$meta, ...other })).map(toReturnValue)
   }
 

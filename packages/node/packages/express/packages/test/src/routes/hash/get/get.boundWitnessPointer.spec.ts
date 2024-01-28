@@ -112,7 +112,7 @@ describe('/:hash', () => {
           [accountA, async () => (await BoundWitnessWrapper.parse(bws[0])).jsonPayload()],
           [accountB, async () => (await BoundWitnessWrapper.parse(bws[1])).jsonPayload()],
         ])('returns BoundWitness signed by address', async (account, data) => {
-          const expected = data()
+          const expected = await data()
           const pointerHash = await createPointer([[account.address]], [[payloads[0].schema]])
           const result = await getHash(pointerHash)
           expect(result).toEqual(expected)
@@ -164,7 +164,7 @@ describe('/:hash', () => {
           [schemaA, async () => (await BoundWitnessWrapper.parse(boundWitnesses[0])).jsonPayload()],
           [schemaB, async () => (await BoundWitnessWrapper.parse(boundWitnesses[1])).jsonPayload()],
         ])('returns BoundWitness of schema type', async (schema, data) => {
-          const expected = data()
+          const expected = await data()
           const pointerHash = await createPointer([[account.address]], [[schema]])
           const result = await getHash(pointerHash)
           expect(result).toEqual(expected)
