@@ -73,7 +73,7 @@ describe('/:hash', () => {
       const [bw, payloads] = await getNewBoundWitness([account])
       const blockResponse = await insertBlock(bw, account)
       expect(blockResponse.length).toBe(1)
-      const expected = await (await BoundWitnessWrapper.parse(bw)).jsonPayload()
+      const expected = (await BoundWitnessWrapper.parse(bw)).jsonPayload()
       const pointerHash = await createPointer([[account.address]], [[payloads[0].schema]])
       const response = await getHash(pointerHash)
       expect(response).toBeTruthy()

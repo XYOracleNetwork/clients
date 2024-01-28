@@ -66,7 +66,7 @@ describe(`/${moduleName}`, () => {
     describe('hash', () => {
       const payload: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await getNewPayload()))()
       beforeAll(async () => {
-        await archivist.insert([(await payload).payload()])
+        await archivist.insert([(await payload).jsonPayload()])
         const hash = await (await payload).dataHash()
         const payloads = await archivist.get([hash])
         expect(payloads).toBeArrayOfSize(1)
@@ -136,7 +136,7 @@ describe(`/${moduleName}`, () => {
           const response = await diviner.divine([query])
           expect(response).toBeArrayOfSize(payloads.length)
           const responseHashes = await Promise.all(response.map((p) => PayloadBuilder.dataHash(p)))
-          expect(responseHashes).toContainAllValues(payloads.map((p) => p.hashSync()))
+          expect(responseHashes).toContainAllValues(await Promise.all(payloads.map((p) => p.dataHash())))
         })
       })
       describe('with multiple schemas', () => {
@@ -147,7 +147,7 @@ describe(`/${moduleName}`, () => {
           const response = await diviner.divine([query])
           expect(response).toBeArrayOfSize(payloads.length)
           const responseHashes = await Promise.all(response.map((p) => PayloadBuilder.dataHash(p)))
-          expect(responseHashes).toContainAllValues(payloads.map((p) => p.hashSync()))
+          expect(responseHashes).toContainAllValues(await Promise.all(payloads.map((p) => p.dataHash())))
         })
       })
     })

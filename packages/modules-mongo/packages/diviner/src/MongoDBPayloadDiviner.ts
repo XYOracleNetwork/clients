@@ -1,3 +1,5 @@
+/* eslint-disable max-statements */
+/* eslint-disable complexity */
 import { AnyObject } from '@xylabs/object'
 import { PayloadDiviner } from '@xyo-network/diviner-payload-abstract'
 import { isPayloadDivinerQueryPayload, PayloadDivinerConfigSchema, PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
@@ -26,22 +28,58 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
       const parsedTimestamp = timestamp ? timestamp : parsedOrder === 'desc' ? Date.now() : 0
       filter._timestamp = parsedOrder === 'desc' ? { $lt: parsedTimestamp } : { $gt: parsedTimestamp }
     }
-    if (hash) filter._hash = hash
-    // TODO: Optimize for single schema supplied too
-    if (schemas?.length) filter.schema = { $in: schemas }
 
-    // Add additional filter criteria
-    if (Object.keys(props).length > 0) {
-      const additionalFilterCriteria = Object.entries(props)
-      for (const [prop, propFilter] of additionalFilterCriteria) {
-        // Skip any reserved properties
-        if (`${prop}`?.startsWith('$')) continue
-        // Add the filter criteria
-        filter[prop as keyof Payload] = Array.isArray(propFilter) ? { $in: propFilter } : (propFilter as string)
+    let filtered
+
+    if (hash) {
+      filter._hash = hash
+      // TODO: Optimize for single schema supplied too
+      if (schemas?.length) filter.schema = { $in: schemas }
+
+      // Add additional filter criteria
+      if (Object.keys(props).length > 0) {
+        const additionalFilterCriteria = Object.entries(props)
+        for (const [prop, propFilter] of additionalFilterCriteria) {
+          // Skip any reserved properties
+          if (`${prop}`?.startsWith('$')) continue
+          // Add the filter criteria
+          filter[prop as keyof Payload] = Array.isArray(propFilter) ? { $in: propFilter } : (propFilter as string)
+        }
       }
-    }
+      filtered = await this.payloads.find(filter)
 
-    const filtered = await this.payloads.find(filter)
+      if (!filtered) {
+        filter._$hash = hash
+        // TODO: Optimize for single schema supplied too
+        if (schemas?.length) filter.schema = { $in: schemas }
+
+        // Add additional filter criteria
+        if (Object.keys(props).length > 0) {
+          const additionalFilterCriteria = Object.entries(props)
+          for (const [prop, propFilter] of additionalFilterCriteria) {
+            // Skip any reserved properties
+            if (`${prop}`?.startsWith('$')) continue
+            // Add the filter criteria
+            filter[prop as keyof Payload] = Array.isArray(propFilter) ? { $in: propFilter } : (propFilter as string)
+          }
+        }
+        filtered = await this.payloads.find(filter)
+      }
+    } else {
+      if (schemas?.length) filter.schema = { $in: schemas }
+
+      // Add additional filter criteria
+      if (Object.keys(props).length > 0) {
+        const additionalFilterCriteria = Object.entries(props)
+        for (const [prop, propFilter] of additionalFilterCriteria) {
+          // Skip any reserved properties
+          if (`${prop}`?.startsWith('$')) continue
+          // Add the filter criteria
+          filter[prop as keyof Payload] = Array.isArray(propFilter) ? { $in: propFilter } : (propFilter as string)
+        }
+      }
+      filtered = await this.payloads.find(filter)
+    }
 
     return (await filtered.sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(removeId)
   }

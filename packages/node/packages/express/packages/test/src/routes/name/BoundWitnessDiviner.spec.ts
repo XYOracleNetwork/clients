@@ -67,7 +67,7 @@ describe(`/${moduleName}`, () => {
       ]
       describe.each(cases)('with %s', (_title, addresses, data) => {
         it('divines BoundWitnesses by address', async () => {
-          const expected = data().map((d) => d.jsonPayload)
+          const expected = data().map((d) => d.jsonPayload())
           const query: BoundWitnessDivinerQueryPayload = { addresses, schema }
           const response = await diviner.divine([query])
           expect(response).toBeArrayOfSize(expected.length)
@@ -78,6 +78,27 @@ describe(`/${moduleName}`, () => {
       })
     })
     describe('hash', () => {
+      let boundWitness: BoundWitnessWrapper
+      beforeAll(async () => {
+        boundWitness = await BoundWitnessWrapper.parse((await getNewBoundWitness([account]))[0])
+        await archivist.insert([boundWitness.jsonPayload()])
+      })
+      it('divines BoundWitnesses by hash', async () => {
+        const hash = await boundWitness.hash()
+        const query: BoundWitnessDivinerQueryPayload = { hash, schema }
+        const response = await diviner.divine([query])
+        expect(response).toBeArrayOfSize(1)
+        const responseHashes = await PayloadBuilder.dataHashes(response)
+        expect(responseHashes).toContainAllValues([await boundWitness.dataHash()])
+      })
+      it('returns empty array for non-existent hash', async () => {
+        const hash = nonExistentHash
+        const query: BoundWitnessDivinerQueryPayload = { hash, schema }
+        const response = await diviner.divine([query])
+        expect(response).toBeArrayOfSize(0)
+      })
+    })
+    describe('dataHash', () => {
       let boundWitness: BoundWitnessWrapper
       beforeAll(async () => {
         boundWitness = await BoundWitnessWrapper.parse((await getNewBoundWitness([account]))[0])

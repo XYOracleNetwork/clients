@@ -67,7 +67,7 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
 
     const [bw, p] = await validByType(payloads)
     const payloadsWithExternalMeta = await Promise.all(p.map((x) => toPayloadWithMongoMeta(x)))
-    if (payloadsWithMeta.length) {
+    if (payloadsWithExternalMeta.length) {
       const payloadsResult = await this.payloads.insertMany(payloadsWithExternalMeta)
       if (!payloadsResult.acknowledged || payloadsResult.insertedCount !== payloadsWithExternalMeta.length)
         throw new Error('MongoDBDeterministicArchivist: Error inserting Payloads')
