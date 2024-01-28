@@ -1,3 +1,4 @@
+/* eslint-disable max-statements */
 /* eslint-disable complexity */
 import { flatten } from '@xylabs/array'
 import { exists } from '@xylabs/exists'
@@ -10,7 +11,7 @@ import {
   isBoundWitnessDivinerQueryPayload,
 } from '@xyo-network/diviner-boundwitness-model'
 import { DefaultLimit, DefaultMaxTimeMS, DefaultOrder, MongoDBModuleMixin, removeId } from '@xyo-network/module-abstract-mongodb'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, WithMeta } from '@xyo-network/payload-model'
 import { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { Filter, SortDirection } from 'mongodb'
 
@@ -68,8 +69,15 @@ export class MongoDBBoundWitnessDiviner extends MongoDBDivinerBase {
       const resultSetTwo = (
         await (await this.boundWitnesses.find(filter2)).sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()
       ).map(removeId)
-
-      return [...resultSetOne, ...resultSetTwo]
+      const result: BoundWitness[] = [...resultSetOne, ...resultSetTwo].map(
+        ({ _$hash, _$meta, $meta, ...other }) =>
+          ({
+            $hash: _$hash,
+            $meta: _$meta,
+            ...other,
+          }) as unknown as BoundWitness,
+      )
+      return result
     } else {
       // NOTE: Defaulting to $all since it makes the most sense when singing addresses are supplied
       // but based on how MongoDB implements multi-key indexes $in might be much faster and we could
@@ -81,9 +89,17 @@ export class MongoDBBoundWitnessDiviner extends MongoDBDivinerBase {
       if (allAddresses.length) filter.addresses = allAddresses.length === 1 ? allAddresses[0] : { $all: allAddresses }
       if (payload_hashes?.length) filter.payload_hashes = { $in: payload_hashes }
       if (payload_schemas?.length) filter.payload_schemas = { $in: payload_schemas }
-      return (
+      const result = (
         await (await this.boundWitnesses.find(filter)).sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()
       ).map(removeId)
+      return result.map(
+        ({ _$hash, _$meta, $meta, ...other }) =>
+          ({
+            $hash: _$hash,
+            $meta: _$meta,
+            ...other,
+          }) as unknown as BoundWitness,
+      )
     }
   }
 
