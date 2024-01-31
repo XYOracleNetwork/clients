@@ -42,7 +42,7 @@ describe(`/${divinerName}`, () => {
       const query: AddressHistoryQueryPayload = { address, limit, schema }
       const response = await sut.divine([query])
       expect(response).toBeArrayOfSize(limit)
-      const responseHashes = await PayloadHasher.hashes(response)
+      const responseHashes = await PayloadBuilder.dataHashes(response)
       expect(responseHashes).toIncludeAllMembers(dataHashes)
     })
   })
