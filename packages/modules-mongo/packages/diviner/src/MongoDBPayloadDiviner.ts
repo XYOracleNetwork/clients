@@ -7,6 +7,8 @@ import { DefaultLimit, DefaultMaxTimeMS, DefaultOrder, MongoDBModuleMixin, remov
 import { Payload } from '@xyo-network/payload-model'
 import { Filter, SortDirection } from 'mongodb'
 
+import { mongoPayloadsToMeta } from './mongoPayloadsToMeta'
+
 const MongoDBDivinerBase = MongoDBModuleMixin(PayloadDiviner)
 
 export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
@@ -82,11 +84,7 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
     }
 
     const result = (await filtered.sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(removeId)
-    return result.map(({ _$hash, _$meta, ...other }) => ({
-      $hash: _$hash,
-      $meta: _$meta,
-      ...other,
-    }))
+    return await mongoPayloadsToMeta(result)
   }
 
   protected override async startHandler() {

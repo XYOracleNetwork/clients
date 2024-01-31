@@ -1,14 +1,13 @@
 import { exists } from '@xylabs/exists'
 import { Hash } from '@xylabs/hex'
 import { AnyObject } from '@xylabs/object'
-import { fulfilledValues } from '@xylabs/promise'
 import { AbstractArchivist } from '@xyo-network/archivist-abstract'
 import { ArchivistConfigSchema, ArchivistInsertQuerySchema } from '@xyo-network/archivist-model'
 import { MongoDBArchivistConfigSchema } from '@xyo-network/archivist-model-mongodb'
 import { MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload, WithMeta } from '@xyo-network/payload-model'
-import { PayloadWithMongoMeta, PayloadWithPartialMongoMeta } from '@xyo-network/payload-mongodb'
+import { Payload } from '@xyo-network/payload-model'
+import { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 import { toPayloadWithMongoMeta, toReturnValue, validByType } from './lib'
@@ -49,22 +48,6 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
   }
 
   protected override async insertHandler(payloads: Payload[]): Promise<Payload[]> {
-    const payloadsWithMeta = await Promise.all(
-      payloads.map(async (payload) => {
-        const p = (await PayloadBuilder.build(payload)) as AnyObject
-        //switch $ fields to _$ fields since mongo uses $
-        if (p.$hash) {
-          p._$hash = p.$hash
-          delete p.$hash
-        }
-        if (p.$meta) {
-          p._$meta = p.$meta
-          delete p.$meta
-        }
-        return p as Payload
-      }),
-    )
-
     const [bw, p] = await validByType(payloads)
     const payloadsWithExternalMeta = await Promise.all(p.map((x) => toPayloadWithMongoMeta(x)))
     if (payloadsWithExternalMeta.length) {
@@ -79,7 +62,7 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
         throw new Error('MongoDBDeterministicArchivist: Error inserting BoundWitnesses')
     }
 
-    return payloadsWithMeta
+    return [...boundWitnessesWithExternalMeta, ...payloadsWithExternalMeta]
   }
 
   protected override async startHandler() {

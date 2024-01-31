@@ -1,3 +1,4 @@
+import { delay } from '@xylabs/delay'
 import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
 import { AccountInstance } from '@xyo-network/account-model'
@@ -36,15 +37,18 @@ describeIf(hasMongoDBConfig())('MongoDBAddressHistoryDiviner', () => {
     })
     // TODO: Insert via archivist
     const payload = await new PayloadBuilder({ schema: 'network.xyo.test' }).build()
-    const bw = (await (await new BoundWitnessBuilder().payload(payload)).witness(account).build())[0]
+    const [bw] = await (await new BoundWitnessBuilder().payload(payload)).witness(account).build()
     await boundWitnessSdk.insertOne(bw as unknown as BoundWitnessWithMongoMeta)
+    const [bw2] = await (await new BoundWitnessBuilder().payload(payload)).witness(account).build()
+    await boundWitnessSdk.insertOne(bw2 as unknown as BoundWitnessWithMongoMeta)
+    await delay(1000)
   })
   describe('divine', () => {
     describe('with valid query', () => {
       it('divines', async () => {
         const query: AddressHistoryQueryPayload = { address, limit: 1, schema: AddressHistoryQuerySchema }
         const result = await sut.divine([query])
-        expect(result).toBeArrayOfSize(1)
+        expect(result).toBeArrayOfSize(2)
         const actual = result[0] as BoundWitnessWithPartialMongoMeta
         expect(actual).toBeObject()
         expect(actual.schema).toBe(BoundWitnessSchema)

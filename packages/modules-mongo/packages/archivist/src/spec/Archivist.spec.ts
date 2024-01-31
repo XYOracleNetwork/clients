@@ -8,6 +8,7 @@ import { Account } from '@xyo-network/account'
 import { AccountInstance } from '@xyo-network/account-model'
 import { ArchivistWrapper } from '@xyo-network/archivist-wrapper'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
+import { BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
 import { BoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
@@ -29,7 +30,7 @@ describeIf(hasMongoDBConfig())('DeterministicArchivist', () => {
   const boundWitnessWrappers: BoundWitnessWrapper[] = []
   let archivist: ArchivistWrapper
   let insertResult1: Payload[]
-  // let insertResult2: BoundWitness[]
+  //let insertResult2: Payload[]
   let insertResult3: Payload[]
   const insertResults: Payload[][] = []
   beforeAll(async () => {
@@ -95,7 +96,7 @@ describeIf(hasMongoDBConfig())('DeterministicArchivist', () => {
     )
 
     insertResult1 = insertResults[0]
-    // insertResult2 = insertResults[1]
+    //insertResult2 = insertResults[1]
     insertResult3 = insertResults[2]
   })
   describe('discover', () => {
@@ -109,6 +110,7 @@ describeIf(hasMongoDBConfig())('DeterministicArchivist', () => {
     it('inserts single payload', () => {
       expect(insertResult1).toBeTruthy()
       expect(insertResult1).toBeArrayOfSize(2)
+
       /*
       const [boundResult] = insertResult1
       expect(boundResult.addresses).toContain(archivist.address)
