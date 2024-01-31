@@ -50,7 +50,6 @@ export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
       const filter: Filter<BoundWitnessWithMongoMeta> = { addresses: address }
       if (nextHash) filter.$hash = nextHash
       const found = await this.boundWitnesses.find(filter)
-      const foundArray = await found.toArray()
       const block = (await found.sort({ _timestamp: -1 }).limit(1).maxTimeMS(DefaultMaxTimeMS).toArray()).pop()
       if (!block) break
       blocks.push(block)

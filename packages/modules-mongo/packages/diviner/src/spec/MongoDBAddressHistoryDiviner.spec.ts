@@ -46,7 +46,7 @@ describeIf(hasMongoDBConfig())('MongoDBAddressHistoryDiviner', () => {
   describe('divine', () => {
     describe('with valid query', () => {
       it('divines', async () => {
-        const query: AddressHistoryQueryPayload = { address, limit: 1, schema: AddressHistoryQuerySchema }
+        const query: AddressHistoryQueryPayload = { address, limit: 2, schema: AddressHistoryQuerySchema }
         const result = await sut.divine([query])
         expect(result).toBeArrayOfSize(2)
         const actual = result[0] as BoundWitnessWithPartialMongoMeta
