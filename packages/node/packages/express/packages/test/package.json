@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "2.83.0",
+  "version": "2.84.0-rc.1",
   "description": "XYO Archivist",
   "sideeffects": false,
   "types": "dist/node/index.d.ts",
@@ -52,7 +52,6 @@
     "@xyo-network/payload-model": "^2.89.0-rc.12",
     "@xyo-network/payload-mongodb": "workspace:~",
     "@xyo-network/payload-validator": "^2.89.0-rc.12",
-    "@xyo-network/payload-wrapper": "^2.89.0-rc.12",
     "@xyo-network/query-payload-plugin": "^2.89.0-rc.12",
     "@xyo-network/schema-name-validator": "^2.89.0-rc.12",
     "@xyo-network/sentinel-model": "^2.89.0-rc.12",
@@ -79,9 +78,11 @@
     "@xyo-network/diviner-payload-model": "^2.89.0-rc.12",
     "@xyo-network/hash": "^2.89.0-rc.12",
     "@xyo-network/node-core-model": "workspace:~",
+    "@xyo-network/payload-wrapper": "^2.89.0-rc.12",
     "jest": "^29.7.0",
     "mongodb-memory-server": "^8.16.0",
     "typescript": "^5.3.3"
   },
-  "type": "module"
+  "type": "module",
+  "stableVersion": "2.83.0"
 }

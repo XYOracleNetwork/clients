@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "2.83.0",
+  "version": "2.84.0-rc.1",
   "description": "XYO Archivist",
   "sideeffects": false,
   "types": "dist/node/index.d.ts",
@@ -64,5 +64,6 @@
     "jest-mock-extended": "^3.0.5",
     "typescript": "^5.3.3"
   },
-  "type": "module"
+  "type": "module",
+  "stableVersion": "2.83.0"
 }

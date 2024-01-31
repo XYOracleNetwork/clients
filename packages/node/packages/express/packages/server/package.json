@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "2.83.0",
+  "version": "2.84.0-rc.1",
   "description": "XYO Express Node Server",
   "sideeffects": false,
   "types": "dist/node/index.d.ts",
@@ -38,7 +38,7 @@
   "author": "Arie Trouw",
   "license": "LGPL-3.0-only",
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.501.0",
+    "@aws-sdk/client-secrets-manager": "^3.503.1",
     "@xylabs/assert": "^2.14.0",
     "@xylabs/logger": "^2.14.0",
     "@xylabs/sdk-api-express-ecs": "^1.4.0",
@@ -70,5 +70,6 @@
     "@xylabs/tsconfig": "^3.2.42",
     "typescript": "^5.3.3"
   },
-  "type": "module"
+  "type": "module",
+  "stableVersion": "2.83.0"
 }

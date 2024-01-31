@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@xylabs/exists": "^2.14.0",
-    "@xylabs/promise": "^2.14.0",
+    "@xylabs/hex": "^2.14.0",
     "@xyo-network/archivist-abstract": "^2.89.0-rc.12",
     "@xyo-network/archivist-model": "^2.89.0-rc.12",
     "@xyo-network/archivist-model-mongodb": "workspace:~",
@@ -20,6 +20,7 @@
     "@xyo-network/boundwitness-wrapper": "^2.89.0-rc.12",
     "@xyo-network/hash": "^2.89.0-rc.12",
     "@xyo-network/module-abstract-mongodb": "workspace:~",
+    "@xyo-network/payload-builder": "^2.89.0-rc.12",
     "@xyo-network/payload-model": "^2.89.0-rc.12",
     "@xyo-network/payload-mongodb": "workspace:~",
     "@xyo-network/payload-wrapper": "^2.89.0-rc.12"
@@ -77,6 +78,7 @@
     "url": "https://github.com/XYOracleNetwork/sdk-xyo-client-js.git"
   },
   "sideEffects": false,
-  "version": "2.83.0",
-  "type": "module"
+  "version": "2.84.0-rc.1",
+  "type": "module",
+  "stableVersion": "2.83.0"
 }
