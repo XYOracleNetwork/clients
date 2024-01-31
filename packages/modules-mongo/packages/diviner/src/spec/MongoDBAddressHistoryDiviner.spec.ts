@@ -11,6 +11,7 @@ import { BoundWitnessWithMongoMeta, BoundWitnessWithPartialMongoMeta } from '@xy
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock } from 'jest-mock-extended'
 
+import { toPayloadWithMongoMeta } from '../lib'
 import { MongoDBAddressHistoryDiviner } from '../MongoDBAddressHistoryDiviner'
 
 /**
@@ -36,11 +37,13 @@ describeIf(hasMongoDBConfig())('MongoDBAddressHistoryDiviner', () => {
       logger,
     })
     // TODO: Insert via archivist
-    const payload = await new PayloadBuilder({ schema: 'network.xyo.test' }).build()
+    const payload = await toPayloadWithMongoMeta(await new PayloadBuilder({ schema: 'network.xyo.test' }).build())
     const [bw] = await (await new BoundWitnessBuilder().payload(payload)).witness(account).build()
-    await boundWitnessSdk.insertOne(bw as unknown as BoundWitnessWithMongoMeta)
+    const mongoBw = await toPayloadWithMongoMeta(bw)
+    await boundWitnessSdk.insertOne(mongoBw as unknown as BoundWitnessWithMongoMeta)
     const [bw2] = await (await new BoundWitnessBuilder().payload(payload)).witness(account).build()
-    await boundWitnessSdk.insertOne(bw2 as unknown as BoundWitnessWithMongoMeta)
+    const mongoBw2 = await toPayloadWithMongoMeta(bw2)
+    await boundWitnessSdk.insertOne(mongoBw2 as unknown as BoundWitnessWithMongoMeta)
     await delay(1000)
   })
   describe('divine', () => {

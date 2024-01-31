@@ -1,6 +1,7 @@
 import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
 import { hexFromHexString } from '@xylabs/hex'
+import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { BoundWitness } from '@xyo-network/boundwitness-model'
 import {
   AddressHistoryDiviner,
@@ -9,11 +10,10 @@ import {
   isAddressHistoryQueryPayload,
 } from '@xyo-network/diviner-address-history'
 import { DefaultLimit, DefaultMaxTimeMS, MongoDBModuleMixin, removeId } from '@xyo-network/module-abstract-mongodb'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
 import { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { Filter } from 'mongodb'
-
-import { mongoPayloadsToMeta } from './mongoPayloadsToMeta'
 
 const MongoDBDivinerBase = MongoDBModuleMixin(AddressHistoryDiviner)
 
@@ -34,7 +34,7 @@ export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
     if (offset) assertEx(typeof offset === 'string', 'MongoDBAddressHistoryDiviner: Supplied offset must be a hash')
     const hash: string = offset as string
     const blocks = await this.getBlocks(hash, addresses, limit || DefaultLimit)
-    return await mongoPayloadsToMeta(blocks.map(removeId))
+    return await Promise.all(blocks.map(removeId).map((block) => PayloadBuilder.build(block)))
   }
 
   protected override async startHandler() {
@@ -48,7 +48,7 @@ export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
     const blocks: BoundWitnessWithMongoMeta[] = []
     for (let i = 0; i < limit; i++) {
       const filter: Filter<BoundWitnessWithMongoMeta> = { addresses: address }
-      if (nextHash) filter.$hash = nextHash
+      if (nextHash) filter._$hash = nextHash
       const found = await this.boundWitnesses.find(filter)
       const block = (await found.sort({ _timestamp: -1 }).limit(1).maxTimeMS(DefaultMaxTimeMS).toArray()).pop()
       if (!block) break
