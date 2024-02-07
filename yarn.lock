@@ -5326,7 +5326,7 @@ __metadata:
     "@xyo-network/gas-price-plugin": "npm:^2.87.0-rc.3"
     "@xyo-network/http-bridge": "npm:^2.89.0-rc.14"
     "@xyo-network/module-model": "npm:^2.89.0-rc.14"
-    "@xyo-network/node-core-model": "npm:^2.84.0-rc.1"
+    "@xyo-network/node-core-model": "npm:^2.84.0-rc.2"
     "@xyo-network/node-memory": "npm:^2.89.0-rc.14"
     "@xyo-network/payload-builder": "npm:^2.89.0-rc.14"
     "@xyo-network/payload-model": "npm:^2.89.0-rc.14"
@@ -7540,7 +7540,7 @@ __metadata:
   dependencies:
     "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
     "@xylabs/tsconfig": "npm:^3.2.42"
-    "@xyo-network/node-core-model": "npm:^2.84.0-rc.1"
+    "@xyo-network/node-core-model": "npm:^2.84.0-rc.2"
     "@xyo-network/payload-builder": "npm:^2.89.0-rc.14"
     "@xyo-network/payload-model": "npm:^2.89.0-rc.14"
     "@xyo-network/payload-mongodb": "workspace:~"
@@ -7551,7 +7551,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xyo-network/node-core-model@npm:^2.84.0-rc.1, @xyo-network/node-core-model@workspace:packages/node/packages/core/packages/model, @xyo-network/node-core-model@workspace:~":
+"@xyo-network/node-core-model@npm:^2.84.0-rc.2, @xyo-network/node-core-model@workspace:packages/node/packages/core/packages/model, @xyo-network/node-core-model@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xyo-network/node-core-model@workspace:packages/node/packages/core/packages/model"
   dependencies:
