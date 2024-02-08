@@ -5,10 +5,10 @@ import { ArchivistConfigSchema, ArchivistInsertQuerySchema } from '@xyo-network/
 import { MongoDBArchivistConfigSchema } from '@xyo-network/archivist-model-mongodb'
 import { MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
 import { Payload } from '@xyo-network/payload-model'
-import { PayloadWithMongoMeta, toReturnValue } from '@xyo-network/payload-mongodb'
+import { PayloadWithMongoMeta, toPayloadWithMongoMeta, toReturnValue } from '@xyo-network/payload-mongodb'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
-import { toPayloadWithMongoMeta, validByType } from './lib'
+import { validByType } from './lib'
 
 const MongoDBArchivistBase = MongoDBModuleMixin(AbstractArchivist)
 

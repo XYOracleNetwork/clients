@@ -1,3 +1,3 @@
 export * from './BoundWitness'
+export * from './Mappings'
 export * from './Payload'
-export * from './toReturnValue'
