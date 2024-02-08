@@ -1,6 +1,9 @@
 import { deepOmitPrefixedFields } from '@xyo-network/hash'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, PayloadMetaFields } from '@xyo-network/payload-model'
+import { BoundWitnessWithMongoMeta, PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
 
-export const toReturnValue = (value: Payload): Payload => {
-  return deepOmitPrefixedFields(value, '_')
+export const toReturnValue = (value: PayloadWithMongoMeta | BoundWitnessWithMongoMeta): Payload<PayloadMetaFields> => {
+  const { _$hash, _$meta, ...other } = value
+  const sanitized = deepOmitPrefixedFields(other, '_')
+  return { $hash: _$hash, $meta: _$meta, ...sanitized } as Payload<PayloadMetaFields>
 }

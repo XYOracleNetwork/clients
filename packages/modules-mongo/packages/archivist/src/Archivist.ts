@@ -42,7 +42,7 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
     remainingHashes = remainingHashes.filter((hash) => !bwsHashes.includes(hash))
 
     const foundPayloads = [...dataPayloads, ...dataBws, ...payloads, ...bws] as PayloadWithMongoMeta<Payload & { _$hash: Hash; _$meta?: unknown }>[]
-    return foundPayloads.map(({ _$hash, _$meta, ...other }) => ({ $hash: _$hash, $meta: _$meta, ...other })).map(toReturnValue)
+    return foundPayloads.map(toReturnValue)
   }
 
   protected override async insertHandler(payloads: Payload[]): Promise<Payload[]> {
