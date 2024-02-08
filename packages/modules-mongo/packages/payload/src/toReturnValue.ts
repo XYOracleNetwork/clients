@@ -1,7 +1,9 @@
 import { BoundWitness } from '@xyo-network/boundwitness-model'
 import { deepOmitPrefixedFields } from '@xyo-network/hash'
 import { Payload, PayloadMetaFields } from '@xyo-network/payload-model'
-import { BoundWitnessWithMongoMeta, PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
+
+import { BoundWitnessWithMongoMeta } from './BoundWitness'
+import { PayloadWithMongoMeta } from './Payload'
 
 export const toReturnValue = <
   T = PayloadWithMongoMeta | BoundWitnessWithMongoMeta,
