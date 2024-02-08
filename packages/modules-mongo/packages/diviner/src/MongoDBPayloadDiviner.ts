@@ -31,62 +31,35 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
       filter._timestamp = parsedOrder === 'desc' ? { $lt: parsedTimestamp } : { $gt: parsedTimestamp }
     }
 
+    // TODO: Optimize for single schema supplied too
+    if (schemas?.length) filter.schema = { $in: schemas }
+    // Add additional filter criteria
+    if (Object.keys(props).length > 0) {
+      const additionalFilterCriteria = Object.entries(props)
+      for (const [prop, propFilter] of additionalFilterCriteria) {
+        // Skip any reserved properties
+        if (`${prop}`?.startsWith('$')) continue
+        // Add the filter criteria
+        filter[prop as keyof Payload] = Array.isArray(propFilter) ? { $in: propFilter } : (propFilter as string)
+      }
+    }
+
     let result
 
     if (hash) {
       filter._hash = hash
-      // TODO: Optimize for single schema supplied too
-      if (schemas?.length) filter.schema = { $in: schemas }
-
-      // Add additional filter criteria
-      if (Object.keys(props).length > 0) {
-        const additionalFilterCriteria = Object.entries(props)
-        for (const [prop, propFilter] of additionalFilterCriteria) {
-          // Skip any reserved properties
-          if (`${prop}`?.startsWith('$')) continue
-          // Add the filter criteria
-          filter[prop as keyof Payload] = Array.isArray(propFilter) ? { $in: propFilter } : (propFilter as string)
-        }
-      }
       const filtered = await this.payloads.find(filter)
       result = (await filtered.sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(removeId)
-
       if (!result.length) {
         delete filter._hash
         filter._$hash = hash
-        // TODO: Optimize for single schema supplied too
-        if (schemas?.length) filter.schema = { $in: schemas }
-
-        // Add additional filter criteria
-        if (Object.keys(props).length > 0) {
-          const additionalFilterCriteria = Object.entries(props)
-          for (const [prop, propFilter] of additionalFilterCriteria) {
-            // Skip any reserved properties
-            if (`${prop}`?.startsWith('$')) continue
-            // Add the filter criteria
-            filter[prop as keyof Payload] = Array.isArray(propFilter) ? { $in: propFilter } : (propFilter as string)
-          }
-        }
         const filtered = await this.payloads.find(filter)
         result = (await filtered.sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(removeId)
       }
     } else {
-      if (schemas?.length) filter.schema = { $in: schemas }
-
-      // Add additional filter criteria
-      if (Object.keys(props).length > 0) {
-        const additionalFilterCriteria = Object.entries(props)
-        for (const [prop, propFilter] of additionalFilterCriteria) {
-          // Skip any reserved properties
-          if (`${prop}`?.startsWith('$')) continue
-          // Add the filter criteria
-          filter[prop as keyof Payload] = Array.isArray(propFilter) ? { $in: propFilter } : (propFilter as string)
-        }
-      }
       const filtered = await this.payloads.find(filter)
       result = (await filtered.sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(removeId)
     }
-
     return await Promise.all(result.map((payload) => toPayloadWithMongoMeta(payload)))
   }
 
