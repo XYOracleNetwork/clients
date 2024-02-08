@@ -13,6 +13,8 @@
     "@xylabs/hex": "^2.14.0",
     "@xylabs/object": "^2.89.0",
     "@xyo-network/boundwitness-model": "^2.89.0",
+    "@xyo-network/hash": "^2.89.0",
+    "@xyo-network/payload-builder": "^2.89.0",
     "@xyo-network/payload-model": "^2.89.0"
   },
   "devDependencies": {
