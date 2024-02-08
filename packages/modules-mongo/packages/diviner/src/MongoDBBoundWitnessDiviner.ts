@@ -1,5 +1,3 @@
-/* eslint-disable max-statements */
-/* eslint-disable complexity */
 import { flatten } from '@xylabs/array'
 import { exists } from '@xylabs/exists'
 import { hexFromHexString } from '@xylabs/hex'
@@ -37,35 +35,26 @@ export class MongoDBBoundWitnessDiviner extends MongoDBDivinerBase {
       filter.timestamp = parsedOrder === 'desc' ? { $exists: true, $lt: timestamp } : { $exists: true, $gt: timestamp }
     }
 
+    // NOTE: Defaulting to $all since it makes the most sense when singing addresses are supplied
+    // but based on how MongoDB implements multi-key indexes $in might be much faster and we could
+    // solve the multi-sig problem via multiple API calls when multi-sig is desired instead of
+    // potentially impacting performance for all single-address queries
+    const allAddresses = flatten(address, addresses)
+      .map((x) => hexFromHexString(x, { prefix: false }))
+      .filter(exists)
+    if (allAddresses.length) filter.addresses = allAddresses.length === 1 ? allAddresses[0] : { $all: allAddresses }
+    if (payload_hashes?.length) filter.payload_hashes = { $in: payload_hashes }
+    if (payload_schemas?.length) filter.payload_schemas = { $in: payload_schemas }
+
     if (hash) {
       const filter1 = { ...filter }
       if (hash) filter1._hash = hash
-      // NOTE: Defaulting to $all since it makes the most sense when singing addresses are supplied
-      // but based on how MongoDB implements multi-key indexes $in might be much faster and we could
-      // solve the multi-sig problem via multiple API calls when multi-sig is desired instead of
-      // potentially impacting performance for all single-address queries
-      const allAddresses = flatten(address, addresses)
-        .map((x) => hexFromHexString(x, { prefix: false }))
-        .filter(exists)
-      if (allAddresses.length) filter1.addresses = allAddresses.length === 1 ? allAddresses[0] : { $all: allAddresses }
-      if (payload_hashes?.length) filter1.payload_hashes = { $in: payload_hashes }
-      if (payload_schemas?.length) filter1.payload_schemas = { $in: payload_schemas }
       const resultSetOne = (
         await (await this.boundWitnesses.find(filter1)).sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()
       ).map(removeId)
 
       const filter2 = { ...filter }
       if (hash) filter2._$hash = hash
-      // NOTE: Defaulting to $all since it makes the most sense when singing addresses are supplied
-      // but based on how MongoDB implements multi-key indexes $in might be much faster and we could
-      // solve the multi-sig problem via multiple API calls when multi-sig is desired instead of
-      // potentially impacting performance for all single-address queries
-      const allAddresses2 = flatten(address, addresses)
-        .map((x) => hexFromHexString(x, { prefix: false }))
-        .filter(exists)
-      if (allAddresses2.length) filter2.addresses = allAddresses.length === 1 ? allAddresses[0] : { $all: allAddresses }
-      if (payload_hashes?.length) filter2.payload_hashes = { $in: payload_hashes }
-      if (payload_schemas?.length) filter2.payload_schemas = { $in: payload_schemas }
       const resultSetTwo = (
         await (await this.boundWitnesses.find(filter2)).sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()
       ).map(removeId)
@@ -79,16 +68,6 @@ export class MongoDBBoundWitnessDiviner extends MongoDBDivinerBase {
       )
       return result
     } else {
-      // NOTE: Defaulting to $all since it makes the most sense when singing addresses are supplied
-      // but based on how MongoDB implements multi-key indexes $in might be much faster and we could
-      // solve the multi-sig problem via multiple API calls when multi-sig is desired instead of
-      // potentially impacting performance for all single-address queries
-      const allAddresses = flatten(address, addresses)
-        .map((x) => hexFromHexString(x, { prefix: false }))
-        .filter(exists)
-      if (allAddresses.length) filter.addresses = allAddresses.length === 1 ? allAddresses[0] : { $all: allAddresses }
-      if (payload_hashes?.length) filter.payload_hashes = { $in: payload_hashes }
-      if (payload_schemas?.length) filter.payload_schemas = { $in: payload_schemas }
       const result = (
         await (await this.boundWitnesses.find(filter)).sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()
       ).map(removeId)
