@@ -5,17 +5,6 @@ import { Payload, PayloadMetaFields } from '@xyo-network/payload-model'
 import { BoundWitnessWithMongoMeta } from '../BoundWitness'
 import { PayloadWithMongoMeta } from '../Payload'
 
-// export const toReturnValue = <
-//   T = PayloadWithMongoMeta | BoundWitnessWithMongoMeta,
-//   U = T extends PayloadWithMongoMeta ? Payload<PayloadMetaFields> : BoundWitness,
-// >(
-//   value: T,
-// ): U => {
-//   const { _$hash, _$meta, ...other } = value as PayloadWithMongoMeta
-//   const sanitized = deepOmitPrefixedFields(other, '_')
-//   return { $hash: _$hash, $meta: _$meta, ...sanitized } as U
-// }
-
 export const payloadFromDbRepresentation = (value: PayloadWithMongoMeta): Payload<PayloadMetaFields> => {
   const { _$hash, _$meta, ...other } = value
   const sanitized = deepOmitPrefixedFields(other, '_')
