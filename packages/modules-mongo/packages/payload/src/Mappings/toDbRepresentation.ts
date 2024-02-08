@@ -1,4 +1,4 @@
-import { BoundWitness } from '@xyo-network/boundwitness-model'
+import { BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
 
@@ -24,4 +24,8 @@ export const boundWitnessToDbRepresentation = async <T extends BoundWitness>(pay
   const _hash = await PayloadBuilder.hash(built)
   const { $hash, $meta, ...fields } = built
   return { ...fields, _$hash: $hash, _$meta: $meta, _hash, _timestamp: Date.now() } as unknown as BoundWitnessMongoMeta<T>
+}
+
+export const toDbRepresentation = <T extends Payload | BoundWitness>(value: T) => {
+  return isBoundWitness(value) ? boundWitnessToDbRepresentation(value) : payloadToDbRepresentation(value)
 }

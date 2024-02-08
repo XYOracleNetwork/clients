@@ -1,2 +1,2 @@
 export * from './fromDbRepresentation'
-export * from './toPayloadWithMongoMeta'
+export * from './toDbRepresentation'
