@@ -3,11 +3,10 @@
 import { AnyObject } from '@xylabs/object'
 import { PayloadDiviner } from '@xyo-network/diviner-payload-abstract'
 import { isPayloadDivinerQueryPayload, PayloadDivinerConfigSchema, PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
-import { DefaultLimit, DefaultMaxTimeMS, DefaultOrder, MongoDBModuleMixin, removeId } from '@xyo-network/module-abstract-mongodb'
+import { DefaultLimit, DefaultMaxTimeMS, DefaultOrder, MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
 import { Payload } from '@xyo-network/payload-model'
+import { toReturnValue } from '@xyo-network/payload-mongodb'
 import { Filter, SortDirection } from 'mongodb'
-
-import { toPayloadWithMongoMeta } from './lib'
 
 const MongoDBDivinerBase = MongoDBModuleMixin(PayloadDiviner)
 
@@ -49,18 +48,18 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
     if (hash) {
       filter._hash = hash
       const filtered = await this.payloads.find(filter)
-      result = (await filtered.sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(removeId)
+      result = (await filtered.sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(toReturnValue)
       if (!result.length) {
         delete filter._hash
         filter._$hash = hash
         const filtered = await this.payloads.find(filter)
-        result = (await filtered.sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(removeId)
+        result = (await filtered.sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(toReturnValue)
       }
     } else {
       const filtered = await this.payloads.find(filter)
-      result = (await filtered.sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(removeId)
+      result = (await filtered.sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(toReturnValue)
     }
-    return await Promise.all(result.map((payload) => toPayloadWithMongoMeta(payload)))
+    return result.map(toReturnValue)
   }
 
   protected override async startHandler() {
