@@ -3,12 +3,24 @@ import { BoundWitness } from '@xyo-network/boundwitness-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
 import { BoundWitnessWithPartialMongoMeta } from '@xyo-network/payload-mongodb'
-import { ReasonPhrases } from 'http-status-codes'
+import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 
-import { getHash, getNewBlocksWithPayloads, insertBlock, insertPayload } from '../../../testUtil'
+import { getHash, getNewBlocksWithPayloads, getRequestClient, insertBlock, insertPayload } from '../../../testUtil'
 
 describe('/:hash', () => {
   const account = Account.randomSync()
+  describe('with nonexistent hash', () => {
+    beforeAll(() => {
+      jest.spyOn(console, 'error').mockImplementation(() => {
+        // Stop expected errors from being logged
+      })
+    })
+    it(`returns ${ReasonPhrases.NOT_FOUND}`, async () => {
+      const hash = 'non_existent_hash'
+      const response = await getRequestClient().get(`/${hash}`)
+      expect(response.status).toBe(StatusCodes.NOT_FOUND)
+    })
+  })
   describe('return format is', () => {
     let boundWitness: BoundWitnessWithPartialMongoMeta
     let payload: Payload
@@ -46,16 +58,6 @@ describe('/:hash', () => {
       expect(Array.isArray(response)).toBe(false)
       const actual = response as Payload
       expect(actual.schema).toEqual(payload?.schema)
-    })
-  })
-  describe('with nonexistent hash', () => {
-    beforeAll(() => {
-      jest.spyOn(console, 'error').mockImplementation(() => {
-        // Stop expected errors from being logged
-      })
-    })
-    it(`returns ${ReasonPhrases.NOT_FOUND}`, async () => {
-      await getHash('non_existent_hash')
     })
   })
 })
