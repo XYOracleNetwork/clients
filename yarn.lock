@@ -6356,6 +6356,7 @@ __metadata:
     "@xyo-network/address-payload-plugin": "npm:^2.89.0"
     "@xyo-network/archivist-model": "npm:^2.89.0"
     "@xyo-network/archivist-wrapper": "npm:^2.89.0"
+    "@xyo-network/boundwitness-builder": "npm:^2.89.0"
     "@xyo-network/boundwitness-model": "npm:^2.89.0"
     "@xyo-network/diviner": "npm:^2.89.0"
     "@xyo-network/diviner-abstract": "npm:^2.89.0"
