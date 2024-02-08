@@ -1,11 +1,9 @@
-/* eslint-disable max-statements */
-/* eslint-disable complexity */
 import { AnyObject } from '@xylabs/object'
 import { PayloadDiviner } from '@xyo-network/diviner-payload-abstract'
 import { isPayloadDivinerQueryPayload, PayloadDivinerConfigSchema, PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
 import { DefaultLimit, DefaultMaxTimeMS, DefaultOrder, MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
 import { Payload } from '@xyo-network/payload-model'
-import { toReturnValue } from '@xyo-network/payload-mongodb'
+import { fromDbRepresentation } from '@xyo-network/payload-mongodb'
 import { Filter, SortDirection } from 'mongodb'
 
 const MongoDBDivinerBase = MongoDBModuleMixin(PayloadDiviner)
@@ -48,18 +46,18 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
     if (hash) {
       filter._hash = hash
       const filtered = await this.payloads.find(filter)
-      result = (await filtered.sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(toReturnValue)
+      result = (await filtered.sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(fromDbRepresentation)
       if (!result.length) {
         delete filter._hash
         filter._$hash = hash
         const filtered = await this.payloads.find(filter)
-        result = (await filtered.sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(toReturnValue)
+        result = (await filtered.sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(fromDbRepresentation)
       }
     } else {
       const filtered = await this.payloads.find(filter)
-      result = (await filtered.sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(toReturnValue)
+      result = (await filtered.sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(fromDbRepresentation)
     }
-    return result.map(toReturnValue)
+    return result.map(fromDbRepresentation)
   }
 
   protected override async startHandler() {

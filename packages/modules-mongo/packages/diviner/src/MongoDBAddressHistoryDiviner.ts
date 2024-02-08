@@ -10,7 +10,7 @@ import {
 } from '@xyo-network/diviner-address-history'
 import { DefaultLimit, DefaultMaxTimeMS, MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
 import { Payload } from '@xyo-network/payload-model'
-import { BoundWitnessWithMongoMeta, toReturnValue } from '@xyo-network/payload-mongodb'
+import { BoundWitnessWithMongoMeta, fromDbRepresentation } from '@xyo-network/payload-mongodb'
 import { Filter } from 'mongodb'
 
 const MongoDBDivinerBase = MongoDBModuleMixin(AddressHistoryDiviner)
@@ -32,7 +32,7 @@ export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
     if (offset) assertEx(typeof offset === 'string', 'MongoDBAddressHistoryDiviner: Supplied offset must be a hash')
     const hash: string = offset as string
     const blocks = await this.getBlocks(hash, addresses, limit || DefaultLimit)
-    return blocks.map(toReturnValue) as unknown as BoundWitness[]
+    return blocks.map(fromDbRepresentation) as BoundWitness[]
   }
 
   protected override async startHandler() {

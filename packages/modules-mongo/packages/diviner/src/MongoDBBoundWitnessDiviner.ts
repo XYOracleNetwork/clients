@@ -10,7 +10,7 @@ import {
 } from '@xyo-network/diviner-boundwitness-model'
 import { DefaultLimit, DefaultMaxTimeMS, DefaultOrder, MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
 import { Payload } from '@xyo-network/payload-model'
-import { BoundWitnessWithMongoMeta, toReturnValue } from '@xyo-network/payload-mongodb'
+import { BoundWitnessWithMongoMeta, fromDbRepresentation } from '@xyo-network/payload-mongodb'
 import { Filter, SortDirection } from 'mongodb'
 
 const MongoDBDivinerBase = MongoDBModuleMixin(BoundWitnessDiviner)
@@ -51,20 +51,20 @@ export class MongoDBBoundWitnessDiviner extends MongoDBDivinerBase {
       if (hash) filter1._hash = hash
       const resultSetOne = (
         await (await this.boundWitnesses.find(filter1)).sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()
-      ).map(toReturnValue)
+      ).map(fromDbRepresentation)
 
       const filter2 = { ...filter }
       if (hash) filter2._$hash = hash
       const resultSetTwo = (
         await (await this.boundWitnesses.find(filter2)).sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()
-      ).map(toReturnValue)
-      const result: BoundWitness[] = [...resultSetOne, ...resultSetTwo].map(toReturnValue)
+      ).map(fromDbRepresentation)
+      const result = [...resultSetOne, ...resultSetTwo].map(fromDbRepresentation) as BoundWitness[]
       return result
     } else {
       const result = (
         await (await this.boundWitnesses.find(filter)).sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()
-      ).map(toReturnValue)
-      return result as unknown as BoundWitness[]
+      ).map(fromDbRepresentation) as BoundWitness[]
+      return result
     }
   }
 
