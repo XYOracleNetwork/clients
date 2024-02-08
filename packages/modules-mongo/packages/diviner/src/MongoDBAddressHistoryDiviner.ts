@@ -8,10 +8,9 @@ import {
   AddressHistoryQueryPayload,
   isAddressHistoryQueryPayload,
 } from '@xyo-network/diviner-address-history'
-import { DefaultLimit, DefaultMaxTimeMS, MongoDBModuleMixin, removeId } from '@xyo-network/module-abstract-mongodb'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
+import { DefaultLimit, DefaultMaxTimeMS, MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
 import { Payload } from '@xyo-network/payload-model'
-import { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
+import { BoundWitnessWithMongoMeta, toReturnValue } from '@xyo-network/payload-mongodb'
 import { Filter } from 'mongodb'
 
 const MongoDBDivinerBase = MongoDBModuleMixin(AddressHistoryDiviner)
@@ -19,7 +18,7 @@ const MongoDBDivinerBase = MongoDBModuleMixin(AddressHistoryDiviner)
 export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
   static override configSchemas = [AddressHistoryDivinerConfigSchema]
 
-  protected override async divineHandler(payloads?: Payload[]): Promise<Payload<BoundWitness>[]> {
+  protected override async divineHandler(payloads?: Payload[]): Promise<BoundWitness[]> {
     const query = payloads?.find<AddressHistoryQueryPayload>(isAddressHistoryQueryPayload)
     // TODO: Support multiple queries
     if (!query) return []
@@ -33,7 +32,7 @@ export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
     if (offset) assertEx(typeof offset === 'string', 'MongoDBAddressHistoryDiviner: Supplied offset must be a hash')
     const hash: string = offset as string
     const blocks = await this.getBlocks(hash, addresses, limit || DefaultLimit)
-    return await Promise.all(blocks.map(removeId).map((block) => PayloadBuilder.build(block)))
+    return blocks.map(toReturnValue) as unknown as BoundWitness[]
   }
 
   protected override async startHandler() {
