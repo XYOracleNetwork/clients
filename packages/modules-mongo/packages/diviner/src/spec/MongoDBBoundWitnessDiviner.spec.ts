@@ -30,7 +30,14 @@ describeIf(hasMongoDBConfig())('MongoDBBoundWitnessDiviner', () => {
   }
   const boundWitnessSdk = new BaseMongoSdk<BoundWitnessWithMongoMeta>(boundWitnessSdkConfig)
   let sut: MongoDBBoundWitnessDiviner
+  let accountA: AccountInstance
+  let accountB: AccountInstance
+  const accounts: AccountInstance[] = []
   beforeAll(async () => {
+    accountA = await Account.create()
+    accounts.push(accountA)
+    accountB = await Account.create()
+    accounts.push(accountB)
     account = await Account.create({ phrase })
     sut = await MongoDBBoundWitnessDiviner.create({
       account,
@@ -39,9 +46,12 @@ describeIf(hasMongoDBConfig())('MongoDBBoundWitnessDiviner', () => {
       logger,
     })
     // TODO: Insert via archivist
-    const payload = await new PayloadBuilder({ schema: 'network.xyo.test' }).build()
-    const bw = (await (await new BoundWitnessBuilder().payload(payload)).witness(account).build())[0]
-    await boundWitnessSdk.insertOne(bw as unknown as BoundWitnessWithMongoMeta)
+    const payloadA = await new PayloadBuilder({ schema: 'network.xyo.test' }).fields({ nonce: 1 }).build()
+    const bwA = (await (await new BoundWitnessBuilder().payload(payloadA)).witness(accountA).build())[0]
+    await boundWitnessSdk.insertOne(bwA as unknown as BoundWitnessWithMongoMeta)
+    const payloadB = await new PayloadBuilder({ schema: 'network.xyo.test' }).fields({ nonce: 2 }).build()
+    const bwB = (await (await new BoundWitnessBuilder().payload(payloadB)).witness(accountB).build())[0]
+    await boundWitnessSdk.insertOne(bwB as unknown as BoundWitnessWithMongoMeta)
   })
   describe('divine', () => {
     describe('with valid query', () => {
@@ -52,6 +62,19 @@ describeIf(hasMongoDBConfig())('MongoDBBoundWitnessDiviner', () => {
         const actual = result[0] as BoundWitnessWithPartialMongoMeta
         expect(actual).toBeObject()
         expect(actual.schema).toBe(BoundWitnessSchema)
+      })
+    })
+    describe('with filter for address', () => {
+      it.each([0, 1])('divines BWs for address', async (index) => {
+        const account = accounts[index]
+        const addresses = [account.address]
+        const query: BoundWitnessDivinerQueryPayload = { addresses, limit: 1, schema: BoundWitnessDivinerQuerySchema }
+        const result = await sut.divine([query])
+        expect(result).toBeArrayOfSize(1)
+        const actual = result[0] as BoundWitnessWithPartialMongoMeta
+        expect(actual).toBeObject()
+        expect(actual.schema).toBe(BoundWitnessSchema)
+        expect(actual.addresses).toContain(account.address)
       })
     })
   })

@@ -5,10 +5,10 @@ import { ArchivistConfigSchema, ArchivistInsertQuerySchema } from '@xyo-network/
 import { MongoDBArchivistConfigSchema } from '@xyo-network/archivist-model-mongodb'
 import { MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
 import { Payload } from '@xyo-network/payload-model'
-import { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
+import { fromDbRepresentation, PayloadWithMongoMeta, toDbRepresentation } from '@xyo-network/payload-mongodb'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
-import { toPayloadWithMongoMeta, toReturnValue, validByType } from './lib'
+import { validByType } from './lib'
 
 const MongoDBArchivistBase = MongoDBModuleMixin(AbstractArchivist)
 
@@ -42,18 +42,18 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
     remainingHashes = remainingHashes.filter((hash) => !bwsHashes.includes(hash))
 
     const foundPayloads = [...dataPayloads, ...dataBws, ...payloads, ...bws] as PayloadWithMongoMeta<Payload & { _$hash: Hash; _$meta?: unknown }>[]
-    return foundPayloads.map(({ _$hash, _$meta, ...other }) => ({ $hash: _$hash, $meta: _$meta, ...other })).map(toReturnValue)
+    return foundPayloads.map(fromDbRepresentation)
   }
 
   protected override async insertHandler(payloads: Payload[]): Promise<Payload[]> {
     const [bw, p] = await validByType(payloads)
-    const payloadsWithExternalMeta = await Promise.all(p.map((x) => toPayloadWithMongoMeta(x)))
+    const payloadsWithExternalMeta = await Promise.all(p.map(toDbRepresentation))
     if (payloadsWithExternalMeta.length) {
       const payloadsResult = await this.payloads.insertMany(payloadsWithExternalMeta)
       if (!payloadsResult.acknowledged || payloadsResult.insertedCount !== payloadsWithExternalMeta.length)
         throw new Error('MongoDBDeterministicArchivist: Error inserting Payloads')
     }
-    const boundWitnessesWithExternalMeta = await Promise.all(bw.map((x) => toPayloadWithMongoMeta(x)))
+    const boundWitnessesWithExternalMeta = await Promise.all(bw.map(toDbRepresentation))
     if (boundWitnessesWithExternalMeta.length) {
       const boundWitnessesResult = await this.boundWitnesses.insertMany(boundWitnessesWithExternalMeta)
       if (!boundWitnessesResult.acknowledged || boundWitnessesResult.insertedCount !== boundWitnessesWithExternalMeta.length)
