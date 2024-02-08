@@ -2,7 +2,6 @@ import { ArchivistInstance, asArchivistInstance } from '@xyo-network/archivist-m
 import { HttpBridge, HttpBridgeConfigSchema } from '@xyo-network/http-bridge'
 import { PayloadAddressRule, PayloadPointerPayload, PayloadPointerSchema, PayloadSchemaRule } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 type DappInfo = [schema: string, address: string]
 
@@ -39,7 +38,7 @@ describe.skip('Generation of automation payload pointers', () => {
     const fields = { reference: [[addressRule], [schemaRule]], schema: PayloadPointerSchema }
     const payload = await new PayloadBuilder<PayloadPointerPayload>({ schema: PayloadPointerSchema }).fields(fields).build()
     await archivist.insert([payload])
-    const hash = await PayloadWrapper.hashAsync(payload)
+    const hash = await PayloadBuilder.dataHash(payload)
     const url = `${nodeUrl}/${hash}`
     console.log(`Dapp: ${schema} Pointer: ${url}`)
   })

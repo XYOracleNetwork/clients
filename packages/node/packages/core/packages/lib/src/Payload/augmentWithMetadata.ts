@@ -1,22 +1,25 @@
-import { PayloadHasher } from '@xyo-network/hash'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type {
-  BoundWitnessMeta,
-  BoundWitnessWithMeta,
-  BoundWitnessWithPartialMeta,
-  PayloadMeta,
-  PayloadWithMeta,
-  PayloadWithPartialMeta,
+  BoundWitnessMongoMeta,
+  BoundWitnessWithMongoMeta,
+  BoundWitnessWithPartialMongoMeta,
+  PayloadMongoMeta,
+  PayloadWithMongoMeta,
+  PayloadWithPartialMongoMeta,
 } from '@xyo-network/payload-mongodb'
 
-export async function augmentWithMetadata(payloads: BoundWitnessWithPartialMeta[], meta: BoundWitnessMeta): Promise<BoundWitnessWithMeta[]>
-export async function augmentWithMetadata(payloads: PayloadWithPartialMeta[], meta: PayloadMeta): Promise<PayloadWithMeta[]>
-export async function augmentWithMetadata(payloads: PayloadWithPartialMeta[], meta: PayloadMeta): Promise<PayloadWithMeta[]> {
+export async function augmentWithMetadata(
+  payloads: BoundWitnessWithPartialMongoMeta[],
+  meta: BoundWitnessMongoMeta,
+): Promise<BoundWitnessWithMongoMeta[]>
+export async function augmentWithMetadata(payloads: PayloadWithPartialMongoMeta[], meta: PayloadMongoMeta): Promise<PayloadWithMongoMeta[]>
+export async function augmentWithMetadata(payloads: PayloadWithPartialMongoMeta[], meta: PayloadMongoMeta): Promise<PayloadWithMongoMeta[]> {
   const result = await Promise.all(
     payloads.map(async (payload) => {
       return {
         ...payload,
         ...meta,
-        _hash: await PayloadHasher.hashAsync(payload),
+        _hash: await PayloadBuilder.dataHash(payload),
       }
     }),
   )

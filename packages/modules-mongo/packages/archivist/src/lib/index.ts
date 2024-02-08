@@ -1,4 +1,3 @@
-export * from './toBoundWitnessWithMeta'
-export * from './toPayloadWithMeta'
+export * from './toPayloadWithMongoMeta'
 export * from './toReturnValue'
 export * from './validByType'

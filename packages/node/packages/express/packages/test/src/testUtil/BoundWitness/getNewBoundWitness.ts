@@ -1,16 +1,15 @@
 import { AccountInstance } from '@xyo-network/account-model'
-import { BoundWitnessBuilder, BoundWitnessBuilderConfig } from '@xyo-network/boundwitness-builder'
+import { BoundWitnessBuilder, BoundWitnessBuilderOptions } from '@xyo-network/boundwitness-builder'
 import { BoundWitness } from '@xyo-network/boundwitness-model'
 import { ModuleError, Payload } from '@xyo-network/payload-model'
 
 import { unitTestSigningAccount } from '../Account'
 import { getNewPayloads } from '../Payload'
 
-const config: BoundWitnessBuilderConfig = { inlinePayloads: false, timestamp: true }
+const config: BoundWitnessBuilderOptions = { timestamp: true }
 
 export const getNewBoundWitness = async (signers?: AccountInstance[], payloads?: Payload[]): Promise<[BoundWitness, Payload[], ModuleError[]]> => {
-  return await new BoundWitnessBuilder(config)
-    .payloads(payloads ?? (await getNewPayloads(1)))
+  return await (await new BoundWitnessBuilder(config).payloads(payloads ?? (await getNewPayloads(1))))
     .witnesses(signers ?? [await unitTestSigningAccount()])
     .build()
 }

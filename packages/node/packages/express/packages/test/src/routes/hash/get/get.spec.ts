@@ -1,8 +1,8 @@
 import { Account } from '@xyo-network/account'
 import { BoundWitness } from '@xyo-network/boundwitness-model'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
-import { BoundWitnessWithPartialMeta } from '@xyo-network/payload-mongodb'
-import { PayloadWrapper } from '@xyo-network/payload-wrapper'
+import { BoundWitnessWithPartialMongoMeta } from '@xyo-network/payload-mongodb'
 import { ReasonPhrases } from 'http-status-codes'
 
 import { getHash, getNewBlocksWithPayloads, insertBlock, insertPayload } from '../../../testUtil'
@@ -10,7 +10,7 @@ import { getHash, getNewBlocksWithPayloads, insertBlock, insertPayload } from '.
 describe('/:hash', () => {
   const account = Account.randomSync()
   describe('return format is', () => {
-    let boundWitness: BoundWitnessWithPartialMeta
+    let boundWitness: BoundWitnessWithPartialMongoMeta
     let payload: Payload
     let boundWitnessHash: string
     let payloadHash: string
@@ -19,10 +19,10 @@ describe('/:hash', () => {
       expect(blocks).toBeTruthy()
       boundWitness = blocks[0]
       expect(boundWitness).toBeTruthy()
-      boundWitnessHash = await PayloadWrapper.hashAsync(boundWitness)
+      boundWitnessHash = await PayloadBuilder.dataHash(boundWitness)
       expect(boundWitnessHash).toBeTruthy()
-      payload = boundWitness?._payloads?.[0] as Payload
-      expect(payload).toBeTruthy()
+      //payload = boundWitness?._payloads?.[0] as Payload
+      //expect(payload).toBeTruthy()
       payloadHash = boundWitness?.payload_hashes?.[0]
       expect(payloadHash).toBeTruthy()
       const blockResponse = await insertBlock(blocks)

@@ -1,9 +1,6 @@
-import { EmptyObject } from '@xyo-network/object'
 import { Payload } from '@xyo-network/payload-model'
 
-import { PayloadMetaBase } from './PayloadMeta'
+import { PayloadMongoMeta } from './PayloadMeta'
 
-export type PayloadMeta<T extends EmptyObject = EmptyObject> = T & PayloadMetaBase
-export type PartialPayloadMeta<T extends EmptyObject = EmptyObject> = T & Partial<PayloadMetaBase>
-export type PayloadWithMeta<T extends EmptyObject = EmptyObject> = Payload<T & PayloadMetaBase>
-export type PayloadWithPartialMeta<T extends EmptyObject = EmptyObject> = Payload<T & Partial<PayloadMetaBase>>
+export type PayloadWithMongoMeta<T extends Payload = Payload> = T & PayloadMongoMeta
+export type PayloadWithPartialMongoMeta<T extends Payload = Payload> = T & Partial<PayloadMongoMeta>

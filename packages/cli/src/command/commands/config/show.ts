@@ -1,5 +1,5 @@
+import { EmptyObject } from '@xylabs/object'
 import { ModuleConfig, ModuleConfigSchema } from '@xyo-network/module-model'
-import { EmptyObject } from '@xyo-network/object'
 import { CommandBuilder, CommandModule } from 'yargs'
 
 import { readFileDeep } from '../../../lib'

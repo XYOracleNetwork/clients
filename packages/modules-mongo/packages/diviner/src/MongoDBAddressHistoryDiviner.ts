@@ -9,8 +9,9 @@ import {
   isAddressHistoryQueryPayload,
 } from '@xyo-network/diviner-address-history'
 import { DefaultLimit, DefaultMaxTimeMS, MongoDBModuleMixin, removeId } from '@xyo-network/module-abstract-mongodb'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
-import { BoundWitnessWithMeta } from '@xyo-network/payload-mongodb'
+import { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { Filter } from 'mongodb'
 
 const MongoDBDivinerBase = MongoDBModuleMixin(AddressHistoryDiviner)
@@ -32,7 +33,7 @@ export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
     if (offset) assertEx(typeof offset === 'string', 'MongoDBAddressHistoryDiviner: Supplied offset must be a hash')
     const hash: string = offset as string
     const blocks = await this.getBlocks(hash, addresses, limit || DefaultLimit)
-    return blocks.map(removeId)
+    return await Promise.all(blocks.map(removeId).map((block) => PayloadBuilder.build(block)))
   }
 
   protected override async startHandler() {
@@ -41,13 +42,14 @@ export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
     return true
   }
 
-  private getBlocks = async (hash: string, address: string, limit: number): Promise<BoundWitnessWithMeta[]> => {
+  private getBlocks = async (hash: string, address: string, limit: number): Promise<BoundWitnessWithMongoMeta[]> => {
     let nextHash = hash
-    const blocks: BoundWitnessWithMeta[] = []
+    const blocks: BoundWitnessWithMongoMeta[] = []
     for (let i = 0; i < limit; i++) {
-      const filter: Filter<BoundWitnessWithMeta> = { addresses: address }
-      if (nextHash) filter._hash = nextHash
-      const block = (await (await this.boundWitnesses.find(filter)).sort({ _timestamp: -1 }).limit(1).maxTimeMS(DefaultMaxTimeMS).toArray()).pop()
+      const filter: Filter<BoundWitnessWithMongoMeta> = { addresses: address }
+      if (nextHash) filter._$hash = nextHash
+      const found = await this.boundWitnesses.find(filter)
+      const block = (await found.sort({ _timestamp: -1 }).limit(1).maxTimeMS(DefaultMaxTimeMS).toArray()).pop()
       if (!block) break
       blocks.push(block)
       const addressIndex = block.addresses.findIndex((value) => value === address)

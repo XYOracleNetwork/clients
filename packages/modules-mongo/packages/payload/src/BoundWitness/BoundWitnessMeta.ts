@@ -1,7 +1,11 @@
-import { PayloadMeta, PayloadWithPartialMeta } from '../Payload'
+import { Payload } from '@xyo-network/payload-model'
 
-export type BoundWitnessMetaBase<P extends PayloadWithPartialMeta = PayloadWithPartialMeta> = PayloadMeta<{
-  _payloads?: P[]
-  _source_ip?: string
-  _user_agent?: string
-}>
+import { PayloadWithMongoMeta } from '../Payload'
+
+export type BoundWitnessMongoMeta<P extends Payload = Payload> = PayloadWithMongoMeta<
+  P & {
+    //_payloads?: PayloadWithPartialMongoMeta<P>[]
+    _source_ip?: string
+    _user_agent?: string
+  }
+>

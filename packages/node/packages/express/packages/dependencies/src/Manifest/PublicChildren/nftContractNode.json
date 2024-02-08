@@ -32,9 +32,21 @@
                   },
                   {
                     "key": {
+                      "_$hash": 1
+                    },
+                    "name": "nft_contract_diviner_address_state_bound_witnesses.IX__$hash"
+                  },
+                  {
+                    "key": {
                       "_hash": 1
                     },
                     "name": "nft_contract_diviner_address_state_payloads.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "_$hash": 1
+                    },
+                    "name": "nft_contract_diviner_address_state_payloads.IX__$hash"
                   }
                 ]
               }
@@ -142,9 +154,21 @@
                   },
                   {
                     "key": {
+                      "_$hash": 1
+                    },
+                    "name": "bound_witnesses.IX__$hash"
+                  },
+                  {
+                    "key": {
                       "_hash": 1
                     },
                     "name": "payloads.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "_$hash": 1
+                    },
+                    "name": "payloads.IX__$hash"
                   }
                 ]
               }
@@ -258,9 +282,21 @@
                   },
                   {
                     "key": {
+                      "_$hash": 1
+                    },
+                    "name": "nft_contract_bound_witnesses.IX__$hash"
+                  },
+                  {
+                    "key": {
                       "_hash": 1
                     },
                     "name": "nft_contract_payloads.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "_$hash": 1
+                    },
+                    "name": "nft_contract_payloads.IX__$hash"
                   },
                   {
                     "key": {

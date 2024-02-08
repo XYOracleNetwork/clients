@@ -32,9 +32,21 @@
                   },
                   {
                     "key": {
+                      "_$hash": 1
+                    },
+                    "name": "nft_metadata_address_state_bound_witnesses.IX__$hash"
+                  },
+                  {
+                    "key": {
                       "_hash": 1
                     },
                     "name": "nft_metadata_address_state_payloads.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "_$hash": 1
+                    },
+                    "name": "nft_metadata_address_state_payloads.IX__$hash"
                   }
                 ]
               }
@@ -143,9 +155,21 @@
                   },
                   {
                     "key": {
+                      "_$hash": 1
+                    },
+                    "name": "nft_metadata_index_bound_witnesses.IX__$hash"
+                  },
+                  {
+                    "key": {
                       "_hash": 1
                     },
                     "name": "nft_metadata_index_payloads.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "_$hash": 1
+                    },
+                    "name": "nft_metadata_index_payloads.IX__$hash"
                   },
                   {
                     "key": {
@@ -434,9 +458,21 @@
                   },
                   {
                     "key": {
+                      "_$hash": 1
+                    },
+                    "name": "nft_metadata_bound_witnesses.IX__$hash"
+                  },
+                  {
+                    "key": {
                       "_hash": 1
                     },
                     "name": "nft_metadata_payloads.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "_$hash": 1
+                    },
+                    "name": "nft_metadata_payloads.IX__$hash"
                   }
                 ]
               }

@@ -42,9 +42,21 @@
                   },
                   {
                     "key": {
+                      "_$hash": 1
+                    },
+                    "name": "address_state_bound_witnesses.IX__$hash"
+                  },
+                  {
+                    "key": {
                       "_hash": 1
                     },
                     "name": "address_state_payloads.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "_$hash": 1
+                    },
+                    "name": "address_state_payloads.IX__$hash"
                   }
                 ]
               }
@@ -158,9 +170,21 @@
                   },
                   {
                     "key": {
+                      "_$hash": 1
+                    },
+                    "name": "bound_witnesses.IX__$hash"
+                  },
+                  {
+                    "key": {
                       "_hash": 1
                     },
                     "name": "payloads.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "_$hash": 1
+                    },
+                    "name": "payloads.IX__$hash"
                   }
                 ]
               }
@@ -280,9 +304,21 @@
                   },
                   {
                     "key": {
+                      "_$hash": 1
+                    },
+                    "name": "thumbnail_bound_witnesses.IX__$hash"
+                  },
+                  {
+                    "key": {
                       "_hash": 1
                     },
                     "name": "thumbnail_payloads.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "_$hash": 1
+                    },
+                    "name": "thumbnail_payloads.IX__$hash"
                   },
                   {
                     "key": {
@@ -456,9 +492,21 @@
                   },
                   {
                     "key": {
+                      "_$hash": 1
+                    },
+                    "name": "bound_witnesses.IX__$hash"
+                  },
+                  {
+                    "key": {
                       "_hash": 1
                     },
                     "name": "payloads.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "_$hash": 1
+                    },
+                    "name": "payloads.IX__$hash"
                   }
                 ]
               }
@@ -750,9 +798,7 @@
             "config": {
               "accountPath": "3'/3'/1'",
               "archiving": {
-                "archivists": [
-                  "ImageThumbnailArchivist"
-                ]
+                "archivists": ["ImageThumbnailArchivist"]
               },
               "archivist": "ImageThumbnailArchivist",
               "language": "javascript",

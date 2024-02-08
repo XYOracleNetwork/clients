@@ -1,5 +1,5 @@
+import { EmptyObject } from '@xylabs/object'
 import { DivinerDivineQuerySchema, isDivinerInstance } from '@xyo-network/diviner-model'
-import { EmptyObject } from '@xyo-network/object'
 import { parse } from 'path'
 import { ArgumentsCamelCase, Argv, CommandBuilder, CommandModule } from 'yargs'
 

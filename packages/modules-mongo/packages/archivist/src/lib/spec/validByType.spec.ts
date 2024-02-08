@@ -1,36 +1,27 @@
 import { Account } from '@xyo-network/account'
 import { ArchivistInsertQuery, ArchivistInsertQuerySchema } from '@xyo-network/archivist-model'
-import { BoundWitnessBuilder, BoundWitnessBuilderConfig, QueryBoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
-import { BoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
+import { BoundWitnessBuilder, QueryBoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
+import { BoundWitness } from '@xyo-network/boundwitness-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
-import { PayloadWithMeta } from '@xyo-network/payload-mongodb'
-import { PayloadWrapper } from '@xyo-network/payload-wrapper'
+import { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
 
 import { validByType } from '../validByType'
 
-const config: BoundWitnessBuilderConfig = { inlinePayloads: true }
-
-type DebugPayloadWithMeta = PayloadWithMeta & { nonce: string }
+type DebugPayloadWithMeta = Partial<PayloadWithMongoMeta<{ nonce: string; schema: string }>> & { schema: string }
 
 describe('validByType', () => {
   const account = Account.randomSync()
-  const payload1 = new PayloadBuilder<DebugPayloadWithMeta>({ schema: 'network.xyo.debug' }).fields({ nonce: '1' }).build()
-  const payload2 = new PayloadBuilder<DebugPayloadWithMeta>({ schema: 'network.xyo.debug' }).fields({ nonce: '2' }).build()
   describe('QueryBoundWitness with Payloads & nested BoundWitnesses', () => {
-    let result: [BoundWitnessWrapper[], PayloadWrapper[]]
+    let result: [BoundWitness[], Payload[]]
     beforeAll(async () => {
-      const inner = await new BoundWitnessBuilder(config)
-        .witness(account)
-        .payload(await payload2)
-        .build()
-      const outer = await new BoundWitnessBuilder(config)
-        .witness(account)
-        .payloads([await payload1, inner[0]])
-        .build()
+      const payload1 = await new PayloadBuilder<DebugPayloadWithMeta>({ schema: 'network.xyo.debug' }).fields({ nonce: '1' }).build()
+      const payload2 = await new PayloadBuilder<DebugPayloadWithMeta>({ schema: 'network.xyo.debug' }).fields({ nonce: '2' }).build()
+      const inner = await (await new BoundWitnessBuilder().witness(account).payload(payload2)).build()
+      const outer = await (await new BoundWitnessBuilder().witness(account).payloads([payload1, inner[0]])).build()
       const queryPayload: ArchivistInsertQuery = { schema: ArchivistInsertQuerySchema }
-      const query = await new QueryBoundWitnessBuilder(config).witness(account).query(queryPayload).build()
-      const values = [query[0], outer[0], inner[0], await payload1, await payload2] as Payload[]
+      const query = await (await new QueryBoundWitnessBuilder().witness(account).query(queryPayload)).build()
+      const values = [query[0], outer[0], inner[0], payload1, payload2] as Payload[]
       result = await validByType(values)
     })
     it('extracts the BoundWitnesses', () => {
@@ -42,17 +33,13 @@ describe('validByType', () => {
     })
   })
   describe('BoundWitness with Payloads & nested BoundWitnesses', () => {
-    let result: [BoundWitnessWrapper[], PayloadWrapper[]]
+    let result: [BoundWitness[], Payload[]]
     beforeAll(async () => {
-      const inner = await new BoundWitnessBuilder(config)
-        .witness(account)
-        .payload(await payload2)
-        .build()
-      const outer = await new BoundWitnessBuilder(config)
-        .witness(account)
-        .payloads([await payload1, inner[0]])
-        .build()
-      const values = [outer[0], inner[0], await payload1, await payload2] as Payload[]
+      const payload1 = await new PayloadBuilder<DebugPayloadWithMeta>({ schema: 'network.xyo.debug' }).fields({ nonce: '1' }).build()
+      const payload2 = await new PayloadBuilder<DebugPayloadWithMeta>({ schema: 'network.xyo.debug' }).fields({ nonce: '2' }).build()
+      const inner = await (await new BoundWitnessBuilder().witness(account).payload(payload2)).build()
+      const outer = await (await new BoundWitnessBuilder().witness(account).payloads([payload1, inner[0]])).build()
+      const values: Payload[] = [outer[0], inner[0], payload1, payload2]
       result = await validByType(values)
     })
     it('extracts the BoundWitnesses', () => {
@@ -64,13 +51,12 @@ describe('validByType', () => {
     })
   })
   describe('BoundWitness with Payloads', () => {
-    let result: [BoundWitnessWrapper[], PayloadWrapper[]]
+    let result: [BoundWitness[], Payload[]]
     beforeAll(async () => {
-      const outer = await new BoundWitnessBuilder(config)
-        .witness(account)
-        .payloads([await payload1, await payload2])
-        .build()
-      const values = [outer[0], await payload1, await payload2] as Payload[]
+      const payload1 = await new PayloadBuilder<DebugPayloadWithMeta>({ schema: 'network.xyo.debug' }).fields({ nonce: '1' }).build()
+      const payload2 = await new PayloadBuilder<DebugPayloadWithMeta>({ schema: 'network.xyo.debug' }).fields({ nonce: '2' }).build()
+      const outer = await (await new BoundWitnessBuilder().witness(account).payloads([payload1, payload2])).build()
+      const values = [outer[0], payload1, payload2] as Payload[]
       result = await validByType(values)
     })
     it('extracts the BoundWitnesses', () => {
@@ -82,9 +68,9 @@ describe('validByType', () => {
     })
   })
   describe('BoundWitness without Payloads', () => {
-    let result: [BoundWitnessWrapper[], PayloadWrapper[]]
+    let result: [BoundWitness[], Payload[]]
     beforeAll(async () => {
-      const outer = await new BoundWitnessBuilder(config).witness(account).build()
+      const outer = await new BoundWitnessBuilder().witness(account).build()
       const values = [outer[0]] as Payload[]
       result = await validByType(values)
     })

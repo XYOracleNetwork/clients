@@ -17,8 +17,7 @@ describe('/:hash', () => {
     const payloadB: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseB))()
     const schemas = [schemaA, schemaB]
     beforeAll(async () => {
-      const [bw] = await new BoundWitnessBuilder()
-        .payloads([(await payloadA).jsonPayload(), (await payloadB).jsonPayload()])
+      const [bw] = await (await new BoundWitnessBuilder().payloads([(await payloadA).jsonPayload(), (await payloadB).jsonPayload()]))
         .witness(account)
         .build()
       const payloads: Payload[] = [bw, (await payloadA).jsonPayload(), (await payloadB).jsonPayload()]

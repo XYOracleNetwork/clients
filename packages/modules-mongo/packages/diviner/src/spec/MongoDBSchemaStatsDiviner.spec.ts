@@ -10,7 +10,7 @@ import {
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { JobQueue } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { PayloadWithMeta } from '@xyo-network/payload-mongodb'
+import { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock, MockProxy } from 'jest-mock-extended'
 
@@ -25,7 +25,7 @@ describeIf(hasMongoDBConfig())('MongoDBSchemaStatsDiviner', () => {
   let address: string
   const logger = mock<Console>()
 
-  const payloadSdk: BaseMongoSdk<PayloadWithMeta> = new BaseMongoSdk<PayloadWithMeta>({
+  const payloadSdk: BaseMongoSdk<PayloadWithMongoMeta> = new BaseMongoSdk<PayloadWithMongoMeta>({
     collection: COLLECTIONS.Payloads,
     dbConnectionString: process.env.MONGO_CONNECTION_STRING,
   })
@@ -41,7 +41,7 @@ describeIf(hasMongoDBConfig())('MongoDBSchemaStatsDiviner', () => {
     })
     // TODO: Insert via archivist
     const payload = await new PayloadBuilder({ schema: 'network.xyo.test' }).build()
-    await payloadSdk.insertOne(payload as unknown as PayloadWithMeta)
+    await payloadSdk.insertOne(payload as unknown as PayloadWithMongoMeta)
   })
   describe('divine', () => {
     describe('with address supplied in query', () => {

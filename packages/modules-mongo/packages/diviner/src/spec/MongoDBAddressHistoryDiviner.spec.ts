@@ -1,3 +1,4 @@
+import { delay } from '@xylabs/delay'
 import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
 import { AccountInstance } from '@xyo-network/account-model'
@@ -6,10 +7,11 @@ import { BoundWitnessSchema } from '@xyo-network/boundwitness-model'
 import { AddressHistoryDivinerConfigSchema, AddressHistoryQueryPayload, AddressHistoryQuerySchema } from '@xyo-network/diviner-address-history'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { BoundWitnessWithMeta, BoundWitnessWithPartialMeta } from '@xyo-network/payload-mongodb'
+import { BoundWitnessWithMongoMeta, BoundWitnessWithPartialMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock } from 'jest-mock-extended'
 
+import { toPayloadWithMongoMeta } from '../lib'
 import { MongoDBAddressHistoryDiviner } from '../MongoDBAddressHistoryDiviner'
 
 /**
@@ -21,7 +23,7 @@ describeIf(hasMongoDBConfig())('MongoDBAddressHistoryDiviner', () => {
   let account: AccountInstance
   let address: string
   const logger = mock<Console>()
-  const boundWitnessSdk = new BaseMongoSdk<BoundWitnessWithMeta>({
+  const boundWitnessSdk = new BaseMongoSdk<BoundWitnessWithMongoMeta>({
     collection: COLLECTIONS.BoundWitnesses,
     dbConnectionString: process.env.MONGO_CONNECTION_STRING,
   })
@@ -35,17 +37,22 @@ describeIf(hasMongoDBConfig())('MongoDBAddressHistoryDiviner', () => {
       logger,
     })
     // TODO: Insert via archivist
-    const payload = await new PayloadBuilder({ schema: 'network.xyo.test' }).build()
-    const bw = (await new BoundWitnessBuilder().payload(payload).witness(account).build())[0]
-    await boundWitnessSdk.insertOne(bw as unknown as BoundWitnessWithMeta)
+    const payload = await toPayloadWithMongoMeta(await new PayloadBuilder({ schema: 'network.xyo.test' }).build())
+    const [bw] = await (await new BoundWitnessBuilder().payload(payload)).witness(account).build()
+    const mongoBw = await toPayloadWithMongoMeta(bw)
+    await boundWitnessSdk.insertOne(mongoBw as unknown as BoundWitnessWithMongoMeta)
+    const [bw2] = await (await new BoundWitnessBuilder().payload(payload)).witness(account).build()
+    const mongoBw2 = await toPayloadWithMongoMeta(bw2)
+    await boundWitnessSdk.insertOne(mongoBw2 as unknown as BoundWitnessWithMongoMeta)
+    await delay(1000)
   })
   describe('divine', () => {
     describe('with valid query', () => {
       it('divines', async () => {
-        const query: AddressHistoryQueryPayload = { address, limit: 1, schema: AddressHistoryQuerySchema }
+        const query: AddressHistoryQueryPayload = { address, limit: 2, schema: AddressHistoryQuerySchema }
         const result = await sut.divine([query])
-        expect(result).toBeArrayOfSize(1)
-        const actual = result[0] as BoundWitnessWithPartialMeta
+        expect(result).toBeArrayOfSize(2)
+        const actual = result[0] as BoundWitnessWithPartialMongoMeta
         expect(actual).toBeObject()
         expect(actual.schema).toBe(BoundWitnessSchema)
       })

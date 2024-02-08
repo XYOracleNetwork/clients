@@ -2,11 +2,11 @@ import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
 import { Account, HDWallet } from '@xyo-network/account'
 import { ArchivistInsertQuerySchema, isArchivistInstance, withArchivistInstance } from '@xyo-network/archivist-model'
-import { PayloadHasher } from '@xyo-network/hash'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleConfig, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { TYPES } from '@xyo-network/node-core-types'
 import { NodeInstance } from '@xyo-network/node-model'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { readFile } from 'fs/promises'
 import { Container } from 'inversify'
 
@@ -29,7 +29,7 @@ export const configureMemoryNode = async (container: Container, memoryNode?: Nod
           const payloads = await archivist.get(hashes)
           await Promise.all(
             payloads.map(async (payload) => {
-              configPayloads[await PayloadHasher.hashAsync(assertEx(payload, 'Received null payload'))] = payload as ModuleConfig
+              configPayloads[await PayloadBuilder.dataHash(assertEx(payload, 'Received null payload'))] = payload as ModuleConfig
             }),
           )
         })

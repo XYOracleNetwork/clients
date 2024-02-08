@@ -1,14 +1,14 @@
 import { exists } from '@xylabs/exists'
-import { fulfilledValues } from '@xylabs/promise'
+import { Hash } from '@xylabs/hex'
 import { AbstractArchivist } from '@xyo-network/archivist-abstract'
 import { ArchivistConfigSchema, ArchivistInsertQuerySchema } from '@xyo-network/archivist-model'
 import { MongoDBArchivistConfigSchema } from '@xyo-network/archivist-model-mongodb'
 import { MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
 import { Payload } from '@xyo-network/payload-model'
-import { PayloadWithPartialMeta } from '@xyo-network/payload-mongodb'
+import { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
-import { toBoundWitnessWithMeta, toPayloadWithMeta, toReturnValue, validByType } from './lib'
+import { toPayloadWithMongoMeta, toReturnValue, validByType } from './lib'
 
 const MongoDBArchivistBase = MongoDBModuleMixin(AbstractArchivist)
 
@@ -19,32 +19,48 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
 
   override async head(): Promise<Payload | undefined> {
     const head = await (await this.payloads.find({})).sort({ _timestamp: -1 }).limit(1).toArray()
-    return head[0] ? PayloadWrapper.wrap(head[0]).body() : undefined
+    return head[0] ? (await PayloadWrapper.wrap(head[0])).jsonPayload() : undefined
   }
 
   protected override async getHandler(hashes: string[]): Promise<Payload[]> {
-    const payloads = hashes.map((_hash) => this.payloads.findOne({ _hash }))
-    const bws = hashes.map((_hash) => this.boundWitnesses.findOne({ _hash }))
-    const gets = await Promise.allSettled([payloads, bws].flat())
-    const succeeded = gets.reduce<(PayloadWithPartialMeta | null)[]>(fulfilledValues, []) as Payload[]
-    return succeeded.filter(exists).map(toReturnValue)
+    let remainingHashes = [...hashes]
+
+    const dataPayloads = (await Promise.all(remainingHashes.map((_$hash) => this.payloads.findOne({ _$hash })))).filter(exists)
+    const dataPayloadsHashes = dataPayloads.map((payload) => payload._$hash)
+    remainingHashes = remainingHashes.filter((hash) => !dataPayloadsHashes.includes(hash))
+
+    const dataBws = (await Promise.all(remainingHashes.map((_$hash) => this.boundWitnesses.findOne({ _$hash })))).filter(exists)
+    const dataBwsHashes = dataBws.map((payload) => payload._$hash)
+    remainingHashes = remainingHashes.filter((hash) => !dataBwsHashes.includes(hash))
+
+    const payloads = (await Promise.all(remainingHashes.map((_hash) => this.payloads.findOne({ _hash })))).filter(exists)
+    const payloadsHashes = payloads.map((payload) => payload._hash)
+    remainingHashes = remainingHashes.filter((hash) => !payloadsHashes.includes(hash))
+
+    const bws = (await Promise.all(remainingHashes.map((_hash) => this.boundWitnesses.findOne({ _hash })))).filter(exists)
+    const bwsHashes = bws.map((payload) => payload._hash)
+    remainingHashes = remainingHashes.filter((hash) => !bwsHashes.includes(hash))
+
+    const foundPayloads = [...dataPayloads, ...dataBws, ...payloads, ...bws] as PayloadWithMongoMeta<Payload & { _$hash: Hash; _$meta?: unknown }>[]
+    return foundPayloads.map(({ _$hash, _$meta, ...other }) => ({ $hash: _$hash, $meta: _$meta, ...other })).map(toReturnValue)
   }
 
-  protected override async insertHandler(payloads?: Payload[]): Promise<Payload[]> {
+  protected override async insertHandler(payloads: Payload[]): Promise<Payload[]> {
     const [bw, p] = await validByType(payloads)
-    const payloadsWithMeta = await Promise.all(p.map((x) => toPayloadWithMeta(x)))
-    if (payloadsWithMeta.length) {
-      const payloadsResult = await this.payloads.insertMany(payloadsWithMeta)
-      if (!payloadsResult.acknowledged || payloadsResult.insertedCount !== payloadsWithMeta.length)
+    const payloadsWithExternalMeta = await Promise.all(p.map((x) => toPayloadWithMongoMeta(x)))
+    if (payloadsWithExternalMeta.length) {
+      const payloadsResult = await this.payloads.insertMany(payloadsWithExternalMeta)
+      if (!payloadsResult.acknowledged || payloadsResult.insertedCount !== payloadsWithExternalMeta.length)
         throw new Error('MongoDBDeterministicArchivist: Error inserting Payloads')
     }
-    const boundWitnesses = await Promise.all(bw.map((x) => toBoundWitnessWithMeta(x)))
-    if (boundWitnesses.length) {
-      const boundWitnessesResult = await this.boundWitnesses.insertMany(boundWitnesses)
-      if (!boundWitnessesResult.acknowledged || boundWitnessesResult.insertedCount !== boundWitnesses.length)
+    const boundWitnessesWithExternalMeta = await Promise.all(bw.map((x) => toPayloadWithMongoMeta(x)))
+    if (boundWitnessesWithExternalMeta.length) {
+      const boundWitnessesResult = await this.boundWitnesses.insertMany(boundWitnessesWithExternalMeta)
+      if (!boundWitnessesResult.acknowledged || boundWitnessesResult.insertedCount !== boundWitnessesWithExternalMeta.length)
         throw new Error('MongoDBDeterministicArchivist: Error inserting BoundWitnesses')
     }
-    return payloads ?? []
+
+    return [...boundWitnessesWithExternalMeta, ...payloadsWithExternalMeta]
   }
 
   protected override async startHandler() {

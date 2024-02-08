@@ -5,7 +5,7 @@
     "experimentalDecorators": true,
     "typeRoots": []
   },
-  "exclude": ["./node_modules", "./**/node_modules", "./dist", "./**/dist", "./**/docs", ".*"],
+  "exclude": ["node_modules", "./node_modules", "./**/node_modules", "./dist", "./**/dist", "./**/docs", ".*"],
   "extends": "@xylabs/tsconfig",
   "include": [
     "./src", "./**/src"
