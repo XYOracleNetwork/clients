@@ -38,13 +38,13 @@
   "license": "LGPL-3.0-only",
   "dependencies": {
     "@xylabs/object": "^2.89.0",
-    "@xyo-network/archivist-model": "^2.89.0",
-    "@xyo-network/boundwitness-model": "^2.89.0",
-    "@xyo-network/diviner-payload-model": "^2.89.0",
-    "@xyo-network/module-abstract": "^2.89.0",
-    "@xyo-network/payload-model": "^2.89.0",
+    "@xyo-network/archivist-model": "^2.89.3",
+    "@xyo-network/boundwitness-model": "^2.89.3",
+    "@xyo-network/diviner-payload-model": "^2.89.3",
+    "@xyo-network/module-abstract": "^2.89.3",
+    "@xyo-network/payload-model": "^2.89.3",
     "@xyo-network/payload-mongodb": "workspace:~",
-    "@xyo-network/shared": "^2.89.0",
+    "@xyo-network/shared": "^2.89.3",
     "ajv": "^8.12.0"
   },
   "devDependencies": {
