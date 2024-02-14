@@ -6996,6 +6996,7 @@ __metadata:
     "@xyo-network/node-model": "npm:^2.90.11"
     "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
     "@xyo-network/payload-builder": "npm:^2.90.11"
+    "@xyo-network/payload-model": "npm:^2.90.11"
     "@xyo-network/prometheus-node-plugin": "npm:^2.87.8"
     "@xyo-network/sentinel": "npm:^2.90.11"
     "@xyo-network/url-payload-plugin": "npm:^2.87.8"

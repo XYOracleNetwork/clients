@@ -63,6 +63,7 @@
     "@xyo-network/node-model": "^2.90.11",
     "@xyo-network/open-zeppelin-typechain": "^3.0.5",
     "@xyo-network/payload-builder": "^2.90.11",
+    "@xyo-network/payload-model": "^2.90.11",
     "@xyo-network/prometheus-node-plugin": "^2.87.8",
     "@xyo-network/sentinel": "^2.90.11",
     "@xyo-network/url-payload-plugin": "^2.87.8",
