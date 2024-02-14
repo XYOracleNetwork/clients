@@ -1,8 +1,9 @@
 import { delay } from '@xylabs/delay'
+import { ApiCallJsonResult, isApiCallResult } from '@xyo-network/api-call-witness'
 import { ArchivistInstance } from '@xyo-network/archivist-model'
 import { Bridge } from '@xyo-network/bridge-model'
 import { DivinerInstance } from '@xyo-network/diviner-model'
-import { Payload } from '@xyo-network/payload-model'
+import { WithMeta, WithSources } from '@xyo-network/payload-model'
 import { SentinelInstance } from '@xyo-network/sentinel-model'
 
 import { getArchivistByNameFromChildNode, getBridgeToChildNode, getDivinerByNameFromChildNode, getSentinelByNameFromChildNode } from '../../testUtil'
@@ -46,16 +47,17 @@ describe(`${nodeName}`, () => {
     })
     it('indexes NFT metadata by URI', async () => {
       const query = { schema: 'network.xyo.diviner.payload.query', uri }
-      const results = (await diviner.divine([query])) as unknown as Payload<{ sources: string[]; uri: string }>[]
+      const results = (await diviner.divine([query])) as WithSources<WithMeta<{ schema: string; uri: string }>>[]
       expect(results).toBeDefined()
       expect(results).toBeArrayOfSize(1)
       const result = results[0]
       expect(result.uri).toBe(uri)
+      expect(result.sources).toBeDefined()
       expect(result.sources).toBeArray()
-      expect(result.sources.length).toBeGreaterThan(0)
-      const sources = await archivist.get(result.sources)
-      expect(sources).toBeArrayOfSize(result.sources.length)
-      const responses = sources.filter((p) => p.schema === 'network.xyo.api.call.result') as Payload<{ call: string; data: object }>[]
+      expect(result.sources?.length).toBeGreaterThan(0)
+      const sources = await archivist.get(result.sources ?? [])
+      expect(sources).toBeArrayOfSize(result.sources?.length || 0)
+      const responses = sources.filter(isApiCallResult) as WithSources<WithMeta<ApiCallJsonResult>>[]
       expect(responses).toBeArrayOfSize(1)
       expect(responses[0]?.call).toBe(uri)
       expect(responses[0]?.data).toBeObject()
