@@ -33,7 +33,7 @@ describeIf(hasMongoDBConfig())('MongoDBBoundWitnessStatsDiviner', () => {
     dbConnectionString: process.env.MONGO_CONNECTION_STRING,
   })
   const jobQueue: MockProxy<JobQueue> = mock<JobQueue>()
-  let sut: DivinerInstance
+  let sut: MongoDBBoundWitnessStatsDiviner
   beforeAll(async () => {
     account = await Account.create({ phrase })
     address = account.address
