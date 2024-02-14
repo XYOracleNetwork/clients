@@ -27,11 +27,11 @@ describe(`/${moduleName}`, () => {
     const payloadWrapperD = await PayloadWrapper.wrap(await getNewPayload())
     const payloadWrapperE = await PayloadWrapper.wrap(await getNewPayload())
     payloadWrappers.push(payloadWrapperA, payloadWrapperB, payloadWrapperC, payloadWrapperD, payloadWrapperE)
-    const boundWitnessWrapperA = await BoundWitnessWrapper.parse((await getNewBoundWitness([account], [payloadWrapperA.jsonPayload()]))[0])
-    const boundWitnessWrapperB = await BoundWitnessWrapper.parse((await getNewBoundWitness([account], [payloadWrapperB.jsonPayload()]))[0])
-    const boundWitnessWrapperC = await BoundWitnessWrapper.parse((await getNewBoundWitness([account], [payloadWrapperC.jsonPayload()]))[0])
-    const boundWitnessWrapperD = await BoundWitnessWrapper.parse((await getNewBoundWitness([account], [payloadWrapperD.jsonPayload()]))[0])
-    const boundWitnessWrapperE = await BoundWitnessWrapper.parse((await getNewBoundWitness([account], [payloadWrapperE.jsonPayload()]))[0])
+    const boundWitnessWrapperA = await BoundWitnessWrapper.parse((await getNewBoundWitness([account], [payloadWrapperA.payload]))[0])
+    const boundWitnessWrapperB = await BoundWitnessWrapper.parse((await getNewBoundWitness([account], [payloadWrapperB.payload]))[0])
+    const boundWitnessWrapperC = await BoundWitnessWrapper.parse((await getNewBoundWitness([account], [payloadWrapperC.payload]))[0])
+    const boundWitnessWrapperD = await BoundWitnessWrapper.parse((await getNewBoundWitness([account], [payloadWrapperD.payload]))[0])
+    const boundWitnessWrapperE = await BoundWitnessWrapper.parse((await getNewBoundWitness([account], [payloadWrapperE.payload]))[0])
     boundWitnessWrappers.push(boundWitnessWrapperA, boundWitnessWrapperB, boundWitnessWrapperC, boundWitnessWrapperD, boundWitnessWrapperE)
     cases[0][1].push(payloadWrapperA)
     cases[1][1].push(boundWitnessWrapperA)
@@ -48,7 +48,7 @@ describe(`/${moduleName}`, () => {
   })
   describe('ArchivistInsertQuerySchema', () => {
     it.each(cases)('inserts %s', async (_, wrapped) => {
-      const payloads = wrapped.map((w) => w.jsonPayload())
+      const payloads = wrapped.map((w) => w.payload)
       const response = await archivist.insert(payloads)
       expect(response).toBeArray()
       expect(response.length).toBeGreaterThan(0)
@@ -57,7 +57,7 @@ describe(`/${moduleName}`, () => {
   describe('ArchivistGetQuerySchema', () => {
     describe('with existing hash', () => {
       it.each(cases)('finds %s by hash', async (_, wrapped) => {
-        const hashes = wrapped.map((w) => w.hashSync())
+        const hashes = await Promise.all(wrapped.map((w) => w.hash()))
         const response = await archivist.get(hashes)
         expect(response).toBeArray()
         expect(response).toBeArrayOfSize(wrapped.length)

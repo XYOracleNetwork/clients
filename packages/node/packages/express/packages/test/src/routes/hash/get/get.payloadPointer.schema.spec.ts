@@ -17,10 +17,8 @@ describe('/:hash', () => {
     const payloadB: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseB))()
     const schemas = [schemaA, schemaB]
     beforeAll(async () => {
-      const [bw] = await (await new BoundWitnessBuilder().payloads([(await payloadA).jsonPayload(), (await payloadB).jsonPayload()]))
-        .witness(account)
-        .build()
-      const payloads: Payload[] = [bw, (await payloadA).jsonPayload(), (await payloadB).jsonPayload()]
+      const [bw] = await (await new BoundWitnessBuilder().payloads([(await payloadA).payload, (await payloadB).payload])).witness(account).build()
+      const payloads: Payload[] = [bw, (await payloadA).payload, (await payloadB).payload]
       const payloadResponse = await insertPayload(payloads, account)
       expect(payloadResponse.length).toBe(payloads.length)
     })
@@ -31,7 +29,7 @@ describe('/:hash', () => {
       ])('returns Payload of schema type', async (schema, expected) => {
         const pointerHash = await createPointer([[]], [[schema]])
         const result = await getHash(pointerHash)
-        expect(result).toEqual((await expected).jsonPayload())
+        expect(result).toEqual((await expected).payload)
       })
     })
     describe('single schema [w/address]', () => {
@@ -41,7 +39,7 @@ describe('/:hash', () => {
       ])('returns Payload of schema type', async (schema, expected) => {
         const pointerHash = await createPointer([[account.address]], [[schema]])
         const result = await getHash(pointerHash)
-        expect(result).toEqual((await expected).jsonPayload())
+        expect(result).toEqual((await expected).payload)
       })
     })
     describe('multiple schema rules', () => {
