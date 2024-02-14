@@ -6,6 +6,7 @@ import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { AddressSpaceDivinerConfigSchema } from '@xyo-network/diviner-address-space-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta } from '@xyo-network/payload-model'
 import { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
@@ -41,14 +42,14 @@ describeIf(hasMongoDBConfig())('MongoDBAddressSpaceDiviner', () => {
   describe('divine', () => {
     describe('with valid query', () => {
       it('divines', async () => {
-        const result = await sut.divine([])
+        const result = (await sut.divine([])).filter(isPayloadOfSchemaTypeWithMeta<AddressPayload>(AddressSchema))
         expect(result).toBeArray()
         expect(result.length).toBeGreaterThan(0)
         await Promise.all(
           result.map(async (address) => {
-            const payload = await PayloadWrapper.wrap<AddressPayload>(address as AddressPayload)
+            const payload = await PayloadWrapper.wrap<AddressPayload>(address)
             expect(payload.schema()).toBe(AddressSchema)
-            expect(payload.payload().address).toBeString()
+            expect(payload.payload.address).toBeString()
           }),
         )
       })

@@ -1,6 +1,5 @@
-import { QueryBoundWitnessWrapper } from '@xyo-network/boundwitness-builder'
 import { BoundWitness, isBoundWitness, isQueryBoundWitness } from '@xyo-network/boundwitness-model'
-import { BoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
+import { BoundWitnessWrapper, QueryBoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
 import { Payload } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
@@ -12,7 +11,7 @@ export const validByType = async (payloads: Payload[] = []) => {
         const wrapper = isQueryBoundWitness(payload) ? QueryBoundWitnessWrapper : BoundWitnessWrapper
         const bw = await wrapper.parse(payload)
         if (await bw.getValid()) {
-          results[0].push(bw.jsonPayload())
+          results[0].push(bw.payload)
         } else {
           const errors = await bw.getErrors()
           console.log(`validByType.Error: ${JSON.stringify(errors, null, 2)}`)
@@ -20,7 +19,7 @@ export const validByType = async (payloads: Payload[] = []) => {
       } else {
         const payloadWrapper = await PayloadWrapper.wrap(payload)
         if (await payloadWrapper.getValid()) {
-          results[1].push(payloadWrapper.jsonPayload())
+          results[1].push(payloadWrapper.payload)
         }
       }
       return

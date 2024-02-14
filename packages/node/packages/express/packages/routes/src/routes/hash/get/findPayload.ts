@@ -12,7 +12,7 @@ import { combineRules } from './combineRules'
 
 const limit = 1
 
-const createBoundWitnessFilterFromSearchCriteria = (searchCriteria: PayloadSearchCriteria): Payload[] => {
+const createBoundWitnessFilterFromSearchCriteria = (searchCriteria: PayloadSearchCriteria): BoundWitnessDivinerQueryPayload[] => {
   const { addresses, direction, schemas, timestamp } = searchCriteria
   const order = direction === 'asc' ? 'asc' : 'desc'
   const query: BoundWitnessDivinerQueryPayload = {
@@ -48,7 +48,7 @@ export const findPayload = async (
     const result = await boundWitnessDiviner.divine(filter)
     const bw = result?.[0] ? await BoundWitnessWrapper.parse(result[0]) : undefined
     if (bw) {
-      if (returnBoundWitness) return bw.jsonPayload()
+      if (returnBoundWitness) return bw.payload
       const { schemas, direction } = searchCriteria
       let payloadIndex = direction === 'asc' ? 0 : bw.payloadHashes.length - 1
       if (schemas) {
@@ -58,13 +58,13 @@ export const findPayload = async (
       }
       const hash = bw.payloadHashes[payloadIndex]
       const result = await archivist.get([hash])
-      return result?.[0] ? (await PayloadWrapper.wrap(result?.[0])).jsonPayload() : undefined
+      return result?.[0] ? (await PayloadWrapper.wrap(result?.[0])).payload : undefined
     }
   }
   // Find payload
   else {
     const filter = createPayloadFilterFromSearchCriteria(searchCriteria)
     const result = await payloadDiviner.divine(filter)
-    return result?.[0] ? (await PayloadWrapper.wrap(result?.[0])).jsonPayload() : undefined
+    return result?.[0] ? (await PayloadWrapper.wrap(result?.[0])).payload : undefined
   }
 }

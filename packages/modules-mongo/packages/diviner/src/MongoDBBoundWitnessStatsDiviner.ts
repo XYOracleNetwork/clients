@@ -9,12 +9,14 @@ import {
   BoundWitnessStatsDivinerSchema,
   BoundWitnessStatsPayload,
   BoundWitnessStatsQueryPayload,
+  DivinerInstance,
+  DivinerParams,
   isBoundWitnessStatsQueryPayload,
 } from '@xyo-network/diviner-models'
 import { COLLECTIONS, DATABASES, MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
 import { TYPES } from '@xyo-network/node-core-types'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, WithMeta, WithSources } from '@xyo-network/payload-model'
 import { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { MongoClientWrapper } from '@xyo-network/sdk-xyo-mongo-js'
 import { Job, JobProvider } from '@xyo-network/shared'
@@ -36,7 +38,10 @@ const MongoDBDivinerBase = MongoDBModuleMixin(BoundWitnessStatsDiviner)
 
 const moduleName = 'MongoDBBoundWitnessStatsDiviner'
 
-export class MongoDBBoundWitnessStatsDiviner extends MongoDBDivinerBase implements BoundWitnessStatsDiviner, JobProvider {
+export class MongoDBBoundWitnessStatsDiviner
+  extends MongoDBDivinerBase<DivinerParams, BoundWitnessStatsQueryPayload, BoundWitnessStatsPayload>
+  implements BoundWitnessStatsDiviner, DivinerInstance<DivinerParams, BoundWitnessStatsQueryPayload, BoundWitnessStatsPayload>, JobProvider
+{
   static override configSchemas = [BoundWitnessStatsDivinerConfigSchema]
 
   /**
@@ -135,7 +140,7 @@ export class MongoDBBoundWitnessStatsDiviner extends MongoDBDivinerBase implemen
     const addressSpaceDiviners = await this.upResolver.resolve({ name: [assertEx(TYPES.AddressSpaceDiviner)] })
     const addressSpaceDiviner = asDivinerInstance(addressSpaceDiviners.pop(), `${moduleName}.DivineAddressesBatch: Missing AddressSpaceDiviner`)
     const result = (await addressSpaceDiviner.divine([])) || []
-    const addresses = result.filter<AddressPayload>((x): x is AddressPayload => x.schema === AddressSchema).map((x) => x.address)
+    const addresses = result.filter((x): x is WithSources<WithMeta<AddressPayload>> => x.schema === AddressSchema).map((x) => x.address)
     const additions = this.addressIterator.addValues(addresses)
     this.logger?.log(`${moduleName}.DivineAddressesBatch: Incoming Addresses Total: ${addresses.length} New: ${additions}`)
     if (addresses.length && !this.backgroundDivineTask) this.backgroundDivineTask = this.backgroundDivine()
