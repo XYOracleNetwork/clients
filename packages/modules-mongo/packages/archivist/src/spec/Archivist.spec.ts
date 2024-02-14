@@ -67,10 +67,10 @@ describeIf(hasMongoDBConfig())('DeterministicArchivist', () => {
     const payloadWrapper3 = await PayloadWrapper.wrap(payload3)
     const payloadWrapper4 = await PayloadWrapper.wrap(payload4)
     payloadWrappers.push(payloadWrapper1, payloadWrapper2, payloadWrapper3, payloadWrapper4)
-    const boundWitness1 = (await (await new BoundWitnessBuilder().payload(payloadWrapper1.jsonPayload())).witness(userAccount).build())[0]
-    const boundWitness2 = (await (await new BoundWitnessBuilder().payload(payloadWrapper2.jsonPayload())).witness(userAccount).build())[0]
+    const boundWitness1 = (await (await new BoundWitnessBuilder().payload(payloadWrapper1.payload)).witness(userAccount).build())[0]
+    const boundWitness2 = (await (await new BoundWitnessBuilder().payload(payloadWrapper2.payload)).witness(userAccount).build())[0]
     const boundWitness3 = (
-      await (await new BoundWitnessBuilder().payloads([payloadWrapper3.jsonPayload(), payloadWrapper4.jsonPayload()])).witness(userAccount).build()
+      await (await new BoundWitnessBuilder().payloads([payloadWrapper3.payload, payloadWrapper4.payload])).witness(userAccount).build()
     )[0]
     const boundWitnessWrapper1 = await BoundWitnessWrapper.parse(boundWitness1, [payload1])
     const boundWitnessWrapper2 = await BoundWitnessWrapper.parse(boundWitness2, [payload2])
@@ -150,7 +150,7 @@ describeIf(hasMongoDBConfig())('DeterministicArchivist', () => {
       ['gets multiple boundwitness', () => [boundWitnessWrappers[0], boundWitnessWrappers[1], boundWitnessWrappers[2]]],
     ]
     it.each(cases)('%s', async (_title, getData) => {
-      const payloads = getData().map((w) => w.jsonPayload())
+      const payloads = getData().map((w) => w.payload)
       const dataHashes = await PayloadBuilder.dataHashes(payloads)
       const hashes = await PayloadBuilder.hashes(payloads)
       const dataResults = await archivist.get(dataHashes)

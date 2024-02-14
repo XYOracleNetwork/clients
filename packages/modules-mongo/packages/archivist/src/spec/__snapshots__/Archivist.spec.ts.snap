@@ -8,6 +8,7 @@ exports[`DeterministicArchivist get gets multiple boundwitness 1`] = `
       "signatures": [
         "325501822063bf69e34f6a64f96ef1e55e8eed5060c0dc300271be82b4df024163b2b294018c5d06df160b20394f460b955c77d8a5147ec7f1bafa79b4798662",
       ],
+      "timestamp": 123456789000,
     },
     "addresses": [
       "10ca1959336ea208bcdf00dd6d6637aec91a4c0e",
@@ -30,6 +31,7 @@ exports[`DeterministicArchivist get gets multiple boundwitness 1`] = `
       "signatures": [
         "1810b9f9c6623adf38d0093ea6f3c2125570ed1ee757dbe9e9221b4ffb3920ec0b11175fdffc7e0bfee5d844f9e43c7e261d2bfcd1b273b46caa5cb23a4c798d",
       ],
+      "timestamp": 123456789000,
     },
     "addresses": [
       "10ca1959336ea208bcdf00dd6d6637aec91a4c0e",
@@ -52,6 +54,7 @@ exports[`DeterministicArchivist get gets multiple boundwitness 1`] = `
       "signatures": [
         "29a8dfe2cf7675e8c371763d6d8c7d9b0990145191967c6e399fff7854cd22390d6a8a7f4ae7628ac62deea6c34af33c37623950b1aba6ae4b8c88683d615c20",
       ],
+      "timestamp": 123456789000,
     },
     "addresses": [
       "10ca1959336ea208bcdf00dd6d6637aec91a4c0e",
@@ -77,16 +80,25 @@ exports[`DeterministicArchivist get gets multiple payloads 1`] = `
 [
   {
     "$hash": "15b8d0e30ca5aa96ca6cc9e1528c075aec88cd3f2c3eb0394fde647eb4bf4547",
+    "$meta": {
+      "timestamp": 123456789000,
+    },
     "nonce": 1,
     "schema": "network.xyo.debug",
   },
   {
     "$hash": "1c9033e467d6877e2c84a70b29212a585bd6fd448bccfcc12adf0505c18984f6",
+    "$meta": {
+      "timestamp": 123456789000,
+    },
     "nonce": 2,
     "schema": "network.xyo.test",
   },
   {
     "$hash": "1137543b5805a18e8f39cb7debe49ddf58a1de00c46ed7310baf7ebcfdf435a2",
+    "$meta": {
+      "timestamp": 123456789000,
+    },
     "nonce": 3,
     "schema": "network.xyo.debug",
   },
@@ -101,6 +113,7 @@ exports[`DeterministicArchivist get gets single boundwitness 1`] = `
       "signatures": [
         "325501822063bf69e34f6a64f96ef1e55e8eed5060c0dc300271be82b4df024163b2b294018c5d06df160b20394f460b955c77d8a5147ec7f1bafa79b4798662",
       ],
+      "timestamp": 123456789000,
     },
     "addresses": [
       "10ca1959336ea208bcdf00dd6d6637aec91a4c0e",
@@ -124,6 +137,9 @@ exports[`DeterministicArchivist get gets single payload 1`] = `
 [
   {
     "$hash": "15b8d0e30ca5aa96ca6cc9e1528c075aec88cd3f2c3eb0394fde647eb4bf4547",
+    "$meta": {
+      "timestamp": 123456789000,
+    },
     "nonce": 1,
     "schema": "network.xyo.debug",
   },
