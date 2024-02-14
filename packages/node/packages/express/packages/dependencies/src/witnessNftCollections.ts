@@ -4,14 +4,17 @@ import { ArchivistInstance, asArchivistInstance } from '@xyo-network/archivist-m
 import {
   isNftCollectionInfo,
   isNftCollectionScore,
+  NftCollectionInfo,
+  NftCollectionScore,
   NftCollectionWitnessQuery,
   NftCollectionWitnessQuerySchema,
 } from '@xyo-network/crypto-nft-collection-payload-plugin'
-import { isNftInfo } from '@xyo-network/crypto-nft-payload-plugin'
+import { isNftInfo, NftInfo } from '@xyo-network/crypto-nft-payload-plugin'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { TYPES } from '@xyo-network/node-core-types'
 import { NodeInstance } from '@xyo-network/node-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
+import { WithSources } from '@xyo-network/payload-model'
 import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
 import { asWitnessInstance, WitnessInstance } from '@xyo-network/witness-model'
 import { readFile, writeFile } from 'fs/promises'
@@ -113,11 +116,13 @@ const generateThumbnail = async (
     const nftCollectionScorePayload = assertEx(
       (await archivist.get([score])).find(isNftCollectionScore),
       'ERROR: Collection Thumbnail: Obtain Score Payload',
-    )
+    ) as unknown as WithSources<NftCollectionScore>
     const nftCollectionInfoHash = assertEx(nftCollectionScorePayload.sources?.[0], 'ERROR: Collection Thumbnail: Obtain NFT Info Hash')
-    const nftCollectionInfoPayload = (await archivist.get([nftCollectionInfoHash])).find(isNftCollectionInfo)
+    const nftCollectionInfoPayload = (await archivist.get([nftCollectionInfoHash])).find(
+      isNftCollectionInfo,
+    ) as unknown as WithSources<NftCollectionInfo>
     const nftInfoHash = assertEx(nftCollectionInfoPayload?.sources?.[0], 'ERROR: Collection Thumbnail: Obtain NFT Info Hash')
-    const nftInfo = (await archivist.get([nftInfoHash])).find(isNftInfo)
+    const nftInfo = (await archivist.get([nftInfoHash])).find(isNftInfo) as unknown as NftInfo
     if (typeof nftInfo?.metadata?.image === 'string') {
       const url = nftInfo.metadata.image
       const imageThumbnailWitnessQuery: UrlPayload = { schema: UrlSchema, url }
