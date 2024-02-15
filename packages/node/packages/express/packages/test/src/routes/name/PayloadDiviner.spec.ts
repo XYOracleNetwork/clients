@@ -35,34 +35,6 @@ describe(`/${moduleName}`, () => {
     })
   })
   describe('DivinerDivineQuerySchema', () => {
-    const accountA = Account.randomSync()
-    const accountB = Account.randomSync()
-    describe.skip('address', () => {
-      it('divines Payloads by address', async () => {
-        const wrapper: PayloadWrapper = await PayloadWrapper.wrap(await getNewPayload())
-        const boundWitness: BoundWitnessWrapper = await BoundWitnessWrapper.parse((await getNewBoundWitness([accountA], [wrapper.payload]))[0])
-        await archivist.insert([boundWitness.payload, wrapper.payload])
-
-        const address = accountA.address
-        const query: PayloadDivinerQueryPayload = { address, schema }
-        const response = await diviner.divine([query])
-
-        expect(response).toBeArray()
-        expect(response.length).toBeGreaterThan(0)
-      })
-      it('divines Payloads by addresses', async () => {
-        const wrapper: PayloadWrapper = await PayloadWrapper.wrap(await getNewPayload())
-        const boundWitness: BoundWitnessWrapper = await BoundWitnessWrapper.parse(
-          (await getNewBoundWitness([accountA, accountB], [wrapper.payload]))[0],
-        )
-        await archivist.insert([boundWitness.payload, wrapper.payload])
-        const address = [accountA.address, accountB.address] as unknown as (string | string[]) & (string | [string])
-        const query: PayloadDivinerQueryPayload = { address: address, schema }
-        const response = await diviner.divine([query])
-        expect(response).toBeArray()
-        expect(response.length).toBeGreaterThan(0)
-      })
-    })
     describe('hash', () => {
       const payload: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await getNewPayload()))()
       beforeAll(async () => {
