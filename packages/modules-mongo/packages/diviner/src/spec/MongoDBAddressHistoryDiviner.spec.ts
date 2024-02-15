@@ -7,6 +7,7 @@ import { BoundWitnessSchema } from '@xyo-network/boundwitness-model'
 import { AddressHistoryDivinerConfigSchema, AddressHistoryQueryPayload, AddressHistoryQuerySchema } from '@xyo-network/diviner-address-history'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
+import { WithMeta } from '@xyo-network/payload-model'
 import { BoundWitnessWithMongoMeta, BoundWitnessWithPartialMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock } from 'jest-mock-extended'
@@ -52,7 +53,7 @@ describeIf(hasMongoDBConfig())('MongoDBAddressHistoryDiviner', () => {
         const query: AddressHistoryQueryPayload = { address, limit: 2, schema: AddressHistoryQuerySchema }
         const result = await sut.divine([query])
         expect(result).toBeArrayOfSize(2)
-        const actual = result[0] as BoundWitnessWithPartialMongoMeta
+        const actual = result[0] as WithMeta<BoundWitnessWithPartialMongoMeta>
         expect(actual).toBeObject()
         expect(actual.schema).toBe(BoundWitnessSchema)
       })
