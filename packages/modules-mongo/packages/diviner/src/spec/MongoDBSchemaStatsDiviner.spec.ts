@@ -10,7 +10,7 @@ import {
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { JobQueue } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { WithMeta, WithSources } from '@xyo-network/payload-model'
+import { WithMeta } from '@xyo-network/payload-model'
 import { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock, MockProxy } from 'jest-mock-extended'
@@ -50,7 +50,7 @@ describeIf(hasMongoDBConfig())('MongoDBSchemaStatsDiviner', () => {
         const query: SchemaStatsQueryPayload = { address, schema: SchemaStatsQuerySchema }
         const result = await sut.divine([query])
         expect(result).toBeArrayOfSize(1)
-        const actual = result[0] as WithSources<WithMeta<SchemaStatsPayload>>
+        const actual = result[0] as WithMeta<SchemaStatsPayload>
         expect(actual).toBeObject()
         expect(actual.schema).toBe(SchemaStatsDivinerSchema)
         expect(actual.count).toBeObject()

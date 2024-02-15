@@ -9,10 +9,11 @@ import {
   BoundWitnessStatsQueryPayload,
   BoundWitnessStatsQuerySchema,
 } from '@xyo-network/diviner-boundwitness-stats-model'
-import { DivinerInstance } from '@xyo-network/diviner-model'
+import { DivinerInstance, DivinerParams } from '@xyo-network/diviner-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { JobQueue } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
+import { WithMeta } from '@xyo-network/payload-model'
 import { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock, MockProxy } from 'jest-mock-extended'
@@ -33,7 +34,7 @@ describeIf(hasMongoDBConfig())('MongoDBBoundWitnessStatsDiviner', () => {
     dbConnectionString: process.env.MONGO_CONNECTION_STRING,
   })
   const jobQueue: MockProxy<JobQueue> = mock<JobQueue>()
-  let sut: MongoDBBoundWitnessStatsDiviner
+  let sut: DivinerInstance<DivinerParams, BoundWitnessStatsQueryPayload, BoundWitnessStatsPayload>
   beforeAll(async () => {
     account = await Account.create({ phrase })
     address = account.address
@@ -57,7 +58,7 @@ describeIf(hasMongoDBConfig())('MongoDBBoundWitnessStatsDiviner', () => {
         const actual = result[0]
         expect(actual).toBeObject()
         expect(actual.schema).toBe(BoundWitnessStatsDivinerSchema)
-        expect((actual as BoundWitnessStatsPayload).count).toBeNumber()
+        expect((actual as WithMeta<BoundWitnessStatsPayload>).count).toBeNumber()
       })
     })
     describe('with no address supplied in query', () => {
@@ -68,7 +69,7 @@ describeIf(hasMongoDBConfig())('MongoDBBoundWitnessStatsDiviner', () => {
         const actual = result[0]
         expect(actual).toBeObject()
         expect(actual.schema).toBe(BoundWitnessStatsDivinerSchema)
-        expect((actual as BoundWitnessStatsPayload).count).toBeNumber()
+        expect((actual as WithMeta<BoundWitnessStatsPayload>).count).toBeNumber()
       })
     })
   })

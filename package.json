@@ -58,6 +58,7 @@
   "resolutions": {
     "axios": "^1",
     "bn.js": "^5",
+    "ethers": "6.11.0",
     "quick-lru": "^5",
     "typescript": "5.2.2"
   },

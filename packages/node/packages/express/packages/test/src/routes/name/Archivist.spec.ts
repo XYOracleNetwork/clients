@@ -1,6 +1,7 @@
 import { ArchivistGetQuerySchema, ArchivistInsertQuerySchema, ArchivistInstance } from '@xyo-network/archivist'
 import { BoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
 import { PayloadHasher } from '@xyo-network/hash'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { PayloadWrapper, PayloadWrapperBase } from '@xyo-network/payload-wrapper'
 
 import { getArchivist, getNewBoundWitness, getNewPayload, nonExistentHash, unitTestSigningAccount, validateDiscoverResponse } from '../../testUtil'
@@ -57,11 +58,11 @@ describe(`/${moduleName}`, () => {
   describe('ArchivistGetQuerySchema', () => {
     describe('with existing hash', () => {
       it.each(cases)('finds %s by hash', async (_, wrapped) => {
-        const hashes = await Promise.all(wrapped.map((w) => w.hash()))
+        const hashes = await Promise.all(wrapped.map((w) => w.dataHash()))
         const response = await archivist.get(hashes)
         expect(response).toBeArray()
         expect(response).toBeArrayOfSize(wrapped.length)
-        const responseHashes = await PayloadHasher.hashes(response)
+        const responseHashes = await PayloadBuilder.dataHashes(response)
         expect(responseHashes).toContainValues(hashes)
       })
     })

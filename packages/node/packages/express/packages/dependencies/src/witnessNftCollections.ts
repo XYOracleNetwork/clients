@@ -14,7 +14,7 @@ import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { TYPES } from '@xyo-network/node-core-types'
 import { NodeInstance } from '@xyo-network/node-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { WithSources } from '@xyo-network/payload-model'
+import { WithMeta, WithSources } from '@xyo-network/payload-model'
 import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
 import { asWitnessInstance, WitnessInstance } from '@xyo-network/witness-model'
 import { readFile, writeFile } from 'fs/promises'
@@ -116,13 +116,13 @@ const generateThumbnail = async (
     const nftCollectionScorePayload = assertEx(
       (await archivist.get([score])).find(isNftCollectionScore),
       'ERROR: Collection Thumbnail: Obtain Score Payload',
-    ) as unknown as WithSources<NftCollectionScore>
+    ) as WithSources<WithMeta<NftCollectionScore>>
     const nftCollectionInfoHash = assertEx(nftCollectionScorePayload.sources?.[0], 'ERROR: Collection Thumbnail: Obtain NFT Info Hash')
-    const nftCollectionInfoPayload = (await archivist.get([nftCollectionInfoHash])).find(
-      isNftCollectionInfo,
-    ) as unknown as WithSources<NftCollectionInfo>
+    const nftCollectionInfoPayload = (await archivist.get([nftCollectionInfoHash])).find(isNftCollectionInfo) as WithSources<
+      WithMeta<NftCollectionInfo>
+    >
     const nftInfoHash = assertEx(nftCollectionInfoPayload?.sources?.[0], 'ERROR: Collection Thumbnail: Obtain NFT Info Hash')
-    const nftInfo = (await archivist.get([nftInfoHash])).find(isNftInfo) as unknown as NftInfo
+    const nftInfo = (await archivist.get([nftInfoHash])).find(isNftInfo) as WithSources<WithMeta<NftInfo>>
     if (typeof nftInfo?.metadata?.image === 'string') {
       const url = nftInfo.metadata.image
       const imageThumbnailWitnessQuery: UrlPayload = { schema: UrlSchema, url }
