@@ -67,7 +67,7 @@ describe(`/${moduleName}`, () => {
       ]
       describe.each(cases)('with %s', (_title, addresses, data) => {
         it('divines BoundWitnesses by address', async () => {
-          const expected = data().map((d) => d.jsonPayload())
+          const expected = data().map((d) => d.payload)
           const query: BoundWitnessDivinerQueryPayload = { addresses, schema }
           const response = await diviner.divine([query])
           expect(response).toBeArrayOfSize(expected.length)
@@ -81,7 +81,7 @@ describe(`/${moduleName}`, () => {
       let boundWitness: BoundWitnessWrapper
       beforeAll(async () => {
         boundWitness = await BoundWitnessWrapper.parse((await getNewBoundWitness([account]))[0])
-        await archivist.insert([boundWitness.jsonPayload()])
+        await archivist.insert([boundWitness.payload])
       })
       it('divines BoundWitnesses by hash', async () => {
         const hash = await boundWitness.hash()
@@ -102,7 +102,7 @@ describe(`/${moduleName}`, () => {
       let boundWitness: BoundWitnessWrapper
       beforeAll(async () => {
         boundWitness = await BoundWitnessWrapper.parse((await getNewBoundWitness([account]))[0])
-        await archivist.insert([boundWitness.jsonPayload()])
+        await archivist.insert([boundWitness.payload])
       })
       it('divines BoundWitnesses by hash', async () => {
         const hash = await boundWitness.dataHash()
@@ -169,13 +169,13 @@ describe(`/${moduleName}`, () => {
       const payloadB: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseB))()
       const boundWitnesses: BoundWitnessWrapper[] = []
       beforeAll(async () => {
-        const boundWitnessA = await BoundWitnessWrapper.parse((await getNewBoundWitness([account], [(await payloadA).jsonPayload()]))[0])
-        const boundWitnessB = await BoundWitnessWrapper.parse((await getNewBoundWitness([account], [(await payloadB).jsonPayload()]))[0])
+        const boundWitnessA = await BoundWitnessWrapper.parse((await getNewBoundWitness([account], [(await payloadA).payload]))[0])
+        const boundWitnessB = await BoundWitnessWrapper.parse((await getNewBoundWitness([account], [(await payloadB).payload]))[0])
         const boundWitnessC = await BoundWitnessWrapper.parse(
-          (await getNewBoundWitness([account], [(await payloadA).jsonPayload(), (await payloadB).jsonPayload()]))[0],
+          (await getNewBoundWitness([account], [(await payloadA).payload, (await payloadB).payload]))[0],
         )
         boundWitnesses.push(boundWitnessA, boundWitnessB, boundWitnessC)
-        await archivist.insert(boundWitnesses.map((b) => b.payload()))
+        await archivist.insert(boundWitnesses.map((b) => b.payload))
       })
       const cases: [title: string, payload_schemas: string[], expected: () => BoundWitnessWrapper[]][] = [
         ['single schema', [schemaA], () => [boundWitnesses[0], boundWitnesses[2]]],
