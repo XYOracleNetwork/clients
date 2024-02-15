@@ -2,6 +2,7 @@ import { ArchivistInstance } from '@xyo-network/archivist-model'
 import { DivinerDivineQuerySchema, DivinerInstance } from '@xyo-network/diviner'
 import { PayloadDivinerQueryPayload, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
+import { Payload, WithMeta } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 import { getArchivist, getDivinerByName, getNewPayload, getTestSchemaName, nonExistentHash, validateDiscoverResponse } from '../../testUtil'
@@ -84,6 +85,7 @@ describe(`/${moduleName}`, () => {
     describe('schema', () => {
       let payloadA: PayloadWrapper
       let payloadB: PayloadWrapper
+      let inserted: WithMeta<Payload>[]
       beforeAll(async () => {
         const schemaA = getTestSchemaName()
         const schemaB = getTestSchemaName()
@@ -91,20 +93,35 @@ describe(`/${moduleName}`, () => {
         payloadA = await PayloadWrapper.wrap(payloadBaseA)
         const payloadBaseB = await PayloadBuilder.build({ ...(await getNewPayload()), schema: schemaB })
         payloadB = await PayloadWrapper.wrap(payloadBaseB)
-        await archivist.insert([payloadA.payload, payloadB.payload])
+        inserted = await archivist.insert([payloadA.payload, payloadB.payload])
+
+        const payload = await PayloadWrapper.wrap({ salt: Date.now(), schema: 'network.xyo.test' })
+        const hash = await payload.hash()
+        const dataHash = await payload.dataHash()
+        const result = await archivist.insert([payload.payload])
+        const resultHash = await PayloadBuilder.hash(result[0])
+        const resultDataHash = await PayloadBuilder.dataHash(result[0])
+        expect(dataHash).toEqual(resultDataHash)
       })
       describe('with single schema', () => {
-        it.only('divines Payloads by schema', async () => {
+        it('divines Payloads by schema', async () => {
           const payloads = [payloadA]
           const schemas = payloads.map((p) => p.schema())
           const query: PayloadDivinerQueryPayload = { schema, schemas }
           const response = await diviner.divine([query])
           expect(response).toBeArrayOfSize(payloads.length)
-          const inputDataHashes = await Promise.all(payloads.map((p) => p.dataHash()))
-          const inputHashes = await Promise.all(payloads.map((p) => p.hash()))
+          // const insertedHash = await PayloadBuilder.hash(inserted[0])
+          // const insertedDataHash = await PayloadBuilder.dataHash(inserted[0])
+          // const originalHash = await payloadA.hash()
+          // const originalDataHash = await payloadA.dataHash()
+          expect(await PayloadBuilder.dataHash(inserted[0])).toEqual(payloadA.dataHash())
+          // const insertedDataHashes = await Promise.all(inserted.map((p) => PayloadBuilder.dataHash(p)))
+          // const insertedHashes = await Promise.all(inserted.map((p) => PayloadBuilder.hash(p)))
+          // const inputDataHashes = await Promise.all(payloads.map((p) => p.dataHash()))
+          // const inputHashes = await Promise.all(payloads.map((p) => p.hash()))
+          const payloadHashes = await Promise.all(payloads.map((p) => p.hash()))
           const responseHashes = await Promise.all(response.map((p) => PayloadBuilder.hash(p)))
-          const responseDataHashes = await Promise.all(response.map((p) => PayloadBuilder.dataHash(p)))
-          expect(responseHashes).toContainAllValues(await Promise.all(payloads.map((p) => p.dataHash())))
+          expect(responseHashes).toContainAllValues(payloadHashes)
         })
       })
       describe('with multiple schemas', () => {
