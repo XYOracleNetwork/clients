@@ -3,6 +3,7 @@ import { AccountInstance } from '@xyo-network/account-model'
 import { AddressPayload, AddressSchema } from '@xyo-network/address-payload-plugin'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { DivinerDivineQuerySchema, DivinerInstance } from '@xyo-network/diviner'
+import { WithMeta, WithSources } from '@xyo-network/payload-model'
 
 import { getDivinerByName, getNewPayload, insertPayload, validateDiscoverResponse } from '../../testUtil'
 
@@ -36,7 +37,7 @@ describe(`/${divinerName}`, () => {
       const response = await sut.divine([])
       expect(response).toBeArray()
       expect(response.length).toBeGreaterThan(0)
-      const addressPayloads = response.filter((p): p is AddressPayload => p.schema === AddressSchema)
+      const addressPayloads = response.filter((p): p is WithSources<WithMeta<AddressPayload>> => p.schema === AddressSchema)
       const addresses = addressPayloads.map((p) => p.address)
       expect(addresses).toBeArray()
       expect(addresses.length).toBeGreaterThan(0)

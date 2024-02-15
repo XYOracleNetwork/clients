@@ -121,7 +121,7 @@
         "--runInBand",
         "--testTimeout=120000",
         "-c=./jest.config.no-mongo.ts",
-        "packages/node/packages/express/packages/test/src/routes/name/BoundWitnessDiviner.spec.ts"
+        "packages/node/packages/express/packages/test/src/routes/name/PayloadDiviner.spec.ts"
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",

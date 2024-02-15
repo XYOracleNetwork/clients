@@ -11,6 +11,7 @@ import {
 } from '@xyo-network/diviner-schema-list-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
+import { WithMeta, WithSources } from '@xyo-network/payload-model'
 import { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock } from 'jest-mock-extended'
@@ -50,7 +51,7 @@ describeIf(hasMongoDBConfig())('MongoDBSchemaListDiviner', () => {
         const query: SchemaListQueryPayload = { address, schema: SchemaListQuerySchema }
         const result = await sut.divine([query])
         expect(result).toBeArrayOfSize(1)
-        const actual = result[0] as SchemaListPayload
+        const actual = result[0] as WithSources<WithMeta<SchemaListPayload>>
         expect(actual).toBeObject()
         expect(actual.schema).toBe(SchemaListDivinerSchema)
         expect(actual.schemas).toBeArray()
@@ -64,7 +65,7 @@ describeIf(hasMongoDBConfig())('MongoDBSchemaListDiviner', () => {
         const query: SchemaListQueryPayload = { schema: SchemaListQuerySchema }
         const result = await sut.divine([query])
         expect(result).toBeArrayOfSize(1)
-        const actual = result[0] as SchemaListPayload
+        const actual = result[0] as WithSources<WithMeta<SchemaListPayload>>
         expect(actual).toBeObject()
         expect(actual.schema).toBe(SchemaListDivinerSchema)
         expect(actual.schemas).toBeArray()

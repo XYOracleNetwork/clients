@@ -1,20 +1,11 @@
-import { Account } from '@xyo-network/account'
 import { ArchivistInstance } from '@xyo-network/archivist-model'
-import { BoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
 import { DivinerDivineQuerySchema, DivinerInstance } from '@xyo-network/diviner'
 import { PayloadDivinerQueryPayload, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
+import { Payload, WithMeta } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
-import {
-  getArchivist,
-  getDivinerByName,
-  getNewBoundWitness,
-  getNewPayload,
-  getTestSchemaName,
-  nonExistentHash,
-  validateDiscoverResponse,
-} from '../../testUtil'
+import { getArchivist, getDivinerByName, getNewPayload, getTestSchemaName, nonExistentHash, validateDiscoverResponse } from '../../testUtil'
 
 const schema = PayloadDivinerQuerySchema
 
@@ -35,49 +26,22 @@ describe(`/${moduleName}`, () => {
     })
   })
   describe('DivinerDivineQuerySchema', () => {
-    const accountA = Account.randomSync()
-    const accountB = Account.randomSync()
-    describe.skip('address', () => {
-      it('divines Payloads by address', async () => {
-        const wrapper: PayloadWrapper = await PayloadWrapper.wrap(await getNewPayload())
-        const boundWitness: BoundWitnessWrapper = await BoundWitnessWrapper.parse((await getNewBoundWitness([accountA], [wrapper.payload]))[0])
-        await archivist.insert([boundWitness.payload, wrapper.payload])
-
-        const address = accountA.address
-        const query: PayloadDivinerQueryPayload = { address, schema }
-        const response = await diviner.divine([query])
-
-        expect(response).toBeArray()
-        expect(response.length).toBeGreaterThan(0)
-      })
-      it('divines Payloads by addresses', async () => {
-        const wrapper: PayloadWrapper = await PayloadWrapper.wrap(await getNewPayload())
-        const boundWitness: BoundWitnessWrapper = await BoundWitnessWrapper.parse(
-          (await getNewBoundWitness([accountA, accountB], [wrapper.payload]))[0],
-        )
-        await archivist.insert([boundWitness.payload, wrapper.payload])
-        const address = [accountA.address, accountB.address] as unknown as (string | string[]) & (string | [string])
-        const query: PayloadDivinerQueryPayload = { address: address, schema }
-        const response = await diviner.divine([query])
-        expect(response).toBeArray()
-        expect(response.length).toBeGreaterThan(0)
-      })
-    })
     describe('hash', () => {
-      const payload: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await getNewPayload()))()
+      let payload: PayloadWrapper
       beforeAll(async () => {
-        await archivist.insert([(await payload).payload])
-        const hash = await (await payload).dataHash()
+        payload = await PayloadWrapper.wrap(await getNewPayload())
+        await archivist.insert([payload.payload])
+        const hash = await payload.dataHash()
         const payloads = await archivist.get([hash])
         expect(payloads).toBeArrayOfSize(1)
       })
       it('divines Payloads by hash', async () => {
-        const hash = await (await payload).dataHash()
+        const hash = await payload.dataHash()
         const query: PayloadDivinerQueryPayload = { hash, schema }
         const response = await diviner.divine([query])
         expect(response).toBeArrayOfSize(1)
         const responseHashes = await Promise.all(response.map((p) => PayloadBuilder.dataHash(p)))
-        expect(responseHashes).toContainAllValues([await (await payload).dataHash()])
+        expect(responseHashes).toContainAllValues([await payload.dataHash()])
       })
       it('returns empty array for non-existent hash', async () => {
         const hash = nonExistentHash
@@ -87,14 +51,14 @@ describe(`/${moduleName}`, () => {
       })
     })
     describe('limit', () => {
-      const schemaA = getTestSchemaName()
-      const schemaB = getTestSchemaName()
-      const payloadBaseA = (async () => ({ ...(await getNewPayload()), schema: schemaA }))()
-      const payloadA: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseA))()
-      const payloadBaseB = (async () => ({ ...(await getNewPayload()), schema: schemaB }))()
-      const payloadB: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseB))()
       beforeAll(async () => {
-        await archivist.insert([(await payloadA).payload, (await payloadB).payload])
+        const schemaA = getTestSchemaName()
+        const schemaB = getTestSchemaName()
+        const payloadBaseA = { ...(await getNewPayload()), schema: schemaA }
+        const payloadA: PayloadWrapper = await PayloadWrapper.wrap(payloadBaseA)
+        const payloadBaseB = (async () => ({ ...(await getNewPayload()), schema: schemaB }))()
+        const payloadB: PayloadWrapper = await PayloadWrapper.wrap(await payloadBaseB)
+        await archivist.insert([payloadA.payload, payloadB.payload])
       })
       it.each([1, 2])('returns the specified number of Payloads', async (limit) => {
         const query: PayloadDivinerQueryPayload = { limit, schema }
@@ -119,29 +83,50 @@ describe(`/${moduleName}`, () => {
       })
     })
     describe('schema', () => {
-      const schemaA = getTestSchemaName()
-      const schemaB = getTestSchemaName()
-      const payloadBaseA = (async () => await PayloadBuilder.build({ ...(await getNewPayload()), schema: schemaA }))()
-      const payloadA: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseA))()
-      const payloadBaseB = (async () => await PayloadBuilder.build({ ...(await getNewPayload()), schema: schemaB }))()
-      const payloadB: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseB))()
+      let payloadA: PayloadWrapper
+      let payloadB: PayloadWrapper
+      let inserted: WithMeta<Payload>[]
       beforeAll(async () => {
-        await archivist.insert([(await payloadA).payload, (await payloadB).payload])
+        const schemaA = getTestSchemaName()
+        const schemaB = getTestSchemaName()
+        const payloadBaseA = await PayloadBuilder.build({ ...(await getNewPayload()), schema: schemaA })
+        payloadA = await PayloadWrapper.wrap(payloadBaseA)
+        const payloadBaseB = await PayloadBuilder.build({ ...(await getNewPayload()), schema: schemaB })
+        payloadB = await PayloadWrapper.wrap(payloadBaseB)
+        inserted = await archivist.insert([payloadA.payload, payloadB.payload])
+
+        const payload = await PayloadWrapper.wrap({ salt: Date.now(), schema: 'network.xyo.test' })
+        const hash = await payload.hash()
+        const dataHash = await payload.dataHash()
+        const result = await archivist.insert([payload.payload])
+        const resultHash = await PayloadBuilder.hash(result[0])
+        const resultDataHash = await PayloadBuilder.dataHash(result[0])
+        expect(dataHash).toEqual(resultDataHash)
       })
       describe('with single schema', () => {
         it('divines Payloads by schema', async () => {
-          const payloads = [await payloadA]
+          const payloads = [payloadA]
           const schemas = payloads.map((p) => p.schema())
           const query: PayloadDivinerQueryPayload = { schema, schemas }
           const response = await diviner.divine([query])
           expect(response).toBeArrayOfSize(payloads.length)
-          const responseHashes = await Promise.all(response.map((p) => PayloadBuilder.dataHash(p)))
-          expect(responseHashes).toContainAllValues(await Promise.all(payloads.map((p) => p.dataHash())))
+          // const insertedHash = await PayloadBuilder.hash(inserted[0])
+          // const insertedDataHash = await PayloadBuilder.dataHash(inserted[0])
+          // const originalHash = await payloadA.hash()
+          // const originalDataHash = await payloadA.dataHash()
+          expect(await PayloadBuilder.dataHash(inserted[0])).toEqual(payloadA.dataHash())
+          // const insertedDataHashes = await Promise.all(inserted.map((p) => PayloadBuilder.dataHash(p)))
+          // const insertedHashes = await Promise.all(inserted.map((p) => PayloadBuilder.hash(p)))
+          // const inputDataHashes = await Promise.all(payloads.map((p) => p.dataHash()))
+          // const inputHashes = await Promise.all(payloads.map((p) => p.hash()))
+          const payloadHashes = await Promise.all(payloads.map((p) => p.hash()))
+          const responseHashes = await Promise.all(response.map((p) => PayloadBuilder.hash(p)))
+          expect(responseHashes).toContainAllValues(payloadHashes)
         })
       })
       describe('with multiple schemas', () => {
         it('divines Payloads by schema', async () => {
-          const payloads = [await payloadA, await payloadB]
+          const payloads = [payloadA, payloadB]
           const schemas = payloads.map((p) => p.schema())
           const query: PayloadDivinerQueryPayload = { schema, schemas }
           const response = await diviner.divine([query])
