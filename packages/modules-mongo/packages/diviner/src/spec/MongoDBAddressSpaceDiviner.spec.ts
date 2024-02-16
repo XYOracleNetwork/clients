@@ -46,7 +46,7 @@ describeIf(hasMongoDBConfig())('MongoDBAddressSpaceDiviner', () => {
         expect(result).toBeArray()
         expect(result.length).toBeGreaterThan(0)
         await Promise.all(
-          result.map(async (address) => {
+          result.map((address) => {
             const payload = PayloadWrapper.wrap<AddressPayload>(address)
             expect(payload.schema()).toBe(AddressSchema)
             expect(payload.payload.address).toBeString()

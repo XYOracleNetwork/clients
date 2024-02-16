@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "2.84.1",
+  "version": "2.84.2",
   "description": "XYO Express Node Routes",
   "sideeffects": false,
   "types": "dist/node/index.d.ts",
@@ -61,7 +61,7 @@
     "@xyo-network/node-core-types": "workspace:~",
     "@xyo-network/payload-model": "^2.90.17",
     "@xyo-network/payload-wrapper": "^2.90.17",
-    "@xyo-network/prometheus-node-plugin": "^2.87.9",
+    "@xyo-network/prometheus-node-plugin": "^2.87.10",
     "body-parser": "^1.20.2",
     "express": "^4.18.2",
     "express-mung": "^0.5.1",

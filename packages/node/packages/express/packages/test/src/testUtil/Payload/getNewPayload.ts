@@ -9,8 +9,6 @@ export const getNewPayload = async (): Promise<Payload> => {
   const knownPayload = await knownPayloadPromise
   const fields = { ...knownPayload, uid: uuid() }
   const result = await new PayloadBuilder({ schema }).fields(fields).build()
-  console.log(`getNewPayload:$hash: ${result.$hash}`)
-  console.log(JSON.stringify(result, null, 2))
   return result
 }
 

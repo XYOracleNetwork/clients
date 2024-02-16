@@ -96,10 +96,10 @@ describe(`/${moduleName}`, () => {
         inserted = await archivist.insert([payloadA.payload, payloadB.payload])
 
         const payload = PayloadWrapper.wrap({ salt: Date.now(), schema: 'network.xyo.test' })
-        const hash = await PayloadBuilder.hash(payload.payload)
+
         const dataHash = await payload.dataHash()
         const result = await archivist.insert([payload.payload])
-        const resultHash = await PayloadBuilder.hash(result[0])
+
         const resultDataHash = await PayloadBuilder.dataHash(result[0])
         expect(dataHash).toEqual(resultDataHash)
       })
