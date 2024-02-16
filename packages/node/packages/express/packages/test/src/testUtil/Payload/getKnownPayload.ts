@@ -14,6 +14,10 @@ export const knownPayloadPromise = new PayloadBuilder<Payload<Record<string, unk
   })
   .build()
 
-export const knownPayloadHash = async () => await PayloadBuilder.dataHash(await knownPayloadPromise)
+export const knownPayloadHash = async () => {
+  const knownPayload = await knownPayloadPromise
+  const result = await PayloadBuilder.dataHash(knownPayload)
+  return result
+}
 
 export const nonExistentHash = '4b19d691dd348c711b2e83ed975c8009856e3001a84cdc63b5226124e08eb4af'

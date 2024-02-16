@@ -1,6 +1,7 @@
 import { Account } from '@xyo-network/account'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
-import { Payload } from '@xyo-network/payload-model'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
+import { Payload, unMeta } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 import { getHash, getNewPayload, getTestSchemaName, insertPayload } from '../../../testUtil'
@@ -11,13 +12,16 @@ describe('/:hash', () => {
     const account = Account.randomSync()
     const schemaA = getTestSchemaName()
     const schemaB = getTestSchemaName()
-    const payloadBaseA = (async () => ({ ...(await getNewPayload()), schema: schemaA }))()
+    const payloadBaseA = (async () => PayloadBuilder.build({ ...(await getNewPayload()), schema: schemaA }, true))()
     const payloadA: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseA))()
-    const payloadBaseB = (async () => ({ ...(await getNewPayload()), schema: schemaB }))()
+    const payloadBaseB = (async () => PayloadBuilder.build({ ...(await getNewPayload()), schema: schemaB }, true))()
     const payloadB: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseB))()
     const schemas = [schemaA, schemaB]
     beforeAll(async () => {
-      const [bw] = await (await new BoundWitnessBuilder().payloads([(await payloadA).payload, (await payloadB).payload])).witness(account).build()
+      const [bw] = await new BoundWitnessBuilder()
+        .payloads([(await payloadA).payload, (await payloadB).payload])
+        .witness(account)
+        .build()
       const payloads: Payload[] = [bw, (await payloadA).payload, (await payloadB).payload]
       const payloadResponse = await insertPayload(payloads, account)
       expect(payloadResponse.length).toBe(payloads.length)
@@ -29,7 +33,8 @@ describe('/:hash', () => {
       ])('returns Payload of schema type', async (schema, expected) => {
         const pointerHash = await createPointer([[]], [[schema]])
         const result = await getHash(pointerHash)
-        expect(result).toEqual((await expected).payload)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        expect(unMeta(result as any)).toEqual(unMeta((await expected).payload as any))
       })
     })
     describe('single schema [w/address]', () => {
@@ -39,7 +44,17 @@ describe('/:hash', () => {
       ])('returns Payload of schema type', async (schema, expected) => {
         const pointerHash = await createPointer([[account.address]], [[schema]])
         const result = await getHash(pointerHash)
-        expect(result).toEqual((await expected).payload)
+        const expectedPayload = (await expected).payload
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        console.log(`expectedPayload: ${(expectedPayload as any).$hash}`)
+        console.log(JSON.stringify(expectedPayload, null, 2))
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        console.log(`result: ${(result as any).$hash}`)
+        const h1 = await PayloadBuilder.dataHash(expectedPayload)
+        console.log(`h1: ${h1}`)
+        const h2 = await PayloadBuilder.dataHash(result)
+        console.log(`h2 ${h2}`)
+        expect(result).toEqual(expectedPayload)
       })
     })
     describe('multiple schema rules', () => {

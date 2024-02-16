@@ -80,11 +80,11 @@ describe(`/${moduleName}`, () => {
     describe('hash', () => {
       let boundWitness: BoundWitnessWrapper
       beforeAll(async () => {
-        boundWitness = await BoundWitnessWrapper.parse((await getNewBoundWitness([account]))[0])
+        boundWitness = BoundWitnessWrapper.parse((await getNewBoundWitness([account]))[0])
         await archivist.insert([boundWitness.payload])
       })
       it('divines BoundWitnesses by hash', async () => {
-        const hash = await boundWitness.hash()
+        const hash = await boundWitness.dataHash()
         const query: BoundWitnessDivinerQueryPayload = { hash, schema }
         const response = await diviner.divine([query])
         expect(response).toBeArrayOfSize(1)
@@ -101,7 +101,7 @@ describe(`/${moduleName}`, () => {
     describe('dataHash', () => {
       let boundWitness: BoundWitnessWrapper
       beforeAll(async () => {
-        boundWitness = await BoundWitnessWrapper.parse((await getNewBoundWitness([account]))[0])
+        boundWitness = BoundWitnessWrapper.parse((await getNewBoundWitness([account]))[0])
         await archivist.insert([boundWitness.payload])
       })
       it('divines BoundWitnesses by hash', async () => {

@@ -17,7 +17,7 @@ export const validByType = async (payloads: Payload[] = []) => {
           console.log(`validByType.Error: ${JSON.stringify(errors, null, 2)}`)
         }
       } else {
-        const payloadWrapper = await PayloadWrapper.wrap(payload)
+        const payloadWrapper = PayloadWrapper.wrap(payload)
         if (await payloadWrapper.getValid()) {
           results[1].push(payloadWrapper.payload)
         }

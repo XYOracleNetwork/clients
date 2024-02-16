@@ -78,7 +78,7 @@ describe('/:hash', () => {
       const response = await getHash(pointerHash)
       expect(response).toBeTruthy()
       expect(Array.isArray(response)).toBe(false)
-      expect(await (await PayloadWrapper.wrap(response)).getValid()).toBeTrue()
+      expect(await PayloadWrapper.wrap(response).getValid()).toBeTrue()
       expect(response).toEqual(expected)
     })
     it(`${ReasonPhrases.NOT_FOUND} if no BoundWitnesses match the criteria`, async () => {

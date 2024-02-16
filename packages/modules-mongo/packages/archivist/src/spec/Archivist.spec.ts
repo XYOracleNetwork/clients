@@ -62,10 +62,10 @@ describeIf(hasMongoDBConfig())('DeterministicArchivist', () => {
     const payload2 = await PayloadBuilder.build({ nonce: 2, schema: 'network.xyo.test' })
     const payload3 = await PayloadBuilder.build({ nonce: 3, schema: 'network.xyo.debug' })
     const payload4 = await PayloadBuilder.build({ nonce: 4, schema: 'network.xyo.test' })
-    const payloadWrapper1 = await PayloadWrapper.wrap(payload1)
-    const payloadWrapper2 = await PayloadWrapper.wrap(payload2)
-    const payloadWrapper3 = await PayloadWrapper.wrap(payload3)
-    const payloadWrapper4 = await PayloadWrapper.wrap(payload4)
+    const payloadWrapper1 = PayloadWrapper.wrap(payload1)
+    const payloadWrapper2 = PayloadWrapper.wrap(payload2)
+    const payloadWrapper3 = PayloadWrapper.wrap(payload3)
+    const payloadWrapper4 = PayloadWrapper.wrap(payload4)
     payloadWrappers.push(payloadWrapper1, payloadWrapper2, payloadWrapper3, payloadWrapper4)
     const boundWitness1 = (await (await new BoundWitnessBuilder().payload(payloadWrapper1.payload)).witness(userAccount).build())[0]
     const boundWitness2 = (await (await new BoundWitnessBuilder().payload(payloadWrapper2.payload)).witness(userAccount).build())[0]

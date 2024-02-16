@@ -58,13 +58,13 @@ export const findPayload = async (
       }
       const hash = bw.payloadHashes[payloadIndex]
       const result = await archivist.get([hash])
-      return result?.[0] ? (await PayloadWrapper.wrap(result?.[0])).payload : undefined
+      return result?.[0] ? PayloadWrapper.wrap(result?.[0]).payload : undefined
     }
   }
   // Find payload
   else {
     const filter = createPayloadFilterFromSearchCriteria(searchCriteria)
     const result = await payloadDiviner.divine(filter)
-    return result?.[0] ? (await PayloadWrapper.wrap(result?.[0])).payload : undefined
+    return result?.[0] ? PayloadWrapper.wrap(result?.[0]).payload : undefined
   }
 }
