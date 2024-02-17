@@ -1,5 +1,6 @@
-import { readFileSync } from 'fs'
-import { resolve } from 'path'
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
+
 import { terminal } from 'terminal-kit'
 
 export const readFileDeep = (names: string[]) => {
@@ -8,7 +9,7 @@ export const readFileDeep = (names: string[]) => {
   let filename
   let resolvedPath
   while (depth < 10 && result === undefined) {
-    names.forEach((name) => {
+    for (const name of names) {
       if (result === undefined) {
         filename = name
         for (let i = 0; i < depth; i++) {
@@ -24,7 +25,7 @@ export const readFileDeep = (names: string[]) => {
           }
         }
       }
-    })
+    }
     depth++
   }
   return [result, resolvedPath]

@@ -3,7 +3,7 @@ import { PocketProvider, Provider } from 'ethers'
 
 import { PocketProviderConfig } from '../Model'
 
-let instance: PocketProvider | undefined = undefined
+let instance: PocketProvider | undefined
 
 export const getPocketProvider = (): Provider => {
   if (instance) return instance

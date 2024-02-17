@@ -13,7 +13,7 @@ export const getPayloadValidatorFromSchemaCache: GetValidator<Payload> = async (
   // Get the schema from the schema cache
   const schemaPayload: PayloadWithPartialMongoMeta<SchemaPayload> | undefined = (await SchemaCache.instance.get(payload.schema))?.payload
   // If it doesn't exist return undefined
-  if (!schemaPayload) return undefined
+  if (!schemaPayload) return
   const { definition, _hash } = schemaPayload
   // Use the schema cache payload hash as the AJV cache key to memoize
   // the AJV validator

@@ -1,6 +1,7 @@
+import { parse } from 'node:path'
+
 import { EmptyObject } from '@xylabs/object'
 import { ArchivistGetQuerySchema, isArchivistInstance } from '@xyo-network/archivist-model'
-import { parse } from 'path'
 import { ArgumentsCamelCase, Argv, CommandBuilder, CommandModule } from 'yargs'
 
 import { printError, printLine } from '../../lib'

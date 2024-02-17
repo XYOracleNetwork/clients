@@ -3,7 +3,7 @@ import { Job } from '@xyo-network/shared'
 
 // TODO: Depends on job schedule, calculate dynamically
 // to something like 25% of schedule to allow for retries
-const options = { lockLifetime: 10000 }
+const options = { lockLifetime: 10_000 }
 
 export const defineJobs = (jobQueue: JobQueue, jobs: Job[]) => {
   jobs.map((job) => {

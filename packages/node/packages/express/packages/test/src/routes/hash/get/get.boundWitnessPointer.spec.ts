@@ -31,14 +31,14 @@ const createPointer = async (
       return { schema }
     })
   })
-  if (schemaRules.length) reference.push(...schemaRules)
+  if (schemaRules.length > 0) reference.push(...schemaRules)
 
   const addressRules: PayloadAddressRule[][] = addresses.map((rules) => {
     return rules.map((address) => {
       return { address }
     })
   })
-  if (addressRules.length) reference.push(...addressRules)
+  if (addressRules.length > 0) reference.push(...addressRules)
 
   const timestampRule: PayloadTimestampDirectionRule = { direction, timestamp }
   reference.push([timestampRule])
@@ -102,8 +102,8 @@ describe('/:hash', () => {
         const [bwE, payloadsE] = await getNewBoundWitness([accountC, accountD])
         const [bwF, payloadsF] = await getNewBoundWitness([accountC])
         const [bwG, payloadsG] = await getNewBoundWitness([accountD])
-        payloads.push(...[...payloadsA, ...payloadsB, ...payloadsC, ...payloadsD, ...payloadsE, ...payloadsF, ...payloadsG])
-        bws.push(...[bwA, bwB, bwC, bwD, bwE, bwF, bwG])
+        payloads.push(...payloadsA, ...payloadsB, ...payloadsC, ...payloadsD, ...payloadsE, ...payloadsF, ...payloadsG)
+        bws.push(bwA, bwB, bwC, bwD, bwE, bwF, bwG)
         const blockResponse = await insertBlock(bws)
         expect(blockResponse.length).toBe(payloads.length)
       })
@@ -146,8 +146,10 @@ describe('/:hash', () => {
       const account = Account.randomSync()
       const schemaA = getTestSchemaName()
       const schemaB = getTestSchemaName()
+      // eslint-disable-next-line unicorn/no-unreadable-iife
       const payloadBaseA = (async () => ({ ...(await getNewPayload()), schema: schemaA }))()
       const payloadA: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseA))()
+      // eslint-disable-next-line unicorn/no-unreadable-iife
       const payloadBaseB = (async () => ({ ...(await getNewPayload()), schema: schemaB }))()
       const payloadB: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseB))()
       const schemas = [schemaA, schemaB]
@@ -155,7 +157,7 @@ describe('/:hash', () => {
       beforeAll(async () => {
         const [bwA] = await getNewBoundWitness([account], [(await payloadA).payload])
         const [bwB] = await getNewBoundWitness([account], [(await payloadB).payload])
-        boundWitnesses.push(...[bwA, bwB])
+        boundWitnesses.push(bwA, bwB)
         const payloadResponse = await insertBlock(boundWitnesses, account)
         expect(payloadResponse.length).toBe(boundWitnesses.length)
       })

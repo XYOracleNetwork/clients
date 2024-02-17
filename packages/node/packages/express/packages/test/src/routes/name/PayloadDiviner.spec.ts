@@ -56,7 +56,7 @@ describe(`/${moduleName}`, () => {
         const schemaB = getTestSchemaName()
         const payloadBaseA = { ...(await getNewPayload()), schema: schemaA }
         const payloadA: PayloadWrapper = PayloadWrapper.wrap(payloadBaseA)
-        const payloadBaseB = (async () => ({ ...(await getNewPayload()), schema: schemaB }))()
+        const payloadBaseB = { ...(await getNewPayload()), schema: schemaB }
         const payloadB: PayloadWrapper = PayloadWrapper.wrap(await payloadBaseB)
         await archivist.insert([payloadA.payload, payloadB.payload])
       })

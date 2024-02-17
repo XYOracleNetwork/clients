@@ -1,8 +1,8 @@
 import { Account } from '@xyo-network/account'
 import { AccountInstance } from '@xyo-network/account-model'
 
-let _unitTestSigningAccount: Promise<AccountInstance> | undefined = undefined
-let _otherUnitTestSigningAccount: Promise<AccountInstance> | undefined = undefined
+let _unitTestSigningAccount: Promise<AccountInstance> | undefined
+let _otherUnitTestSigningAccount: Promise<AccountInstance> | undefined
 
 export const unitTestSigningAccount = () =>
   (_unitTestSigningAccount =

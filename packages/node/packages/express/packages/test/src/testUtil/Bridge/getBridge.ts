@@ -1,8 +1,9 @@
+import path from 'node:path'
+
 import { assertEx } from '@xylabs/assert'
 import { HDWallet } from '@xyo-network/account'
 import { BridgeInstance, BridgeParams } from '@xyo-network/bridge-model'
 import { HttpBridge, HttpBridgeConfig, HttpBridgeConfigSchema, HttpBridgeParams } from '@xyo-network/http-bridge'
-import path from 'path'
 
 let bridge: HttpBridge<BridgeParams>
 

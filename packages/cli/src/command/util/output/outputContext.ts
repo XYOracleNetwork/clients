@@ -9,14 +9,16 @@ export const outputContext = async (
   let log
   let err
   switch (output) {
-    case 'raw':
+    case 'raw': {
       log = outputRawLog
       err = outputRawError
       break
-    default:
+    }
+    default: {
       err = outputJsonError
       log = outputJsonLog
       break
+    }
   }
   try {
     await commandContext(log, err)

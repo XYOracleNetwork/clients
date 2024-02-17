@@ -28,14 +28,14 @@ export const createPointer = async (
       return { schema }
     })
   })
-  if (schemaRules.length) reference.push(...schemaRules)
+  if (schemaRules.length > 0) reference.push(...schemaRules)
 
   const addressRules: PayloadAddressRule[][] = addresses.map((rules) => {
     return rules.map((address) => {
       return { address }
     })
   })
-  if (addressRules.length) reference.push(...addressRules)
+  if (addressRules.length > 0) reference.push(...addressRules)
 
   const timestampRule: PayloadTimestampDirectionRule = { direction, timestamp }
   reference.push([timestampRule])

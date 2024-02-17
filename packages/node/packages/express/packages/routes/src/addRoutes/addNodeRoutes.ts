@@ -22,18 +22,21 @@ export const addNodeRoutes = (app: Express) => {
   )
   app.get(
     '/:address',
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     getAddress,
     /* #swagger.tags = ['Node'] */
     /* #swagger.summary = 'Get the module info for the supplied address' */
   )
   app.post(
     '/:address',
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     postAddress,
     /* #swagger.tags = ['Node'] */
     /* #swagger.summary = 'Execute the supplied queries, contained as Payloads in one or more Bound Witnesses. Implementation is specific to the supplied payload schemas.' */
   )
   app.get(
     '/:hash',
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     getByHash,
     /* #swagger.tags = ['Node'] */
     /* #swagger.summary = 'Get the HURI from the archivist' */

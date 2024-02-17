@@ -43,9 +43,9 @@ describe('SetIterator', () => {
   describe('next', () => {
     it('Overflows back to the beginning', () => {
       const iterator = new SetIterator(values)
-      for (let i = 0; i < values.length; i++) {
+      for (const value of values) {
         const result = iterator.next()
-        expect(result.value).toEqual(values[i])
+        expect(result.value).toEqual(value)
         expect(result.done).toBe(false)
       }
       const result = iterator.next()

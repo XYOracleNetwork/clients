@@ -31,15 +31,16 @@ const setupMongo = async () => {
   // To use Transactions, the "storageEngine" needs to be changed to `wiredTiger`
   const mongo = await MongoMemoryReplSet.create({
     instanceOpts: [
-      { port: 55391, replicaMemberConfig: { buildIndexes: true } },
-      { port: 55392, replicaMemberConfig: { arbiterOnly: true, buildIndexes: true } },
-      { port: 55393, replicaMemberConfig: { arbiterOnly: true, buildIndexes: true } },
+      { port: 55_391, replicaMemberConfig: { buildIndexes: true } },
+      { port: 55_392, replicaMemberConfig: { arbiterOnly: true, buildIndexes: true } },
+      { port: 55_393, replicaMemberConfig: { arbiterOnly: true, buildIndexes: true } },
     ],
     replSet: { count: 3, storageEngine: 'wiredTiger' },
   }) // This will create an ReplSet with 3 members and storage-engine "wiredTiger"
   await mongo.waitUntilRunning()
   globalThis.mongo = mongo
   const uri = mongo.getUri()
+  // eslint-disable-next-line unicorn/prefer-spread
   const mongoConnectionString = uri.split('/').slice(0, -1).concat(database).join('/') + uri.split('/').slice(-1)
   // Recreate connection string to ReplicaSet adding default DB in the proper place
   process.env.MONGO_CONNECTION_STRING = mongoConnectionString

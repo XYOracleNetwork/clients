@@ -1,5 +1,6 @@
-import { existsSync } from 'fs'
-import { join } from 'path'
+import { existsSync } from 'node:fs'
+import { join } from 'node:path'
+
 import { terminal } from 'terminal-kit'
 
 const fileRelativePath = join(__dirname, '..', '..', 'cli-art-simple.png')
@@ -12,7 +13,7 @@ export const printLogo = async () => {
     if (image?.length) {
       await terminal.drawImage(image, { shrink })
     }
-  } catch (err) {
+  } catch {
     // Stat throws if image doesn't exist
   }
 }

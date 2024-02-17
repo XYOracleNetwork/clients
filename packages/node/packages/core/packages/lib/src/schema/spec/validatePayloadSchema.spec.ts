@@ -39,6 +39,7 @@ describe('validatePayloadSchema', () => {
   describe('when validator does not exist', () => {
     it('returns true', async () => {
       const payload = getPayload()
+      // eslint-disable-next-line unicorn/no-useless-undefined
       const answer = await validatePayloadSchema(payload, () => Promise.resolve(undefined))
       expect(answer).toBeTruthy()
     })

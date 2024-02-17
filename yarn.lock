@@ -3299,93 +3299,93 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/rollup-android-arm-eabi@npm:4.11.0":
-  version: 4.11.0
-  resolution: "@rollup/rollup-android-arm-eabi@npm:4.11.0"
+"@rollup/rollup-android-arm-eabi@npm:4.12.0":
+  version: 4.12.0
+  resolution: "@rollup/rollup-android-arm-eabi@npm:4.12.0"
   conditions: os=android & cpu=arm
   languageName: node
   linkType: hard
 
-"@rollup/rollup-android-arm64@npm:4.11.0":
-  version: 4.11.0
-  resolution: "@rollup/rollup-android-arm64@npm:4.11.0"
+"@rollup/rollup-android-arm64@npm:4.12.0":
+  version: 4.12.0
+  resolution: "@rollup/rollup-android-arm64@npm:4.12.0"
   conditions: os=android & cpu=arm64
   languageName: node
   linkType: hard
 
-"@rollup/rollup-darwin-arm64@npm:4.11.0":
-  version: 4.11.0
-  resolution: "@rollup/rollup-darwin-arm64@npm:4.11.0"
+"@rollup/rollup-darwin-arm64@npm:4.12.0":
+  version: 4.12.0
+  resolution: "@rollup/rollup-darwin-arm64@npm:4.12.0"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@rollup/rollup-darwin-x64@npm:4.11.0":
-  version: 4.11.0
-  resolution: "@rollup/rollup-darwin-x64@npm:4.11.0"
+"@rollup/rollup-darwin-x64@npm:4.12.0":
+  version: 4.12.0
+  resolution: "@rollup/rollup-darwin-x64@npm:4.12.0"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-arm-gnueabihf@npm:4.11.0":
-  version: 4.11.0
-  resolution: "@rollup/rollup-linux-arm-gnueabihf@npm:4.11.0"
+"@rollup/rollup-linux-arm-gnueabihf@npm:4.12.0":
+  version: 4.12.0
+  resolution: "@rollup/rollup-linux-arm-gnueabihf@npm:4.12.0"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-arm64-gnu@npm:4.11.0":
-  version: 4.11.0
-  resolution: "@rollup/rollup-linux-arm64-gnu@npm:4.11.0"
+"@rollup/rollup-linux-arm64-gnu@npm:4.12.0":
+  version: 4.12.0
+  resolution: "@rollup/rollup-linux-arm64-gnu@npm:4.12.0"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-arm64-musl@npm:4.11.0":
-  version: 4.11.0
-  resolution: "@rollup/rollup-linux-arm64-musl@npm:4.11.0"
+"@rollup/rollup-linux-arm64-musl@npm:4.12.0":
+  version: 4.12.0
+  resolution: "@rollup/rollup-linux-arm64-musl@npm:4.12.0"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-riscv64-gnu@npm:4.11.0":
-  version: 4.11.0
-  resolution: "@rollup/rollup-linux-riscv64-gnu@npm:4.11.0"
+"@rollup/rollup-linux-riscv64-gnu@npm:4.12.0":
+  version: 4.12.0
+  resolution: "@rollup/rollup-linux-riscv64-gnu@npm:4.12.0"
   conditions: os=linux & cpu=riscv64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-x64-gnu@npm:4.11.0":
-  version: 4.11.0
-  resolution: "@rollup/rollup-linux-x64-gnu@npm:4.11.0"
+"@rollup/rollup-linux-x64-gnu@npm:4.12.0":
+  version: 4.12.0
+  resolution: "@rollup/rollup-linux-x64-gnu@npm:4.12.0"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-x64-musl@npm:4.11.0":
-  version: 4.11.0
-  resolution: "@rollup/rollup-linux-x64-musl@npm:4.11.0"
+"@rollup/rollup-linux-x64-musl@npm:4.12.0":
+  version: 4.12.0
+  resolution: "@rollup/rollup-linux-x64-musl@npm:4.12.0"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@rollup/rollup-win32-arm64-msvc@npm:4.11.0":
-  version: 4.11.0
-  resolution: "@rollup/rollup-win32-arm64-msvc@npm:4.11.0"
+"@rollup/rollup-win32-arm64-msvc@npm:4.12.0":
+  version: 4.12.0
+  resolution: "@rollup/rollup-win32-arm64-msvc@npm:4.12.0"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@rollup/rollup-win32-ia32-msvc@npm:4.11.0":
-  version: 4.11.0
-  resolution: "@rollup/rollup-win32-ia32-msvc@npm:4.11.0"
+"@rollup/rollup-win32-ia32-msvc@npm:4.12.0":
+  version: 4.12.0
+  resolution: "@rollup/rollup-win32-ia32-msvc@npm:4.12.0"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@rollup/rollup-win32-x64-msvc@npm:4.11.0":
-  version: 4.11.0
-  resolution: "@rollup/rollup-win32-x64-msvc@npm:4.11.0"
+"@rollup/rollup-win32-x64-msvc@npm:4.12.0":
+  version: 4.12.0
+  resolution: "@rollup/rollup-win32-x64-msvc@npm:4.12.0"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -4364,7 +4364,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^29.5.11, @types/jest@npm:^29.5.12":
+"@types/jest@npm:^29.5.12":
   version: 29.5.12
   resolution: "@types/jest@npm:29.5.12"
   dependencies:
@@ -4487,7 +4487,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.11.19, @types/node@npm:^20.11.5":
+"@types/node@npm:*, @types/node@npm:^20.11.19":
   version: 20.11.19
   resolution: "@types/node@npm:20.11.19"
   dependencies:
@@ -4692,31 +4692,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^6.19.0":
-  version: 6.21.0
-  resolution: "@typescript-eslint/eslint-plugin@npm:6.21.0"
-  dependencies:
-    "@eslint-community/regexpp": "npm:^4.5.1"
-    "@typescript-eslint/scope-manager": "npm:6.21.0"
-    "@typescript-eslint/type-utils": "npm:6.21.0"
-    "@typescript-eslint/utils": "npm:6.21.0"
-    "@typescript-eslint/visitor-keys": "npm:6.21.0"
-    debug: "npm:^4.3.4"
-    graphemer: "npm:^1.4.0"
-    ignore: "npm:^5.2.4"
-    natural-compare: "npm:^1.4.0"
-    semver: "npm:^7.5.4"
-    ts-api-utils: "npm:^1.0.1"
-  peerDependencies:
-    "@typescript-eslint/parser": ^6.0.0 || ^6.0.0-alpha
-    eslint: ^7.0.0 || ^8.0.0
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  checksum: a57de0f630789330204cc1531f86cfc68b391cafb1ba67c8992133f1baa2a09d629df66e71260b040de4c9a3ff1252952037093c4128b0d56c4dbb37720b4c1d
-  languageName: node
-  linkType: hard
-
 "@typescript-eslint/eslint-plugin@npm:^7.0.1":
   version: 7.0.1
   resolution: "@typescript-eslint/eslint-plugin@npm:7.0.1"
@@ -4742,7 +4717,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^6.19.0":
+"@typescript-eslint/parser@npm:^6":
   version: 6.21.0
   resolution: "@typescript-eslint/parser@npm:6.21.0"
   dependencies:
@@ -4795,23 +4770,6 @@ __metadata:
     "@typescript-eslint/types": "npm:7.0.1"
     "@typescript-eslint/visitor-keys": "npm:7.0.1"
   checksum: dade6055bb853adb54de795cc3da5ab8550236d4186f108573fdb02e636ab7fc4300a55b506698ced4087ca43b143a5593931cb3195ab4790470b456d9ff8846
-  languageName: node
-  linkType: hard
-
-"@typescript-eslint/type-utils@npm:6.21.0":
-  version: 6.21.0
-  resolution: "@typescript-eslint/type-utils@npm:6.21.0"
-  dependencies:
-    "@typescript-eslint/typescript-estree": "npm:6.21.0"
-    "@typescript-eslint/utils": "npm:6.21.0"
-    debug: "npm:^4.3.4"
-    ts-api-utils: "npm:^1.0.1"
-  peerDependencies:
-    eslint: ^7.0.0 || ^8.0.0
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  checksum: d03fb3ee1caa71f3ce053505f1866268d7ed79ffb7fed18623f4a1253f5b8f2ffc92636d6fd08fcbaf5bd265a6de77bf192c53105131e4724643dfc910d705fc
   languageName: node
   linkType: hard
 
@@ -4884,23 +4842,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/utils@npm:6.21.0, @typescript-eslint/utils@npm:^6.0.0":
-  version: 6.21.0
-  resolution: "@typescript-eslint/utils@npm:6.21.0"
-  dependencies:
-    "@eslint-community/eslint-utils": "npm:^4.4.0"
-    "@types/json-schema": "npm:^7.0.12"
-    "@types/semver": "npm:^7.5.0"
-    "@typescript-eslint/scope-manager": "npm:6.21.0"
-    "@typescript-eslint/types": "npm:6.21.0"
-    "@typescript-eslint/typescript-estree": "npm:6.21.0"
-    semver: "npm:^7.5.4"
-  peerDependencies:
-    eslint: ^7.0.0 || ^8.0.0
-  checksum: b404a2c55a425a79d054346ae123087d30c7ecf7ed7abcf680c47bf70c1de4fabadc63434f3f460b2fa63df76bc9e4a0b9fa2383bb8a9fcd62733fb5c4e4f3e3
-  languageName: node
-  linkType: hard
-
 "@typescript-eslint/utils@npm:7.0.1":
   version: 7.0.1
   resolution: "@typescript-eslint/utils@npm:7.0.1"
@@ -4915,6 +4856,23 @@ __metadata:
   peerDependencies:
     eslint: ^8.56.0
   checksum: b7e0cb2994f73b3f416684dc175d4e1da5f8306d6c81abbad2f219fa3e4f29154063a3c9568e4a1f879a38b79c62250e596e4ed7265f7bd1ed9b3db806cb92b7
+  languageName: node
+  linkType: hard
+
+"@typescript-eslint/utils@npm:^6.0.0":
+  version: 6.21.0
+  resolution: "@typescript-eslint/utils@npm:6.21.0"
+  dependencies:
+    "@eslint-community/eslint-utils": "npm:^4.4.0"
+    "@types/json-schema": "npm:^7.0.12"
+    "@types/semver": "npm:^7.5.0"
+    "@typescript-eslint/scope-manager": "npm:6.21.0"
+    "@typescript-eslint/types": "npm:6.21.0"
+    "@typescript-eslint/typescript-estree": "npm:6.21.0"
+    semver: "npm:^7.5.4"
+  peerDependencies:
+    eslint: ^7.0.0 || ^8.0.0
+  checksum: b404a2c55a425a79d054346ae123087d30c7ecf7ed7abcf680c47bf70c1de4fabadc63434f3f460b2fa63df76bc9e4a0b9fa2383bb8a9fcd62733fb5c4e4f3e3
   languageName: node
   linkType: hard
 
@@ -5115,12 +5073,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xylabs/eslint-config-base@npm:^3.2.42":
-  version: 3.2.42
-  resolution: "@xylabs/eslint-config-base@npm:3.2.42"
+"@xylabs/eslint-config-base@npm:^3.4.1":
+  version: 3.4.1
+  resolution: "@xylabs/eslint-config-base@npm:3.4.1"
   dependencies:
-    "@typescript-eslint/eslint-plugin": "npm:^6.19.0"
-    "@typescript-eslint/parser": "npm:^6.19.0"
+    "@typescript-eslint/eslint-plugin": "npm:^7.0.1"
+    "@typescript-eslint/parser": "npm:^6"
     eslint-config-prettier: "npm:^9.1.0"
     eslint-import-resolver-typescript: "npm:^3.6.1"
     eslint-plugin-deprecation: "npm:^2.0.0"
@@ -5129,50 +5087,52 @@ __metadata:
     eslint-plugin-md: "npm:^1.0.19"
     eslint-plugin-no-secrets: "npm:^0.8.9"
     eslint-plugin-prettier: "npm:^5.1.3"
-    eslint-plugin-simple-import-sort: "npm:^10.0.0"
+    eslint-plugin-simple-import-sort: "npm:^12.0.0"
     eslint-plugin-sort-keys-fix: "npm:^1.1.2"
+    eslint-plugin-unicorn: "npm:^51.0.1"
     eslint-plugin-workspaces: "npm:^0.10.0"
     jsonc-eslint-parser: "npm:^2.4.0"
     lodash: "npm:^4.17.21"
     markdown-eslint-parser: "npm:^1.2.1"
-    prettier: "npm:^3.2.4"
+    prettier: "npm:^3.2.5"
     remark-lint-maximum-line-length: "npm:^3.1.3"
     remark-preset-lint-markdown-style-guide: "npm:^5.1.3"
     typescript: "npm:^5.3.3"
   peerDependencies:
     eslint: ^8.23.0
-  checksum: 3871f8fc4c450ad5f6490d6cfe37b889acdb76afb1a45e3bf3d5e8475235a26e0e09d8840032859bf6f3b576c2ef0681e4215b6b0c02e81b4364e302f5fb1467
+  checksum: 2f32b8ad835059bf2f5a3b3ec61de5236c1e308e593bc0adec018dfd2545faec38b11567bd67d1eac3ce5d2bd34cace6f2933f1737c71738d0dcf58a7e98a5b5
   languageName: node
   linkType: hard
 
-"@xylabs/eslint-config@npm:^3.2.42":
-  version: 3.2.42
-  resolution: "@xylabs/eslint-config@npm:3.2.42"
+"@xylabs/eslint-config@npm:^3.4.1":
+  version: 3.4.1
+  resolution: "@xylabs/eslint-config@npm:3.4.1"
   dependencies:
-    "@typescript-eslint/eslint-plugin": "npm:^6.19.0"
-    "@typescript-eslint/parser": "npm:^6.19.0"
+    "@typescript-eslint/eslint-plugin": "npm:^7.0.1"
+    "@typescript-eslint/parser": "npm:^6"
     eslint-config-prettier: "npm:^9.1.0"
     eslint-import-resolver-typescript: "npm:^3.6.1"
     eslint-plugin-deprecation: "npm:^2.0.0"
     eslint-plugin-import: "npm:^2.29.1"
     eslint-plugin-json-es: "npm:^1.5.7"
-    eslint-plugin-jsonc: "npm:^2.12.2"
+    eslint-plugin-jsonc: "npm:^2.13.0"
     eslint-plugin-md: "npm:^1.0.19"
     eslint-plugin-no-secrets: "npm:^0.8.9"
     eslint-plugin-prettier: "npm:^5.1.3"
-    eslint-plugin-simple-import-sort: "npm:^10.0.0"
+    eslint-plugin-simple-import-sort: "npm:^12.0.0"
     eslint-plugin-sort-keys-fix: "npm:^1.1.2"
+    eslint-plugin-unicorn: "npm:^51.0.1"
     eslint-plugin-workspaces: "npm:^0.10.0"
     jsonc-eslint-parser: "npm:^2.4.0"
     lodash: "npm:^4.17.21"
     markdown-eslint-parser: "npm:^1.2.1"
-    prettier: "npm:^3.2.4"
+    prettier: "npm:^3.2.5"
     remark-lint-maximum-line-length: "npm:^3.1.3"
     remark-preset-lint-markdown-style-guide: "npm:^5.1.3"
     typescript: "npm:^5.3.3"
   peerDependencies:
     eslint: ^8.23.0
-  checksum: 829afdfc94fae93870b07e82db4865b0c80aa4d449d19d085b292754e5d7e2508506b4bb6c95fd6a91ccf4d0e977a3f12d5fe84edd4c2206405adc14611e7001
+  checksum: 2bb5e7327ecbda47f9c584d2c04348f8498a0df51ffbf1d59baaca22e70b7e31cb4851d9dc77a29b160dc3c8a030eab10dd47eb8b02f5e07164f658783a3a7cf
   languageName: node
   linkType: hard
 
@@ -5331,18 +5291,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xylabs/ts-scripts-yarn3@npm:^3.2.42":
-  version: 3.2.42
-  resolution: "@xylabs/ts-scripts-yarn3@npm:3.2.42"
+"@xylabs/ts-scripts-yarn3@npm:^3.4.1":
+  version: 3.4.1
+  resolution: "@xylabs/ts-scripts-yarn3@npm:3.4.1"
   dependencies:
     "@rollup/plugin-commonjs": "npm:^25.0.7"
     "@rollup/plugin-json": "npm:^6.1.0"
     "@rollup/plugin-typescript": "npm:^11.1.6"
-    "@types/node": "npm:^20.11.5"
+    "@types/node": "npm:^20.11.19"
     "@types/yargs": "npm:^17.0.32"
-    "@typescript-eslint/eslint-plugin": "npm:^6.19.0"
-    "@typescript-eslint/parser": "npm:^6.19.0"
-    "@xylabs/tsconfig": "npm:~3.2.42"
+    "@typescript-eslint/eslint-plugin": "npm:^7.0.1"
+    "@typescript-eslint/parser": "npm:^7.0.1"
+    "@xylabs/tsconfig": "npm:~3.4.1"
     async-mutex: "npm:^0.4.1"
     chalk: "npm:^4.1.2"
     cosmiconfig: "npm:^9.0.0"
@@ -5352,7 +5312,7 @@ __metadata:
     eslint: "npm:^8.56.0"
     eslint-config-prettier: "npm:^9.1.0"
     eslint-plugin-prettier: "npm:^5.1.3"
-    eslint-plugin-sonarjs: "npm:^0.23.0"
+    eslint-plugin-sonarjs: "npm:^0.24.0"
     glob: "npm:^10.3.10"
     jest: "npm:^29.7.0"
     jest-extended: "npm:^4.0.2"
@@ -5362,25 +5322,25 @@ __metadata:
     license-checker: "npm:^25.0.1"
     lodash: "npm:^4.17.21"
     node-cmd: "npm:^5.0.0"
-    npm-check-updates: "npm:^16.14.12"
+    npm-check-updates: "npm:^16.14.15"
     npm-package-json-lint: "npm:^7.1.0"
     npm-package-json-lint-config-default: "npm:^6.0.0"
     parse-git-config: "npm:^3.0.0"
-    prettier: "npm:^3.2.4"
+    prettier: "npm:^3.2.5"
     publint: "npm:^0.2.7"
     reflect-metadata: "npm:^0.2.1"
     rimraf: "npm:^4.4.1"
-    rollup: "npm:^4.9.5"
+    rollup: "npm:^4.12.0"
     rollup-plugin-exclude-dependencies-from-bundle: "npm:^1.1.23"
-    rollup-plugin-node-externals: "npm:^6.1.2"
+    rollup-plugin-node-externals: "npm:^7.0.1"
     supertest: "npm:^6.3.4"
-    ts-jest: "npm:^29.1.1"
+    ts-jest: "npm:^29.1.2"
     ts-node: "npm:^10.9.2"
     ts-prune: "npm:^0.10.3"
     tsc-prog: "npm:^2.3.0"
     tslib: "npm:^2.6.2"
-    tsup: "npm:^8.0.1"
-    typedoc: "npm:^0.25.7"
+    tsup: "npm:^8.0.2"
+    typedoc: "npm:^0.25.8"
     types-package-json: "npm:^2.0.39"
     yargs: "npm:^17.7.2"
   peerDependencies:
@@ -5431,50 +5391,50 @@ __metadata:
     xy: dist/bin/xy.js
     xy-ts: src/bin/xy-ts.ts
     yarn3only: dist/bin/yarn3only.js
-  checksum: 7de59838439f8de9bb73ff2dc631b7e6540eb0c87a2c18fd271072c41d2b2d2077eddda35ae0cb419cb0b66df0af83cd476380b6aa93a3a0883609e7f03e56b5
+  checksum: a7d37f12b0e79d8e9b4e22ea98bab82bb02285909d95447138f14e719eca56499750860b98ced4db8587ef5906322a00492513cdb01bdbaf27bd128061daaab7
   languageName: node
   linkType: hard
 
-"@xylabs/tsconfig-dom-jest@npm:^3.2.42":
-  version: 3.2.42
-  resolution: "@xylabs/tsconfig-dom-jest@npm:3.2.42"
+"@xylabs/tsconfig-dom-jest@npm:^3.4.1":
+  version: 3.4.1
+  resolution: "@xylabs/tsconfig-dom-jest@npm:3.4.1"
   dependencies:
-    "@types/jest": "npm:^29.5.11"
-    "@types/node": "npm:^20.11.5"
+    "@types/jest": "npm:^29.5.12"
+    "@types/node": "npm:^20.11.19"
     "@types/reflect-metadata": "npm:^0.1.0"
-    "@xylabs/tsconfig-dom": "npm:~3.2.42"
+    "@xylabs/tsconfig-dom": "npm:~3.4.1"
     jest-extended: "npm:^4.0.2"
     jest-sorted: "npm:^1.0.14"
-  checksum: fada1b17f20541f10bc35a09e6fdf43d6a698e235dc648916b6a66bbe538f4e6550b7d4304fc2b357b7e4b0fb1d9920d8c5858a7c3169d57b866cce162518cea
+  checksum: 08110e59fef8b144abbd37beb31e97eec6900824e81e9fb06bd8864556af4eefe473082da4a524391d4a45e1218b7a19b412cf416f52254e579655e425269fbe
   languageName: node
   linkType: hard
 
-"@xylabs/tsconfig-dom@npm:~3.2.42":
-  version: 3.2.42
-  resolution: "@xylabs/tsconfig-dom@npm:3.2.42"
+"@xylabs/tsconfig-dom@npm:~3.4.1":
+  version: 3.4.1
+  resolution: "@xylabs/tsconfig-dom@npm:3.4.1"
   dependencies:
-    "@xylabs/tsconfig": "npm:~3.2.42"
-  checksum: 012e4140c962d62851d6b5521e5e26d2487f59615de74fcf135d6834e15b820de0ba114ef70a007800a7e4063751565202129731c9e210e8c8c845d458344210
+    "@xylabs/tsconfig": "npm:~3.4.1"
+  checksum: 605a4704a6a3957aa1d6047d5e5031872424234d0110d05689379acf5fa0c479f723a2a6f6a915e34c0dd19a44a0e81fd1573616d73f77660f4dfef1bcbaf927
   languageName: node
   linkType: hard
 
-"@xylabs/tsconfig-jest@npm:^3.2.42":
-  version: 3.2.42
-  resolution: "@xylabs/tsconfig-jest@npm:3.2.42"
+"@xylabs/tsconfig-jest@npm:^3.4.1":
+  version: 3.4.1
+  resolution: "@xylabs/tsconfig-jest@npm:3.4.1"
   dependencies:
-    "@xylabs/tsconfig": "npm:~3.2.42"
+    "@xylabs/tsconfig": "npm:~3.4.1"
     jest-extended: "npm:^4.0.2"
     jest-sorted: "npm:^1.0.14"
   peerDependencies:
     typescript: ^5
-  checksum: 2297f8d2fc356c1506deb85b31f2e47235009eb572f49822b9a08c516b961e9285b6228dcee4c031e513a5205ee6129f798663dd26ec274512222cf86beeb4e7
+  checksum: 6b24ffe5695291bfbdbb23e0cf32d5e9ab0a70b62c4c17456ad4daf6ec602e2c4a088bf0faf5f7b2f98bf7a35f3f7e1d1ae6fafc01d34cabe7308180ab6e942c
   languageName: node
   linkType: hard
 
-"@xylabs/tsconfig@npm:^3.2.42, @xylabs/tsconfig@npm:~3.2.42":
-  version: 3.2.42
-  resolution: "@xylabs/tsconfig@npm:3.2.42"
-  checksum: 7cdd03e8f8d42241826cbd4a545e1eb93d9f56a26bbb2569a408f73e1d638777f6e60fed9d5c861a3348ec9497b46481203e382edcea0d6d5a140322aa597029
+"@xylabs/tsconfig@npm:^3.4.1, @xylabs/tsconfig@npm:~3.4.1":
+  version: 3.4.1
+  resolution: "@xylabs/tsconfig@npm:3.4.1"
+  checksum: a7d9291a49f0600ace556ef8a3daf415cf3a25f42e0c9bfd542643915e4480cbeda54ecc3cf4d5f1fc677571f0a09e1cd07f39b8391a787ba0b3927b4c23ce28
   languageName: node
   linkType: hard
 
@@ -5660,8 +5620,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/archivist-model-mongodb@workspace:packages/modules-mongo/packages/archivist/packages/model"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig": "npm:^3.2.42"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig": "npm:^3.4.1"
     "@xyo-network/archivist-model": "npm:^2.90.23"
     "@xyo-network/module-model": "npm:^2.90.23"
     "@xyo-network/sdk-xyo-mongo-js": "workspace:~"
@@ -5692,8 +5652,8 @@ __metadata:
     "@xylabs/exists": "npm:^2.14.3"
     "@xylabs/hex": "npm:^2.14.3"
     "@xylabs/jest-helpers": "npm:^2.14.3"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig": "npm:^3.2.42"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig": "npm:^3.4.1"
     "@xyo-network/account": "npm:^2.90.23"
     "@xyo-network/account-model": "npm:^2.90.23"
     "@xyo-network/archivist-abstract": "npm:^2.90.23"
@@ -5771,9 +5731,9 @@ __metadata:
     "@xylabs/crypto": "npm:^2.14.3"
     "@xylabs/jest-helpers": "npm:^2.14.3"
     "@xylabs/sdk-api-express-ecs": "npm:^1.4.0"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig": "npm:^3.2.42"
-    "@xylabs/tsconfig-jest": "npm:^3.2.42"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig": "npm:^3.4.1"
+    "@xylabs/tsconfig-jest": "npm:^3.4.1"
     "@xyo-network/abstract-witness": "npm:^2.90.23"
     "@xyo-network/account": "npm:^2.90.23"
     "@xyo-network/account-model": "npm:^2.90.23"
@@ -5966,9 +5926,9 @@ __metadata:
     "@xylabs/delay": "npm:^2.14.3"
     "@xylabs/lodash": "npm:^2.14.3"
     "@xylabs/object": "npm:^2.89.3"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig": "npm:^3.2.42"
-    "@xylabs/tsconfig-jest": "npm:^3.2.42"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig": "npm:^3.4.1"
+    "@xylabs/tsconfig-jest": "npm:^3.4.1"
     "@xyo-network/account": "npm:^2.90.23"
     "@xyo-network/account-model": "npm:^2.90.23"
     "@xyo-network/archivist-model": "npm:^2.90.23"
@@ -6000,14 +5960,12 @@ __metadata:
     "@types/eslint": "npm:^8.56.2"
     "@types/jest": "npm:^29.5.12"
     "@types/supertest": "npm:^6.0.2"
-    "@typescript-eslint/eslint-plugin": "npm:^7.0.1"
-    "@typescript-eslint/parser": "npm:^7.0.1"
-    "@xylabs/eslint-config": "npm:^3.2.42"
-    "@xylabs/eslint-config-base": "npm:^3.2.42"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig": "npm:^3.2.42"
-    "@xylabs/tsconfig-dom-jest": "npm:^3.2.42"
-    "@xylabs/tsconfig-jest": "npm:^3.2.42"
+    "@xylabs/eslint-config": "npm:^3.4.1"
+    "@xylabs/eslint-config-base": "npm:^3.4.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig": "npm:^3.4.1"
+    "@xylabs/tsconfig-dom-jest": "npm:^3.4.1"
+    "@xylabs/tsconfig-jest": "npm:^3.4.1"
     "@xyo-network/automation-witness-server": "workspace:~"
     "@xyo-network/cli": "workspace:~"
     "@xyo-network/express-node": "workspace:~"
@@ -6818,8 +6776,8 @@ __metadata:
     "@xylabs/object": "npm:^2.89.3"
     "@xylabs/promise": "npm:^2.14.3"
     "@xylabs/set": "npm:^2.14.3"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig": "npm:^3.2.42"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig": "npm:^3.4.1"
     "@xyo-network/account": "npm:^2.90.23"
     "@xyo-network/account-model": "npm:^2.90.23"
     "@xyo-network/address-payload-plugin": "npm:^2.90.23"
@@ -7344,8 +7302,8 @@ __metadata:
     "@xylabs/assert": "npm:^2.14.3"
     "@xylabs/exists": "npm:^2.14.3"
     "@xylabs/sdk-api-express-ecs": "npm:^1.4.0"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig": "npm:^3.2.42"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig": "npm:^3.4.1"
     "@xyo-network/account": "npm:^2.90.23"
     "@xyo-network/api-call-witness": "npm:^2.87.11"
     "@xyo-network/archivist": "npm:^2.90.23"
@@ -7407,8 +7365,8 @@ __metadata:
     "@types/express": "npm:4.17.21"
     "@xylabs/assert": "npm:^2.14.3"
     "@xylabs/sdk-api-express-ecs": "npm:^1.4.0"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig": "npm:^3.2.42"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig": "npm:^3.4.1"
     "@xyo-network/module-model": "npm:^2.90.23"
     "@xyo-network/node-model": "npm:^2.90.23"
     "@xyo-network/payload-mongodb": "workspace:~"
@@ -7435,8 +7393,8 @@ __metadata:
     "@xylabs/assert": "npm:^2.14.3"
     "@xylabs/logger": "npm:^2.14.3"
     "@xylabs/sdk-api-express-ecs": "npm:^1.4.0"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig": "npm:^3.2.42"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig": "npm:^3.4.1"
     "@xyo-network/node-model": "npm:^2.90.23"
     body-parser: "npm:^1.20.2"
     express: "npm:^4.18.2"
@@ -7461,8 +7419,8 @@ __metadata:
     "@xylabs/assert": "npm:^2.14.3"
     "@xylabs/exists": "npm:^2.14.3"
     "@xylabs/sdk-api-express-ecs": "npm:^1.4.0"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig": "npm:^3.2.42"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig": "npm:^3.4.1"
     "@xyo-network/account": "npm:^2.90.23"
     "@xyo-network/account-model": "npm:^2.90.23"
     "@xyo-network/archivist": "npm:^2.90.23"
@@ -7512,8 +7470,8 @@ __metadata:
     "@xylabs/assert": "npm:^2.14.3"
     "@xylabs/logger": "npm:^2.14.3"
     "@xylabs/sdk-api-express-ecs": "npm:^1.4.0"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig": "npm:^3.2.42"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig": "npm:^3.4.1"
     "@xyo-network/express-node-dependencies": "workspace:~"
     "@xyo-network/express-node-middleware": "workspace:~"
     "@xyo-network/express-node-routes": "workspace:~"
@@ -7546,8 +7504,8 @@ __metadata:
     "@xylabs/axios": "npm:^2.14.3"
     "@xylabs/delay": "npm:^2.14.3"
     "@xylabs/forget": "npm:^2.14.3"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig-jest": "npm:^3.2.42"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig-jest": "npm:^3.4.1"
     "@xyo-network/account": "npm:^2.90.23"
     "@xyo-network/account-model": "npm:^2.90.23"
     "@xyo-network/address-payload-plugin": "npm:^2.90.23"
@@ -7599,8 +7557,8 @@ __metadata:
   resolution: "@xyo-network/express-node@workspace:packages/node"
   dependencies:
     "@swc/core": "npm:^1.4.1"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig": "npm:^3.2.42"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig": "npm:^3.4.1"
     "@xyo-network/express-node-dependencies": "workspace:~"
     "@xyo-network/express-node-lib": "workspace:~"
     "@xyo-network/express-node-middleware": "workspace:~"
@@ -7808,8 +7766,8 @@ __metadata:
     "@xylabs/exists": "npm:^2.14.3"
     "@xylabs/lodash": "npm:^2.14.3"
     "@xylabs/static-implements": "npm:^2.14.3"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig": "npm:^3.2.42"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig": "npm:^3.4.1"
     "@xyo-network/module-model": "npm:^2.90.23"
     "@xyo-network/module-model-mongodb": "workspace:~"
     "@xyo-network/payload-mongodb": "workspace:~"
@@ -7869,8 +7827,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/module-model-mongodb@workspace:packages/modules-mongo/packages/module/packages/model"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig": "npm:^3.2.42"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig": "npm:^3.4.1"
     "@xyo-network/module-model": "npm:^2.90.23"
     "@xyo-network/node-core-model": "workspace:~"
     "@xyo-network/payload-mongodb": "workspace:~"
@@ -7905,8 +7863,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/module-mongodb@workspace:packages/modules-mongo/packages/module"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig": "npm:^3.2.42"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig": "npm:^3.4.1"
     "@xyo-network/module-abstract-mongodb": "workspace:~"
     "@xyo-network/module-model-mongodb": "workspace:~"
     fake-indexeddb: "npm:^4.0.2"
@@ -7988,8 +7946,8 @@ __metadata:
     "@aws-sdk/client-secrets-manager": "npm:^3.515.0"
     "@xylabs/assert": "npm:^2.14.3"
     "@xylabs/sdk-api-express-ecs": "npm:^1.4.0"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig": "npm:^3.2.42"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig": "npm:^3.4.1"
     "@xyo-network/account": "npm:^2.90.23"
     "@xyo-network/account-model": "npm:^2.90.23"
     "@xyo-network/express-node-server": "workspace:~"
@@ -8015,8 +7973,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/node-core-lib@workspace:packages/node/packages/core/packages/lib"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig": "npm:^3.2.42"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig": "npm:^3.4.1"
     "@xyo-network/node-core-model": "npm:^2.84.3"
     "@xyo-network/payload-builder": "npm:^2.90.23"
     "@xyo-network/payload-model": "npm:^2.90.23"
@@ -8033,8 +7991,8 @@ __metadata:
   resolution: "@xyo-network/node-core-model@workspace:packages/node/packages/core/packages/model"
   dependencies:
     "@xylabs/object": "npm:^2.89.3"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig": "npm:^3.2.42"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig": "npm:^3.4.1"
     "@xyo-network/archivist-model": "npm:^2.90.23"
     "@xyo-network/boundwitness-model": "npm:^2.90.23"
     "@xyo-network/diviner-payload-model": "npm:^2.90.23"
@@ -8054,8 +8012,8 @@ __metadata:
     "@xylabs/assert": "npm:^2.14.3"
     "@xylabs/exists": "npm:^2.14.3"
     "@xylabs/jest-helpers": "npm:^2.14.3"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig": "npm:^3.2.42"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig": "npm:^3.4.1"
     "@xyo-network/account": "npm:^2.90.23"
     "@xyo-network/archivist-mongodb": "workspace:~"
     "@xyo-network/diviner-mongodb": "workspace:~"
@@ -8081,8 +8039,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/node-core-types@workspace:packages/node/packages/core/packages/types"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig": "npm:^3.2.42"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig": "npm:^3.4.1"
     typescript: "npm:^5.3.3"
   languageName: unknown
   linkType: soft
@@ -8170,8 +8128,8 @@ __metadata:
   dependencies:
     "@xylabs/hex": "npm:^2.14.3"
     "@xylabs/object": "npm:^2.89.3"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig": "npm:^3.2.42"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig": "npm:^3.4.1"
     "@xyo-network/boundwitness-model": "npm:^2.90.23"
     "@xyo-network/hash": "npm:^2.90.23"
     "@xyo-network/payload-builder": "npm:^2.90.23"
@@ -8340,8 +8298,8 @@ __metadata:
     "@xylabs/assert": "npm:^2.14.3"
     "@xylabs/delay": "npm:^2.14.3"
     "@xylabs/forget": "npm:^2.14.3"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
-    "@xylabs/tsconfig": "npm:^3.2.42"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
+    "@xylabs/tsconfig": "npm:^3.4.1"
     async-mutex: "npm:^0.4.1"
     mongodb: "npm:^6.3.0"
     typescript: "npm:^5.3.3"
@@ -9635,6 +9593,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"builtin-modules@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "builtin-modules@npm:3.3.0"
+  checksum: 62e063ab40c0c1efccbfa9ffa31873e4f9d57408cb396a2649981a0ecbce56aabc93c28feaccbc5658c95aab2703ad1d11980e62ec2e5e72637404e1eb60f39e
+  languageName: node
+  linkType: hard
+
 "builtins@npm:^5.0.0":
   version: 5.0.1
   resolution: "builtins@npm:5.0.1"
@@ -9978,6 +9943,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ci-info@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "ci-info@npm:4.0.0"
+  checksum: c983bb7ff1b06648f4a47432201abbd58291147d8ab5043dbb5c03e1a0e3fb2347f40d29b66a3044f28ffeb5dade01ac35aa6bd4e7464a44d9a49a3d7532415a
+  languageName: node
+  linkType: hard
+
 "cjs-module-lexer@npm:^1.0.0":
   version: 1.2.3
   resolution: "cjs-module-lexer@npm:1.2.3"
@@ -9994,6 +9966,15 @@ __metadata:
     isobject: "npm:^3.0.0"
     static-extend: "npm:^0.1.1"
   checksum: b236d9deb6594828966e45c5f48abac9a77453ee0dbdb89c635ce876f59755d7952309d554852b6f7d909198256c335a4bd51b09c1d238b36b92152eb2b9d47a
+  languageName: node
+  linkType: hard
+
+"clean-regexp@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "clean-regexp@npm:1.0.0"
+  dependencies:
+    escape-string-regexp: "npm:^1.0.5"
+  checksum: 0b1ce281b07da2463c6882ea2e8409119b6cabbd9f687cdbdcee942c45b2b9049a2084f7b5f228c63ef9f21e722963ae0bfe56a735dbdbdd92512867625a7e40
   languageName: node
   linkType: hard
 
@@ -11565,7 +11546,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jsonc@npm:^2.12.2":
+"eslint-plugin-jsonc@npm:^2.13.0":
   version: 2.13.0
   resolution: "eslint-plugin-jsonc@npm:2.13.0"
   dependencies:
@@ -11626,21 +11607,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-simple-import-sort@npm:^10.0.0":
-  version: 10.0.0
-  resolution: "eslint-plugin-simple-import-sort@npm:10.0.0"
+"eslint-plugin-simple-import-sort@npm:^12.0.0":
+  version: 12.0.0
+  resolution: "eslint-plugin-simple-import-sort@npm:12.0.0"
   peerDependencies:
     eslint: ">=5.0.0"
-  checksum: 462187d3c137ba0986586a4759fe57c1c3fc1850750cb785f335b9b235346a1d96ebfcfb558847fc1a3b319718f2736178a66a61a0c184c86d48b21c1e0df26b
+  checksum: 94d15a6b287b3036c402de4e034f2a4c950dc04be3a85c699f481327344bdecdeb659e86cfdf2dd69861b7044e10a4bef009029c107896ed1cf1c2badd7cdbce
   languageName: node
   linkType: hard
 
-"eslint-plugin-sonarjs@npm:^0.23.0":
-  version: 0.23.0
-  resolution: "eslint-plugin-sonarjs@npm:0.23.0"
+"eslint-plugin-sonarjs@npm:^0.24.0":
+  version: 0.24.0
+  resolution: "eslint-plugin-sonarjs@npm:0.24.0"
   peerDependencies:
     eslint: ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
-  checksum: 1cfe063a979ab139b4fd75fcb8c9a478c5a43c3bb3126faffe19192c28ae199fab6570da01b6ed6430cdf52e2d79a93079105af2c568db5d029d312beea41a60
+  checksum: 5d313f183d77a654d98b392ac878ab5492417f872e26a57d25649ddce1bf3e40c0765cb05e183f383a583bdc92d2b02b9b38139c180d190de85a9c6732bd1917
   languageName: node
   linkType: hard
 
@@ -11653,6 +11634,32 @@ __metadata:
     natural-compare: "npm:^1.4.0"
     requireindex: "npm:~1.2.0"
   checksum: fc250fd3e8b0a3bd2ef3e0717cc92b10e24a6c342af0f7f0780275af11e1e289d8c165d2252bb77fc6452b252477f7e9661b7fc286451e2d480e2ebbbda2eb3a
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-unicorn@npm:^51.0.1":
+  version: 51.0.1
+  resolution: "eslint-plugin-unicorn@npm:51.0.1"
+  dependencies:
+    "@babel/helper-validator-identifier": "npm:^7.22.20"
+    "@eslint-community/eslint-utils": "npm:^4.4.0"
+    "@eslint/eslintrc": "npm:^2.1.4"
+    ci-info: "npm:^4.0.0"
+    clean-regexp: "npm:^1.0.0"
+    core-js-compat: "npm:^3.34.0"
+    esquery: "npm:^1.5.0"
+    indent-string: "npm:^4.0.0"
+    is-builtin-module: "npm:^3.2.1"
+    jsesc: "npm:^3.0.2"
+    pluralize: "npm:^8.0.0"
+    read-pkg-up: "npm:^7.0.1"
+    regexp-tree: "npm:^0.1.27"
+    regjsparser: "npm:^0.10.0"
+    semver: "npm:^7.5.4"
+    strip-indent: "npm:^3.0.0"
+  peerDependencies:
+    eslint: ">=8.56.0"
+  checksum: cea770332423d49d0cd86ca96055be7f14895e1d0a9fb24c8ed4f18a6e1eeff362d4881c46e85d85c37938bb85a6eeae7e347bcf7a3bb7307a8dd309651e0adf
   languageName: node
   linkType: hard
 
@@ -11862,7 +11869,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esquery@npm:^1.0.1, esquery@npm:^1.4.2":
+"esquery@npm:^1.0.1, esquery@npm:^1.4.2, esquery@npm:^1.5.0":
   version: 1.5.0
   resolution: "esquery@npm:1.5.0"
   dependencies:
@@ -13650,6 +13657,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-builtin-module@npm:^3.2.1":
+  version: 3.2.1
+  resolution: "is-builtin-module@npm:3.2.1"
+  dependencies:
+    builtin-modules: "npm:^3.3.0"
+  checksum: e8f0ffc19a98240bda9c7ada84d846486365af88d14616e737d280d378695c8c448a621dcafc8332dbf0fcd0a17b0763b845400709963fa9151ddffece90ae88
+  languageName: node
+  linkType: hard
+
 "is-callable@npm:^1.1.3, is-callable@npm:^1.1.4, is-callable@npm:^1.2.7":
   version: 1.2.7
   resolution: "is-callable@npm:1.2.7"
@@ -14787,6 +14803,15 @@ __metadata:
   bin:
     jsesc: bin/jsesc
   checksum: d2096abdcdec56969764b40ffc91d4a23408aa2f351b4d1c13f736f25476643238c43fdbaf38a191c26b1b78fd856d965f5d4d0dde7b89459cd94025190cdf13
+  languageName: node
+  linkType: hard
+
+"jsesc@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "jsesc@npm:3.0.2"
+  bin:
+    jsesc: bin/jsesc
+  checksum: 8e5a7de6b70a8bd71f9cb0b5a7ade6a73ae6ab55e697c74cc997cede97417a3a65ed86c36f7dd6125fe49766e8386c845023d9e213916ca92c9dfdd56e2babf3
   languageName: node
   linkType: hard
 
@@ -16693,7 +16718,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"npm-check-updates@npm:^16.14.12":
+"npm-check-updates@npm:^16.14.15":
   version: 16.14.15
   resolution: "npm-check-updates@npm:16.14.15"
   dependencies:
@@ -17621,7 +17646,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.2.4":
+"prettier@npm:^3.2.5":
   version: 3.2.5
   resolution: "prettier@npm:3.2.5"
   bin:
@@ -18072,6 +18097,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"regexp-tree@npm:^0.1.27":
+  version: 0.1.27
+  resolution: "regexp-tree@npm:0.1.27"
+  bin:
+    regexp-tree: bin/regexp-tree
+  checksum: 08c70c8adb5a0d4af1061bf9eb05d3b6e1d948c433d6b7008e4b5eb12a49429c2d6ca8e9106339a432aa0d07bd6e1bccc638d8f4ab0d045f3adad22182b300a2
+  languageName: node
+  linkType: hard
+
 "regexp.prototype.flags@npm:^1.5.2":
   version: 1.5.2
   resolution: "regexp.prototype.flags@npm:1.5.2"
@@ -18120,6 +18154,17 @@ __metadata:
   dependencies:
     rc: "npm:1.2.8"
   checksum: 33712aa1b489aab7aba2191c1cdadfdd71f5bf166d4792d81744a6be332c160bd7d9273af8269d8a01284b9562f14a5b31b7abcf7ad9306c44887ecff51c89ab
+  languageName: node
+  linkType: hard
+
+"regjsparser@npm:^0.10.0":
+  version: 0.10.0
+  resolution: "regjsparser@npm:0.10.0"
+  dependencies:
+    jsesc: "npm:~0.5.0"
+  bin:
+    regjsparser: bin/parser
+  checksum: 06f7f0e59598de20769ce5637bbd8879387f67c0eeb8ccc8857331c623332718c25d8d20bd74df210bf636dde061474e8bd365cf73af20470f0b3cb42cd42019
   languageName: node
   linkType: hard
 
@@ -19724,32 +19769,32 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup-plugin-node-externals@npm:^6.1.2":
-  version: 6.1.2
-  resolution: "rollup-plugin-node-externals@npm:6.1.2"
+"rollup-plugin-node-externals@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "rollup-plugin-node-externals@npm:7.0.1"
   peerDependencies:
     rollup: ^3.0.0 || ^4.0.0
-  checksum: d43555752e41eb734df806e88176720612ea8ebdd5f460db81655b740956bef8e7daf49191bf6395d77f91ec0546ecf906cf78e034566a5c6d3bf3a9fd27d764
+  checksum: 1c4906cbffe85adb956d1a697f1a32ba3764622819397ad6959e9679244173ad6f110a2edd6687df9482848ed30203e998db5b81a2011e812e8c059bf5b02e25
   languageName: node
   linkType: hard
 
-"rollup@npm:^4.0.2, rollup@npm:^4.9.5":
-  version: 4.11.0
-  resolution: "rollup@npm:4.11.0"
+"rollup@npm:^4.0.2, rollup@npm:^4.12.0":
+  version: 4.12.0
+  resolution: "rollup@npm:4.12.0"
   dependencies:
-    "@rollup/rollup-android-arm-eabi": "npm:4.11.0"
-    "@rollup/rollup-android-arm64": "npm:4.11.0"
-    "@rollup/rollup-darwin-arm64": "npm:4.11.0"
-    "@rollup/rollup-darwin-x64": "npm:4.11.0"
-    "@rollup/rollup-linux-arm-gnueabihf": "npm:4.11.0"
-    "@rollup/rollup-linux-arm64-gnu": "npm:4.11.0"
-    "@rollup/rollup-linux-arm64-musl": "npm:4.11.0"
-    "@rollup/rollup-linux-riscv64-gnu": "npm:4.11.0"
-    "@rollup/rollup-linux-x64-gnu": "npm:4.11.0"
-    "@rollup/rollup-linux-x64-musl": "npm:4.11.0"
-    "@rollup/rollup-win32-arm64-msvc": "npm:4.11.0"
-    "@rollup/rollup-win32-ia32-msvc": "npm:4.11.0"
-    "@rollup/rollup-win32-x64-msvc": "npm:4.11.0"
+    "@rollup/rollup-android-arm-eabi": "npm:4.12.0"
+    "@rollup/rollup-android-arm64": "npm:4.12.0"
+    "@rollup/rollup-darwin-arm64": "npm:4.12.0"
+    "@rollup/rollup-darwin-x64": "npm:4.12.0"
+    "@rollup/rollup-linux-arm-gnueabihf": "npm:4.12.0"
+    "@rollup/rollup-linux-arm64-gnu": "npm:4.12.0"
+    "@rollup/rollup-linux-arm64-musl": "npm:4.12.0"
+    "@rollup/rollup-linux-riscv64-gnu": "npm:4.12.0"
+    "@rollup/rollup-linux-x64-gnu": "npm:4.12.0"
+    "@rollup/rollup-linux-x64-musl": "npm:4.12.0"
+    "@rollup/rollup-win32-arm64-msvc": "npm:4.12.0"
+    "@rollup/rollup-win32-ia32-msvc": "npm:4.12.0"
+    "@rollup/rollup-win32-x64-msvc": "npm:4.12.0"
     "@types/estree": "npm:1.0.5"
     fsevents: "npm:~2.3.2"
   dependenciesMeta:
@@ -19783,7 +19828,7 @@ __metadata:
       optional: true
   bin:
     rollup: dist/bin/rollup
-  checksum: 792f40ed1ec82315692d7dbe82b3253072082f1da0afd0bc983c1254666b9fdcad94d52e66a72339620fe09165708501472a41ba207d92f45e160b2864404ed2
+  checksum: 098eac4dcaf051b71c4efb7e3df059f6563d030b4dfbd2622a4d70acf4d02c463885643c63a21dda45153470f9be5047acd11eab19d4b2ed1c06b8ff57997e8e
   languageName: node
   linkType: hard
 
@@ -21316,7 +21361,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-jest@npm:^29.1.1, ts-jest@npm:^29.1.2":
+"ts-jest@npm:^29.1.2":
   version: 29.1.2
   resolution: "ts-jest@npm:29.1.2"
   dependencies:
@@ -21455,7 +21500,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsup@npm:^8.0.1":
+"tsup@npm:^8.0.2":
   version: 8.0.2
   resolution: "tsup@npm:8.0.2"
   dependencies:
@@ -21677,7 +21722,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typedoc@npm:^0.25.7, typedoc@npm:^0.25.8":
+"typedoc@npm:^0.25.8":
   version: 0.25.8
   resolution: "typedoc@npm:0.25.8"
   dependencies:

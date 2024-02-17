@@ -14,7 +14,7 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
   protected override async divineHandler(payloads?: Payload[]): Promise<Payload[]> {
     const query = payloads?.find<PayloadDivinerQueryPayload>(isPayloadDivinerQueryPayload)
     // TODO: Support multiple queries
-    if (!query) throw Error('Received payload is not a Query')
+    if (!query) throw new Error('Received payload is not a Query')
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { hash, limit, offset, order, schema, schemas, timestamp, ...props } = query
     const parsedLimit = limit || DefaultLimit
@@ -24,7 +24,7 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
     //TODO: Joel, why is AnyObject needed?
     const filter: Filter<AnyObject> = {}
     if (timestamp) {
-      const parsedTimestamp = timestamp ? timestamp : parsedOrder === 'desc' ? Date.now() : 0
+      const parsedTimestamp = timestamp ?? parsedOrder === 'desc' ? Date.now() : 0
       filter._timestamp = parsedOrder === 'desc' ? { $lt: parsedTimestamp } : { $gt: parsedTimestamp }
     }
 
@@ -47,7 +47,7 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
       filter._hash = hash
       const filtered = await this.payloads.find(filter)
       result = (await filtered.sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(fromDbRepresentation)
-      if (!result.length) {
+      if (result.length === 0) {
         delete filter._hash
         filter._$hash = hash
         const filtered = await this.payloads.find(filter)

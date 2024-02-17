@@ -1,5 +1,6 @@
+import { stat, writeFile } from 'node:fs/promises'
+
 import { merge } from '@xylabs/lodash'
-import { stat, writeFile } from 'fs/promises'
 
 import { readJson } from './readJson'
 
@@ -10,10 +11,10 @@ export const writeJson = async (file: string, data: object): Promise<object | un
       const existing = await readJson<object>(file)
       if (existing) previous = existing
     }
-  } catch (_error) {
+  } catch {
     // File doesn't exist or is corrupt
   }
   data = merge(previous, data)
-  await writeFile(file, JSON.stringify(data), { encoding: 'utf-8' })
+  await writeFile(file, JSON.stringify(data), { encoding: 'utf8' })
   return data
 }

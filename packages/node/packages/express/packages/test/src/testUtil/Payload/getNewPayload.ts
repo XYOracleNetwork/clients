@@ -13,5 +13,5 @@ export const getNewPayload = async (): Promise<Payload> => {
 }
 
 export const getNewPayloads = async (numPayloads: number) => {
-  return await Promise.all(new Array(numPayloads).fill(0).map(getNewPayload))
+  return await Promise.all(Array.from({ length: numPayloads }).fill(0).map(getNewPayload))
 }

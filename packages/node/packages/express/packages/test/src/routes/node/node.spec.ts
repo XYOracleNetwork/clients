@@ -41,7 +41,7 @@ describe('Node API', () => {
     })
   })
   describe('/<address>', () => {
-    let address: string | undefined = undefined
+    let address: string | undefined
     beforeAll(async () => {
       const response = await client.get<{ data: Payload[] }>(path)
       const data = response.data.data

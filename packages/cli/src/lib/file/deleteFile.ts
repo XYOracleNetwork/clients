@@ -1,4 +1,4 @@
-import { stat, unlink } from 'fs/promises'
+import { stat, unlink } from 'node:fs/promises'
 
 export const deleteFile = async (path: string) => {
   try {

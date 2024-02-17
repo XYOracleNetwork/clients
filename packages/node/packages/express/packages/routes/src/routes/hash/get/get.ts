@@ -7,8 +7,9 @@ import { StatusCodes } from 'http-status-codes'
 import { getBlockForRequest } from './getBlockForRequest'
 import { HashPathParams } from './HashPathParams'
 
-const reservedHashes = ['archive', 'schema', 'doc', 'domain']
+const reservedHashes = new Set(['archive', 'schema', 'doc', 'domain'])
 
+// eslint-disable-next-line @typescript-eslint/no-misused-promises
 const handler: RequestHandler<HashPathParams, Payload, NoReqBody, NoReqQuery> = async (req, res, next) => {
   if (res.headersSent) {
     return
@@ -18,7 +19,7 @@ const handler: RequestHandler<HashPathParams, Payload, NoReqBody, NoReqQuery> = 
     next({ message: 'Hash not supplied', statusCode: StatusCodes.BAD_REQUEST })
     return
   }
-  if (reservedHashes.find((reservedHash) => reservedHash === hash)) {
+  if (reservedHashes.has(hash)) {
     next()
     return
   }

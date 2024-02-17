@@ -37,7 +37,7 @@ export class BatchSetIterator<T> implements Iterator<T[]> {
       this.done = new Set<T>()
     }
 
-    const todo = Array.from(this.todo)
+    const todo = [...this.todo]
     const batch = todo.slice(0, this.batchSize)
     const remaining = todo.slice(this.batchSize)
 

@@ -16,9 +16,9 @@ const validateAddress = (response: Payload[]) => {
 const validateSupportedQueries = (response: Payload[], querySchemas: string[]) => {
   const queries = response.filter<QueryPayload>((p): p is QueryPayload => p.schema === QuerySchema)
   expect(queries.length).toBeGreaterThan(0)
-  querySchemas.forEach((querySchema) => {
+  for (const querySchema of querySchemas) {
     expect(queries.some((p) => p.query === querySchema)).toBeTrue()
-  })
+  }
 }
 
 export const validateDiscoverResponse = (response: Payload[], querySchemas: string[] = [ModuleDiscoverQuerySchema, ModuleSubscribeQuerySchema]) => {

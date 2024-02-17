@@ -5,10 +5,10 @@ import { schema } from './schema'
 
 export const knownPayloadPromise = new PayloadBuilder<Payload<Record<string, unknown>>>({ schema })
   .fields({
-    balance: 10000.0,
+    balance: 10_000,
     daysOld: 1,
     deviceId: '00000000-0000-0000-0000-000000000000',
-    geomines: 41453,
+    geomines: 41_453,
     planType: 'pro',
     uid: '0000000000000000000000000000',
   })

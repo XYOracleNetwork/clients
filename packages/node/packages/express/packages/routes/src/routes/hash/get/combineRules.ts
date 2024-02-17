@@ -30,7 +30,7 @@ export const combineRules = (rules: PayloadRule[][]): PayloadSearchCriteria => {
   assertEx(directionTimestamp.length < 2, 'Must not supply more than 1 direction/timestamp rule')
 
   const direction: SortDirection = directionTimestamp[0]?.direction || 'desc'
-  const timestamp: number = directionTimestamp.length ? directionTimestamp[0]?.timestamp : Date.now()
+  const timestamp: number = directionTimestamp.length > 0 ? directionTimestamp[0]?.timestamp : Date.now()
 
   return {
     addresses,

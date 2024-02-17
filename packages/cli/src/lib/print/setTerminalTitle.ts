@@ -6,6 +6,6 @@ import { terminal } from 'terminal-kit'
  */
 export const setTerminalTitle = (title = 'XYO') => {
   terminal.windowTitle(title)
-  terminal(`\x1B]0;${title}\x07`)
+  terminal(`\u001B]0;${title}\u0007`)
   terminal.iconName(title)
 }

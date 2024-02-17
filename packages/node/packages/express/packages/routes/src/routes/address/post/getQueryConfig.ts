@@ -19,7 +19,7 @@ export const getQueryConfig = async (mod: Module, req: Request, bw: QueryBoundWi
         .filter<BoundWitness>((payload): payload is BoundWitness => payload?.schema === BoundWitnessSchema)
         .map((bw) => bw.addresses) || []
     const addresses = [bw.addresses, ...nestedBwAddresses].filter((address) => address.length)
-    const allowed = addresses.length ? Object.fromEntries(archivist.queries.map((schema) => [schema, addresses])) : {}
+    const allowed = addresses.length > 0 ? Object.fromEntries(archivist.queries.map((schema) => [schema, addresses])) : {}
     const security = { allowed }
     return { schema: ModuleConfigSchema, security }
   }

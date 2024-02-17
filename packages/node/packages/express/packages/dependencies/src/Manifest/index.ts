@@ -13,4 +13,4 @@ export const defaultNode = node as PackageManifestPayload
  */
 export const publicChildren: PackageManifestPayload[] = [imageThumbnailNode, nftContractNode, nftMetadataNode]
 
-export { imageThumbnailNode, nftContractNode, nftMetadataNode }
+export { imageThumbnailNode, nftContractNode, nftMetadataNode } from './PublicChildren'

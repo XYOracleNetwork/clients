@@ -14,7 +14,7 @@ export const getNewBlockWithPayloads = async (numPayloads = 1) => {
 }
 
 export const getNewBlocks = async (numBoundWitnesses = 1): Promise<Array<BoundWitnessWithPartialMongoMeta & PayloadWithPartialMongoMeta>> => {
-  const sequence = new Array(numBoundWitnesses).fill(0)
+  const sequence = Array.from({ length: numBoundWitnesses }).fill(0)
   const values = await Promise.all(
     sequence.map(async () => {
       return (await new BoundWitnessBuilder().witness(await unitTestSigningAccount()).build())[0]
@@ -28,8 +28,12 @@ export const getNewBlocksWithPayloads = async (
   numPayloads = 1,
 ): Promise<Array<BoundWitnessWithPartialMongoMeta & PayloadWithPartialMongoMeta>> => {
   return await Promise.all(
-    new Array(numBoundWitnesses).fill(0).map(async () => {
-      return (await (await new BoundWitnessBuilder().witness(await unitTestSigningAccount()).payloads(await getNewPayloads(numPayloads))).build())[0]
-    }),
+    Array.from({ length: numBoundWitnesses })
+      .fill(0)
+      .map(async () => {
+        return (
+          await (await new BoundWitnessBuilder().witness(await unitTestSigningAccount()).payloads(await getNewPayloads(numPayloads))).build()
+        )[0]
+      }),
   )
 }

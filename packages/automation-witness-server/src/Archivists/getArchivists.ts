@@ -10,8 +10,8 @@ const security = { allowAnonymous: true }
 
 export const getArchivists = async (configs: ApiConfig[] = [getApiConfig()]): Promise<ArchivistInstance[]> => {
   const archivists: ArchivistInstance[] = []
-  for (let i = 0; i < configs.length; i++) {
-    const nodeUrl = `${configs[i].apiDomain}/node`
+  for (const config of configs) {
+    const nodeUrl = `${config.apiDomain}/node`
     const bridge = await HttpBridge.create({ account: await HDWallet.random(), config: { nodeUrl, schema, security } })
     const modules = await bridge.resolve({ name: ['Archivist'] })
     const mod = asArchivistInstance(modules.pop(), 'Error resolving Archivist')

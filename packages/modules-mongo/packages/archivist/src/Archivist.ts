@@ -27,20 +27,20 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
     let remainingHashes = [...hashes]
 
     const dataPayloads = (await Promise.all(remainingHashes.map((_$hash) => this.payloads.findOne({ _$hash })))).filter(exists)
-    const dataPayloadsHashes = dataPayloads.map((payload) => payload._$hash)
-    remainingHashes = remainingHashes.filter((hash) => !dataPayloadsHashes.includes(hash))
+    const dataPayloadsHashes = new Set(dataPayloads.map((payload) => payload._$hash))
+    remainingHashes = remainingHashes.filter((hash) => !dataPayloadsHashes.has(hash))
 
     const dataBws = (await Promise.all(remainingHashes.map((_$hash) => this.boundWitnesses.findOne({ _$hash })))).filter(exists)
-    const dataBwsHashes = dataBws.map((payload) => payload._$hash)
-    remainingHashes = remainingHashes.filter((hash) => !dataBwsHashes.includes(hash))
+    const dataBwsHashes = new Set(dataBws.map((payload) => payload._$hash))
+    remainingHashes = remainingHashes.filter((hash) => !dataBwsHashes.has(hash))
 
     const payloads = (await Promise.all(remainingHashes.map((_hash) => this.payloads.findOne({ _hash })))).filter(exists)
-    const payloadsHashes = payloads.map((payload) => payload._hash)
-    remainingHashes = remainingHashes.filter((hash) => !payloadsHashes.includes(hash))
+    const payloadsHashes = new Set(payloads.map((payload) => payload._hash))
+    remainingHashes = remainingHashes.filter((hash) => !payloadsHashes.has(hash))
 
     const bws = (await Promise.all(remainingHashes.map((_hash) => this.boundWitnesses.findOne({ _hash })))).filter(exists)
-    const bwsHashes = bws.map((payload) => payload._hash)
-    remainingHashes = remainingHashes.filter((hash) => !bwsHashes.includes(hash))
+    const bwsHashes = new Set(bws.map((payload) => payload._hash))
+    remainingHashes = remainingHashes.filter((hash) => !bwsHashes.has(hash))
 
     const foundPayloads = [...dataPayloads, ...dataBws, ...payloads, ...bws] as PayloadWithMongoMeta<Payload & { _$hash: Hash; _$meta?: unknown }>[]
     return await PayloadBuilder.build(foundPayloads.map(fromDbRepresentation))
@@ -49,13 +49,13 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
   protected override async insertHandler(payloads: Payload[]): Promise<WithMeta<Payload>[]> {
     const [bw, p] = await validByType(payloads)
     const payloadsWithExternalMeta = await Promise.all(p.map(toDbRepresentation))
-    if (payloadsWithExternalMeta.length) {
+    if (payloadsWithExternalMeta.length > 0) {
       const payloadsResult = await this.payloads.insertMany(payloadsWithExternalMeta)
       if (!payloadsResult.acknowledged || payloadsResult.insertedCount !== payloadsWithExternalMeta.length)
         throw new Error('MongoDBDeterministicArchivist: Error inserting Payloads')
     }
     const boundWitnessesWithExternalMeta = await Promise.all(bw.map(toDbRepresentation))
-    if (boundWitnessesWithExternalMeta.length) {
+    if (boundWitnessesWithExternalMeta.length > 0) {
       const boundWitnessesResult = await this.boundWitnesses.insertMany(boundWitnessesWithExternalMeta)
       if (!boundWitnessesResult.acknowledged || boundWitnessesResult.insertedCount !== boundWitnessesWithExternalMeta.length)
         throw new Error('MongoDBDeterministicArchivist: Error inserting BoundWitnesses')

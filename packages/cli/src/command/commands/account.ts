@@ -1,4 +1,5 @@
-import { parse } from 'path'
+import { parse } from 'node:path'
+
 import { ArgumentsCamelCase, Argv, CommandBuilder, CommandModule } from 'yargs'
 
 import { printLine } from '../../lib'

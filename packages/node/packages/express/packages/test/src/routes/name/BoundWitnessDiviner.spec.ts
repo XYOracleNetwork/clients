@@ -143,7 +143,7 @@ describe(`/${moduleName}`, () => {
       })
       describe('with timestamp', () => {
         it('divines BoundWitnesses from offset', async () => {
-          const timestamp = assertEx(boundWitnesses[boundWitnesses.length - 1].boundwitness.timestamp, 'Missing timestamp in test BW') + 1
+          const timestamp = assertEx(boundWitnesses.at(-1)?.boundwitness.timestamp, 'Missing timestamp in test BW') + 1
           const limit = boundWitnesses.length
           const query: BoundWitnessDivinerQueryPayload = { address, limit, schema, timestamp }
           const response = await diviner.divine([query])
@@ -163,8 +163,10 @@ describe(`/${moduleName}`, () => {
     describe('payload_schemas', () => {
       const schemaA = getTestSchemaName()
       const schemaB = getTestSchemaName()
+      // eslint-disable-next-line unicorn/no-unreadable-iife
       const payloadBaseA = (async () => ({ ...(await getNewPayload()), schema: schemaA }))()
       const payloadA: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseA))()
+      // eslint-disable-next-line unicorn/no-unreadable-iife
       const payloadBaseB = (async () => ({ ...(await getNewPayload()), schema: schemaB }))()
       const payloadB: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseB))()
       const boundWitnesses: BoundWitnessWrapper[] = []

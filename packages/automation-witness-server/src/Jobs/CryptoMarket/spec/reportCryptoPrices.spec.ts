@@ -13,5 +13,5 @@ describeIf(hasNonDefaultProvider())('reportCryptoPrices', () => {
     const [bw, ...payloads] = await reportCryptoPrices()
     expect(bw).toBeTruthy()
     expect(payloads.length).toBeGreaterThan(0)
-  }, 60000)
+  }, 60_000)
 })

@@ -1,6 +1,5 @@
 import { ArchivistGetQuerySchema, ArchivistInsertQuerySchema, ArchivistInstance } from '@xyo-network/archivist'
 import { BoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
-import { PayloadHasher } from '@xyo-network/hash'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { PayloadWrapper, PayloadWrapperBase } from '@xyo-network/payload-wrapper'
 

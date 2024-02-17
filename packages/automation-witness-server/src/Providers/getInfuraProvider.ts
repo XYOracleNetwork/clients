@@ -3,7 +3,7 @@ import { InfuraProvider, Provider } from 'ethers'
 
 import { InfuraProviderConfig } from '../Model'
 
-let instance: InfuraProvider | undefined = undefined
+let instance: InfuraProvider | undefined
 
 export const getInfuraProvider = (): Provider => {
   if (instance) return instance

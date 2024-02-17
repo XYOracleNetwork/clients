@@ -67,17 +67,15 @@ export class MemoryCoinUserLocationsDiviner<
       const diviner = this.params.bws
       const filter = { payload_hashes: [await wrapper.dataHash()], schema: BoundWitnessDivinerQuerySchema }
       const bwList = ((await diviner.divine([filter])) as BoundWitness[]) || []
-      const locationHashes = bwList
-        .map((bw) => {
-          const locations: string[] = []
-          for (let i = 0; i < bwList.length; i++) {
-            if (bw?.payload_schemas[i] === CoinCurrentLocationWitnessSchema) {
-              locations.push(assertEx(bw?.payload_hashes[i], 'Missing hash'))
-            }
+      const locationHashes = bwList.flatMap((bw) => {
+        const locations: string[] = []
+        for (let i = 0; i < bwList.length; i++) {
+          if (bw?.payload_schemas[i] === CoinCurrentLocationWitnessSchema) {
+            locations.push(assertEx(bw?.payload_hashes[i], 'Missing hash'))
           }
-          return locations
-        })
-        .flat()
+        }
+        return locations
+      })
       const locations = compact(await this.params.archivist.get(locationHashes)) as WithMeta<LocationPayload>[]
       this.logger?.log('CoinUserLocationsDiviner.Divine: Processed query')
       return locations

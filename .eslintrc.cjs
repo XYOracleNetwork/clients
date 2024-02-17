@@ -1,7 +1,10 @@
 const finalConfig = {
+  env: {
+    es2024: true
+  },
   "extends": ["@xylabs"],
   parser: '@typescript-eslint/parser',
-  parserOptions: { ecmaVersion: 'latest', project: null, tsconfigRootDir: __dirname, extraFileExtensions: ['json'] },
+  parserOptions: { ecmaVersion: 'latest', project: './tsconfig.json', sourceType: 'module', tsconfigRootDir: null },
   "root": true,
   "ignorePatterns": [
     "dist",
@@ -14,7 +17,10 @@ const finalConfig = {
     "*.stories.*",
     "swagger.json",
     ".yarn",
-    ".*"
+    ".*",
+    "xy.config.ts",
+    "jestSetup",
+    "jest.config.ts"
   ],
   "rules": {
     "@typescript-eslint/explicit-member-accessibility": ["warn", { "accessibility": "no-public" }],

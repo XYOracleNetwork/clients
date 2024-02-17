@@ -12,6 +12,7 @@ import { getQueryConfig } from './getQueryConfig'
 
 export type PostAddressRequestBody = [QueryBoundWitness, undefined | Payload[]]
 
+// eslint-disable-next-line @typescript-eslint/no-misused-promises
 const handler: RequestHandler<AddressPathParams, ModuleQueryResult, PostAddressRequestBody> = async (req, res, next) => {
   const { address } = req.params
   const { node } = req.app
@@ -22,17 +23,17 @@ const handler: RequestHandler<AddressPathParams, ModuleQueryResult, PostAddressR
     if (node.address === normalizedAddress) modules = [node]
     else {
       const byAddress = await node.resolve({ address: [normalizedAddress] }, { direction: 'down' })
-      if (byAddress.length) modules = byAddress
+      if (byAddress.length > 0) modules = byAddress
       else {
         const byName = await node.resolve({ name: [address] }, { direction: 'down' })
-        if (byName.length) {
+        if (byName.length > 0) {
           const moduleAddress = assertEx(byName.pop()?.address, 'Error redirecting to module by address')
           res.redirect(StatusCodes.TEMPORARY_REDIRECT, `/${moduleAddress}`)
           return
         }
       }
     }
-    if (modules.length) {
+    if (modules.length > 0) {
       const mod = modules[0]
       const queryConfig = await getQueryConfig(mod, req, bw, payloads)
       const queryResult = await mod.query(bw, payloads, queryConfig)

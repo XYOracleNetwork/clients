@@ -34,6 +34,7 @@ describe('getPayloadValidatorFromSchemaCache', () => {
     let mock: jest.SpyInstance
     beforeAll(() => {
       mock = jest.spyOn(SchemaCache.prototype, 'get').mockImplementation((_schema?: string) => {
+        // eslint-disable-next-line unicorn/no-useless-undefined
         return Promise.resolve(undefined)
       })
     })

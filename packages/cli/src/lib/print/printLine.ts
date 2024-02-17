@@ -6,17 +6,21 @@ export type TextColor = 'green' | 'yellow' | 'red' | 'default'
 
 export const printLine = (text?: string | undefined, color: TextColor = 'default') => {
   switch (color) {
-    case 'green':
+    case 'green': {
       terminal.green(text)
       break
-    case 'yellow':
+    }
+    case 'yellow': {
       terminal.yellow(text)
       break
-    case 'red':
+    }
+    case 'red': {
       terminal.red(text)
       break
-    case 'default':
+    }
+    case 'default': {
       terminal(text)
+    }
   }
   newline()
 }

@@ -1,4 +1,4 @@
-import { openSync } from 'fs'
+import { openSync } from 'node:fs'
 
 import { errFile } from '../files'
 

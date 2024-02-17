@@ -8,6 +8,7 @@ import { StatusCodes } from 'http-status-codes'
 
 import { AddressPathParams } from '../AddressPathParams'
 
+// eslint-disable-next-line @typescript-eslint/no-misused-promises
 const handler: RequestHandler<AddressPathParams, Payload[]> = async (req, res, next) => {
   const { address } = req.params
   const { node } = req.app
@@ -17,17 +18,17 @@ const handler: RequestHandler<AddressPathParams, Payload[]> = async (req, res, n
     if (node.address === normalizedAddress) modules = [node]
     else {
       const byAddress = await node.resolve({ address: [normalizedAddress] }, { direction: 'down' })
-      if (byAddress.length) modules = byAddress
+      if (byAddress.length > 0) modules = byAddress
       else {
         const byName = await node.resolve({ name: [address] }, { direction: 'down' })
-        if (byName.length) {
+        if (byName.length > 0) {
           const moduleAddress = assertEx(byName.pop()?.address, 'Error redirecting to module by address')
           res.redirect(StatusCodes.MOVED_TEMPORARILY, `/${moduleAddress}`)
           return
         }
       }
     }
-    if (modules.length) {
+    if (modules.length > 0) {
       const module = modules[0]
       res.json(await module.discover())
       return

@@ -1,4 +1,4 @@
-import { kill } from 'process'
+import { kill } from 'node:process'
 
 import { isRunning } from './isRunning'
 import { clearPid, getPid } from './pid'

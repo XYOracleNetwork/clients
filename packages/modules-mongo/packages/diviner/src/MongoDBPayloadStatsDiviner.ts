@@ -50,7 +50,7 @@ export class MongoDBPayloadStatsDiviner
   /**
    * The max number of records to search during the aggregate query
    */
-  protected readonly aggregateLimit = 1_000
+  protected readonly aggregateLimit = 1000
 
   /**
    * The max number of iterations of aggregate queries to allow when
@@ -99,7 +99,12 @@ export class MongoDBPayloadStatsDiviner
 
   protected override async divineHandler(payloads?: Payload[]): Promise<Payload<PayloadStatsPayload>[]> {
     const query = payloads?.find<PayloadStatsQueryPayload>(isPayloadStatsQueryPayload)
-    const addresses = query?.address ? (Array.isArray(query?.address) ? query.address : [query.address]) : undefined
+    const addresses =
+      query?.address ?
+        Array.isArray(query?.address) ?
+          query.address
+        : [query.address]
+      : undefined
     const counts = addresses ? await Promise.all(addresses.map((address) => this.divineAddress(address))) : [await this.divineAllAddresses()]
     return await Promise.all(
       counts.map((count) => new PayloadBuilder<PayloadStatsPayload>({ schema: PayloadStatsDivinerSchema }).fields({ count }).build()),
@@ -111,6 +116,7 @@ export class MongoDBPayloadStatsDiviner
     await this.ensureIndexes()
     await this.registerWithChangeStream()
     defineJobs(this.jobQueue, this.jobs)
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     this.jobQueue.once('ready', async () => await scheduleJobs(this.jobQueue, this.jobs))
     return true
   }
@@ -180,7 +186,7 @@ export class MongoDBPayloadStatsDiviner
     const addresses = result.filter((x): x is WithSources<WithMeta<AddressPayload>> => x.schema === AddressSchema).map((x) => x.address)
     const additions = this.addressIterator.addValues(addresses)
     this.logger?.log(`${moduleName}.DivineAddressesBatch: Incoming Addresses Total: ${addresses.length} New: ${additions}`)
-    if (addresses.length && !this.backgroundDivineTask) this.backgroundDivineTask = this.backgroundDivine()
+    if (addresses.length > 0 && !this.backgroundDivineTask) this.backgroundDivineTask = this.backgroundDivine()
     this.logger?.log(`${moduleName}.DivineAddressesBatch: Updated Addresses`)
   }
 
@@ -206,6 +212,7 @@ export class MongoDBPayloadStatsDiviner
     const opts: ChangeStreamOptions = this.resumeAfter ? { resumeAfter: this.resumeAfter } : {}
     this.changeStream = collection.watch([], opts)
     this.changeStream.on('change', this.processChange)
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     this.changeStream.on('error', this.registerWithChangeStream)
     this.logger?.log(`${moduleName}.RegisterWithChangeStream: Registered`)
   }

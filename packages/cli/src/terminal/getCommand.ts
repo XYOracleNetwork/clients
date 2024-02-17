@@ -26,50 +26,64 @@ export const getCommand = async (node: NodeInstance): Promise<boolean> => {
     })
     terminal.singleColumnMenu(
       terminalItems.map((item) => item.text),
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
       async (error, response) => {
         if (error) {
           printLine(`Error: ${error}`, 'red')
         }
         switch (terminalItems[response.selectedIndex].slug) {
-          case 'attach-module':
+          case 'attach-module': {
             await attachModule(node)
             break
-          case 'describe-node':
+          }
+          case 'describe-node': {
             await describeNode(node)
             break
-          case 'detach-module':
+          }
+          case 'detach-module': {
             await detachModule(node)
             break
-          case 'exit':
+          }
+          case 'exit': {
             resolve(false)
             break
-          case 'list-attached-modules':
+          }
+          case 'list-attached-modules': {
             await listAttachedModules(node)
             break
-          case 'list-registered-modules':
+          }
+          case 'list-registered-modules': {
             await listRegisteredModules(node)
             break
-          case 'node-logs':
+          }
+          case 'node-logs': {
             await nodeLogs(node)
             break
-          case 'register-module':
+          }
+          case 'register-module': {
             await registerModule(node)
             break
-          case 'restart-node':
+          }
+          case 'restart-node': {
             await restartNode(node)
             break
-          case 'status':
+          }
+          case 'status': {
             await status(node)
             break
-          case 'stop-node':
+          }
+          case 'stop-node': {
             await stopNode(node)
             break
-          case 'show-config':
+          }
+          case 'show-config': {
             await showConfig()
             break
-          case 'unregister-module':
+          }
+          case 'unregister-module': {
             await unregisterModule(node)
             break
+          }
         }
         resolve(true)
       },

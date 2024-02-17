@@ -9,5 +9,5 @@ export const addAddressPrefix = (address: string): string => {
 }
 
 export const trimAddressPrefix = (address: string): string => {
-  return hasAddressPrefix(address) ? address.substring(2) : address
+  return hasAddressPrefix(address) ? address.slice(2) : address
 }

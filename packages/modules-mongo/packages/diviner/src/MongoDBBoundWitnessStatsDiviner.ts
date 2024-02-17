@@ -85,7 +85,12 @@ export class MongoDBBoundWitnessStatsDiviner
 
   protected override async divineHandler(payloads?: Payload[]): Promise<Payload<BoundWitnessStatsPayload>[]> {
     const query = payloads?.find<BoundWitnessStatsQueryPayload>(isBoundWitnessStatsQueryPayload)
-    const addresses = query?.address ? (Array.isArray(query?.address) ? query.address : [query.address]) : undefined
+    const addresses =
+      query?.address ?
+        Array.isArray(query?.address) ?
+          query.address
+        : [query.address]
+      : undefined
     const counts = addresses ? await Promise.all(addresses.map((address) => this.divineAddress(address))) : [await this.divineAllAddresses()]
     return await Promise.all(
       counts.map(
@@ -99,6 +104,7 @@ export class MongoDBBoundWitnessStatsDiviner
     await this.ensureIndexes()
     await this.registerWithChangeStream()
     defineJobs(this.jobQueue, this.jobs)
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     this.jobQueue.once('ready', async () => await scheduleJobs(this.jobQueue, this.jobs))
     return true
   }
@@ -143,7 +149,7 @@ export class MongoDBBoundWitnessStatsDiviner
     const addresses = result.filter((x): x is WithSources<WithMeta<AddressPayload>> => x.schema === AddressSchema).map((x) => x.address)
     const additions = this.addressIterator.addValues(addresses)
     this.logger?.log(`${moduleName}.DivineAddressesBatch: Incoming Addresses Total: ${addresses.length} New: ${additions}`)
-    if (addresses.length && !this.backgroundDivineTask) this.backgroundDivineTask = this.backgroundDivine()
+    if (addresses.length > 0 && !this.backgroundDivineTask) this.backgroundDivineTask = this.backgroundDivine()
     this.logger?.log(`${moduleName}.DivineAddressesBatch: Updated Addresses`)
   }
 
@@ -166,6 +172,7 @@ export class MongoDBBoundWitnessStatsDiviner
     const opts: ChangeStreamOptions = this.resumeAfter ? { resumeAfter: this.resumeAfter } : {}
     this.changeStream = collection.watch([], opts)
     this.changeStream.on('change', this.processChange)
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     this.changeStream.on('error', this.registerWithChangeStream)
     this.logger?.log(`${moduleName}.RegisterWithChangeStream: Registered`)
   }

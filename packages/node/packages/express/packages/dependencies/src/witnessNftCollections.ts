@@ -1,4 +1,6 @@
 /* eslint-disable max-statements */
+import { readFile, writeFile } from 'node:fs/promises'
+
 import { assertEx } from '@xylabs/assert'
 import { ArchivistInstance, asArchivistInstance } from '@xyo-network/archivist-model'
 import {
@@ -17,7 +19,6 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { WithMeta, WithSources } from '@xyo-network/payload-model'
 import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
 import { asWitnessInstance, WitnessInstance } from '@xyo-network/witness-model'
-import { readFile, writeFile } from 'fs/promises'
 
 import { collections } from './collections'
 
@@ -78,8 +79,9 @@ export const witnessNftCollections = async (node: NodeInstance) => {
         imageSlug = await generateThumbnail(address, name, score, archivist, imageThumbnailWitness)
         console.log(`${address}(${name}): Collection Data: Persist Collection Data`)
         const updatedNftCollectionDisplaySlugInfo: NftCollectionDisplaySlugInfo = { displayName: name, imageSlug, score }
-        const nftCollectionDisplaySlugInfo: NftCollectionDisplaySlugInfo = existingNftCollectionDisplaySlugInfo
-          ? { ...existingNftCollectionDisplaySlugInfo, ...updatedNftCollectionDisplaySlugInfo }
+        const nftCollectionDisplaySlugInfo: NftCollectionDisplaySlugInfo =
+          existingNftCollectionDisplaySlugInfo ?
+            { ...existingNftCollectionDisplaySlugInfo, ...updatedNftCollectionDisplaySlugInfo }
           : updatedNftCollectionDisplaySlugInfo
         nftCollectionDisplaySlugInfos[address] = nftCollectionDisplaySlugInfo
         await writeCollectionInfo(nftCollectionDisplaySlugInfos)
@@ -144,10 +146,13 @@ const generateThumbnail = async (
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Dictionary = { [key: string]: any }
 function sortObjectKeys(obj: Dictionary) {
-  return Object.keys(obj)
-    .sort()
-    .reduce((result, key) => {
-      result[key] = obj[key]
-      return result
-    }, {} as Dictionary)
+  return (
+    Object.keys(obj)
+      .sort()
+      // eslint-disable-next-line unicorn/no-array-reduce
+      .reduce((result, key) => {
+        result[key] = obj[key]
+        return result
+      }, {} as Dictionary)
+  )
 }

@@ -10,5 +10,5 @@ export const validatePayloadSchema = async (
   const validate = await getValidator(payload)
   if (!validate) return true
   const valid = await validate(payload)
-  return !valid ? false : true
+  return valid ? true : false
 }

@@ -1,7 +1,7 @@
 import { assertEx } from '@xylabs/assert'
 import { AlchemyProvider, Provider } from 'ethers'
 
-let instance: AlchemyProvider | undefined = undefined
+let instance: AlchemyProvider | undefined
 
 export const getAlchemyProvider = (): Provider => {
   if (instance) return instance

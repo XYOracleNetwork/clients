@@ -7,7 +7,7 @@ import { canUseInfuraProvider, getInfuraProviderConfig } from './getInfuraProvid
 import { canUsePocketProvider, getPocketProviderConfig } from './getPocketProvider'
 import { providerOmitted } from './ProviderOmitted'
 
-let instance: Provider | undefined = undefined
+let instance: Provider | undefined
 
 export const getProvider = (): Provider => {
   if (instance) return instance

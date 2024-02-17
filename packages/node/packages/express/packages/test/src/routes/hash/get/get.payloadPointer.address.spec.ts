@@ -19,7 +19,7 @@ describe('/:hash', () => {
       const [bwE, payloadsE] = await getNewBoundWitness([accountC, accountD])
       const [bwF, payloadsF] = await getNewBoundWitness([accountC])
       const [bwG, payloadsG] = await getNewBoundWitness([accountD])
-      payloads.push(...[...payloadsA, ...payloadsB, ...payloadsC, ...payloadsD, ...payloadsE, ...payloadsF, ...payloadsG])
+      payloads.push(...payloadsA, ...payloadsB, ...payloadsC, ...payloadsD, ...payloadsE, ...payloadsF, ...payloadsG)
       const boundWitnesses = [bwA, bwB, bwC, bwD, bwE, bwF, bwG]
       const blockResponse = await insertBlock(boundWitnesses)
       expect(blockResponse.length).toBe(boundWitnesses.length)

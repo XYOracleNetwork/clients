@@ -6,6 +6,6 @@ import { options } from './options'
 
 export const getOptionsParser = () => {
   const optionsParser = yargs(hideBin(process.argv))
-  options.forEach((option) => optionsParser.option(...option))
+  for (const option of options) optionsParser.option(...option)
   return optionsParser
 }

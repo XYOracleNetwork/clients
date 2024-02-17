@@ -1,5 +1,6 @@
+import { parse } from 'node:path'
+
 import { EmptyObject } from '@xylabs/object'
-import { parse } from 'path'
 import { Argv, CommandBuilder, CommandModule } from 'yargs'
 
 import { printError, printLine } from '../../../lib'

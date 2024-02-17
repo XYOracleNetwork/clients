@@ -22,7 +22,9 @@ main()
     console.log('Excepting,...')
     exitStatus = 1
   })
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises
   .finally(async () => {
     await stop()
+    // eslint-disable-next-line unicorn/no-process-exit
     process.exit(exitStatus)
   })

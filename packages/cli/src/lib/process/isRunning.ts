@@ -1,4 +1,4 @@
-import { kill as sendSignalToProcess } from 'process'
+import { kill as sendSignalToProcess } from 'node:process'
 
 import { clearPid, getPid } from './pid'
 

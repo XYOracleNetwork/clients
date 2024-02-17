@@ -1,5 +1,5 @@
-import { spawn } from 'child_process'
-import { join, parse } from 'path'
+import { spawn } from 'node:child_process'
+import { join, parse } from 'node:path'
 
 import { getErrFileDescriptor, getOutFileDescriptor } from './logs'
 import { setPid } from './pid'
@@ -7,8 +7,9 @@ import { setPid } from './pid'
 /**
  * The path to the script to run the Node
  */
-const runNodeScriptPath = parse(__filename).ext.includes('ts')
-  ? join(__dirname, '..', '..', '..', 'dist', 'cjs', 'runNode.js')
+const runNodeScriptPath =
+  parse(__filename).ext.includes('ts') ?
+    join(__dirname, '..', '..', '..', 'dist', 'cjs', 'runNode.js')
   : join(__dirname, '..', '..', '..', 'cjs', 'runNode.js')
 
 /**

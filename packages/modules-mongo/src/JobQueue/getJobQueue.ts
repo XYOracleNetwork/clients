@@ -24,8 +24,9 @@ export const getJobQueue = (): JobQueue => {
   const dbPassword = assertEx(process.env.MONGO_PASSWORD, 'Missing Mongo Password')
   const dbUserName = assertEx(process.env.MONGO_USERNAME, 'Missing Mongo Username')
   // TODO: Temp fix to match current ENV VAR format
-  const address = isLocalhost(dbDomain)
-    ? `mongodb://${dbUserName}:${dbPassword}@${dbDomain}/${dbName}?authSource=admin`
+  const address =
+    isLocalhost(dbDomain) ?
+      `mongodb://${dbUserName}:${dbPassword}@${dbDomain}/${dbName}?authSource=admin`
     : `mongodb+srv://${dbUserName}:${dbPassword}@${dbDomain}.mongodb.net/${dbName}?authSource=admin`
   const db = { address, collection }
   const name = getName()

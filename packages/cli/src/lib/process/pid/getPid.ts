@@ -1,18 +1,18 @@
-import { readFile, stat } from 'fs/promises'
+import { readFile, stat } from 'node:fs/promises'
 
 import { pidFile } from './files'
 
-const encoding = 'utf-8'
+const encoding = 'utf8'
 
 export const getPid = async (): Promise<number | undefined> => {
   try {
     const exists = (await stat(pidFile)).isFile()
     if (exists) {
       const data = await readFile(pidFile, { encoding })
-      const pid = parseInt(data)
+      const pid = Number.parseInt(data)
       if (pid) return pid
     }
-  } catch (_err) {
+  } catch {
     // stat can throw if file doesn't exist
   }
   return undefined

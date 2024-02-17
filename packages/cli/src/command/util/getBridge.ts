@@ -7,7 +7,7 @@ import { getBridgeConfig } from './getBridgeConfig'
 
 // TODO: Grab from config, rethink default path, use hardened path?
 const accountPath = "m/44'/60'/0"
-let wallet: HDWallet | undefined = undefined
+let wallet: HDWallet | undefined
 
 export const getBridge = async (args: BaseArguments): Promise<HttpBridge<HttpBridgeParams>> => {
   const { verbose } = args

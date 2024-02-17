@@ -1,3 +1,4 @@
+import { forget } from '@xylabs/forget'
 import { EmptyObject } from '@xylabs/object'
 import { Tail } from 'tail'
 import { ArgumentsCamelCase, CommandBuilder, CommandModule } from 'yargs'
@@ -39,12 +40,14 @@ export const handler = async (args: ArgumentsCamelCase<Arguments>) => {
       outInterface.unwatch()
       errInterface.unwatch()
       await stop()
+      // eslint-disable-next-line unicorn/no-process-exit
       process.exit()
     }
-    process.on('SIGINT', async () => await shutdown()) // CTRL+C
-    process.on('SIGQUIT', async () => await shutdown()) // Keyboard quit
-    process.on('SIGTERM', async () => await shutdown()) // `kill` command
+    process.on('SIGINT', () => forget(shutdown())) // CTRL+C
+    process.on('SIGQUIT', () => forget(shutdown())) // Keyboard quit
+    process.on('SIGTERM', () => forget(shutdown())) // `kill` command
   } else {
+    // eslint-disable-next-line unicorn/no-process-exit
     process.exit()
   }
 }

@@ -7,7 +7,7 @@ export const listAttachedModules = async (node: NodeInstance) => {
 
   const addresses = await node.attached()
 
-  addresses.forEach((address) => {
+  for (const address of addresses) {
     printLine(`0x${address}`)
-  })
+  }
 }

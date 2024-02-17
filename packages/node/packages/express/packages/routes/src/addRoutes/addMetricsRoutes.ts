@@ -12,6 +12,7 @@ export const addMetricsRoutes = (app: Express) => {
   if (isDevelopment()) {
     app.get(
       '/metrics',
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
       getMetrics /* #swagger.tags = ['Node'] */,
       /* #swagger.summary = 'Gets modules on the Node' */
     )

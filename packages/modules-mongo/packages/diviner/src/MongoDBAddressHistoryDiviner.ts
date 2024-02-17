@@ -51,7 +51,7 @@ export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
       const block = (await found.sort({ _timestamp: -1 }).limit(1).maxTimeMS(DefaultMaxTimeMS).toArray()).pop()
       if (!block) break
       blocks.push(block)
-      const addressIndex = block.addresses.findIndex((value) => value === address)
+      const addressIndex = block.addresses.indexOf(address)
       const previousHash = block.previous_hashes[addressIndex]
       if (!previousHash) break
       nextHash = previousHash
@@ -63,12 +63,14 @@ export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
 const sanitizeAddress = (a: string | string[] | undefined): string => {
   return (
     ([] as (string | undefined)[])
+      // eslint-disable-next-line unicorn/prefer-spread
       .concat(a)
       .filter(exists)
       .map((x) => x.toLowerCase())
       .map((z) => hexFromHexString(z, { prefix: false }))
       .filter(exists)
       // TODO: We're only taking the last address with this
+      // eslint-disable-next-line unicorn/no-array-reduce
       .reduce((x) => x)
   )
 }

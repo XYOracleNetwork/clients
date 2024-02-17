@@ -8,6 +8,7 @@ import { RequestHandler } from 'express'
 const descriptionErrorMsg = 'Unable to resolve PrometheusWitness description'
 const resolutionErrorMsg = 'Unable to resolve PrometheusNodeWitness'
 
+// eslint-disable-next-line @typescript-eslint/no-misused-promises
 const handler: RequestHandler<NoReqParams> = async (req, res) => {
   setRawResponseFormat(res)
   const { node } = req.app

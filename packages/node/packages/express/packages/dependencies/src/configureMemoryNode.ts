@@ -1,3 +1,5 @@
+import { readFile } from 'node:fs/promises'
+
 import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
 import { Account, HDWallet } from '@xyo-network/account'
@@ -7,7 +9,6 @@ import { ModuleConfig, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { TYPES } from '@xyo-network/node-core-types'
 import { NodeInstance } from '@xyo-network/node-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { readFile } from 'fs/promises'
 import { Container } from 'inversify'
 
 import { defaultNode, nftContractNode, nftMetadataNode } from './Manifest'
@@ -21,7 +22,7 @@ export const configureMemoryNode = async (container: Container, memoryNode?: Nod
   const configHashes = process.env.CONFIG_HASHES
   if (configHashes) {
     const hashes = configHashes.split(',').filter(exists)
-    if (hashes.length) {
+    if (hashes.length > 0) {
       const configPayloads: Record<string, ModuleConfig> = {}
       const mods = await node.resolve({ query: [[ArchivistInsertQuerySchema]] }, { direction: 'down', identity: isArchivistInstance })
       for (const mod of mods) {
@@ -44,9 +45,8 @@ export const configureMemoryNode = async (container: Container, memoryNode?: Nod
 }
 
 const loadNodeFromConfig = async (container: Container, config?: string) => {
-  const manifest: PackageManifestPayload = config
-    ? (JSON.parse(await readFile(config, 'utf8')) as PackageManifestPayload)
-    : (defaultNode as PackageManifestPayload)
+  const manifest: PackageManifestPayload =
+    config ? (JSON.parse(await readFile(config, 'utf8')) as PackageManifestPayload) : (defaultNode as PackageManifestPayload)
   // TODO: Import all public children from manifest once we're OK to move the image thumbnail
   // modules from the main node to a child node
   const manifestPublicChildren: PackageManifestPayload[] = config ? [] : [nftContractNode, nftMetadataNode]

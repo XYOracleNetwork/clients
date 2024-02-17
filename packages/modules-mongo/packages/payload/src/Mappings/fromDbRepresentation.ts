@@ -18,7 +18,7 @@ export const boundWitnessFromDbRepresentation = (value: BoundWitnessWithMongoMet
 }
 
 export const fromDbRepresentation = <T = PayloadWithMongoMeta | BoundWitnessWithMongoMeta>(value: T) => {
-  return isBoundWitness(value)
-    ? (boundWitnessFromDbRepresentation(value as unknown as BoundWitnessWithMongoMeta) as BoundWitness<BoundWitnessFields>)
+  return isBoundWitness(value) ?
+      (boundWitnessFromDbRepresentation(value as unknown as BoundWitnessWithMongoMeta) as BoundWitness<BoundWitnessFields>)
     : (payloadFromDbRepresentation(value as PayloadWithMongoMeta) as Payload<PayloadMetaFields>)
 }

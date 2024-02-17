@@ -26,14 +26,14 @@ export const connect = async (attempts = 60, interval = 500): Promise<NodeInstan
       )
 
       if (!nodeModule) {
-        throw Error(`Tried to connect to a remote module that was not found [${apiDomain}]`)
+        throw new Error(`Tried to connect to a remote module that was not found [${apiDomain}]`)
       }
 
       if (!nodeModule || !isNodeModule(nodeModule)) {
-        throw Error(`Tried to connect to a remote module that is not a node [${apiDomain}]`)
+        throw new Error(`Tried to connect to a remote module that is not a node [${apiDomain}]`)
       }
       return nodeModule
-    } catch (err) {
+    } catch {
       count++
       await delay(interval)
       continue
