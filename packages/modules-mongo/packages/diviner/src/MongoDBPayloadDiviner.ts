@@ -37,6 +37,7 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
         // Skip any reserved properties
         if (`${prop}`?.startsWith('$')) continue
         // Add the filter criteria
+        // TODO: We need to decide when it makes sense for $in vs $all and expose that to the caller
         filter[prop as keyof Payload] = Array.isArray(propFilter) ? { $in: propFilter } : (propFilter as string)
       }
     }
