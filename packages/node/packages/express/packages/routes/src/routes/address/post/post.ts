@@ -1,4 +1,5 @@
 import { assertEx } from '@xylabs/assert'
+import { Address } from '@xylabs/hex'
 import { asyncHandler } from '@xylabs/sdk-api-express-ecs'
 import { QueryBoundWitness } from '@xyo-network/boundwitness-model'
 import { Module, ModuleQueryResult } from '@xyo-network/module-model'
@@ -19,7 +20,7 @@ const handler: RequestHandler<AddressPathParams, ModuleQueryResult, PostAddressR
   const [bw, payloads] = Array.isArray(req.body) ? req.body : []
   if (address && bw) {
     let modules: Module[] = []
-    const normalizedAddress = trimAddressPrefix(address).toLowerCase()
+    const normalizedAddress = trimAddressPrefix(address).toLowerCase() as Address
     if (node.address === normalizedAddress) modules = [node]
     else {
       const byAddress = await node.resolve({ address: [normalizedAddress] }, { direction: 'down' })

@@ -1,3 +1,4 @@
+import { Address } from '@xylabs/hex'
 import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
 import { AccountInstance } from '@xyo-network/account-model'
@@ -24,7 +25,7 @@ import { MongoDBSchemaListDiviner } from '../MongoDBSchemaListDiviner'
 
 describeIf(hasMongoDBConfig())('MongoDBSchemaListDiviner', () => {
   let account: AccountInstance
-  let address: string
+  let address: Address
   const phrase = 'guide drop pole matter mandate sand social chest toe scene primary alien'
   const logger = mock<Console>()
   const boundWitnessSdk: BaseMongoSdk<BoundWitnessWithMongoMeta> = new BaseMongoSdk<BoundWitnessWithMongoMeta>({

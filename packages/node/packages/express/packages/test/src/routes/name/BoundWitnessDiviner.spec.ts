@@ -1,4 +1,5 @@
 import { assertEx } from '@xylabs/assert'
+import { Address } from '@xylabs/hex'
 import { Account } from '@xyo-network/account'
 import { AccountInstance } from '@xyo-network/account-model'
 import { ArchivistInstance } from '@xyo-network/archivist-model'
@@ -46,16 +47,16 @@ describe(`/${moduleName}`, () => {
     const accountB = Account.randomSync()
     const boundWitnesses: BoundWitnessWrapper[] = []
     beforeAll(async () => {
-      const boundWitnessA = await BoundWitnessWrapper.parse((await getNewBoundWitness([accountA], [await getNewPayload()]))[0])
-      const boundWitnessB = await BoundWitnessWrapper.parse((await getNewBoundWitness([accountB], [await getNewPayload()]))[0])
-      const boundWitnessC = await BoundWitnessWrapper.parse(
+      const boundWitnessA = BoundWitnessWrapper.parse((await getNewBoundWitness([accountA], [await getNewPayload()]))[0])
+      const boundWitnessB = BoundWitnessWrapper.parse((await getNewBoundWitness([accountB], [await getNewPayload()]))[0])
+      const boundWitnessC = BoundWitnessWrapper.parse(
         (await getNewBoundWitness([accountA, accountB], [await getNewPayload(), await getNewPayload()]))[0],
       )
       boundWitnesses.push(boundWitnessA, boundWitnessB, boundWitnessC)
       await archivist.insert(boundWitnesses.map((b) => b.boundwitness))
     })
     describe('address', () => {
-      const cases: [title: string, addresses: string[], expected: () => BoundWitnessWrapper[]][] = [
+      const cases: [title: string, addresses: Address[], expected: () => BoundWitnessWrapper[]][] = [
         ['single address returns boundWitnesses signed by address', [accountA.address], () => [boundWitnesses[0], boundWitnesses[2]]],
         ['single address returns boundWitnesses signed by address', [accountB.address], () => [boundWitnesses[1], boundWitnesses[2]]],
         ['multiple addresses returns boundWitnesses signed by both addresses', [accountA.address, accountB.address], () => [boundWitnesses[2]]],

@@ -1,3 +1,4 @@
+import { Address } from '@xylabs/hex'
 import { EmptyObject } from '@xylabs/object'
 import { NodeInstance } from '@xyo-network/node-model'
 import { CommandBuilder, CommandModule } from 'yargs'
@@ -16,7 +17,7 @@ export const handler = async (argv: BaseArguments) => {
   try {
     const node: NodeInstance = await getNode(argv)
     const description = await node.describe()
-    const childAddresses = description?.children || []
+    const childAddresses = (description?.children || []) as Address[]
     const children = await Promise.all(childAddresses?.map((child) => node.resolve({ address: [child] }, { direction: 'down' })))
     const childDescriptions = await Promise.all(children.flat().map(async (mod) => await mod.describe()))
     printLine(JSON.stringify(childDescriptions))

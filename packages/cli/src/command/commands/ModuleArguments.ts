@@ -1,10 +1,11 @@
+import { Address } from '@xylabs/hex'
 import { ArgumentsCamelCase } from 'yargs'
 
 import { BaseArguments } from '../BaseArguments'
 
 export type ModuleArguments = BaseArguments &
   ArgumentsCamelCase<{
-    address?: string
+    address?: Address
     name?: string
   }>
 

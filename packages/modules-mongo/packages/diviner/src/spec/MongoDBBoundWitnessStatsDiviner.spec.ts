@@ -1,3 +1,4 @@
+import { Address } from '@xylabs/hex'
 import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
 import { AccountInstance } from '@xyo-network/account-model'
@@ -27,7 +28,7 @@ import { MongoDBBoundWitnessStatsDiviner } from '../MongoDBBoundWitnessStatsDivi
 describeIf(hasMongoDBConfig())('MongoDBBoundWitnessStatsDiviner', () => {
   const phrase = 'forum travel tattoo shock team artist stone fine will fan answer tribe'
   let account: AccountInstance
-  let address: string
+  let address: Address
   const logger = mock<Console>()
   const boundWitnessSdk = new BaseMongoSdk<BoundWitnessWithMongoMeta>({
     collection: COLLECTIONS.BoundWitnesses,

@@ -1,5 +1,6 @@
 import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
+import { Address } from '@xylabs/hex'
 import { SortDirection } from '@xyo-network/diviner-payload-model'
 import {
   isPayloadAddressRule,
@@ -17,7 +18,7 @@ export const combineRules = (rules: PayloadRule[][]): PayloadSearchCriteria => {
     .flat()
     .filter(isPayloadAddressRule)
     .map((r) => r.address)
-    .filter(exists)
+    .filter(exists) as Address[]
 
   const schemas = rules
     .flat()

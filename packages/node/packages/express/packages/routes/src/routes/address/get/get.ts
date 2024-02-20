@@ -1,4 +1,5 @@
 import { assertEx } from '@xylabs/assert'
+import { Address } from '@xylabs/hex'
 import { asyncHandler } from '@xylabs/sdk-api-express-ecs'
 import { ModuleInstance } from '@xyo-network/module-model'
 import { trimAddressPrefix } from '@xyo-network/node-core-lib'
@@ -14,7 +15,7 @@ const handler: RequestHandler<AddressPathParams, Payload[]> = async (req, res, n
   const { node } = req.app
   if (address) {
     let modules: ModuleInstance[] = []
-    const normalizedAddress = trimAddressPrefix(address).toLowerCase()
+    const normalizedAddress = trimAddressPrefix(address).toLowerCase() as Address
     if (node.address === normalizedAddress) modules = [node]
     else {
       const byAddress = await node.resolve({ address: [normalizedAddress] }, { direction: 'down' })

@@ -1,6 +1,6 @@
 import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
-import { hexFromHexString } from '@xylabs/hex'
+import { Address, Hash, hexFromHexString } from '@xylabs/hex'
 import { BoundWitness } from '@xyo-network/boundwitness-model'
 import {
   AddressHistoryDiviner,
@@ -30,7 +30,7 @@ export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
     const addresses = sanitizeAddress(address)
     assertEx(addresses, 'MongoDBAddressHistoryDiviner: Missing address for query')
     if (offset) assertEx(typeof offset === 'string', 'MongoDBAddressHistoryDiviner: Supplied offset must be a hash')
-    const hash: string = offset as string
+    const hash = offset as Hash
     const blocks = await this.getBlocks(hash, addresses, limit || DefaultLimit)
     return blocks.map(fromDbRepresentation) as BoundWitness[]
   }
@@ -41,7 +41,7 @@ export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
     return true
   }
 
-  private getBlocks = async (hash: string, address: string, limit: number): Promise<BoundWitnessWithMongoMeta[]> => {
+  private getBlocks = async (hash: Hash, address: Address, limit: number): Promise<BoundWitnessWithMongoMeta[]> => {
     let nextHash = hash
     const blocks: BoundWitnessWithMongoMeta[] = []
     for (let i = 0; i < limit; i++) {
@@ -60,7 +60,7 @@ export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
   }
 }
 
-const sanitizeAddress = (a: string | string[] | undefined): string => {
+const sanitizeAddress = (a: string | string[] | undefined): Address => {
   return (
     ([] as (string | undefined)[])
       // eslint-disable-next-line unicorn/prefer-spread

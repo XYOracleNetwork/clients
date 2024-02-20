@@ -1,3 +1,4 @@
+import { Address } from '@xylabs/hex'
 import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
 import {
@@ -23,7 +24,7 @@ import { MongoDBSchemaStatsDiviner } from '../MongoDBSchemaStatsDiviner'
 
 describeIf(hasMongoDBConfig())('MongoDBSchemaStatsDiviner', () => {
   const phrase = 'forum travel tattoo shock team artist stone fine will fan answer tribe'
-  let address: string
+  let address: Address
   const logger = mock<Console>()
 
   const payloadSdk: BaseMongoSdk<PayloadWithMongoMeta> = new BaseMongoSdk<PayloadWithMongoMeta>({

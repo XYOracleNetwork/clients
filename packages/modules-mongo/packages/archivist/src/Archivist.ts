@@ -23,7 +23,7 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
     return head[0] ? PayloadWrapper.wrap(head[0]).payload : undefined
   }
 
-  protected override async getHandler(hashes: string[]): Promise<WithMeta<Payload>[]> {
+  protected override async getHandler(hashes: Hash[]): Promise<WithMeta<Payload>[]> {
     let remainingHashes = [...hashes]
 
     const dataPayloads = (await Promise.all(remainingHashes.map((_$hash) => this.payloads.findOne({ _$hash })))).filter(exists)
