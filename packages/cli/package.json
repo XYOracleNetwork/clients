@@ -13,6 +13,8 @@
     "@scure/bip39": "^1.2.2",
     "@xylabs/assert": "^3.0.1",
     "@xylabs/delay": "^3.0.1",
+    "@xylabs/forget": "^3.0.1",
+    "@xylabs/hex": "^3.0.1",
     "@xylabs/lodash": "^3.0.1",
     "@xylabs/object": "^3.0.1",
     "@xyo-network/account": "^2.91.0",
@@ -76,6 +78,6 @@
     "xyo-ts": "ts-node src/index.ts"
   },
   "types": "dist/node/index.d.ts",
-  "version": "2.84.4",
+  "version": "2.85.0",
   "type": "module"
 }
