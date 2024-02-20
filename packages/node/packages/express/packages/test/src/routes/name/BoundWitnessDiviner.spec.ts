@@ -172,9 +172,9 @@ describe(`/${moduleName}`, () => {
       const payloadB: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseB))()
       const boundWitnesses: BoundWitnessWrapper[] = []
       beforeAll(async () => {
-        const boundWitnessA = await BoundWitnessWrapper.parse((await getNewBoundWitness([account], [(await payloadA).payload]))[0])
-        const boundWitnessB = await BoundWitnessWrapper.parse((await getNewBoundWitness([account], [(await payloadB).payload]))[0])
-        const boundWitnessC = await BoundWitnessWrapper.parse(
+        const boundWitnessA = BoundWitnessWrapper.parse((await getNewBoundWitness([account], [(await payloadA).payload]))[0])
+        const boundWitnessB = BoundWitnessWrapper.parse((await getNewBoundWitness([account], [(await payloadB).payload]))[0])
+        const boundWitnessC = BoundWitnessWrapper.parse(
           (await getNewBoundWitness([account], [(await payloadA).payload, (await payloadB).payload]))[0],
         )
         boundWitnesses.push(boundWitnessA, boundWitnessB, boundWitnessC)

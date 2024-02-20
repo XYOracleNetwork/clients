@@ -36,7 +36,7 @@ describeIf(hasMongoDBConfig())('MongoDBPayloadStatsDiviner', () => {
   describe('divine', () => {
     describe('with address supplied in query', () => {
       it('divines results for the address', async () => {
-        const query: PayloadStatsQueryPayload = { address, schema: PayloadStatsQuerySchema }
+        const query = { address, schema: PayloadStatsQuerySchema } as PayloadStatsQueryPayload
         const result = await sut.divine([query])
         expect(result).toBeArrayOfSize(1)
         const actual = result[0] as PayloadStatsPayload

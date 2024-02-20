@@ -28,9 +28,9 @@
   "author": "Arie Trouw",
   "license": "LGPL-3.0-only",
   "dependencies": {
-    "@xylabs/assert": "^3.0.1",
-    "@xylabs/axios": "^3.0.1",
-    "@xylabs/forget": "^3.0.1",
+    "@xylabs/assert": "^3.0.2",
+    "@xylabs/axios": "^3.0.2",
+    "@xylabs/forget": "^3.0.2",
     "@xyo-network/account": "^2.91.0",
     "@xyo-network/account-model": "^2.91.0",
     "@xyo-network/address-payload-plugin": "^2.91.0",
@@ -67,8 +67,8 @@
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "@types/uuid": "^9.0.8",
-    "@xylabs/delay": "^3.0.1",
-    "@xylabs/hex": "^3.0.1",
+    "@xylabs/delay": "^3.0.2",
+    "@xylabs/hex": "^3.0.2",
     "@xylabs/ts-scripts-yarn3": "^3.4.1",
     "@xylabs/tsconfig-jest": "^3.4.1",
     "@xyo-network/api-call-witness": "^2.88.0",

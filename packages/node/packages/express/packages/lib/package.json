@@ -39,7 +39,7 @@
   "license": "LGPL-3.0-only",
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.515.0",
-    "@xylabs/assert": "^3.0.1",
+    "@xylabs/assert": "^3.0.2",
     "@xylabs/sdk-api-express-ecs": "^1.4.0",
     "@xyo-network/module-model": "^2.91.0",
     "@xyo-network/node-model": "^2.91.0",

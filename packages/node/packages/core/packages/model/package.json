@@ -37,8 +37,8 @@
   "author": "Arie Trouw",
   "license": "LGPL-3.0-only",
   "dependencies": {
-    "@xylabs/hex": "^3.0.1",
-    "@xylabs/object": "^3.0.1",
+    "@xylabs/hex": "^3.0.2",
+    "@xylabs/object": "^3.0.2",
     "@xyo-network/archivist-model": "^2.91.0",
     "@xyo-network/boundwitness-model": "^2.91.0",
     "@xyo-network/diviner-payload-model": "^2.91.0",

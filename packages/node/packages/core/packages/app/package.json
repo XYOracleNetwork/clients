@@ -39,7 +39,7 @@
   "types": "dist/node/index.d.ts",
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.515.0",
-    "@xylabs/assert": "^3.0.1",
+    "@xylabs/assert": "^3.0.2",
     "@xylabs/sdk-api-express-ecs": "^1.4.0",
     "@xyo-network/account": "^2.91.0",
     "@xyo-network/account-model": "^2.91.0",
