@@ -166,10 +166,10 @@ describe('/:hash', () => {
       })
       describe('single schema', () => {
         it.each([
-          [schemaA, [0]],
-          [schemaB, [1]],
-        ])('returns BoundWitness of schema type', async (schema, data) => {
-          const expected = data.map((i) => boundWitnesses[i])
+          [schemaA, 0],
+          [schemaB, 1],
+        ])('returns BoundWitness of schema type', async (schema, expectedIndex) => {
+          const expected = boundWitnesses[expectedIndex]
           const pointerHash = await createPointer([[account.address]], [[schema]])
           const result = await getHash(pointerHash)
           expect(result).toEqual(expected)
