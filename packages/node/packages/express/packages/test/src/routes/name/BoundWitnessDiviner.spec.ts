@@ -183,10 +183,10 @@ describe(`/${moduleName}`, () => {
       const cases: [title: string, payload_schemas: string[], expected: () => BoundWitnessWrapper[]][] = [
         ['single schema', [schemaA], () => [boundWitnesses[0], boundWitnesses[2]]],
         ['single schema', [schemaB], () => [boundWitnesses[1], boundWitnesses[2]]],
-        ['multiple schemas', [schemaA, schemaB], () => [boundWitnesses[0], boundWitnesses[1], boundWitnesses[2]]],
+        ['multiple schemas', [schemaA, schemaB], () => [boundWitnesses[2]]],
       ]
       describe.each(cases)('with %s', (_title, payload_schemas, data) => {
-        it('divines BoundWitnesses that contain any of the supplied schemas in payload_schemas', async () => {
+        it('divines BoundWitnesses that contain all of the supplied schemas in payload_schemas', async () => {
           const expected = data()
           const query: BoundWitnessDivinerQueryPayload = { payload_schemas, schema }
           const response = await diviner.divine([query])
