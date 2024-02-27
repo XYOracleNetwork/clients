@@ -1,3 +1,4 @@
+import { Hash } from '@xylabs/hex'
 import { EmptyObject } from '@xylabs/object'
 import { ArgumentsCamelCase, Argv, CommandBuilder, CommandModule } from 'yargs'
 
@@ -20,7 +21,7 @@ export const handler = async (argv: ArgumentsCamelCase<Arguments>) => {
   const { hashes, verbose } = argv
   try {
     const archivist = await getArchivist(argv)
-    const result = await archivist.get(hashes)
+    const result = await archivist.get(hashes as Hash[])
     printLine(JSON.stringify(result))
   } catch (error) {
     if (verbose) printError(JSON.stringify(error))

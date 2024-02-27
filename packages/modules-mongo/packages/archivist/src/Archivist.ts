@@ -43,7 +43,9 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
     remainingHashes = remainingHashes.filter((hash) => !bwsHashes.has(hash))
 
     const foundPayloads = [...dataPayloads, ...dataBws, ...payloads, ...bws] as PayloadWithMongoMeta<Payload & { _$hash: Hash; _$meta?: unknown }>[]
-    return await PayloadBuilder.build(foundPayloads.map(fromDbRepresentation))
+    const result = await PayloadBuilder.build(foundPayloads.map(fromDbRepresentation))
+    //console.log(`getHandler: ${JSON.stringify(hashes, null, 2)}:${JSON.stringify(result, null, 2)}`)
+    return result
   }
 
   protected override async insertHandler(payloads: Payload[]): Promise<WithMeta<Payload>[]> {

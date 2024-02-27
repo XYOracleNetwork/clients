@@ -1,3 +1,4 @@
+import { Hash } from '@xylabs/hex'
 import { asyncHandler, NoReqBody, NoReqQuery } from '@xylabs/sdk-api-express-ecs'
 import { setRawResponseFormat } from '@xyo-network/express-node-middleware'
 import { Payload } from '@xyo-network/payload-model'
@@ -23,7 +24,7 @@ const handler: RequestHandler<HashPathParams, Payload, NoReqBody, NoReqQuery> = 
     next()
     return
   }
-  const block = await getBlockForRequest(req, hash)
+  const block = await getBlockForRequest(req, hash as Hash)
   if (block) {
     setRawResponseFormat(res)
     res.json(block)
