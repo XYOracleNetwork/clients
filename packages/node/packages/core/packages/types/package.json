@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "2.86.0-rc.1",
+  "version": "2.86.0",
   "description": "XYO Node Core Types",
   "sideeffects": false,
   "devDependencies": {
@@ -42,6 +42,5 @@
   "module": "dist/node/index.js",
   "author": "Arie Trouw",
   "license": "LGPL-3.0-only",
-  "type": "module",
-  "stableVersion": "2.85.0"
+  "type": "module"
 }

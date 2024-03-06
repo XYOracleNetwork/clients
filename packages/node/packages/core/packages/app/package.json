@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "2.86.0-rc.1",
+  "version": "2.86.0",
   "description": "XYO Node App",
   "sideeffects": false,
   "exports": {
@@ -66,6 +66,5 @@
   },
   "author": "Arie Trouw",
   "license": "LGPL-3.0-only",
-  "type": "commonjs",
-  "stableVersion": "2.85.0"
+  "type": "commonjs"
 }

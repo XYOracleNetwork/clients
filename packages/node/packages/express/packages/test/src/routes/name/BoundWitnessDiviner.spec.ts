@@ -12,7 +12,7 @@ import { Payload } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 import {
-  getArchivist,
+  getArchivistByName,
   getDivinerByName,
   getNewBoundWitness,
   getNewPayload,
@@ -33,7 +33,7 @@ describe(`/${moduleName}`, () => {
   beforeAll(async () => {
     account = await unitTestSigningAccount()
     diviner = await getDivinerByName(moduleName)
-    archivist = await getArchivist()
+    archivist = await getArchivistByName()
   })
   describe('ModuleDiscoverQuerySchema', () => {
     it('discovers', async () => {

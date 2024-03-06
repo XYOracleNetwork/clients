@@ -146,8 +146,8 @@ describe('/:hash', () => {
       const account = Account.randomSync()
       const schemaA = getTestSchemaName()
       const schemaB = getTestSchemaName()
-      const schemaC = getTestSchemaName()
-      const schemaD = getTestSchemaName()
+      //const schemaC = getTestSchemaName()
+      //const schemaD = getTestSchemaName()
       const schemas = [schemaA, schemaB]
       let payloadA: PayloadWrapper
       let payloadB: PayloadWrapper

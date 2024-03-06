@@ -3,7 +3,14 @@ import { BoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { PayloadWrapper, PayloadWrapperBase } from '@xyo-network/payload-wrapper'
 
-import { getArchivist, getNewBoundWitness, getNewPayload, nonExistentHash, unitTestSigningAccount, validateDiscoverResponse } from '../../testUtil'
+import {
+  getArchivistByName,
+  getNewBoundWitness,
+  getNewPayload,
+  nonExistentHash,
+  unitTestSigningAccount,
+  validateDiscoverResponse,
+} from '../../testUtil'
 
 const moduleName = 'Archivist'
 
@@ -20,7 +27,7 @@ describe(`/${moduleName}`, () => {
   ]
   beforeAll(async () => {
     const account = await unitTestSigningAccount()
-    archivist = await getArchivist()
+    archivist = await getArchivistByName()
     const payloadWrapperA = PayloadWrapper.wrap(await getNewPayload())
     const payloadWrapperB = PayloadWrapper.wrap(await getNewPayload())
     const payloadWrapperC = PayloadWrapper.wrap(await getNewPayload())

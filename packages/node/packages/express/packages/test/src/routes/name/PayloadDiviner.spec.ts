@@ -5,7 +5,7 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload, WithMeta } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
-import { getArchivist, getDivinerByName, getNewPayload, getTestSchemaName, nonExistentHash, validateDiscoverResponse } from '../../testUtil'
+import { getArchivistByName, getDivinerByName, getNewPayload, getTestSchemaName, nonExistentHash, validateDiscoverResponse } from '../../testUtil'
 
 const schema = PayloadDivinerQuerySchema
 
@@ -16,7 +16,7 @@ describe(`/${moduleName}`, () => {
 
   beforeAll(async () => {
     diviner = await getDivinerByName(moduleName)
-    archivist = await getArchivist()
+    archivist = await getArchivistByName()
   })
   describe('ModuleDiscoverQuerySchema', () => {
     it('discovers', async () => {
