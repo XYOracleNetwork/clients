@@ -1,4 +1,4 @@
-import { HDWallet } from '@xyo-network/account'
+import { HDWallet, WalletInstance } from '@xyo-network/account'
 import { HttpBridge, HttpBridgeParams } from '@xyo-network/http-bridge'
 
 import { printError } from '../../lib'
@@ -7,7 +7,7 @@ import { getBridgeConfig } from './getBridgeConfig'
 
 // TODO: Grab from config, rethink default path, use hardened path?
 const accountPath = "m/44'/60'/0"
-let wallet: HDWallet | undefined
+let wallet: WalletInstance | undefined
 
 export const getBridge = async (args: BaseArguments): Promise<HttpBridge<HttpBridgeParams>> => {
   const { verbose } = args

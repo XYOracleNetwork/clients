@@ -18,8 +18,8 @@
   },
   "description": "Primary SDK for using XYO Protocol 2.0",
   "devDependencies": {
-    "@babel/core": "^7.23.9",
-    "@babel/preset-env": "^7.23.9",
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
     "@babel/preset-typescript": "^7.23.3",
     "@types/jest": "^29.5.12",
     "@types/supertest": "^6.0.2",
@@ -45,8 +45,8 @@
     "supertest": "^6.3.4",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
-    "typedoc": "^0.25.9",
-    "typescript": "^5.3.3"
+    "typedoc": "^0.25.11",
+    "typescript": "^5.4.2"
   },
   "resolutions": {
     "axios": "^1",
@@ -124,11 +124,12 @@
     "build-typedoc-site": "typedoc"
   },
   "sideEffects": false,
-  "version": "2.85.0",
-  "packageManager": "yarn@4.0.2",
+  "version": "2.86.0-rc.1",
+  "packageManager": "yarn@4.1.1",
   "volta": {
     "node": "20.10.0",
     "yarn": "1.22.19"
   },
-  "type": "module"
+  "type": "module",
+  "stableVersion": "2.85.0"
 }
