@@ -4,17 +4,13 @@ import { ModuleInstance } from '@xyo-network/module-model'
 import { getBridge, getBridgeToChildNode } from '../Bridge'
 
 export const getModuleByName = async (name: string): Promise<ModuleInstance> => {
-  const modules = await (await getBridge()).resolve({ name: [name] })
-  expect(modules).toBeArrayOfSize(1)
-  const mod = modules.pop()
-  expect(mod).toBeTruthy()
-  return assertEx(mod)
+  const module = await (await getBridge()).resolve(name)
+  expect(module).toBeDefined()
+  return assertEx(module)
 }
 
 export const getModuleByNameFromChildNode = async (name: string, childNodeName: string): Promise<ModuleInstance> => {
-  const modules = await (await getBridgeToChildNode(childNodeName)).resolve({ name: [name] })
-  expect(modules).toBeArrayOfSize(1)
-  const mod = modules.pop()
+  const mod = await (await getBridgeToChildNode(childNodeName)).resolve(name)
   expect(mod).toBeTruthy()
   return assertEx(mod)
 }

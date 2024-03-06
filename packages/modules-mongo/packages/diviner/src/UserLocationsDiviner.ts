@@ -1,6 +1,7 @@
 import 'reflect-metadata'
 
 import { assertEx } from '@xylabs/assert'
+import { Hash } from '@xylabs/hex'
 import { compact } from '@xylabs/lodash'
 import { ArchivistInstance } from '@xyo-network/archivist-model'
 import { BoundWitness } from '@xyo-network/boundwitness-model'
@@ -68,7 +69,7 @@ export class MemoryCoinUserLocationsDiviner<
       const filter = { payload_hashes: [await wrapper.dataHash()], schema: BoundWitnessDivinerQuerySchema }
       const bwList = ((await diviner.divine([filter])) as BoundWitness[]) || []
       const locationHashes = bwList.flatMap((bw) => {
-        const locations: string[] = []
+        const locations: Hash[] = []
         for (let i = 0; i < bwList.length; i++) {
           if (bw?.payload_schemas[i] === CoinCurrentLocationWitnessSchema) {
             locations.push(assertEx(bw?.payload_hashes[i], 'Missing hash'))

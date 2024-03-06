@@ -1,5 +1,6 @@
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
+import { Address } from '@xylabs/hex'
 import { fulfilled, rejected } from '@xylabs/promise'
 import { AddressPayload, AddressSchema } from '@xyo-network/address-payload-plugin'
 import { BoundWitnessStatsDiviner } from '@xyo-network/diviner-boundwitness-stats-abstract'
@@ -47,7 +48,7 @@ export class MongoDBBoundWitnessStatsDiviner
   /**
    * Iterates over know addresses obtained from AddressDiviner
    */
-  protected readonly addressIterator: SetIterator<string> = new SetIterator([])
+  protected readonly addressIterator: SetIterator<Address> = new SetIterator([])
 
   /**
    * The interval at which the background divine task will run. Prevents
@@ -126,7 +127,7 @@ export class MongoDBBoundWitnessStatsDiviner
     this.backgroundDivineTask = undefined
   }
 
-  private divineAddress = async (address: string) => {
+  private divineAddress = async (address: Address) => {
     const stats = await this.boundWitnesses.useMongo(async (mongo) => {
       return await mongo.db(DATABASES.Archivist).collection<Stats>(COLLECTIONS.ArchivistStats).findOne({ address: address })
     })
@@ -135,7 +136,7 @@ export class MongoDBBoundWitnessStatsDiviner
     return remote + local
   }
 
-  private divineAddressFull = async (address: string) => {
+  private divineAddressFull = async (address: Address) => {
     const count = await this.boundWitnesses.useCollection((collection) => collection.countDocuments({ addresses: { $in: [address] } }))
     await this.storeDivinedResult(address, count)
     return count

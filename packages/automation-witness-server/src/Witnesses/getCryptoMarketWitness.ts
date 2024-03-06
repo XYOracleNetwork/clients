@@ -1,4 +1,3 @@
-import { AbstractWitness } from '@xyo-network/abstract-witness'
 import {
   CoingeckoCryptoMarketWitness,
   CoingeckoCryptoMarketWitnessConfigSchema,
@@ -15,7 +14,7 @@ import { getProvider } from '../Providers'
 import { WitnessProvider } from './WitnessProvider'
 
 export const getCryptoMarketWitness: WitnessProvider<Provider> = async (provider = getProvider()): Promise<WitnessInstance[]> => {
-  const witnesses: AbstractWitness[] = [
+  const witnesses: WitnessInstance[] = [
     await CoingeckoCryptoMarketWitness.create({
       account: await getAccount(WalletPaths.CryptoMarket.Witness.Coingecko),
       config: {

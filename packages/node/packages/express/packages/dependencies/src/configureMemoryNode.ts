@@ -2,6 +2,7 @@ import { readFile } from 'node:fs/promises'
 
 import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
+import { Hash } from '@xylabs/hex'
 import { Account, HDWallet } from '@xyo-network/account'
 import { ArchivistInsertQuerySchema, isArchivistInstance, withArchivistInstance } from '@xyo-network/archivist-model'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
@@ -21,7 +22,7 @@ export const configureMemoryNode = async (container: Container, memoryNode?: Nod
   container.bind<NodeInstance>(TYPES.Node).toConstantValue(node)
   const configHashes = process.env.CONFIG_HASHES
   if (configHashes) {
-    const hashes = configHashes.split(',').filter(exists)
+    const hashes = configHashes.split(',').filter(exists) as Hash[]
     if (hashes.length > 0) {
       const configPayloads: Record<string, ModuleConfig> = {}
       const mods = await node.resolve({ query: [[ArchivistInsertQuerySchema]] }, { direction: 'down', identity: isArchivistInstance })

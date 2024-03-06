@@ -2,6 +2,7 @@
 import { readFile, writeFile } from 'node:fs/promises'
 
 import { assertEx } from '@xylabs/assert'
+import { Hash } from '@xylabs/hex'
 import { ArchivistInstance, asArchivistInstance } from '@xyo-network/archivist-model'
 import {
   isNftCollectionInfo,
@@ -25,7 +26,7 @@ import { collections } from './collections'
 interface NftCollectionDisplaySlugInfo {
   displayName: string
   imageSlug: string | null
-  score: string
+  score: Hash
 }
 
 type NftCollectionDisplaySlugInfos = Record<string, NftCollectionDisplaySlugInfo>
@@ -109,7 +110,7 @@ const writeCollectionInfo = async (nftCollectionDisplaySlugInfos: NftCollectionD
 const generateThumbnail = async (
   address: string,
   name: string,
-  score: string,
+  score: Hash,
   archivist: ArchivistInstance,
   imageThumbnailWitness: WitnessInstance,
 ): Promise<string | null> => {
@@ -120,11 +121,11 @@ const generateThumbnail = async (
       'ERROR: Collection Thumbnail: Obtain Score Payload',
     ) as WithSources<WithMeta<NftCollectionScore>>
     const nftCollectionInfoHash = assertEx(nftCollectionScorePayload.sources?.[0], 'ERROR: Collection Thumbnail: Obtain NFT Info Hash')
-    const nftCollectionInfoPayload = (await archivist.get([nftCollectionInfoHash])).find(isNftCollectionInfo) as WithSources<
+    const nftCollectionInfoPayload = (await archivist.get([nftCollectionInfoHash as Hash])).find(isNftCollectionInfo) as WithSources<
       WithMeta<NftCollectionInfo>
     >
     const nftInfoHash = assertEx(nftCollectionInfoPayload?.sources?.[0], 'ERROR: Collection Thumbnail: Obtain NFT Info Hash')
-    const nftInfo = (await archivist.get([nftInfoHash])).find(isNftInfo) as WithSources<WithMeta<NftInfo>>
+    const nftInfo = (await archivist.get([nftInfoHash as Hash])).find(isNftInfo) as WithSources<WithMeta<NftInfo>>
     if (typeof nftInfo?.metadata?.image === 'string') {
       const url = nftInfo.metadata.image
       const imageThumbnailWitnessQuery: UrlPayload = { schema: UrlSchema, url }
