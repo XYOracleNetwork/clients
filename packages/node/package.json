@@ -48,9 +48,9 @@
     "@xyo-network/express-node-server": "workspace:~"
   },
   "devDependencies": {
-    "@swc/core": "^1.4.5",
-    "@xylabs/ts-scripts-yarn3": "^3.4.1",
-    "@xylabs/tsconfig": "^3.4.1",
+    "@swc/core": "^1.4.6",
+    "@xylabs/ts-scripts-yarn3": "^3.5.2",
+    "@xylabs/tsconfig": "^3.5.2",
     "typescript": "^5.4.2"
   },
   "type": "module"
