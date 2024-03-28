@@ -28,8 +28,8 @@ export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
     // of the intended handler but is being used here to filter
     // for the query. This should be fixed to use a separate field.
     const addresses = sanitizeAddress(address)
-    assertEx(addresses, 'MongoDBAddressHistoryDiviner: Missing address for query')
-    if (offset) assertEx(typeof offset === 'string', 'MongoDBAddressHistoryDiviner: Supplied offset must be a hash')
+    assertEx(addresses, () => 'MongoDBAddressHistoryDiviner: Missing address for query')
+    if (offset) assertEx(typeof offset === 'string', () => 'MongoDBAddressHistoryDiviner: Supplied offset must be a hash')
     const hash = offset as Hash
     const blocks = await this.getBlocks(hash, addresses, limit || DefaultLimit)
     return blocks.map(fromDbRepresentation) as BoundWitness[]

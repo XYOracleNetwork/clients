@@ -24,7 +24,7 @@ import {
 
 const schema = BoundWitnessDivinerQuerySchema
 
-const moduleName = 'BoundWitnessDiviner'
+const moduleName = 'XYOPublic:BoundWitnessDiviner'
 describe(`/${moduleName}`, () => {
   let account: AccountInstance
   let diviner: DivinerInstance

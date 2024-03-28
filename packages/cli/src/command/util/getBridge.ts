@@ -18,6 +18,7 @@ export const getBridge = async (args: BaseArguments): Promise<HttpBridge<HttpBri
     }
     const config = await getBridgeConfig(args)
     const bridge = await HttpBridge.create({ account: await wallet.derivePath(accountPath), config })
+    await bridge.start()
     return bridge
   } catch (error) {
     if (verbose) printError(JSON.stringify(error))

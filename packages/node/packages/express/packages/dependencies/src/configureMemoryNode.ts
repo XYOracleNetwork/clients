@@ -31,7 +31,7 @@ export const configureMemoryNode = async (container: Container, memoryNode?: Nod
           const payloads = await archivist.get(hashes)
           await Promise.all(
             payloads.map(async (payload) => {
-              configPayloads[await PayloadBuilder.dataHash(assertEx(payload, 'Received null payload'))] = payload as ModuleConfig
+              configPayloads[await PayloadBuilder.dataHash(assertEx(payload, () => 'Received null payload'))] = payload as ModuleConfig
             }),
           )
         })
@@ -42,7 +42,10 @@ export const configureMemoryNode = async (container: Container, memoryNode?: Nod
   if (process.env.WITNESS_NFT_COLLECTIONS) {
     await witnessNftCollections(node)
   }
-  console.log(await node.discover())
+  const modules = await node.resolve('*', { direction: 'down', maxDepth: 10 })
+  for (const mod of modules) {
+    console.log(`Expose: ${mod.address} [${mod.id}]`)
+  }
 }
 
 const loadNodeFromConfig = async (container: Container, config?: string) => {

@@ -56,16 +56,16 @@
     "access": "public"
   },
   "dependencies": {
-    "@xylabs/assert": "^3.0.13",
-    "@xylabs/delay": "^3.0.13",
-    "@xylabs/forget": "^3.0.13",
+    "@xylabs/assert": "^3.0.24",
+    "@xylabs/delay": "^3.0.24",
+    "@xylabs/forget": "^3.0.24",
     "async-mutex": "^0.5.0",
     "mongodb": "^6.5.0"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.5.2",
     "@xylabs/tsconfig": "^3.5.2",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.3"
   },
   "type": "module"
 }

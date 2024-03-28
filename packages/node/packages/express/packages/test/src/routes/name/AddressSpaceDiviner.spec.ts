@@ -7,7 +7,7 @@ import { WithMeta, WithSources } from '@xyo-network/payload-model'
 
 import { getDivinerByName, getNewPayload, insertPayload, validateDiscoverResponse } from '../../testUtil'
 
-const divinerName = 'AddressSpaceDiviner'
+const divinerName = 'XYOPublic:AddressSpaceDiviner'
 
 describe(`/${divinerName}`, () => {
   let sut: DivinerInstance
@@ -28,7 +28,7 @@ describe(`/${divinerName}`, () => {
         const account = Account.randomSync()
         accounts.push(account)
         const payload = await getNewPayload()
-        const [bw] = await (await new BoundWitnessBuilder().payload(payload)).witness(account).build()
+        const [bw] = await new BoundWitnessBuilder().payload(payload).witness(account).build()
         await insertPayload(payload, account)
         await insertPayload(bw, account)
       }

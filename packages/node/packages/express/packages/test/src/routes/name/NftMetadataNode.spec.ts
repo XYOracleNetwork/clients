@@ -1,12 +1,13 @@
+import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
 import { ApiCallJsonResult, isApiCallResult } from '@xyo-network/api-call-witness'
 import { ArchivistInstance } from '@xyo-network/archivist-model'
-import { Bridge } from '@xyo-network/bridge-model'
 import { DivinerInstance } from '@xyo-network/diviner-model'
+import { asNodeInstance, NodeInstance } from '@xyo-network/node-model'
 import { WithMeta, WithSources } from '@xyo-network/payload-model'
 import { SentinelInstance } from '@xyo-network/sentinel-model'
 
-import { getArchivistByNameFromChildNode, getBridgeToChildNode, getDivinerByNameFromChildNode, getSentinelByNameFromChildNode } from '../../testUtil'
+import { getArchivistByNameFromChildNode, getBridge, getDivinerByNameFromChildNode, getSentinelByNameFromChildNode } from '../../testUtil'
 
 const nodeName = 'NftMetadataNode'
 const sentinelName = 'NftMetadataSentinel'
@@ -16,10 +17,10 @@ const archivistName = 'NftMetadataArchivist'
 describe(`${nodeName}`, () => {
   // Gutter Cats
   const uri = 'https://gutter-cats-metadata.s3.us-east-2.amazonaws.com/metadata/1347'
-  let bridge: Bridge
+  let node: NodeInstance
   beforeAll(async () => {
-    bridge = await getBridgeToChildNode(nodeName)
-    expect(bridge).toBeDefined()
+    node = asNodeInstance(assertEx(await (await getBridge()).resolve(nodeName)), 'Not a node')
+    expect(node).toBeDefined()
   })
   describe(`${sentinelName}`, () => {
     let sentinel: SentinelInstance

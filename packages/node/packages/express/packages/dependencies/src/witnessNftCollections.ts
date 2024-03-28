@@ -36,17 +36,23 @@ const maxNfts = 200_000
 const filePath = './nftData/beta/nftCollectionDisplaySlugInfos.json'
 
 export const witnessNftCollections = async (node: NodeInstance) => {
-  const archivistMod = assertEx(await node.resolve(TYPES.Archivist), `Resolving: ${TYPES.Archivist}`)
-  const archivist = assertEx(asArchivistInstance(archivistMod), `Creating: ${TYPES.Archivist}`)
+  const archivistMod = assertEx(await node.resolve(TYPES.Archivist), () => `Resolving: ${TYPES.Archivist}`)
+  const archivist = assertEx(asArchivistInstance(archivistMod), () => `Creating: ${TYPES.Archivist}`)
 
-  const nftCollectionScoreDivinerMod = assertEx(await node.resolve(TYPES.NftCollectionScoreDiviner), `Resolving: ${TYPES.NftCollectionScoreDiviner}`)
-  const nftCollectionScoreDiviner = assertEx(asDivinerInstance(nftCollectionScoreDivinerMod), `Creating: ${TYPES.NftCollectionScoreDiviner}`)
+  const nftCollectionScoreDivinerMod = assertEx(
+    await node.resolve(TYPES.NftCollectionScoreDiviner),
+    () => `Resolving: ${TYPES.NftCollectionScoreDiviner}`,
+  )
+  const nftCollectionScoreDiviner = assertEx(asDivinerInstance(nftCollectionScoreDivinerMod), () => `Creating: ${TYPES.NftCollectionScoreDiviner}`)
 
-  const nftCollectionInfoWitnessMod = assertEx(await node.resolve(TYPES.CryptoNftCollectionWitness), `Resolving: ${TYPES.CryptoNftCollectionWitness}`)
-  const nftCollectionInfoWitness = assertEx(asWitnessInstance(nftCollectionInfoWitnessMod), `Creating: ${TYPES.CryptoNftCollectionWitness}`)
+  const nftCollectionInfoWitnessMod = assertEx(
+    await node.resolve(TYPES.CryptoNftCollectionWitness),
+    () => `Resolving: ${TYPES.CryptoNftCollectionWitness}`,
+  )
+  const nftCollectionInfoWitness = assertEx(asWitnessInstance(nftCollectionInfoWitnessMod), () => `Creating: ${TYPES.CryptoNftCollectionWitness}`)
 
-  const imageThumbnailWitnessMod = assertEx(await node.resolve(TYPES.ImageThumbnailWitness), `Resolving: ${TYPES.ImageThumbnailWitness}`)
-  const imageThumbnailWitness = assertEx(asWitnessInstance(imageThumbnailWitnessMod), `Creating: ${TYPES.ImageThumbnailWitness}`)
+  const imageThumbnailWitnessMod = assertEx(await node.resolve(TYPES.ImageThumbnailWitness), () => `Resolving: ${TYPES.ImageThumbnailWitness}`)
+  const imageThumbnailWitness = assertEx(asWitnessInstance(imageThumbnailWitnessMod), () => `Creating: ${TYPES.ImageThumbnailWitness}`)
 
   try {
     console.log('Getting NFT Collections')
@@ -66,12 +72,18 @@ export const witnessNftCollections = async (node: NodeInstance) => {
           console.log(`${address}(${name}): Collection Info: Witness`)
           const nftCollectionInfoWitnessQuery: NftCollectionWitnessQuery = { address, chainId, maxNfts, schema: NftCollectionWitnessQuerySchema }
           const nftCollectionInfoResult = await nftCollectionInfoWitness.observe([nftCollectionInfoWitnessQuery])
-          const nftCollectionInfo = assertEx(nftCollectionInfoResult?.[0], `${address}(${name}): ERROR: Collection Info: Witness: Invalid length`)
+          const nftCollectionInfo = assertEx(
+            nftCollectionInfoResult?.[0],
+            () => `${address}(${name}): ERROR: Collection Info: Witness: Invalid length`,
+          )
           console.log(`${address}(${name}): Collection Info: Store`)
           await archivist.insert([nftCollectionInfo])
           console.log(`${address}(${name}): Collection Score: Divine`)
           const nftCollectionScoreResult = await nftCollectionScoreDiviner.divine([nftCollectionInfo])
-          const nftCollectionScore = assertEx(nftCollectionScoreResult?.[0], `${address}(${name}): ERROR: Collection Score: Divine: Invalid length`)
+          const nftCollectionScore = assertEx(
+            nftCollectionScoreResult?.[0],
+            () => `${address}(${name}): ERROR: Collection Score: Divine: Invalid length`,
+          )
           score = await PayloadBuilder.dataHash(nftCollectionScore)
           console.log(`${address}(${name}): Collection Score: Store`)
           await archivist.insert([nftCollectionScore])
@@ -118,13 +130,13 @@ const generateThumbnail = async (
     console.log(`${address}(${name}): Collection Thumbnail: Obtain Candidate`)
     const nftCollectionScorePayload = assertEx(
       (await archivist.get([score])).find(isNftCollectionScore),
-      'ERROR: Collection Thumbnail: Obtain Score Payload',
+      () => 'ERROR: Collection Thumbnail: Obtain Score Payload',
     ) as WithSources<WithMeta<NftCollectionScore>>
-    const nftCollectionInfoHash = assertEx(nftCollectionScorePayload.sources?.[0], 'ERROR: Collection Thumbnail: Obtain NFT Info Hash')
+    const nftCollectionInfoHash = assertEx(nftCollectionScorePayload.sources?.[0], () => 'ERROR: Collection Thumbnail: Obtain NFT Info Hash')
     const nftCollectionInfoPayload = (await archivist.get([nftCollectionInfoHash as Hash])).find(isNftCollectionInfo) as WithSources<
       WithMeta<NftCollectionInfo>
     >
-    const nftInfoHash = assertEx(nftCollectionInfoPayload?.sources?.[0], 'ERROR: Collection Thumbnail: Obtain NFT Info Hash')
+    const nftInfoHash = assertEx(nftCollectionInfoPayload?.sources?.[0], () => 'ERROR: Collection Thumbnail: Obtain NFT Info Hash')
     const nftInfo = (await archivist.get([nftInfoHash as Hash])).find(isNftInfo) as WithSources<WithMeta<NftInfo>>
     if (typeof nftInfo?.metadata?.image === 'string') {
       const url = nftInfo.metadata.image
@@ -132,7 +144,7 @@ const generateThumbnail = async (
       try {
         console.log(`${address}(${name}): Collection Thumbnail: Witness`)
         const imageThumbnailResult = await imageThumbnailWitness.observe([imageThumbnailWitnessQuery])
-        const imageThumbnail = assertEx(imageThumbnailResult?.[0], `${address}(${name}): ERROR: Collection Thumbnail: Witness: Invalid length`)
+        const imageThumbnail = assertEx(imageThumbnailResult?.[0], () => `${address}(${name}): ERROR: Collection Thumbnail: Witness: Invalid length`)
         console.log(`${address}(${name}): Collection Thumbnail: Store`)
         await archivist.insert([imageThumbnail])
         return await PayloadBuilder.dataHash(imageThumbnail)

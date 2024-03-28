@@ -10,15 +10,15 @@
     "url": "https://github.com/XYOracleNetwork/sdk-xyo-client-js/issues"
   },
   "dependencies": {
-    "@xyo-network/archivist-model": "^2.92.7",
-    "@xyo-network/module-model": "^2.92.7",
+    "@xyo-network/archivist-model": "^2.93.4",
+    "@xyo-network/module-model": "^2.93.4",
     "@xyo-network/sdk-xyo-mongo-js": "workspace:~"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.5.2",
     "@xylabs/tsconfig": "^3.5.2",
     "fake-indexeddb": "^4.0.2",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.3"
   },
   "description": "Primary SDK for using XYO Protocol 2.0",
   "types": "dist/node/index.d.ts",

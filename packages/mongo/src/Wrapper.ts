@@ -46,7 +46,7 @@ export class MongoClientWrapper {
 
   async disconnect() {
     return await this.connectionMutex.runExclusive(() => {
-      assertEx(this.connections > 0, 'Unexpected disconnect')
+      assertEx(this.connections > 0, () => 'Unexpected disconnect')
       this.connections -= 1
       if (this.connections === 0) {
         forget(this.initiateClose())
@@ -82,7 +82,7 @@ export class MongoClientWrapper {
 
   private async close() {
     return await this.connectionMutex.runExclusive(async () => {
-      assertEx(this.connected, 'Unexpected close')
+      assertEx(this.connected, () => 'Unexpected close')
       this.connected = false
       await this.client.close(true)
       MongoClientWrapper.clients.delete(this.uri)

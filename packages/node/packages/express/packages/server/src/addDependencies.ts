@@ -6,6 +6,6 @@ import { NodeInstance } from '@xyo-network/node-model'
 import { Application } from 'express'
 
 export const addDependencies = (app: Application) => {
-  app.logger = assertEx(container.get<Logger>(TYPES.Logger), 'Missing Logger')
-  app.node = assertEx(container.get<NodeInstance>(TYPES.Node), 'Missing Node')
+  app.logger = assertEx(container.get<Logger>(TYPES.Logger), () => 'Missing Logger')
+  app.node = assertEx(container.get<NodeInstance>(TYPES.Node), () => 'Missing Node')
 }

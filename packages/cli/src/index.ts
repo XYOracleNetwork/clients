@@ -9,7 +9,7 @@ const main = async () => {
   await restart()
   const connectedNodeModule = await connect()
   setTerminalTitle('XYO (Connected)')
-  await startTerminal(assertEx(connectedNodeModule, 'Tried to connect to a remote module that was not a NodeModule'))
+  await startTerminal(assertEx(connectedNodeModule, () => 'Tried to connect to a remote module that was not a NodeModule'))
 }
 
 let exitStatus = 0

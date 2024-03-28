@@ -207,7 +207,7 @@ export class MongoDBPayloadStatsDiviner
     this.logger?.log(`${moduleName}.RegisterWithChangeStream: Registering`)
     const wrapper = MongoClientWrapper.get(this.boundWitnesses.uri, this.boundWitnesses.config.maxPoolSize)
     const connection = await wrapper.connect()
-    assertEx(connection, `${moduleName}.RegisterWithChangeStream: Connection failed`)
+    assertEx(connection, () => `${moduleName}.RegisterWithChangeStream: Connection failed`)
     const collection = connection.db(DATABASES.Archivist).collection(COLLECTIONS.BoundWitnesses)
     const opts: ChangeStreamOptions = this.resumeAfter ? { resumeAfter: this.resumeAfter } : {}
     this.changeStream = collection.watch([], opts)

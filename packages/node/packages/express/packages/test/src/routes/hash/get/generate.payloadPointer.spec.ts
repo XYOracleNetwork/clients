@@ -27,6 +27,7 @@ describe.skip('Generation of automation payload pointers', () => {
     const schema = HttpBridgeConfigSchema
     const security = { allowAnonymous: true }
     const bridge = await HttpBridge.create({ config: { nodeUrl, schema, security } })
+    await bridge.start()
     const modules = await bridge.resolve({ name: ['Archivist'] })
     const module = modules.pop()
     expect(module).toBeDefined()

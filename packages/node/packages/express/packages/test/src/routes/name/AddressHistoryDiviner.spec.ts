@@ -8,14 +8,14 @@ import { getArchivistByName, getDivinerByName, getNewBoundWitnesses, validateDis
 
 const schema = AddressHistoryQuerySchema
 
-const divinerName = 'AddressHistoryDiviner'
+const divinerName = 'XYOPublic:AddressHistoryDiviner'
 
 describe(`/${divinerName}`, () => {
   const account = Account.randomSync()
   let sut: DivinerInstance
   let archivist: ArchivistInstance
   beforeAll(async () => {
-    archivist = await getArchivistByName('Archivist', account)
+    archivist = await getArchivistByName('XYOPublic:Archivist', account)
     sut = await getDivinerByName(divinerName)
   })
   describe('ModuleDiscoverQuerySchema', () => {

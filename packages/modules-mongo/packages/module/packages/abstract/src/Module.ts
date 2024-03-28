@@ -39,7 +39,7 @@ export const MongoDBModuleMixin = <
     }
 
     get jobQueue() {
-      return assertEx(this.params.jobQueue, 'MongoDBModule Error: jobQueue required for this module but is not defined')
+      return assertEx(this.params.jobQueue, () => 'MongoDBModule Error: jobQueue required for this module but is not defined')
     }
 
     get payloadSdkConfig(): BaseMongoSdkConfig {

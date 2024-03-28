@@ -5,7 +5,8 @@ import { DivinerWrapper } from '@xyo-network/diviner-wrapper'
 import { getModuleByName, getModuleByNameFromChildNode } from '../Node'
 
 export const getDivinerByName = async (name: string, account?: AccountInstance): Promise<DivinerInstance> => {
-  const diviner = asDivinerInstance(await getModuleByName(name), 'Failed to cast diviner')
+  const diviner: DivinerInstance = asDivinerInstance(await getModuleByName(name), 'Failed to cast diviner')
+  //console.log(`getDivinerByName[name]: ${diviner}`)
   return account ? DivinerWrapper.wrap(diviner, account) : diviner
 }
 

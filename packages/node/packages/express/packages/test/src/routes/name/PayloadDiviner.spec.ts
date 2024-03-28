@@ -9,7 +9,7 @@ import { getArchivistByName, getDivinerByName, getNewPayload, getTestSchemaName,
 
 const schema = PayloadDivinerQuerySchema
 
-const moduleName = 'PayloadDiviner'
+const moduleName = 'XYOPublic:PayloadDiviner'
 describe(`/${moduleName}`, () => {
   let diviner: DivinerInstance
   let archivist: ArchivistInstance

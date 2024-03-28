@@ -5,8 +5,8 @@ import { TYPES } from '@xyo-network/node-core-types'
 import { PrometheusNodeWitness } from '@xyo-network/prometheus-node-plugin'
 import { RequestHandler } from 'express'
 
-const descriptionErrorMsg = 'Unable to resolve PrometheusWitness description'
-const resolutionErrorMsg = 'Unable to resolve PrometheusNodeWitness'
+const descriptionErrorMsg = () => 'Unable to resolve PrometheusWitness description'
+const resolutionErrorMsg = () => 'Unable to resolve PrometheusNodeWitness'
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
 const handler: RequestHandler<NoReqParams> = async (req, res) => {

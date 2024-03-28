@@ -8,7 +8,7 @@ import { getNewBlock } from './getNewBlock'
 
 export const insertBlock = async (boundWitnesses?: BoundWitness | BoundWitness[], account?: AccountInstance): Promise<Payload[]> => {
   boundWitnesses = boundWitnesses ?? (await getNewBlock())
-  const archivist = await getArchivistByName('Archivist', account ?? (await unitTestSigningAccount()))
+  const archivist = await getArchivistByName('XYOPublic:Archivist', account ?? (await unitTestSigningAccount()))
   const data = Array.isArray(boundWitnesses) ? boundWitnesses : [boundWitnesses]
   return archivist.insert(data)
 }

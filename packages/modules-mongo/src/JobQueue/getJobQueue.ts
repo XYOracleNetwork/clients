@@ -20,9 +20,9 @@ const isLocalhost = (domain: string) => {
 }
 
 export const getJobQueue = (): JobQueue => {
-  const dbDomain = assertEx(process.env.MONGO_DOMAIN, 'Missing Mongo Domain')
-  const dbPassword = assertEx(process.env.MONGO_PASSWORD, 'Missing Mongo Password')
-  const dbUserName = assertEx(process.env.MONGO_USERNAME, 'Missing Mongo Username')
+  const dbDomain = assertEx(process.env.MONGO_DOMAIN, () => 'Missing Mongo Domain')
+  const dbPassword = assertEx(process.env.MONGO_PASSWORD, () => 'Missing Mongo Password')
+  const dbUserName = assertEx(process.env.MONGO_USERNAME, () => 'Missing Mongo Username')
   // TODO: Temp fix to match current ENV VAR format
   const address =
     isLocalhost(dbDomain) ?
