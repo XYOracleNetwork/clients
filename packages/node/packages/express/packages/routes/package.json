@@ -62,7 +62,7 @@
     "@xyo-network/node-core-types": "workspace:~",
     "@xyo-network/payload-model": "^2.93.4",
     "@xyo-network/payload-wrapper": "^2.93.4",
-    "@xyo-network/prometheus-node-plugin": "^2.90.0",
+    "@xyo-network/prometheus-node-plugin": "^2.91.0",
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
     "express-mung": "^0.5.1",
