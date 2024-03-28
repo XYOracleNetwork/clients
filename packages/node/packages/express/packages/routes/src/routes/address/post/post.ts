@@ -2,7 +2,7 @@ import { assertEx } from '@xylabs/assert'
 import { Address } from '@xylabs/hex'
 import { asyncHandler } from '@xylabs/sdk-api-express-ecs'
 import { QueryBoundWitness } from '@xyo-network/boundwitness-model'
-import { Module, ModuleInstance, ModuleQueryResult } from '@xyo-network/module-model'
+import { Module, ModuleQueryResult } from '@xyo-network/module-model'
 import { trimAddressPrefix } from '@xyo-network/node-core-lib'
 import { Payload } from '@xyo-network/payload-model'
 import { RequestHandler } from 'express'
@@ -13,7 +13,7 @@ import { getQueryConfig } from './getQueryConfig'
 
 export type PostAddressRequestBody = [QueryBoundWitness, undefined | Payload[]]
 
-const dumpModulesDown = async (module: ModuleInstance, maxDepth = 10) => {
+/*const dumpModulesDown = async (module: ModuleInstance, maxDepth = 10) => {
   const padding = Array(10 - maxDepth)
     .fill('--')
     .join('')
@@ -24,7 +24,7 @@ const dumpModulesDown = async (module: ModuleInstance, maxDepth = 10) => {
   for (const child of children) {
     await dumpModulesDown(child, maxDepth - 1)
   }
-}
+}*/
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
 const handler: RequestHandler<AddressPathParams, ModuleQueryResult, PostAddressRequestBody> = async (req, res, next) => {

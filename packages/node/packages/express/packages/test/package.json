@@ -79,6 +79,7 @@
     "@xyo-network/diviner-boundwitness-model": "^2.93.4",
     "@xyo-network/diviner-payload-model": "^2.93.4",
     "@xyo-network/node-core-model": "workspace:~",
+    "@xyo-network/node-model": "^2.93.4",
     "@xyo-network/payload-wrapper": "^2.93.4",
     "jest": "^29.7.0",
     "mongodb-memory-server": "^8.16.0",

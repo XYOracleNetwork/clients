@@ -144,7 +144,7 @@ describe(`/${moduleName}`, () => {
       })
       describe('with timestamp', () => {
         it('divines BoundWitnesses from offset', async () => {
-          const timestamp = assertEx(boundWitnesses.at(-1)?.boundwitness.timestamp, 'Missing timestamp in test BW') + 1
+          const timestamp = assertEx(boundWitnesses.at(-1)?.boundwitness.timestamp, () => 'Missing timestamp in test BW') + 1
           const limit = boundWitnesses.length
           const query: BoundWitnessDivinerQueryPayload = { address, limit, schema, timestamp }
           const response = await diviner.divine([query])

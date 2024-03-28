@@ -72,7 +72,7 @@ export class MemoryCoinUserLocationsDiviner<
         const locations: Hash[] = []
         for (let i = 0; i < bwList.length; i++) {
           if (bw?.payload_schemas[i] === CoinCurrentLocationWitnessSchema) {
-            locations.push(assertEx(bw?.payload_hashes[i], 'Missing hash'))
+            locations.push(assertEx(bw?.payload_hashes[i], () => 'Missing hash'))
           }
         }
         return locations

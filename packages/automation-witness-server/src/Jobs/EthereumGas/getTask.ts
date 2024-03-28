@@ -18,7 +18,7 @@ export const getTask = (): Task => {
       const diviner = await getDiviner()
       const results = await diviner.divine(payloads)
       const result = results.find((p) => p.schema === EthereumGasSchema)
-      const answer = assertEx(result, 'Empty EthereumGasPayload response from diviner')
+      const answer = assertEx(result, () => 'Empty EthereumGasPayload response from diviner')
       logger.log('Divined Aggregated Gas Price')
       logger.log('Reporting Aggregated Gas Price')
       await reportDivinerResult(answer)

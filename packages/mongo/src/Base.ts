@@ -69,7 +69,7 @@ export class BaseMongoSdk<T extends Document> {
   async useMongo<R>(func: (client: MongoClient) => Promise<R> | R) {
     const wrapper = MongoClientWrapper.get(this.uri, this.config.maxPoolSize, this.config.closeDelay)
     const connection = await wrapper.connect()
-    assertEx(connection, 'Connection failed')
+    assertEx(connection, () => 'Connection failed')
     try {
       return await func(connection)
     } finally {

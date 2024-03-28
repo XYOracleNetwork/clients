@@ -18,7 +18,7 @@ export const getTask = (): Task => {
       const diviner = await getDiviner()
       const results = await diviner.divine(payloads)
       const result = results.find((p) => p.schema === CryptoMarketAssetSchema)
-      const answer = assertEx(result, 'Empty CryptoMarketAssetPayload response from diviner')
+      const answer = assertEx(result, () => 'Empty CryptoMarketAssetPayload response from diviner')
       logger.log('Divined Aggregated Crypto Prices')
       logger.log('Reporting Aggregated Crypto Prices')
       await reportDivinerResult(answer)

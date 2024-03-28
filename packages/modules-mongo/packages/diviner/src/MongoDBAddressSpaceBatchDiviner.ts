@@ -76,7 +76,7 @@ export class MongoDBAddressSpaceBatchDiviner extends MongoDBDivinerBase {
     try {
       // Create a paginationAccount per archivist
       const archivistMod = await this.getArchivist()
-      assertEx(archivistMod, `${moduleName}.Start: No archivists found`)
+      assertEx(archivistMod, () => `${moduleName}.Start: No archivists found`)
       const archivist = ArchivistWrapper.wrap(archivistMod, this.account)
       // Pre-mint response payload pointer for dereferencing results
       const divinedAnswerPointer = await new PayloadBuilder<BoundWitnessPointerPayload>({ schema: BoundWitnessPointerSchema })

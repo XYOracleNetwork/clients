@@ -7189,6 +7189,7 @@ __metadata:
     "@xyo-network/node-core-modules-mongo": "workspace:~"
     "@xyo-network/node-core-types": "workspace:~"
     "@xyo-network/node-memory": "npm:^2.93.4"
+    "@xyo-network/node-model": "npm:^2.93.4"
     "@xyo-network/payload-builder": "npm:^2.93.4"
     "@xyo-network/payload-model": "npm:^2.93.4"
     "@xyo-network/payload-mongodb": "workspace:~"

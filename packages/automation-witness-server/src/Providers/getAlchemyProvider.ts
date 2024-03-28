@@ -15,6 +15,6 @@ export const canUseAlchemyProvider = (): boolean => {
 }
 
 export const getAlchemyProviderConfig = (): string => {
-  const projectKey = assertEx(process.env.ALCHEMY_PROJECT_KEY, 'Missing ALCHEMY_PROJECT_KEY ENV VAR')
+  const projectKey = assertEx(process.env.ALCHEMY_PROJECT_KEY, () => 'Missing ALCHEMY_PROJECT_KEY ENV VAR')
   return projectKey
 }
