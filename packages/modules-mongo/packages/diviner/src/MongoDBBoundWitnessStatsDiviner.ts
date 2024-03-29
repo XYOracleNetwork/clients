@@ -6,11 +6,11 @@ import { AddressPayload, AddressSchema } from '@xyo-network/address-payload-plug
 import { BoundWitnessStatsDiviner } from '@xyo-network/diviner-boundwitness-stats-abstract'
 import {
   asDivinerInstance,
+  AttachableDivinerInstance,
   BoundWitnessStatsDivinerConfigSchema,
   BoundWitnessStatsDivinerSchema,
   BoundWitnessStatsPayload,
   BoundWitnessStatsQueryPayload,
-  DivinerInstance,
   DivinerParams,
   isBoundWitnessStatsQueryPayload,
 } from '@xyo-network/diviner-models'
@@ -41,7 +41,10 @@ const moduleName = 'MongoDBBoundWitnessStatsDiviner'
 
 export class MongoDBBoundWitnessStatsDiviner
   extends MongoDBDivinerBase<DivinerParams, BoundWitnessStatsQueryPayload, BoundWitnessStatsPayload>
-  implements BoundWitnessStatsDiviner, DivinerInstance<DivinerParams, BoundWitnessStatsQueryPayload, BoundWitnessStatsPayload>, JobProvider
+  implements
+    BoundWitnessStatsDiviner<DivinerParams, BoundWitnessStatsQueryPayload, BoundWitnessStatsPayload>,
+    AttachableDivinerInstance<DivinerParams, BoundWitnessStatsQueryPayload, BoundWitnessStatsPayload>,
+    JobProvider
 {
   static override configSchemas = [BoundWitnessStatsDivinerConfigSchema]
 

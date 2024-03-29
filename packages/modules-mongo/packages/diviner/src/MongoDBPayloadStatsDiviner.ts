@@ -38,7 +38,7 @@ const moduleName = 'MongoDBPayloadStatsDiviner'
 
 export class MongoDBPayloadStatsDiviner
   extends MongoDBDivinerBase<DivinerParams, PayloadStatsQueryPayload, PayloadStatsPayload>
-  implements PayloadStatsDiviner, JobProvider
+  implements PayloadStatsDiviner<DivinerParams, PayloadStatsQueryPayload, PayloadStatsPayload>, JobProvider
 {
   static override configSchemas = [PayloadStatsDivinerConfigSchema]
 

@@ -41,7 +41,7 @@
     "jest-sorted": "^1.0.15",
     "mongodb-memory-server": "^8.16.0",
     "nodemon": "^3.1.0",
-    "reflect-metadata": "^0.2.1",
+    "reflect-metadata": "^0.2.2",
     "supertest": "^6.3.4",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
@@ -123,7 +123,7 @@
     "build-typedoc-site": "typedoc"
   },
   "sideEffects": false,
-  "version": "2.86.1",
+  "version": "2.86.2",
   "packageManager": "yarn@4.1.1",
   "volta": {
     "node": "20.10.0",

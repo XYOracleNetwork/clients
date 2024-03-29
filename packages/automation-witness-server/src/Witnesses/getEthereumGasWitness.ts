@@ -2,15 +2,15 @@ import { EthereumGasBlocknativeWitness, EthereumGasBlocknativeWitnessConfigSchem
 import { EtherchainEthereumGasWitnessV2, EthereumGasEtherchainV2WitnessConfigSchema } from '@xyo-network/etherchain-ethereum-gas-v2-plugin'
 import { EthereumGasEthersWitness, EthereumGasEthersWitnessConfigSchema } from '@xyo-network/ethers-ethereum-gas-plugin'
 import { EthereumGasEtherscanWitness, EthereumGasEtherscanWitnessConfigSchema } from '@xyo-network/etherscan-ethereum-gas-plugin'
-import { WitnessInstance } from '@xyo-network/witness-model'
+import { AttachableWitnessInstance } from '@xyo-network/witness-model'
 import { Provider } from 'ethers'
 
 import { getAccount, WalletPaths } from '../Account'
 import { canUseEtherscanProvider, getEtherscanProviderConfig, getProvider } from '../Providers'
 import { WitnessProvider } from './WitnessProvider'
 
-export const getEthereumGasWitness: WitnessProvider<Provider> = async (provider = getProvider()): Promise<WitnessInstance[]> => {
-  const witnesses: WitnessInstance[] = [
+export const getEthereumGasWitness: WitnessProvider<Provider> = async (provider = getProvider()): Promise<AttachableWitnessInstance[]> => {
+  const witnesses: AttachableWitnessInstance[] = [
     await EthereumGasBlocknativeWitness.create({
       account: await getAccount(WalletPaths.EthereumGas.Witness.Blocknative),
       config: {
