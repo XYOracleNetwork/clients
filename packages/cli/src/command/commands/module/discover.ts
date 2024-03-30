@@ -15,7 +15,7 @@ export const handler = async (argv: ModuleArguments) => {
   const { verbose } = argv
   try {
     const module = await getModuleFromArgs(argv)
-    const result = await module.discover()
+    const result = await module.state()
     printLine(JSON.stringify(result))
   } catch (error) {
     if (verbose) printError(JSON.stringify(error))

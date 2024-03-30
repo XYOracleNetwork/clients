@@ -14,7 +14,7 @@ export const handler = async (argv: BaseArguments) => {
   const { verbose } = argv
   try {
     const node = await getNode(argv)
-    const result = await node.discover()
+    const result = await node.state()
     printLine(JSON.stringify(result))
   } catch (error) {
     if (verbose) printError(JSON.stringify(error))

@@ -1,6 +1,8 @@
 import { Address } from '@xylabs/hex'
 import { EmptyObject } from '@xylabs/object'
+import { ModuleDescriptionPayload, ModuleDescriptionSchema } from '@xyo-network/module-model'
 import { NodeInstance } from '@xyo-network/node-model'
+import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { CommandBuilder, CommandModule } from 'yargs'
 
 import { printError, printLine } from '../../../../lib'
@@ -16,10 +18,12 @@ export const handler = async (argv: BaseArguments) => {
   const { verbose } = argv
   try {
     const node: NodeInstance = await getNode(argv)
-    const description = await node.describe()
+    const description = (await node.state()).find<ModuleDescriptionPayload>(isPayloadOfSchemaType(ModuleDescriptionSchema))
     const childAddresses = (description?.children || []) as Address[]
     const children = await Promise.all(childAddresses?.map((child) => node.resolve({ address: [child] }, { direction: 'down' })))
-    const childDescriptions = await Promise.all(children.flat().map(async (mod) => await mod.describe()))
+    const childDescriptions = await Promise.all(
+      children.flat().map(async (mod) => (await mod.state()).find<ModuleDescriptionPayload>(isPayloadOfSchemaType(ModuleDescriptionSchema))),
+    )
     printLine(JSON.stringify(childDescriptions))
   } catch (error) {
     if (verbose) printError(JSON.stringify(error))

@@ -18,7 +18,7 @@ export const handler = async (argv: ArgumentsCamelCase<ModuleArguments>) => {
   const { verbose } = argv
   try {
     const module = await getModuleFromArgs(argv)
-    const result = module.describe() ?? {}
+    const result = module.state() ?? {}
     printLine(JSON.stringify(result))
   } catch (error) {
     if (verbose) printError(JSON.stringify(error))

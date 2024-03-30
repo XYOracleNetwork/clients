@@ -4,7 +4,7 @@ import { DivinerDivineQuerySchema, DivinerInstance } from '@xyo-network/diviner'
 import { AddressHistoryQueryPayload, AddressHistoryQuerySchema } from '@xyo-network/diviner-address-history-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 
-import { getArchivistByName, getDivinerByName, getNewBoundWitnesses, validateDiscoverResponse } from '../../testUtil'
+import { getArchivistByName, getDivinerByName, getNewBoundWitnesses, validateStateResponse } from '../../testUtil'
 
 const schema = AddressHistoryQuerySchema
 
@@ -20,9 +20,9 @@ describe(`/${divinerName}`, () => {
   })
   describe('ModuleDiscoverQuerySchema', () => {
     it('issues query', async () => {
-      const response = await sut.discover()
+      const response = await sut.state()
       expect(response).toBeArray()
-      validateDiscoverResponse(response, [DivinerDivineQuerySchema])
+      validateStateResponse(response, [DivinerDivineQuerySchema])
     })
   })
   describe('DivinerDivineQuerySchema', () => {

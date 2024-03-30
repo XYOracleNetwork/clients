@@ -14,7 +14,7 @@ export const handler = async (argv: ModuleArguments) => {
   const { verbose } = argv
   try {
     const mod = await getArchivist(argv)
-    const result = await mod.discover()
+    const result = await mod.state()
     printLine(JSON.stringify(result))
   } catch (error) {
     if (verbose) printError(JSON.stringify(error))

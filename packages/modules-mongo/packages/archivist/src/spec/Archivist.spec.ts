@@ -100,7 +100,7 @@ describeIf(hasMongoDBConfig())('DeterministicArchivist', () => {
   })
   describe('discover', () => {
     it('discovers module', async () => {
-      const result = await archivist.discover()
+      const result = await archivist.state()
       expect(result).toBeArray()
       expect(result.length).toBeGreaterThan(0)
     })

@@ -1,1 +1,1 @@
-export * from './ModuleDiscoverQuery'
+export * from './ModuleStateQuery'

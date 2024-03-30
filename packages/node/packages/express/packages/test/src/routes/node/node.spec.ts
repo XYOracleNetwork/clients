@@ -2,11 +2,11 @@ import { Account } from '@xyo-network/account'
 import { AddressPayload, AddressSchema } from '@xyo-network/address-payload-plugin'
 import { QueryBoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { BoundWitness, BoundWitnessSchema, QueryBoundWitness } from '@xyo-network/boundwitness-model'
-import { ModuleDiscoverQuerySchema } from '@xyo-network/module-model'
+import { ModuleStateQuerySchema } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
 
-import { getRequestClient, validateDiscoverResponse } from '../../testUtil'
+import { getRequestClient, validateStateResponse } from '../../testUtil'
 
 describe('Node API', () => {
   const account = Account.randomSync()
@@ -22,12 +22,12 @@ describe('Node API', () => {
       it('returns node describe', async () => {
         const response = await client.get(path)
         const data = response.data.data
-        validateDiscoverResponse(data)
+        validateStateResponse(data)
       })
     })
     describe('POST', () => {
       it('issues query to Node', async () => {
-        const queryPayload = await new PayloadBuilder({ schema: ModuleDiscoverQuerySchema }).build()
+        const queryPayload = await new PayloadBuilder({ schema: ModuleStateQuerySchema }).build()
         const query = await (await new QueryBoundWitnessBuilder().witness(account).query(queryPayload)).build()
         const send = [query[0], [...query[1]]]
         const response = await client.post(path, send)
@@ -36,7 +36,7 @@ describe('Node API', () => {
         const [bw, payloads] = data
         expect(bw).toBeObject()
         expect(bw.schema).toBe(BoundWitnessSchema)
-        validateDiscoverResponse(payloads)
+        validateStateResponse(payloads)
       })
     })
   })
@@ -53,14 +53,14 @@ describe('Node API', () => {
       it('returns module describe', async () => {
         const response = await client.get<{ data: Payload[] }>(path)
         const data = response.data.data
-        validateDiscoverResponse(data)
+        validateStateResponse(data)
       })
       it('can get Node by address', async () => {
         const nodeResponse = await client.get<{ data: Payload[] }>(path)
         const data = nodeResponse.data.data
         const { address: nodeAddress } = getModuleAddress(data)
         const response = await client.get<{ data: Payload[] }>(`/${nodeAddress}`)
-        validateDiscoverResponse(response.data.data)
+        validateStateResponse(response.data.data)
       })
     })
     describe('POST', () => {
@@ -77,7 +77,7 @@ describe('Node API', () => {
         return [bw, payloads]
       }
       it('issues query to module at address', async () => {
-        const queryPayload = await new PayloadBuilder({ schema: ModuleDiscoverQuerySchema }).build()
+        const queryPayload = await new PayloadBuilder({ schema: ModuleStateQuerySchema }).build()
         const query = await (await new QueryBoundWitnessBuilder().witness(account).query(queryPayload)).build()
         const data = [query[0], [...query[1]]] as [QueryBoundWitness, Payload[]]
         await postModuleQuery(data, address)

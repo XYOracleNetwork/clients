@@ -5,7 +5,7 @@ import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { DivinerDivineQuerySchema, DivinerInstance } from '@xyo-network/diviner'
 import { WithMeta, WithSources } from '@xyo-network/payload-model'
 
-import { getDivinerByName, getNewPayload, insertPayload, validateDiscoverResponse } from '../../testUtil'
+import { getDivinerByName, getNewPayload, insertPayload, validateStateResponse } from '../../testUtil'
 
 const divinerName = 'XYOPublic:AddressSpaceDiviner'
 
@@ -16,9 +16,9 @@ describe(`/${divinerName}`, () => {
   })
   describe('ModuleDiscoverQuerySchema', () => {
     it('issues query', async () => {
-      const response = await sut.discover()
+      const response = await sut.state()
       expect(response).toBeArray()
-      validateDiscoverResponse(response, [DivinerDivineQuerySchema])
+      validateStateResponse(response, [DivinerDivineQuerySchema])
     })
   })
   describe('DivinerDivineQuerySchema', () => {

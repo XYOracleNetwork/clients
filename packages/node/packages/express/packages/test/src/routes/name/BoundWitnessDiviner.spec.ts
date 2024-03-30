@@ -19,7 +19,7 @@ import {
   getTestSchemaName,
   nonExistentHash,
   unitTestSigningAccount,
-  validateDiscoverResponse,
+  validateStateResponse,
 } from '../../testUtil'
 
 const schema = BoundWitnessDivinerQuerySchema
@@ -37,9 +37,9 @@ describe(`/${moduleName}`, () => {
   })
   describe('ModuleDiscoverQuerySchema', () => {
     it('discovers', async () => {
-      const response = await diviner.discover()
+      const response = await diviner.state()
       expect(response).toBeArray()
-      validateDiscoverResponse(response, [DivinerDivineQuerySchema])
+      validateStateResponse(response, [DivinerDivineQuerySchema])
     })
   })
   describe('DivinerDivineQuerySchema', () => {

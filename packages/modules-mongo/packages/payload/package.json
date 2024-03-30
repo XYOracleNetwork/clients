@@ -12,10 +12,10 @@
   "dependencies": {
     "@xylabs/hex": "^3.0.24",
     "@xylabs/object": "^3.0.24",
-    "@xyo-network/boundwitness-model": "^2.93.7",
-    "@xyo-network/hash": "^2.93.7",
-    "@xyo-network/payload-builder": "^2.93.7",
-    "@xyo-network/payload-model": "^2.93.7"
+    "@xyo-network/boundwitness-model": "^2.94.0",
+    "@xyo-network/hash": "^2.94.0",
+    "@xyo-network/payload-builder": "^2.94.0",
+    "@xyo-network/payload-model": "^2.94.0"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.5.2",

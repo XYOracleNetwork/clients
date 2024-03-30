@@ -1,5 +1,5 @@
 import { AddressPayload, AddressSchema } from '@xyo-network/address-payload-plugin'
-import { ModuleDiscoverQuerySchema, ModuleSubscribeQuerySchema } from '@xyo-network/module-model'
+import { ModuleStateQuerySchema, ModuleSubscribeQuerySchema } from '@xyo-network/module-model'
 import { Payload } from '@xyo-network/payload-model'
 import { QueryPayload, QuerySchema } from '@xyo-network/query-payload-plugin'
 
@@ -21,7 +21,7 @@ const validateSupportedQueries = (response: Payload[], querySchemas: string[]) =
   }
 }
 
-export const validateDiscoverResponse = (response: Payload[], querySchemas: string[] = [ModuleDiscoverQuerySchema, ModuleSubscribeQuerySchema]) => {
+export const validateStateResponse = (response: Payload[], querySchemas: string[] = [ModuleStateQuerySchema, ModuleSubscribeQuerySchema]) => {
   validateAddress(response)
   validateSupportedQueries(response, querySchemas)
 }

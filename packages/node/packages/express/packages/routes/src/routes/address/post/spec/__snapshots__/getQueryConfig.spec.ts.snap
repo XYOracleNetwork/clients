@@ -5,7 +5,7 @@ exports[`getQueryConfig with archivist when request can access archive generates
   "schema": "network.xyo.module.config",
   "security": {
     "allowed": {
-      "network.xyo.query.module.discover": [
+      "network.xyo.query.module.state": [
         [
           "a1df01bbdaa05f2294cdd6fbd92aace3086fe408",
           "e8cae43b8ef15e6e2166b7560b2df802ac28fe53",
@@ -21,7 +21,7 @@ exports[`getQueryConfig with archivist when request can access archive generates
   "schema": "network.xyo.module.config",
   "security": {
     "allowed": {
-      "network.xyo.query.module.discover": [
+      "network.xyo.query.module.state": [
         [
           "a1df01bbdaa05f2294cdd6fbd92aace3086fe408",
           "e8cae43b8ef15e6e2166b7560b2df802ac28fe53",
@@ -43,7 +43,7 @@ exports[`getQueryConfig with archivist when request can access archive generates
   "schema": "network.xyo.module.config",
   "security": {
     "allowed": {
-      "network.xyo.query.module.discover": [
+      "network.xyo.query.module.state": [
         [
           "a1df01bbdaa05f2294cdd6fbd92aace3086fe408",
           "e8cae43b8ef15e6e2166b7560b2df802ac28fe53",
@@ -63,7 +63,7 @@ exports[`getQueryConfig with archivist when request can access archive generates
   "schema": "network.xyo.module.config",
   "security": {
     "allowed": {
-      "network.xyo.query.module.discover": [
+      "network.xyo.query.module.state": [
         [
           "a1df01bbdaa05f2294cdd6fbd92aace3086fe408",
         ],
@@ -87,7 +87,7 @@ exports[`getQueryConfig with module generates query config for current query 1`]
   "schema": "network.xyo.module.config",
   "security": {
     "allowed": {
-      "network.xyo.query.module.discover": [
+      "network.xyo.query.module.state": [
         [
           "2f96524605167dcfe6e31007d05ebfa85bb2dc32",
         ],

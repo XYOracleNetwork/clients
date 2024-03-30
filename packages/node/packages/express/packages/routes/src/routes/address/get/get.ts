@@ -31,7 +31,7 @@ const handler: RequestHandler<AddressPathParams, Payload[]> = async (req, res, n
     }
     if (modules.length > 0) {
       const module = modules[0]
-      res.json(await module.discover())
+      res.json(await module.state())
       return
     }
   }

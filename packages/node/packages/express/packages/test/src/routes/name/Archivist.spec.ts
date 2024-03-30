@@ -3,14 +3,7 @@ import { BoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { PayloadWrapper, PayloadWrapperBase } from '@xyo-network/payload-wrapper'
 
-import {
-  getArchivistByName,
-  getNewBoundWitness,
-  getNewPayload,
-  nonExistentHash,
-  unitTestSigningAccount,
-  validateDiscoverResponse,
-} from '../../testUtil'
+import { getArchivistByName, getNewBoundWitness, getNewPayload, nonExistentHash, unitTestSigningAccount, validateStateResponse } from '../../testUtil'
 
 const moduleName = 'Archivist'
 
@@ -48,9 +41,9 @@ describe(`/${moduleName}`, () => {
   })
   describe('ModuleDiscoverQuerySchema', () => {
     it('discovers', async () => {
-      const response = await archivist.discover()
+      const response = await archivist.state()
       expect(response).toBeArray()
-      validateDiscoverResponse(response, [ArchivistGetQuerySchema, ArchivistInsertQuerySchema])
+      validateStateResponse(response, [ArchivistGetQuerySchema, ArchivistInsertQuerySchema])
     })
   })
   describe('ArchivistInsertQuerySchema', () => {

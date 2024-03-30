@@ -20,8 +20,8 @@ export const handler = async (argv: ArgumentsCamelCase<BaseArguments>) => {
   try {
     const node = await getNode(argv)
     const modules = await node.resolve({ query: [[ArchivistGetQuerySchema]] }, { direction: 'down', identity: isArchivistInstance })
-    const descriptions = await Promise.all(modules.map((module) => module.describe()))
-    printLine(JSON.stringify(descriptions))
+    const state = await Promise.all(modules.map((module) => module.state()))
+    printLine(JSON.stringify(state, null, 2))
   } catch (error) {
     if (verbose) printError(JSON.stringify(error))
     throw new Error('Error querying for archivists')
