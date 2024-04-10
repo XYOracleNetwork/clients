@@ -1,7 +1,7 @@
 import { generateMnemonic } from '@scure/bip39'
 // eslint-disable-next-line import/no-internal-modules
 import { wordlist } from '@scure/bip39/wordlists/english'
-import { Account } from '@xyo-network/account'
+import { HDWallet } from '@xyo-network/account'
 import { AccountInstance } from '@xyo-network/account-model'
 
 import { loadMnemonic } from './loadMnemonic'
@@ -13,6 +13,6 @@ export const getAccount = async (): Promise<AccountInstance> => {
     mnemonic = generateMnemonic(wordlist, 256)
     await saveMnemonic(mnemonic)
   }
-  const account = Account.fromPhrase(mnemonic)
+  const account = HDWallet.fromPhrase(mnemonic)
   return account
 }
