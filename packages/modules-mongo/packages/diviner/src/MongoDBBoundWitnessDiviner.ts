@@ -24,7 +24,7 @@ export class MongoDBBoundWitnessDiviner extends MongoDBDivinerBase {
     if (!query) return []
     // NOTE: We're supporting address (which is deprecated) until we can ensure that all
     // clients are using addresses
-    const { address, addresses, hash, limit, offset, order, payload_hashes, payload_schemas, timestamp, sourceQuery } = query
+    const { address, addresses, destination, hash, limit, offset, order, payload_hashes, payload_schemas, sourceQuery, timestamp } = query
     const parsedLimit = limit || DefaultLimit
     const parsedOrder = order || DefaultOrder
     const parsedOffset = offset || 0
@@ -46,6 +46,7 @@ export class MongoDBBoundWitnessDiviner extends MongoDBDivinerBase {
     if (payload_hashes?.length) filter.payload_hashes = { $in: payload_hashes }
     if (payload_schemas?.length) filter.payload_schemas = { $all: payload_schemas }
     if (sourceQuery) filter['_$meta.sourceQuery'] = sourceQuery
+    if (destination?.length) filter['_$meta.destination'] = { $in: destination }
     if (hash) {
       const filter1 = { ...filter }
       if (hash) filter1._hash = hash
