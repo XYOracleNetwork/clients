@@ -32,7 +32,7 @@ export class MongoDBBoundWitnessDiviner extends MongoDBDivinerBase {
     const filter: Filter<BoundWitnessWithMongoMeta> = {}
     if (timestamp) {
       // TODO: Should we sort by timestamp instead of _timestamp here as well?
-      filter.timestamp = parsedOrder === 'desc' ? { $exists: true, $lt: timestamp } : { $exists: true, $gt: timestamp }
+      filter._timestamp = parsedOrder === 'desc' ? { $exists: true, $lt: timestamp } : { $exists: true, $gt: timestamp }
     }
 
     // NOTE: Defaulting to $all since it makes the most sense when singing addresses are supplied
