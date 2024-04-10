@@ -12,11 +12,11 @@ export const payloadToDbRepresentation = async <T extends Payload>(payload: T): 
   return { ...fields, _$hash: $hash, _$meta: $meta, _hash, _timestamp: Date.now() } as unknown as PayloadWithMongoMeta<T>
 }
 
-export const boundWitnessToDbRepresentation = async <T extends BoundWitness>(payload: T): Promise<BoundWitnessMongoMeta<T>> => {
-  const built = await PayloadBuilder.build(payload)
+export const boundWitnessToDbRepresentation = async <T extends BoundWitness>(bw: T): Promise<BoundWitnessMongoMeta<T>> => {
+  const built = await PayloadBuilder.build(bw)
   const _hash = await PayloadBuilder.hash(built)
   const { $hash, $meta, ...fields } = built
-  return { ...fields, _$hash: $hash, _$meta: $meta, _hash, _timestamp: Date.now() } as unknown as BoundWitnessMongoMeta<T>
+  return { ...fields, _$hash: $hash, _$meta: $meta, _hash, _timestamp: bw.timestamp ?? Date.now() } as unknown as BoundWitnessMongoMeta<T>
 }
 
 export const toDbRepresentation = <T extends Payload | BoundWitness>(value: T) => {
