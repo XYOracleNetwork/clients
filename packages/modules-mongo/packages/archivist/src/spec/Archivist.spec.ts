@@ -52,7 +52,7 @@ describeIf(hasMongoDBConfig())('DeterministicArchivist', () => {
     const module = await MongoDBArchivist.create({
       account: moduleAccount,
       boundWitnessSdkConfig: boundWitnessesConfig,
-      config: { schema: MongoDBArchivist.configSchema },
+      config: { schema: MongoDBArchivist.defaultConfigSchema },
       payloadSdkConfig: payloadsConfig,
     })
     expect(module.address).toBe(moduleAccount.address)

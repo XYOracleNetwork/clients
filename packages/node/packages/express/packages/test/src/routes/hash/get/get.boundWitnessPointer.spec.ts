@@ -2,7 +2,7 @@ import { assertEx } from '@xylabs/assert'
 import { Account } from '@xyo-network/account'
 import { BoundWitness } from '@xyo-network/boundwitness-model'
 import { BoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
-import { SortDirection } from '@xyo-network/diviner-payload-model'
+import { Order, SortDirection } from '@xyo-network/diviner-payload-model'
 import {
   BoundWitnessPointerPayload,
   BoundWitnessPointerSchema,
@@ -22,7 +22,7 @@ const createPointer = async (
   addresses: string[][] = [],
   schemas: string[][] = [],
   timestamp = Date.now(),
-  direction: SortDirection = 'desc',
+  direction: Order = 'desc',
 ): Promise<string> => {
   const reference: PayloadRule[][] = []
 
@@ -168,10 +168,12 @@ describe('/:hash', () => {
         it.each([
           [schemaA, 0],
           [schemaB, 1],
-        ])('returns BoundWitness of schema type', async (schema, expectedIndex) => {
+        ])('returns BoundWitness of schema type [%s]', async (schema, expectedIndex) => {
           const expected = boundWitnesses[expectedIndex]
+          console.log('expected', expected)
           const pointerHash = await createPointer([[account.address]], [[schema]])
           const result = await getHash(pointerHash)
+          console.log('result', result)
           expect(result).toEqual(expected)
         })
       })

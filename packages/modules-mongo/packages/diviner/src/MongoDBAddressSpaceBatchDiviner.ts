@@ -10,7 +10,7 @@ import { AddressSpaceBatchDivinerConfigSchema } from '@xyo-network/diviner-model
 import { COLLECTIONS, DATABASES, DefaultMaxTimeMS, MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
 import { BoundWitnessPointerPayload, BoundWitnessPointerSchema } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 import { RunCommandOptions } from 'mongodb'
 
 const moduleName = 'MongoDBAddressSpaceBatchDiviner'
@@ -18,7 +18,8 @@ const moduleName = 'MongoDBAddressSpaceBatchDiviner'
 const MongoDBDivinerBase = MongoDBModuleMixin(AddressSpaceDiviner)
 
 export class MongoDBAddressSpaceBatchDiviner extends MongoDBDivinerBase {
-  static override configSchemas = [AddressSpaceBatchDivinerConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, AddressSpaceBatchDivinerConfigSchema]
+  static override defaultConfigSchema: Schema = AddressSpaceBatchDivinerConfigSchema
 
   // TODO: Get via config or default
   protected readonly batchSize = 50

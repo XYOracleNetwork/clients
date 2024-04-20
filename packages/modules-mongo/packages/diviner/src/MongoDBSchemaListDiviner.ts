@@ -14,7 +14,8 @@ import { Payload, Schema } from '@xyo-network/payload-model'
 const MongoDBDivinerBase = MongoDBModuleMixin(SchemaListDiviner)
 
 export class MongoDBSchemaListDiviner extends MongoDBDivinerBase {
-  static override configSchemas = [SchemaListDivinerConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, SchemaListDivinerConfigSchema]
+  static override defaultConfigSchema: Schema = SchemaListDivinerConfigSchema
 
   protected override async divineHandler(payloads?: Payload[]): Promise<Payload<SchemaListPayload>[]> {
     const query = payloads?.find<SchemaListQueryPayload>(isSchemaListQueryPayload)

@@ -9,14 +9,15 @@ import {
   isAddressHistoryQueryPayload,
 } from '@xyo-network/diviner-address-history'
 import { DefaultLimit, DefaultMaxTimeMS, MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 import { BoundWitnessWithMongoMeta, fromDbRepresentation } from '@xyo-network/payload-mongodb'
 import { Filter } from 'mongodb'
 
 const MongoDBDivinerBase = MongoDBModuleMixin(AddressHistoryDiviner)
 
 export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
-  static override configSchemas = [AddressHistoryDivinerConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, AddressHistoryDivinerConfigSchema]
+  static override defaultConfigSchema: Schema = AddressHistoryDivinerConfigSchema
 
   protected override async divineHandler(payloads?: Payload[]): Promise<BoundWitness[]> {
     const query = payloads?.find<AddressHistoryQueryPayload>(isAddressHistoryQueryPayload)

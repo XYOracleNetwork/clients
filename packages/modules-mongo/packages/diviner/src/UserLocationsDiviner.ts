@@ -12,7 +12,7 @@ import { CoinUserLocationsDiviner } from '@xyo-network/diviner-coin-user-locatio
 import { DivinerParams } from '@xyo-network/diviner-model'
 import { LocationPayload, LocationSchema } from '@xyo-network/location-payload-plugin'
 import { AnyConfigSchema } from '@xyo-network/module-model'
-import { Payload, WithMeta } from '@xyo-network/payload-model'
+import { Payload, Schema, WithMeta } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 export type CoinCurrentUserWitnessSchema = 'co.coinapp.current.user.witness'
@@ -53,7 +53,8 @@ export type CoinUserLocationsDivinerParams<T extends Payload = Payload> = Divine
 export class MemoryCoinUserLocationsDiviner<
   TParams extends CoinUserLocationsDivinerParams = CoinUserLocationsDivinerParams,
 > extends CoinUserLocationsDiviner<TParams> {
-  static override configSchemas = [ArchivistPayloadDivinerConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, ArchivistPayloadDivinerConfigSchema]
+  static override defaultConfigSchema: Schema = ArchivistPayloadDivinerConfigSchema
 
   protected override async divineHandler(payloads?: Payload[]): Promise<Payload<LocationPayload>[]> {
     const user = payloads?.find<CoinCurrentUserWitnessPayload>(

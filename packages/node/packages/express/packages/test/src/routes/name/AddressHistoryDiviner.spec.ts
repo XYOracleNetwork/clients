@@ -26,7 +26,7 @@ describe(`/${divinerName}`, () => {
     })
   })
   describe('DivinerDivineQuerySchema', () => {
-    const limit = 10
+    const limit = 8
     const account = Account.randomSync()
     let dataHashes: string[]
     beforeAll(async () => {

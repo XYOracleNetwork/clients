@@ -12,9 +12,9 @@ describe('/:hash', () => {
     const account = Account.randomSync()
     const schemaA = getTestSchemaName()
     const schemaB = getTestSchemaName()
-    const payloadBaseA = (async () => PayloadBuilder.build({ ...(await getNewPayload()), schema: schemaA }, true))()
+    const payloadBaseA = (async () => PayloadBuilder.build({ ...(await getNewPayload()), schema: schemaA }))()
     const payloadA: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseA))()
-    const payloadBaseB = (async () => PayloadBuilder.build({ ...(await getNewPayload()), schema: schemaB }, true))()
+    const payloadBaseB = (async () => PayloadBuilder.build({ ...(await getNewPayload()), schema: schemaB }))()
     const payloadB: Promise<PayloadWrapper> = (async () => PayloadWrapper.wrap(await payloadBaseB))()
     const schemas = [schemaA, schemaB]
     beforeAll(async () => {

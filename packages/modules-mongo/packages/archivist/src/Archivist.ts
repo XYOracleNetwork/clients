@@ -5,7 +5,7 @@ import { ArchivistConfigSchema, ArchivistInsertQuerySchema } from '@xyo-network/
 import { MongoDBArchivistConfigSchema } from '@xyo-network/archivist-model-mongodb'
 import { MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload, WithMeta } from '@xyo-network/payload-model'
+import { Payload, Schema, WithMeta } from '@xyo-network/payload-model'
 import { fromDbRepresentation, PayloadWithMongoMeta, toDbRepresentation } from '@xyo-network/payload-mongodb'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
@@ -14,7 +14,8 @@ import { validByType } from './lib'
 const MongoDBArchivistBase = MongoDBModuleMixin(AbstractArchivist)
 
 export class MongoDBArchivist extends MongoDBArchivistBase {
-  static override configSchemas = [MongoDBArchivistConfigSchema, ArchivistConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, MongoDBArchivistConfigSchema]
+  static override defaultConfigSchema: Schema = MongoDBArchivistConfigSchema
 
   override readonly queries: string[] = [ArchivistInsertQuerySchema, ...super.queries]
 

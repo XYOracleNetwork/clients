@@ -17,19 +17,19 @@ import { Container } from 'inversify'
 
 const getMongoDBBoundWitnessStatsDiviner = (container: Container) => {
   const jobQueue = container.get<JobQueue>(TYPES.JobQueue)
-  const schema = MongoDBBoundWitnessStatsDiviner.configSchema
+  const schema = MongoDBBoundWitnessStatsDiviner.defaultConfigSchema
   const params: MongoDBModuleParams = { config: { schema }, jobQueue }
   return ModuleFactory.withParams(MongoDBBoundWitnessStatsDiviner, params)
 }
 const getMongoDBPayloadStatsDiviner = (container: Container) => {
   const jobQueue = container.get<JobQueue>(TYPES.JobQueue)
-  const schema = MongoDBPayloadStatsDiviner.configSchema
+  const schema = MongoDBPayloadStatsDiviner.defaultConfigSchema
   const params: MongoDBModuleParams = { config: { schema }, jobQueue }
   return ModuleFactory.withParams(MongoDBPayloadStatsDiviner, params)
 }
 const getMongoDBSchemaStatsDiviner = (container: Container) => {
   const jobQueue = container.get<JobQueue>(TYPES.JobQueue)
-  const schema = MongoDBSchemaStatsDiviner.configSchema
+  const schema = MongoDBSchemaStatsDiviner.defaultConfigSchema
   const params: MongoDBModuleParams = { config: { schema }, jobQueue }
   return ModuleFactory.withParams(MongoDBSchemaStatsDiviner, params)
 }

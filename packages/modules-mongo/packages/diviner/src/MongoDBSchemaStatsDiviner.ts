@@ -14,7 +14,7 @@ import {
 import { COLLECTIONS, DATABASES, fromDbProperty, MongoDBModuleMixin, toDbProperty } from '@xyo-network/module-abstract-mongodb'
 import { TYPES } from '@xyo-network/node-core-types'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload, WithMeta, WithSources } from '@xyo-network/payload-model'
+import { Payload, Schema, WithMeta, WithSources } from '@xyo-network/payload-model'
 import { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { MongoClientWrapper } from '@xyo-network/sdk-xyo-mongo-js'
 import { Job, JobProvider } from '@xyo-network/shared'
@@ -42,7 +42,8 @@ const MongoDBDivinerBase = MongoDBModuleMixin(SchemaStatsDiviner)
 const moduleName = 'MongoDBSchemaStatsDiviner'
 
 export class MongoDBSchemaStatsDiviner extends MongoDBDivinerBase implements JobProvider {
-  static override configSchemas = [SchemaStatsDivinerConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, SchemaStatsDivinerConfigSchema]
+  static override defaultConfigSchema: Schema = SchemaStatsDivinerConfigSchema
 
   /**
    * Iterates over know addresses obtained from AddressDiviner

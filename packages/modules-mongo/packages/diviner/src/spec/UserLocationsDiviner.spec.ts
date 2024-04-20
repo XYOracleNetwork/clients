@@ -16,7 +16,7 @@ describe.skip('MemoryCoinUserLocationsDiviner', () => {
     sut = await MemoryCoinUserLocationsDiviner.create({
       archivist,
       bws,
-      config: { schema: MemoryCoinUserLocationsDiviner.configSchema },
+      config: { schema: MemoryCoinUserLocationsDiviner.defaultConfigSchema },
     })
     sut.params.logger = logger
   })

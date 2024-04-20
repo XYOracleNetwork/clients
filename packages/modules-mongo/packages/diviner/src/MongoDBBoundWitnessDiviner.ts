@@ -9,14 +9,15 @@ import {
   isBoundWitnessDivinerQueryPayload,
 } from '@xyo-network/diviner-boundwitness-model'
 import { DefaultLimit, DefaultMaxTimeMS, DefaultOrder, MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 import { BoundWitnessWithMongoMeta, fromDbRepresentation } from '@xyo-network/payload-mongodb'
 import { Filter, SortDirection } from 'mongodb'
 
 const MongoDBDivinerBase = MongoDBModuleMixin(BoundWitnessDiviner)
 
 export class MongoDBBoundWitnessDiviner extends MongoDBDivinerBase {
-  static override configSchemas = [BoundWitnessDivinerConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, BoundWitnessDivinerConfigSchema]
+  static override defaultConfigSchema: Schema = BoundWitnessDivinerConfigSchema
 
   protected override async divineHandler(payloads?: Payload[]): Promise<BoundWitness[]> {
     const query = payloads?.find<BoundWitnessDivinerQueryPayload>(isBoundWitnessDivinerQueryPayload)

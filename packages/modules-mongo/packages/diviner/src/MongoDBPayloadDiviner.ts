@@ -2,14 +2,15 @@ import { AnyObject } from '@xylabs/object'
 import { PayloadDiviner } from '@xyo-network/diviner-payload-abstract'
 import { isPayloadDivinerQueryPayload, PayloadDivinerConfigSchema, PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
 import { DefaultLimit, DefaultMaxTimeMS, DefaultOrder, MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 import { fromDbRepresentation } from '@xyo-network/payload-mongodb'
 import { Filter, SortDirection } from 'mongodb'
 
 const MongoDBDivinerBase = MongoDBModuleMixin(PayloadDiviner)
 
 export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
-  static override configSchemas = [PayloadDivinerConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, PayloadDivinerConfigSchema]
+  static override defaultConfigSchema: Schema = PayloadDivinerConfigSchema
 
   protected override async divineHandler(payloads?: Payload[]): Promise<Payload[]> {
     const query = payloads?.find<PayloadDivinerQueryPayload>(isPayloadDivinerQueryPayload)

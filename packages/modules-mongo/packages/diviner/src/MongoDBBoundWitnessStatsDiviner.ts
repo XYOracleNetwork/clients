@@ -17,7 +17,7 @@ import {
 import { COLLECTIONS, DATABASES, MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
 import { TYPES } from '@xyo-network/node-core-types'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload, WithMeta, WithSources } from '@xyo-network/payload-model'
+import { Payload, Schema, WithMeta, WithSources } from '@xyo-network/payload-model'
 import { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { MongoClientWrapper } from '@xyo-network/sdk-xyo-mongo-js'
 import { Job, JobProvider } from '@xyo-network/shared'
@@ -46,7 +46,8 @@ export class MongoDBBoundWitnessStatsDiviner
     AttachableDivinerInstance<DivinerParams, BoundWitnessStatsQueryPayload, BoundWitnessStatsPayload>,
     JobProvider
 {
-  static override configSchemas = [BoundWitnessStatsDivinerConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, BoundWitnessStatsDivinerConfigSchema]
+  static override defaultConfigSchema: Schema = BoundWitnessStatsDivinerConfigSchema
 
   /**
    * Iterates over know addresses obtained from AddressDiviner

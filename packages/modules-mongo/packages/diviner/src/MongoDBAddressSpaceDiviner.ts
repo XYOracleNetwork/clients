@@ -3,12 +3,13 @@ import { AddressSchema } from '@xyo-network/address-payload-plugin'
 import { AddressSpaceDiviner } from '@xyo-network/diviner-address-space-abstract'
 import { AddressSpaceDivinerConfigSchema } from '@xyo-network/diviner-models'
 import { DefaultMaxTimeMS, MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 
 const MongoDBDivinerBase = MongoDBModuleMixin(AddressSpaceDiviner)
 
 export class MongoDBAddressSpaceDiviner extends MongoDBDivinerBase {
-  static override configSchemas = [AddressSpaceDivinerConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, AddressSpaceDivinerConfigSchema]
+  static override defaultConfigSchema: Schema = AddressSpaceDivinerConfigSchema
 
   protected override async divineHandler(_payloads?: Payload[]): Promise<Payload[]> {
     // TODO: Most Recently Used, Most Frequently Used, Addresses of Value/Importance to Me

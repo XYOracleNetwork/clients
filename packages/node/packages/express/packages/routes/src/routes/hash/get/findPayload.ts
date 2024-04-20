@@ -5,7 +5,7 @@ import { BoundWitnessDivinerQueryPayload, BoundWitnessDivinerQuerySchema } from 
 import { PayloadDiviner } from '@xyo-network/diviner-payload-abstract'
 import { PayloadDivinerQueryPayload, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import { isBoundWitnessPointer, PayloadSearchCriteria, PointerPayload } from '@xyo-network/node-core-model'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 import { combineRules } from './combineRules'
@@ -46,13 +46,13 @@ export const findPayload = async (
   if (returnBoundWitness || findWitnessedPayload) {
     const filter = createBoundWitnessFilterFromSearchCriteria(searchCriteria)
     const result = await boundWitnessDiviner.divine(filter)
-    const bw = result?.[0] ? await BoundWitnessWrapper.parse(result[0]) : undefined
+    const bw = result?.[0] ? BoundWitnessWrapper.parse(result[0]) : undefined
     if (bw) {
       if (returnBoundWitness) return bw.payload
       const { schemas, direction } = searchCriteria
       let payloadIndex = direction === 'asc' ? 0 : bw.payloadHashes.length - 1
       if (schemas) {
-        const schemaInSearchCriteria = (schema: string) => schemas.includes(schema)
+        const schemaInSearchCriteria = (schema: Schema) => schemas.includes(schema)
         payloadIndex =
           direction === 'asc' ? bw.payloadSchemas.findIndex(schemaInSearchCriteria) : bw.payloadSchemas.findLastIndex(schemaInSearchCriteria)
       }

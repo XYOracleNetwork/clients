@@ -52,7 +52,7 @@ const setupNode = async () => {
   const mnemonic = process.env.MNEMONIC || ''
   const path = WALLET_PATHS.Nodes.Node
   const account = await HDWallet.fromPhrase(mnemonic, path)
-  const config = { schema: MemoryNode.configSchema }
+  const config = { schema: MemoryNode.defaultConfigSchema }
   const params: MemoryNodeParams = { account, config }
   const node = await MemoryNode.create(params)
   globalThis.app = await getApp(node)

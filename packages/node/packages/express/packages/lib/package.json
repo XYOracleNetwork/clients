@@ -39,10 +39,10 @@
   "license": "LGPL-3.0-only",
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.556.0",
-    "@xylabs/assert": "^3.1.7",
+    "@xylabs/assert": "^3.1.8",
     "@xylabs/sdk-api-express-ecs": "^1.4.0",
-    "@xyo-network/module-model": "^2.95.6",
-    "@xyo-network/node-model": "^2.95.6",
+    "@xyo-network/module-model": "^2.97.1",
+    "@xyo-network/node-model": "^2.97.1",
     "@xyo-network/payload-mongodb": "workspace:~",
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
@@ -55,8 +55,8 @@
   },
   "devDependencies": {
     "@types/express": "4.17.21",
-    "@xylabs/ts-scripts-yarn3": "^3.9.0",
-    "@xylabs/tsconfig": "^3.9.0",
+    "@xylabs/ts-scripts-yarn3": "^3.9.1",
+    "@xylabs/tsconfig": "^3.9.1",
     "typescript": "^5.4.5"
   },
   "type": "module"
