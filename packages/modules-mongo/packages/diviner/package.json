@@ -61,10 +61,12 @@
     "@xylabs/jest-helpers": "^3.1.11",
     "@xylabs/ts-scripts-yarn3": "^3.9.1",
     "@xylabs/tsconfig": "^3.9.1",
+    "@xyo-network/archivist-mongodb": "workspace:~",
     "@xyo-network/boundwitness-builder": "^2.98.4",
     "@xyo-network/diviner-abstract": "^2.98.4",
     "@xyo-network/diviner-address-space-model": "^2.98.4",
     "@xyo-network/diviner-boundwitness-stats-model": "^2.98.4",
+    "@xyo-network/node-memory": "^2.98.4",
     "fake-indexeddb": "^4.0.2",
     "jest": "^29.7.0",
     "jest-mock-extended": "^3.0.6",
@@ -110,5 +112,5 @@
     "url": "https://github.com/XYOracleNetwork/sdk-xyo-client-js.git"
   },
   "sideEffects": false,
-  "version": "2.87.1"
+  "version": "2.87.2"
 }

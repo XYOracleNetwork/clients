@@ -5430,7 +5430,7 @@ __metadata:
     "@xyo-network/gas-price-plugin": "npm:^2.93.1"
     "@xyo-network/http-bridge": "npm:^2.98.4"
     "@xyo-network/module-model": "npm:^2.98.4"
-    "@xyo-network/node-core-model": "npm:^2.87.1"
+    "@xyo-network/node-core-model": "npm:^2.87.2"
     "@xyo-network/node-memory": "npm:^2.98.4"
     "@xyo-network/payload-builder": "npm:^2.98.4"
     "@xyo-network/payload-model": "npm:^2.98.4"
@@ -6444,6 +6444,7 @@ __metadata:
     "@xyo-network/account-model": "npm:^2.98.4"
     "@xyo-network/address-payload-plugin": "npm:^2.98.4"
     "@xyo-network/archivist-model": "npm:^2.98.4"
+    "@xyo-network/archivist-mongodb": "workspace:~"
     "@xyo-network/archivist-wrapper": "npm:^2.98.4"
     "@xyo-network/boundwitness-builder": "npm:^2.98.4"
     "@xyo-network/boundwitness-model": "npm:^2.98.4"
@@ -6472,6 +6473,7 @@ __metadata:
     "@xyo-network/module-model": "npm:^2.98.4"
     "@xyo-network/node-core-model": "workspace:~"
     "@xyo-network/node-core-types": "workspace:~"
+    "@xyo-network/node-memory": "npm:^2.98.4"
     "@xyo-network/payload-builder": "npm:^2.98.4"
     "@xyo-network/payload-model": "npm:^2.98.4"
     "@xyo-network/payload-mongodb": "workspace:~"
@@ -7183,6 +7185,7 @@ __metadata:
     "@xylabs/delay": "npm:^3.1.11"
     "@xylabs/forget": "npm:^3.1.11"
     "@xylabs/hex": "npm:^3.1.11"
+    "@xylabs/object": "npm:^3.1.11"
     "@xylabs/ts-scripts-yarn3": "npm:^3.9.1"
     "@xylabs/tsconfig-jest": "npm:^3.9.1"
     "@xyo-network/account": "npm:^2.98.4"
@@ -7702,7 +7705,7 @@ __metadata:
   dependencies:
     "@xylabs/ts-scripts-yarn3": "npm:^3.9.1"
     "@xylabs/tsconfig": "npm:^3.9.1"
-    "@xyo-network/node-core-model": "npm:^2.87.1"
+    "@xyo-network/node-core-model": "npm:^2.87.2"
     "@xyo-network/payload-builder": "npm:^2.98.4"
     "@xyo-network/payload-model": "npm:^2.98.4"
     "@xyo-network/payload-mongodb": "workspace:~"
@@ -7713,7 +7716,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xyo-network/node-core-model@npm:^2.87.1, @xyo-network/node-core-model@workspace:packages/node/packages/core/packages/model, @xyo-network/node-core-model@workspace:~":
+"@xyo-network/node-core-model@npm:^2.87.2, @xyo-network/node-core-model@workspace:packages/node/packages/core/packages/model, @xyo-network/node-core-model@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xyo-network/node-core-model@workspace:packages/node/packages/core/packages/model"
   dependencies:
