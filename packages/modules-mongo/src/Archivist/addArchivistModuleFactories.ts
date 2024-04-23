@@ -1,5 +1,5 @@
 import { MongoDBArchivist } from '@xyo-network/archivist-mongodb'
-import { ModuleFactoryLocator } from '@xyo-network/module-model'
+import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { TYPES } from '@xyo-network/node-core-types'
 import { Container } from 'inversify'
 

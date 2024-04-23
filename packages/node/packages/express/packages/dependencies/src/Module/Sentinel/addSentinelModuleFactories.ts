@@ -1,4 +1,4 @@
-import { ModuleFactoryLocator } from '@xyo-network/module-model'
+import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { TYPES } from '@xyo-network/node-core-types'
 import { MemorySentinel } from '@xyo-network/sentinel'
 import { Container } from 'inversify'

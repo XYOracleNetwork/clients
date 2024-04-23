@@ -9,7 +9,8 @@ import {
   MongoDBSchemaListDiviner,
   MongoDBSchemaStatsDiviner,
 } from '@xyo-network/diviner-mongodb'
-import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
+import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
+import { ModuleFactory } from '@xyo-network/module-model'
 import { MongoDBModuleParams } from '@xyo-network/module-model-mongodb'
 import { JobQueue } from '@xyo-network/node-core-model'
 import { TYPES } from '@xyo-network/node-core-types'

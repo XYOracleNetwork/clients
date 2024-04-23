@@ -2,7 +2,7 @@ import { assertEx } from '@xylabs/assert'
 import { Account } from '@xyo-network/account'
 import { BoundWitness } from '@xyo-network/boundwitness-model'
 import { BoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
-import { Order, SortDirection } from '@xyo-network/diviner-payload-model'
+import { Order } from '@xyo-network/diviner-payload-model'
 import {
   BoundWitnessPointerPayload,
   BoundWitnessPointerSchema,

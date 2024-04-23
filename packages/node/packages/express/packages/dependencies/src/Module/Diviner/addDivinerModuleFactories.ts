@@ -24,7 +24,8 @@ import {
   ImageThumbnailQueryToImageThumbnailIndexQueryDiviner,
   ImageThumbnailStateToIndexCandidateDiviner,
 } from '@xyo-network/image-thumbnail-plugin'
-import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
+import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
+import { ModuleFactory } from '@xyo-network/module-model'
 import { TYPES } from '@xyo-network/node-core-types'
 import { Container } from 'inversify'
 
