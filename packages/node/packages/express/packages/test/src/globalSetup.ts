@@ -1,6 +1,7 @@
 /* eslint-disable no-var */
 import { config } from 'dotenv'
 config()
+import { disableGloballyUnique } from '@xylabs/object'
 import { HDWallet } from '@xyo-network/account'
 import { getApp } from '@xyo-network/express-node-server'
 import { canAddMongoModules } from '@xyo-network/node-core-modules-mongo'
@@ -14,6 +15,8 @@ import { MongoMemoryReplSet } from 'mongodb-memory-server'
 import supertest from 'supertest'
 // eslint-disable-next-line import/no-internal-modules
 import TestAgent from 'supertest/lib/agent'
+
+disableGloballyUnique()
 
 // Augment global scope with shared variables (must be var)
 declare global {

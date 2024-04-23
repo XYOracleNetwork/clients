@@ -1,7 +1,7 @@
 import { exists } from '@xylabs/exists'
 import { Hash } from '@xylabs/hex'
 import { AbstractArchivist } from '@xyo-network/archivist-abstract'
-import { ArchivistConfigSchema, ArchivistInsertQuerySchema } from '@xyo-network/archivist-model'
+import { ArchivistInsertQuerySchema } from '@xyo-network/archivist-model'
 import { MongoDBArchivistConfigSchema } from '@xyo-network/archivist-model-mongodb'
 import { MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
@@ -51,13 +51,13 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
 
   protected override async insertHandler(payloads: Payload[]): Promise<WithMeta<Payload>[]> {
     const [bw, p] = await validByType(payloads)
-    const payloadsWithExternalMeta = await Promise.all(p.map(toDbRepresentation))
+    const payloadsWithExternalMeta = await Promise.all(p.map((value, index) => toDbRepresentation(value, index)))
     if (payloadsWithExternalMeta.length > 0) {
       const payloadsResult = await this.payloads.insertMany(payloadsWithExternalMeta)
       if (!payloadsResult.acknowledged || payloadsResult.insertedCount !== payloadsWithExternalMeta.length)
         throw new Error('MongoDBDeterministicArchivist: Error inserting Payloads')
     }
-    const boundWitnessesWithExternalMeta = await Promise.all(bw.map(toDbRepresentation))
+    const boundWitnessesWithExternalMeta = await Promise.all(bw.map((value, index) => toDbRepresentation(value, index)))
     if (boundWitnessesWithExternalMeta.length > 0) {
       const boundWitnessesResult = await this.boundWitnesses.insertMany(boundWitnessesWithExternalMeta)
       if (!boundWitnessesResult.acknowledged || boundWitnessesResult.insertedCount !== boundWitnessesWithExternalMeta.length)

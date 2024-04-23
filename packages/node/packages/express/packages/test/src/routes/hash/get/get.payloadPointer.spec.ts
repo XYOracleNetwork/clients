@@ -1,13 +1,13 @@
 import { Account } from '@xyo-network/account'
 import { BoundWitness } from '@xyo-network/boundwitness-model'
-import { SortDirection } from '@xyo-network/diviner-payload-model'
+import { Order } from '@xyo-network/diviner-payload-model'
 import {
   PayloadAddressRule,
   PayloadPointerPayload,
   PayloadPointerSchema,
   PayloadRule,
   PayloadSchemaRule,
-  PayloadTimestampDirectionRule,
+  PayloadTimestampOrderRule,
 } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
@@ -19,7 +19,7 @@ export const createPointer = async (
   addresses: string[][] = [],
   schemas: string[][] = [],
   timestamp = Date.now(),
-  direction: SortDirection = 'desc',
+  order: Order = 'desc',
 ): Promise<string> => {
   const reference: PayloadRule[][] = []
 
@@ -37,7 +37,7 @@ export const createPointer = async (
   })
   if (addressRules.length > 0) reference.push(...addressRules)
 
-  const timestampRule: PayloadTimestampDirectionRule = { direction, timestamp }
+  const timestampRule: PayloadTimestampOrderRule = { order, timestamp }
   reference.push([timestampRule])
 
   const pointer = await new PayloadBuilder<PayloadPointerPayload>({ schema: PayloadPointerSchema }).fields({ reference }).build()

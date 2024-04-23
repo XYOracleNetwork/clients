@@ -1,4 +1,5 @@
 import { assertEx } from '@xylabs/assert'
+import { delay } from '@xylabs/delay'
 import { Account } from '@xyo-network/account'
 import { BoundWitness } from '@xyo-network/boundwitness-model'
 import { BoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
@@ -9,10 +10,10 @@ import {
   PayloadAddressRule,
   PayloadRule,
   PayloadSchemaRule,
-  PayloadTimestampDirectionRule,
+  PayloadTimestampOrderRule,
 } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, WithMeta } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 
@@ -22,7 +23,7 @@ const createPointer = async (
   addresses: string[][] = [],
   schemas: string[][] = [],
   timestamp = Date.now(),
-  direction: Order = 'desc',
+  order: Order = 'desc',
 ): Promise<string> => {
   const reference: PayloadRule[][] = []
 
@@ -40,7 +41,7 @@ const createPointer = async (
   })
   if (addressRules.length > 0) reference.push(...addressRules)
 
-  const timestampRule: PayloadTimestampDirectionRule = { direction, timestamp }
+  const timestampRule: PayloadTimestampOrderRule = { order, timestamp }
   reference.push([timestampRule])
 
   const pointer = await new PayloadBuilder<BoundWitnessPointerPayload>({ schema: BoundWitnessPointerSchema }).fields({ reference }).build()
@@ -158,16 +159,21 @@ describe('/:hash', () => {
         const payloadBaseB = { ...(await getNewPayload()), schema: schemaB }
         payloadB = PayloadWrapper.wrap(payloadBaseB)
         const [bwA] = await getNewBoundWitness([account], [payloadA.payload])
+        await delay(100)
         const [bwB] = await getNewBoundWitness([account], [payloadB.payload])
+        await delay(100)
         const [bwC] = await getNewBoundWitness([account], [payloadA.payload, payloadB.payload])
-        boundWitnesses.push(bwA, bwB, bwC)
+        await delay(100)
+        const [bwD] = await getNewBoundWitness([account], [payloadB.payload])
+        await delay(100)
+        boundWitnesses.push(bwA, bwB, bwC, bwD)
         const payloadResponse = await insertBlock(boundWitnesses, account)
         expect(payloadResponse.length).toBe(boundWitnesses.length)
       })
       describe('single schema', () => {
         it.each([
-          [schemaA, 0],
-          [schemaB, 1],
+          [schemaA, 2],
+          [schemaB, 3],
         ])('returns BoundWitness of schema type [%s]', async (schema, expectedIndex) => {
           const expected = boundWitnesses[expectedIndex]
           console.log('expected', expected)
@@ -213,13 +219,18 @@ describe('/:hash', () => {
       beforeAll(async () => {
         let payloadsA: Payload[]
         ;[bwA, payloadsA] = await getNewBoundWitness([account])
+        await delay(100)
         ;[bwB] = await getNewBoundWitness([account])
+        await delay(100)
         ;[bwC] = await getNewBoundWitness([account])
+        await delay(100)
         boundWitnesses = [bwA, bwB, bwC]
         expectedSchema = payloadsA[0].schema
+        const insertedPayloads: WithMeta<Payload>[] = []
         for (const bw of boundWitnesses) {
           const blockResponse = await insertBlock(bw, account)
           expect(blockResponse.length).toBe(1)
+          insertedPayloads.push(...blockResponse)
         }
       })
       it('ascending', async () => {

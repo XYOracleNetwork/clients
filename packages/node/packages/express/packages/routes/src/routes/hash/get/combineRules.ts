@@ -1,11 +1,11 @@
 import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
 import { Address } from '@xylabs/hex'
-import { SortDirection } from '@xyo-network/diviner-payload-model'
+import { Order } from '@xyo-network/diviner-payload-model'
 import {
   isPayloadAddressRule,
   isPayloadSchemaRule,
-  isPayloadTimestampDirectionRule,
+  isPayloadTimestampOrderRule,
   PayloadRule,
   PayloadSearchCriteria,
 } from '@xyo-network/node-core-model'
@@ -27,15 +27,15 @@ export const combineRules = (rules: PayloadRule[][]): PayloadSearchCriteria => {
     .filter(exists)
   assertEx(schemas.length, () => 'At least one schema must be supplied')
 
-  const directionTimestamp = rules.flat().filter(isPayloadTimestampDirectionRule).filter(exists)
+  const directionTimestamp = rules.flat().filter(isPayloadTimestampOrderRule).filter(exists)
   assertEx(directionTimestamp.length < 2, () => 'Must not supply more than 1 direction/timestamp rule')
 
-  const direction: SortDirection = directionTimestamp[0]?.direction || 'desc'
+  const order: Order = directionTimestamp[0]?.order || 'desc'
   const timestamp: number = directionTimestamp.length > 0 ? directionTimestamp[0]?.timestamp : Date.now()
 
   return {
     addresses,
-    direction,
+    order,
     schemas,
     timestamp,
   }

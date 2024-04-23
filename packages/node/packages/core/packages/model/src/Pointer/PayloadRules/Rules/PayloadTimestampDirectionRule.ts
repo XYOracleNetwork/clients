@@ -1,6 +1,6 @@
-import { SortDirection } from '@xyo-network/diviner-payload-model'
+import { Order } from '@xyo-network/diviner-payload-model'
 
-export interface PayloadTimestampDirectionRule {
-  direction?: SortDirection
+export interface PayloadTimestampOrderRule {
+  order?: Order
   timestamp: number
 }

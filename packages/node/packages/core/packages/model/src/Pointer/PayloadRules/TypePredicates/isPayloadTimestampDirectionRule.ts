@@ -1,6 +1,6 @@
 import { PayloadRule } from '../PayloadRule'
-import { PayloadTimestampDirectionRule } from '../Rules'
+import { PayloadTimestampOrderRule } from '../Rules'
 
-export const isPayloadTimestampDirectionRule = (rule: PayloadRule): rule is PayloadTimestampDirectionRule => {
-  return typeof (rule as PayloadTimestampDirectionRule)?.timestamp === 'number'
+export const isPayloadTimestampOrderRule = (rule: PayloadRule): rule is PayloadTimestampOrderRule => {
+  return typeof (rule as PayloadTimestampOrderRule)?.timestamp === 'number'
 }

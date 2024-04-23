@@ -47,10 +47,10 @@ describeIf(hasMongoDBConfig())('MongoDBBoundWitnessDiviner', () => {
     })
     // TODO: Insert via archivist
     const payloadA = await new PayloadBuilder({ schema: 'network.xyo.test' }).fields({ nonce: 1 }).build()
-    const bwA = (await (await new BoundWitnessBuilder().payload(payloadA)).witness(accountA).build())[0]
+    const bwA = (await new BoundWitnessBuilder().payload(payloadA).witness(accountA).build())[0]
     await boundWitnessSdk.insertOne(bwA as unknown as BoundWitnessWithMongoMeta)
     const payloadB = await new PayloadBuilder({ schema: 'network.xyo.test' }).fields({ nonce: 2 }).build()
-    const bwB = (await (await new BoundWitnessBuilder().payload(payloadB)).witness(accountB).build())[0]
+    const bwB = (await new BoundWitnessBuilder().payload(payloadB).witness(accountB).build())[0]
     await boundWitnessSdk.insertOne(bwB as unknown as BoundWitnessWithMongoMeta)
   })
   describe('divine', () => {

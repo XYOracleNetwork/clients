@@ -17,16 +17,14 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
     // TODO: Support multiple queries
     if (!query) throw new Error('Received payload is not a Query')
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { hash, limit, offset, order, schema, schemas, timestamp, ...props } = query
-    const parsedLimit = limit || DefaultLimit
-    const parsedOrder = order || DefaultOrder
-    const parsedOffset = offset || 0
-    const sort: { [key: string]: SortDirection } = { _timestamp: parsedOrder === 'asc' ? 1 : -1 }
+    const { hash, limit = DefaultLimit, offset = 0, order = DefaultOrder, schema, schemas, timestamp, ...props } = query
+    const direction = order === 'asc' ? 1 : -1
+    const sort: { [key: string]: SortDirection } = { _timestamp: direction }
     //TODO: Joel, why is AnyObject needed?
     const filter: Filter<AnyObject> = {}
     if (timestamp) {
-      const parsedTimestamp = timestamp ?? parsedOrder === 'desc' ? Date.now() : 0
-      filter._timestamp = parsedOrder === 'desc' ? { $lt: parsedTimestamp } : { $gt: parsedTimestamp }
+      const parsedTimestamp = timestamp ?? order === 'desc' ? Date.now() : 0
+      filter._timestamp = order === 'desc' ? { $lt: parsedTimestamp } : { $gt: parsedTimestamp }
     }
 
     // TODO: Optimize for single schema supplied too
@@ -48,16 +46,16 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
     if (hash) {
       filter._hash = hash
       const filtered = await this.payloads.find(filter)
-      result = (await filtered.sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(fromDbRepresentation)
+      result = (await filtered.sort(sort).skip(offset).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(fromDbRepresentation)
       if (result.length === 0) {
         delete filter._hash
         filter._$hash = hash
         const filtered = await this.payloads.find(filter)
-        result = (await filtered.sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(fromDbRepresentation)
+        result = (await filtered.sort(sort).skip(offset).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(fromDbRepresentation)
       }
     } else {
       const filtered = await this.payloads.find(filter)
-      result = (await filtered.sort(sort).skip(parsedOffset).limit(parsedLimit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(fromDbRepresentation)
+      result = (await filtered.sort(sort).skip(offset).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(fromDbRepresentation)
     }
     return result.map(fromDbRepresentation)
   }

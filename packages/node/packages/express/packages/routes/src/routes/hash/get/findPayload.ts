@@ -13,8 +13,7 @@ import { combineRules } from './combineRules'
 const limit = 1
 
 const createBoundWitnessFilterFromSearchCriteria = (searchCriteria: PayloadSearchCriteria): BoundWitnessDivinerQueryPayload[] => {
-  const { addresses, direction, schemas, timestamp } = searchCriteria
-  const order = direction === 'asc' ? 'asc' : 'desc'
+  const { addresses, order = 'desc', schemas, timestamp } = searchCriteria
   const query: BoundWitnessDivinerQueryPayload = {
     addresses,
     limit,
@@ -27,8 +26,7 @@ const createBoundWitnessFilterFromSearchCriteria = (searchCriteria: PayloadSearc
 }
 
 const createPayloadFilterFromSearchCriteria = (searchCriteria: PayloadSearchCriteria): Payload[] => {
-  const { direction, schemas, timestamp } = searchCriteria
-  const order = direction === 'asc' ? 'asc' : 'desc'
+  const { order = 'desc', schemas, timestamp } = searchCriteria
   const query: PayloadDivinerQueryPayload = { limit, order, schema: PayloadDivinerQuerySchema, schemas, timestamp }
   return [query]
 }
@@ -49,12 +47,11 @@ export const findPayload = async (
     const bw = result?.[0] ? BoundWitnessWrapper.parse(result[0]) : undefined
     if (bw) {
       if (returnBoundWitness) return bw.payload
-      const { schemas, direction } = searchCriteria
-      let payloadIndex = direction === 'asc' ? 0 : bw.payloadHashes.length - 1
+      const { schemas, order = 'desc' } = searchCriteria
+      let payloadIndex = order === 'asc' ? 0 : bw.payloadHashes.length - 1
       if (schemas) {
         const schemaInSearchCriteria = (schema: Schema) => schemas.includes(schema)
-        payloadIndex =
-          direction === 'asc' ? bw.payloadSchemas.findIndex(schemaInSearchCriteria) : bw.payloadSchemas.findLastIndex(schemaInSearchCriteria)
+        payloadIndex = order === 'asc' ? bw.payloadSchemas.findIndex(schemaInSearchCriteria) : bw.payloadSchemas.findLastIndex(schemaInSearchCriteria)
       }
       const hash = bw.payloadHashes[payloadIndex]
       const result = await archivist.get([hash])

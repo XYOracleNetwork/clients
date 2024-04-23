@@ -1,8 +1,6 @@
-/* eslint-disable import/no-deprecated */
-import { PayloadMeta, PayloadWithPartialMeta } from '../Payload'
+import { MongoPayloadMeta, MongoPayloadWithPartialMeta } from '../Payload'
 
-/** @deprecated Use from @xyo-network/payload-mongodb [Only for Mongo] */
-export type BoundWitnessMetaBase<P extends PayloadWithPartialMeta = PayloadWithPartialMeta> = PayloadMeta<{
+export type MongoBoundWitnessMetaBase<P extends MongoPayloadWithPartialMeta = MongoPayloadWithPartialMeta> = MongoPayloadMeta<{
   _payloads?: P[]
   _source_ip?: string
   _user_agent?: string
