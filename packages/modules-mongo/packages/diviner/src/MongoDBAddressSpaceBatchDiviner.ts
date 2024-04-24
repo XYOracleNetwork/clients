@@ -18,8 +18,8 @@ const moduleName = 'MongoDBAddressSpaceBatchDiviner'
 const MongoDBDivinerBase = MongoDBModuleMixin(AddressSpaceDiviner)
 
 export class MongoDBAddressSpaceBatchDiviner extends MongoDBDivinerBase {
-  static override configSchemas: Schema[] = [...super.configSchemas, AddressSpaceBatchDivinerConfigSchema]
-  static override defaultConfigSchema: Schema = AddressSpaceBatchDivinerConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, AddressSpaceBatchDivinerConfigSchema]
+  static override readonly defaultConfigSchema: Schema = AddressSpaceBatchDivinerConfigSchema
 
   // TODO: Get via config or default
   protected readonly batchSize = 50

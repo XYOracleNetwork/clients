@@ -16,8 +16,8 @@ import { Filter } from 'mongodb'
 const MongoDBDivinerBase = MongoDBModuleMixin(AddressHistoryDiviner)
 
 export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
-  static override configSchemas: Schema[] = [...super.configSchemas, AddressHistoryDivinerConfigSchema]
-  static override defaultConfigSchema: Schema = AddressHistoryDivinerConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, AddressHistoryDivinerConfigSchema]
+  static override readonly defaultConfigSchema: Schema = AddressHistoryDivinerConfigSchema
 
   protected override async divineHandler(payloads?: Payload[]): Promise<BoundWitness[]> {
     const query = payloads?.find<AddressHistoryQueryPayload>(isAddressHistoryQueryPayload)

@@ -42,8 +42,8 @@ const MongoDBDivinerBase = MongoDBModuleMixin(SchemaStatsDiviner)
 const moduleName = 'MongoDBSchemaStatsDiviner'
 
 export class MongoDBSchemaStatsDiviner extends MongoDBDivinerBase implements JobProvider {
-  static override configSchemas: Schema[] = [...super.configSchemas, SchemaStatsDivinerConfigSchema]
-  static override defaultConfigSchema: Schema = SchemaStatsDivinerConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, SchemaStatsDivinerConfigSchema]
+  static override readonly defaultConfigSchema: Schema = SchemaStatsDivinerConfigSchema
 
   /**
    * Iterates over know addresses obtained from AddressDiviner

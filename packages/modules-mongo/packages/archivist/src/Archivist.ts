@@ -14,8 +14,8 @@ import { validByType } from './lib'
 const MongoDBArchivistBase = MongoDBModuleMixin(AbstractArchivist)
 
 export class MongoDBArchivist extends MongoDBArchivistBase {
-  static override configSchemas: Schema[] = [...super.configSchemas, MongoDBArchivistConfigSchema]
-  static override defaultConfigSchema: Schema = MongoDBArchivistConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, MongoDBArchivistConfigSchema]
+  static override readonly defaultConfigSchema: Schema = MongoDBArchivistConfigSchema
 
   override readonly queries: string[] = [ArchivistInsertQuerySchema, ...super.queries]
 

@@ -16,8 +16,8 @@ import { Filter, SortDirection } from 'mongodb'
 const MongoDBDivinerBase = MongoDBModuleMixin(BoundWitnessDiviner)
 
 export class MongoDBBoundWitnessDiviner extends MongoDBDivinerBase {
-  static override configSchemas: Schema[] = [...super.configSchemas, BoundWitnessDivinerConfigSchema]
-  static override defaultConfigSchema: Schema = BoundWitnessDivinerConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, BoundWitnessDivinerConfigSchema]
+  static override readonly defaultConfigSchema: Schema = BoundWitnessDivinerConfigSchema
 
   protected override async divineHandler(payloads?: Payload[]): Promise<BoundWitness[]> {
     const query = payloads?.find<BoundWitnessDivinerQueryPayload>(isBoundWitnessDivinerQueryPayload)

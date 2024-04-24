@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "2.87.2",
+  "version": "2.88.0",
   "description": "XYO Express Node Middleware",
   "sideeffects": false,
   "types": "dist/node/index.d.ts",
@@ -42,7 +42,7 @@
     "@xylabs/assert": "^3.1.11",
     "@xylabs/logger": "^3.1.11",
     "@xylabs/sdk-api-express-ecs": "^1.4.0",
-    "@xyo-network/node-model": "^2.98.4",
+    "@xyo-network/node-model": "^2.99.0",
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
     "express-mung": "^0.5.1",

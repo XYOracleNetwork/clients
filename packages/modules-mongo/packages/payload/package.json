@@ -12,10 +12,10 @@
   "dependencies": {
     "@xylabs/hex": "^3.1.11",
     "@xylabs/object": "^3.1.11",
-    "@xyo-network/boundwitness-model": "^2.98.4",
-    "@xyo-network/hash": "^2.98.4",
-    "@xyo-network/payload-builder": "^2.98.4",
-    "@xyo-network/payload-model": "^2.98.4"
+    "@xyo-network/boundwitness-model": "^2.99.0",
+    "@xyo-network/hash": "^2.99.0",
+    "@xyo-network/payload-builder": "^2.99.0",
+    "@xyo-network/payload-model": "^2.99.0"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.9.1",
@@ -62,6 +62,6 @@
     "url": "https://github.com/XYOracleNetwork/sdk-xyo-client-js.git"
   },
   "sideEffects": false,
-  "version": "2.87.2",
+  "version": "2.88.0",
   "type": "module"
 }

@@ -9,7 +9,7 @@ export const validByType = async (payloads: Payload[] = []) => {
     payloads.map(async (payload) => {
       if (isBoundWitness(payload)) {
         const wrapper = isQueryBoundWitness(payload) ? QueryBoundWitnessWrapper : BoundWitnessWrapper
-        const bw = await wrapper.parse(payload)
+        const bw = wrapper.parse(payload)
         if (await bw.getValid()) {
           results[0].push(bw.payload)
         } else {

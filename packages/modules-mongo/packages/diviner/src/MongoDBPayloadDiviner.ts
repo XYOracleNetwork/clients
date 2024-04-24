@@ -9,8 +9,8 @@ import { Filter, SortDirection } from 'mongodb'
 const MongoDBDivinerBase = MongoDBModuleMixin(PayloadDiviner)
 
 export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
-  static override configSchemas: Schema[] = [...super.configSchemas, PayloadDivinerConfigSchema]
-  static override defaultConfigSchema: Schema = PayloadDivinerConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, PayloadDivinerConfigSchema]
+  static override readonly defaultConfigSchema: Schema = PayloadDivinerConfigSchema
 
   protected override async divineHandler(payloads?: Payload[]): Promise<Payload[]> {
     const query = payloads?.find<PayloadDivinerQueryPayload>(isPayloadDivinerQueryPayload)

@@ -8,8 +8,8 @@ import { Payload, Schema } from '@xyo-network/payload-model'
 const MongoDBDivinerBase = MongoDBModuleMixin(AddressSpaceDiviner)
 
 export class MongoDBAddressSpaceDiviner extends MongoDBDivinerBase {
-  static override configSchemas: Schema[] = [...super.configSchemas, AddressSpaceDivinerConfigSchema]
-  static override defaultConfigSchema: Schema = AddressSpaceDivinerConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, AddressSpaceDivinerConfigSchema]
+  static override readonly defaultConfigSchema: Schema = AddressSpaceDivinerConfigSchema
 
   protected override async divineHandler(_payloads?: Payload[]): Promise<Payload[]> {
     // TODO: Most Recently Used, Most Frequently Used, Addresses of Value/Importance to Me

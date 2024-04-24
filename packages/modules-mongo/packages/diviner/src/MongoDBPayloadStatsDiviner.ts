@@ -40,8 +40,8 @@ export class MongoDBPayloadStatsDiviner
   extends MongoDBDivinerBase<DivinerParams, PayloadStatsQueryPayload, PayloadStatsPayload>
   implements PayloadStatsDiviner<DivinerParams, PayloadStatsQueryPayload, PayloadStatsPayload>, JobProvider
 {
-  static override configSchemas: Schema[] = [...super.configSchemas, PayloadStatsDivinerConfigSchema]
-  static override defaultConfigSchema: Schema = PayloadStatsDivinerConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, PayloadStatsDivinerConfigSchema]
+  static override readonly defaultConfigSchema: Schema = PayloadStatsDivinerConfigSchema
 
   /**
    * Iterates over know addresses obtained from AddressDiviner

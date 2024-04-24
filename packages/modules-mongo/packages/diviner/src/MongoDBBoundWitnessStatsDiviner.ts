@@ -46,8 +46,8 @@ export class MongoDBBoundWitnessStatsDiviner
     AttachableDivinerInstance<DivinerParams, BoundWitnessStatsQueryPayload, BoundWitnessStatsPayload>,
     JobProvider
 {
-  static override configSchemas: Schema[] = [...super.configSchemas, BoundWitnessStatsDivinerConfigSchema]
-  static override defaultConfigSchema: Schema = BoundWitnessStatsDivinerConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, BoundWitnessStatsDivinerConfigSchema]
+  static override readonly defaultConfigSchema: Schema = BoundWitnessStatsDivinerConfigSchema
 
   /**
    * Iterates over know addresses obtained from AddressDiviner

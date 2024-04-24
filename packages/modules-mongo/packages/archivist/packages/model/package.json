@@ -10,8 +10,8 @@
     "url": "https://github.com/XYOracleNetwork/sdk-xyo-client-js/issues"
   },
   "dependencies": {
-    "@xyo-network/archivist-model": "^2.98.4",
-    "@xyo-network/module-model": "^2.98.4",
+    "@xyo-network/archivist-model": "^2.99.0",
+    "@xyo-network/module-model": "^2.99.0",
     "@xyo-network/sdk-xyo-mongo-js": "workspace:~"
   },
   "devDependencies": {
@@ -59,6 +59,6 @@
     "url": "https://github.com/XYOracleNetwork/sdk-xyo-client-js.git"
   },
   "sideEffects": false,
-  "version": "2.87.2",
+  "version": "2.88.0",
   "type": "module"
 }

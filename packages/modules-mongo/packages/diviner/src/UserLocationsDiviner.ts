@@ -53,8 +53,8 @@ export type CoinUserLocationsDivinerParams<T extends Payload = Payload> = Divine
 export class MemoryCoinUserLocationsDiviner<
   TParams extends CoinUserLocationsDivinerParams = CoinUserLocationsDivinerParams,
 > extends CoinUserLocationsDiviner<TParams> {
-  static override configSchemas: Schema[] = [...super.configSchemas, ArchivistPayloadDivinerConfigSchema]
-  static override defaultConfigSchema: Schema = ArchivistPayloadDivinerConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, ArchivistPayloadDivinerConfigSchema]
+  static override readonly defaultConfigSchema: Schema = ArchivistPayloadDivinerConfigSchema
 
   protected override async divineHandler(payloads?: Payload[]): Promise<Payload<LocationPayload>[]> {
     const user = payloads?.find<CoinCurrentUserWitnessPayload>(
