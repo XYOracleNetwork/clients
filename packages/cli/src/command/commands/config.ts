@@ -1,4 +1,4 @@
-import { parse } from 'node:path'
+import Path from 'node:path'
 
 import { ArgumentsCamelCase, Argv, CommandBuilder, CommandModule } from 'yargs'
 
@@ -10,7 +10,7 @@ type Arguments = {}
 
 export const aliases: ReadonlyArray<string> = []
 export const builder: CommandBuilder = (yargs: Argv) =>
-  yargs.usage('Usage: $0 config <command> [Options]').commandDir(parse(__filename).name, opts).demandCommand()
+  yargs.usage('Usage: $0 config <command> [Options]').commandDir(Path.parse(__filename).name, opts).demandCommand()
 export const command = 'config <command> [Options]'
 export const deprecated = false
 export const describe = 'Get and set CLI/Node config options'

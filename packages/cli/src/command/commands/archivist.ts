@@ -1,4 +1,4 @@
-import { parse } from 'node:path'
+import Path from 'node:path'
 
 import { EmptyObject } from '@xylabs/object'
 import { ArchivistGetQuerySchema, isArchivistInstance } from '@xyo-network/archivist-model'
@@ -11,7 +11,7 @@ import { getNode } from '../util'
 
 export const aliases: ReadonlyArray<string> = []
 export const builder: CommandBuilder = (yargs: Argv) =>
-  yargs.usage('Usage: $0 archivist <query> <address> [Options]').commandDir(parse(__filename).name, opts)
+  yargs.usage('Usage: $0 archivist <query> <address> [Options]').commandDir(Path.parse(__filename).name, opts)
 export const command = 'archivist'
 export const deprecated = false
 export const describe = 'Issue queries against an XYO archivist'

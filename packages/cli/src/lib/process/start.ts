@@ -1,5 +1,5 @@
 import { spawn } from 'node:child_process'
-import { join, parse } from 'node:path'
+import Path from 'node:path'
 
 import { getErrFileDescriptor, getOutFileDescriptor } from './logs'
 import { setPid } from './pid'
@@ -8,9 +8,9 @@ import { setPid } from './pid'
  * The path to the script to run the Node
  */
 const runNodeScriptPath =
-  parse(__filename).ext.includes('ts') ?
-    join(__dirname, '..', '..', '..', 'dist', 'cjs', 'runNode.js')
-  : join(__dirname, '..', '..', '..', 'cjs', 'runNode.js')
+  Path.parse(__filename).ext.includes('ts') ?
+    Path.join(__dirname, '..', '..', '..', 'dist', 'cjs', 'runNode.js')
+  : Path.join(__dirname, '..', '..', '..', 'cjs', 'runNode.js')
 
 /**
  * Runs the XYO Node process

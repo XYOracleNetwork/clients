@@ -1,9 +1,9 @@
 import { existsSync } from 'node:fs'
-import { join } from 'node:path'
+import Path from 'node:path'
 
 import { terminal } from 'terminal-kit'
 
-const fileRelativePath = join(__dirname, '..', '..', 'cli-art-simple.png')
+const fileRelativePath = Path.join(__dirname, '..', '..', 'cli-art-simple.png')
 const projectRelativePath = './packages/cli/src/cli-art-simple.png'
 
 export const printLogo = async () => {

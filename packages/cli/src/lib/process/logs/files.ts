@@ -1,12 +1,12 @@
 import { tmpdir } from 'node:os'
-import { join } from 'node:path'
+import Path from 'node:path'
 
 /**
  * File used for process stdout
  */
-export const outFile = join(tmpdir(), 'xyo.stdout.txt')
+export const outFile = Path.join(tmpdir(), 'xyo.stdout.txt')
 
 /**
  * File used for process stderr
  */
-export const errFile = join(tmpdir(), 'xyo.stderr.txt')
+export const errFile = Path.join(tmpdir(), 'xyo.stderr.txt')

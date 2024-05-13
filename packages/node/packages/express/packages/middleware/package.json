@@ -38,11 +38,11 @@
   "author": "Arie Trouw",
   "license": "LGPL-3.0-only",
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.556.0",
-    "@xylabs/assert": "^3.1.11",
-    "@xylabs/logger": "^3.1.11",
+    "@aws-sdk/client-secrets-manager": "^3.574.0",
+    "@xylabs/assert": "^3.3.2",
+    "@xylabs/logger": "^3.3.2",
     "@xylabs/sdk-api-express-ecs": "^1.4.0",
-    "@xyo-network/node-model": "^2.99.0",
+    "@xyo-network/node-model": "^2.100.9",
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
     "express-mung": "^0.5.1",
@@ -58,8 +58,8 @@
     "@types/express": "4.17.21",
     "@types/express-mung": "^0.5.5",
     "@types/swagger-ui-express": "^4.1.6",
-    "@xylabs/ts-scripts-yarn3": "^3.9.1",
-    "@xylabs/tsconfig": "^3.9.1",
+    "@xylabs/ts-scripts-yarn3": "^3.10.4",
+    "@xylabs/tsconfig": "^3.10.4",
     "typescript": "^5.4.5"
   },
   "type": "module"

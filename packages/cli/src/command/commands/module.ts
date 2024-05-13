@@ -1,4 +1,4 @@
-import { parse } from 'node:path'
+import Path from 'node:path'
 
 import { EmptyObject } from '@xylabs/object'
 import { ArgumentsCamelCase, Argv, CommandBuilder, CommandModule } from 'yargs'
@@ -10,7 +10,7 @@ import { getModuleFromArgs } from './util'
 
 export const aliases: ReadonlyArray<string> = []
 export const builder: CommandBuilder = (yargs: Argv) =>
-  yargs.usage('Usage: $0 module <query> <address> [Options]').commandDir(parse(__filename).name, opts)
+  yargs.usage('Usage: $0 module <query> <address> [Options]').commandDir(Path.parse(__filename).name, opts)
 export const command = 'module <address>'
 export const deprecated = false
 export const describe = 'Issue queries against an XYO Module'

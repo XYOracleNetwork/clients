@@ -1,4 +1,4 @@
-import { parse } from 'node:path'
+import Path from 'node:path'
 
 import { EmptyObject } from '@xylabs/object'
 import { DivinerDivineQuerySchema, isDivinerInstance } from '@xyo-network/diviner-model'
@@ -11,7 +11,7 @@ import { getNode } from '../util'
 
 export const aliases: ReadonlyArray<string> = []
 export const builder: CommandBuilder = (yargs: Argv) =>
-  yargs.usage('Usage: $0 diviner <query> <address> [Options]').commandDir(parse(__filename).name, opts)
+  yargs.usage('Usage: $0 diviner <query> <address> [Options]').commandDir(Path.parse(__filename).name, opts)
 export const command = 'diviner'
 export const deprecated = false
 export const describe = 'Issue queries against an XYO diviner'

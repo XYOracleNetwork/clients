@@ -1,4 +1,4 @@
-import { extname } from 'node:path'
+import Path from 'node:path'
 
 import { RequireDirectoryOptions } from 'yargs'
 
@@ -6,7 +6,7 @@ import { RequireDirectoryOptions } from 'yargs'
  * The extension of this file. Used to detect if running
  * via TS or transpiled output.
  */
-const thisFileExtension = extname(__filename).replace('.', '')
+const thisFileExtension = Path.extname(__filename).replace('.', '')
 
 /**
  * Used with array.filter to remove duplicate array elements

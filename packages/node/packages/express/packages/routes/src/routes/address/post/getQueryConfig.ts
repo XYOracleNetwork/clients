@@ -5,6 +5,8 @@ import { ArchiveModuleConfig } from '@xyo-network/node-core-model'
 import { Payload } from '@xyo-network/payload-model'
 import { Request } from 'express'
 
+const nestedBwAddressesDepth = 5 as const
+
 export const getQueryConfig = async (mod: Module, req: Request, bw: QueryBoundWitness, payloads?: Payload[]): Promise<ModuleConfig | undefined> => {
   const archivist = mod as unknown as AbstractModule
   const config = archivist?.config as unknown as ArchiveModuleConfig
@@ -15,7 +17,7 @@ export const getQueryConfig = async (mod: Module, req: Request, bw: QueryBoundWi
     // Recurse through payloads for nested BWs
     const nestedBwAddresses =
       payloads
-        ?.flat(5)
+        ?.flat(nestedBwAddressesDepth)
         .filter<BoundWitness>((payload): payload is BoundWitness => payload?.schema === BoundWitnessSchema)
         .map((bw) => bw.addresses) || []
     const addresses = [bw.addresses, ...nestedBwAddresses].filter((address) => address.length)

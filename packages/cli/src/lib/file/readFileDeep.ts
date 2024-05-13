@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs'
-import { resolve } from 'node:path'
+import Path from 'node:path'
 
 import { terminal } from 'terminal-kit'
 
@@ -15,7 +15,7 @@ export const readFileDeep = (names: string[]) => {
         for (let i = 0; i < depth; i++) {
           filename = `../${filename}`
         }
-        resolvedPath = resolve(filename)
+        resolvedPath = Path.resolve(filename)
         try {
           result = readFileSync(resolvedPath, { encoding: 'utf8' })
         } catch (ex) {

@@ -70,9 +70,11 @@ const setupNode = async () => {
  * Jest global setup method runs before any tests are run
  * https://jestjs.io/docs/configuration#globalsetup-string
  */
-module.exports = async (_globalConfig: Config, _projectConfig: Config) => {
+const setup = async (_globalConfig: Config, _projectConfig: Config) => {
   console.log('')
   PayloadValidator.setSchemaNameValidatorFactory((schema: string) => new SchemaNameValidator(schema))
   if (canAddMongoModules()) await setupMongo()
   await setupNode()
 }
+
+module.exports = setup
