@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "2.88.0",
+  "version": "2.88.1",
   "description": "XYO Archivist",
   "sideeffects": false,
   "exports": {
@@ -37,15 +37,15 @@
   "author": "Arie Trouw",
   "license": "LGPL-3.0-only",
   "dependencies": {
-    "@xylabs/hex": "^3.3.2",
-    "@xylabs/object": "^3.3.2",
-    "@xyo-network/archivist-model": "^2.100.9",
-    "@xyo-network/boundwitness-model": "^2.100.9",
-    "@xyo-network/diviner-payload-model": "^2.100.9",
-    "@xyo-network/module-abstract": "^2.100.9",
-    "@xyo-network/payload-model": "^2.100.9",
+    "@xylabs/hex": "^3.3.3",
+    "@xylabs/object": "^3.3.3",
+    "@xyo-network/archivist-model": "^2.101.16",
+    "@xyo-network/boundwitness-model": "^2.101.16",
+    "@xyo-network/diviner-payload-model": "^2.101.16",
+    "@xyo-network/module-abstract": "^2.101.16",
+    "@xyo-network/payload-model": "^2.101.16",
     "@xyo-network/payload-mongodb": "workspace:~",
-    "@xyo-network/shared": "^2.100.9",
+    "@xyo-network/shared": "^2.101.16",
     "ajv": "^8.13.0"
   },
   "devDependencies": {

@@ -10,28 +10,28 @@
     "url": "https://github.com/XYOracleNetwork/sdk-xyo-client-js/issues"
   },
   "dependencies": {
-    "@xylabs/exists": "^3.3.2",
-    "@xylabs/hex": "^3.3.2",
-    "@xyo-network/archivist-abstract": "^2.100.9",
-    "@xyo-network/archivist-model": "^2.100.9",
+    "@xylabs/exists": "^3.3.3",
+    "@xylabs/hex": "^3.3.3",
+    "@xyo-network/archivist-abstract": "^2.101.16",
+    "@xyo-network/archivist-model": "^2.101.16",
     "@xyo-network/archivist-model-mongodb": "workspace:~",
-    "@xyo-network/boundwitness-model": "^2.100.9",
-    "@xyo-network/boundwitness-wrapper": "^2.100.9",
+    "@xyo-network/boundwitness-model": "^2.101.16",
+    "@xyo-network/boundwitness-wrapper": "^2.101.16",
     "@xyo-network/module-abstract-mongodb": "workspace:~",
-    "@xyo-network/payload-builder": "^2.100.9",
-    "@xyo-network/payload-model": "^2.100.9",
+    "@xyo-network/payload-builder": "^2.101.16",
+    "@xyo-network/payload-model": "^2.101.16",
     "@xyo-network/payload-mongodb": "workspace:~",
-    "@xyo-network/payload-wrapper": "^2.100.9"
+    "@xyo-network/payload-wrapper": "^2.101.16"
   },
   "devDependencies": {
-    "@xylabs/arraybuffer": "^3.3.2",
-    "@xylabs/jest-helpers": "^3.3.2",
+    "@xylabs/arraybuffer": "^3.3.3",
+    "@xylabs/jest-helpers": "^3.3.3",
     "@xylabs/ts-scripts-yarn3": "^3.10.4",
     "@xylabs/tsconfig": "^3.10.4",
-    "@xyo-network/account": "^2.100.9",
-    "@xyo-network/account-model": "^2.100.9",
-    "@xyo-network/archivist-wrapper": "^2.100.9",
-    "@xyo-network/boundwitness-builder": "^2.100.9",
+    "@xyo-network/account": "^2.101.16",
+    "@xyo-network/account-model": "^2.101.16",
+    "@xyo-network/archivist-wrapper": "^2.101.16",
+    "@xyo-network/boundwitness-builder": "^2.101.16",
     "@xyo-network/sdk-xyo-mongo-js": "workspace:~",
     "fake-indexeddb": "^4.0.2",
     "jest": "^29.7.0",
@@ -76,6 +76,6 @@
     "url": "https://github.com/XYOracleNetwork/sdk-xyo-client-js.git"
   },
   "sideEffects": false,
-  "version": "2.88.0",
+  "version": "2.88.1",
   "type": "module"
 }

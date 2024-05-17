@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "2.88.0",
+  "version": "2.88.1",
   "description": "XYO Express Node Middleware",
   "sideeffects": false,
   "types": "dist/node/index.d.ts",
@@ -38,11 +38,11 @@
   "author": "Arie Trouw",
   "license": "LGPL-3.0-only",
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.574.0",
-    "@xylabs/assert": "^3.3.2",
-    "@xylabs/logger": "^3.3.2",
+    "@aws-sdk/client-secrets-manager": "^3.578.0",
+    "@xylabs/assert": "^3.3.3",
+    "@xylabs/logger": "^3.3.3",
     "@xylabs/sdk-api-express-ecs": "^1.4.0",
-    "@xyo-network/node-model": "^2.100.9",
+    "@xyo-network/node-model": "^2.101.16",
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
     "express-mung": "^0.5.1",

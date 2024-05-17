@@ -5,7 +5,7 @@ import { exists } from '@xylabs/exists'
 import { Hash } from '@xylabs/hex'
 import { Account, HDWallet } from '@xyo-network/account'
 import { ArchivistInsertQuerySchema, isArchivistInstance, withArchivistInstance } from '@xyo-network/archivist-model'
-import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
+import { ManifestWrapper, ModuleManifest, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleConfig } from '@xyo-network/module-model'
 import { TYPES } from '@xyo-network/node-core-types'
@@ -54,7 +54,7 @@ const loadNodeFromConfig = async (container: Container, config?: string) => {
     config ? (JSON.parse(await readFile(config, 'utf8')) as PackageManifestPayload) : (defaultNode as PackageManifestPayload)
   // TODO: Import all public children from manifest once we're OK to move the image thumbnail
   // modules from the main node to a child node
-  const manifestPublicChildren: PackageManifestPayload[] = config ? [] : [nftContractNode, nftMetadataNode]
+  const manifestPublicChildren: ModuleManifest[] = config ? [] : [...nftContractNode.nodes, ...nftMetadataNode.nodes]
   const mnemonic = container.get<string>(TYPES.AccountMnemonic)
   const wallet = await HDWallet.fromPhrase(mnemonic)
   const locator = container.get<ModuleFactoryLocator>(TYPES.ModuleFactoryLocator)

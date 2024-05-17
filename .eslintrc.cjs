@@ -4,7 +4,7 @@ const finalConfig = {
   },
   "extends": ["@xylabs"],
   parser: '@typescript-eslint/parser',
-  parserOptions: { ecmaVersion: 'latest', project: './tsconfig.json', sourceType: 'module', tsconfigRootDir: null },
+  parserOptions: { ecmaVersion: 'latest', project: './tsconfig-eslint.json', sourceType: 'module', tsconfigRootDir: null },
   "root": true,
   "ignorePatterns": [
     "dist",
