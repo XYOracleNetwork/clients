@@ -1,15 +1,15 @@
 import { assertEx } from '@xylabs/assert'
 import { getDefaultLogger } from '@xylabs/sdk-api-express-ecs'
 import { EthereumGasSchema } from '@xyo-network/gas-price-payload-plugin'
-import { Task } from '@xyo-network/shared'
+import { Job } from '@xyo-network/shared'
 
 import { getDiviner } from './getDiviner'
 import { reportDivinerResult } from './reportDivinerResult'
 import { reportGasPrices } from './reportGasPrices'
 
-export const getTask = (): Task => {
+export const getTask = (): Job['task'] => {
   const logger = getDefaultLogger()
-  const task: Task = async () => {
+  const task: Job['task'] = async () => {
     try {
       logger.log('Reporting Ethereum Gas Prices')
       const payloads = await reportGasPrices()

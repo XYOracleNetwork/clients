@@ -1,15 +1,15 @@
 import { assertEx } from '@xylabs/assert'
 import { getDefaultLogger } from '@xylabs/sdk-api-express-ecs'
 import { CryptoMarketAssetSchema } from '@xyo-network/crypto-asset-payload-plugin'
-import { Task } from '@xyo-network/shared'
+import { Job } from '@xyo-network/shared'
 
 import { getDiviner } from './getDiviner'
 import { reportCryptoPrices } from './reportCryptoPrices'
 import { reportDivinerResult } from './reportDivinerResult'
 
-export const getTask = (): Task => {
+export const getTask = (): Job['task'] => {
   const logger = getDefaultLogger()
-  const task: Task = async () => {
+  const task: Job['task'] = async () => {
     try {
       logger.log('Reporting Crypto Prices')
       const payloads = await reportCryptoPrices()

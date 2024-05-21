@@ -38,11 +38,11 @@
   "author": "Arie Trouw",
   "license": "LGPL-3.0-only",
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.578.0",
+    "@aws-sdk/client-secrets-manager": "^3.580.0",
     "@xylabs/assert": "^3.3.3",
     "@xylabs/logger": "^3.3.3",
     "@xylabs/sdk-api-express-ecs": "^1.4.0",
-    "@xyo-network/node-model": "^2.101.16",
+    "@xyo-network/node-model": "^2.102.5",
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
     "express-mung": "^0.5.1",

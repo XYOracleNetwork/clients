@@ -1,5 +1,5 @@
 import { ArchivistInstance, asArchivistInstance } from '@xyo-network/archivist-model'
-import { HttpBridge, HttpBridgeConfigSchema } from '@xyo-network/http-bridge'
+import { HttpBridge, HttpBridgeConfigSchema } from '@xyo-network/bridge-http'
 import { PayloadAddressRule, PayloadPointerPayload, PayloadPointerSchema, PayloadSchemaRule } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 

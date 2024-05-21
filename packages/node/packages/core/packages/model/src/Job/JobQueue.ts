@@ -1,6 +1,6 @@
 import type { EventEmitter } from 'node:stream'
 
-import { Task } from '@xyo-network/shared'
+import { Job } from '@xyo-network/shared'
 
 /** @internal */
 export interface DefineOptions {
@@ -9,7 +9,7 @@ export interface DefineOptions {
 
 /** @internal */
 export interface JobQueue extends EventEmitter {
-  define: (name: string, options: DefineOptions, processor: Task) => void
+  define: (name: string, options: DefineOptions, processor: Job['task']) => void
   every: (
     interval: string,
     names: string | string[],

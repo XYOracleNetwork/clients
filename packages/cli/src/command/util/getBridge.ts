@@ -1,5 +1,5 @@
 import { HDWallet, WalletInstance } from '@xyo-network/account'
-import { HttpBridge, HttpBridgeParams } from '@xyo-network/http-bridge'
+import { HttpBridge, HttpBridgeParams } from '@xyo-network/bridge-http'
 
 import { printError } from '../../lib'
 import { BaseArguments } from '../BaseArguments'

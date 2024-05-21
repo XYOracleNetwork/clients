@@ -39,17 +39,17 @@
   "license": "LGPL-3.0-only",
   "dependencies": {
     "@xyo-network/node-core-model": "^2.88.1",
-    "@xyo-network/payload-builder": "^2.101.16",
-    "@xyo-network/payload-model": "^2.101.16",
+    "@xyo-network/payload-builder": "^2.102.5",
+    "@xyo-network/payload-model": "^2.102.5",
     "@xyo-network/payload-mongodb": "workspace:~",
-    "@xyo-network/schema-cache": "^2.101.16",
-    "@xyo-network/schema-payload-plugin": "^2.101.16",
+    "@xyo-network/schema-cache": "^2.102.5",
+    "@xyo-network/schema-payload-plugin": "^2.102.5",
     "ajv": "^8.13.0"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.10.4",
     "@xylabs/tsconfig": "^3.10.4",
-    "@xyo-network/payload-builder": "^2.101.16",
+    "@xyo-network/payload-builder": "^2.102.5",
     "typescript": "^5.4.5"
   },
   "type": "module"

@@ -1,4 +1,4 @@
-import { HttpBridgeConfig, HttpBridgeConfigSchema } from '@xyo-network/http-bridge'
+import { HttpBridgeConfig, HttpBridgeConfigSchema } from '@xyo-network/bridge-http'
 import { knownArchivists as knownNodes } from '@xyo-network/network'
 
 import { printError } from '../../lib'

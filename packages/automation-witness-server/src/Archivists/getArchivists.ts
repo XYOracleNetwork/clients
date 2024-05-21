@@ -1,7 +1,7 @@
 import { HDWallet } from '@xyo-network/account'
 import { ApiConfig } from '@xyo-network/api-models'
 import { asAttachableArchivistInstance, AttachableArchivistInstance, isArchivistModule } from '@xyo-network/archivist-model'
-import { HttpBridge, HttpBridgeConfigSchema } from '@xyo-network/http-bridge'
+import { HttpBridge, HttpBridgeConfigSchema } from '@xyo-network/bridge-http'
 
 import { getApiConfig } from './getApiConfig'
 
