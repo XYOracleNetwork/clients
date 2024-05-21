@@ -1,8 +1,8 @@
 import { exists } from '@xylabs/exists'
-import { AddressSchema } from '@xyo-network/address-payload-plugin'
 import { AddressSpaceDiviner } from '@xyo-network/diviner-address-space-abstract'
 import { AddressSpaceDivinerConfigSchema } from '@xyo-network/diviner-models'
 import { DefaultMaxTimeMS, MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
+import { AddressSchema } from '@xyo-network/module-model'
 import { Payload, Schema } from '@xyo-network/payload-model'
 
 const MongoDBDivinerBase = MongoDBModuleMixin(AddressSpaceDiviner)

@@ -25,7 +25,7 @@ const boundWitnessSdkConfig = {
   dbConnectionString: process.env.MONGO_CONNECTION_STRING,
 }
 
-describe('MemoryBoundWitnessDiviner', () => {
+describe('MemoryBoundWitnessDiviner2', () => {
   let archivist: MongoDBArchivist
   let sut: MongoDBBoundWitnessDiviner
   let node: MemoryNode

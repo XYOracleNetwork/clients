@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "2.88.2",
+  "version": "2.88.3",
   "description": "XYO Archivist",
   "sideeffects": false,
   "types": "dist/node/index.d.ts",
@@ -38,18 +38,18 @@
   "author": "Arie Trouw",
   "license": "LGPL-3.0-only",
   "dependencies": {
-    "@xyo-network/node-core-model": "^2.88.2",
-    "@xyo-network/payload-builder": "^2.102.5",
-    "@xyo-network/payload-model": "^2.102.5",
+    "@xyo-network/node-core-model": "^2.88.3",
+    "@xyo-network/payload-builder": "^2.103.0",
+    "@xyo-network/payload-model": "^2.103.0",
     "@xyo-network/payload-mongodb": "workspace:~",
-    "@xyo-network/schema-cache": "^2.102.5",
-    "@xyo-network/schema-payload-plugin": "^2.102.5",
+    "@xyo-network/schema-cache": "^2.103.0",
+    "@xyo-network/schema-payload-plugin": "^2.103.0",
     "ajv": "^8.13.0"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.10.4",
     "@xylabs/tsconfig": "^3.10.4",
-    "@xyo-network/payload-builder": "^2.102.5",
+    "@xyo-network/payload-builder": "^2.103.0",
     "typescript": "^5.4.5"
   },
   "type": "module"

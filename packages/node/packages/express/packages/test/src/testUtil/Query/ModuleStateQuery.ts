@@ -1,5 +1,4 @@
-import { AddressPayload, AddressSchema } from '@xyo-network/address-payload-plugin'
-import { ModuleStateQuerySchema, ModuleSubscribeQuerySchema } from '@xyo-network/module-model'
+import { AddressPayload, AddressSchema, ModuleStateQuerySchema, ModuleSubscribeQuerySchema } from '@xyo-network/module-model'
 import { Payload } from '@xyo-network/payload-model'
 import { QueryPayload, QuerySchema } from '@xyo-network/query-payload-plugin'
 

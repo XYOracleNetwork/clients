@@ -1,7 +1,6 @@
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
 import { fulfilled, rejected } from '@xylabs/promise'
-import { AddressPayload, AddressSchema } from '@xyo-network/address-payload-plugin'
 import { asDivinerInstance, DivinerParams } from '@xyo-network/diviner-model'
 import { PayloadStatsDiviner } from '@xyo-network/diviner-payload-stats-abstract'
 import {
@@ -12,6 +11,7 @@ import {
   PayloadStatsQueryPayload,
 } from '@xyo-network/diviner-payload-stats-model'
 import { COLLECTIONS, DATABASES, MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
+import { AddressPayload, AddressSchema } from '@xyo-network/module-model'
 import { TYPES } from '@xyo-network/node-core-types'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload, Schema, WithMeta, WithSources } from '@xyo-network/payload-model'
