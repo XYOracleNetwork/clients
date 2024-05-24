@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "2.88.4",
+  "version": "2.88.5",
   "description": "XYO Archivist",
   "sideeffects": false,
   "types": "dist/node/index.d.ts",
@@ -38,7 +38,7 @@
   "author": "Arie Trouw",
   "license": "LGPL-3.0-only",
   "dependencies": {
-    "@xyo-network/node-core-model": "^2.88.4",
+    "@xyo-network/node-core-model": "^2.88.5",
     "@xyo-network/payload-builder": "^2.103.6",
     "@xyo-network/payload-model": "^2.103.6",
     "@xyo-network/payload-mongodb": "workspace:~",
