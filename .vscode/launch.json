@@ -68,20 +68,20 @@
       "type": "node",
       "request": "launch",
       "name": "AutomationWitness",
-      "program": "${workspaceFolder}/packages/automation-witness-server/src/launchServer.ts",
+      "program": "dist/node/launchServer.js",
       "outFiles": [
-        "${workspaceFolder}/dist/**/*.js"
+        "dist/node/**/*.js"
       ],
       "runtimeArgs": [
-        // "--inspect",
+        "--input-type=module",
         "--max-old-space-size=8192",
-        "--experimental-specifier-resolution=node",
         "--loader=ts-node/esm"
       ],
+      "cwd": "${workspaceFolder}/packages/automation-witness-server",
       "envFile": "${workspaceFolder}/.env",
       "sourceMaps": true,
       "resolveSourceMapLocations": [
-        "!**/node_modules/**"
+        "!**/node_modules/**",
       ],
       "pauseForSourceMap": true,
     },
