@@ -42,7 +42,7 @@
     "@xylabs/assert": "^3.5.1",
     "@xylabs/logger": "^3.5.1",
     "@xylabs/sdk-api-express-ecs": "^2.0.4",
-    "@xyo-network/node-model": "^2.103.6",
+    "@xyo-network/node-model": "^2.104.0",
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
     "express-mung": "^0.5.1",
