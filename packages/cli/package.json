@@ -37,12 +37,12 @@
     "xyo": "dist/index.js"
   },
   "devDependencies": {
-    "@types/node": "^20.12.12",
+    "@types/node": "^20.12.13",
     "@types/tail": "^2.2.3",
     "@types/terminal-kit": "^2.5.6",
-    "@xylabs/ts-scripts-yarn3": "^3.10.4",
-    "@xylabs/tsconfig": "^3.10.4",
-    "@xylabs/tsconfig-jest": "^3.10.4",
+    "@xylabs/ts-scripts-yarn3": "^3.11.2",
+    "@xylabs/tsconfig": "^3.11.2",
+    "@xylabs/tsconfig-jest": "^3.11.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   },

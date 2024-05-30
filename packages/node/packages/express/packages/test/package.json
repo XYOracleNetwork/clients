@@ -62,7 +62,7 @@
     "http-status-codes": "^2.3.0",
     "jest": "^29.7.0",
     "mongodb-memory-server": "^8.16.0",
-    "supertest": "^6.3.4",
+    "supertest": "^7.0.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
@@ -70,8 +70,8 @@
     "@types/uuid": "^9.0.8",
     "@xylabs/delay": "^3.5.1",
     "@xylabs/hex": "^3.5.1",
-    "@xylabs/ts-scripts-yarn3": "^3.10.4",
-    "@xylabs/tsconfig-jest": "^3.10.4",
+    "@xylabs/ts-scripts-yarn3": "^3.11.2",
+    "@xylabs/tsconfig-jest": "^3.11.2",
     "@xyo-network/api-call-witness": "^2.95.4",
     "@xyo-network/archivist": "^2.104.0",
     "@xyo-network/boundwitness-wrapper": "^2.104.0",

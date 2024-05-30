@@ -60,8 +60,8 @@
     "winston-transport": "^4.7.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.10.4",
-    "@xylabs/tsconfig": "^3.10.4",
+    "@xylabs/ts-scripts-yarn3": "^3.11.2",
+    "@xylabs/tsconfig": "^3.11.2",
     "typescript": "^5.4.5"
   },
   "author": "Arie Trouw",

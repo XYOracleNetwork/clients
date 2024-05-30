@@ -47,8 +47,8 @@
     "ajv": "^8.14.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.10.4",
-    "@xylabs/tsconfig": "^3.10.4",
+    "@xylabs/ts-scripts-yarn3": "^3.11.2",
+    "@xylabs/tsconfig": "^3.11.2",
     "@xyo-network/payload-builder": "^2.104.0",
     "typescript": "^5.4.5"
   },
