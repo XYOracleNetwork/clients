@@ -5468,6 +5468,8 @@ __metadata:
     "@xyo-network/payload-model": "npm:^2.104.0"
     "@xyo-network/sentinel": "npm:^2.104.0"
     "@xyo-network/shared": "npm:^2.104.0"
+    "@xyo-network/tzero-stock-market-payload-plugin": "npm:^2.95.4"
+    "@xyo-network/tzero-stock-market-plugin": "npm:^2.95.4"
     "@xyo-network/uniswap-crypto-market-payload-plugin": "npm:^2.95.4"
     "@xyo-network/uniswap-crypto-market-plugin": "npm:^2.95.4"
     "@xyo-network/witness-adhoc": "npm:^2.104.0"
@@ -8400,6 +8402,32 @@ __metadata:
   dependencies:
     ethers: "npm:^6.8.1"
   checksum: 10/9ec98a44dc60fa599cca3a2bcdd8708691d8579966b0caac76ea15d37c8441fa9cf592cb7651c48c7fdfab0f013d5fb4f96fc099aba3523449f8e484e450b629
+  languageName: node
+  linkType: hard
+
+"@xyo-network/tzero-stock-market-payload-plugin@npm:^2.95.4":
+  version: 2.95.4
+  resolution: "@xyo-network/tzero-stock-market-payload-plugin@npm:2.95.4"
+  dependencies:
+    "@xyo-network/payload-model": "npm:^2.103.1"
+  checksum: 10/4e884929f01ff51aa69070bf2a0a3369ed5eb51ce736c6b97a90a829af59096d60f837cce3b920908e463aa541cfd7d8cef25b89f4e685013e38a9a953303486
+  languageName: node
+  linkType: hard
+
+"@xyo-network/tzero-stock-market-plugin@npm:^2.95.4":
+  version: 2.95.4
+  resolution: "@xyo-network/tzero-stock-market-plugin@npm:2.95.4"
+  dependencies:
+    "@xylabs/exists": "npm:^3.5.1"
+    "@xylabs/object": "npm:^3.5.1"
+    "@xylabs/promise": "npm:^3.5.1"
+    "@xyo-network/api-call-witness": "npm:^2.95.4"
+    "@xyo-network/diviner-abstract": "npm:^2.104.0"
+    "@xyo-network/diviner-model": "npm:^2.104.0"
+    "@xyo-network/module-model": "npm:^2.103.1"
+    "@xyo-network/payload-model": "npm:^2.103.1"
+    "@xyo-network/tzero-stock-market-payload-plugin": "npm:^2.95.4"
+  checksum: 10/e2fcddab9aa294c5bd246109152ba9e6de6b5aeb22077e107f277feb006f032662852a295a8fa49ffd10f9caf811d3a51eb38ae96cf9c17c68d427f1738d41a0
   languageName: node
   linkType: hard
 

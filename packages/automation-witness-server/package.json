@@ -57,6 +57,8 @@
     "@xyo-network/payload-model": "^2.104.0",
     "@xyo-network/sentinel": "^2.104.0",
     "@xyo-network/shared": "^2.104.0",
+    "@xyo-network/tzero-stock-market-payload-plugin": "^2.95.4",
+    "@xyo-network/tzero-stock-market-plugin": "^2.95.4",
     "@xyo-network/uniswap-crypto-market-payload-plugin": "^2.95.4",
     "@xyo-network/uniswap-crypto-market-plugin": "^2.95.4",
     "@xyo-network/witness-adhoc": "^2.104.0",
