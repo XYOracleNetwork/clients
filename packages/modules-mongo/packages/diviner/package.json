@@ -43,7 +43,7 @@
     "@xyo-network/diviner-schema-list-model": "^2.104.0",
     "@xyo-network/diviner-schema-stats-abstract": "^2.104.0",
     "@xyo-network/diviner-schema-stats-model": "^2.104.0",
-    "@xyo-network/location-payload-plugin": "^2.95.3",
+    "@xyo-network/location-payload-plugin": "^2.95.4",
     "@xyo-network/module-abstract-mongodb": "workspace:~",
     "@xyo-network/module-model": "^2.104.0",
     "@xyo-network/node-core-model": "workspace:~",
