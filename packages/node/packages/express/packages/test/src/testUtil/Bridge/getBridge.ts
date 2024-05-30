@@ -12,7 +12,7 @@ export const getBridge = async (): Promise<BridgeInstance> => {
 
   const schema = HttpBridgeConfigSchema
   const security = { allowAnonymous: true }
-  const config: HttpBridgeConfig = { nodeUrl, schema, security }
+  const config: HttpBridgeConfig = { discoverRoots: 'start', name: 'TestBridge', nodeUrl, schema, security }
   const params: HttpBridgeParams = { account: await HDWallet.random(), config }
   bridge = await HttpBridge.create(params)
   await bridge.start()
