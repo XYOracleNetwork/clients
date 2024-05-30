@@ -30,7 +30,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: "20"
       - name: install
         run: yarn install
       - name: compile
@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
-          path: './docs'
+          path: "./docs"
       - name: Deploy 🚀 to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
