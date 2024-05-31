@@ -18,9 +18,8 @@ export const getNode = async (): Promise<MemoryNode> => {
   locator.register(TZeroApiCallJsonResultToSnapshotDiviner)
   const manifest = new ManifestWrapper(tZeroMarketSnapshotDiviner as PackageManifestPayload, wallet, locator)
   const node = await manifest.loadNodeFromIndex(0)
-  const mods = await node.resolve()
   const archivist = await getArchivist()
-  // await node.register(archivist)
-  // await node.attach(archivist.address, false)
+  await node.register(archivist)
+  await node.attach(archivist.address, false)
   return node
 }
