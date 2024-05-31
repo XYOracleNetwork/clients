@@ -33,7 +33,7 @@
               "schema": "network.xyo.sentinel.config",
               "synchronous": "true",
               "archiving": {
-                "archivists": ["TZero:XYOPublic:Archivist"]
+                "archivists": ["Archivist"]
               },
               "tasks": [
                 {
