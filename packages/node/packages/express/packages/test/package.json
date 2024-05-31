@@ -72,7 +72,7 @@
     "@xylabs/hex": "^3.5.1",
     "@xylabs/ts-scripts-yarn3": "^3.11.2",
     "@xylabs/tsconfig-jest": "^3.11.2",
-    "@xyo-network/api-call-witness": "^2.95.4",
+    "@xyo-network/api-call-witness": "^2.95.5",
     "@xyo-network/archivist": "^2.104.0",
     "@xyo-network/boundwitness-wrapper": "^2.104.0",
     "@xyo-network/diviner": "^2.104.0",
