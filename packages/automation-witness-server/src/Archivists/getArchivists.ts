@@ -21,11 +21,19 @@ export const tryGetArchivist = async (config: ApiConfig = getApiConfig()): Promi
   return isAttachableArchivistInstance(module) ? module : undefined
 }
 
-export const getArchivists = async (configs: ApiConfig[] = [getApiConfig()]): Promise<AttachableArchivistInstance[]> => {
+export const tryGetArchivists = async (configs: ApiConfig[] = [getApiConfig()]): Promise<AttachableArchivistInstance[]> => {
   const archivists: AttachableArchivistInstance[] = []
   for (const config of configs) {
     const archivist = await tryGetArchivist(config)
     if (archivist) archivists.push(archivist)
+  }
+  return archivists
+}
+
+export const getArchivists = async (configs: ApiConfig[] = [getApiConfig()]): Promise<AttachableArchivistInstance[]> => {
+  const archivists: AttachableArchivistInstance[] = []
+  for (const config of configs) {
+    archivists.push(await getArchivist(config))
   }
   return archivists
 }
