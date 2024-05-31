@@ -6,6 +6,7 @@ import { HttpBridge, HttpBridgeConfigSchema } from '@xyo-network/bridge-http'
 
 import { getApiConfig } from './getApiConfig'
 
+const archivistName = 'XYOPublic:Archivist' // TODO: This should be configurable
 const discoverRoots = 'start'
 const schema = HttpBridgeConfigSchema
 const security = { allowAnonymous: true }
@@ -19,7 +20,7 @@ export const tryGetArchivist = async (config: ApiConfig = getApiConfig()): Promi
   const account = await HDWallet.random()
   const bridge = await HttpBridge.create({ account, config: { client: { discoverRoots, url }, schema, security } })
   await bridge.start()
-  const module = await bridge.resolve('XYOPublic:Archivist')
+  const module = await bridge.resolve(archivistName)
   return isAttachableArchivistInstance(module) ? module : undefined
 }
 
