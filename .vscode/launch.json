@@ -99,7 +99,7 @@
         "--forceExit",
         "--runInBand",
         "--testTimeout=120000",
-        "packages/automation-witness-server/src/Jobs/TZeroStockMarket/spec/getNode.spec.ts"
+        "packages/automation-witness-server/src/Jobs/TZeroStockMarket/spec/reportStockPrices.spec.ts"
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
@@ -121,7 +121,7 @@
         "--runInBand",
         "--testTimeout=120000",
         "-c=./jest.config.no-mongo.ts",
-        "packages/automation-witness-server/src/Jobs/TZeroStockMarket/spec/getNode.spec.ts"
+        "packages/automation-witness-server/src/Jobs/TZeroStockMarket/spec/reportStockPrices.spec.ts"
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
