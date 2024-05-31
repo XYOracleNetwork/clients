@@ -24,6 +24,6 @@ export const getNode = async (): Promise<MemoryNode> => {
   // dynamically bridge to it based on the environment.
   const archivist = await getArchivist()
   await node.register(archivist)
-  await node.attach(archivist.address, true)
+  await node.attach(archivist.address, false)
   return node
 }
