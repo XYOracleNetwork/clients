@@ -15,7 +15,7 @@ export const getArchivist = async (config: ApiConfig = getApiConfig()): Promise<
 }
 
 export const tryGetArchivist = async (config: ApiConfig = getApiConfig()): Promise<AttachableArchivistInstance | undefined> => {
-  const url = `${config.apiDomain}`
+  const url = config.root ? `${config.apiDomain}/${config.root}` : config.apiDomain
   const account = await HDWallet.random()
   const bridge = await HttpBridge.create({ account, config: { client: { discoverRoots, url }, schema, security } })
   await bridge.start()
