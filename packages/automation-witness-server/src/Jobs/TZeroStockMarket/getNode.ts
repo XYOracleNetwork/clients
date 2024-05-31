@@ -20,6 +20,6 @@ export const getNode = async (): Promise<MemoryNode> => {
   const node = await manifest.loadNodeFromIndex(0)
   const archivist = await getArchivist()
   await node.register(archivist)
-  await node.attach(archivist.address, false)
+  await node.attach(archivist.address, true)
   return node
 }
