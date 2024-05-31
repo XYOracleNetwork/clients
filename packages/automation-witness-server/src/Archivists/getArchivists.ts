@@ -2,7 +2,7 @@ import { assertEx } from '@xylabs/assert'
 import { HDWallet } from '@xyo-network/account'
 import { ApiConfig } from '@xyo-network/api-models'
 import { AttachableArchivistInstance, isAttachableArchivistInstance } from '@xyo-network/archivist-model'
-import { HttpBridge, HttpBridgeConfigSchema } from '@xyo-network/bridge-http'
+import { HttpBridge, HttpBridgeConfig, HttpBridgeConfigSchema } from '@xyo-network/bridge-http'
 
 import { getApiConfig } from './getApiConfig'
 
@@ -15,7 +15,15 @@ export const getArchivist = async (config: ApiConfig = getApiConfig()): Promise<
 
 export const tryGetArchivist = async (config: ApiConfig = getApiConfig()): Promise<AttachableArchivistInstance | undefined> => {
   const nodeUrl = `${config.apiDomain}/node`
-  const bridge = await HttpBridge.create({ account: await HDWallet.random(), config: { nodeUrl, schema, security } })
+  // const account = await HDWallet.random()
+  // const bridgeConfig: HttpBridgeConfig = {
+  //   discoverRoots: 'start',
+  //   nodeUrl,
+  //   schema: HttpBridgeConfigSchema,
+  //   security,
+  // }
+  // const bridge = await HttpBridge.create({ account, config: bridgeConfig })
+  const bridge = await HttpBridge.create({ account: await HDWallet.random(), config: { discoverRoots: 'start', nodeUrl, schema, security } })
   await bridge.start()
   const module = await bridge.resolve('XYOPublic:Archivist')
   return isAttachableArchivistInstance(module) ? module : undefined

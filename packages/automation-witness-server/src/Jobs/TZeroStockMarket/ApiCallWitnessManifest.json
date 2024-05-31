@@ -4,7 +4,7 @@
     {
       "config": {
         "accountPath": "1",
-        "name": "ApiCall",
+        "name": "TZero",
         "schema": "network.xyo.node.config"
       },
       "modules": {

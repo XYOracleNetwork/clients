@@ -7,6 +7,7 @@ import { MemoryNode } from '@xyo-network/node-memory'
 import { TZeroApiCallJsonResultToSnapshotDiviner } from '@xyo-network/tzero-stock-market-plugin'
 
 import { getWallet, WalletPaths } from '../../Account'
+import { getArchivist } from '../../Archivists'
 import tZeroMarketSnapshotDiviner from './ApiCallWitnessManifest.json'
 
 export const getNode = async (): Promise<MemoryNode> => {
@@ -17,5 +18,9 @@ export const getNode = async (): Promise<MemoryNode> => {
   locator.register(TZeroApiCallJsonResultToSnapshotDiviner)
   const manifest = new ManifestWrapper(tZeroMarketSnapshotDiviner as PackageManifestPayload, wallet, locator)
   const node = await manifest.loadNodeFromIndex(0)
+  const mods = await node.resolve()
+  const archivist = await getArchivist()
+  // await node.register(archivist)
+  // await node.attach(archivist.address, false)
   return node
 }
