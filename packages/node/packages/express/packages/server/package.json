@@ -38,7 +38,7 @@
   "author": "Arie Trouw",
   "license": "LGPL-3.0-only",
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.583.0",
+    "@aws-sdk/client-secrets-manager": "^3.588.0",
     "@xylabs/assert": "^3.5.1",
     "@xylabs/logger": "^3.5.1",
     "@xylabs/sdk-api-express-ecs": "^2.0.4",

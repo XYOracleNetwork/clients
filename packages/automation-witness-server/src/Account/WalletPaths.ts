@@ -6,9 +6,11 @@ const AutomationPath = {
   CryptoMarket: `${RootPath}/1'` as const,
   EthereumGas: `${RootPath}/2'` as const,
   Node: `${RootPath}/3'` as const,
+  TZero: `${RootPath}/4'` as const,
 }
 
 const ModulePath = {
+  Node: "/0'" as const,
   AdHocWitness: "/1'" as const,
   Diviner: "/2'" as const,
   Sentinel: "/3'" as const,
@@ -51,5 +53,8 @@ export const WalletPaths = {
       Gas: `${AutomationPath.EthereumGas}${ModulePath.Sentinel}/1` as const,
       PriceDivinerResult: `${AutomationPath.EthereumGas}${ModulePath.Sentinel}/2` as const,
     } as const,
+  } as const,
+  TZero: {
+    Node: `${AutomationPath.TZero}${ModulePath.Node}` as const,
   } as const,
 }
