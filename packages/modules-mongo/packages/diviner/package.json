@@ -22,7 +22,6 @@
     "@xylabs/set": "^3.5.1",
     "@xyo-network/account": "^2.104.0",
     "@xyo-network/account-model": "^2.104.0",
-    "@xyo-network/address-payload-plugin": "^2.104.0",
     "@xyo-network/archivist-model": "^2.104.0",
     "@xyo-network/archivist-wrapper": "^2.104.0",
     "@xyo-network/boundwitness-model": "^2.104.0",
