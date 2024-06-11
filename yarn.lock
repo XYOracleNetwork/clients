@@ -127,7 +127,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws-sdk/client-secrets-manager@npm:^3.535.0, @aws-sdk/client-secrets-manager@npm:^3.588.0":
+"@aws-sdk/client-secrets-manager@npm:^3.535.0":
   version: 3.592.0
   resolution: "@aws-sdk/client-secrets-manager@npm:3.592.0"
   dependencies:
@@ -5434,7 +5434,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/automation-witness-server@workspace:packages/automation-witness-server"
   dependencies:
-    "@aws-sdk/client-secrets-manager": "npm:^3.588.0"
     "@types/compression": "npm:^1.7.5"
     "@types/cors": "npm:^2.8.17"
     "@types/express": "npm:4.17.21"
@@ -5446,7 +5445,6 @@ __metadata:
     "@xylabs/tsconfig": "npm:^3.11.2"
     "@xylabs/tsconfig-jest": "npm:^3.11.2"
     "@xyo-network/account": "npm:^2.105.0"
-    "@xyo-network/account-model": "npm:^2.105.0"
     "@xyo-network/api-call-witness": "npm:^2.96.0"
     "@xyo-network/api-models": "npm:^2.105.0"
     "@xyo-network/archivist-model": "npm:^2.105.0"
@@ -5478,21 +5476,14 @@ __metadata:
     "@xyo-network/witness-adhoc": "npm:^2.105.0"
     "@xyo-network/witness-model": "npm:^2.105.0"
     agenda: "npm:^5.0.0"
-    body-parser: "npm:^1.20.2"
     compression: "npm:^1.7.4"
     cors: "npm:^2.8.5"
     dotenv: "npm:^16.4.5"
     ethers: "npm:^6.12.1"
     express: "npm:^4.19.2"
-    express-mung: "npm:^0.5.1"
-    http-status-codes: "npm:^2.3.0"
     jest: "npm:^29.7.0"
     jest-mock-extended: "npm:^3.0.7"
-    node-cache: "npm:^5.1.2"
-    rollbar: "npm:^2.26.4"
     typescript: "npm:^5.4.5"
-    winston: "npm:^3.13.0"
-    winston-transport: "npm:^4.7.0"
   languageName: unknown
   linkType: soft
 
@@ -7220,7 +7211,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/express-node-dependencies@workspace:packages/node/packages/express/packages/dependencies"
   dependencies:
-    "@aws-sdk/client-secrets-manager": "npm:^3.588.0"
     "@xylabs/assert": "npm:^3.5.1"
     "@xylabs/exists": "npm:^3.5.1"
     "@xylabs/hex": "npm:^3.5.1"
@@ -7266,18 +7256,11 @@ __metadata:
     "@xyo-network/witness-blockchain-abstract": "npm:^2.105.0"
     "@xyo-network/witness-model": "npm:^2.105.0"
     "@xyo-network/witness-timestamp": "npm:^2.105.0"
-    body-parser: "npm:^1.20.2"
     dotenv: "npm:^16.4.5"
     express: "npm:^4.19.2"
-    express-mung: "npm:^0.5.1"
-    http-status-codes: "npm:^2.3.0"
     inversify: "npm:^6.0.2"
-    node-cache: "npm:^5.1.2"
     reflect-metadata: "npm:^0.2.2"
-    rollbar: "npm:^2.26.4"
     typescript: "npm:^5.4.5"
-    winston: "npm:^3.13.0"
-    winston-transport: "npm:^4.7.0"
   languageName: unknown
   linkType: soft
 
@@ -7285,7 +7268,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/express-node-lib@workspace:packages/node/packages/express/packages/lib"
   dependencies:
-    "@aws-sdk/client-secrets-manager": "npm:^3.588.0"
     "@types/express": "npm:4.17.21"
     "@xylabs/assert": "npm:^3.5.1"
     "@xylabs/sdk-api-express-ecs": "npm:^2.0.4"
@@ -7294,15 +7276,8 @@ __metadata:
     "@xyo-network/module-model": "npm:^2.105.0"
     "@xyo-network/node-model": "npm:^2.105.0"
     "@xyo-network/payload-mongodb": "workspace:~"
-    body-parser: "npm:^1.20.2"
     express: "npm:^4.19.2"
-    express-mung: "npm:^0.5.1"
-    http-status-codes: "npm:^2.3.0"
-    node-cache: "npm:^5.1.2"
-    rollbar: "npm:^2.26.4"
     typescript: "npm:^5.4.5"
-    winston: "npm:^3.13.0"
-    winston-transport: "npm:^4.7.0"
   languageName: unknown
   linkType: soft
 
@@ -7310,27 +7285,19 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/express-node-middleware@workspace:packages/node/packages/express/packages/middleware"
   dependencies:
-    "@aws-sdk/client-secrets-manager": "npm:^3.588.0"
     "@types/express": "npm:4.17.21"
     "@types/express-mung": "npm:^0.5.5"
     "@types/swagger-ui-express": "npm:^4.1.6"
-    "@xylabs/assert": "npm:^3.5.1"
     "@xylabs/logger": "npm:^3.5.1"
     "@xylabs/sdk-api-express-ecs": "npm:^2.0.4"
     "@xylabs/ts-scripts-yarn3": "npm:^3.11.2"
     "@xylabs/tsconfig": "npm:^3.11.2"
     "@xyo-network/node-model": "npm:^2.105.0"
-    body-parser: "npm:^1.20.2"
     express: "npm:^4.19.2"
     express-mung: "npm:^0.5.1"
-    http-status-codes: "npm:^2.3.0"
-    node-cache: "npm:^5.1.2"
-    rollbar: "npm:^2.26.4"
     swagger-autogen: "npm:^2.23.7"
     swagger-ui-express: "npm:^5.0.0"
     typescript: "npm:^5.4.5"
-    winston: "npm:^3.13.0"
-    winston-transport: "npm:^4.7.0"
   languageName: unknown
   linkType: soft
 
@@ -7338,7 +7305,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/express-node-routes@workspace:packages/node/packages/express/packages/routes"
   dependencies:
-    "@aws-sdk/client-secrets-manager": "npm:^3.588.0"
     "@types/express": "npm:4.17.21"
     "@xylabs/assert": "npm:^3.5.1"
     "@xylabs/exists": "npm:^3.5.1"
@@ -7369,17 +7335,11 @@ __metadata:
     "@xyo-network/payload-model": "npm:^2.105.0"
     "@xyo-network/payload-wrapper": "npm:^2.105.0"
     "@xyo-network/prometheus-node-plugin": "npm:^2.96.0"
-    body-parser: "npm:^1.20.2"
     express: "npm:^4.19.2"
-    express-mung: "npm:^0.5.1"
     http-status-codes: "npm:^2.3.0"
     jest: "npm:^29.7.0"
     jest-mock-extended: "npm:^3.0.7"
-    node-cache: "npm:^5.1.2"
-    rollbar: "npm:^2.26.4"
     typescript: "npm:^5.4.5"
-    winston: "npm:^3.13.0"
-    winston-transport: "npm:^4.7.0"
   languageName: unknown
   linkType: soft
 
@@ -7387,7 +7347,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/express-node-server@workspace:packages/node/packages/express/packages/server"
   dependencies:
-    "@aws-sdk/client-secrets-manager": "npm:^3.588.0"
     "@types/compression": "npm:^1.7.5"
     "@types/cors": "npm:^2.8.17"
     "@types/express": "npm:4.17.21"
@@ -7404,18 +7363,11 @@ __metadata:
     "@xyo-network/node-core-types": "workspace:~"
     "@xyo-network/node-memory": "npm:^2.105.0"
     "@xyo-network/node-model": "npm:^2.105.0"
-    body-parser: "npm:^1.20.2"
     compression: "npm:^1.7.4"
     cors: "npm:^2.8.5"
     express: "npm:^4.19.2"
-    express-mung: "npm:^0.5.1"
-    http-status-codes: "npm:^2.3.0"
     nconf: "npm:^0.12.1"
-    node-cache: "npm:^5.1.2"
-    rollbar: "npm:^2.26.4"
     typescript: "npm:^5.4.5"
-    winston: "npm:^3.13.0"
-    winston-transport: "npm:^4.7.0"
   languageName: unknown
   linkType: soft
 
@@ -7877,8 +7829,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/node-app@workspace:packages/node/packages/core/packages/app"
   dependencies:
-    "@aws-sdk/client-secrets-manager": "npm:^3.588.0"
-    "@xylabs/assert": "npm:^3.5.1"
     "@xylabs/sdk-api-express-ecs": "npm:^2.0.4"
     "@xylabs/ts-scripts-yarn3": "npm:^3.11.2"
     "@xylabs/tsconfig": "npm:^3.11.2"
@@ -7890,16 +7840,9 @@ __metadata:
     "@xyo-network/node-model": "npm:^2.105.0"
     "@xyo-network/payload-validator": "npm:^2.105.0"
     "@xyo-network/schema-name-validator": "npm:^2.105.0"
-    body-parser: "npm:^1.20.2"
     dotenv: "npm:^16.4.5"
     express: "npm:^4.19.2"
-    express-mung: "npm:^0.5.1"
-    http-status-codes: "npm:^2.3.0"
-    node-cache: "npm:^5.1.2"
-    rollbar: "npm:^2.26.4"
     typescript: "npm:^5.4.5"
-    winston: "npm:^3.13.0"
-    winston-transport: "npm:^4.7.0"
   languageName: unknown
   linkType: soft
 
@@ -9431,7 +9374,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"body-parser@npm:1.20.2, body-parser@npm:^1.20.1, body-parser@npm:^1.20.2":
+"body-parser@npm:1.20.2, body-parser@npm:^1.20.1":
   version: 1.20.2
   resolution: "body-parser@npm:1.20.2"
   dependencies:
@@ -19951,7 +19894,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollbar@npm:^2.26.1, rollbar@npm:^2.26.4":
+"rollbar@npm:^2.26.1":
   version: 2.26.4
   resolution: "rollbar@npm:2.26.4"
   dependencies:
@@ -22832,7 +22775,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"winston@npm:^3.13.0, winston@npm:^3.8.2":
+"winston@npm:^3.8.2":
   version: 3.13.0
   resolution: "winston@npm:3.13.0"
   dependencies:
