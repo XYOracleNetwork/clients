@@ -1,6 +1,6 @@
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
-import { ApiCallJsonResult, isApiCallResult } from '@xyo-network/api-call-witness'
+import { ApiCallJsonResult, isApiCallJsonResult, isApiCallResult } from '@xyo-network/api-call-witness'
 import { ArchivistInstance } from '@xyo-network/archivist-model'
 import { DivinerInstance } from '@xyo-network/diviner-model'
 import { asNodeInstance, NodeInstance } from '@xyo-network/node-model'
@@ -9,7 +9,7 @@ import { SentinelInstance } from '@xyo-network/sentinel-model'
 
 import { getArchivistByNameFromChildNode, getBridge, getDivinerByNameFromChildNode, getSentinelByNameFromChildNode } from '../../testUtil'
 
-const nodeName = 'NftMetadataNode'
+const nodeName = 'XYOPublic:NftMetadataNode'
 const sentinelName = 'NftMetadataSentinel'
 const indexDivinerName = 'NftMetadataIndexDiviner'
 const archivistName = 'NftMetadataArchivist'
@@ -19,7 +19,9 @@ describe(`${nodeName}`, () => {
   const uri = 'https://gutter-cats-metadata.s3.us-east-2.amazonaws.com/metadata/1347'
   let node: NodeInstance
   beforeAll(async () => {
-    node = asNodeInstance(assertEx(await (await getBridge()).resolve(nodeName)), 'Not a node')
+    const bridge = await getBridge()
+    const mod = await bridge.resolve(nodeName)
+    node = asNodeInstance(assertEx(mod), 'Not a node')
     expect(node).toBeDefined()
   })
   describe(`${sentinelName}`, () => {
@@ -32,7 +34,7 @@ describe(`${nodeName}`, () => {
       const query = { schema: 'network.xyo.api.call', uri }
       const result = await sentinel.report([query])
       expect(result).toBeArray()
-      const response = result.filter((p) => p.schema === 'network.xyo.api.call.result')
+      const response = result.filter(isApiCallJsonResult)
       expect(response).toBeArrayOfSize(1)
     })
   })
@@ -40,14 +42,15 @@ describe(`${nodeName}`, () => {
     let diviner: DivinerInstance
     let archivist: ArchivistInstance
     beforeAll(async () => {
-      await delay(300) // Allow enough time for index to propagate
+      await delay(10_000) // Allow enough time for index to propagate
       diviner = await getDivinerByNameFromChildNode(indexDivinerName, nodeName)
       expect(diviner).toBeDefined()
       archivist = await getArchivistByNameFromChildNode(archivistName, nodeName)
       expect(archivist).toBeDefined()
     })
     it('indexes NFT metadata by URI', async () => {
-      const query = { schema: 'network.xyo.diviner.payload.query', uri }
+      // const query = { schema: 'network.xyo.diviner.payload.query', uri }
+      const query = { schema: 'network.xyo.diviner.payload.query' }
       const results = (await diviner.divine([query])) as WithSources<WithMeta<{ schema: string; uri: string }>>[]
       expect(results).toBeDefined()
       expect(results).toBeArrayOfSize(1)

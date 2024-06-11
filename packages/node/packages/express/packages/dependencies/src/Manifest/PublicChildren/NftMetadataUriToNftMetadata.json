@@ -54,7 +54,7 @@
           },
           {
             "config": {
-              "archivist": "NftMetadataAddressStateArchivist",
+              "archivist": "NftMetadataNode:NftMetadataAddressStateArchivist",
               "boundWitnessSdkConfig": {
                 "collection": "nft_metadata_address_state_bound_witnesses"
               },
@@ -100,7 +100,7 @@
           },
           {
             "config": {
-              "archivist": "NftMetadataAddressStateArchivist",
+              "archivist": "NftMetadataNode:NftMetadataAddressStateArchivist",
               "boundWitnessSdkConfig": {
                 "collection": "nft_metadata_address_state_bound_witnesses"
               },
@@ -184,7 +184,7 @@
           },
           {
             "config": {
-              "archivist": "NftMetadataIndexArchivist",
+              "archivist": "NftMetadataNode:NftMetadataIndexArchivist",
               "boundWitnessSdkConfig": {
                 "collection": "nft_metadata_index_bound_witnesses"
               },
@@ -231,7 +231,7 @@
           },
           {
             "config": {
-              "archivist": "NftMetadataIndexArchivist",
+              "archivist": "NftMetadataNode:NftMetadataIndexArchivist",
               "boundWitnessSdkConfig": {
                 "collection": "nft_metadata_index_bound_witnesses"
               },
@@ -273,9 +273,9 @@
               },
               "name": "StateToIndexCandidateDiviner",
               "payloadStore": {
-                "archivist": "NftMetadataArchivist",
-                "boundWitnessDiviner": "NftMetadataBoundWitnessDiviner",
-                "payloadDiviner": "NftMetadataPayloadDiviner"
+                "archivist": "NftMetadataNode:NftMetadataArchivist",
+                "boundWitnessDiviner": "NftMetadataNode:NftMetadataBoundWitnessDiviner",
+                "payloadDiviner": "NftMetadataNode:NftMetadataPayloadDiviner"
               },
               "schema": "network.xyo.diviner.indexing.temporal.stage.stateToIndexCandidateDiviner.config"
             }
@@ -361,7 +361,7 @@
           },
           {
             "config": {
-              "archivist": "NftMetadataArchivist",
+              "archivist": "NftMetadataNode:NftMetadataArchivist",
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
@@ -391,7 +391,7 @@
           },
           {
             "config": {
-              "archivist": "NftMetadataArchivist",
+              "archivist": "NftMetadataNode:NftMetadataArchivist",
               "boundWitnessSdkConfig": {
                 "collection": "nft_metadata_bound_witnesses"
               },
@@ -482,23 +482,23 @@
             "config": {
               "accountPath": "3'/2'/21'",
               "indexStore": {
-                "archivist": "NftMetadataIndexArchivist",
-                "boundWitnessDiviner": "NftMetadataIndexBoundWitnessDiviner",
-                "payloadDiviner": "NftMetadataIndexPayloadDiviner"
+                "archivist": "NftMetadataNode:NftMetadataIndexArchivist",
+                "boundWitnessDiviner": "NftMetadataNode:NftMetadataIndexBoundWitnessDiviner",
+                "payloadDiviner": "NftMetadataNode:NftMetadataIndexPayloadDiviner"
               },
               "indexingDivinerStages": {
-                "divinerQueryToIndexQueryDiviner": "QueryToIndexQueryDiviner",
-                "indexCandidateToIndexDiviner": "IndexCandidateToIndexDiviner",
-                "indexQueryResponseToDivinerQueryResponseDiviner": "IndexQueryResponseToQueryResponseDiviner",
-                "stateToIndexCandidateDiviner": "StateToIndexCandidateDiviner"
+                "divinerQueryToIndexQueryDiviner": "NftMetadataNode:QueryToIndexQueryDiviner",
+                "indexCandidateToIndexDiviner": "NftMetadataNode:IndexCandidateToIndexDiviner",
+                "indexQueryResponseToDivinerQueryResponseDiviner": "NftMetadataNode:IndexQueryResponseToQueryResponseDiviner",
+                "stateToIndexCandidateDiviner": "NftMetadataNode:StateToIndexCandidateDiviner"
               },
               "name": "NftMetadataIndexDiviner",
               "pollFrequency": 100,
               "schema": "network.xyo.diviner.indexing.temporal.config",
               "stateStore": {
-                "archivist": "NftMetadataAddressStateArchivist",
-                "boundWitnessDiviner": "NftMetadataAddressStateBoundWitnessDiviner",
-                "payloadDiviner": "NftMetadataAddressStatePayloadDiviner"
+                "archivist": "NftMetadataNode:NftMetadataAddressStateArchivist",
+                "boundWitnessDiviner": "NftMetadataNode:NftMetadataAddressStateBoundWitnessDiviner",
+                "payloadDiviner": "NftMetadataNode:NftMetadataAddressStatePayloadDiviner"
               }
             }
           },
@@ -506,7 +506,7 @@
             "config": {
               "accountPath": "3'/3'/3'",
               "archiving": {
-                "archivists": ["NftMetadataArchivist"]
+                "archivists": ["NftMetadataNode:NftMetadataArchivist"]
               },
               "name": "NftMetadataSentinel",
               "schema": "network.xyo.sentinel.config",
