@@ -14,11 +14,11 @@
     "@xylabs/exists": "^3.5.1",
     "@xylabs/lodash": "^3.5.1",
     "@xylabs/static-implements": "^3.5.1",
-    "@xyo-network/module-model": "^2.105.0",
+    "@xyo-network/module-model": "^2.106.0",
     "@xyo-network/module-model-mongodb": "workspace:~",
     "@xyo-network/payload-mongodb": "workspace:~",
     "@xyo-network/sdk-xyo-mongo-js": "workspace:~",
-    "mongodb": "^6.6.2"
+    "mongodb": "^6.7.0"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.11.2",

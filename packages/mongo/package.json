@@ -60,7 +60,7 @@
     "@xylabs/delay": "^3.5.1",
     "@xylabs/forget": "^3.5.1",
     "async-mutex": "^0.5.0",
-    "mongodb": "^6.6.2"
+    "mongodb": "^6.7.0"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.11.2",
