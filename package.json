@@ -124,9 +124,9 @@
   },
   "sideEffects": false,
   "version": "2.88.8",
-  "packageManager": "yarn@4.3.0",
+  "packageManager": "yarn@1.22.22",
   "volta": {
-    "node": "20.10.0",
+    "node": "22.3.0",
     "yarn": "1.22.19"
   },
   "type": "module"
