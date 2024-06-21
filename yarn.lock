@@ -5409,6 +5409,7 @@ __metadata:
     "@xyo-network/uniswap-crypto-market-plugin": "npm:^2.96.2"
     "@xyo-network/witness-adhoc": "npm:^2.106.0"
     "@xyo-network/witness-model": "npm:^2.106.0"
+    "@xyo-network/xml-plugin": "npm:^2.96.2"
     agenda: "npm:^5.0.0"
     compression: "npm:^1.7.4"
     cors: "npm:^2.8.5"
@@ -8510,6 +8511,20 @@ __metadata:
     "@xyo-network/payload-model": "npm:~2.106.0"
     "@xyo-network/witness-model": "npm:~2.106.0"
   checksum: 10/fb7b1fc985b9dba071c75dd5352be13639b8f11205544d8d0968fea491164ddb0798c627c4f0a7b1c2d6fcbc9ad8070b57224e7c61b657bb3f39a60ac22d7fe5
+  languageName: node
+  linkType: hard
+
+"@xyo-network/xml-plugin@npm:^2.96.2":
+  version: 2.96.2
+  resolution: "@xyo-network/xml-plugin@npm:2.96.2"
+  dependencies:
+    "@xylabs/object": "npm:^3.5.1"
+    "@xyo-network/diviner-abstract": "npm:^2.106.0"
+    "@xyo-network/diviner-model": "npm:^2.106.0"
+    "@xyo-network/module-model": "npm:^2.106.0"
+    "@xyo-network/payload-model": "npm:^2.106.0"
+    xml2js: "npm:^0.6.2"
+  checksum: 10/19d72aa1d78a155643f7ea908a04bbdc21d8b3ce6f31cdd4aa5366d184426e240c11421a75e8c7f178f045fe033facbb29c332a4f48e816674e5b16a4532fdda
   languageName: node
   linkType: hard
 
