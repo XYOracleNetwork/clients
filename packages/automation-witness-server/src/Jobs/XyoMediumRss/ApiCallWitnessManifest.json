@@ -14,7 +14,8 @@
               "accountPath": "1/1'/1'",
               "name": "ApiCallWitness",
               "schema": "network.xyo.api.call.witness.config",
-              "uriTemplate": "https://medium.com/feed/${feed}"
+              "uriTemplate": "https://medium.com/feed/${feed}",
+              "accept": "text/xml"
             }
           },
           {
@@ -33,7 +34,8 @@
               "schema": "network.xyo.sentinel.config",
               "synchronous": "true",
               "archiving": {
-                "archivists": ["Archivist"]
+                "archivists": ["Archivist"],
+                "queries": ["network.xyo.query.sentinel.report"]
               },
               "tasks": [
                 {
