@@ -1,5 +1,5 @@
 import { assertEx } from '@xylabs/assert'
-import { isSnapshotWithMeta } from '@xyo-network/tzero-stock-market-payload-plugin'
+import { isXmlWithMeta } from '@xyo-network/xml-plugin'
 
 import { getArchivist } from '../../../Archivists'
 import { reportMediumRssFeed } from '../reportMediumRssFeeds'
@@ -7,11 +7,11 @@ import { reportMediumRssFeed } from '../reportMediumRssFeeds'
 describe('reportStockPrices', () => {
   describe('reportStockPrice', () => {
     it('reports stock price', async () => {
-      const result = await reportMediumRssFeed('XYLB')
+      const result = await reportMediumRssFeed('xyonetwork')
       expect(result).toBeArrayOfSize(2)
-      const snapshot = result.find(isSnapshotWithMeta)
+      const snapshot = result.find(isXmlWithMeta)
       expect(snapshot).toBeDefined()
-      expect(snapshot?.symbol).toBe('XYLB')
+      expect(snapshot?.xml).toBeObject()
       expect(snapshot?.$hash).toBeDefined()
       const hash = assertEx(snapshot?.$hash, () => 'Missing hash')
       const archivist = await getArchivist()
