@@ -37,14 +37,14 @@
     "xyo": "dist/index.js"
   },
   "devDependencies": {
-    "@types/node": "^20.14.6",
+    "@types/node": "^20.14.7",
     "@types/tail": "^2.2.3",
     "@types/terminal-kit": "^2.5.6",
-    "@xylabs/ts-scripts-yarn3": "^3.11.2",
-    "@xylabs/tsconfig": "^3.11.2",
-    "@xylabs/tsconfig-jest": "^3.11.2",
+    "@xylabs/ts-scripts-yarn3": "^3.11.7",
+    "@xylabs/tsconfig": "^3.11.7",
+    "@xylabs/tsconfig-jest": "^3.11.7",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.5.2"
   },
   "description": "Primary SDK for using XYO Protocol 2.0",
   "docs": "dist/docs.json",
