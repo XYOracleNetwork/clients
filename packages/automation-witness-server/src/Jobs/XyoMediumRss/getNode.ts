@@ -9,7 +9,7 @@ import { getArchivist } from '../../Archivists'
 import manifestPayload from './ApiCallWitnessManifest.json'
 
 export const getNode = async (): Promise<MemoryNode> => {
-  const wallet = await getWallet(WalletPaths.TZero.Node)
+  const wallet = await getWallet(WalletPaths.MediumRss.Node)
   const locator = new ModuleFactoryLocator()
   locator.register(ApiCallWitness)
   locator.register(XmlParsingDiviner)
