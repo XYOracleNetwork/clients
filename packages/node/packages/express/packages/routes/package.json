@@ -61,7 +61,7 @@
     "@xyo-network/node-core-types": "workspace:~",
     "@xyo-network/payload-model": "^2.107.0",
     "@xyo-network/payload-wrapper": "^2.107.0",
-    "@xyo-network/prometheus-node-plugin": "^2.96.2",
+    "@xyo-network/prometheus-node-plugin": "^2.97.0",
     "express": "^4.19.2",
     "http-status-codes": "^2.3.0"
   },
