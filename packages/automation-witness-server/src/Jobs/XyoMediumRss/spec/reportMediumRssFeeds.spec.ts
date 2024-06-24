@@ -4,9 +4,9 @@ import { isXmlWithMeta } from '@xyo-network/xml-plugin'
 import { getArchivist } from '../../../Archivists'
 import { reportMediumRssFeed } from '../reportMediumRssFeeds'
 
-describe('reportStockPrices', () => {
-  describe('reportStockPrice', () => {
-    it('reports stock price', async () => {
+describe('reportMediumRssFeeds', () => {
+  describe('reportMediumRssFeed', () => {
+    it('reports Medium RSS feed', async () => {
       const result = await reportMediumRssFeed('xyonetwork')
       expect(result).toBeArrayOfSize(2)
       const snapshot = result.find(isXmlWithMeta)
