@@ -20,7 +20,12 @@ export const getNode = async (): Promise<MemoryNode> => {
   // already declared in the manifest but doesn't exist as we
   // dynamically bridge to it based on the environment.
   const archivist = await getArchivist()
+  const preAttach = await node.resolve('*')
   await node.register(archivist)
-  await node.attach(archivist.address, false)
+  await node.attach(archivist.address, true)
+  const postAttach = await node.resolve('*')
+  const postAttachResolvedByAddress = await node.resolve(archivist.address)
+  const archivistResolve = await archivist.resolve('*')
+  const publicChildren = await node.publicChildren()
   return node
 }
