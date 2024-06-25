@@ -1,4 +1,3 @@
-/* eslint-disable max-nested-callbacks */
 import { Account } from '@xyo-network/account'
 import { MongoDBArchivist } from '@xyo-network/archivist-mongodb'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'

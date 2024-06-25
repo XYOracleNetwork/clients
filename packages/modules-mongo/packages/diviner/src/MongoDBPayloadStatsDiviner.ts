@@ -154,7 +154,6 @@ export class MongoDBPayloadStatsDiviner
       const count = await this.boundWitnesses.useCollection((collection) => {
         return collection
           .aggregate<{ payload_hashes: number }>([
-            // eslint-disable-next-line sort-keys-fix/sort-keys-fix
             { $sort: { addresses: 1, _timestamp: -1 } },
             // Find all BoundWitnesses containing this address
             { $match: { addresses: { $in: [address] } } },
