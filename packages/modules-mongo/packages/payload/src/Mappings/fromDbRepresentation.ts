@@ -1,19 +1,25 @@
+import { assertEx } from '@xylabs/assert'
+import { omitBy } from '@xylabs/lodash'
 import { BoundWitness, BoundWitnessFields, isBoundWitness } from '@xyo-network/boundwitness-model'
-import { deepOmitPrefixedFields } from '@xyo-network/hash'
 import { Payload, PayloadMetaFields } from '@xyo-network/payload-model'
 
 import { BoundWitnessWithMongoMeta } from '../BoundWitness'
 import { PayloadWithMongoMeta } from '../Payload'
 
+const omitByPredicate = (prefix: string) => (_: unknown, key: string) => {
+  assertEx(typeof key === 'string', () => `Invalid key type [${key}, ${typeof key}]`)
+  return key.startsWith(prefix)
+}
+
 export const payloadFromDbRepresentation = (value: PayloadWithMongoMeta): Payload<PayloadMetaFields> => {
   const { _$hash, _$meta, ...other } = value
-  const sanitized = deepOmitPrefixedFields(other, '_')
-  return { ...sanitized, $hash: _$hash, $meta: _$meta }
+  const sanitized = omitBy(other, omitByPredicate('_'))
+  return { ...sanitized, $hash: _$hash, $meta: _$meta } as Payload<PayloadMetaFields>
 }
 
 export const boundWitnessFromDbRepresentation = (value: BoundWitnessWithMongoMeta): BoundWitness<BoundWitnessFields> => {
   const { _$hash, _$meta, ...other } = value
-  const sanitized = deepOmitPrefixedFields(other, '_')
+  const sanitized = omitBy(other, omitByPredicate('_'))
   return { ...sanitized, $hash: _$hash, $meta: _$meta } as unknown as BoundWitness<BoundWitnessFields>
 }
 

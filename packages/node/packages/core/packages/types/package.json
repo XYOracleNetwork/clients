@@ -8,8 +8,8 @@
   "description": "XYO Node Core Types",
   "sideeffects": false,
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.11.7",
-    "@xylabs/tsconfig": "^3.11.7",
+    "@xylabs/ts-scripts-yarn3": "^3.11.8",
+    "@xylabs/tsconfig": "^3.11.8",
     "typescript": "^5.5.2"
   },
   "types": "dist/node/index.d.ts",
