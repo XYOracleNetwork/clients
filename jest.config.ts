@@ -16,12 +16,6 @@ const generateJestConfig = ({ esModules }: { esModules: string[] }) => {
     testTimeout: 90_000,
     transform: {
       [`(${esModulesList}).+\\.js$`]: 'babel-jest',
-      '^.+\\.tsx?$': [
-        'ts-jest',
-        {
-          tsconfig: 'tsconfig.test.json',
-        },
-      ],
     },
     transformIgnorePatterns: [`./node_modules/(?!${esModulesList})`],
     workerThreads: true,

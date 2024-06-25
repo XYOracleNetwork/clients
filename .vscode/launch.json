@@ -6,17 +6,18 @@
       "type": "node",
       "request": "launch",
       "name": "MemoryNode",
-      "program": "${workspaceFolder}/packages/node/packages/core/packages/app/src/app.ts",
+      "program": "${workspaceFolder}/packages/node/packages/core/packages/app/dist/node/app.js",
       "outFiles": [
         "${workspaceFolder}/dist/**/*.js"
       ],
       "env": {
-        "NODE_OPTIONS": "-r ts-node/register --loader ts-node/esm --max-old-space-size=8192"
+        "NODE_OPTIONS": "-r ts-node/register --max-old-space-size=8192"
       },
       "envFile": "${workspaceFolder}/.env",
       "sourceMaps": true,
       "resolveSourceMapLocations": [
-        "!**/node_modules/**"
+        "${workspaceFolder}/**",
+        "**/node_modules/**"
       ],
       "pauseForSourceMap": true,
     },
@@ -126,7 +127,11 @@
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "cwd": "${workspaceFolder}",
-      "envFile": "${workspaceFolder}/.env"
+      "envFile": "${workspaceFolder}/.env",
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "**/node_modules/**"
+      ],
     }
   ]
 }
