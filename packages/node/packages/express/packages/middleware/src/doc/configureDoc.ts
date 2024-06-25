@@ -1,6 +1,6 @@
 import { Application } from 'express'
 import swaggerAutogen from 'swagger-autogen'
-// eslint-disable-next-line import/no-deprecated
+
 import { serve, setup } from 'swagger-ui-express'
 
 import { ConfigureDocOptions } from './ConfigureDocOptions'
@@ -29,6 +29,5 @@ export const configureDoc = async (app: Application, options: ConfigureDocOption
   const mergedOptions = { ...defaultOptions, ...options, schemes }
   await swaggerAutogen()(swaggerJsonFile, endpointsFiles, mergedOptions)
 
-  // eslint-disable-next-line import/no-deprecated
   app.use('/doc', serve, setup(undefined, uiOptions))
 }

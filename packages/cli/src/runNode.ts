@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-internal-modules
 import { getNode } from '@xyo-network/node-app'
 
 import { getAccount } from './lib'

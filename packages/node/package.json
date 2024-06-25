@@ -49,8 +49,8 @@
   },
   "devDependencies": {
     "@swc/core": "^1.6.5",
-    "@xylabs/ts-scripts-yarn3": "^3.11.8",
-    "@xylabs/tsconfig": "^3.11.8",
+    "@xylabs/ts-scripts-yarn3": "^3.11.11",
+    "@xylabs/tsconfig": "^3.11.11",
     "typescript": "^5.5.2"
   },
   "type": "module"

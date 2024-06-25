@@ -19,6 +19,7 @@ export class MongoDBBoundWitnessDiviner extends MongoDBDivinerBase {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, BoundWitnessDivinerConfigSchema]
   static override readonly defaultConfigSchema: Schema = BoundWitnessDivinerConfigSchema
 
+  // eslint-disable-next-line complexity
   protected override async divineHandler(payloads?: Payload[]): Promise<BoundWitness[]> {
     const query = payloads?.find<BoundWitnessDivinerQueryPayload>(isBoundWitnessDivinerQueryPayload)
     // TODO: Support multiple queries

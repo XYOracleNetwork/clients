@@ -12,6 +12,7 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, PayloadDivinerConfigSchema]
   static override readonly defaultConfigSchema: Schema = PayloadDivinerConfigSchema
 
+  // eslint-disable-next-line complexity
   protected override async divineHandler(payloads?: Payload[]): Promise<Payload[]> {
     const query = payloads?.find<PayloadDivinerQueryPayload>(isPayloadDivinerQueryPayload)
     // TODO: Support multiple queries

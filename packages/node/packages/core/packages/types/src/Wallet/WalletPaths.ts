@@ -1,5 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
-
 const RootPath = "m/44'/60'/3'" as const
 
 const ModulePath = {
