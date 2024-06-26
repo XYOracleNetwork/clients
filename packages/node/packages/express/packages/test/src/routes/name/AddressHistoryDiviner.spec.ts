@@ -1,6 +1,6 @@
 import { Account } from '@xyo-network/account'
 import { ArchivistInstance } from '@xyo-network/archivist-model'
-import { DivinerDivineQuerySchema, DivinerInstance } from '@xyo-network/diviner'
+import { DivinerDivineQuerySchema, DivinerInstance } from '@xyo-network/diviner-model'
 import { AddressHistoryQueryPayload, AddressHistoryQuerySchema } from '@xyo-network/diviner-address-history-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 

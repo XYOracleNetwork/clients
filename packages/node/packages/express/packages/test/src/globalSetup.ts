@@ -1,4 +1,3 @@
-/* eslint-disable no-var */
 import { config } from 'dotenv'
 config()
 import { disableGloballyUnique } from '@xylabs/object'
@@ -13,7 +12,7 @@ import { Express } from 'express'
 import { Config } from 'jest'
 import { MongoMemoryReplSet } from 'mongodb-memory-server'
 import supertest from 'supertest'
-// eslint-disable-next-line import/no-internal-modules
+
 import TestAgent from 'supertest/lib/agent'
 
 disableGloballyUnique()

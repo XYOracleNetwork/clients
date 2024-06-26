@@ -28,5 +28,4 @@ const mod: CommandModule = {
   handler,
 }
 
-// eslint-disable-next-line import/no-default-export
 export default mod

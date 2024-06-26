@@ -1,6 +1,6 @@
 import { HDWallet } from '@xyo-network/account'
 import { AccountInstance } from '@xyo-network/account-model'
-import { AbstractArchivist } from '@xyo-network/archivist'
+import { AbstractArchivist } from '@xyo-network/archivist-abstract'
 import { BoundWitnessBuilder, QueryBoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { AbstractModule } from '@xyo-network/module-abstract'
 import { ModuleConfig, ModuleConfigSchema, ModuleStateQuerySchema } from '@xyo-network/module-model'

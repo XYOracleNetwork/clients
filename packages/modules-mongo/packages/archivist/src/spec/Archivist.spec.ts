@@ -1,4 +1,3 @@
-/* eslint-disable max-statements */
 let timestamp = 123_456_789_000
 Date.now = jest.fn(() => timestamp)
 

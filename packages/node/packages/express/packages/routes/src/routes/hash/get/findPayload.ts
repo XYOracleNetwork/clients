@@ -1,4 +1,4 @@
-import { ArchivistInstance } from '@xyo-network/archivist'
+import { ArchivistInstance } from '@xyo-network/archivist-model'
 import { BoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
 import { BoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-abstract'
 import { BoundWitnessDivinerQueryPayload, BoundWitnessDivinerQuerySchema } from '@xyo-network/diviner-boundwitness-model'

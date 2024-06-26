@@ -34,5 +34,4 @@ const mod: CommandModule<EmptyObject, ModuleArguments> = {
   handler,
 }
 
-// eslint-disable-next-line import/no-default-export
 export default mod

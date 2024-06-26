@@ -4,7 +4,6 @@ import { ArgumentsCamelCase, Argv, CommandBuilder, CommandModule } from 'yargs'
 import { printLine } from '../../../lib'
 import { ModuleArguments } from '../ModuleArguments'
 
-// eslint-disable-next-line @typescript-eslint/ban-types
 type Arguments = ModuleArguments & {
   payloads: string[]
 }
@@ -29,5 +28,4 @@ const mod: CommandModule<EmptyObject, Arguments> = {
   handler,
 }
 
-// eslint-disable-next-line import/no-default-export
 export default mod

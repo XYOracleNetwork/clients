@@ -1,4 +1,4 @@
-import { MemoryArchivist } from '@xyo-network/archivist'
+import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { TYPES } from '@xyo-network/node-core-types'
 import { Container } from 'inversify'
