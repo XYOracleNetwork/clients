@@ -1,4 +1,5 @@
 import { ApiCallWitness } from '@xyo-network/api-call-witness'
+import { JsonPathDiviner } from '@xyo-network/diviner-jsonpath-memory'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { MemoryNode } from '@xyo-network/node-memory'
@@ -13,6 +14,7 @@ export const getNode = async (): Promise<MemoryNode> => {
   const locator = new ModuleFactoryLocator()
   locator.register(ApiCallWitness)
   locator.register(XmlParsingDiviner)
+  locator.register(JsonPathDiviner)
   const manifest = new ManifestWrapper(manifestPayload as PackageManifestPayload, wallet, locator)
   const node = await manifest.loadNodeFromIndex(0)
   // Attach archivist to node to allow for dynamic archiving of
@@ -20,12 +22,7 @@ export const getNode = async (): Promise<MemoryNode> => {
   // already declared in the manifest but doesn't exist as we
   // dynamically bridge to it based on the environment.
   const archivist = await getArchivist()
-  const preAttach = await node.resolve('*')
   await node.register(archivist)
   await node.attach(archivist.address, true)
-  const postAttach = await node.resolve('*')
-  const postAttachResolvedByAddress = await node.resolve(archivist.address)
-  const archivistResolve = await archivist.resolve('*')
-  const publicChildren = await node.publicChildren()
   return node
 }
