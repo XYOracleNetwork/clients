@@ -1985,7 +1985,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/types@npm:^7.0.0, @babel/types@npm:^7.20.7, @babel/types@npm:^7.24.6, @babel/types@npm:^7.24.7, @babel/types@npm:^7.3.3, @babel/types@npm:^7.4.4, @babel/types@npm:^7.8.3":
+"@babel/types@npm:^7.0.0, @babel/types@npm:^7.20.7, @babel/types@npm:^7.24.7, @babel/types@npm:^7.3.3, @babel/types@npm:^7.4.4, @babel/types@npm:^7.8.3":
   version: 7.24.7
   resolution: "@babel/types@npm:7.24.7"
   dependencies:
@@ -4581,7 +4581,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xylabs/assert@npm:^3.0.14, @xylabs/assert@npm:^3.5.1, @xylabs/assert@npm:^3.5.2, @xylabs/assert@npm:~3.5.1, @xylabs/assert@npm:~3.5.2":
+"@xylabs/assert@npm:^3.0.14, @xylabs/assert@npm:^3.5.1, @xylabs/assert@npm:^3.5.2, @xylabs/assert@npm:~3.5.2":
   version: 3.5.2
   resolution: "@xylabs/assert@npm:3.5.2"
   checksum: 10/2c38551af139bd4f6367875a394eba96ba9ddd4bf69dc48cae14af404a56ad26fabdc7e1b9cb1b9f179aa34f8f6a5dd615bbf390709df2248d82846231953b64
@@ -4610,7 +4610,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xylabs/delay@npm:^3.5.1, @xylabs/delay@npm:^3.5.2, @xylabs/delay@npm:~3.5.1, @xylabs/delay@npm:~3.5.2":
+"@xylabs/delay@npm:^3.5.1, @xylabs/delay@npm:^3.5.2, @xylabs/delay@npm:~3.5.2":
   version: 3.5.2
   resolution: "@xylabs/delay@npm:3.5.2"
   dependencies:
@@ -4659,12 +4659,12 @@ __metadata:
   linkType: hard
 
 "@xylabs/eth-address@npm:^3.5.1":
-  version: 3.5.1
-  resolution: "@xylabs/eth-address@npm:3.5.1"
+  version: 3.5.2
+  resolution: "@xylabs/eth-address@npm:3.5.2"
   dependencies:
-    "@xylabs/assert": "npm:~3.5.1"
-    ethers: "npm:6.12.1"
-  checksum: 10/89ff3f775cc072736a69aa158176af1917a73c171dfe2444402dbdac8424d2d67db7bffe7766ade078a07823454827adb6c163f9c762ac1163c3db786ab7e2c4
+    "@xylabs/assert": "npm:~3.5.2"
+    ethers: "npm:6.13.1"
+  checksum: 10/511c0973939de9cb8a63119204949bf9825b2a4cb3171f3ce1a618ed89b7d7dde3fb80a14bb470cee1046ea7b4cc53810896fbad6b0c23eae3a6b0764b5e0ade
   languageName: node
   linkType: hard
 
@@ -4746,7 +4746,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xylabs/promise@npm:^3.5.1, @xylabs/promise@npm:^3.5.2, @xylabs/promise@npm:~3.5.1":
+"@xylabs/promise@npm:^3.5.1, @xylabs/promise@npm:^3.5.2, @xylabs/promise@npm:~3.5.2":
   version: 3.5.2
   resolution: "@xylabs/promise@npm:3.5.2"
   checksum: 10/115f964f159c8829ec54539519f0a99f37821bcd7e3c4ca700128412f0d47e7d459707e948803f4f844c6252f019cd2c0a33b3b3a2544c1d6f4d3b11caa6de48
@@ -4754,12 +4754,12 @@ __metadata:
   linkType: hard
 
 "@xylabs/retry@npm:^3.5.1":
-  version: 3.5.1
-  resolution: "@xylabs/retry@npm:3.5.1"
+  version: 3.5.2
+  resolution: "@xylabs/retry@npm:3.5.2"
   dependencies:
-    "@xylabs/delay": "npm:~3.5.1"
-    "@xylabs/promise": "npm:~3.5.1"
-  checksum: 10/ed9e73818f4b84c24e3deee60c3549c0e1788d19602dc9d299b10ed2bfc21523111a03162a66968a99a19ccd69040ce3e49660aecd53c515b32001e9e845e2d8
+    "@xylabs/delay": "npm:~3.5.2"
+    "@xylabs/promise": "npm:~3.5.2"
+  checksum: 10/1e419edfb24a6766765f2b7731508540ad4e5a85bea84008611b58c82827b49f51a03462bf6d313617266cffc8f6e5d4e4f0fdc9505ddf0d1d3fefce3405b59b
   languageName: node
   linkType: hard
 
@@ -4798,19 +4798,19 @@ __metadata:
   linkType: hard
 
 "@xylabs/threads@npm:^3.5.1":
-  version: 3.5.1
-  resolution: "@xylabs/threads@npm:3.5.1"
+  version: 3.5.2
+  resolution: "@xylabs/threads@npm:3.5.2"
   dependencies:
-    "@babel/types": "npm:^7.24.6"
+    "@babel/types": "npm:^7.24.7"
     callsites-3-1-0: "npm:callsites@3.1.0"
-    debug: "npm:^4.3.4"
+    debug: "npm:^4.3.5"
     is-observable-2-1-0: "npm:is-observable@2.1.0"
     observable-fns: "npm:^0.6.1"
     tiny-worker: "npm:^2.3.0"
   dependenciesMeta:
     tiny-worker:
       optional: true
-  checksum: 10/1a221144863abab110475d7dd12a8e67ec3ab08d7d6137f31ef0cb439e947bbfb8bd2581c81edc0460b1e7d1abad0ed7b55be01461dcf7ab6bb1ab697d95ec58
+  checksum: 10/0661f5a86b06dba2aae1dc03254e6d098f47e163a678353bc9cd938752171257999c9b926dacb603e76ba27615381babab1d98820bf6e94c7b34fe5d57bf3430
   languageName: node
   linkType: hard
 
@@ -4982,11 +4982,11 @@ __metadata:
   linkType: hard
 
 "@xylabs/url@npm:^3.5.1":
-  version: 3.5.1
-  resolution: "@xylabs/url@npm:3.5.1"
+  version: 3.5.2
+  resolution: "@xylabs/url@npm:3.5.2"
   dependencies:
     buffer: "npm:^6.0.3"
-  checksum: 10/e8595d392b037c12698e06200f7cdfb087af98d0393660f04cd9dcd14999b3050ebc382d4e57acdf95bce395ae8e6582ab48286f57b6179e449e1c600a155f8b
+  checksum: 10/26ac37b342b40d22b370e2a5e85a77d46d4b937922e62fc5ef9baa3e73e09b272703f4b14a026c36866476ad5a3ee411d19ca927299aece5750275a9dde240e0
   languageName: node
   linkType: hard
 
@@ -9302,9 +9302,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001629":
-  version: 1.0.30001636
-  resolution: "caniuse-lite@npm:1.0.30001636"
-  checksum: 10/9e6c5ab4c20df31df36720dda77cf6a781549ac2ad844bc0a416b327a793da21486358a1f85fdd6c39e22d336f70aac3b0e232f5f228cdff0ceb6e3e1c5e98fd
+  version: 1.0.30001637
+  resolution: "caniuse-lite@npm:1.0.30001637"
+  checksum: 10/8126180fee29702b6ba01c725380129589b6ffe8acc7c600ec33a89e0501c1b060ab2579e2258bf71cd560745aa3778a1d65e1e3fd73de30f313c38f1f8db03d
   languageName: node
   linkType: hard
 
@@ -10158,7 +10158,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4, debug@npm:^4, debug@npm:^4.0.0, debug@npm:^4.0.1, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.2, debug@npm:^4.3.3, debug@npm:^4.3.4, debug@npm:~4.3.4":
+"debug@npm:4, debug@npm:^4, debug@npm:^4.0.0, debug@npm:^4.0.1, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.2, debug@npm:^4.3.3, debug@npm:^4.3.4, debug@npm:^4.3.5, debug@npm:~4.3.4":
   version: 4.3.5
   resolution: "debug@npm:4.3.5"
   dependencies:
@@ -10564,9 +10564,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.796":
-  version: 1.4.810
-  resolution: "electron-to-chromium@npm:1.4.810"
-  checksum: 10/425de710336094330fd026cc2cfa0b383bfc9a49a2f575ceec2ac76198663ff95d0109bb45b243a43f0bf0f91a2e9c2768693a136d0968ae59728d5e8eea22ef
+  version: 1.4.812
+  resolution: "electron-to-chromium@npm:1.4.812"
+  checksum: 10/317b1d4469ae7cd87da0dcdf52cb6f6319a5833545f95be7fcb619f3274d9ba4af86270a94fe082bba9cc4e1063ce6806cedff0440bdf37d313dd4ba8a90becb
   languageName: node
   linkType: hard
 
@@ -11466,9 +11466,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ethers@npm:6.11.0":
-  version: 6.11.0
-  resolution: "ethers@npm:6.11.0"
+"ethers@npm:^6":
+  version: 6.13.1
+  resolution: "ethers@npm:6.13.1"
   dependencies:
     "@adraffy/ens-normalize": "npm:1.10.1"
     "@noble/curves": "npm:1.2.0"
@@ -11476,8 +11476,8 @@ __metadata:
     "@types/node": "npm:18.15.13"
     aes-js: "npm:4.0.0-beta.5"
     tslib: "npm:2.4.0"
-    ws: "npm:8.5.0"
-  checksum: 10/c6e5964ceabf2d289f8ae5b16e634995375457a8c5b814ea54799b5a3c951668465adb9b6dda3aea559d9c4fe3faa8297a38651853b54a53de9448663a908f12
+    ws: "npm:8.17.1"
+  checksum: 10/efc3e8d4d13101cad01823ba524dad797a23f60088ca9f8677bd6dbfad5087e4187ede121e43aa0758d704525976f935860c5d5d27183a4247deaccf7cf19950
   languageName: node
   linkType: hard
 
@@ -14496,9 +14496,9 @@ __metadata:
   linkType: hard
 
 "jsonc-parser@npm:^3.2.0, jsonc-parser@npm:^3.2.1":
-  version: 3.3.0
-  resolution: "jsonc-parser@npm:3.3.0"
-  checksum: 10/dc78790be7f132303f9707a75569d2913a74a80b03710afe9d31f539cbe03bd152187854e2574cb2d4d1dd925bd34dfa83f8190cc495d589eec5b3fb459115d7
+  version: 3.3.1
+  resolution: "jsonc-parser@npm:3.3.1"
+  checksum: 10/9b0dc391f20b47378f843ef1e877e73ec652a5bdc3c5fa1f36af0f119a55091d147a86c1ee86a232296f55c929bba174538c2bf0312610e0817a22de131cc3f4
   languageName: node
   linkType: hard
 
@@ -15646,11 +15646,11 @@ __metadata:
   linkType: hard
 
 "minimatch@npm:^9.0.0, minimatch@npm:^9.0.3, minimatch@npm:^9.0.4":
-  version: 9.0.4
-  resolution: "minimatch@npm:9.0.4"
+  version: 9.0.5
+  resolution: "minimatch@npm:9.0.5"
   dependencies:
     brace-expansion: "npm:^2.0.1"
-  checksum: 10/4cdc18d112b164084513e890d6323370db14c22249d536ad1854539577a895e690a27513dc346392f61a4a50afbbd8abc88f3f25558bfbbbb862cd56508b20f5
+  checksum: 10/dd6a8927b063aca6d910b119e1f2df6d2ce7d36eab91de83167dd136bb85e1ebff97b0d3de1cb08bd1f7e018ca170b4962479fefab5b2a69e2ae12cb2edc8348
   languageName: node
   linkType: hard
 
@@ -22303,22 +22303,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:8.5.0":
-  version: 8.5.0
-  resolution: "ws@npm:8.5.0"
-  peerDependencies:
-    bufferutil: ^4.0.1
-    utf-8-validate: ^5.0.2
-  peerDependenciesMeta:
-    bufferutil:
-      optional: true
-    utf-8-validate:
-      optional: true
-  checksum: 10/f0ee700970a0bf925b1ec213ca3691e84fb8b435a91461fe3caf52f58c6cec57c99ed5890fbf6978824c932641932019aafc55d864cad38ac32577496efd5d3a
-  languageName: node
-  linkType: hard
-
-"ws@npm:^8.11.0":
+"ws@npm:8.17.1, ws@npm:^8.11.0":
   version: 8.17.1
   resolution: "ws@npm:8.17.1"
   peerDependencies:
