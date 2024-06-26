@@ -11,13 +11,13 @@
   },
   "dependencies": {
     "@xyo-network/module-model": "^2.107.5",
-    "@xyo-network/node-core-model": "workspace:~",
-    "@xyo-network/payload-mongodb": "workspace:~",
-    "@xyo-network/sdk-xyo-mongo-js": "workspace:~"
+    "@xyo-network/node-core-model": "workspace:^",
+    "@xyo-network/payload-mongodb": "workspace:^",
+    "@xyo-network/sdk-xyo-mongo-js": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.11.11",
-    "@xylabs/tsconfig": "^3.11.11",
+    "@xylabs/ts-scripts-yarn3": "^3.11.12",
+    "@xylabs/tsconfig": "^3.11.12",
     "fake-indexeddb": "^4.0.2",
     "typescript": "^5.5.2"
   },

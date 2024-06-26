@@ -12,9 +12,9 @@
     "packages/**/*"
   ],
   "dependencies": {
-    "@xyo-network/automation-witness-server": "workspace:~",
-    "@xyo-network/cli": "workspace:~",
-    "@xyo-network/express-node": "workspace:~"
+    "@xyo-network/automation-witness-server": "workspace:^",
+    "@xyo-network/cli": "workspace:^",
+    "@xyo-network/express-node": "workspace:^"
   },
   "description": "Primary SDK for using XYO Protocol 2.0",
   "devDependencies": {
@@ -23,11 +23,11 @@
     "@babel/preset-typescript": "^7.24.7",
     "@types/jest": "^29.5.12",
     "@types/supertest": "^6.0.2",
-    "@xylabs/eslint-config-flat": "^3.11.11",
-    "@xylabs/ts-scripts-yarn3": "^3.11.11",
-    "@xylabs/tsconfig": "^3.11.11",
-    "@xylabs/tsconfig-dom-jest": "^3.11.11",
-    "@xylabs/tsconfig-jest": "^3.11.11",
+    "@xylabs/eslint-config-flat": "^3.11.12",
+    "@xylabs/ts-scripts-yarn3": "^3.11.12",
+    "@xylabs/tsconfig": "^3.11.12",
+    "@xylabs/tsconfig-dom-jest": "^3.11.12",
+    "@xylabs/tsconfig-jest": "^3.11.12",
     "babel-jest": "^29.7.0",
     "dotenv": "^16.4.5",
     "eslint": "^9.5.0",
