@@ -5387,6 +5387,7 @@ __metadata:
     "@xyo-network/coingecko-crypto-market-plugin": "npm:^2.97.1"
     "@xyo-network/crypto-asset-payload-plugin": "npm:^2.97.1"
     "@xyo-network/crypto-asset-plugin": "npm:^2.97.1"
+    "@xyo-network/diviner-jsonpath-memory": "npm:^2.107.5"
     "@xyo-network/diviner-model": "npm:^2.107.5"
     "@xyo-network/etherchain-ethereum-gas-v2-plugin": "npm:^2.97.1"
     "@xyo-network/ethers-ethereum-gas-plugin": "npm:^2.97.1"
@@ -6472,7 +6473,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xyo-network/diviner-jsonpath-memory@npm:~2.107.5":
+"@xyo-network/diviner-jsonpath-memory@npm:^2.107.5, @xyo-network/diviner-jsonpath-memory@npm:~2.107.5":
   version: 2.107.5
   resolution: "@xyo-network/diviner-jsonpath-memory@npm:2.107.5"
   dependencies:
