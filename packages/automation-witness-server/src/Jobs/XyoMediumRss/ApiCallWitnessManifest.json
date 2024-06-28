@@ -46,10 +46,6 @@
               "name": "ApiCallSentinel",
               "schema": "network.xyo.sentinel.config",
               "synchronous": "true",
-              "archiving": {
-                "archivists": ["Archivist"],
-                "queries": ["network.xyo.query.sentinel.report"]
-              },
               "tasks": [
                 {
                   "input": true,
