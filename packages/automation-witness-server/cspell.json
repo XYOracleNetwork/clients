@@ -16,6 +16,7 @@
     "Ethgasstation",
     "hdnode",
     "healthz",
+    "jsonpatch",
     "MARKETDATA",
     "pako",
     "satoshi",

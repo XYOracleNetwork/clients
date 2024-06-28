@@ -8,7 +8,6 @@ import { XmlParsingDiviner } from '@xyo-network/xml-plugin'
 import { getWallet, WalletPaths } from '../../Account'
 import { getArchivist } from '../../Archivists'
 import manifestPayload from './ApiCallWitnessManifest.json'
-import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch-memory'
 
 export const getNode = async (): Promise<MemoryNode> => {
   const wallet = await getWallet(WalletPaths.MediumRss.Node)
@@ -16,7 +15,6 @@ export const getNode = async (): Promise<MemoryNode> => {
   locator.register(ApiCallWitness)
   locator.register(XmlParsingDiviner)
   locator.register(JsonPathDiviner)
-  locator.register(JsonPatchDiviner)
   const manifest = new ManifestWrapper(manifestPayload as PackageManifestPayload, wallet, locator)
   const node = await manifest.loadNodeFromIndex(0)
   // Attach archivist to node to allow for dynamic archiving of
