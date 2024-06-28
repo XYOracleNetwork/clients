@@ -7,15 +7,15 @@ import { XmlParsingDiviner } from '@xyo-network/xml-plugin'
 
 import { getWallet, WalletPaths } from '../../Account'
 import { getArchivist } from '../../Archivists'
-import manifestPayload from './ApiCallWitnessManifest.json'
+import apiCallWitnessManifestPayload from './ApiCallWitnessManifest.json'
 
-export const getNode = async (): Promise<MemoryNode> => {
+export const getApiCallWitnessNode = async (): Promise<MemoryNode> => {
   const wallet = await getWallet(WalletPaths.MediumRss.Node)
   const locator = new ModuleFactoryLocator()
   locator.register(ApiCallWitness)
   locator.register(XmlParsingDiviner)
   locator.register(JsonPathDiviner)
-  const manifest = new ManifestWrapper(manifestPayload as PackageManifestPayload, wallet, locator)
+  const manifest = new ManifestWrapper(apiCallWitnessManifestPayload as PackageManifestPayload, wallet, locator)
   const node = await manifest.loadNodeFromIndex(0)
   // Attach archivist to node to allow for dynamic archiving of
   // sentinel reports based on environment. The Archivist is

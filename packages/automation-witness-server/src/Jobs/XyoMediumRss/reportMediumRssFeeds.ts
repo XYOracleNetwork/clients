@@ -3,11 +3,11 @@ import { ApiCallSchema, ApiUriTemplateCall } from '@xyo-network/api-call-witness
 import { Payload } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 
-import { getNode } from './getNode'
+import { getApiCallWitnessNode } from './getApiCallWitnessNode'
 
 export const reportMediumRssFeed = async (feed: string): Promise<Payload[]> => {
   const call: ApiUriTemplateCall = { params: { feed }, schema: ApiCallSchema }
-  const node = await getNode()
+  const node = await getApiCallWitnessNode()
   const sentinelInstance = asSentinelInstance(await node.resolve('ApiCallSentinel'))
   const sentinel = assertEx(sentinelInstance, () => 'ApiCallSentinel not found')
   return await sentinel.report([call])
