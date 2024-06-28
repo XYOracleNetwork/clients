@@ -44,6 +44,7 @@
     "@xyo-network/coingecko-crypto-market-plugin": "^2.97.1",
     "@xyo-network/crypto-asset-payload-plugin": "^2.97.1",
     "@xyo-network/crypto-asset-plugin": "^2.97.1",
+    "@xyo-network/diviner-jsonpatch-memory": "^2.107.6",
     "@xyo-network/diviner-jsonpath-memory": "^2.107.5",
     "@xyo-network/diviner-model": "^2.107.5",
     "@xyo-network/etherchain-ethereum-gas-v2-plugin": "^2.97.1",

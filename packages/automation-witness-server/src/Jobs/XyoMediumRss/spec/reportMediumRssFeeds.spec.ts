@@ -9,6 +9,8 @@ describe('reportMediumRssFeeds', () => {
     it('reports Medium RSS feed', async () => {
       const result = await reportMediumRssFeed('xyonetwork')
       expect(result).toBeArray()
+      // TODO: How to update manifest (JSONPatch) to fan out individual items
+      // and still stay under the size limit?
       const snapshot = result.find(isXmlWithMeta)
       expect(snapshot).toBeDefined()
       expect(snapshot?.xml).toBeObject()
