@@ -1,7 +1,7 @@
 import { getDefaultLogger } from '@xylabs/sdk-api-express-ecs'
 
 import { reportMediumRssFeed } from './reportMediumRssFeeds'
-import { reportMediumBlogPost } from './reportMediumBlogPost'
+import { reportMediumRssBlogPosts } from './reportMediumRssBlogPosts'
 
 export const getTask = () => {
   const logger = getDefaultLogger()
@@ -11,7 +11,7 @@ export const getTask = () => {
       const rss = await reportMediumRssFeed('xyonetwork')
       logger.log('Reported XYO Medium RSS Feed')
       logger.log('Reporting XYO Medium Articles')
-      await reportMediumBlogPost(rss)
+      await reportMediumRssBlogPosts(rss)
       logger.log('Reported XYO Medium Articles')
     } catch (error) {
       logger.error(error)
