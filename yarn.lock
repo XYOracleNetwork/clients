@@ -5223,6 +5223,7 @@ __metadata:
     "@xylabs/assert": "npm:^3.5.2"
     "@xylabs/crypto": "npm:^3.5.2"
     "@xylabs/jest-helpers": "npm:^3.5.2"
+    "@xylabs/object": "npm:^3.5.2"
     "@xylabs/sdk-api-express-ecs": "npm:^2.0.4"
     "@xylabs/ts-scripts-yarn3": "npm:^3.11.12"
     "@xylabs/tsconfig": "npm:^3.11.12"

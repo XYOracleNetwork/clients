@@ -34,6 +34,7 @@
   "dependencies": {
     "@xylabs/assert": "^3.5.2",
     "@xylabs/crypto": "^3.5.2",
+    "@xylabs/object": "^3.5.2",
     "@xylabs/sdk-api-express-ecs": "^2.0.4",
     "@xyo-network/account": "^2.107.6",
     "@xyo-network/api-call-witness": "^2.97.1",
@@ -56,6 +57,7 @@
     "@xyo-network/module-model": "^2.107.6",
     "@xyo-network/node-core-model": "^2.88.8",
     "@xyo-network/node-memory": "^2.107.6",
+    "@xyo-network/payload-builder": "^2.107.6",
     "@xyo-network/payload-model": "^2.107.6",
     "@xyo-network/sentinel-memory": "^2.107.6",
     "@xyo-network/sentinel-model": "^2.107.6",
