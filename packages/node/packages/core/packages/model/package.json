@@ -39,19 +39,19 @@
   "dependencies": {
     "@xylabs/hex": "^3.5.2",
     "@xylabs/object": "^3.5.2",
-    "@xyo-network/archivist-model": "^2.107.5",
-    "@xyo-network/boundwitness-model": "^2.107.5",
-    "@xyo-network/diviner-payload-model": "^2.107.5",
-    "@xyo-network/module-abstract": "^2.107.5",
-    "@xyo-network/payload-model": "^2.107.5",
+    "@xyo-network/archivist-model": "^2.107.6",
+    "@xyo-network/boundwitness-model": "^2.107.6",
+    "@xyo-network/diviner-payload-model": "^2.107.6",
+    "@xyo-network/module-abstract": "^2.107.6",
+    "@xyo-network/payload-model": "^2.107.6",
     "@xyo-network/payload-mongodb": "workspace:^",
-    "@xyo-network/shared": "^2.107.5",
+    "@xyo-network/shared": "^2.107.6",
     "ajv": "^8.16.0"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.11.12",
     "@xylabs/tsconfig": "^3.11.12",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.3"
   },
   "type": "module"
 }
