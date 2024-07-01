@@ -56,16 +56,47 @@ export const reportMediumRssBlogPosts = async (xml: Payload[]): Promise<Payload[
   // Return the newly inserted blog posts
   return blogPosts
 }
+const isStringArray = (value: unknown): value is string[] => Array.isArray(value) && value.every((item) => typeof item === 'string')
+const isString = (value: unknown): value is string => typeof value === 'string'
+const isGuidArray = (value: unknown): value is Array<{ _: string }> => Array.isArray(value) && value.every((item) => typeof item._ === 'string')
 
 const itemToMediumBlogPost = async (item: JsonObject): Promise<MediumBlogPost | undefined> => {
   const category = item?.category as string[] | undefined
-  const contentEncoded = (item?.['content:encoded'] as string[] | undefined)?.[0] as string | undefined
-  const creator = (item?.['dc:creator'] as string[] | undefined)?.[0] as string | undefined
-  const published = (item?.pubDate as string[] | undefined)?.[0] as string | undefined
-  const title = (item?.title as string[] | undefined)?.[0] as string | undefined
-  const updated = (item?.['atom:updated'] as string[] | undefined)?.[0] as string | undefined
-  const url = (item?.guid as Array<{ _: string }> | undefined)?.[0]?._ as string | undefined
-  if (category && contentEncoded && creator && published && title && updated && url)
-    return await PayloadBuilder.build<MediumBlogPost>({ ...item, schema: MediumBlogPostSchema })
+  const contentEncodedArray = item?.['content:encoded'] as string[] | undefined
+  const creatorArray = item?.['dc:creator'] as string[] | undefined
+  const publishedArray = item?.pubDate as string[] | undefined
+  const titleArray = item?.title as string[] | undefined
+  const updatedArray = item?.['atom:updated'] as string[] | undefined
+  const guidArray = item?.guid as Array<{ _: string }> | undefined
+
+  if (
+    isStringArray(category) &&
+    isStringArray(contentEncodedArray) &&
+    isStringArray(creatorArray) &&
+    isStringArray(publishedArray) &&
+    isStringArray(titleArray) &&
+    isStringArray(updatedArray) &&
+    isGuidArray(guidArray)
+  ) {
+    const contentEncoded = contentEncodedArray[0]
+    const creator = creatorArray[0]
+    const published = publishedArray[0]
+    const title = titleArray[0]
+    const updated = updatedArray[0]
+    const url = guidArray[0]?._
+
+    if (isString(contentEncoded) && isString(creator) && isString(published) && isString(title) && isString(updated) && isString(url)) {
+      const mediumBlogPost: MediumBlogPostFields = {
+        category,
+        contentEncoded,
+        creator,
+        published,
+        title,
+        updated,
+        url,
+      }
+      return await PayloadBuilder.build<MediumBlogPost>({ ...mediumBlogPost, schema: MediumBlogPostSchema })
+    }
+  }
   return undefined
 }
