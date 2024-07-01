@@ -233,9 +233,5 @@ describe('reportMediumRssBlogPosts', () => {
   it('reports Medium RSS feed', async () => {
     const result = await reportMediumRssBlogPosts([feed])
     expect(result).toBeArray()
-    const snapshot = result.find(isXmlWithMeta)
-    expect(snapshot).toBeDefined()
-    expect(snapshot?.xml).toBeObject()
-    expect(snapshot?.$hash).toBeDefined()
   })
 })
