@@ -5,10 +5,12 @@ import { MemoryNode } from '@xyo-network/node-memory'
 import { getWallet, WalletPaths } from '../../Account'
 import { getArchivist } from '../../Archivists'
 import blogPostWitnessManifestPayload from './BlogPostWitnessManifest.json'
+import { AdhocWitness } from '@xyo-network/witness-adhoc'
 
 export const getBlogPostWitnessNode = async (): Promise<MemoryNode> => {
   const wallet = await getWallet(WalletPaths.MediumRss.Node)
   const locator = new ModuleFactoryLocator()
+  locator.register(AdhocWitness)
   const manifest = new ManifestWrapper(blogPostWitnessManifestPayload as PackageManifestPayload, wallet, locator)
   const node = await manifest.loadNodeFromIndex(0)
   // Attach archivist to node to allow for dynamic archiving of

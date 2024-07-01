@@ -8,7 +8,15 @@
         "schema": "network.xyo.node.config"
       },
       "modules": {
-        "private": [],
+        "private": [
+          {
+            "config": {
+              "accountPath": "1/1'/1'",
+              "name": "AdHocWitness",
+              "schema": "network.xyo.witness.adhoc.config"
+            }
+          }
+        ],
         "public": [
           {
             "config": {
@@ -20,7 +28,12 @@
                 "archivists": ["Archivist"],
                 "queries": ["network.xyo.query.sentinel.report"]
               },
-              "tasks": []
+              "tasks": [
+                {
+                  "input": true,
+                  "module": "AdHocWitness"
+                }
+              ]
             }
           }
         ]
