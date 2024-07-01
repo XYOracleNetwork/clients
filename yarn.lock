@@ -6811,7 +6811,7 @@ __metadata:
     "@xyo-network/payload-builder": "npm:^2.107.6"
     "@xyo-network/payload-model": "npm:^2.107.6"
     "@xyo-network/prometheus-node-plugin": "npm:^2.97.1"
-    "@xyo-network/sentinel": "npm:^2.107.6"
+    "@xyo-network/sentinel-memory": "npm:^2.107.6"
     "@xyo-network/url-payload-plugin": "npm:^2.97.1"
     "@xyo-network/witness-blockchain-abstract": "npm:^2.107.6"
     "@xyo-network/witness-model": "npm:^2.107.6"
@@ -7589,12 +7589,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/payload-mongodb@workspace:packages/modules-mongo/packages/payload"
   dependencies:
+    "@xylabs/assert": "npm:^3.5.2"
     "@xylabs/hex": "npm:^3.5.2"
+    "@xylabs/lodash": "npm:^3.5.2"
     "@xylabs/object": "npm:^3.5.2"
     "@xylabs/ts-scripts-yarn3": "npm:^3.11.12"
     "@xylabs/tsconfig": "npm:^3.11.12"
     "@xyo-network/boundwitness-model": "npm:^2.107.6"
-    "@xyo-network/hash": "npm:^2.107.6"
     "@xyo-network/payload-builder": "npm:^2.107.6"
     "@xyo-network/payload-model": "npm:^2.107.6"
     fake-indexeddb: "npm:^4.0.2"
@@ -7876,17 +7877,6 @@ __metadata:
     "@xyo-network/sentinel-model": "npm:^2.107.6"
     "@xyo-network/witness-model": "npm:^2.107.6"
   checksum: 10/db0cbb6b18e32bf7705636bd0b6ea756dae3c533bcccf31b61a843c7403d06b5ee70853f99b83dce8ded2013802a3f9792ef47a9e45a2f1fe930cbeae753c6c2
-  languageName: node
-  linkType: hard
-
-"@xyo-network/sentinel@npm:^2.107.6":
-  version: 2.107.6
-  resolution: "@xyo-network/sentinel@npm:2.107.6"
-  dependencies:
-    "@xyo-network/sentinel-abstract": "npm:^2.107.6"
-    "@xyo-network/sentinel-memory": "npm:^2.107.6"
-    "@xyo-network/sentinel-model": "npm:^2.107.6"
-  checksum: 10/60b666c3925701ebe257f3f8e937efe065a845581a7b230e6a68853ef61ae226b5fa28a365d515fa9c4008e44a4473a4cfe0b92f9ecfadc7b6d62389b1cdf2d4
   languageName: node
   linkType: hard
 

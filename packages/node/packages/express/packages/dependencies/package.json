@@ -66,7 +66,7 @@
     "@xyo-network/payload-builder": "^2.107.6",
     "@xyo-network/payload-model": "^2.107.6",
     "@xyo-network/prometheus-node-plugin": "^2.97.1",
-    "@xyo-network/sentinel": "^2.107.6",
+    "@xyo-network/sentinel-memory": "^2.107.6",
     "@xyo-network/url-payload-plugin": "^2.97.1",
     "@xyo-network/witness-blockchain-abstract": "^2.107.6",
     "@xyo-network/witness-model": "^2.107.6",
