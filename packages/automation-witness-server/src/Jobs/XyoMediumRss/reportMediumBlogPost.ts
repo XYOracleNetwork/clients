@@ -18,13 +18,13 @@ export const reportMediumBlogPost = async (xml: Payload[]): Promise<Payload[]> =
     const sentinelInstance = asSentinelInstance(await node.resolve('ApiCallSentinel'))
     const sentinel = assertEx(sentinelInstance, () => 'ApiCallSentinel not found')
     for (const item of items) {
-      const article = await PayloadBuilder.build({ ...item, schema: 'network.xyo.medium.blog.post' })
+      const article = await PayloadBuilder.build({ ...item, schema: 'network.xyo.medium.rss.blog.post' })
       // Check for each article if it has already been reported
       const hash = await PayloadBuilder.dataHash(article)
       const existing = await archivist.get([hash])
       if (existing.length === 0) {
-        await sentinel.report([article])
-        ret.push(article)
+        const [bw, ...result] = await sentinel.report([article])
+        ret.push(bw, ...result)
       }
     }
   }
