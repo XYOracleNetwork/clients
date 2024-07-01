@@ -42,7 +42,9 @@ export const reportMediumRssBlogPosts = async (xml: Payload[]): Promise<Payload[
   const node = await getBlogPostWitnessNode()
   const sentinelInstance = asSentinelInstance(await node.resolve('ReportXyoMediumRssArticle'))
   const sentinel = assertEx(sentinelInstance, () => 'ApiCallSentinel not found')
-  for (const item of items) {
+  // Assuming RSS is presented from newest to oldest, reverse the items so that the
+  // most recent items are reported last (causing them to be inserted most recently)
+  for (const item of items.reverse()) {
     const blogPost = await itemToMediumBlogPost(item)
     if (!blogPost) continue
     // Check for each article if it has already been reported
