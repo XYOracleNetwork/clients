@@ -40,7 +40,7 @@
   "dependencies": {
     "@xylabs/logger": "^3.5.2",
     "@xylabs/sdk-api-express-ecs": "^2.0.4",
-    "@xyo-network/node-model": "^2.107.5",
+    "@xyo-network/node-model": "^2.107.6",
     "express": "^4.19.2",
     "express-mung": "^0.5.1",
     "swagger-autogen": "^2.23.7",
@@ -52,7 +52,7 @@
     "@types/swagger-ui-express": "^4.1.6",
     "@xylabs/ts-scripts-yarn3": "^3.11.12",
     "@xylabs/tsconfig": "^3.11.12",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.3"
   },
   "type": "module"
 }

@@ -6,17 +6,18 @@
       "type": "node",
       "request": "launch",
       "name": "MemoryNode",
-      "program": "${workspaceFolder}/packages/node/packages/core/packages/app/src/app.ts",
+      "program": "${workspaceFolder}/packages/node/packages/core/packages/app/dist/node/app.js",
       "outFiles": [
         "${workspaceFolder}/dist/**/*.js"
       ],
       "env": {
-        "NODE_OPTIONS": "-r ts-node/register --loader ts-node/esm --max-old-space-size=8192"
+        "NODE_OPTIONS": "-r ts-node/register --max-old-space-size=8192"
       },
       "envFile": "${workspaceFolder}/.env",
       "sourceMaps": true,
       "resolveSourceMapLocations": [
-        "!**/node_modules/**"
+        "${workspaceFolder}/**",
+        "**/node_modules/**"
       ],
       "pauseForSourceMap": true,
     },
@@ -99,7 +100,7 @@
         "--forceExit",
         "--runInBand",
         "--testTimeout=120000",
-        "packages/node/packages/express/packages/test/src/routes/name/NftMetadataNode.spec.ts"
+        "packages/automation-witness-server/src/Jobs/XyoMediumRss/spec/reportMediumRssFeeds.spec.ts"
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
@@ -121,12 +122,16 @@
         "--runInBand",
         "--testTimeout=120000",
         "-c=./jest.config.no-mongo.ts",
-        "packages/automation-witness-server/src/Jobs/TZeroStockMarket/spec/reportStockPrices.spec.ts"
+        "packages/automation-witness-server/src/Jobs/XyoMediumRss/spec/reportMediumRssBlogPosts.spec.ts"
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "cwd": "${workspaceFolder}",
-      "envFile": "${workspaceFolder}/.env"
+      "envFile": "${workspaceFolder}/.env",
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "**/node_modules/**"
+      ],
     }
   ]
 }

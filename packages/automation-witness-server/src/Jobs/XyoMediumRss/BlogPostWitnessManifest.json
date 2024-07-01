@@ -1,0 +1,44 @@
+{
+  "$schema": "https://raw.githubusercontent.com/XYOracleNetwork/sdk-xyo-client-js/a5a229a767e3998e13cce8160fd1c2b027317424/packages/manifest/src/schema.json",
+  "nodes": [
+    {
+      "config": {
+        "accountPath": "2",
+        "name": "XyoMediumRssArticle",
+        "schema": "network.xyo.node.config"
+      },
+      "modules": {
+        "private": [
+          {
+            "config": {
+              "accountPath": "1/1'/1'",
+              "name": "AdHocWitness",
+              "schema": "network.xyo.witness.adhoc.config"
+            }
+          }
+        ],
+        "public": [
+          {
+            "config": {
+              "accountPath": "2/1/1",
+              "name": "ReportXyoMediumRssArticle",
+              "schema": "network.xyo.sentinel.config",
+              "synchronous": "true",
+              "archiving": {
+                "archivists": ["Archivist"],
+                "queries": ["network.xyo.query.sentinel.report"]
+              },
+              "tasks": [
+                {
+                  "input": true,
+                  "module": "AdHocWitness"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "schema": "network.xyo.manifest"
+}

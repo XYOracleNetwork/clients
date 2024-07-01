@@ -14,17 +14,17 @@
     "@xylabs/exists": "^3.5.2",
     "@xylabs/lodash": "^3.5.2",
     "@xylabs/static-implements": "^3.5.2",
-    "@xyo-network/module-model": "^2.107.5",
+    "@xyo-network/module-model": "^2.107.6",
     "@xyo-network/module-model-mongodb": "workspace:^",
     "@xyo-network/payload-mongodb": "workspace:^",
     "@xyo-network/sdk-xyo-mongo-js": "workspace:^",
-    "mongodb": "^6.7.0"
+    "mongodb": "^6.8.0"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.11.12",
     "@xylabs/tsconfig": "^3.11.12",
     "fake-indexeddb": "^4.0.2",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.3"
   },
   "description": "Primary SDK for using XYO Protocol 2.0",
   "types": "dist/node/index.d.ts",

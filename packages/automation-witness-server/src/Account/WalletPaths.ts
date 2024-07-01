@@ -5,6 +5,7 @@ const AutomationPath = {
   EthereumGas: `${RootPath}/2'` as const,
   Node: `${RootPath}/3'` as const,
   TZero: `${RootPath}/4'` as const,
+  MediumRss: `${RootPath}/5'` as const,
 }
 
 const ModulePath = {
@@ -54,5 +55,8 @@ export const WalletPaths = {
   } as const,
   TZero: {
     Node: `${AutomationPath.TZero}${ModulePath.Node}` as const,
+  } as const,
+  MediumRss: {
+    Node: `${AutomationPath.MediumRss}${ModulePath.Node}` as const,
   } as const,
 }
