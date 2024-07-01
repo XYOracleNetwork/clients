@@ -122,7 +122,7 @@
         "--runInBand",
         "--testTimeout=120000",
         "-c=./jest.config.no-mongo.ts",
-        "packages/automation-witness-server/src/Jobs/XyoMediumRss/spec/reportMediumRssFeeds.spec.ts"
+        "packages/automation-witness-server/src/Jobs/XyoMediumRss/spec/reportMediumRssBlogPosts.spec.ts"
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
