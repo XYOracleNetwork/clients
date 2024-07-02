@@ -1,6 +1,6 @@
 import { config } from 'dotenv'
 import yargs from 'yargs'
-
+// eslint-disable-next-line import/no-internal-modules
 import { hideBin } from 'yargs/helpers'
 
 import { opts, OutputType } from './command'

@@ -532,7 +532,7 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "Erc721TokenByIndexWitness"
+                  "mod": "Erc721TokenByIndexWitness"
                 }
               ]
             }
@@ -548,19 +548,19 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "Erc721NameWitness"
+                  "mod": "Erc721NameWitness"
                 },
                 {
                   "input": true,
-                  "module": "Erc721SymbolWitness"
+                  "mod": "Erc721SymbolWitness"
                 },
                 {
                   "input": true,
-                  "module": "Erc721TotalSupplyWitness"
+                  "mod": "Erc721TotalSupplyWitness"
                 },
                 {
                   "input": true,
-                  "module": "Erc1155UriWitness"
+                  "mod": "Erc1155UriWitness"
                 },
                 {
                   "input": [
@@ -568,11 +568,13 @@
                     "Erc721SymbolWitness",
                     "Erc721TotalSupplyWitness"
                   ],
-                  "module": "Erc721ContractInfoDiviner"
+                  "mod": "Erc721ContractInfoDiviner"
                 },
                 {
-                  "input": ["Erc1155UriWitness"],
-                  "module": "Erc1155ContractInfoDiviner"
+                  "input": [
+                    "Erc1155UriWitness"
+                  ],
+                  "mod": "Erc1155ContractInfoDiviner"
                 }
               ]
             }

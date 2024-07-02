@@ -33,16 +33,20 @@
               "schema": "network.xyo.sentinel.config",
               "synchronous": "true",
               "archiving": {
-                "archivists": ["Archivist"]
+                "archivists": [
+                  "Archivist"
+                ]
               },
               "tasks": [
                 {
                   "input": true,
-                  "module": "ApiCallWitness"
+                  "mod": "ApiCallWitness"
                 },
                 {
-                  "input": ["ApiCallWitness"],
-                  "module": "TZeroApiCallJsonResultToSnapshotDiviner"
+                  "input": [
+                    "ApiCallWitness"
+                  ],
+                  "mod": "TZeroApiCallJsonResultToSnapshotDiviner"
                 }
               ]
             }

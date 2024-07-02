@@ -36,11 +36,13 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "ApiCallWitness"
+                  "mod": "ApiCallWitness"
                 },
                 {
-                  "input": ["ApiCallWitness"],
-                  "module": "XmlDiviner"
+                  "input": [
+                    "ApiCallWitness"
+                  ],
+                  "mod": "XmlDiviner"
                 }
               ]
             }

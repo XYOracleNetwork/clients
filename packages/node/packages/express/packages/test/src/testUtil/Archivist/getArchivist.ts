@@ -14,8 +14,8 @@ export const getArchivist = async (account?: AccountInstance): Promise<Archivist
 }
 
 export const getArchivistByName = async (name: string = 'XYOPublic:Archivist', account?: AccountInstance): Promise<ArchivistInstance> => {
-  const module = assertEx(await getModuleByName(name), () => `Module not found: ${name}`)
-  const archivist = asArchivistInstance(module, 'Failed to cast archivist')
+  const mod = assertEx(await getModuleByName(name), () => `Module not found: ${name}`)
+  const archivist = asArchivistInstance(mod, 'Failed to cast archivist')
   return account ? ArchivistWrapper.wrap(archivist, account) : archivist
 }
 

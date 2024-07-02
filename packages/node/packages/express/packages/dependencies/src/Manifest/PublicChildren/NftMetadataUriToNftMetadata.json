@@ -266,7 +266,9 @@
           {
             "config": {
               "filter": {
-                "payload_schemas": ["network.xyo.api.call.result"]
+                "payload_schemas": [
+                  "network.xyo.api.call.result"
+                ]
               },
               "labels": {
                 "network.xyo.diviner.stage": "stateToIndexCandidateDiviner"
@@ -506,7 +508,9 @@
             "config": {
               "accountPath": "3'/3'/3'",
               "archiving": {
-                "archivists": ["NftMetadataNode:NftMetadataArchivist"]
+                "archivists": [
+                  "NftMetadataNode:NftMetadataArchivist"
+                ]
               },
               "name": "NftMetadataSentinel",
               "schema": "network.xyo.sentinel.config",
@@ -514,11 +518,11 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "ApiCallWitness"
+                  "mod": "ApiCallWitness"
                 },
                 {
                   "input": true,
-                  "module": "TimestampWitness"
+                  "mod": "TimestampWitness"
                 }
               ]
             }

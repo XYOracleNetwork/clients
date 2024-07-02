@@ -30,8 +30,8 @@ const handler: RequestHandler<AddressPathParams, Payload[]> = async (req, res, n
       }
     }
     if (modules.length > 0) {
-      const module = modules[0]
-      res.json(await module.state())
+      const mod = modules[0]
+      res.json(await mod.state())
       return
     }
   }

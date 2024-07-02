@@ -1,4 +1,5 @@
 import { isXmlWithMeta } from '@xyo-network/xml-plugin'
+
 import { reportMediumRssFeed } from '../reportMediumRssFeeds'
 
 describe('reportMediumRssFeeds', () => {

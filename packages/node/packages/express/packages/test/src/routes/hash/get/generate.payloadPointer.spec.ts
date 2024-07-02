@@ -32,9 +32,9 @@ describe('Generation of automation payload pointers', () => {
     const account = await HDWallet.random()
     const bridge = await HttpBridge.create({ account, config: { discoverRoots: 'start', nodeUrl, schema, security } })
     await bridge.start()
-    const module = await bridge.resolve('XYOPublic:Archivist')
-    expect(module).toBeDefined()
-    archivist = asArchivistInstance(module, 'Failed to cast module')
+    const mod = await bridge.resolve('XYOPublic:Archivist')
+    expect(mod).toBeDefined()
+    archivist = asArchivistInstance(mod, 'Failed to cast module')
   })
   it.each(cases)('Generates automation witness payload for %s schema', async (schema, address) => {
     const addressRule: PayloadAddressRule = { address }

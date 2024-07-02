@@ -1,7 +1,7 @@
 import { getDefaultLogger } from '@xylabs/sdk-api-express-ecs'
 
-import { reportMediumRssFeed } from './reportMediumRssFeeds'
 import { reportMediumRssBlogPosts } from './reportMediumRssBlogPosts'
+import { reportMediumRssFeed } from './reportMediumRssFeeds'
 
 export const getTask = () => {
   const logger = getDefaultLogger()

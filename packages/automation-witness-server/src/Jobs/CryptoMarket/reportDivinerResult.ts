@@ -1,8 +1,8 @@
 import { HDWallet } from '@xyo-network/account'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { Payload } from '@xyo-network/payload-model'
-import { SentinelConfig, SentinelConfigSchema } from '@xyo-network/sentinel-model'
 import { MemorySentinel } from '@xyo-network/sentinel-memory'
+import { SentinelConfig, SentinelConfigSchema } from '@xyo-network/sentinel-model'
 import { AdhocWitness, AdhocWitnessConfigSchema } from '@xyo-network/witness-adhoc'
 
 import { getAccount, WalletPaths } from '../../Account'
@@ -26,7 +26,7 @@ export const reportDivinerResult = async (payload: Payload): Promise<Payload[]> 
     },
     schema: SentinelConfigSchema,
     synchronous: true,
-    tasks: witnesses.map((mod) => ({ module: mod.address })),
+    tasks: witnesses.map((mod) => ({ mod: mod.address })),
   }
   const sentinelAccount = await getAccount(WalletPaths.CryptoMarket.Sentinel.AssetDivinerResult)
   const sentinel = await MemorySentinel.create({ account: sentinelAccount, config })

@@ -14,8 +14,8 @@ export const describe = 'Describe the XYO Module'
 export const handler = async (argv: ModuleArguments) => {
   const { verbose } = argv
   try {
-    const module = await getModuleFromArgs(argv)
-    const result = await module.state()
+    const mod = await getModuleFromArgs(argv)
+    const result = await mod.state()
     printLine(JSON.stringify(result))
   } catch (error) {
     if (verbose) printError(JSON.stringify(error))
@@ -31,4 +31,5 @@ const mod: CommandModule<EmptyObject, ModuleArguments> = {
   handler,
 }
 
+// eslint-disable-next-line import/no-default-export
 export default mod

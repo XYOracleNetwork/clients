@@ -48,15 +48,15 @@ describeIf(hasMongoDBConfig())('DeterministicArchivist', () => {
     boundWitnessesConfig.dbConnectionString = process.env.MONGO_CONNECTION_STRING
     payloadsConfig.dbConnectionString = process.env.MONGO_CONNECTION_STRING
 
-    const module = await MongoDBArchivist.create({
+    const mod = await MongoDBArchivist.create({
       account: moduleAccount,
       boundWitnessSdkConfig: boundWitnessesConfig,
       config: { schema: MongoDBArchivist.defaultConfigSchema },
       payloadSdkConfig: payloadsConfig,
     })
-    expect(module.address).toBe(moduleAccount.address)
-    expect(module.address).toBe('daddab0e0468c920bd5aff4b14fd94c20a598055')
-    archivist = ArchivistWrapper.wrap(module, archiveAccount)
+    expect(mod.address).toBe(moduleAccount.address)
+    expect(mod.address).toBe('daddab0e0468c920bd5aff4b14fd94c20a598055')
+    archivist = ArchivistWrapper.wrap(mod, archiveAccount)
     const payload1 = await PayloadBuilder.build({ nonce: 1, schema: 'network.xyo.debug' })
     const payload2 = await PayloadBuilder.build({ nonce: 2, schema: 'network.xyo.test' })
     const payload3 = await PayloadBuilder.build({ nonce: 3, schema: 'network.xyo.debug' })

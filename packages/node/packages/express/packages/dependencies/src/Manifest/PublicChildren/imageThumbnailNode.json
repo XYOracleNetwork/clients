@@ -481,7 +481,9 @@
             "config": {
               "accountPath": "3'/3'/1'",
               "archiving": {
-                "archivists": ["ImageThumbnailArchivist"]
+                "archivists": [
+                  "ImageThumbnailArchivist"
+                ]
               },
               "archivist": "ImageThumbnailArchivist",
               "name": "ImageThumbnailSentinel",
@@ -489,11 +491,11 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "ImageThumbnailWitness"
+                  "mod": "ImageThumbnailWitness"
                 },
                 {
                   "input": false,
-                  "module": "TimestampWitness"
+                  "mod": "TimestampWitness"
                 }
               ]
             }

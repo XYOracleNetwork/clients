@@ -20,7 +20,7 @@ export const handler = async (argv: ArgumentsCamelCase<BaseArguments>) => {
   try {
     const node = await getNode(argv)
     const modules = await node.resolve({ query: [[ArchivistGetQuerySchema]] }, { direction: 'down', identity: isArchivistInstance })
-    const state = await Promise.all(modules.map((module) => module.state()))
+    const state = await Promise.all(modules.map((mod) => mod.state()))
     printLine(JSON.stringify(state, null, 2))
   } catch (error) {
     if (verbose) printError(JSON.stringify(error))
@@ -36,4 +36,5 @@ const mod: CommandModule<EmptyObject, BaseArguments> = {
   handler,
 }
 
+// eslint-disable-next-line import/no-default-export
 export default mod

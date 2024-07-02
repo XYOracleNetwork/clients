@@ -1,8 +1,8 @@
 import { HDWallet } from '@xyo-network/account'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { Payload } from '@xyo-network/payload-model'
-import { SentinelConfig, SentinelConfigSchema } from '@xyo-network/sentinel-model'
 import { MemorySentinel } from '@xyo-network/sentinel-memory'
+import { SentinelConfig, SentinelConfigSchema } from '@xyo-network/sentinel-model'
 
 import { getAccount, WalletPaths } from '../../Account'
 import { getArchivists } from '../../Archivists'
@@ -26,7 +26,7 @@ export const reportGasPrices = async (provider = getProvider()): Promise<Payload
     },
     schema: SentinelConfigSchema,
     synchronous: true,
-    tasks: witnesses.map((mod) => ({ module: mod.address })),
+    tasks: witnesses.map((mod) => ({ mod: mod.address })),
   }
   const account = await getAccount(WalletPaths.EthereumGas.Sentinel.Gas)
   const sentinel = await MemorySentinel.create({ account, config })

@@ -10,9 +10,9 @@ export const getModuleByName = async (name: string): Promise<ModuleInstance> => 
   const publicMod = await bridge.resolve('XYOPublic')
   expect(publicMod).toBeDefined()
   //console.log(`publicMod: ${toJsonString(publicMod, 5)}`)
-  const module = await publicMod?.resolve(name)
-  expect(module).toBeDefined()
-  return assertEx(module)
+  const mod = await publicMod?.resolve(name)
+  expect(mod).toBeDefined()
+  return assertEx(mod)
 }
 
 export const getModuleByNameFromChildNode = async (name: string, childNodeName: string): Promise<ModuleInstance> => {

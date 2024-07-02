@@ -12,15 +12,18 @@ import { Express } from 'express'
 import { Config } from 'jest'
 import { MongoMemoryReplSet } from 'mongodb-memory-server'
 import supertest from 'supertest'
-
+// eslint-disable-next-line import/no-internal-modules
 import TestAgent from 'supertest/lib/agent'
 
 disableGloballyUnique()
 
 // Augment global scope with shared variables (must be var)
 declare global {
+  // eslint-disable-next-line no-var
   var app: Express
+  // eslint-disable-next-line no-var
   var mongo: MongoMemoryReplSet
+  // eslint-disable-next-line no-var
   var req: TestAgent
 }
 
@@ -76,4 +79,5 @@ const setup = async (_globalConfig: Config, _projectConfig: Config) => {
   await setupNode()
 }
 
+// eslint-disable-next-line id-denylist
 module.exports = setup

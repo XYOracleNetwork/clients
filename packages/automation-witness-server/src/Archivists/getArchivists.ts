@@ -20,8 +20,8 @@ export const tryGetArchivist = async (config: ApiConfig = getApiConfig()): Promi
   const account = await HDWallet.random()
   const bridge = await HttpBridge.create({ account, config: { client: { discoverRoots, url }, schema, security } })
   await bridge.start()
-  const module = await bridge.resolve(archivistName)
-  return isAttachableArchivistInstance(module) ? module : undefined
+  const mod = await bridge.resolve(archivistName)
+  return isAttachableArchivistInstance(mod) ? mod : undefined
 }
 
 export const tryGetArchivists = async (configs: ApiConfig[] = [getApiConfig()]): Promise<AttachableArchivistInstance[]> => {

@@ -25,4 +25,5 @@ const generateJestConfig = ({ esModules }: { esModules: string[] }) => {
 
 const config = generateJestConfig({ esModules: ['is-ip', 'ip-regex', 'lodash-es', 'uuid', 'lodash-es'] })
 
+// eslint-disable-next-line import/no-default-export
 export default config

@@ -23,6 +23,7 @@
     "@babel/preset-typescript": "^7.24.7",
     "@types/jest": "^29.5.12",
     "@types/supertest": "^6.0.2",
+    "@xylabs/eslint-config": "^3.11.12",
     "@xylabs/eslint-config-flat": "^3.11.12",
     "@xylabs/ts-scripts-yarn3": "^3.11.12",
     "@xylabs/tsconfig": "^3.11.12",
@@ -50,6 +51,7 @@
   "resolutions": {
     "axios": "^1",
     "bn.js": "^5",
+    "eslint": "^8",
     "ethers": "^6",
     "quick-lru": "^5"
   },

@@ -1,13 +1,13 @@
 /* eslint-disable complexity */
 import { assertEx } from '@xylabs/assert'
+import { JsonObject } from '@xylabs/object'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
-import { JsonObject } from '@xylabs/object'
-
-import { getBlogPostWitnessNode } from './getBlogPostWitnessNode'
 import { isXmlWithMeta } from '@xyo-network/xml-plugin'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
+
 import { getArchivist } from '../../Archivists'
+import { getBlogPostWitnessNode } from './getBlogPostWitnessNode'
 
 export interface MediumBlogPostFields {
   category?: string[]

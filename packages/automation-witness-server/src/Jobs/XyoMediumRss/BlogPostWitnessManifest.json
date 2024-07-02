@@ -25,13 +25,17 @@
               "schema": "network.xyo.sentinel.config",
               "synchronous": "true",
               "archiving": {
-                "archivists": ["Archivist"],
-                "queries": ["network.xyo.query.sentinel.report"]
+                "archivists": [
+                  "Archivist"
+                ],
+                "queries": [
+                  "network.xyo.query.sentinel.report"
+                ]
               },
               "tasks": [
                 {
                   "input": true,
-                  "module": "AdHocWitness"
+                  "mod": "AdHocWitness"
                 }
               ]
             }

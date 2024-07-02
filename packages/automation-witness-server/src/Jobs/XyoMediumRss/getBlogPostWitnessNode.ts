@@ -1,11 +1,11 @@
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { MemoryNode } from '@xyo-network/node-memory'
+import { AdhocWitness } from '@xyo-network/witness-adhoc'
 
 import { getWallet, WalletPaths } from '../../Account'
 import { getArchivist } from '../../Archivists'
 import blogPostWitnessManifestPayload from './BlogPostWitnessManifest.json'
-import { AdhocWitness } from '@xyo-network/witness-adhoc'
 
 export const getBlogPostWitnessNode = async (): Promise<MemoryNode> => {
   const wallet = await getWallet(WalletPaths.MediumRss.Node)

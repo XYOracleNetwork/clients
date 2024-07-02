@@ -17,8 +17,8 @@ export const describe = 'Issue queries against an XYO Module'
 export const handler = async (argv: ArgumentsCamelCase<ModuleArguments>) => {
   const { verbose } = argv
   try {
-    const module = await getModuleFromArgs(argv)
-    const result = module.state() ?? {}
+    const mod = await getModuleFromArgs(argv)
+    const result = mod.state() ?? {}
     printLine(JSON.stringify(result))
   } catch (error) {
     if (verbose) printError(JSON.stringify(error))
@@ -34,4 +34,5 @@ const mod: CommandModule<EmptyObject, ModuleArguments> = {
   handler,
 }
 
+// eslint-disable-next-line import/no-default-export
 export default mod
