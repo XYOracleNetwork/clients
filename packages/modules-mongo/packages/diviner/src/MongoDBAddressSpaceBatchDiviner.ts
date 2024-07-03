@@ -24,9 +24,10 @@ export class MongoDBAddressSpaceBatchDiviner extends MongoDBDivinerBase {
   // TODO: Get via config or default
   protected readonly batchSize = 50
   protected currentlyRunning = false
-  protected readonly paginationAccount: AccountInstance = Account.randomSync()
   protected response: BoundWitnessPointerPayload | undefined
   protected witnessedAddresses: Set<string> = new Set<string>()
+
+  private _paginationAccount?: AccountInstance
 
   protected async backgroundDivine(): Promise<void> {
     if (this.currentlyRunning) return
@@ -52,7 +53,7 @@ export class MongoDBAddressSpaceBatchDiviner extends MongoDBDivinerBase {
         })
         const archivistMod = await this.archivistInstance()
         // Save the paginated address response to the respective archivist
-        const archivist = ArchivistWrapper.wrap(archivistMod, this.paginationAccount)
+        const archivist = ArchivistWrapper.wrap(archivistMod, await this.getPaginationAccount())
         for (let j = 0; j < toStore.length; j += this.batchSize) {
           const batch = toStore.slice(j, j + this.batchSize)
           await archivist.insert(batch)
@@ -73,6 +74,11 @@ export class MongoDBAddressSpaceBatchDiviner extends MongoDBDivinerBase {
     return this.response ? Promise.resolve([this.response]) : Promise.resolve([])
   }
 
+  protected async getPaginationAccount() {
+    this._paginationAccount = this._paginationAccount ?? (await Account.random())
+    return this._paginationAccount
+  }
+
   protected async initializeArchivist() {
     try {
       // Create a paginationAccount per archivist
@@ -81,7 +87,7 @@ export class MongoDBAddressSpaceBatchDiviner extends MongoDBDivinerBase {
       const archivist = ArchivistWrapper.wrap(archivistMod, this.account)
       // Pre-mint response payload pointer for dereferencing results
       const divinedAnswerPointer = await new PayloadBuilder<BoundWitnessPointerPayload>({ schema: BoundWitnessPointerSchema })
-        .fields({ reference: [[{ address: this.paginationAccount.address }], [{ schema: AddressSchema }]] })
+        .fields({ reference: [[{ address: (await this.getPaginationAccount()).address }], [{ schema: AddressSchema }]] })
         .build()
       // Ensure the pointer exists in the archivist (but don't insert it twice)
       const divinedAnswerPointerExists = (await archivist.get([await PayloadBuilder.dataHash(divinedAnswerPointer)]))?.length > 0

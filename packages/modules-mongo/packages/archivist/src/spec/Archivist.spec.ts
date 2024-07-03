@@ -43,7 +43,7 @@ describeIf(hasMongoDBConfig())('DeterministicArchivist', () => {
     // 0xbabe1d55e51844ea1cdc6b4dcbb649bb08e3cc3c
     randomAccount = await Account.create({ privateKey: toUint8Array('3c17e038c8daeed7dfab9b9653321523d5f1a68eadfc5e4bd501075a5e43bbcc') })
 
-    jest.spyOn(Account, 'randomSync').mockImplementation(() => randomAccount as Account)
+    jest.spyOn(Account, 'random').mockImplementation(() => Promise.resolve(randomAccount as AccountInstance))
 
     boundWitnessesConfig.dbConnectionString = process.env.MONGO_CONNECTION_STRING
     payloadsConfig.dbConnectionString = process.env.MONGO_CONNECTION_STRING

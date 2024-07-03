@@ -37,7 +37,7 @@ describeIf(hasMongoDBConfig())('MongoDBSchemaListDiviner', () => {
     account = await Account.create({ phrase })
     address = account.address
     sut = await MongoDBSchemaListDiviner.create({
-      account: Account.randomSync(),
+      account: 'random',
       config: { schema: SchemaListDivinerConfigSchema },
       logger,
     })

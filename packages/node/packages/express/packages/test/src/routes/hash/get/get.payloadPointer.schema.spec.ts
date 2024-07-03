@@ -9,7 +9,7 @@ import { createPointer, expectHashNotFoundError } from './get.payloadPointer.spe
 
 describe('/:hash', () => {
   describe('with rules for [schema]', () => {
-    const account = Account.randomSync()
+    const account = Account.random()
     const schemaA = getTestSchemaName()
     const schemaB = getTestSchemaName()
     const payloadBaseA = (async () => PayloadBuilder.build({ ...(await getNewPayload()), schema: schemaA }))()
@@ -20,10 +20,10 @@ describe('/:hash', () => {
     beforeAll(async () => {
       const [bw] = await new BoundWitnessBuilder()
         .payloads([(await payloadA).payload, (await payloadB).payload])
-        .witness(account)
+        .witness(await account)
         .build()
       const payloads: Payload[] = [bw, (await payloadA).payload, (await payloadB).payload]
-      const payloadResponse = await insertPayload(payloads, account)
+      const payloadResponse = await insertPayload(payloads, await account)
       expect(payloadResponse.length).toBe(payloads.length)
     })
     describe('single schema', () => {
@@ -42,7 +42,7 @@ describe('/:hash', () => {
         [schemaA, payloadA],
         [schemaB, payloadB],
       ])('returns Payload of schema type', async (schema, expected) => {
-        const pointerHash = await createPointer([[account.address]], [[schema]])
+        const pointerHash = await createPointer([[(await account).address]], [[schema]])
         const result = await getHash(pointerHash)
         const expectedPayload = (await expected).payload
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -68,7 +68,7 @@ describe('/:hash', () => {
       })
       describe('combined serially [w/address]', () => {
         it('returns Payload of either schema', async () => {
-          const pointerHash = await createPointer([[account.address]], [[(await payloadA).schema(), (await payloadB).schema()]])
+          const pointerHash = await createPointer([[(await account).address]], [[(await payloadA).schema(), (await payloadB).schema()]])
           const result = await getHash(pointerHash)
           expect(result).toBeDefined()
           expect(schemas).toContain(result.schema)
@@ -83,14 +83,14 @@ describe('/:hash', () => {
       })
       describe('combined in parallel [w/address]', () => {
         it('returns Payload of either schema', async () => {
-          const pointerHash = await createPointer([[account.address]], [[(await payloadA).schema()], [(await payloadB).schema()]])
+          const pointerHash = await createPointer([[(await account).address]], [[(await payloadA).schema()], [(await payloadB).schema()]])
           const result = await getHash(pointerHash)
           expect(schemas).toContain(result.schema)
         })
       })
     })
     it('no matching schema', async () => {
-      const pointerHash = await createPointer([[account.address]], [['network.xyo.test']])
+      const pointerHash = await createPointer([[(await account).address]], [['network.xyo.test']])
       const result = await getHash(pointerHash)
       expectHashNotFoundError(result)
     })

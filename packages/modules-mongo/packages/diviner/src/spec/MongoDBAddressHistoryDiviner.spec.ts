@@ -34,7 +34,7 @@ describeIf(hasMongoDBConfig())('MongoDBAddressHistoryDiviner', () => {
     account = await Account.create({ phrase })
     address = account.address
     sut = await MongoDBAddressHistoryDiviner.create({
-      account: Account.randomSync(),
+      account: 'random',
       config: { schema: AddressHistoryDivinerConfigSchema },
       logger,
     })

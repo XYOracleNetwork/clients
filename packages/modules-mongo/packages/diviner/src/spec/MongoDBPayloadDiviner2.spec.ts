@@ -40,7 +40,7 @@ describe('MongoDBPayloadDiviner2', () => {
     })
 
     archivist = await MongoDBArchivist.create({
-      account: Account.randomSync(),
+      account: 'random',
       config: { schema: MongoDBArchivist.defaultConfigSchema },
     })
 
@@ -51,14 +51,14 @@ describe('MongoDBPayloadDiviner2', () => {
     console.log('insertedPayloads', insertedPayloads)
 
     sut = await MongoDBPayloadDiviner.create({
-      account: Account.randomSync(),
+      account: 'random',
       config: {
         archivist: archivist.address,
         schema: MongoDBPayloadDiviner.defaultConfigSchema,
       },
     })
     node = await MemoryNode.create({
-      account: Account.randomSync(),
+      account: 'random',
       config: { schema: MemoryNode.defaultConfigSchema },
     })
     const modules = [archivist, sut]

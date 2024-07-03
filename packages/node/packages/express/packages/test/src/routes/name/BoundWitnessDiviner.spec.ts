@@ -1,5 +1,4 @@
 import { assertEx } from '@xylabs/assert'
-import { Address } from '@xylabs/hex'
 import { Account } from '@xyo-network/account'
 import { AccountInstance } from '@xyo-network/account-model'
 import { ArchivistInstance } from '@xyo-network/archivist-model'
@@ -43,33 +42,33 @@ describe(`/${moduleName}`, () => {
     })
   })
   describe('DivinerDivineQuerySchema', () => {
-    const accountA = Account.randomSync()
-    const accountB = Account.randomSync()
+    const accountA = Account.random()
+    const accountB = Account.random()
     const boundWitnesses: BoundWitnessWrapper[] = []
     beforeAll(async () => {
-      const boundWitnessA = BoundWitnessWrapper.parse((await getNewBoundWitness([accountA], [await getNewPayload()]))[0])
-      const boundWitnessB = BoundWitnessWrapper.parse((await getNewBoundWitness([accountB], [await getNewPayload()]))[0])
+      const boundWitnessA = BoundWitnessWrapper.parse((await getNewBoundWitness([await accountA], [await getNewPayload()]))[0])
+      const boundWitnessB = BoundWitnessWrapper.parse((await getNewBoundWitness([await accountB], [await getNewPayload()]))[0])
       const boundWitnessC = BoundWitnessWrapper.parse(
-        (await getNewBoundWitness([accountA, accountB], [await getNewPayload(), await getNewPayload()]))[0],
+        (await getNewBoundWitness([await accountA, await accountB], [await getNewPayload(), await getNewPayload()]))[0],
       )
       boundWitnesses.push(boundWitnessA, boundWitnessB, boundWitnessC)
       await archivist.insert(boundWitnesses.map((b) => b.boundwitness))
     })
     describe('address', () => {
-      const cases: [title: string, addresses: Address[], expected: () => BoundWitnessWrapper[]][] = [
-        ['single address returns boundWitnesses signed by address', [accountA.address], () => [boundWitnesses[0], boundWitnesses[2]]],
-        ['single address returns boundWitnesses signed by address', [accountB.address], () => [boundWitnesses[1], boundWitnesses[2]]],
-        ['multiple addresses returns boundWitnesses signed by both addresses', [accountA.address, accountB.address], () => [boundWitnesses[2]]],
+      const cases: [title: string, accounts: Promise<AccountInstance>[], expected: () => BoundWitnessWrapper[]][] = [
+        ['single address returns boundWitnesses signed by address', [accountA], () => [boundWitnesses[0], boundWitnesses[2]]],
+        ['single address returns boundWitnesses signed by address', [accountB], () => [boundWitnesses[1], boundWitnesses[2]]],
+        ['multiple addresses returns boundWitnesses signed by both addresses', [accountA, accountB], () => [boundWitnesses[2]]],
         [
           'multiple addresses returns boundWitnesses signed by both addresses (independent of order)',
-          [accountB.address, accountA.address],
+          [accountB, accountA],
           () => [boundWitnesses[2]],
         ],
       ]
       describe.each(cases)('with %s', (_title, addresses, data) => {
         it('divines BoundWitnesses by address', async () => {
           const expected = data().map((d) => d.payload)
-          const query: BoundWitnessDivinerQueryPayload = { addresses, schema }
+          const query: BoundWitnessDivinerQueryPayload = { addresses: (await Promise.all(addresses)).map((account) => account.address), schema }
           const response = await diviner.divine([query])
           expect(response).toBeArrayOfSize(expected.length)
           const responseHashes = await PayloadBuilder.dataHashes(response)
@@ -133,17 +132,17 @@ describe(`/${moduleName}`, () => {
       })
     })
     describe('offset', () => {
-      const account = Account.randomSync()
-      const address = account.address
+      const account = Account.random()
       let boundWitnesses: BoundWitnessWrapper[]
       beforeAll(async () => {
         boundWitnesses = await Promise.all(
-          [(await getNewBoundWitness([account]))[0], (await getNewBoundWitness([account]))[0]].map((bw) => BoundWitnessWrapper.parse(bw)),
+          [(await getNewBoundWitness([await account]))[0], (await getNewBoundWitness([await account]))[0]].map((bw) => BoundWitnessWrapper.parse(bw)),
         )
         await archivist.insert(boundWitnesses.map((b) => b.boundwitness))
       })
       describe('with timestamp', () => {
         it('divines BoundWitnesses from offset', async () => {
+          const address = (await account).address
           const timestamp = assertEx(boundWitnesses.at(-1)?.boundwitness.timestamp, () => 'Missing timestamp in test BW') + 1
           const limit = boundWitnesses.length
           const query: BoundWitnessDivinerQueryPayload = { address, limit, schema, timestamp }

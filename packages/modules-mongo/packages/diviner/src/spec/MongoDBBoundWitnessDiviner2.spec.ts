@@ -51,21 +51,21 @@ describe('MemoryBoundWitnessDiviner2', () => {
       schema: 'network.xyo.debug',
     })
 
-    const account = Account.randomSync()
+    const account = Account.random()
 
-    const [bwA] = await BoundWitnessBuilder.build({ accounts: [account], payloads: [payloadA] })
+    const [bwA] = await BoundWitnessBuilder.build({ accounts: [await account], payloads: [payloadA] })
     bws.push(bwA)
-    const [bwB] = await BoundWitnessBuilder.build({ accounts: [account], payloads: [payloadB] })
+    const [bwB] = await BoundWitnessBuilder.build({ accounts: [await account], payloads: [payloadB] })
     bws.push(bwB)
-    const [bwC] = await BoundWitnessBuilder.build({ accounts: [account], payloads: [payloadC] })
+    const [bwC] = await BoundWitnessBuilder.build({ accounts: [await account], payloads: [payloadC] })
     bws.push(bwC)
-    const [bwD] = await BoundWitnessBuilder.build({ accounts: [account], payloads: [payloadD] })
+    const [bwD] = await BoundWitnessBuilder.build({ accounts: [await account], payloads: [payloadD] })
     bws.push(bwD)
-    const [bwAB] = await BoundWitnessBuilder.build({ accounts: [account], payloads: [payloadA, payloadB] })
+    const [bwAB] = await BoundWitnessBuilder.build({ accounts: [await account], payloads: [payloadA, payloadB] })
     bws.push(bwAB)
 
     archivist = await MongoDBArchivist.create({
-      account: Account.randomSync(),
+      account: 'random',
       config: { schema: MongoDBArchivist.defaultConfigSchema },
     })
 
@@ -73,12 +73,12 @@ describe('MemoryBoundWitnessDiviner2', () => {
     await archivist.insert([payloadC, payloadD])
     await archivist.insert([bwA, bwB, bwC, bwD, bwAB])
     sut = await MongoDBBoundWitnessDiviner.create({
-      account,
+      account: await account,
       boundWitnessSdkConfig,
       config: { schema: BoundWitnessDivinerConfigSchema },
     })
     node = await MemoryNode.create({
-      account: Account.randomSync(),
+      account: 'random',
       config: { schema: MemoryNode.defaultConfigSchema },
     })
     const modules = [archivist, sut]

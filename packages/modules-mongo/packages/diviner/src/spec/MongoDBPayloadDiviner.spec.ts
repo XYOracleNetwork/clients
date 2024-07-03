@@ -24,7 +24,7 @@ describeIf(hasMongoDBConfig())('MongoDBPayloadDiviner', () => {
   let sut: MongoDBPayloadDiviner
   beforeAll(async () => {
     sut = await MongoDBPayloadDiviner.create({
-      account: Account.randomSync(),
+      account: 'random',
       config: { schema: PayloadDivinerConfigSchema },
       logger,
     })

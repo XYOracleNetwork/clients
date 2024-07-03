@@ -11,11 +11,11 @@ const schema = AddressHistoryQuerySchema
 const divinerName = 'XYOPublic:AddressHistoryDiviner'
 
 describe(`/${divinerName}`, () => {
-  const account = Account.randomSync()
+  const account = Account.random()
   let sut: DivinerInstance
   let archivist: ArchivistInstance
   beforeAll(async () => {
-    archivist = await getArchivistByName('XYOPublic:Archivist', account)
+    archivist = await getArchivistByName('XYOPublic:Archivist', await account)
     sut = await getDivinerByName(divinerName)
   })
   describe('ModuleDiscoverQuerySchema', () => {
@@ -27,17 +27,17 @@ describe(`/${divinerName}`, () => {
   })
   describe('DivinerDivineQuerySchema', () => {
     const limit = 8
-    const account = Account.randomSync()
+    const account = Account.random()
     let dataHashes: string[]
     beforeAll(async () => {
-      const data = await getNewBoundWitnesses([account], limit, 1)
+      const data = await getNewBoundWitnesses([await account], limit, 1)
       for (const [bw, payloads] of data) {
         await archivist.insert([bw, ...payloads])
       }
       dataHashes = await PayloadBuilder.dataHashes(data.map((d) => d[0]))
     })
     it.only('issues query', async () => {
-      const address = account.address
+      const address = (await account).address
       const query: AddressHistoryQueryPayload = { address, limit, schema }
       const response = await sut.divine([query])
       expect(response).toBeArrayOfSize(limit)

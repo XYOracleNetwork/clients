@@ -1,5 +1,5 @@
 import { assertEx } from '@xylabs/assert'
-import { Account } from '@xyo-network/account'
+import { Account, AccountInstance } from '@xyo-network/account'
 import { Payload } from '@xyo-network/payload-model'
 
 import { getHash, getNewBoundWitness, insertBlock, insertPayload } from '../../../testUtil'
@@ -7,10 +7,11 @@ import { createPointer, expectHashNotFoundError } from './get.payloadPointer.spe
 
 describe('/:hash', () => {
   describe('with rules for [timestamp]', () => {
-    const account = Account.randomSync()
+    let account: AccountInstance
     let payloads: Payload[]
     let expectedSchema: string
     beforeAll(async () => {
+      account = await Account.random()
       const [bwA, payloadsA] = await getNewBoundWitness([account])
       const [bwB, payloadsB] = await getNewBoundWitness([account])
       const [bwC, payloadsC] = await getNewBoundWitness([account])

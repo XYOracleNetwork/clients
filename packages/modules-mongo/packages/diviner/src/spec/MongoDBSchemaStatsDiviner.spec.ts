@@ -36,7 +36,7 @@ describeIf(hasMongoDBConfig())('MongoDBSchemaStatsDiviner', () => {
   beforeAll(async () => {
     address = (await Account.create({ phrase })).address
     sut = await MongoDBSchemaStatsDiviner.create({
-      account: Account.randomSync(),
+      account: 'random',
       config: { schema: SchemaStatsDivinerConfigSchema },
       jobQueue,
       logger,

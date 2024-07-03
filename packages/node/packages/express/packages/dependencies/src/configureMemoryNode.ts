@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises'
 import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
 import { Hash } from '@xylabs/hex'
-import { Account, HDWallet } from '@xyo-network/account'
+import { AccountInstance, HDWallet } from '@xyo-network/account'
 import { ArchivistInsertQuerySchema, isArchivistInstance, withArchivistInstance } from '@xyo-network/archivist-model'
 import { ManifestWrapper, ModuleManifest, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
@@ -17,7 +17,7 @@ import { defaultNode, nftContractNode, nftMetadataNode } from './Manifest'
 import { witnessNftCollections } from './witnessNftCollections'
 
 // TODO: How to inject account for node that is to be created from config?
-export const configureMemoryNode = async (container: Container, memoryNode?: NodeInstance, _account = Account.randomSync()) => {
+export const configureMemoryNode = async (container: Container, _memoryNode?: NodeInstance, _account?: AccountInstance) => {
   const node = await loadNodeFromConfig(container)
   // const node: NodeInstance = memoryNode ?? (await MemoryNode.create({ account, config }))
   container.bind<NodeInstance>(TYPES.Node).toConstantValue(node)

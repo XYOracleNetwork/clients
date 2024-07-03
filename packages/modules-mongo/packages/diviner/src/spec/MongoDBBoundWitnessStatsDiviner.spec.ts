@@ -40,7 +40,7 @@ describeIf(hasMongoDBConfig())('MongoDBBoundWitnessStatsDiviner', () => {
     account = await Account.create({ phrase })
     address = account.address
     sut = await MongoDBBoundWitnessStatsDiviner.create({
-      account: Account.randomSync(),
+      account: 'random',
       config: { schema: BoundWitnessStatsDivinerConfigSchema },
       jobQueue,
       logger,

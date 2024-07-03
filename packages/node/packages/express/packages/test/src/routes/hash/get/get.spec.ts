@@ -8,7 +8,7 @@ import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 import { getHash, getNewBlocksWithPayloads, getRequestClient, insertBlock, insertPayload } from '../../../testUtil'
 
 describe('/:hash', () => {
-  const account = Account.randomSync()
+  const account = Account.random()
   describe('with nonexistent hash', () => {
     beforeAll(() => {
       jest.spyOn(console, 'error').mockImplementation(() => {
@@ -39,7 +39,7 @@ describe('/:hash', () => {
       expect(payloadHash).toBeTruthy()
       const blockResponse = await insertBlock(blocks)
       expect(blockResponse.length).toBe(blocks.length)
-      const payloadResponse = await insertPayload(payload, account)
+      const payloadResponse = await insertPayload(payload, await account)
       expect(payloadResponse.length).toBe(1)
     })
     it('a single bound witness', async () => {

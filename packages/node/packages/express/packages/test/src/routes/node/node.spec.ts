@@ -8,7 +8,7 @@ import { Payload } from '@xyo-network/payload-model'
 import { getRequestClient, validateStateResponse } from '../../testUtil'
 
 describe('Node API', () => {
-  const account = Account.randomSync()
+  const account = Account.random()
   const client = getRequestClient()
   const path = '/node'
   beforeAll(() => {
@@ -27,7 +27,7 @@ describe('Node API', () => {
     describe('POST', () => {
       it('issues query to Node', async () => {
         const queryPayload = await new PayloadBuilder({ schema: ModuleStateQuerySchema }).build()
-        const query = await (await new QueryBoundWitnessBuilder().witness(account).query(queryPayload)).build()
+        const query = await (await new QueryBoundWitnessBuilder().witness(await account).query(queryPayload)).build()
         const send = [query[0], [...query[1]]]
         const response = await client.post(path, send)
         const data = response.data.data
@@ -77,7 +77,7 @@ describe('Node API', () => {
       }
       it('issues query to module at address', async () => {
         const queryPayload = await new PayloadBuilder({ schema: ModuleStateQuerySchema }).build()
-        const query = await (await new QueryBoundWitnessBuilder().witness(account).query(queryPayload)).build()
+        const query = await (await new QueryBoundWitnessBuilder().witness(await account).query(queryPayload)).build()
         const data = [query[0], [...query[1]]] as [QueryBoundWitness, Payload[]]
         await postModuleQuery(data, address)
       })

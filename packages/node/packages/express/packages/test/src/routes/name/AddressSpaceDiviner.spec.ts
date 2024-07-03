@@ -25,7 +25,7 @@ describe(`/${divinerName}`, () => {
     const accounts: AccountInstance[] = []
     beforeAll(async () => {
       for (let i = 0; i < 5; i++) {
-        const account = Account.randomSync()
+        const account = await Account.random()
         accounts.push(account)
         const payload = await getNewPayload()
         const [bw] = await new BoundWitnessBuilder().payload(payload).witness(account).build()
