@@ -18,7 +18,6 @@ const finalConfig = {
   ],
   'rules': {
     'id-denylist': ['warn', 'module'],
-    '@typescript-eslint/explicit-member-accessibility': ['warn', { 'accessibility': 'no-public' }],
     'no-restricted-imports': [
       'warn',
       {
