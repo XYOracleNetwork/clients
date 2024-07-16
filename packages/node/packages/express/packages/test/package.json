@@ -68,7 +68,6 @@
     "@types/jest": "^29.5.12",
     "@types/uuid": "^10.0.0",
     "@xylabs/delay": "^3.5.9",
-    "@xylabs/hex": "^3.5.9",
     "@xylabs/ts-scripts-yarn3": "^3.12.1",
     "@xylabs/tsconfig-jest": "^3.12.1",
     "@xyo-network/api-call-witness": "^2.99.2",
