@@ -53,7 +53,7 @@ function processFiles(directoryPath) {
 }
 
 // Change this to your source directory
-const directoryPath = path.join(__dirname, 'src')
+const directoryPath = path.join(__dirname, 'packages')
 processFiles(directoryPath)
 
 console.log('Import paths corrected successfully.')
