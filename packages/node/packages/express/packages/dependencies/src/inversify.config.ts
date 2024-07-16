@@ -9,9 +9,9 @@ import { NodeInstance } from '@xyo-network/node-model'
 import { config } from 'dotenv'
 import { Container } from 'inversify'
 
-import { configureMemoryNode } from './configureMemoryNode'
-import { addMemoryModules } from './Module'
-import { tryGetServiceName } from './Util'
+import { configureMemoryNode } from './configureMemoryNode.js'
+import { addMemoryModules } from './Module/index.js'
+import { tryGetServiceName } from './Util/index.js'
 config()
 
 export const container = new Container({

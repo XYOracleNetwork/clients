@@ -20,8 +20,8 @@ import { MongoClientWrapper } from '@xyo-network/sdk-xyo-mongo-js'
 import { Job, JobProvider } from '@xyo-network/shared'
 import { ChangeStream, ChangeStreamInsertDocument, ChangeStreamOptions, ResumeToken, UpdateOptions } from 'mongodb'
 
-import { defineJobs, scheduleJobs } from './JobQueue'
-import { SetIterator } from './SetIterator'
+import { defineJobs, scheduleJobs } from './JobQueue/index.js'
+import { SetIterator } from './SetIterator/index.js'
 
 const updateOptions: UpdateOptions = { upsert: true }
 

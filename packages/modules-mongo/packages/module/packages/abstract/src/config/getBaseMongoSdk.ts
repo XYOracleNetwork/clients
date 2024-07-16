@@ -2,7 +2,7 @@ import { assertEx } from '@xylabs/assert'
 import { BaseMongoSdk, BaseMongoSdkPrivateConfig } from '@xyo-network/sdk-xyo-mongo-js'
 import { Document } from 'mongodb'
 
-import { getMongoDBConfig } from './getMongoDBConfig'
+import { getMongoDBConfig } from './getMongoDBConfig.js'
 
 export const getBaseMongoSdkPrivateConfig = (): BaseMongoSdkPrivateConfig => {
   const env = getMongoDBConfig()

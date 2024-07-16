@@ -1,2 +1,2 @@
-export * from './getPayloadValidatorFromSchemaCache'
-export * from './validatePayloadSchema'
+export * from './getPayloadValidatorFromSchemaCache.js'
+export * from './validatePayloadSchema.js'

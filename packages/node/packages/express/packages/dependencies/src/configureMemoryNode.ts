@@ -13,8 +13,8 @@ import { NodeInstance } from '@xyo-network/node-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Container } from 'inversify'
 
-import { defaultNode, nftContractNode, nftMetadataNode } from './Manifest'
-import { witnessNftCollections } from './witnessNftCollections'
+import { defaultNode, nftContractNode, nftMetadataNode } from './Manifest/index.js'
+import { witnessNftCollections } from './witnessNftCollections.js'
 
 // TODO: How to inject account for node that is to be created from config?
 export const configureMemoryNode = async (container: Container, _memoryNode?: NodeInstance, _account?: AccountInstance) => {

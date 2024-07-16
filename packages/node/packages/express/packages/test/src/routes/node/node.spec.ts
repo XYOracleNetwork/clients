@@ -5,7 +5,7 @@ import { AddressPayload, AddressSchema, ModuleStateQuerySchema } from '@xyo-netw
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
 
-import { getRequestClient, validateStateResponse } from '../../testUtil'
+import { getRequestClient, validateStateResponse } from '../../testUtil/index.js'
 
 describe('Node API', () => {
   const account = Account.random()

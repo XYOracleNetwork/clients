@@ -1,6 +1,6 @@
 import { NodeInstance } from '@xyo-network/node-model'
 
-import { printError, printTitle } from '../../../../lib'
+import { printError, printTitle } from '../../../../lib/index.js'
 
 export const unregisterModule = (_node: NodeInstance) => {
   printTitle('Unregister Module')

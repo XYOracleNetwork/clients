@@ -1,8 +1,8 @@
 import { spawn } from 'node:child_process'
 import Path from 'node:path'
 
-import { getErrFileDescriptor, getOutFileDescriptor } from './logs'
-import { setPid } from './pid'
+import { getErrFileDescriptor, getOutFileDescriptor } from './logs/index.js'
+import { setPid } from './pid/index.js'
 
 /**
  * The path to the script to run the Node

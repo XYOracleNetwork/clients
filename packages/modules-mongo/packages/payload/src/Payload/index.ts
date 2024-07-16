@@ -1,2 +1,2 @@
-export * from './PayloadMeta'
-export * from './PayloadWithMeta'
+export * from './PayloadMeta.js'
+export * from './PayloadWithMeta.js'

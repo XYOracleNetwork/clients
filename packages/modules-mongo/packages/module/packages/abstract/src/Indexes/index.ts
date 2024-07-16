@@ -1,1 +1,1 @@
-export * from './CollectionIndexFunction'
+export * from './CollectionIndexFunction.js'

@@ -4,7 +4,7 @@ import { AddressHistoryQueryPayload, AddressHistoryQuerySchema } from '@xyo-netw
 import { DivinerDivineQuerySchema, DivinerInstance } from '@xyo-network/diviner-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 
-import { getArchivistByName, getDivinerByName, getNewBoundWitnesses, validateStateResponse } from '../../testUtil'
+import { getArchivistByName, getDivinerByName, getNewBoundWitnesses, validateStateResponse } from '../../testUtil/index.js'
 
 const schema = AddressHistoryQuerySchema
 

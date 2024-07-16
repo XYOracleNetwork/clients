@@ -2,7 +2,7 @@ import { assertEx } from '@xylabs/assert'
 import { JobQueue } from '@xyo-network/node-core-model'
 import { Agenda } from 'agenda'
 
-import { getName } from './getName'
+import { getName } from './getName.js'
 
 /**
  * Collection to use for managing jobs

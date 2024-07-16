@@ -1,6 +1,6 @@
 import { BoundWitnessWithMongoMeta, PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
 
-import { PayloadFilterPredicate } from './PayloadFilterPredicate'
+import { PayloadFilterPredicate } from './PayloadFilterPredicate.js'
 
 export type WithoutSchemas<T> = Omit<Omit<T, 'schema'>, 'schemas'>
 

@@ -1,6 +1,6 @@
 import { PayloadAddressRule, PayloadRule, PayloadSchemaRule, PayloadTimestampOrderRule } from '@xyo-network/node-core-model'
 
-import { combineRules } from '../combineRules'
+import { combineRules } from '../combineRules.js'
 
 // Mock Date.now
 const now = new Date()

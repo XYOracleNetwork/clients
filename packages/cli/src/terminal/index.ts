@@ -1,1 +1,1 @@
-export * from './startTerminal'
+export * from './startTerminal.js'

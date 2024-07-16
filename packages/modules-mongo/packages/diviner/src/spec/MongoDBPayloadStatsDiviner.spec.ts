@@ -11,7 +11,7 @@ import { hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { JobQueue } from '@xyo-network/node-core-model'
 import { mock, MockProxy } from 'jest-mock-extended'
 
-import { MongoDBPayloadStatsDiviner } from '../MongoDBPayloadStatsDiviner'
+import { MongoDBPayloadStatsDiviner } from '../MongoDBPayloadStatsDiviner.js'
 
 /**
  * @group mongo

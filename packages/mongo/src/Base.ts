@@ -1,8 +1,8 @@
 import { assertEx } from '@xylabs/assert'
 import { Collection, DeleteResult, Document, Filter, FindCursor, MongoClient, OptionalUnlessRequiredId, UpdateFilter, WithId } from 'mongodb'
 
-import { BaseMongoSdkConfig } from './Config'
-import { MongoClientWrapper } from './Wrapper'
+import { BaseMongoSdkConfig } from './Config.js'
+import { MongoClientWrapper } from './Wrapper.js'
 
 export class BaseMongoSdk<T extends Document> {
   config: BaseMongoSdkConfig

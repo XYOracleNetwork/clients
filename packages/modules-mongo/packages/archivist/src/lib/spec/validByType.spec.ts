@@ -6,7 +6,7 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
 import { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
 
-import { validByType } from '../validByType'
+import { validByType } from '../validByType.js'
 
 type DebugPayloadWithMeta = Partial<PayloadWithMongoMeta<{ nonce: string; schema: string }>> & { schema: string }
 

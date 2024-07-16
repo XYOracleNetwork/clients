@@ -1,2 +1,2 @@
-export * from './ConfigurationFunction'
-export * from './NodeConfigurationFunction'
+export * from './ConfigurationFunction.js'
+export * from './NodeConfigurationFunction.js'

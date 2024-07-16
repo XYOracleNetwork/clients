@@ -5,7 +5,7 @@ import { DivinerDivineQuerySchema, DivinerInstance } from '@xyo-network/diviner-
 import { AddressPayload, AddressSchema } from '@xyo-network/module-model'
 import { WithMeta, WithSources } from '@xyo-network/payload-model'
 
-import { getDivinerByName, getNewPayload, insertPayload, validateStateResponse } from '../../testUtil'
+import { getDivinerByName, getNewPayload, insertPayload, validateStateResponse } from '../../testUtil/index.js'
 
 const divinerName = 'XYOPublic:AddressSpaceDiviner'
 

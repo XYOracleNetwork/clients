@@ -1,6 +1,6 @@
 import { terminal } from 'terminal-kit'
 
-import { printLine } from '../lib'
+import { printLine } from '../lib/index.js'
 
 export const stopTerminal = () => {
   terminal.grabInput(false)

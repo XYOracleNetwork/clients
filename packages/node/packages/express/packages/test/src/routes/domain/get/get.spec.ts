@@ -1,4 +1,4 @@
-import { getDomain } from '../../../testUtil'
+import { getDomain } from '../../../testUtil/index.js'
 
 const domain = 'network.xyo'
 

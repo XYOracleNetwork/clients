@@ -1,4 +1,4 @@
-import { printLine } from './printLine'
+import { printLine } from './printLine.js'
 
 export const printError = (text?: string | undefined) => {
   printLine(text, 'red')

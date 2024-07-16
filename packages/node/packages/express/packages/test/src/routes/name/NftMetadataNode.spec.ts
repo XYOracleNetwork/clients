@@ -7,7 +7,7 @@ import { asNodeInstance, NodeInstance } from '@xyo-network/node-model'
 import { WithMeta, WithSources } from '@xyo-network/payload-model'
 import { SentinelInstance } from '@xyo-network/sentinel-model'
 
-import { getArchivistByNameFromChildNode, getBridge, getDivinerByNameFromChildNode, getSentinelByNameFromChildNode } from '../../testUtil'
+import { getArchivistByNameFromChildNode, getBridge, getDivinerByNameFromChildNode, getSentinelByNameFromChildNode } from '../../testUtil/index.js'
 
 const nodeName = 'XYOPublic:NftMetadataNode'
 const sentinelName = 'NftMetadataSentinel'

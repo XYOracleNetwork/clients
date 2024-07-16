@@ -1,3 +1,3 @@
-export * from './addMongoModules'
-export * from './canAddMongoModules'
-export * from './Diviner'
+export * from './addMongoModules.js'
+export * from './canAddMongoModules.js'
+export * from './Diviner/index.js'

@@ -1,7 +1,7 @@
 import { assertEx } from '@xylabs/assert'
 
-import { connect, printLogo, restart, setTerminalTitle, stop } from './lib'
-import { startTerminal } from './terminal'
+import { connect, printLogo, restart, setTerminalTitle, stop } from './lib/index.js'
+import { startTerminal } from './terminal/index.js'
 
 const main = async () => {
   setTerminalTitle()

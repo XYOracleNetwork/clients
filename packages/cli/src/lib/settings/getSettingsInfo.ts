@@ -1,5 +1,5 @@
-import { getAccount } from './account'
-import { settingsFile } from './files'
+import { getAccount } from './account/index.js'
+import { settingsFile } from './files.js'
 
 export interface SettingsInfo {
   account: {

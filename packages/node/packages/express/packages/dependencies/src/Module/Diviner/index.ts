@@ -1,1 +1,1 @@
-export * from './addDivinerModuleFactories'
+export * from './addDivinerModuleFactories.js'

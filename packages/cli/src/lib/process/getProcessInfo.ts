@@ -1,6 +1,6 @@
-import { isRunning } from './isRunning'
-import { errFile, outFile } from './logs'
-import { getPid } from './pid'
+import { isRunning } from './isRunning.js'
+import { errFile, outFile } from './logs/index.js'
+import { getPid } from './pid/index.js'
 
 export interface NodeInfo {
   logs: {

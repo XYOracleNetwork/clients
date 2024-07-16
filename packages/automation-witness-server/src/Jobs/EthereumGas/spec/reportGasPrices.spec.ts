@@ -1,5 +1,5 @@
-import { getProvider } from '../../../Providers'
-import { reportGasPrices } from '../reportGasPrices'
+import { getProvider } from '../../../Providers/index.js'
+import { reportGasPrices } from '../reportGasPrices.js'
 
 /**
  * @group crypto

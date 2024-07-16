@@ -1,9 +1,9 @@
 import { EmptyObject } from '@xylabs/object'
 import { ArgumentsCamelCase, CommandBuilder, CommandModule } from 'yargs'
 
-import { stop } from '../../../lib'
-import { BaseArguments } from '../../BaseArguments'
-import { outputContext } from '../../util'
+import { stop } from '../../../lib/index.js'
+import { BaseArguments } from '../../BaseArguments.js'
+import { outputContext } from '../../util/index.js'
 
 type Arguments = BaseArguments & {
   force?: boolean

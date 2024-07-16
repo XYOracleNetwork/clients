@@ -6,7 +6,7 @@ import { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload, PayloadWithMeta, WithMeta } from '@xyo-network/payload-model'
 
-import { MongoDBPayloadDiviner } from '../MongoDBPayloadDiviner'
+import { MongoDBPayloadDiviner } from '../MongoDBPayloadDiviner.js'
 
 /**
  * @group module

@@ -1,5 +1,5 @@
-import { ConfigurationFunction } from '../../model'
-import { configureEnvironmentFromAWSSecret, configureEnvironmentFromDotEnv } from './providers'
+import { ConfigurationFunction } from '../../model/index.js'
+import { configureEnvironmentFromAWSSecret, configureEnvironmentFromDotEnv } from './providers/index.js'
 
 export const configureEnvironment: ConfigurationFunction = async () => {
   await configureEnvironmentFromDotEnv()

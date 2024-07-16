@@ -1,2 +1,2 @@
-export * from './AddressInfo'
-export * from './initializeDatabase'
+export * from './AddressInfo.js'
+export * from './initializeDatabase.js'

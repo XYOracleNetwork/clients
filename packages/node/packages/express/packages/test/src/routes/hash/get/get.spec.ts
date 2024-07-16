@@ -5,7 +5,7 @@ import { Payload } from '@xyo-network/payload-model'
 import { BoundWitnessWithPartialMongoMeta } from '@xyo-network/payload-mongodb'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 
-import { getHash, getNewBlocksWithPayloads, getRequestClient, insertBlock, insertPayload } from '../../../testUtil'
+import { getHash, getNewBlocksWithPayloads, getRequestClient, insertBlock, insertPayload } from '../../../testUtil/index.js'
 
 describe('/:hash', () => {
   const account = Account.random()

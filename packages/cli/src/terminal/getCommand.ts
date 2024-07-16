@@ -1,7 +1,7 @@
 import { NodeInstance } from '@xyo-network/node-model'
 import { terminal } from 'terminal-kit'
 
-import { printLine } from '../lib'
+import { printLine } from '../lib/index.js'
 import {
   attachModule,
   describeNode,

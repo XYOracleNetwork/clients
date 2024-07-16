@@ -1,6 +1,6 @@
 import { Payload } from '@xyo-network/payload-model'
 
-import { PayloadWithMongoMeta } from '../Payload'
+import { PayloadWithMongoMeta } from '../Payload/index.js'
 
 export type BoundWitnessMongoMeta<P extends Payload = Payload> = PayloadWithMongoMeta<
   P & {

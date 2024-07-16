@@ -1,2 +1,2 @@
-export * from './configureDoc'
-export * from './ConfigureDocOptions'
+export * from './configureDoc.js'
+export * from './ConfigureDocOptions.js'

@@ -1,1 +1,1 @@
-export * from './addWitnessModuleFactories'
+export * from './addWitnessModuleFactories.js'

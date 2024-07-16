@@ -4,7 +4,7 @@ import { ApiConfig } from '@xyo-network/api-models'
 import { AttachableArchivistInstance, isAttachableArchivistInstance } from '@xyo-network/archivist-model'
 import { HttpBridge, HttpBridgeConfigSchema } from '@xyo-network/bridge-http'
 
-import { getApiConfig } from './getApiConfig'
+import { getApiConfig } from './getApiConfig.js'
 
 const archivistName = 'XYOPublic:Archivist' // TODO: This should be configurable
 const discoverRoots = 'start'

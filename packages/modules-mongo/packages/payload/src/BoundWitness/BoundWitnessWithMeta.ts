@@ -1,7 +1,7 @@
 import { BoundWitness } from '@xyo-network/boundwitness-model'
 
-import { PayloadWithPartialMongoMeta } from '../Payload'
-import { BoundWitnessMongoMeta } from './BoundWitnessMeta'
+import { PayloadWithPartialMongoMeta } from '../Payload/index.js'
+import { BoundWitnessMongoMeta } from './BoundWitnessMeta.js'
 
 export type BoundWitnessWithMongoMeta<
   T extends BoundWitness = BoundWitness,

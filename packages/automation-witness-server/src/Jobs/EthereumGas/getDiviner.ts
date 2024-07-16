@@ -1,7 +1,7 @@
 import { DivinerInstance } from '@xyo-network/diviner-model'
 import { EthereumGasDiviner, EthereumGasDivinerConfigSchema } from '@xyo-network/gas-price-plugin'
 
-import { getAccount, WalletPaths } from '../../Account'
+import { getAccount, WalletPaths } from '../../Account/index.js'
 
 export const getDiviner = async (): Promise<DivinerInstance> => {
   return await EthereumGasDiviner.create({

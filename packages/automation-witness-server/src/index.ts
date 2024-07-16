@@ -1,1 +1,1 @@
-export { server as automationWitness } from './Server'
+export { server as automationWitness } from './Server/index.js'

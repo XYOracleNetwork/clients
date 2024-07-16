@@ -1,3 +1,3 @@
-export * from './getAccount'
-export * from './getWallet'
-export * from './WalletPaths'
+export * from './getAccount.js'
+export * from './getWallet.js'
+export * from './WalletPaths.js'

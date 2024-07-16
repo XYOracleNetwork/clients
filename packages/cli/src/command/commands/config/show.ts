@@ -2,9 +2,9 @@ import { EmptyObject } from '@xylabs/object'
 import { ModuleConfig, ModuleConfigSchema } from '@xyo-network/module-model'
 import { CommandBuilder, CommandModule } from 'yargs'
 
-import { readFileDeep } from '../../../lib'
-import { BaseArguments } from '../../BaseArguments'
-import { outputContext } from '../../util'
+import { readFileDeep } from '../../../lib/index.js'
+import { BaseArguments } from '../../BaseArguments.js'
+import { outputContext } from '../../util/index.js'
 
 // TODO: We don't want a single config payload
 // as we're really configuring an entire node

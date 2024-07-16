@@ -1,8 +1,8 @@
 import { Account } from '@xyo-network/account'
 import { Payload } from '@xyo-network/payload-model'
 
-import { getHash, getNewBoundWitness, insertBlock, insertPayload } from '../../../testUtil'
-import { createPointer, expectHashNotFoundError } from './get.payloadPointer.spec'
+import { getHash, getNewBoundWitness, insertBlock, insertPayload } from '../../../testUtil/index.js'
+import { createPointer, expectHashNotFoundError } from './get.payloadPointer.spec.js'
 
 describe('/:hash', () => {
   describe('with rules for [address]', () => {

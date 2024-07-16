@@ -1,2 +1,2 @@
-export * from './fromDbRepresentation'
-export * from './toDbRepresentation'
+export * from './fromDbRepresentation.js'
+export * from './toDbRepresentation.js'

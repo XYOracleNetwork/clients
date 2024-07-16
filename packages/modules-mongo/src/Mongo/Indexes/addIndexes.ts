@@ -2,7 +2,7 @@ import { assertEx } from '@xylabs/assert'
 import { DATABASES, getMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { IndexDescription, MongoClient, WriteConcern } from 'mongodb'
 
-import { AddressInfoIndexes } from './Specifications'
+import { AddressInfoIndexes } from './Specifications/index.js'
 
 const indexesByCollection: Record<string, IndexDescription[]> = {
   // TODO: This collection can be removed once MongoDBPreviousHashStore

@@ -1,4 +1,4 @@
-import { getJobQueue } from '../getJobQueue'
+import { getJobQueue } from '../getJobQueue.js'
 
 describe('getJobQueue', () => {
   it('gets the job queue', async () => {

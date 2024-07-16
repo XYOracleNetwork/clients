@@ -1,7 +1,7 @@
 import { Payload } from '@xyo-network/payload-model'
 import { Ajv } from 'ajv'
 
-import { validatePayloadSchema } from '../validatePayloadSchema'
+import { validatePayloadSchema } from '../validatePayloadSchema.js'
 
 const ajv = new Ajv()
 

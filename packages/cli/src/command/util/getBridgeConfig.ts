@@ -1,8 +1,8 @@
 import { HttpBridgeConfig, HttpBridgeConfigSchema } from '@xyo-network/bridge-http'
 import { knownArchivists as knownNodes } from '@xyo-network/network'
 
-import { printError } from '../../lib'
-import { BaseArguments } from '../BaseArguments'
+import { printError } from '../../lib/index.js'
+import { BaseArguments } from '../BaseArguments.js'
 
 const schema = HttpBridgeConfigSchema
 const security = { allowAnonymous: true }

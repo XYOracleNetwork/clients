@@ -1,3 +1,3 @@
-export * from './Address'
-export * from './Payload'
-export * from './schema'
+export * from './Address/index.js'
+export * from './Payload/index.js'
+export * from './schema/index.js'

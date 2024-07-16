@@ -1,8 +1,8 @@
 import { asModule, Module, ModuleFilter } from '@xyo-network/module-model'
 
-import { printError } from '../../../lib'
-import { BaseArguments } from '../../BaseArguments'
-import { getBridge } from '../../util'
+import { printError } from '../../../lib/index.js'
+import { BaseArguments } from '../../BaseArguments.js'
+import { getBridge } from '../../util/index.js'
 
 export const getModuleFromModuleFilter = async (args: BaseArguments, filter: ModuleFilter): Promise<Module> => {
   const { verbose } = args

@@ -1,6 +1,6 @@
 import { isNodeInstance } from '@xyo-network/node-model'
 
-import { getNode } from '../getNode'
+import { getNode } from '../getNode.js'
 
 describe('getNode', () => {
   it('gets the node', async () => {

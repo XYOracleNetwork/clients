@@ -2,7 +2,7 @@ import { stat, writeFile } from 'node:fs/promises'
 
 import { merge } from '@xylabs/lodash'
 
-import { readJson } from './readJson'
+import { readJson } from './readJson.js'
 
 export const writeJson = async (file: string, data: object): Promise<object | undefined> => {
   let previous: object = {}

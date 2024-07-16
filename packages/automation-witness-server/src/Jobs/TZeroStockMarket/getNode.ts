@@ -6,8 +6,8 @@ import { ModuleFactory } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { TZeroApiCallJsonResultToSnapshotDiviner } from '@xyo-network/tzero-stock-market-plugin'
 
-import { getWallet, WalletPaths } from '../../Account'
-import { getArchivist } from '../../Archivists'
+import { getWallet, WalletPaths } from '../../Account/index.js'
+import { getArchivist } from '../../Archivists/index.js'
 import tZeroMarketSnapshotDiviner from './ApiCallWitnessManifest.json'
 
 export const getNode = async (): Promise<MemoryNode> => {

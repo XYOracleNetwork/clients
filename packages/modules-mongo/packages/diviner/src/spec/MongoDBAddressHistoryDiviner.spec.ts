@@ -13,8 +13,8 @@ import { BoundWitnessWithMongoMeta, BoundWitnessWithPartialMongoMeta } from '@xy
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock } from 'jest-mock-extended'
 
-import { toPayloadWithMongoMeta } from '../lib'
-import { MongoDBAddressHistoryDiviner } from '../MongoDBAddressHistoryDiviner'
+import { toPayloadWithMongoMeta } from '../lib/index.js'
+import { MongoDBAddressHistoryDiviner } from '../MongoDBAddressHistoryDiviner.js'
 
 /**
  * @group mongo

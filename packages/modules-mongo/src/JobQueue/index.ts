@@ -1,1 +1,1 @@
-export * from './JobQueueContainerModule'
+export * from './JobQueueContainerModule.js'

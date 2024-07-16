@@ -1,5 +1,5 @@
-import { newline } from './newline'
-import { printLine } from './printLine'
+import { newline } from './newline.js'
+import { printLine } from './printLine.js'
 
 export const printTitle = (text?: string | undefined) => {
   newline()

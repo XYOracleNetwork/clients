@@ -13,7 +13,7 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 
-import { getHash, getNewBoundWitness, insertBlock, insertPayload } from '../../../testUtil'
+import { getHash, getNewBoundWitness, insertBlock, insertPayload } from '../../../testUtil/index.js'
 
 export const createPointer = async (
   addresses: string[][] = [],

@@ -1,2 +1,2 @@
-export * from './getRequestClient'
-export * from './request'
+export * from './getRequestClient.js'
+export * from './request.js'

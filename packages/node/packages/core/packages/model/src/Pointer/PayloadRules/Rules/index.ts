@@ -1,3 +1,3 @@
-export * from './PayloadAddressRule'
-export * from './PayloadSchemaRule'
-export * from './PayloadTimestampDirectionRule'
+export * from './PayloadAddressRule.js'
+export * from './PayloadSchemaRule.js'
+export * from './PayloadTimestampDirectionRule.js'

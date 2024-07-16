@@ -1,1 +1,1 @@
-export * from './WalletPaths'
+export * from './WalletPaths.js'

@@ -4,8 +4,8 @@ import { MemorySentinel } from '@xyo-network/sentinel-memory'
 import { SentinelConfig, SentinelConfigSchema } from '@xyo-network/sentinel-model'
 import { AdhocWitness, AdhocWitnessConfigSchema } from '@xyo-network/witness-adhoc'
 
-import { getAccount, WalletPaths } from '../../Account'
-import { getArchivists } from '../../Archivists'
+import { getAccount, WalletPaths } from '../../Account/index.js'
+import { getArchivists } from '../../Archivists/index.js'
 
 export const reportDivinerResult = async (payload: Payload): Promise<Payload[]> => {
   const adHocWitnessAccount = await getAccount(WalletPaths.EthereumGas.AdHocWitness.PriceDivinerResult)

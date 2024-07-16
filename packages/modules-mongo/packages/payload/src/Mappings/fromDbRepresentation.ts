@@ -3,8 +3,8 @@ import { omitBy } from '@xylabs/lodash'
 import { BoundWitness, BoundWitnessFields, isBoundWitness } from '@xyo-network/boundwitness-model'
 import { Payload, PayloadMetaFields } from '@xyo-network/payload-model'
 
-import { BoundWitnessWithMongoMeta } from '../BoundWitness'
-import { PayloadWithMongoMeta } from '../Payload'
+import { BoundWitnessWithMongoMeta } from '../BoundWitness/index.js'
+import { PayloadWithMongoMeta } from '../Payload/index.js'
 
 const omitByPredicate = (prefix: string) => (_: unknown, key: string) => {
   assertEx(typeof key === 'string', () => `Invalid key type [${key}, ${typeof key}]`)

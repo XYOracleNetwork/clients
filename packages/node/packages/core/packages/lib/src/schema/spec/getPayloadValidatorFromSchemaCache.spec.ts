@@ -1,7 +1,7 @@
 import { Payload } from '@xyo-network/payload-model'
 import { SchemaCache, SchemaCacheEntry } from '@xyo-network/schema-cache'
 
-import { getPayloadValidatorFromSchemaCache } from '../getPayloadValidatorFromSchemaCache'
+import { getPayloadValidatorFromSchemaCache } from '../getPayloadValidatorFromSchemaCache.js'
 
 const getPayload = (): Payload => {
   return {

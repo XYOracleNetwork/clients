@@ -1,1 +1,1 @@
-export * from './getDomain'
+export * from './getDomain.js'

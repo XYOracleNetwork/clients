@@ -1,4 +1,4 @@
-import { getDiviner } from '../getDiviner'
+import { getDiviner } from '../getDiviner.js'
 
 describe('getDiviner', () => {
   it('gets the diviner', async () => {

@@ -1,6 +1,6 @@
 import yargs from 'yargs'
 
-import account from '../account'
+import account from '../account.js'
 
 describe('account', () => {
   const parser = yargs().command(account).help()

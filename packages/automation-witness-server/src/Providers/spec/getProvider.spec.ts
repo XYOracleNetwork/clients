@@ -1,4 +1,4 @@
-import { getProvider } from '../getProvider'
+import { getProvider } from '../getProvider.js'
 
 /**
  * @group crypto

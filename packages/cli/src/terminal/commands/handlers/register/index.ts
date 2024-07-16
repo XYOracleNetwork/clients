@@ -1,3 +1,3 @@
-export * from './listRegisteredModules'
-export * from './registerModule'
-export * from './unregisterModule'
+export * from './listRegisteredModules.js'
+export * from './registerModule.js'
+export * from './unregisterModule.js'

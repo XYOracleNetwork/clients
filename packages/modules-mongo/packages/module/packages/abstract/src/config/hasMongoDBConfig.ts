@@ -1,6 +1,6 @@
 import { exists } from '@xylabs/exists'
 
-import { getMongoDBConfig } from './getMongoDBConfig'
+import { getMongoDBConfig } from './getMongoDBConfig.js'
 
 export const hasMongoDBConfig = (): boolean => {
   const env = getMongoDBConfig()

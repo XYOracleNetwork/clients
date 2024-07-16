@@ -1,8 +1,8 @@
 import { EmptyObject } from '@xylabs/object'
 import { ArgumentsCamelCase, Argv, CommandBuilder, CommandModule } from 'yargs'
 
-import { printLine } from '../../../lib'
-import { ModuleArguments } from '../ModuleArguments'
+import { printLine } from '../../../lib/index.js'
+import { ModuleArguments } from '../ModuleArguments.js'
 
 type Arguments = ModuleArguments & {
   payloads: string[]

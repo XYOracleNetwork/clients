@@ -3,7 +3,7 @@ import { AccountInstance } from '@xyo-network/account-model'
 import { ArchivistInstance, asArchivistInstance } from '@xyo-network/archivist-model'
 import { ArchivistWrapper } from '@xyo-network/archivist-wrapper'
 
-import { getModuleByName, getModuleByNameFromChildNode } from '../Node'
+import { getModuleByName, getModuleByNameFromChildNode } from '../Node/index.js'
 
 /**
  * @deprecated Use getArchivistByName instead

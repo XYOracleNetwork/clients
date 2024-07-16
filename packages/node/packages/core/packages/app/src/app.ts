@@ -1,3 +1,3 @@
-import { getNode } from './getNode'
+import { getNode } from './getNode.js'
 
 void getNode()

@@ -14,7 +14,7 @@ import { BoundWitnessWithMongoMeta, BoundWitnessWithPartialMongoMeta } from '@xy
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock } from 'jest-mock-extended'
 
-import { MongoDBBoundWitnessDiviner } from '../MongoDBBoundWitnessDiviner'
+import { MongoDBBoundWitnessDiviner } from '../MongoDBBoundWitnessDiviner.js'
 
 /**
  * @group mongo

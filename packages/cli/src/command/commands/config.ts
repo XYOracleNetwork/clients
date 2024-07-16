@@ -2,8 +2,8 @@ import Path from 'node:path'
 
 import { ArgumentsCamelCase, Argv, CommandBuilder, CommandModule } from 'yargs'
 
-import { printLine } from '../../lib'
-import { opts } from '../requireDirectoryOptions'
+import { printLine } from '../../lib/index.js'
+import { opts } from '../requireDirectoryOptions.js'
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 type Arguments = {}

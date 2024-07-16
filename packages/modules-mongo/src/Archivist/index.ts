@@ -1,1 +1,1 @@
-export * from './addArchivistModuleFactories'
+export * from './addArchivistModuleFactories.js'

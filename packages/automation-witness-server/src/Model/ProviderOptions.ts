@@ -1,5 +1,5 @@
-import { InfuraProviderConfig } from './InfuraProviderConfig'
-import { PocketProviderConfig } from './PocketProviderConfig'
+import { InfuraProviderConfig } from './InfuraProviderConfig.js'
+import { PocketProviderConfig } from './PocketProviderConfig.js'
 
 export interface ProviderOptions {
   alchemy?: string // Alchemy API Token

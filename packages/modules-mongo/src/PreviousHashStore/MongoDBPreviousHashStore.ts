@@ -2,7 +2,7 @@ import { Address, Hash } from '@xylabs/hex'
 import { PreviousHashStore } from '@xyo-network/previous-hash-store-model'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 
-import { AddressInfo } from '../Mongo'
+import { AddressInfo } from '../Mongo/index.js'
 
 export class MongoDBPreviousHashStore implements PreviousHashStore {
   constructor(protected readonly addressInfoSdk: BaseMongoSdk<AddressInfo>) {}

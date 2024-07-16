@@ -1,9 +1,9 @@
 import { Express } from 'express'
 
-import { addDomainRoutes } from './addDomainRoutes'
-import { addMetricsRoutes } from './addMetricsRoutes'
-import { addNodeRoutes } from './addNodeRoutes'
-import { addTempNodeRoutes } from './addTempNodeRoutes'
+import { addDomainRoutes } from './addDomainRoutes.js'
+import { addMetricsRoutes } from './addMetricsRoutes.js'
+import { addNodeRoutes } from './addNodeRoutes.js'
+import { addTempNodeRoutes } from './addTempNodeRoutes.js'
 
 export const addRoutes = (app: Express): Express => {
   addDomainRoutes(app)

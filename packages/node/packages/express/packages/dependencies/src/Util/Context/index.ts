@@ -1,1 +1,1 @@
-export * from './tryGetServiceName'
+export * from './tryGetServiceName.js'

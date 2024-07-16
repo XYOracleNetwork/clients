@@ -1,7 +1,7 @@
 import { kill } from 'node:process'
 
-import { isRunning } from './isRunning'
-import { clearPid, getPid } from './pid'
+import { isRunning } from './isRunning.js'
+import { clearPid, getPid } from './pid/index.js'
 
 /**
  * Stops the XYO Node process.

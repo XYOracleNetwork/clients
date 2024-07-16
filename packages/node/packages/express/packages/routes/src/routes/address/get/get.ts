@@ -7,7 +7,7 @@ import { Payload } from '@xyo-network/payload-model'
 import { RequestHandler } from 'express'
 import { StatusCodes } from 'http-status-codes'
 
-import { AddressPathParams } from '../AddressPathParams'
+import { AddressPathParams } from '../AddressPathParams.js'
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
 const handler: RequestHandler<AddressPathParams, Payload[]> = async (req, res, next) => {

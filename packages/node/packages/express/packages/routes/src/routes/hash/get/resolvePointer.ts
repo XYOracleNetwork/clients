@@ -8,7 +8,7 @@ import { TYPES } from '@xyo-network/node-core-types'
 import { Payload } from '@xyo-network/payload-model'
 import { Request } from 'express'
 
-import { findPayload } from './findPayload'
+import { findPayload } from './findPayload.js'
 
 export const resolvePointer = async (req: Request, pointer: PointerPayload): Promise<Payload | undefined> => {
   const { node } = req.app

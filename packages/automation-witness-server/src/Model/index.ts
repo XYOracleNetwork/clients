@@ -1,3 +1,3 @@
-export * from './InfuraProviderConfig'
-export * from './PocketProviderConfig'
-export * from './ProviderOptions'
+export * from './InfuraProviderConfig.js'
+export * from './PocketProviderConfig.js'
+export * from './ProviderOptions.js'

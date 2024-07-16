@@ -1,4 +1,4 @@
-import { getApiConfig } from '../getApiConfig'
+import { getApiConfig } from '../getApiConfig.js'
 
 describe('getApiConfig', () => {
   it('returns the API config from the ENV', () => {

@@ -3,11 +3,11 @@ import compression from 'compression'
 import cors from 'cors'
 import express, { Express } from 'express'
 
-import { addDependencies } from './addDependencies'
-import { addDistributedJobs } from './addDistributedJobs'
-import { addErrorHandlers } from './addErrorHandlers'
-import { addHealthChecks } from './addHealthChecks'
-import { addMiddleware } from './addMiddleware'
+import { addDependencies } from './addDependencies.js'
+import { addDistributedJobs } from './addDistributedJobs.js'
+import { addErrorHandlers } from './addErrorHandlers.js'
+import { addHealthChecks } from './addHealthChecks.js'
+import { addMiddleware } from './addMiddleware.js'
 
 export const getApp = (): Express => {
   const app = express()

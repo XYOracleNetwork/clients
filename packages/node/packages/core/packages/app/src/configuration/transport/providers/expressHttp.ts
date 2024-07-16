@@ -2,7 +2,7 @@ import { tryParseInt } from '@xylabs/sdk-api-express-ecs'
 import { getServer } from '@xyo-network/express-node-server'
 import { MemoryNode } from '@xyo-network/node-memory'
 
-import { NodeConfigurationFunction } from '../../../model'
+import { NodeConfigurationFunction } from '../../../model/index.js'
 
 export const configureExpressHttpTransport: NodeConfigurationFunction = async (node: MemoryNode) => {
   // TODO: ON/OFF via presence

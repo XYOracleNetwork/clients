@@ -1,9 +1,9 @@
 import { EmptyObject } from '@xylabs/object'
 import { Argv, CommandBuilder, CommandModule } from 'yargs'
 
-import { printError, printLine } from '../../../lib'
-import { ModuleArguments } from '../ModuleArguments'
-import { getArchivist } from './util'
+import { printError, printLine } from '../../../lib/index.js'
+import { ModuleArguments } from '../ModuleArguments.js'
+import { getArchivist } from './util/index.js'
 
 export const aliases: ReadonlyArray<string> = []
 export const builder: CommandBuilder = (yargs: Argv) => yargs.usage('Usage: $0 archivist discover')
