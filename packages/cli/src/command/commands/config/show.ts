@@ -38,7 +38,7 @@ export const handler = async (args: BaseArguments) => {
   })
 }
 
-const mod: CommandModule<EmptyObject, BaseArguments> = {
+export const mod: CommandModule<EmptyObject, BaseArguments> = {
   aliases,
   command,
   deprecated,

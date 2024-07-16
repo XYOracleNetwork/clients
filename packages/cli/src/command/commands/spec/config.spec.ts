@@ -1,9 +1,9 @@
 import yargs from 'yargs'
 
-import config from '../config/index.js'
+import { mod } from '../config/index.js'
 
 describe('config', () => {
-  const parser = yargs().command(config).help()
+  const parser = yargs().command(mod).help()
   it('requires arguments', async () => {
     const output = await new Promise((resolve) => {
       void parser.parse('config', (err: unknown, argv: unknown, output: unknown) => {
