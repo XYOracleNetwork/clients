@@ -18,26 +18,6 @@ const finalConfig = {
   ],
   'rules': {
     'id-denylist': ['warn', 'module'],
-    'no-restricted-imports': [
-      'warn',
-      {
-        'paths': [
-          '@mui/system',
-          'react-player',
-          'filepond',
-          'aos',
-          'react-icons',
-          '.',
-          '..',
-          '../..',
-          '../../..',
-          '../../../..',
-          '../../../../..',
-          '../../../../../..',
-          '../../../../../../..'
-        ]
-      }
-    ],
     'import/no-internal-modules': [
       'warn', {
         'allow': [
