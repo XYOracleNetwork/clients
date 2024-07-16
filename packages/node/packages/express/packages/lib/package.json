@@ -38,10 +38,10 @@
   "author": "Arie Trouw",
   "license": "LGPL-3.0-only",
   "dependencies": {
-    "@xylabs/assert": "^3.5.9",
+    "@xylabs/assert": "^3.6.1",
     "@xylabs/sdk-api-express-ecs": "^2.0.4",
-    "@xyo-network/module-model": "^2.110.5",
-    "@xyo-network/node-model": "^2.110.5",
+    "@xyo-network/module-model": "^2.110.6",
+    "@xyo-network/node-model": "^2.110.6",
     "@xyo-network/payload-mongodb": "workspace:^",
     "express": "^4.19.2"
   },
