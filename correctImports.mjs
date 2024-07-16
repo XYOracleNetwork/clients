@@ -19,27 +19,21 @@ function getAllFiles(dir, fileList = []) {
   return fileList
 }
 
-// Function to add .js to all import/export statements if not already present
-function addJsExtension(filePath) {
+// Function to process imports and exports in a file
+function processImportsExports(filePath) {
   let content = fs.readFileSync(filePath, 'utf8')
   const regex = /(import|export)\s+(.*?from\s+["'])(\.{1,2}\/.*?)(["'])/g
-  content = content.replaceAll(regex, (match, p1, p2, p3, p4) => {
-    if (/\.(json|js|ts|jsx|tsx)$/.test(p3)) {
-      return match // Ignore if it already has an extension
-    }
-    return `${p1} ${p2}${p3}.js${p4}`
-  })
-  fs.writeFileSync(filePath, content, 'utf8')
-}
 
-// Function to correct imports pointing to directories to use index.js
-function correctDirectoryImports(filePath) {
-  let content = fs.readFileSync(filePath, 'utf8')
-  const regex = /(\.{1,2}\/[^/]*?)(\.js)/g
-  content = content.replaceAll(regex, (match, p1) => {
-    const resolvedPath = path.resolve(path.dirname(filePath), p1)
-    return fs.existsSync(resolvedPath) && fs.lstatSync(resolvedPath).isDirectory() ? `${p1}/index.js` : `${p1}.js`
+  content = content.replaceAll(regex, (match, p1, p2, p3, p4) => {
+    const resolvedPath = path.resolve(path.dirname(filePath), p3)
+    if (fs.existsSync(resolvedPath) && fs.lstatSync(resolvedPath).isDirectory()) {
+      return `${p1} ${p2}${p3}/index.js${p4}`
+    } else if (!/\.(json|js|ts|jsx|tsx)$/.test(p3)) {
+      return `${p1} ${p2}${p3}.js${p4}`
+    }
+    return match
   })
+
   fs.writeFileSync(filePath, content, 'utf8')
 }
 
@@ -47,13 +41,12 @@ function correctDirectoryImports(filePath) {
 function processFiles(directoryPath) {
   const files = getAllFiles(directoryPath)
   for (const filePath of files) {
-    addJsExtension(filePath)
-    correctDirectoryImports(filePath)
+    processImportsExports(filePath)
   }
 }
 
 // Change this to your source directory
-const directoryPath = path.join(__dirname, 'packages')
+const directoryPath = path.join(__dirname, 'src')
 processFiles(directoryPath)
 
 console.log('Import paths corrected successfully.')
