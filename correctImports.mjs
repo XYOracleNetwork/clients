@@ -22,7 +22,7 @@ function getAllFiles(dir, fileList = []) {
 // Function to add .js to all import/export statements if not already present
 function addJsExtension(filePath) {
   let content = fs.readFileSync(filePath, 'utf8')
-  const regex = /(import|export)\s+(.*?from\s+["'])(\.\/.*?)(["'])/g
+  const regex = /(import|export)\s+(.*?from\s+["'])(\.{1,2}\/.*?)(["'])/g
   content = content.replaceAll(regex, (match, p1, p2, p3, p4) => {
     if (/\.(json|js|ts|jsx|tsx)$/.test(p3)) {
       return match // Ignore if it already has an extension
@@ -35,7 +35,7 @@ function addJsExtension(filePath) {
 // Function to correct imports pointing to directories to use index.js
 function correctDirectoryImports(filePath) {
   let content = fs.readFileSync(filePath, 'utf8')
-  const regex = /(\.\/[^/]*?)(\.js)/g
+  const regex = /(\.{1,2}\/[^/]*?)(\.js)/g
   content = content.replaceAll(regex, (match, p1) => {
     const resolvedPath = path.resolve(path.dirname(filePath), p1)
     return fs.existsSync(resolvedPath) && fs.lstatSync(resolvedPath).isDirectory() ? `${p1}/index.js` : `${p1}.js`
