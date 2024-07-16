@@ -18,8 +18,6 @@ const finalConfig = {
   ],
   'rules': {
     'id-denylist': ['warn', 'module'],
-    '@typescript-eslint/no-floating-promises': [2],
-    '@typescript-eslint/no-misused-promises': [0],
     '@typescript-eslint/explicit-member-accessibility': ['warn', { 'accessibility': 'no-public' }],
     'no-restricted-imports': [
       'warn',
