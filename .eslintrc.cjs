@@ -42,8 +42,7 @@ const finalConfig = {
       }
     ],
     'import/no-internal-modules': [
-      'warn',
-      {
+      'warn', {
         'allow': [
           'source-map-support/*',
           'lodash/*',
@@ -55,7 +54,7 @@ const finalConfig = {
           '**/index.tsx'
         ]
       }
-    ],
+    ]
   }
 }
 
