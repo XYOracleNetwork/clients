@@ -1,5 +1,4 @@
 import { describeIf } from '@xylabs/jest-helpers'
-import { Account } from '@xyo-network/account'
 import { PayloadDivinerConfigSchema, PayloadDivinerQueryPayload, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'

@@ -33,7 +33,7 @@ export const configureDependencies = async (node?: NodeInstance) => {
   configured = true
 
   const mnemonic = assertEx(process.env.MNEMONIC, () => 'MNEMONIC ENV VAR required to create Archivist')
-  const verbosity: LoggerVerbosity = (process.env.VERBOSITY as LoggerVerbosity) ?? process.env.NODE_ENV === 'test' ? 'error' : 'info'
+  const verbosity: LoggerVerbosity = ((process.env.VERBOSITY as LoggerVerbosity) ?? process.env.NODE_ENV === 'test') ? 'error' : 'info'
   const logger = getLogger(verbosity)
 
   container.bind<string>(TYPES.AccountMnemonic).toConstantValue(mnemonic)

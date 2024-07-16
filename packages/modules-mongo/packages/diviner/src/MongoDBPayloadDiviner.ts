@@ -24,7 +24,7 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
     //TODO: Joel, why is AnyObject needed?
     const filter: Filter<AnyObject> = {}
     if (timestamp) {
-      const parsedTimestamp = timestamp ?? order === 'desc' ? Date.now() : 0
+      const parsedTimestamp = (timestamp ?? order === 'desc') ? Date.now() : 0
       filter._timestamp = order === 'desc' ? { $lt: parsedTimestamp } : { $gt: parsedTimestamp }
     }
 

@@ -1,5 +1,4 @@
 /* eslint-disable max-nested-callbacks */
-import { Account } from '@xyo-network/account'
 import { MongoDBArchivist } from '@xyo-network/archivist-mongodb'
 import { PayloadDivinerQueryPayload, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import { MemoryNode } from '@xyo-network/node-memory'
