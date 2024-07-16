@@ -19,7 +19,7 @@ export const handler = (argv: ArgumentsCamelCase<Arguments>) => {
   printLine(JSON.stringify(argv))
 }
 
-const mod: CommandModule = {
+export const mod: CommandModule = {
   aliases,
   command,
   deprecated,
