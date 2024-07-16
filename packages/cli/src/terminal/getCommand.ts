@@ -16,7 +16,7 @@ import {
   stopNode,
   terminalItems,
   unregisterModule,
-} from './commands'
+} from './commands/index.js'
 
 export const getCommand = async (node: NodeInstance): Promise<boolean> => {
   return await new Promise((resolve) => {
