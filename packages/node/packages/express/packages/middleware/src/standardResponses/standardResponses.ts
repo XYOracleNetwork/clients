@@ -2,7 +2,7 @@ import { NoResBody } from '@xylabs/sdk-api-express-ecs'
 import { Request, Response } from 'express'
 import mung from 'express-mung'
 
-import { getResponseMetadata } from './getResponseMetadata'
+import { getResponseMetadata } from './getResponseMetadata.js'
 
 interface TransformResponseLocals {
   rawResponse?: boolean

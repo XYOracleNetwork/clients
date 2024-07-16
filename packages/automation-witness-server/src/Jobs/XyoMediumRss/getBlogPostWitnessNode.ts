@@ -3,8 +3,8 @@ import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { AdhocWitness } from '@xyo-network/witness-adhoc'
 
-import { getWallet, WalletPaths } from '../../Account'
-import { getArchivist } from '../../Archivists'
+import { getWallet, WalletPaths } from '../../Account/index.js'
+import { getArchivist } from '../../Archivists/index.js'
 import blogPostWitnessManifestPayload from './BlogPostWitnessManifest.json'
 
 export const getBlogPostWitnessNode = async (): Promise<MemoryNode> => {

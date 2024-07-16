@@ -1,7 +1,7 @@
 import { Address } from '@xylabs/hex'
 import { ArgumentsCamelCase } from 'yargs'
 
-import { BaseArguments } from '../BaseArguments'
+import { BaseArguments } from '../BaseArguments.js'
 
 export type ModuleArguments = BaseArguments &
   ArgumentsCamelCase<{

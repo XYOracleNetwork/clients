@@ -3,8 +3,8 @@ import { EmptyObject } from '@xylabs/object'
 import { Tail } from 'tail'
 import { ArgumentsCamelCase, CommandBuilder, CommandModule } from 'yargs'
 
-import { errFile, outFile, restart, stop } from '../../../lib'
-import { BaseArguments } from '../../BaseArguments'
+import { errFile, outFile, restart, stop } from '../../../lib/index.js'
+import { BaseArguments } from '../../BaseArguments.js'
 
 type Arguments = BaseArguments & {
   interactive?: boolean

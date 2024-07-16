@@ -2,9 +2,9 @@ import { AccountInstance } from '@xyo-network/account-model'
 import { BoundWitness } from '@xyo-network/boundwitness-model'
 import { Payload, WithMeta } from '@xyo-network/payload-model'
 
-import { unitTestSigningAccount } from '../Account'
-import { getArchivistByName } from '../Archivist'
-import { getNewBlock } from './getNewBlock'
+import { unitTestSigningAccount } from '../Account/index.js'
+import { getArchivistByName } from '../Archivist/index.js'
+import { getNewBlock } from './getNewBlock.js'
 
 export const insertBlock = async (boundWitnesses?: BoundWitness | BoundWitness[], account?: AccountInstance): Promise<WithMeta<Payload>[]> => {
   boundWitnesses = boundWitnesses ?? (await getNewBlock())

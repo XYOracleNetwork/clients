@@ -1,7 +1,7 @@
 import { Options } from 'yargs'
 
-import { daemon } from './daemon'
-import { mod } from './mod'
-import { verbose } from './verbose'
+import { daemon } from './daemon.js'
+import { mod } from './mod.js'
+import { verbose } from './verbose.js'
 
 export const options: [string, Options][] = [daemon, mod, verbose]

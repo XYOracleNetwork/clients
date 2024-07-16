@@ -1,6 +1,6 @@
 import { AccountInstance } from '@xyo-network/account'
 
-import { getWallet } from './getWallet'
+import { getWallet } from './getWallet.js'
 
 export const getAccount = async (path?: string): Promise<AccountInstance> => {
   return await getWallet(path)

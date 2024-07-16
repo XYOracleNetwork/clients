@@ -16,7 +16,7 @@ import { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock, MockProxy } from 'jest-mock-extended'
 
-import { MongoDBSchemaStatsDiviner } from '../MongoDBSchemaStatsDiviner'
+import { MongoDBSchemaStatsDiviner } from '../MongoDBSchemaStatsDiviner.js'
 
 /**
  * @group mongo

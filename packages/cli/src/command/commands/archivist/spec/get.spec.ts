@@ -1,6 +1,6 @@
 import yargs from 'yargs'
 
-import get from '../get'
+import get from '../get.js'
 
 describe('get', () => {
   const parser = yargs().command(get).help()

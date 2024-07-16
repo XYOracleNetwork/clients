@@ -2,7 +2,7 @@ import { delay } from '@xylabs/delay'
 import { HttpBridge, HttpBridgeConfigSchema } from '@xyo-network/bridge-http'
 import { isNodeModule, NodeInstance } from '@xyo-network/node-model'
 
-import { printError, printLine } from '../print'
+import { printError, printLine } from '../print/index.js'
 
 const nodeConnectionErrorMsg = 'Error connecting to Node'
 

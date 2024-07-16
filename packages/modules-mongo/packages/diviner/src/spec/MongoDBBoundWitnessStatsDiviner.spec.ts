@@ -19,7 +19,7 @@ import { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock, MockProxy } from 'jest-mock-extended'
 
-import { MongoDBBoundWitnessStatsDiviner } from '../MongoDBBoundWitnessStatsDiviner'
+import { MongoDBBoundWitnessStatsDiviner } from '../MongoDBBoundWitnessStatsDiviner.js'
 
 /**
  * @group mongo

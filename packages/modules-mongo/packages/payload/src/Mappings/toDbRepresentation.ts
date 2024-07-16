@@ -2,8 +2,8 @@ import { BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
 
-import { BoundWitnessMongoMeta } from '../BoundWitness'
-import { PayloadWithMongoMeta } from '../Payload'
+import { BoundWitnessMongoMeta } from '../BoundWitness/index.js'
+import { PayloadWithMongoMeta } from '../Payload/index.js'
 
 export const payloadToDbRepresentation = async <T extends Payload>(payload: T, index = 0): Promise<PayloadWithMongoMeta<T>> => {
   const built = await PayloadBuilder.build(payload)

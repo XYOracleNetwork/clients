@@ -1,9 +1,9 @@
 import { EmptyObject } from '@xylabs/object'
 import { Argv, CommandBuilder, CommandModule } from 'yargs'
 
-import { printError, printLine } from '../../../lib'
-import { BaseArguments } from '../../BaseArguments'
-import { getNode } from '../../util'
+import { printError, printLine } from '../../../lib/index.js'
+import { BaseArguments } from '../../BaseArguments.js'
+import { getNode } from '../../util/index.js'
 
 export const aliases: ReadonlyArray<string> = []
 export const builder: CommandBuilder = (yargs: Argv) => yargs.usage('Usage: $0 node previousHash')

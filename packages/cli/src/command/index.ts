@@ -1,2 +1,2 @@
-export * from './BaseArguments'
-export * from './requireDirectoryOptions'
+export * from './BaseArguments.js'
+export * from './requireDirectoryOptions.js'

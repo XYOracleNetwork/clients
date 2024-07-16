@@ -1,1 +1,1 @@
-export * from './getNode'
+export * from './getNode.js'

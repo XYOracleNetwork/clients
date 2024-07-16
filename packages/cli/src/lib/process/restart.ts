@@ -1,6 +1,6 @@
-import { clearLogs } from './logs'
-import { start } from './start'
-import { stop } from './stop'
+import { clearLogs } from './logs/index.js'
+import { start } from './start.js'
+import { stop } from './stop.js'
 
 export const restart = async (daemonize = false) => {
   await stop()

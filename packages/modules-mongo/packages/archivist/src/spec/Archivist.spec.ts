@@ -14,7 +14,7 @@ import { Payload } from '@xyo-network/payload-model'
 import { PayloadWrapper, PayloadWrapperBase } from '@xyo-network/payload-wrapper'
 import { BaseMongoSdkConfig } from '@xyo-network/sdk-xyo-mongo-js'
 
-import { MongoDBArchivist } from '../Archivist'
+import { MongoDBArchivist } from '../Archivist.js'
 
 describeIf(hasMongoDBConfig())('DeterministicArchivist', () => {
   const boundWitnessesConfig: BaseMongoSdkConfig = { collection: COLLECTIONS.BoundWitnesses }

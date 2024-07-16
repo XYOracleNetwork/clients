@@ -8,7 +8,7 @@ import { ArchiveModuleConfig, ArchiveModuleConfigSchema } from '@xyo-network/nod
 import { Request } from 'express'
 import { mock } from 'jest-mock-extended'
 
-import { getQueryConfig } from '../getQueryConfig'
+import { getQueryConfig } from '../getQueryConfig.js'
 
 const req = mock<Request>()
 

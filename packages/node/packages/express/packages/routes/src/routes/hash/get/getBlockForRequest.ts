@@ -4,7 +4,7 @@ import { isPointerPayload } from '@xyo-network/node-core-model'
 import { Payload } from '@xyo-network/payload-model'
 import { Request } from 'express'
 
-import { resolvePointer } from './resolvePointer'
+import { resolvePointer } from './resolvePointer.js'
 
 let archivist: ArchivistInstance
 

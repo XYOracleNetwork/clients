@@ -1,5 +1,5 @@
-import { saveSettings } from '../saveSettings'
-import { Settings } from '../Settings'
+import { saveSettings } from '../saveSettings.js'
+import { Settings } from '../Settings.js'
 
 export const saveMnemonic = async (mnemonic: string): Promise<void> => {
   const data: Settings = { account: { mnemonic } }

@@ -2,7 +2,7 @@ import { AccountInstance } from '@xyo-network/account-model'
 import { asSentinelInstance, SentinelInstance } from '@xyo-network/sentinel-model'
 import { SentinelWrapper } from '@xyo-network/sentinel-wrapper'
 
-import { getModuleByName, getModuleByNameFromChildNode } from '../Node'
+import { getModuleByName, getModuleByNameFromChildNode } from '../Node/index.js'
 
 export const getSentinelByName = async (name: string, account?: AccountInstance): Promise<SentinelInstance> => {
   const diviner = asSentinelInstance(await getModuleByName(name), 'Failed to cast sentinel')

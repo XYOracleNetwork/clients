@@ -1,3 +1,3 @@
-export * from './getExistingBlock'
-export * from './getNewBlock'
-export * from './insertBlock'
+export * from './getExistingBlock.js'
+export * from './getNewBlock.js'
+export * from './insertBlock.js'

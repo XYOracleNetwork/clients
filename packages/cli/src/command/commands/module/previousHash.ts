@@ -1,9 +1,9 @@
 import { EmptyObject } from '@xylabs/object'
 import { Argv, CommandBuilder, CommandModule } from 'yargs'
 
-import { printError, printLine } from '../../../lib'
-import { ModuleArguments } from '../ModuleArguments'
-import { getModuleFromArgs } from '../util'
+import { printError, printLine } from '../../../lib/index.js'
+import { ModuleArguments } from '../ModuleArguments.js'
+import { getModuleFromArgs } from '../util/index.js'
 
 export const aliases: ReadonlyArray<string> = []
 export const builder: CommandBuilder = (yargs: Argv) =>

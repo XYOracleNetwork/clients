@@ -1,9 +1,9 @@
 import { Container } from 'inversify'
 
-import { addArchivistModuleFactories } from './Archivist'
-import { addDivinerModuleFactories } from './Diviner'
-import { addSentinelModuleFactories } from './Sentinel'
-import { addWitnessModuleFactories } from './Witness'
+import { addArchivistModuleFactories } from './Archivist/index.js'
+import { addDivinerModuleFactories } from './Diviner/index.js'
+import { addSentinelModuleFactories } from './Sentinel/index.js'
+import { addWitnessModuleFactories } from './Witness/index.js'
 
 export const addMemoryModules = (container: Container) => {
   addArchivistModuleFactories(container)

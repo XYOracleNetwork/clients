@@ -5,8 +5,8 @@ import { Payload } from '@xyo-network/payload-model'
 import { RequestHandler } from 'express'
 import { StatusCodes } from 'http-status-codes'
 
-import { getBlockForRequest } from './getBlockForRequest'
-import { HashPathParams } from './HashPathParams'
+import { getBlockForRequest } from './getBlockForRequest.js'
+import { HashPathParams } from './HashPathParams.js'
 
 const reservedHashes = new Set(['archive', 'schema', 'doc', 'domain'])
 

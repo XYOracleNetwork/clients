@@ -1,1 +1,1 @@
-export * from './addMemoryModules'
+export * from './addMemoryModules.js'

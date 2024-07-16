@@ -1,7 +1,7 @@
 import { describeIf } from '@xylabs/jest-helpers'
 
-import { hasNonDefaultProvider } from '../../../Providers'
-import { reportCryptoPrices } from '../reportCryptoPrices'
+import { hasNonDefaultProvider } from '../../../Providers/index.js'
+import { reportCryptoPrices } from '../reportCryptoPrices.js'
 
 /**
  * @group crypto

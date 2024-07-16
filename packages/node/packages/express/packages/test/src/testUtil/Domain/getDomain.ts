@@ -1,7 +1,7 @@
 import { DomainPayload } from '@xyo-network/domain-payload-plugin'
 import { StatusCodes } from 'http-status-codes'
 
-import { getRequestClient } from '../Server'
+import { getRequestClient } from '../Server/index.js'
 
 export const getDomain = async (domain: string): Promise<DomainPayload> => {
   const path = `/domain/${domain}`

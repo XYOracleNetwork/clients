@@ -1,3 +1,3 @@
-export * from './attachModule'
-export * from './detachModule'
-export * from './listAttachedModules'
+export * from './attachModule.js'
+export * from './detachModule.js'
+export * from './listAttachedModules.js'

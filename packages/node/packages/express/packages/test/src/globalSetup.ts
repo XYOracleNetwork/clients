@@ -13,7 +13,7 @@ import { Config } from 'jest'
 import { MongoMemoryReplSet } from 'mongodb-memory-server'
 import supertest from 'supertest'
 // eslint-disable-next-line import/no-internal-modules
-import TestAgent from 'supertest/lib/agent'
+import type TestAgent from 'supertest/lib/agent.js'
 
 disableGloballyUnique()
 

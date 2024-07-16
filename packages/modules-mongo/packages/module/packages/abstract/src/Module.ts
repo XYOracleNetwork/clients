@@ -7,9 +7,9 @@ import { BoundWitnessWithMongoMeta, PayloadWithMongoMeta } from '@xyo-network/pa
 import { BaseMongoSdk, BaseMongoSdkConfig } from '@xyo-network/sdk-xyo-mongo-js'
 import { MongoServerError } from 'mongodb'
 
-import { COLLECTIONS } from './Collections'
-import { getBaseMongoSdkPrivateConfig } from './config'
-import { IndexDescription } from './IndexDescription'
+import { COLLECTIONS } from './Collections.js'
+import { getBaseMongoSdkPrivateConfig } from './config/index.js'
+import { IndexDescription } from './IndexDescription.js'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AnyAbstractModule<TParams extends MongoDBModuleParams = MongoDBModuleParams> = abstract new (...args: any[]) => Module<TParams>

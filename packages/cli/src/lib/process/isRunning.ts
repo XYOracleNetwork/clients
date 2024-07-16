@@ -1,6 +1,6 @@
 import { kill as sendSignalToProcess } from 'node:process'
 
-import { clearPid, getPid } from './pid'
+import { clearPid, getPid } from './pid/index.js'
 
 /**
  * Signal to send to process to check for existence

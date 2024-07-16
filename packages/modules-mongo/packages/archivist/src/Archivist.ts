@@ -9,7 +9,7 @@ import { Payload, Schema, WithMeta } from '@xyo-network/payload-model'
 import { fromDbRepresentation, PayloadWithMongoMeta, toDbRepresentation } from '@xyo-network/payload-mongodb'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
-import { validByType } from './lib'
+import { validByType } from './lib/index.js'
 
 const MongoDBArchivistBase = MongoDBModuleMixin(AbstractArchivist)
 

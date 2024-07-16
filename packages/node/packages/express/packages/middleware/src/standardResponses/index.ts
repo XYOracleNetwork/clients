@@ -1,2 +1,2 @@
-export * from './getResponseMetadata'
-export * from './standardResponses'
+export * from './getResponseMetadata.js'
+export * from './standardResponses.js'

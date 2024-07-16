@@ -1,2 +1,2 @@
-export * from './BoundWitnessMeta'
-export * from './BoundWitnessWithMeta'
+export * from './BoundWitnessMeta.js'
+export * from './BoundWitnessWithMeta.js'

@@ -1,3 +1,3 @@
-export * from './Base'
-export * from './Config'
-export * from './Wrapper'
+export * from './Base.js'
+export * from './Config.js'
+export * from './Wrapper.js'

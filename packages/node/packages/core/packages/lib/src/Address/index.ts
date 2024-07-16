@@ -1,1 +1,1 @@
-export * from './addressPrefix'
+export * from './addressPrefix.js'

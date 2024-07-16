@@ -1,4 +1,4 @@
-import { NodeEnv } from './NodeEnv'
+import { NodeEnv } from './NodeEnv.js'
 
 // TODO: Move to Express SDK
 export const isProduction = () => {

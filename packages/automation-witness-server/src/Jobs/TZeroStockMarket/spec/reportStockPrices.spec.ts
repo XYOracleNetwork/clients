@@ -1,8 +1,8 @@
 import { assertEx } from '@xylabs/assert'
 import { isSnapshotWithMeta } from '@xyo-network/tzero-stock-market-payload-plugin'
 
-import { getArchivist } from '../../../Archivists'
-import { reportStockPrice } from '../reportStockPrices'
+import { getArchivist } from '../../../Archivists/index.js'
+import { reportStockPrice } from '../reportStockPrices.js'
 
 describe('reportStockPrices', () => {
   describe('reportStockPrice', () => {

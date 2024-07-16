@@ -1,3 +1,3 @@
-export * from './clearOutFile'
-export * from './getOutFileDescriptor'
-export * from './printOutFile'
+export * from './clearOutFile.js'
+export * from './getOutFileDescriptor.js'
+export * from './printOutFile.js'

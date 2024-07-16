@@ -1,4 +1,4 @@
-import { getTask } from '../getTask'
+import { getTask } from '../getTask.js'
 
 describe('getTask', () => {
   it('gets the job', () => {

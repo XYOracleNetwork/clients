@@ -12,7 +12,7 @@ import { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { PayloadWithMeta, WithMeta } from '@xyo-network/payload-model'
 
-import { MongoDBBoundWitnessDiviner } from '../MongoDBBoundWitnessDiviner'
+import { MongoDBBoundWitnessDiviner } from '../MongoDBBoundWitnessDiviner.js'
 
 /**
  * @group module

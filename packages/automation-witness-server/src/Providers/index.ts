@@ -1,2 +1,2 @@
-export * from './getEtherscanProvider'
-export * from './getProvider'
+export * from './getEtherscanProvider.js'
+export * from './getProvider.js'

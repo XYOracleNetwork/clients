@@ -1,6 +1,6 @@
 import yargs from 'yargs'
 
-import insert from '../insert'
+import insert from '../insert.js'
 
 describe('insert', () => {
   const parser = yargs().command(insert).help()

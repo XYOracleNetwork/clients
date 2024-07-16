@@ -1,1 +1,1 @@
-export * from './addIndexes'
+export * from './addIndexes.js'

@@ -1,1 +1,1 @@
-export * from './ModuleStateQuery'
+export * from './ModuleStateQuery.js'

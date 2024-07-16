@@ -1,3 +1,3 @@
-export * from './ArchivePermissions'
-export * from './Handler'
-export * from './Identifiable'
+export * from './ArchivePermissions.js'
+export * from './Handler.js'
+export * from './Identifiable.js'

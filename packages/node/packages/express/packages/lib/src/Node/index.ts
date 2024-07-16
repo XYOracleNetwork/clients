@@ -1,1 +1,1 @@
-export * from './resolveByName'
+export * from './resolveByName.js'

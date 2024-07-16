@@ -1,1 +1,1 @@
-export * from './getJobs'
+export * from './getJobs.js'

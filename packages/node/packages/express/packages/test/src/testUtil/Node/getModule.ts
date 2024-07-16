@@ -1,7 +1,7 @@
 import { assertEx } from '@xylabs/assert'
 import { ModuleInstance } from '@xyo-network/module-model'
 
-import { getBridge } from '../Bridge'
+import { getBridge } from '../Bridge/index.js'
 
 export const getModuleByName = async (name: string): Promise<ModuleInstance> => {
   const bridge = await getBridge()

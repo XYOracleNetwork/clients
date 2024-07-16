@@ -5,8 +5,8 @@ import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { XmlParsingDiviner } from '@xyo-network/xml-plugin'
 
-import { getWallet, WalletPaths } from '../../Account'
-import { getArchivist } from '../../Archivists'
+import { getWallet, WalletPaths } from '../../Account/index.js'
+import { getArchivist } from '../../Archivists/index.js'
 import apiCallWitnessManifestPayload from './ApiCallWitnessManifest.json'
 
 export const getApiCallWitnessNode = async (): Promise<MemoryNode> => {

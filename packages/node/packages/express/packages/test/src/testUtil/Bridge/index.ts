@@ -1,1 +1,1 @@
-export * from './getBridge'
+export * from './getBridge.js'

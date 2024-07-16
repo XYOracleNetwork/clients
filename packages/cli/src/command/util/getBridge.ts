@@ -1,9 +1,9 @@
 import { HDWallet, WalletInstance } from '@xyo-network/account'
 import { HttpBridge, HttpBridgeParams } from '@xyo-network/bridge-http'
 
-import { printError } from '../../lib'
-import { BaseArguments } from '../BaseArguments'
-import { getBridgeConfig } from './getBridgeConfig'
+import { printError } from '../../lib/index.js'
+import { BaseArguments } from '../BaseArguments.js'
+import { getBridgeConfig } from './getBridgeConfig.js'
 
 // TODO: Grab from config, rethink default path, use hardened path?
 const accountPath = "m/44'/60'/0"

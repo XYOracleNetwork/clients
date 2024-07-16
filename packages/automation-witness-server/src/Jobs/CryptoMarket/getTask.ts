@@ -3,9 +3,9 @@ import { getDefaultLogger } from '@xylabs/sdk-api-express-ecs'
 import { CryptoMarketAssetSchema } from '@xyo-network/crypto-asset-payload-plugin'
 import { Job } from '@xyo-network/shared'
 
-import { getDiviner } from './getDiviner'
-import { reportCryptoPrices } from './reportCryptoPrices'
-import { reportDivinerResult } from './reportDivinerResult'
+import { getDiviner } from './getDiviner.js'
+import { reportCryptoPrices } from './reportCryptoPrices.js'
+import { reportDivinerResult } from './reportDivinerResult.js'
 
 export const getTask = (): Job['task'] => {
   const logger = getDefaultLogger()

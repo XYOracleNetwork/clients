@@ -1,5 +1,5 @@
-import { printFile } from '../../../print'
-import { outFile } from '../files'
+import { printFile } from '../../../print/index.js'
+import { outFile } from '../files.js'
 
 export const printOutFile = () => {
   return printFile(outFile)

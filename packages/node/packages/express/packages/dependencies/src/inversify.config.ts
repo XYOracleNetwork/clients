@@ -9,9 +9,9 @@ import { NodeInstance } from '@xyo-network/node-model'
 import { config } from 'dotenv'
 import { Container } from 'inversify'
 
-import { configureMemoryNode } from './configureMemoryNode'
-import { addMemoryModules } from './Module'
-import { tryGetServiceName } from './Util'
+import { configureMemoryNode } from './configureMemoryNode.js'
+import { addMemoryModules } from './Module/index.js'
+import { tryGetServiceName } from './Util/index.js'
 config()
 
 export const container = new Container({
@@ -33,7 +33,7 @@ export const configureDependencies = async (node?: NodeInstance) => {
   configured = true
 
   const mnemonic = assertEx(process.env.MNEMONIC, () => 'MNEMONIC ENV VAR required to create Archivist')
-  const verbosity: LoggerVerbosity = (process.env.VERBOSITY as LoggerVerbosity) ?? process.env.NODE_ENV === 'test' ? 'error' : 'info'
+  const verbosity: LoggerVerbosity = ((process.env.VERBOSITY as LoggerVerbosity) ?? process.env.NODE_ENV === 'test') ? 'error' : 'info'
   const logger = getLogger(verbosity)
 
   container.bind<string>(TYPES.AccountMnemonic).toConstantValue(mnemonic)

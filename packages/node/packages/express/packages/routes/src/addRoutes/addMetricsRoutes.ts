@@ -1,7 +1,7 @@
 import { isDevelopment } from '@xyo-network/express-node-middleware'
 import { Express } from 'express'
 
-import { getHealthz, getMetrics } from '../routes'
+import { getHealthz, getMetrics } from '../routes/index.js'
 export const addMetricsRoutes = (app: Express) => {
   app.get(
     '/healthz',

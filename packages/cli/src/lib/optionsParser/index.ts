@@ -1,1 +1,1 @@
-export * from './getOptionsParser'
+export * from './getOptionsParser.js'

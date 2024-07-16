@@ -44,10 +44,10 @@ const finalConfig = {
     'import/no-internal-modules': [
       'warn', {
         'allow': [
-          'source-map-support/*',
-          'lodash/*',
-          'aws-sdk/**/*',
-          'types/*'
+          '**/index.js', // Allow imports to any index.js file
+          '**/index.ts',
+          '**/index.jsx',
+          '**/index.tsx'
         ]
       }
     ]

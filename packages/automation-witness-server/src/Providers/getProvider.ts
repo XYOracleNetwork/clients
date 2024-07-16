@@ -1,11 +1,11 @@
 import { getDefaultProvider, Provider } from 'ethers'
 
-import { ProviderOptions } from '../Model'
-import { canUseAlchemyProvider, getAlchemyProviderConfig } from './getAlchemyProvider'
-import { canUseEtherscanProvider, getEtherscanProviderConfig } from './getEtherscanProvider'
-import { canUseInfuraProvider, getInfuraProviderConfig } from './getInfuraProvider'
-import { canUsePocketProvider, getPocketProviderConfig } from './getPocketProvider'
-import { providerOmitted } from './ProviderOmitted'
+import { ProviderOptions } from '../Model/index.js'
+import { canUseAlchemyProvider, getAlchemyProviderConfig } from './getAlchemyProvider.js'
+import { canUseEtherscanProvider, getEtherscanProviderConfig } from './getEtherscanProvider.js'
+import { canUseInfuraProvider, getInfuraProviderConfig } from './getInfuraProvider.js'
+import { canUsePocketProvider, getPocketProviderConfig } from './getPocketProvider.js'
+import { providerOmitted } from './ProviderOmitted.js'
 
 let instance: Provider | undefined
 

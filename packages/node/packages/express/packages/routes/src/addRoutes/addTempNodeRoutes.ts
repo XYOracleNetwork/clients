@@ -1,7 +1,7 @@
 import { Express } from 'express'
 import { StatusCodes } from 'http-status-codes'
 
-import { getAddress, postAddress } from '../routes'
+import { getAddress, postAddress } from '../routes/index.js'
 
 export const addTempNodeRoutes = (app: Express) => {
   const defaultModule = app.node

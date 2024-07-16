@@ -10,19 +10,19 @@
     "url": "https://github.com/XYOracleNetwork/sdk-xyo-client-js/issues"
   },
   "dependencies": {
-    "@xylabs/assert": "^3.5.2",
-    "@xylabs/exists": "^3.5.2",
-    "@xylabs/lodash": "^3.5.2",
-    "@xylabs/static-implements": "^3.5.2",
-    "@xyo-network/module-model": "^2.109.0",
+    "@xylabs/assert": "^3.5.9",
+    "@xylabs/exists": "^3.5.9",
+    "@xylabs/lodash": "^3.5.9",
+    "@xylabs/static-implements": "^3.5.9",
+    "@xyo-network/module-model": "^2.110.5",
     "@xyo-network/module-model-mongodb": "workspace:^",
     "@xyo-network/payload-mongodb": "workspace:^",
     "@xyo-network/sdk-xyo-mongo-js": "workspace:^",
     "mongodb": "^6.8.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.11.12",
-    "@xylabs/tsconfig": "^3.11.12",
+    "@xylabs/ts-scripts-yarn3": "^3.12.1",
+    "@xylabs/tsconfig": "^3.12.1",
     "fake-indexeddb": "^4.0.2",
     "typescript": "^5.5.3"
   },

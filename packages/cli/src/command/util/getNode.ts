@@ -1,8 +1,8 @@
 import { asNodeInstance, NodeInstance } from '@xyo-network/node-model'
 
-import { printError } from '../../lib'
-import { BaseArguments } from '../BaseArguments'
-//import { getBridge } from './getBridge'
+import { printError } from '../../lib/index.js'
+import { BaseArguments } from '../BaseArguments.js'
+//import { getBridge } from './getBridge.js'
 
 export const getNode = async (args: BaseArguments): Promise<NodeInstance> => {
   const { verbose } = args

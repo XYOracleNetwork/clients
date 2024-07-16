@@ -1,8 +1,8 @@
 import { AnyObject } from '@xylabs/object'
 import { BoundWitness } from '@xyo-network/boundwitness-model'
 
-import { MongoPayloadWithPartialMeta } from '../Payload'
-import { MongoBoundWitnessMetaBase } from './BoundWitnessMeta'
+import { MongoPayloadWithPartialMeta } from '../Payload/index.js'
+import { MongoBoundWitnessMetaBase } from './BoundWitnessMeta.js'
 
 export type BoundWitnessMeta<T extends AnyObject = AnyObject, P extends MongoPayloadWithPartialMeta = MongoPayloadWithPartialMeta> = T &
   MongoBoundWitnessMetaBase<P>

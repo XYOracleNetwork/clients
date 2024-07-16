@@ -3,10 +3,10 @@ import Path from 'node:path'
 import { EmptyObject } from '@xylabs/object'
 import { ArgumentsCamelCase, Argv, CommandBuilder, CommandModule } from 'yargs'
 
-import { printError, printLine } from '../../lib'
-import { BaseArguments } from '../BaseArguments'
-import { opts } from '../requireDirectoryOptions'
-import { getNode } from '../util'
+import { printError, printLine } from '../../lib/index.js'
+import { BaseArguments } from '../BaseArguments.js'
+import { opts } from '../requireDirectoryOptions.js'
+import { getNode } from '../util/index.js'
 
 export const aliases: ReadonlyArray<string> = []
 export const builder: CommandBuilder = (yargs: Argv) =>

@@ -1,1 +1,1 @@
-export * from './configureTransports'
+export * from './configureTransports.js'

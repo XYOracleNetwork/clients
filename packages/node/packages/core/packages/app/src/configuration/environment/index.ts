@@ -1,1 +1,1 @@
-export * from './configureEnvironment'
+export * from './configureEnvironment.js'

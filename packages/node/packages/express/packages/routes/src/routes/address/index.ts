@@ -1,2 +1,2 @@
-export * from './get'
-export * from './post'
+export * from './get/index.js'
+export * from './post/index.js'

@@ -17,7 +17,7 @@ import { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock } from 'jest-mock-extended'
 
-import { MongoDBSchemaListDiviner } from '../MongoDBSchemaListDiviner'
+import { MongoDBSchemaListDiviner } from '../MongoDBSchemaListDiviner.js'
 
 /**
  * @group mongo

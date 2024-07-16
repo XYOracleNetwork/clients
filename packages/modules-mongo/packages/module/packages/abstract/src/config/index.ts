@@ -1,3 +1,3 @@
-export * from './getBaseMongoSdk'
-export * from './getMongoDBConfig'
-export * from './hasMongoDBConfig'
+export * from './getBaseMongoSdk.js'
+export * from './getMongoDBConfig.js'
+export * from './hasMongoDBConfig.js'

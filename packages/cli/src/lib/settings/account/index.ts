@@ -1,1 +1,1 @@
-export * from './getAccount'
+export * from './getAccount.js'

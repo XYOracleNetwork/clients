@@ -1,2 +1,2 @@
-export * from './BatchSetIterator'
-export * from './SetIterator'
+export * from './BatchSetIterator.js'
+export * from './SetIterator.js'

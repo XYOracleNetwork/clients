@@ -1,2 +1,2 @@
-export * from './awsSecret'
-export * from './dotenv'
+export * from './awsSecret.js'
+export * from './dotenv.js'

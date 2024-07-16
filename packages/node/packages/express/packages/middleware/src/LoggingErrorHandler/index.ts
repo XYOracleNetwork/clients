@@ -1,1 +1,1 @@
-export * from './getLoggingErrorHandler'
+export * from './getLoggingErrorHandler.js'

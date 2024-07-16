@@ -1,6 +1,6 @@
 import yargs from 'yargs'
 
-import divine from '../divine'
+import divine from '../divine.js'
 
 describe('divine', () => {
   const parser = yargs().command(divine).help()

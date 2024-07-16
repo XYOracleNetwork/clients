@@ -1,4 +1,4 @@
-import { SetIterator } from '../SetIterator'
+import { SetIterator } from '../SetIterator.js'
 
 describe('SetIterator', () => {
   const values = [0, 1]

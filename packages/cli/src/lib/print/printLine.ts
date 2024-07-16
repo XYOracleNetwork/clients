@@ -1,6 +1,6 @@
 import { terminal } from 'terminal-kit'
 
-import { newline } from './newline'
+import { newline } from './newline.js'
 
 export type TextColor = 'green' | 'yellow' | 'red' | 'default'
 

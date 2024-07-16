@@ -4,8 +4,8 @@ import { wordlist } from '@scure/bip39/wordlists/english'
 import { HDWallet } from '@xyo-network/account'
 import { AccountInstance } from '@xyo-network/account-model'
 
-import { loadMnemonic } from './loadMnemonic'
-import { saveMnemonic } from './saveMnemonic'
+import { loadMnemonic } from './loadMnemonic.js'
+import { saveMnemonic } from './saveMnemonic.js'
 
 export const getAccount = async (): Promise<AccountInstance> => {
   let mnemonic = await loadMnemonic()

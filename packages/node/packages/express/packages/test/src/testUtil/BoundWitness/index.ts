@@ -1,1 +1,1 @@
-export * from './getNewBoundWitness'
+export * from './getNewBoundWitness.js'

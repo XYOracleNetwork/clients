@@ -1,7 +1,7 @@
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
 
-import { schema } from './schema'
+import { schema } from './schema.js'
 
 export const knownPayloadPromise = new PayloadBuilder<Payload<Record<string, unknown>>>({ schema })
   .fields({

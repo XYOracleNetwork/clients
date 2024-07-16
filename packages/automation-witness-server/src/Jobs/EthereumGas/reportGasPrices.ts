@@ -4,10 +4,10 @@ import { Payload } from '@xyo-network/payload-model'
 import { MemorySentinel } from '@xyo-network/sentinel-memory'
 import { SentinelConfig, SentinelConfigSchema } from '@xyo-network/sentinel-model'
 
-import { getAccount, WalletPaths } from '../../Account'
-import { getArchivists } from '../../Archivists'
-import { getProvider } from '../../Providers'
-import { getEthereumGasWitness } from '../../Witnesses'
+import { getAccount, WalletPaths } from '../../Account/index.js'
+import { getArchivists } from '../../Archivists/index.js'
+import { getProvider } from '../../Providers/index.js'
+import { getEthereumGasWitness } from '../../Witnesses/index.js'
 
 export const reportGasPrices = async (provider = getProvider()): Promise<Payload[]> => {
   const archivists = await getArchivists()

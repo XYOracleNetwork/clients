@@ -5,9 +5,9 @@ import { EthereumGasEtherscanWitness, EthereumGasEtherscanWitnessConfigSchema } 
 import { AttachableWitnessInstance } from '@xyo-network/witness-model'
 import { Provider } from 'ethers'
 
-import { getAccount, WalletPaths } from '../Account'
-import { canUseEtherscanProvider, getEtherscanProviderConfig, getProvider } from '../Providers'
-import { WitnessProvider } from './WitnessProvider'
+import { getAccount, WalletPaths } from '../Account/index.js'
+import { canUseEtherscanProvider, getEtherscanProviderConfig, getProvider } from '../Providers/index.js'
+import { WitnessProvider } from './WitnessProvider.js'
 
 export const getEthereumGasWitness: WitnessProvider<Provider> = async (provider = getProvider()): Promise<AttachableWitnessInstance[]> => {
   const witnesses: AttachableWitnessInstance[] = [

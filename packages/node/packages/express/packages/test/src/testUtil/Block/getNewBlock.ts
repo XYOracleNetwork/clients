@@ -2,8 +2,8 @@ import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { Payload } from '@xyo-network/payload-model'
 import { BoundWitnessWithPartialMongoMeta, PayloadWithPartialMongoMeta } from '@xyo-network/payload-mongodb'
 
-import { unitTestSigningAccount } from '../Account'
-import { getNewPayloads } from '../Payload'
+import { unitTestSigningAccount } from '../Account/index.js'
+import { getNewPayloads } from '../Payload/index.js'
 
 export const getNewBlock = async (...payloads: Payload[]): Promise<BoundWitnessWithPartialMongoMeta & PayloadWithPartialMongoMeta> => {
   return (await (await new BoundWitnessBuilder().witness(await unitTestSigningAccount()).payloads(payloads)).build())[0]

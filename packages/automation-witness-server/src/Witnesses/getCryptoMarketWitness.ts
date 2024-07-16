@@ -9,9 +9,9 @@ import { UniswapCryptoMarketWitness, UniswapPoolContracts } from '@xyo-network/u
 import { AttachableWitnessInstance } from '@xyo-network/witness-model'
 import { Provider } from 'ethers'
 
-import { getAccount, WalletPaths } from '../Account'
-import { getProvider } from '../Providers'
-import { WitnessProvider } from './WitnessProvider'
+import { getAccount, WalletPaths } from '../Account/index.js'
+import { getProvider } from '../Providers/index.js'
+import { WitnessProvider } from './WitnessProvider.js'
 
 export const getCryptoMarketWitness: WitnessProvider<Provider> = async (provider = getProvider()): Promise<AttachableWitnessInstance[]> => {
   const witnesses: AttachableWitnessInstance[] = [
@@ -29,7 +29,8 @@ export const getCryptoMarketWitness: WitnessProvider<Provider> = async (provider
         pools: UniswapPoolContracts,
         schema: UniswapCryptoMarketWitnessConfigSchema,
       },
-      provider,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      provider: provider as any,
     }),
   ]
   return witnesses

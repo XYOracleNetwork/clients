@@ -1,4 +1,4 @@
-import { reportMediumRssBlogPosts } from '../reportMediumRssBlogPosts'
+import { reportMediumRssBlogPosts } from '../reportMediumRssBlogPosts.js'
 
 describe('reportMediumRssBlogPosts', () => {
   const feed = {

@@ -1,4 +1,4 @@
-import { terminalCommands } from './commands'
+import { terminalCommands } from './commands.js'
 
 interface TerminalItem {
   slug: string

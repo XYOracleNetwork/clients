@@ -12,7 +12,7 @@ import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock } from 'jest-mock-extended'
 
-import { MongoDBAddressSpaceDiviner } from '../MongoDBAddressSpaceDiviner'
+import { MongoDBAddressSpaceDiviner } from '../MongoDBAddressSpaceDiviner.js'
 
 /**
  * @group mongo

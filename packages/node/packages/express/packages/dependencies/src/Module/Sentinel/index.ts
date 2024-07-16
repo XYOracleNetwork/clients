@@ -1,1 +1,1 @@
-export * from './addSentinelModuleFactories'
+export * from './addSentinelModuleFactories.js'

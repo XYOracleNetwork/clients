@@ -3,8 +3,8 @@ import swaggerAutogen from 'swagger-autogen'
 // eslint-disable-next-line import/no-deprecated
 import { serve, setup } from 'swagger-ui-express'
 
-import { ConfigureDocOptions } from './ConfigureDocOptions'
-import { defaultOptions } from './DefaultOptions'
+import { ConfigureDocOptions } from './ConfigureDocOptions.js'
+import { defaultOptions } from './DefaultOptions.js'
 
 const swaggerJsonFile = 'swagger.json'
 const swaggerJsonUrl = `/doc/${swaggerJsonFile}`

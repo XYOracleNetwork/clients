@@ -1,1 +1,1 @@
-export * from './inversify.config'
+export * from './inversify.config.js'

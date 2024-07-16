@@ -1,7 +1,7 @@
 import { Express } from 'express'
 import { StatusCodes } from 'http-status-codes'
 
-import { getAddress, getByHash, postAddress } from '../routes'
+import { getAddress, getByHash, postAddress } from '../routes/index.js'
 
 export const addNodeRoutes = (app: Express) => {
   // TODO: Allow other default modules to be mounted at root

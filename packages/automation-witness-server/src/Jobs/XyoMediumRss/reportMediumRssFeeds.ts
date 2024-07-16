@@ -3,7 +3,7 @@ import { ApiCallSchema, ApiUriTemplateCall } from '@xyo-network/api-call-witness
 import { Payload } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 
-import { getApiCallWitnessNode } from './getApiCallWitnessNode'
+import { getApiCallWitnessNode } from './getApiCallWitnessNode.js'
 
 export const reportMediumRssFeed = async (feed: string): Promise<Payload[]> => {
   const call: ApiUriTemplateCall = { params: { feed }, schema: ApiCallSchema }

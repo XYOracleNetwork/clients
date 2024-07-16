@@ -1,7 +1,7 @@
 import type { GetValidator } from '@xyo-network/node-core-model'
 import type { Payload } from '@xyo-network/payload-model'
 
-import { getPayloadValidatorFromSchemaCache } from './getPayloadValidatorFromSchemaCache'
+import { getPayloadValidatorFromSchemaCache } from './getPayloadValidatorFromSchemaCache.js'
 
 export const validatePayloadSchema = async (
   payload: Payload,

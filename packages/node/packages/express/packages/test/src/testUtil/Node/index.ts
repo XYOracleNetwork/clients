@@ -1,1 +1,1 @@
-export * from './getModule'
+export * from './getModule.js'

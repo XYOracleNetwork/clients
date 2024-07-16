@@ -9,11 +9,11 @@ import compression from 'compression'
 import cors from 'cors'
 import express, { Express } from 'express'
 
-import { addDependencies } from './addDependencies'
-import { addErrorHandlers } from './addErrorHandlers'
-import { addMiddleware } from './addMiddleware'
-import { configureEnvironment } from './configureEnvironment'
-import { startJobQueue } from './startJobQueue'
+import { addDependencies } from './addDependencies.js'
+import { addErrorHandlers } from './addErrorHandlers.js'
+import { addMiddleware } from './addMiddleware.js'
+import { configureEnvironment } from './configureEnvironment.js'
+import { startJobQueue } from './startJobQueue.js'
 
 const hostname = '::'
 

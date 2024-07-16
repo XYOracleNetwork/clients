@@ -1,3 +1,3 @@
-export * from './clearPid'
-export * from './getPid'
-export * from './setPid'
+export * from './clearPid.js'
+export * from './getPid.js'
+export * from './setPid.js'

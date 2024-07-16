@@ -2,7 +2,7 @@ import { ModuleDescriptionPayload, ModuleDescriptionSchema } from '@xyo-network/
 import { NodeInstance } from '@xyo-network/node-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 
-import { printLine, printTitle } from '../../../lib'
+import { printLine, printTitle } from '../../../lib/index.js'
 
 export const describeNode = async (node: NodeInstance) => {
   printTitle('Describe Node')

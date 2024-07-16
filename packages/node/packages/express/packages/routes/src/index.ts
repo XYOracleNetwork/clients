@@ -1,1 +1,1 @@
-export * from './addRoutes'
+export * from './addRoutes/index.js'

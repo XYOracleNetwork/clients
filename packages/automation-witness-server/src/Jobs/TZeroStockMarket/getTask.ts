@@ -1,6 +1,6 @@
 import { getDefaultLogger } from '@xylabs/sdk-api-express-ecs'
 
-import { reportStockPrice } from './reportStockPrices'
+import { reportStockPrice } from './reportStockPrices.js'
 
 export const getTask = () => {
   const logger = getDefaultLogger()

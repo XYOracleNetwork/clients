@@ -1,6 +1,6 @@
 import { isNodeInstance } from '@xyo-network/node-model'
 
-import { getBlogPostWitnessNode } from '../getBlogPostWitnessNode'
+import { getBlogPostWitnessNode } from '../getBlogPostWitnessNode.js'
 
 describe('getBlogPostWitnessNode', () => {
   it('gets the node', async () => {

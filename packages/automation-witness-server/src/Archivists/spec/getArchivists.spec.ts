@@ -1,4 +1,4 @@
-import { getArchivists } from '../getArchivists'
+import { getArchivists } from '../getArchivists.js'
 
 describe('getArchivists', () => {
   it('returns the default archivists specified by the ENV if no configs supplied', async () => {

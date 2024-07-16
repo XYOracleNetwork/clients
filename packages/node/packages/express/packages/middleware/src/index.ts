@@ -11,7 +11,7 @@ declare global {
   }
 }
 
-export * from './doc'
-export * from './LoggingErrorHandler'
-export * from './nodeEnv'
-export * from './standardResponses'
+export * from './doc/index.js'
+export * from './LoggingErrorHandler/index.js'
+export * from './nodeEnv/index.js'
+export * from './standardResponses/index.js'

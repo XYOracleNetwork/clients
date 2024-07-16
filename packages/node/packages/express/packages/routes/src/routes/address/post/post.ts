@@ -8,8 +8,8 @@ import { Payload } from '@xyo-network/payload-model'
 import { RequestHandler } from 'express'
 import { StatusCodes } from 'http-status-codes'
 
-import { AddressPathParams } from '../AddressPathParams'
-import { getQueryConfig } from './getQueryConfig'
+import { AddressPathParams } from '../AddressPathParams.js'
+import { getQueryConfig } from './getQueryConfig.js'
 
 export type PostAddressRequestBody = [QueryBoundWitness, undefined | Payload[]]
 

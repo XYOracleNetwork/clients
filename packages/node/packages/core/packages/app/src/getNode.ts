@@ -6,7 +6,7 @@ import { NodeConfigSchema } from '@xyo-network/node-model'
 import { PayloadValidator } from '@xyo-network/payload-validator'
 import { SchemaNameValidator } from '@xyo-network/schema-name-validator'
 
-import { configureEnvironment, configureTransports } from './configuration'
+import { configureEnvironment, configureTransports } from './configuration/index.js'
 
 const name = 'XYOPublic'
 const config = { name, schema: NodeConfigSchema }

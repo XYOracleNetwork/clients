@@ -3,7 +3,7 @@ import { ApiCallSchema, ApiUriTemplateCall } from '@xyo-network/api-call-witness
 import { Payload } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 
-import { getNode } from './getNode'
+import { getNode } from './getNode.js'
 
 export const reportStockPrice = async (symbol: string): Promise<Payload[]> => {
   const call: ApiUriTemplateCall = { params: { symbol }, schema: ApiCallSchema }

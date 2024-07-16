@@ -2,7 +2,7 @@ import { JobQueue } from '@xyo-network/node-core-model'
 import { Job } from '@xyo-network/shared'
 import { mock, MockProxy } from 'jest-mock-extended'
 
-import { defineJobs } from '../defineJobs'
+import { defineJobs } from '../defineJobs.js'
 
 describe('defineJobs', () => {
   let jobQueue: MockProxy<JobQueue>

@@ -1,1 +1,1 @@
-export * from './augmentWithMetadata'
+export * from './augmentWithMetadata.js'

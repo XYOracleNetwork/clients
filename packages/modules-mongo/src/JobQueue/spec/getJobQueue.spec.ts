@@ -1,7 +1,7 @@
 import { describeIf } from '@xylabs/jest-helpers'
 
-import { canAddMongoModules } from '../../canAddMongoModules'
-import { getJobQueue } from '../getJobQueue'
+import { canAddMongoModules } from '../../canAddMongoModules.js'
+import { getJobQueue } from '../getJobQueue.js'
 
 describeIf(canAddMongoModules())('getJobQueue', () => {
   it('gets the job queue', async () => {

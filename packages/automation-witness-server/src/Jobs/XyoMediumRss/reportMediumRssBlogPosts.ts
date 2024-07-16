@@ -6,8 +6,8 @@ import { Payload } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { isXmlWithMeta } from '@xyo-network/xml-plugin'
 
-import { getArchivist } from '../../Archivists'
-import { getBlogPostWitnessNode } from './getBlogPostWitnessNode'
+import { getArchivist } from '../../Archivists/index.js'
+import { getBlogPostWitnessNode } from './getBlogPostWitnessNode.js'
 
 export interface MediumBlogPostFields {
   category?: string[]

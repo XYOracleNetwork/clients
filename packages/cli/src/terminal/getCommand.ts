@@ -1,7 +1,7 @@
 import { NodeInstance } from '@xyo-network/node-model'
 import { terminal } from 'terminal-kit'
 
-import { printLine } from '../lib'
+import { printLine } from '../lib/index.js'
 import {
   attachModule,
   describeNode,
@@ -16,7 +16,7 @@ import {
   stopNode,
   terminalItems,
   unregisterModule,
-} from './commands'
+} from './commands/index.js'
 
 export const getCommand = async (node: NodeInstance): Promise<boolean> => {
   return await new Promise((resolve) => {

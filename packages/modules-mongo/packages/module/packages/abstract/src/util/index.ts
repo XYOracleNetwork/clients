@@ -1,1 +1,1 @@
-export * from './dbProperty'
+export * from './dbProperty.js'

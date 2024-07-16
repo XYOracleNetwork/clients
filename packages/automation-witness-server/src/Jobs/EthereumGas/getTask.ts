@@ -3,9 +3,9 @@ import { getDefaultLogger } from '@xylabs/sdk-api-express-ecs'
 import { EthereumGasSchema } from '@xyo-network/gas-price-payload-plugin'
 import { Job } from '@xyo-network/shared'
 
-import { getDiviner } from './getDiviner'
-import { reportDivinerResult } from './reportDivinerResult'
-import { reportGasPrices } from './reportGasPrices'
+import { getDiviner } from './getDiviner.js'
+import { reportDivinerResult } from './reportDivinerResult.js'
+import { reportGasPrices } from './reportGasPrices.js'
 
 export const getTask = (): Job['task'] => {
   const logger = getDefaultLogger()

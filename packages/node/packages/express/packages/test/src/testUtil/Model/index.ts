@@ -1,1 +1,1 @@
-export * from './TestWeb3User'
+export * from './TestWeb3User.js'

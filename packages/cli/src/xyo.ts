@@ -1,15 +1,15 @@
 import { config } from 'dotenv'
-import yargs from 'yargs'
+import yargs, { Argv } from 'yargs'
 // eslint-disable-next-line import/no-internal-modules
 import { hideBin } from 'yargs/helpers'
 
-import { opts, OutputType } from './command'
+import { opts, OutputType } from './command/index.js'
 
 config()
 
 void yargs(hideBin(process.argv))
   .commandDir('./command/commands', opts)
-  .wrap(yargs.terminalWidth())
+  .wrap((yargs as Argv).terminalWidth())
   .demandCommand(1)
   .help()
   .alias('h', 'help')

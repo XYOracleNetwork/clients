@@ -1,5 +1,4 @@
 import { describeIf } from '@xylabs/jest-helpers'
-import { Account } from '@xyo-network/account'
 import { PayloadDivinerConfigSchema, PayloadDivinerQueryPayload, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
@@ -7,7 +6,7 @@ import { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock } from 'jest-mock-extended'
 
-import { MongoDBPayloadDiviner } from '../MongoDBPayloadDiviner'
+import { MongoDBPayloadDiviner } from '../MongoDBPayloadDiviner.js'
 
 /**
  * @group mongo

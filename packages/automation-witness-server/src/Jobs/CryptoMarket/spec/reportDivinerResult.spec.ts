@@ -1,6 +1,6 @@
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 
-import { reportDivinerResult } from '../reportDivinerResult'
+import { reportDivinerResult } from '../reportDivinerResult.js'
 
 describe('reportDivinerResult', () => {
   it('reports diviner results', async () => {

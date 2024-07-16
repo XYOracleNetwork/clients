@@ -1,1 +1,1 @@
-export * from './AddressInfo'
+export * from './AddressInfo/index.js'

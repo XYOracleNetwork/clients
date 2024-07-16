@@ -1,1 +1,1 @@
-export * from './getHash'
+export * from './getHash.js'

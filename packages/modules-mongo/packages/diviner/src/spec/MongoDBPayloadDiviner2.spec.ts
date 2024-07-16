@@ -1,12 +1,11 @@
 /* eslint-disable max-nested-callbacks */
-import { Account } from '@xyo-network/account'
 import { MongoDBArchivist } from '@xyo-network/archivist-mongodb'
 import { PayloadDivinerQueryPayload, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload, PayloadWithMeta, WithMeta } from '@xyo-network/payload-model'
 
-import { MongoDBPayloadDiviner } from '../MongoDBPayloadDiviner'
+import { MongoDBPayloadDiviner } from '../MongoDBPayloadDiviner.js'
 
 /**
  * @group module

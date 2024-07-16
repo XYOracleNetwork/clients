@@ -21,7 +21,7 @@ import { WithMeta, WithSources } from '@xyo-network/payload-model'
 import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
 import { asWitnessInstance, WitnessInstance } from '@xyo-network/witness-model'
 
-import { collections } from './collections'
+import { collections } from './collections.js'
 
 interface NftCollectionDisplaySlugInfo {
   displayName: string

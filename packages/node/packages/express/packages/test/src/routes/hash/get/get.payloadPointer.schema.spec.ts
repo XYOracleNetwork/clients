@@ -4,8 +4,8 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload, unMeta } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
-import { getHash, getNewPayload, getTestSchemaName, insertPayload } from '../../../testUtil'
-import { createPointer, expectHashNotFoundError } from './get.payloadPointer.spec'
+import { getHash, getNewPayload, getTestSchemaName, insertPayload } from '../../../testUtil/index.js'
+import { createPointer, expectHashNotFoundError } from './get.payloadPointer.spec.js'
 
 describe('/:hash', () => {
   describe('with rules for [schema]', () => {

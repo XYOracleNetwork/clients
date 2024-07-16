@@ -1,5 +1,5 @@
-import { getProvider } from '../../Providers'
-import { getCryptoMarketWitness } from '../getCryptoMarketWitness'
+import { getProvider } from '../../Providers/index.js'
+import { getCryptoMarketWitness } from '../getCryptoMarketWitness.js'
 
 describe('getCryptoMarketWitness', () => {
   it('gets witnesses using supplied provider', async () => {

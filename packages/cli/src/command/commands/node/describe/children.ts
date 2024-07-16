@@ -5,9 +5,9 @@ import { NodeInstance } from '@xyo-network/node-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { CommandBuilder, CommandModule } from 'yargs'
 
-import { printError, printLine } from '../../../../lib'
-import { BaseArguments } from '../../../BaseArguments'
-import { getNode } from '../../../util'
+import { printError, printLine } from '../../../../lib/index.js'
+import { BaseArguments } from '../../../BaseArguments.js'
+import { getNode } from '../../../util/index.js'
 
 export const aliases: ReadonlyArray<string> = []
 export const builder: CommandBuilder = {}

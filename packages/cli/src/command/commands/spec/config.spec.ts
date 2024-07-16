@@ -1,6 +1,6 @@
 import yargs from 'yargs'
 
-import config from '../config'
+import config from '../config/index.js'
 
 describe('config', () => {
   const parser = yargs().command(config).help()

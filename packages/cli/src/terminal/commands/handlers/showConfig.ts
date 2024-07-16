@@ -1,6 +1,6 @@
 import { ModuleConfig } from '@xyo-network/module-model'
 
-import { printLine, printTitle, readFileDeep } from '../../../lib'
+import { printLine, printTitle, readFileDeep } from '../../../lib/index.js'
 
 export const showConfig = async () => {
   const [config, path] = readFileDeep(['xyo-config.json', 'xyo-config.js'])

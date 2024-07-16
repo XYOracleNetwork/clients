@@ -1,10 +1,10 @@
 import { Container } from 'inversify'
 
-import { addArchivistModuleFactories } from './Archivist'
-import { addDivinerModuleFactories } from './Diviner'
-import { JobQueueContainerModule } from './JobQueue'
-import { initializeDatabase } from './Mongo'
-import { addPreviousHashStore } from './PreviousHashStore'
+import { addArchivistModuleFactories } from './Archivist/index.js'
+import { addDivinerModuleFactories } from './Diviner/index.js'
+import { JobQueueContainerModule } from './JobQueue/index.js'
+import { initializeDatabase } from './Mongo/index.js'
+import { addPreviousHashStore } from './PreviousHashStore/index.js'
 
 export const addMongoModules = async (container: Container) => {
   await initializeDatabase()

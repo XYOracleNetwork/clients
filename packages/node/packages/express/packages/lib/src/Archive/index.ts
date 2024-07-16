@@ -1,1 +1,1 @@
-export * from './getRequestMeta'
+export * from './getRequestMeta.js'
