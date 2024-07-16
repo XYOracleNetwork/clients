@@ -132,20 +132,6 @@
         "${workspaceFolder}/**",
         "**/node_modules/**"
       ],
-    },
-    {
-      "name": "correctImports",
-      "type": "node",
-      "request": "launch",
-      "osx": {
-        "program": "${workspaceRoot}/correctImports.js"
-      },
-      "windows": {
-        "program": "${workspaceRoot}/correctImports.js"
-      },
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "cwd": "${workspaceFolder}"
     }
   ]
 }
