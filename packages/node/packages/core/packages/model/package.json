@@ -37,20 +37,20 @@
   "author": "Arie Trouw",
   "license": "LGPL-3.0-only",
   "dependencies": {
-    "@xylabs/hex": "^3.5.2",
-    "@xylabs/object": "^3.5.2",
-    "@xyo-network/archivist-model": "^2.109.0",
-    "@xyo-network/boundwitness-model": "^2.109.0",
-    "@xyo-network/diviner-payload-model": "^2.109.0",
-    "@xyo-network/module-abstract": "^2.109.0",
-    "@xyo-network/payload-model": "^2.109.0",
+    "@xylabs/hex": "^3.5.9",
+    "@xylabs/object": "^3.5.9",
+    "@xyo-network/archivist-model": "^2.110.5",
+    "@xyo-network/boundwitness-model": "^2.110.5",
+    "@xyo-network/diviner-payload-model": "^2.110.5",
+    "@xyo-network/module-abstract": "^2.110.5",
+    "@xyo-network/payload-model": "^2.110.5",
     "@xyo-network/payload-mongodb": "workspace:^",
-    "@xyo-network/shared": "^2.109.0",
-    "ajv": "^8.16.0"
+    "@xyo-network/shared": "^2.110.5",
+    "ajv": "^8.17.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.11.12",
-    "@xylabs/tsconfig": "^3.11.12",
+    "@xylabs/ts-scripts-yarn3": "^3.12.1",
+    "@xylabs/tsconfig": "^3.12.1",
     "typescript": "^5.5.3"
   },
   "type": "module"
