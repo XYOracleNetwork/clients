@@ -29,7 +29,8 @@ export const getCryptoMarketWitness: WitnessProvider<Provider> = async (provider
         pools: UniswapPoolContracts,
         schema: UniswapCryptoMarketWitnessConfigSchema,
       },
-      provider,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      provider: provider as any,
     }),
   ]
   return witnesses
