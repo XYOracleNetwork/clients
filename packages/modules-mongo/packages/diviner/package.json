@@ -58,8 +58,8 @@
   },
   "devDependencies": {
     "@xylabs/jest-helpers": "^3.5.9",
-    "@xylabs/ts-scripts-yarn3": "^3.12.1",
-    "@xylabs/tsconfig": "^3.12.1",
+    "@xylabs/ts-scripts-yarn3": "^3.12.2",
+    "@xylabs/tsconfig": "^3.12.2",
     "@xyo-network/archivist-mongodb": "workspace:^",
     "@xyo-network/boundwitness-builder": "^2.110.5",
     "@xyo-network/diviner-abstract": "^2.110.5",

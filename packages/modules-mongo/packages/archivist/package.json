@@ -26,8 +26,8 @@
   "devDependencies": {
     "@xylabs/arraybuffer": "^3.5.9",
     "@xylabs/jest-helpers": "^3.5.9",
-    "@xylabs/ts-scripts-yarn3": "^3.12.1",
-    "@xylabs/tsconfig": "^3.12.1",
+    "@xylabs/ts-scripts-yarn3": "^3.12.2",
+    "@xylabs/tsconfig": "^3.12.2",
     "@xyo-network/account": "^2.110.5",
     "@xyo-network/account-model": "^2.110.5",
     "@xyo-network/archivist-wrapper": "^2.110.5",

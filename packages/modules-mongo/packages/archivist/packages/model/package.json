@@ -15,8 +15,8 @@
     "@xyo-network/sdk-xyo-mongo-js": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.12.1",
-    "@xylabs/tsconfig": "^3.12.1",
+    "@xylabs/ts-scripts-yarn3": "^3.12.2",
+    "@xylabs/tsconfig": "^3.12.2",
     "fake-indexeddb": "^4.0.2",
     "typescript": "^5.5.3"
   },

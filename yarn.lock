@@ -4653,9 +4653,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xylabs/eslint-config-flat@npm:^3.12.1":
-  version: 3.12.1
-  resolution: "@xylabs/eslint-config-flat@npm:3.12.1"
+"@xylabs/eslint-config-flat@npm:^3.12.2":
+  version: 3.12.2
+  resolution: "@xylabs/eslint-config-flat@npm:3.12.2"
   dependencies:
     "@typescript-eslint/eslint-plugin": "npm:^7.16.0"
     "@typescript-eslint/parser": "npm:^7.16.0"
@@ -4684,13 +4684,13 @@ __metadata:
   peerDependenciesMeta:
     eslint:
       optional: true
-  checksum: 10/63f76ec1fdc97819d4120d17719b5e24a66f9855ba57ebbba39a076f4e87a6cc7bb5f8294f4c04a2b8ca2877bf8436de5a749fdca3077e07b163becee8757a88
+  checksum: 10/63c6736d1a46ffef24bd7ab798459b4cc36522d8794c27fcff914ad9d87f183822fcb5529434461a8728b6d4f2e67f31354b6d31c54883ee01f6ba37cb6bf809
   languageName: node
   linkType: hard
 
-"@xylabs/eslint-config@npm:^3.12.1":
-  version: 3.12.1
-  resolution: "@xylabs/eslint-config@npm:3.12.1"
+"@xylabs/eslint-config@npm:^3.12.2":
+  version: 3.12.2
+  resolution: "@xylabs/eslint-config@npm:3.12.2"
   dependencies:
     "@typescript-eslint/eslint-plugin": "npm:^7.16.0"
     "@typescript-eslint/parser": "npm:^7.16.0"
@@ -4719,7 +4719,7 @@ __metadata:
   peerDependenciesMeta:
     eslint:
       optional: true
-  checksum: 10/4d02b01d2399dbfe8948ea091fd812e49db11aa83e2e266de6b18575aab9319f399d009e019a313cb697a15a05f8bdc6d251cba6a3444e5fa12bc0897d0b520b
+  checksum: 10/88a8b15fcfa36fe9db77deb85a428215f03a49b6e4e301fddd8b1719cb05735f0df116ab64f1d69b5c663808530bc1591d34fbbc39ab63af1da86e9e2518aeee
   languageName: node
   linkType: hard
 
@@ -4888,9 +4888,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xylabs/ts-scripts-yarn3@npm:^3.12.1":
-  version: 3.12.1
-  resolution: "@xylabs/ts-scripts-yarn3@npm:3.12.1"
+"@xylabs/ts-scripts-yarn3@npm:^3.12.2":
+  version: 3.12.2
+  resolution: "@xylabs/ts-scripts-yarn3@npm:3.12.2"
   dependencies:
     "@rollup/plugin-commonjs": "npm:^26.0.1"
     "@rollup/plugin-json": "npm:^6.1.0"
@@ -4899,8 +4899,8 @@ __metadata:
     "@types/yargs": "npm:^17.0.32"
     "@typescript-eslint/eslint-plugin": "npm:^7.16.0"
     "@typescript-eslint/parser": "npm:^7.16.0"
-    "@xylabs/tsconfig": "npm:^3.12.1"
-    "@xylabs/tsconfig-dom": "npm:^3.12.1"
+    "@xylabs/tsconfig": "npm:^3.12.2"
+    "@xylabs/tsconfig-dom": "npm:^3.12.2"
     async-mutex: "npm:^0.5.0"
     chalk: "npm:^4.1.2"
     cosmiconfig: "npm:^9.0.0"
@@ -4992,50 +4992,50 @@ __metadata:
     xy: dist/bin/xy.js
     xy-ts: src/bin/xy-ts.ts
     yarn3only: dist/bin/yarn3only.js
-  checksum: 10/9f6bb832324cd52eaa88b40e3ecfd8bc42539da314f1b78b3da283ed1928119e62ce6b94db9f2cf555505b6ccdbe46b9cf138bd2f6cbf06a6f7f64c3586d21fe
+  checksum: 10/a21c723e539d33c8b55ebd515ff3906db677c03a4834417775ebbd569b219f7aa022b183b991560947e4d6ea1d6fcc4eb6c05f53f257ab37a7a3bddbf58a35d5
   languageName: node
   linkType: hard
 
-"@xylabs/tsconfig-dom-jest@npm:^3.12.1":
-  version: 3.12.1
-  resolution: "@xylabs/tsconfig-dom-jest@npm:3.12.1"
+"@xylabs/tsconfig-dom-jest@npm:^3.12.2":
+  version: 3.12.2
+  resolution: "@xylabs/tsconfig-dom-jest@npm:3.12.2"
   dependencies:
     "@types/jest": "npm:^29.5.12"
     "@types/node": "npm:^20.14.10"
     "@types/reflect-metadata": "npm:^0.1.0"
-    "@xylabs/tsconfig-dom": "npm:^3.12.1"
+    "@xylabs/tsconfig-dom": "npm:^3.12.2"
     jest-extended: "npm:^4.0.2"
     jest-sorted: "npm:^1.0.15"
-  checksum: 10/aa3c48fca82546ad9425ddf27aa0b39a118bdb58a1772258c1f58b1abf7577c8bd3513170ff06f9a6e43ec9c3ed79cd195f692b2395ce0e3afe6efa5af32866e
+  checksum: 10/c8561f0e0ee4118dd4dd5cbf627964d3e6b6e6b3bf46052cc9eb458db397a5d08abdb6788e0e4f607f81194d29c860e20e19ccfe1c831d482e05a211abf53685
   languageName: node
   linkType: hard
 
-"@xylabs/tsconfig-dom@npm:^3.12.1":
-  version: 3.12.1
-  resolution: "@xylabs/tsconfig-dom@npm:3.12.1"
+"@xylabs/tsconfig-dom@npm:^3.12.2":
+  version: 3.12.2
+  resolution: "@xylabs/tsconfig-dom@npm:3.12.2"
   dependencies:
-    "@xylabs/tsconfig": "npm:^3.12.1"
-  checksum: 10/271541f23cdbf8a3b2bf474f2919ed704f2692f4e9162c0aff5c23d6b2d13d92a26476557562b8540857a5241647a9ddf5852aef4a922379f773a713b269e331
+    "@xylabs/tsconfig": "npm:^3.12.2"
+  checksum: 10/22f94e28bc54340a7a6baf258385003195b1a41437e9831d90e66ddde3dfa5643357318afa7fd04d3181548642a4c33a52286ce824adc636a46c267c7cdc0f1b
   languageName: node
   linkType: hard
 
-"@xylabs/tsconfig-jest@npm:^3.12.1":
-  version: 3.12.1
-  resolution: "@xylabs/tsconfig-jest@npm:3.12.1"
+"@xylabs/tsconfig-jest@npm:^3.12.2":
+  version: 3.12.2
+  resolution: "@xylabs/tsconfig-jest@npm:3.12.2"
   dependencies:
-    "@xylabs/tsconfig": "npm:^3.12.1"
+    "@xylabs/tsconfig": "npm:^3.12.2"
     jest-extended: "npm:^4.0.2"
     jest-sorted: "npm:^1.0.15"
   peerDependencies:
     typescript: ^5
-  checksum: 10/b5c28944d6880a6154eedc4e8ad4a0c4c3a1636667ed1468d51dbeb44da276f547007a49519277ddd0b80bff9a09926e029342800fb1738d1531d0d4cc27eaaf
+  checksum: 10/92e5450cc0e9ef852944754767b79227f20c776a907a69dc7f3448eabb106910047004d2123d4ffa0ab36183193d2ae2c1c36d9dbcc60764eadf352090243409
   languageName: node
   linkType: hard
 
-"@xylabs/tsconfig@npm:^3.12.1":
-  version: 3.12.1
-  resolution: "@xylabs/tsconfig@npm:3.12.1"
-  checksum: 10/2367566dbfbfe9aa2d22dc5d8fe24a5c6acc2d4ba7b1efd3d858a3bd90808717fecc93f8e1a40376d7e9f591bb7e3d1424541b3824026c5255e4121c9a585495
+"@xylabs/tsconfig@npm:^3.12.2":
+  version: 3.12.2
+  resolution: "@xylabs/tsconfig@npm:3.12.2"
+  checksum: 10/de0b86c35c06785183d3512e5158d82a957b61cb929b0c9f6db59c196f185dba34d1712cd6d06fde3dfc256dae9a1f361a14a6834092c4b3515e5222245a4689
   languageName: node
   linkType: hard
 
@@ -5189,8 +5189,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/archivist-model-mongodb@workspace:packages/modules-mongo/packages/archivist/packages/model"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig": "npm:^3.12.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig": "npm:^3.12.2"
     "@xyo-network/archivist-model": "npm:^2.110.5"
     "@xyo-network/module-model": "npm:^2.110.5"
     "@xyo-network/sdk-xyo-mongo-js": "workspace:^"
@@ -5222,8 +5222,8 @@ __metadata:
     "@xylabs/exists": "npm:^3.5.9"
     "@xylabs/hex": "npm:^3.5.9"
     "@xylabs/jest-helpers": "npm:^3.5.9"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig": "npm:^3.12.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig": "npm:^3.12.2"
     "@xyo-network/account": "npm:^2.110.5"
     "@xyo-network/account-model": "npm:^2.110.5"
     "@xyo-network/archivist-abstract": "npm:^2.110.5"
@@ -5285,9 +5285,9 @@ __metadata:
     "@xylabs/jest-helpers": "npm:^3.5.9"
     "@xylabs/object": "npm:^3.5.9"
     "@xylabs/sdk-api-express-ecs": "npm:^2.0.4"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig": "npm:^3.12.1"
-    "@xylabs/tsconfig-jest": "npm:^3.12.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig": "npm:^3.12.2"
+    "@xylabs/tsconfig-jest": "npm:^3.12.2"
     "@xyo-network/account": "npm:^2.110.5"
     "@xyo-network/api-call-witness": "npm:^2.99.2"
     "@xyo-network/api-models": "npm:^2.110.5"
@@ -5527,9 +5527,9 @@ __metadata:
     "@xylabs/hex": "npm:^3.5.9"
     "@xylabs/lodash": "npm:^3.5.9"
     "@xylabs/object": "npm:^3.5.9"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig": "npm:^3.12.1"
-    "@xylabs/tsconfig-jest": "npm:^3.12.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig": "npm:^3.12.2"
+    "@xylabs/tsconfig-jest": "npm:^3.12.2"
     "@xyo-network/account": "npm:^2.110.5"
     "@xyo-network/account-model": "npm:^2.110.5"
     "@xyo-network/archivist-model": "npm:^2.110.5"
@@ -5561,12 +5561,12 @@ __metadata:
     "@babel/preset-typescript": "npm:^7.24.7"
     "@types/jest": "npm:^29.5.12"
     "@types/supertest": "npm:^6.0.2"
-    "@xylabs/eslint-config": "npm:^3.12.1"
-    "@xylabs/eslint-config-flat": "npm:^3.12.1"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig": "npm:^3.12.1"
-    "@xylabs/tsconfig-dom-jest": "npm:^3.12.1"
-    "@xylabs/tsconfig-jest": "npm:^3.12.1"
+    "@xylabs/eslint-config": "npm:^3.12.2"
+    "@xylabs/eslint-config-flat": "npm:^3.12.2"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig": "npm:^3.12.2"
+    "@xylabs/tsconfig-dom-jest": "npm:^3.12.2"
+    "@xylabs/tsconfig-jest": "npm:^3.12.2"
     "@xyo-network/automation-witness-server": "workspace:^"
     "@xyo-network/cli": "workspace:^"
     "@xyo-network/express-node": "workspace:^"
@@ -6319,8 +6319,8 @@ __metadata:
     "@xylabs/object": "npm:^3.5.9"
     "@xylabs/promise": "npm:^3.5.9"
     "@xylabs/set": "npm:^3.5.9"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig": "npm:^3.12.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig": "npm:^3.12.2"
     "@xyo-network/account": "npm:^2.110.5"
     "@xyo-network/account-model": "npm:^2.110.5"
     "@xyo-network/archivist-model": "npm:^2.110.5"
@@ -6839,8 +6839,8 @@ __metadata:
     "@xylabs/exists": "npm:^3.5.9"
     "@xylabs/hex": "npm:^3.5.9"
     "@xylabs/sdk-api-express-ecs": "npm:^2.0.4"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig": "npm:^3.12.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig": "npm:^3.12.2"
     "@xyo-network/account": "npm:^2.110.5"
     "@xyo-network/api-call-witness": "npm:^2.99.2"
     "@xyo-network/archivist-memory": "npm:^2.110.5"
@@ -6895,8 +6895,8 @@ __metadata:
     "@types/express": "npm:4.17.21"
     "@xylabs/assert": "npm:^3.5.9"
     "@xylabs/sdk-api-express-ecs": "npm:^2.0.4"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig": "npm:^3.12.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig": "npm:^3.12.2"
     "@xyo-network/module-model": "npm:^2.110.5"
     "@xyo-network/node-model": "npm:^2.110.5"
     "@xyo-network/payload-mongodb": "workspace:^"
@@ -6914,8 +6914,8 @@ __metadata:
     "@types/swagger-ui-express": "npm:^4.1.6"
     "@xylabs/logger": "npm:^3.5.9"
     "@xylabs/sdk-api-express-ecs": "npm:^2.0.4"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig": "npm:^3.12.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig": "npm:^3.12.2"
     "@xyo-network/node-model": "npm:^2.110.5"
     express: "npm:^4.19.2"
     express-mung: "npm:^0.5.1"
@@ -6934,8 +6934,8 @@ __metadata:
     "@xylabs/exists": "npm:^3.5.9"
     "@xylabs/hex": "npm:^3.5.9"
     "@xylabs/sdk-api-express-ecs": "npm:^2.0.4"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig": "npm:^3.12.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig": "npm:^3.12.2"
     "@xyo-network/account": "npm:^2.110.5"
     "@xyo-network/account-model": "npm:^2.110.5"
     "@xyo-network/archivist-abstract": "npm:^2.110.5"
@@ -6978,8 +6978,8 @@ __metadata:
     "@xylabs/assert": "npm:^3.5.9"
     "@xylabs/logger": "npm:^3.5.9"
     "@xylabs/sdk-api-express-ecs": "npm:^2.0.4"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig": "npm:^3.12.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig": "npm:^3.12.2"
     "@xyo-network/express-node-dependencies": "workspace:^"
     "@xyo-network/express-node-middleware": "workspace:^"
     "@xyo-network/express-node-routes": "workspace:^"
@@ -7006,8 +7006,8 @@ __metadata:
     "@xylabs/delay": "npm:^3.5.9"
     "@xylabs/forget": "npm:^3.5.9"
     "@xylabs/object": "npm:^3.5.9"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig-jest": "npm:^3.12.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig-jest": "npm:^3.12.2"
     "@xyo-network/account": "npm:^2.110.5"
     "@xyo-network/account-model": "npm:^2.110.5"
     "@xyo-network/api-call-witness": "npm:^2.99.2"
@@ -7056,8 +7056,8 @@ __metadata:
   resolution: "@xyo-network/express-node@workspace:packages/node"
   dependencies:
     "@swc/core": "npm:^1.6.13"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig": "npm:^3.12.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig": "npm:^3.12.2"
     "@xyo-network/express-node-dependencies": "workspace:^"
     "@xyo-network/express-node-lib": "workspace:^"
     "@xyo-network/express-node-middleware": "workspace:^"
@@ -7240,8 +7240,8 @@ __metadata:
     "@xylabs/exists": "npm:^3.5.9"
     "@xylabs/lodash": "npm:^3.5.9"
     "@xylabs/static-implements": "npm:^3.5.9"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig": "npm:^3.12.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig": "npm:^3.12.2"
     "@xyo-network/module-model": "npm:^2.110.5"
     "@xyo-network/module-model-mongodb": "workspace:^"
     "@xyo-network/payload-mongodb": "workspace:^"
@@ -7324,8 +7324,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/module-model-mongodb@workspace:packages/modules-mongo/packages/module/packages/model"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig": "npm:^3.12.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig": "npm:^3.12.2"
     "@xyo-network/module-model": "npm:^2.110.5"
     "@xyo-network/node-core-model": "workspace:^"
     "@xyo-network/payload-mongodb": "workspace:^"
@@ -7360,8 +7360,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/module-mongodb@workspace:packages/modules-mongo/packages/module"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig": "npm:^3.12.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig": "npm:^3.12.2"
     "@xyo-network/module-abstract-mongodb": "workspace:^"
     "@xyo-network/module-model-mongodb": "workspace:^"
     fake-indexeddb: "npm:^4.0.2"
@@ -7450,8 +7450,8 @@ __metadata:
   resolution: "@xyo-network/node-app@workspace:packages/node/packages/core/packages/app"
   dependencies:
     "@xylabs/sdk-api-express-ecs": "npm:^2.0.4"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig": "npm:^3.12.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig": "npm:^3.12.2"
     "@xyo-network/account": "npm:^2.110.5"
     "@xyo-network/account-model": "npm:^2.110.5"
     "@xyo-network/express-node-server": "workspace:^"
@@ -7470,8 +7470,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/node-core-lib@workspace:packages/node/packages/core/packages/lib"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig": "npm:^3.12.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig": "npm:^3.12.2"
     "@xyo-network/node-core-model": "npm:^2.88.9"
     "@xyo-network/payload-builder": "npm:^2.110.5"
     "@xyo-network/payload-model": "npm:^2.110.5"
@@ -7489,8 +7489,8 @@ __metadata:
   dependencies:
     "@xylabs/hex": "npm:^3.5.9"
     "@xylabs/object": "npm:^3.5.9"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig": "npm:^3.12.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig": "npm:^3.12.2"
     "@xyo-network/archivist-model": "npm:^2.110.5"
     "@xyo-network/boundwitness-model": "npm:^2.110.5"
     "@xyo-network/diviner-payload-model": "npm:^2.110.5"
@@ -7511,8 +7511,8 @@ __metadata:
     "@xylabs/exists": "npm:^3.5.9"
     "@xylabs/hex": "npm:^3.5.9"
     "@xylabs/jest-helpers": "npm:^3.5.9"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig": "npm:^3.12.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig": "npm:^3.12.2"
     "@xyo-network/account": "npm:^2.110.5"
     "@xyo-network/archivist-mongodb": "workspace:^"
     "@xyo-network/diviner-mongodb": "workspace:^"
@@ -7539,8 +7539,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/node-core-types@workspace:packages/node/packages/core/packages/types"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig": "npm:^3.12.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig": "npm:^3.12.2"
     typescript: "npm:^5.5.3"
   languageName: unknown
   linkType: soft
@@ -7655,8 +7655,8 @@ __metadata:
     "@xylabs/hex": "npm:^3.5.9"
     "@xylabs/lodash": "npm:^3.5.9"
     "@xylabs/object": "npm:^3.5.9"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig": "npm:^3.12.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig": "npm:^3.12.2"
     "@xyo-network/boundwitness-model": "npm:^2.110.5"
     "@xyo-network/payload-builder": "npm:^2.110.5"
     "@xyo-network/payload-model": "npm:^2.110.5"
@@ -7861,8 +7861,8 @@ __metadata:
     "@xylabs/assert": "npm:^3.5.9"
     "@xylabs/delay": "npm:^3.5.9"
     "@xylabs/forget": "npm:^3.5.9"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.12.1"
-    "@xylabs/tsconfig": "npm:^3.12.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
+    "@xylabs/tsconfig": "npm:^3.12.2"
     async-mutex: "npm:^0.5.0"
     mongodb: "npm:^6.8.0"
     typescript: "npm:^5.5.3"
@@ -21145,9 +21145,9 @@ __metadata:
   linkType: hard
 
 "ufo@npm:^1.5.3":
-  version: 1.5.3
-  resolution: "ufo@npm:1.5.3"
-  checksum: 10/2b30dddd873c643efecdb58cfe457183cd4d95937ccdacca6942c697b87a2c578232c25a5149fda85436696bf0fdbc213bf2b220874712bc3e58c0fb00a2c950
+  version: 1.5.4
+  resolution: "ufo@npm:1.5.4"
+  checksum: 10/a885ed421e656aea6ca64e9727b8118a9488715460b6f1a0f0427118adfe2f2830fe7c1d5bd9c5c754a332e6807516551cd663ea67ce9ed6a4e3edc739916335
   languageName: node
   linkType: hard
 
