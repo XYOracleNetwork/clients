@@ -2,7 +2,7 @@
   "env": {
     "NODE_ENV": "development"
   },
-  "exec": "node --input-type=module ./packages/node/packages/core/packages/app/dist/node/app.js",
+  "exec": "node ./packages/node/packages/core/packages/app/dist/node/app.js",
   "ext": ".ts",
   "ignore": ["**/*.spec.ts"],
   "watch": ["./src"]
