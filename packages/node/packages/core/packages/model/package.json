@@ -37,20 +37,20 @@
   "author": "Arie Trouw",
   "license": "LGPL-3.0-only",
   "dependencies": {
-    "@xylabs/hex": "^3.6.1",
-    "@xylabs/object": "^3.6.1",
-    "@xyo-network/archivist-model": "^2.110.6",
-    "@xyo-network/boundwitness-model": "^2.110.6",
-    "@xyo-network/diviner-payload-model": "^2.110.6",
-    "@xyo-network/module-abstract": "^2.110.6",
-    "@xyo-network/payload-model": "^2.110.6",
+    "@xylabs/hex": "^3.6.4",
+    "@xylabs/object": "^3.6.4",
+    "@xyo-network/archivist-model": "^2.110.7",
+    "@xyo-network/boundwitness-model": "^2.110.7",
+    "@xyo-network/diviner-payload-model": "^2.110.7",
+    "@xyo-network/module-abstract": "^2.110.7",
+    "@xyo-network/payload-model": "^2.110.7",
     "@xyo-network/payload-mongodb": "workspace:^",
-    "@xyo-network/shared": "^2.110.6",
+    "@xyo-network/shared": "^2.110.7",
     "ajv": "^8.17.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.12.2",
-    "@xylabs/tsconfig": "^3.12.2",
+    "@xylabs/ts-scripts-yarn3": "^3.12.3",
+    "@xylabs/tsconfig": "^3.12.3",
     "typescript": "^5.5.3"
   },
   "type": "module"
