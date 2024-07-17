@@ -12,6 +12,5 @@ ignores: [
   "jest-environment-jsdom",
   "mongodb-memory-server",
   "reflect-metadata",
-  "supertest",
-  "ts-node"
+  "supertest"
 ]

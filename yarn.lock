@@ -5551,7 +5551,6 @@ __metadata:
     dotenv: "npm:^16.4.5"
     tail: "npm:^2.2.6"
     terminal-kit: "npm:^3.1.1"
-    ts-node: "npm:^10.9.2"
     typescript: "npm:^5.5.3"
     yargs: "npm:^17.7.2"
   bin:
@@ -5592,7 +5591,6 @@ __metadata:
     reflect-metadata: "npm:^0.2.2"
     supertest: "npm:^7.0.0"
     ts-jest: "npm:^29.2.2"
-    ts-node: "npm:^10.9.2"
     typedoc: "npm:^0.26.4"
     typescript: "npm:^5.5.3"
   languageName: unknown

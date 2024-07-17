@@ -11,7 +11,7 @@
         "${workspaceFolder}/dist/**/*.js"
       ],
       "env": {
-        "NODE_OPTIONS": "-r ts-node/register --max-old-space-size=8192"
+        "NODE_OPTIONS": "--max-old-space-size=8192"
       },
       "envFile": "${workspaceFolder}/.env",
       "sourceMaps": true,
@@ -49,8 +49,6 @@
       ],
       "runtimeArgs": [
         "--max-old-space-size=8192",
-        "--experimental-specifier-resolution=node",
-        "--loader=ts-node/esm"
       ],
       "args": [
         "--network",
@@ -74,9 +72,7 @@
         "dist/node/**/*.js"
       ],
       "runtimeArgs": [
-        "--input-type=module",
         "--max-old-space-size=8192",
-        "--loader=ts-node/esm"
       ],
       "cwd": "${workspaceFolder}/packages/automation-witness-server",
       "envFile": "${workspaceFolder}/.env",

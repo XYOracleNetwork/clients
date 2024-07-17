@@ -6,13 +6,6 @@
     "typeRoots": []
   },
   "exclude": ["dist", "docs", "packages", "node_modules"],
-  "extends": "@xylabs/tsconfig",
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    },
-    "files": true,
-    "transpileOnly": true
-  }
+  "extends": "@xylabs/tsconfig"
 }
 
