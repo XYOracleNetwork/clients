@@ -18,20 +18,20 @@
   },
   "description": "Primary SDK for using XYO Protocol 2.0",
   "devDependencies": {
-    "@babel/core": "^7.24.9",
-    "@babel/preset-env": "^7.24.8",
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.3",
     "@babel/preset-typescript": "^7.24.7",
     "@types/jest": "^29.5.12",
     "@types/supertest": "^6.0.2",
-    "@xylabs/eslint-config": "^3.12.3",
-    "@xylabs/eslint-config-flat": "^3.12.3",
-    "@xylabs/ts-scripts-yarn3": "^3.12.3",
-    "@xylabs/tsconfig": "^3.12.3",
-    "@xylabs/tsconfig-dom-jest": "^3.12.3",
-    "@xylabs/tsconfig-jest": "^3.12.3",
+    "@xylabs/eslint-config": "^3.15.14",
+    "@xylabs/eslint-config-flat": "^3.15.14",
+    "@xylabs/ts-scripts-yarn3": "^3.15.14",
+    "@xylabs/tsconfig": "^3.15.14",
+    "@xylabs/tsconfig-dom-jest": "^3.15.14",
+    "@xylabs/tsconfig-jest": "^3.15.14",
     "babel-jest": "^29.7.0",
     "dotenv": "^16.4.5",
-    "eslint": "^9.7.0",
+    "eslint": "^9.8.0",
     "jest": "^29.7.0",
     "jest-docblock": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
@@ -43,9 +43,9 @@
     "nodemon": "^3.1.4",
     "reflect-metadata": "^0.2.2",
     "supertest": "^7.0.0",
-    "ts-jest": "^29.2.2",
-    "typedoc": "^0.26.4",
-    "typescript": "^5.5.3"
+    "ts-jest": "^29.2.4",
+    "typedoc": "^0.26.5",
+    "typescript": "^5.5.4"
   },
   "resolutions": {
     "axios": "^1",
@@ -64,7 +64,7 @@
         },
         "import": {
           "types": "./dist/browser/index.d.mts",
-          "default": "./dist/browser/index.js"
+          "default": "./dist/browser/index.mjs"
         }
       },
       "node": {
@@ -74,7 +74,7 @@
         },
         "import": {
           "types": "./dist/node/index.d.mts",
-          "default": "./dist/node/index.js"
+          "default": "./dist/node/index.mjs"
         }
       }
     },
@@ -82,8 +82,8 @@
     "./README.md": "./README.md"
   },
   "main": "./dist/node/index.cjs",
-  "module": "./dist/node/index.js",
-  "types": "./dist/node/index.d.cts",
+  "module": "./dist/node/index.mjs",
+  "types": "./dist/node/index.d.ts",
   "homepage": "https://xyo.network",
   "license": "LGPL-3.0-only",
   "name": "@xyo-network/clients",
@@ -125,7 +125,7 @@
   },
   "sideEffects": false,
   "version": "2.89.1",
-  "packageManager": "yarn@4.3.1",
+  "packageManager": "yarn@4.4.0",
   "volta": {
     "node": "22.3.0",
     "yarn": "1.22.22"
