@@ -2,8 +2,12 @@
   "env": {
     "NODE_ENV": "development"
   },
-  "exec": "node ./packages/node/packages/core/packages/app/dist/node/app.js",
+  "exec": "node ./packages/node/packages/core/packages/app/dist/node/app.mjs",
   "ext": ".ts",
-  "ignore": ["**/*.spec.ts"],
-  "watch": ["./src"]
+  "ignore": [
+    "**/*.spec.ts"
+  ],
+  "watch": [
+    "./src"
+  ]
 }

@@ -39,20 +39,20 @@
   "types": "dist/node/index.d.ts",
   "dependencies": {
     "@xylabs/sdk-api-express-ecs": "^2.0.4",
-    "@xyo-network/account": "^2.111.2",
-    "@xyo-network/account-model": "^2.111.2",
+    "@xyo-network/account": "^2.111.3",
+    "@xyo-network/account-model": "^2.111.3",
     "@xyo-network/express-node-server": "workspace:^",
     "@xyo-network/node-core-types": "workspace:^",
-    "@xyo-network/node-memory": "^2.111.2",
-    "@xyo-network/node-model": "^2.111.2",
-    "@xyo-network/payload-validator": "^2.111.2",
-    "@xyo-network/schema-name-validator": "^2.111.2",
+    "@xyo-network/node-memory": "^2.111.3",
+    "@xyo-network/node-model": "^2.111.3",
+    "@xyo-network/payload-validator": "^2.111.3",
+    "@xyo-network/schema-name-validator": "^2.111.3",
     "dotenv": "^16.4.5",
     "express": "^4.19.2"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.15.14",
-    "@xylabs/tsconfig": "^3.15.14",
+    "@xylabs/ts-scripts-yarn3": "^3.15.16",
+    "@xylabs/tsconfig": "^3.15.16",
     "typescript": "^5.5.4"
   },
   "author": "Arie Trouw",
