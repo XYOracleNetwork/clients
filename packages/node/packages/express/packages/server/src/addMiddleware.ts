@@ -2,7 +2,8 @@ import {
   customPoweredByHeader,
   disableCaseSensitiveRouting,
   disableExpressDefaultPoweredByHeader,
-  jsonBodyParser,
+  getJsonBodyParser,
+  getJsonBodyParserOptions,
   responseProfiler,
   useRequestCounters,
 } from '@xylabs/sdk-api-express-ecs'
@@ -11,7 +12,7 @@ import { Express } from 'express'
 
 export const addMiddleware = (app: Express) => {
   app.use(responseProfiler)
-  app.use(jsonBodyParser)
+  app.use(getJsonBodyParser(getJsonBodyParserOptions({ limit: '1mb' })))
   app.use(standardResponses)
   disableExpressDefaultPoweredByHeader(app)
   app.use(customPoweredByHeader)
