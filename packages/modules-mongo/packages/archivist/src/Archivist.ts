@@ -27,25 +27,25 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
   protected override async getHandler(hashes: Hash[]): Promise<WithMeta<Payload>[]> {
     let remainingHashes = [...hashes]
 
-    const dataPayloads = (await Promise.all(remainingHashes.map((_$hash) => this.payloads.findOne({ _$hash })))).filter(exists)
-    const dataPayloadsHashes = new Set(dataPayloads.map((payload) => payload._$hash))
-    remainingHashes = remainingHashes.filter((hash) => !dataPayloadsHashes.has(hash))
+    const dataPayloads = (await Promise.all(remainingHashes.map(_$hash => this.payloads.findOne({ _$hash })))).filter(exists)
+    const dataPayloadsHashes = new Set(dataPayloads.map(payload => payload._$hash))
+    remainingHashes = remainingHashes.filter(hash => !dataPayloadsHashes.has(hash))
 
-    const dataBws = (await Promise.all(remainingHashes.map((_$hash) => this.boundWitnesses.findOne({ _$hash })))).filter(exists)
-    const dataBwsHashes = new Set(dataBws.map((payload) => payload._$hash))
-    remainingHashes = remainingHashes.filter((hash) => !dataBwsHashes.has(hash))
+    const dataBws = (await Promise.all(remainingHashes.map(_$hash => this.boundWitnesses.findOne({ _$hash })))).filter(exists)
+    const dataBwsHashes = new Set(dataBws.map(payload => payload._$hash))
+    remainingHashes = remainingHashes.filter(hash => !dataBwsHashes.has(hash))
 
-    const payloads = (await Promise.all(remainingHashes.map((_hash) => this.payloads.findOne({ _hash })))).filter(exists)
-    const payloadsHashes = new Set(payloads.map((payload) => payload._hash))
-    remainingHashes = remainingHashes.filter((hash) => !payloadsHashes.has(hash))
+    const payloads = (await Promise.all(remainingHashes.map(_hash => this.payloads.findOne({ _hash })))).filter(exists)
+    const payloadsHashes = new Set(payloads.map(payload => payload._hash))
+    remainingHashes = remainingHashes.filter(hash => !payloadsHashes.has(hash))
 
-    const bws = (await Promise.all(remainingHashes.map((_hash) => this.boundWitnesses.findOne({ _hash })))).filter(exists)
-    const bwsHashes = new Set(bws.map((payload) => payload._hash))
-    remainingHashes = remainingHashes.filter((hash) => !bwsHashes.has(hash))
+    const bws = (await Promise.all(remainingHashes.map(_hash => this.boundWitnesses.findOne({ _hash })))).filter(exists)
+    const bwsHashes = new Set(bws.map(payload => payload._hash))
+    remainingHashes = remainingHashes.filter(hash => !bwsHashes.has(hash))
 
     const foundPayloads = [...dataPayloads, ...dataBws, ...payloads, ...bws] as PayloadWithMongoMeta<Payload & { _$hash: Hash; _$meta?: unknown }>[]
     const result = await PayloadBuilder.build(foundPayloads.map(fromDbRepresentation))
-    //console.log(`getHandler: ${JSON.stringify(hashes, null, 2)}:${JSON.stringify(result, null, 2)}`)
+    // console.log(`getHandler: ${JSON.stringify(hashes, null, 2)}:${JSON.stringify(result, null, 2)}`)
     return result
   }
 

@@ -67,11 +67,11 @@ const sanitizeAddress = (a: string | string[] | undefined): Address => {
       // eslint-disable-next-line unicorn/prefer-spread
       .concat(a)
       .filter(exists)
-      .map((x) => x.toLowerCase())
-      .map((z) => hexFromHexString(z, { prefix: false }))
+      .map(x => x.toLowerCase())
+      .map(z => hexFromHexString(z, { prefix: false }))
       .filter(exists)
       // TODO: We're only taking the last address with this
       // eslint-disable-next-line unicorn/no-array-reduce
-      .reduce((x) => x)
+      .reduce(x => x)
   )
 }

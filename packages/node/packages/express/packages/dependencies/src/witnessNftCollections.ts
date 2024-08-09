@@ -92,10 +92,10 @@ export const witnessNftCollections = async (node: NodeInstance) => {
         imageSlug = await generateThumbnail(address, name, score, archivist, imageThumbnailWitness)
         console.log(`${address}(${name}): Collection Data: Persist Collection Data`)
         const updatedNftCollectionDisplaySlugInfo: NftCollectionDisplaySlugInfo = { displayName: name, imageSlug, score }
-        const nftCollectionDisplaySlugInfo: NftCollectionDisplaySlugInfo =
-          existingNftCollectionDisplaySlugInfo ?
-            { ...existingNftCollectionDisplaySlugInfo, ...updatedNftCollectionDisplaySlugInfo }
-          : updatedNftCollectionDisplaySlugInfo
+        const nftCollectionDisplaySlugInfo: NftCollectionDisplaySlugInfo
+          = existingNftCollectionDisplaySlugInfo
+            ? { ...existingNftCollectionDisplaySlugInfo, ...updatedNftCollectionDisplaySlugInfo }
+            : updatedNftCollectionDisplaySlugInfo
         nftCollectionDisplaySlugInfos[address] = nftCollectionDisplaySlugInfo
         await writeCollectionInfo(nftCollectionDisplaySlugInfos)
         console.log(`${address}(${name}): Collection Data: Collection Data Persisted`)

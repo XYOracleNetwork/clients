@@ -1,1 +1,1 @@
-export type InfuraProviderConfig = [/*projectId*/ string]
+export type InfuraProviderConfig = [/* projectId */ string]

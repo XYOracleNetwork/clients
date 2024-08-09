@@ -11,9 +11,11 @@ export class MongoDBPreviousHashStore implements PreviousHashStore {
     const value = await this.addressInfoSdk.findOne({ address })
     return value?.previousHash ?? null
   }
+
   async removeItem(address: Address): Promise<void> {
     await this.addressInfoSdk.deleteOne({ address })
   }
+
   async setItem(address: Address, previousHash: Hash): Promise<void> {
     await this.addressInfoSdk.upsertOne({ address }, { $set: { previousHash } })
   }

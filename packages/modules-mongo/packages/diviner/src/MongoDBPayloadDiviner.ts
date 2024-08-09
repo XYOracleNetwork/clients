@@ -21,7 +21,7 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
     const { hash, limit = DefaultLimit, offset = 0, order = DefaultOrder, schema, schemas, timestamp, ...props } = query
     const direction = order === 'asc' ? 1 : -1
     const sort: { [key: string]: SortDirection } = { _timestamp: direction }
-    //TODO: Joel, why is AnyObject needed?
+    // TODO: Joel, why is AnyObject needed?
     const filter: Filter<AnyObject> = {}
     if (timestamp) {
       const parsedTimestamp = (timestamp ?? order === 'desc') ? Date.now() : 0

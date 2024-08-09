@@ -18,10 +18,10 @@ export const connect = async (attempts = 60, interval = 500): Promise<NodeInstan
       await bridge.start()
       printLine(`Connected Bridge at: ${apiDomain}`)
       printLine(`Local (Bridge) Address: 0x${bridge.address}`)
-      //printLine(`Remote (Root) Address: 0x${await bridge.getRootAddress()}`)
+      // printLine(`Remote (Root) Address: 0x${await bridge.getRootAddress()}`)
 
-      //we are assuming the root here is a node module, but will check it
-      const nodeModule = undefined //asNodeInstance(
+      // we are assuming the root here is a node module, but will check it
+      const nodeModule = undefined // asNodeInstance(
       //   (await bridge.targetResolve(await bridge.getRootAddress(), { address: [await bridge.getRootAddress()] })).pop(),
       //   'Connected to root module that was not a node',
       // )

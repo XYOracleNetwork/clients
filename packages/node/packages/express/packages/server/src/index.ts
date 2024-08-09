@@ -33,9 +33,11 @@ export class ExpressPayloadTransport extends PayloadTransport {
     addRoutes(this.app)
     addErrorHandlers(this.app)
   }
+
   get app(): Express {
     return this._app
   }
+
   set app(v: Express) {
     this._app = v
   }

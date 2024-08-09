@@ -13,7 +13,7 @@ import { getQueryConfig } from './getQueryConfig.js'
 
 export type PostAddressRequestBody = [QueryBoundWitness, undefined | Payload[]]
 
-/*const dumpModulesDown = async (module: ModuleInstance, maxDepth = 10) => {
+/* const dumpModulesDown = async (module: ModuleInstance, maxDepth = 10) => {
   const padding = Array(10 - maxDepth)
     .fill('--')
     .join('')
@@ -24,17 +24,17 @@ export type PostAddressRequestBody = [QueryBoundWitness, undefined | Payload[]]
   for (const child of children) {
     await dumpModulesDown(child, maxDepth - 1)
   }
-}*/
+} */
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
 const handler: RequestHandler<AddressPathParams, ModuleQueryResult, PostAddressRequestBody> = async (req, res, next) => {
   const { address } = req.params
   const { node } = req.app
-  //console.log(`address post[${node.address}]: ${address}`)
-  //console.log('\nManifest')
-  //console.log(JSON.stringify(await node.manifest(), null, 2))
-  //console.log('\nDump')
-  //await dumpModulesDown(node)
+  // console.log(`address post[${node.address}]: ${address}`)
+  // console.log('\nManifest')
+  // console.log(JSON.stringify(await node.manifest(), null, 2))
+  // console.log('\nDump')
+  // await dumpModulesDown(node)
   const [bw, payloads] = Array.isArray(req.body) ? req.body : []
   if (address && bw) {
     let modules: Module[] = []
@@ -52,7 +52,7 @@ const handler: RequestHandler<AddressPathParams, ModuleQueryResult, PostAddressR
         const byName = await node.resolve({ name: [address] }, { direction: 'down' })
         if (byName.length > 0) {
           const moduleAddress = assertEx(byName.pop()?.address, () => 'Error redirecting to module by address')
-          //console.log(`address post[${node.address}]: ${address} [redirect]`)
+          // console.log(`address post[${node.address}]: ${address} [redirect]`)
           res.redirect(StatusCodes.TEMPORARY_REDIRECT, `/${moduleAddress}`)
           return
         }
@@ -62,13 +62,13 @@ const handler: RequestHandler<AddressPathParams, ModuleQueryResult, PostAddressR
       const mod = modules[0]
       const queryConfig = await getQueryConfig(mod, req, bw, payloads)
       const queryResult = await mod.query(bw, payloads, queryConfig)
-      //console.log(`address post[${node.address}]: ${address} [${queryResult.length}]`)
+      // console.log(`address post[${node.address}]: ${address} [${queryResult.length}]`)
       res.json(queryResult)
       return
     }
   }
 
-  //console.log(`address post[${node.address}]: ${address} [404]`)
+  // console.log(`address post[${node.address}]: ${address} [404]`)
   // TODO: Return 404 instead?
   next('route')
 }

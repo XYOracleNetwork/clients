@@ -101,7 +101,7 @@ describe('MemoryBoundWitnessDiviner2', () => {
             .build()
           const results = await sut.divine([query])
           expect(results.length).toBeGreaterThan(0)
-          expect(results.every((result) => result.payload_schemas.includes(schema))).toBe(true)
+          expect(results.every(result => result.payload_schemas.includes(schema))).toBe(true)
         })
         it('only return single bw that contains that schema', async () => {
           const payload_schemas = ['network.xyo.debug']
@@ -111,7 +111,7 @@ describe('MemoryBoundWitnessDiviner2', () => {
           const results = await sut.divine([query])
           expect(results.length).toBe(1)
           expect(results[0].$hash).toBe(bws[1].$hash)
-          expect(results.every((result) => result.payload_schemas.includes('network.xyo.debug'))).toBe(true)
+          expect(results.every(result => result.payload_schemas.includes('network.xyo.debug'))).toBe(true)
         })
         it('only return single bw that contains that schema (desc)', async () => {
           const payload_schemas = ['network.xyo.debug']
@@ -121,7 +121,7 @@ describe('MemoryBoundWitnessDiviner2', () => {
           const results = await sut.divine([query])
           expect(results.length).toBe(1)
           expect(results[0].$hash).toBe(bws[4].$hash)
-          expect(results.every((result) => result.payload_schemas.includes('network.xyo.debug'))).toBe(true)
+          expect(results.every(result => result.payload_schemas.includes('network.xyo.debug'))).toBe(true)
         })
       })
       describe('multiple', () => {
@@ -133,7 +133,7 @@ describe('MemoryBoundWitnessDiviner2', () => {
           const results = await sut.divine([query])
           expect(results.length).toBeGreaterThan(0)
           expect(results[0].$hash).toBe(bws[4].$hash)
-          expect(results.every((result) => payload_schemas.includes(result.payload_schemas[0]))).toBe(true)
+          expect(results.every(result => payload_schemas.includes(result.payload_schemas[0]))).toBe(true)
         })
       })
     })

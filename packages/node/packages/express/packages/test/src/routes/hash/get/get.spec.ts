@@ -33,8 +33,8 @@ describe('/:hash', () => {
       expect(boundWitness).toBeTruthy()
       boundWitnessHash = await PayloadBuilder.dataHash(boundWitness)
       expect(boundWitnessHash).toBeTruthy()
-      //payload = boundWitness?._payloads?.[0] as Payload
-      //expect(payload).toBeTruthy()
+      // payload = boundWitness?._payloads?.[0] as Payload
+      // expect(payload).toBeTruthy()
       payloadHash = boundWitness?.payload_hashes?.[0]
       expect(payloadHash).toBeTruthy()
       const blockResponse = await insertBlock(blocks)

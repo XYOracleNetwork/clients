@@ -50,8 +50,8 @@ export const configureMemoryNode = async (container: Container, _memoryNode?: No
 }
 
 const loadNodeFromConfig = async (container: Container, config?: string) => {
-  const manifest: PackageManifestPayload =
-    config ? (JSON.parse(await readFile(config, 'utf8')) as PackageManifestPayload) : (defaultNode as PackageManifestPayload)
+  const manifest: PackageManifestPayload
+    = config ? (JSON.parse(await readFile(config, 'utf8')) as PackageManifestPayload) : (defaultNode as PackageManifestPayload)
   // TODO: Import all public children from manifest once we're OK to move the image thumbnail
   // modules from the main node to a child node
   const manifestPublicChildren: ModuleManifest[] = config ? [] : [...nftContractNode.nodes, ...nftMetadataNode.nodes]
@@ -61,8 +61,8 @@ const loadNodeFromConfig = async (container: Container, config?: string) => {
   const wrapper = new ManifestWrapper(manifest, wallet, locator, manifestPublicChildren)
   const [parentNode, ...childNodes] = await wrapper.loadNodes()
   if (childNodes?.length) {
-    await Promise.all(childNodes.map((childNode) => parentNode.register(childNode)))
-    await Promise.all(childNodes.map((childNode) => parentNode.attach(childNode.address, true)))
+    await Promise.all(childNodes.map(childNode => parentNode.register(childNode)))
+    await Promise.all(childNodes.map(childNode => parentNode.attach(childNode.address, true)))
   }
   return parentNode
 }

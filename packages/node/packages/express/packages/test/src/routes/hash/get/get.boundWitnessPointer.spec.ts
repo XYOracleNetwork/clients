@@ -47,7 +47,7 @@ const createPointer = async (
   const pointer = await new PayloadBuilder<BoundWitnessPointerPayload>({ schema: BoundWitnessPointerSchema }).fields({ reference }).build()
   const pointerResponse = await insertPayload(pointer)
   expect(pointerResponse).toBeArrayOfSize(1)
-  //expect(pointerResponse.map((bw) => bw.payload_schemas.includes(BoundWitnessPointerSchema)).some((x) => x)).toBeTrue()
+  // expect(pointerResponse.map((bw) => bw.payload_schemas.includes(BoundWitnessPointerSchema)).some((x) => x)).toBeTrue()
   return await PayloadBuilder.dataHash(pointer)
 }
 
@@ -147,8 +147,8 @@ describe('/:hash', () => {
       let account: AccountInstance
       const schemaA = getTestSchemaName()
       const schemaB = getTestSchemaName()
-      //const schemaC = getTestSchemaName()
-      //const schemaD = getTestSchemaName()
+      // const schemaC = getTestSchemaName()
+      // const schemaD = getTestSchemaName()
       const schemas = [schemaA, schemaB]
       let payloadA: PayloadWrapper
       let payloadB: PayloadWrapper

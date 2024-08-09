@@ -34,7 +34,7 @@ describe(`/${divinerName}`, () => {
       for (const [bw, payloads] of data) {
         await archivist.insert([bw, ...payloads])
       }
-      dataHashes = await PayloadBuilder.dataHashes(data.map((d) => d[0]))
+      dataHashes = await PayloadBuilder.dataHashes(data.map(d => d[0]))
     })
     it.only('issues query', async () => {
       const address = (await account).address

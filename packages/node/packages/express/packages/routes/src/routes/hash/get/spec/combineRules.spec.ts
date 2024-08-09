@@ -24,18 +24,18 @@ describe('combineRules', () => {
     })
     it('for schema should throw', () => {
       expect(() => {
-        const rules = validRules().filter((rule) => !(rule?.[0] as PayloadSchemaRule)?.schema)
+        const rules = validRules().filter(rule => !(rule?.[0] as PayloadSchemaRule)?.schema)
         combineRules(rules)
       }).toThrow()
     })
     describe('for timestamp defaults to', () => {
       it('timestamp set to current time', () => {
-        const rules = validRules().filter((rule) => !(rule?.[0] as PayloadTimestampOrderRule)?.timestamp)
+        const rules = validRules().filter(rule => !(rule?.[0] as PayloadTimestampOrderRule)?.timestamp)
         const actual = combineRules(rules)
         expect(actual.timestamp).toBe(+now)
       })
       it('direction defaults to desc', () => {
-        const rules = validRules().filter((rule) => !(rule?.[0] as PayloadTimestampOrderRule)?.timestamp)
+        const rules = validRules().filter(rule => !(rule?.[0] as PayloadTimestampOrderRule)?.timestamp)
         const actual = combineRules(rules)
         expect(actual.order).toBe('desc')
       })

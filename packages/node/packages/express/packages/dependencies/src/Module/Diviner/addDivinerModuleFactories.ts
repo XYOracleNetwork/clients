@@ -35,7 +35,7 @@ const getMemoryForecastingDiviner = () => {
   const witnessSchema = 'network.xyo.blockchain.ethereum.gas'
   const params: ForecastingDivinerParams = {
     config: {
-      //accountPath: WALLET_PATHS.Diviners.Forecasting,
+      // accountPath: WALLET_PATHS.Diviners.Forecasting,
       forecastingMethod,
       jsonPathExpression,
       name: TYPES.ForecastingDiviner,

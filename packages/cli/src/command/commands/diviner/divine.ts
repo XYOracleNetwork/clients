@@ -2,7 +2,6 @@ import { ArgumentsCamelCase, Argv, CommandBuilder, CommandModule } from 'yargs'
 
 import { printLine } from '../../../lib/index.js'
 
-// eslint-disable-next-line @typescript-eslint/ban-types
 type Arguments = {}
 
 export const aliases: ReadonlyArray<string> = []

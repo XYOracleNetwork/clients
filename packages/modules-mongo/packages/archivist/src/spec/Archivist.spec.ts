@@ -28,7 +28,7 @@ describeIf(hasMongoDBConfig())('DeterministicArchivist', () => {
   const boundWitnessWrappers: BoundWitnessWrapper[] = []
   let archivist: ArchivistWrapper
   let insertResult1: Payload[]
-  //let insertResult2: Payload[]
+  // let insertResult2: Payload[]
   let insertResult3: Payload[]
   const insertResults: Payload[][] = []
   beforeAll(async () => {
@@ -94,7 +94,7 @@ describeIf(hasMongoDBConfig())('DeterministicArchivist', () => {
     )
 
     insertResult1 = insertResults[0]
-    //insertResult2 = insertResults[1]
+    // insertResult2 = insertResults[1]
     insertResult3 = insertResults[2]
   })
   describe('discover', () => {
@@ -126,7 +126,7 @@ describeIf(hasMongoDBConfig())('DeterministicArchivist', () => {
     it('inserts multiple payloads', () => {
       expect(insertResult3).toBeTruthy()
       expect(insertResult3).toBeArrayOfSize(3)
-      /*const [boundResult, transactionResults] = insertResult3
+      /* const [boundResult, transactionResults] = insertResult3
       expect(boundResult.addresses).toContain(archivist.address)
       expect(transactionResults.addresses).toContain(moduleAccount.public.address.hex)
       const boundWitnessWrapper = boundWitnessWrappers[2]
@@ -149,7 +149,7 @@ describeIf(hasMongoDBConfig())('DeterministicArchivist', () => {
       ['gets multiple boundwitness', () => [boundWitnessWrappers[0], boundWitnessWrappers[1], boundWitnessWrappers[2]]],
     ]
     it.each(cases)('%s', async (_title, getData) => {
-      const payloads = getData().map((w) => w.payload)
+      const payloads = getData().map(w => w.payload)
       const dataHashes = await PayloadBuilder.dataHashes(payloads)
       const hashes = await PayloadBuilder.hashes(payloads)
       const dataResults = await archivist.get(dataHashes)

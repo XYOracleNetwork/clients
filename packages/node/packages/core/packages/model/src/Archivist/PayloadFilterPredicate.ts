@@ -5,9 +5,9 @@ import { PayloadFindFilter } from '@xyo-network/payload-model'
 
 export type PayloadFilterPredicate<T extends AnyObject = AnyObject> = Partial<{
   archives: string[]
-  //hash: string
+  // hash: string
   offset: number
   schemas: string[]
 }> &
-  Omit<PayloadFindFilter, 'offset'> &
-  Partial<T>
+Omit<PayloadFindFilter, 'offset'> &
+Partial<T>

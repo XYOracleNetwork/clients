@@ -55,7 +55,7 @@ describe(`/${moduleName}`, () => {
   })
   describe('ArchivistInsertQuerySchema', () => {
     it.each(cases)('inserts %s', async (_, wrapped) => {
-      const payloads = wrapped.map((w) => w.payload)
+      const payloads = wrapped.map(w => w.payload)
       const response = await archivist.insert(payloads)
       expect(response).toBeArray()
       expect(response.length).toBeGreaterThan(0)
@@ -64,7 +64,7 @@ describe(`/${moduleName}`, () => {
   describe('ArchivistGetQuerySchema', () => {
     describe('with existing hash', () => {
       it.each(cases)('finds %s by hash', async (_, wrapped) => {
-        const hashes = await Promise.all(wrapped.map((w) => w.dataHash()))
+        const hashes = await Promise.all(wrapped.map(w => w.dataHash()))
         const response = await archivist.get(hashes)
         expect(response).toBeArray()
         expect(response).toBeArrayOfSize(wrapped.length)

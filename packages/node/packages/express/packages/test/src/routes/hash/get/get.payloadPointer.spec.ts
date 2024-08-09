@@ -81,7 +81,7 @@ describe('/:hash', () => {
       const response = await getHash(pointerHash)
       expect(response).toBeTruthy()
       expect(Array.isArray(response)).toBe(false)
-      //expect(PayloadWrapper.parse(response).valid).toBeTrue()
+      // expect(PayloadWrapper.parse(response).valid).toBeTrue()
       expect(response).toEqual(expected)
     })
     it(`${ReasonPhrases.NOT_FOUND} if no Payloads match the criteria`, async () => {

@@ -17,7 +17,7 @@ export const getTask = (): Job['task'] => {
       logger.log('Divining Aggregated Gas Price')
       const diviner = await getDiviner()
       const results = await diviner.divine(payloads)
-      const result = results.find((p) => p.schema === EthereumGasSchema)
+      const result = results.find(p => p.schema === EthereumGasSchema)
       const answer = assertEx(result, () => 'Empty EthereumGasPayload response from diviner')
       logger.log('Divined Aggregated Gas Price')
       logger.log('Reporting Aggregated Gas Price')

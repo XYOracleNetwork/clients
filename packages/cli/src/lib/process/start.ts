@@ -7,10 +7,10 @@ import { setPid } from './pid/index.js'
 /**
  * The path to the script to run the Node
  */
-const runNodeScriptPath =
-  Path.parse(__filename).ext.includes('ts') ?
-    Path.join(__dirname, '..', '..', '..', 'dist', 'cjs', 'runNode.js')
-  : Path.join(__dirname, '..', '..', '..', 'cjs', 'runNode.js')
+const runNodeScriptPath
+  = Path.parse(__filename).ext.includes('ts')
+    ? Path.join(__dirname, '..', '..', '..', 'dist', 'cjs', 'runNode.js')
+    : Path.join(__dirname, '..', '..', '..', 'cjs', 'runNode.js')
 
 /**
  * Runs the XYO Node process

@@ -112,15 +112,15 @@ export class MongoDBSchemaStatsDiviner extends MongoDBDivinerBase implements Job
 
   protected override async divineHandler(payloads?: Payload[]): Promise<Payload<SchemaStatsPayload>[]> {
     const query = payloads?.find<SchemaStatsQueryPayload>(isSchemaStatsQueryPayload)
-    const addresses =
-      query?.address ?
-        Array.isArray(query?.address) ?
-          query.address
-        : [query.address]
-      : undefined
-    const counts = addresses ? await Promise.all(addresses.map((address) => this.divineAddress(address))) : [await this.divineAllAddresses()]
+    const addresses
+      = query?.address
+        ? Array.isArray(query?.address)
+          ? query.address
+          : [query.address]
+        : undefined
+    const counts = addresses ? await Promise.all(addresses.map(address => this.divineAddress(address))) : [await this.divineAllAddresses()]
     return await Promise.all(
-      counts.map((count) => new PayloadBuilder<SchemaStatsPayload>({ schema: SchemaStatsDivinerSchema }).fields({ count }).build()),
+      counts.map(count => new PayloadBuilder<SchemaStatsPayload>({ schema: SchemaStatsDivinerSchema }).fields({ count }).build()),
     )
   }
 
@@ -204,7 +204,7 @@ export class MongoDBSchemaStatsDiviner extends MongoDBDivinerBase implements Job
     const addressSpaceDiviners = await this.upResolver.resolve({ name: [assertEx(TYPES.AddressSpaceDiviner)] })
     const addressSpaceDiviner = asDivinerInstance(addressSpaceDiviners.pop(), `${moduleName}.DivineAddressesBatch: Missing AddressSpaceDiviner`)
     const result = (await addressSpaceDiviner.divine()) ?? []
-    const addresses = result.filter((x): x is WithSources<WithMeta<AddressPayload>> => x.schema === AddressSchema).map((x) => x.address)
+    const addresses = result.filter((x): x is WithSources<WithMeta<AddressPayload>> => x.schema === AddressSchema).map(x => x.address)
     const additions = this.addressIterator.addValues(addresses)
     this.logger?.log(`${moduleName}.DivineAddressesBatch: Incoming Addresses Total: ${addresses.length} New: ${additions}`)
     if (addresses.length > 0 && !this.backgroundDivineTask) this.backgroundDivineTask = this.backgroundDivine()

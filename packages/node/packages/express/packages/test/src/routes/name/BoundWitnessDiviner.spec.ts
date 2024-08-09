@@ -52,7 +52,7 @@ describe(`/${moduleName}`, () => {
         (await getNewBoundWitness([await accountA, await accountB], [await getNewPayload(), await getNewPayload()]))[0],
       )
       boundWitnesses.push(boundWitnessA, boundWitnessB, boundWitnessC)
-      await archivist.insert(boundWitnesses.map((b) => b.boundwitness))
+      await archivist.insert(boundWitnesses.map(b => b.boundwitness))
     })
     describe('address', () => {
       const cases: [title: string, accounts: Promise<AccountInstance>[], expected: () => BoundWitnessWrapper[]][] = [
@@ -67,8 +67,8 @@ describe(`/${moduleName}`, () => {
       ]
       describe.each(cases)('with %s', (_title, addresses, data) => {
         it('divines BoundWitnesses by address', async () => {
-          const expected = data().map((d) => d.payload)
-          const query: BoundWitnessDivinerQueryPayload = { addresses: (await Promise.all(addresses)).map((account) => account.address), schema }
+          const expected = data().map(d => d.payload)
+          const query: BoundWitnessDivinerQueryPayload = { addresses: (await Promise.all(addresses)).map(account => account.address), schema }
           const response = await diviner.divine([query])
           expect(response).toBeArrayOfSize(expected.length)
           const responseHashes = await PayloadBuilder.dataHashes(response)
@@ -136,9 +136,9 @@ describe(`/${moduleName}`, () => {
       let boundWitnesses: BoundWitnessWrapper[]
       beforeAll(async () => {
         boundWitnesses = await Promise.all(
-          [(await getNewBoundWitness([await account]))[0], (await getNewBoundWitness([await account]))[0]].map((bw) => BoundWitnessWrapper.parse(bw)),
+          [(await getNewBoundWitness([await account]))[0], (await getNewBoundWitness([await account]))[0]].map(bw => BoundWitnessWrapper.parse(bw)),
         )
-        await archivist.insert(boundWitnesses.map((b) => b.boundwitness))
+        await archivist.insert(boundWitnesses.map(b => b.boundwitness))
       })
       describe('with timestamp', () => {
         it('divines BoundWitnesses from offset', async () => {
@@ -149,7 +149,7 @@ describe(`/${moduleName}`, () => {
           const response = await diviner.divine([query])
           expect(response).toBeArrayOfSize(boundWitnesses.length)
           const responseHashes = await PayloadBuilder.dataHashes(response)
-          const expected = await Promise.all(boundWitnesses.map((p) => p.dataHash()))
+          const expected = await Promise.all(boundWitnesses.map(p => p.dataHash()))
           expect(responseHashes).toContainAllValues(expected)
         })
       })
@@ -177,7 +177,7 @@ describe(`/${moduleName}`, () => {
           (await getNewBoundWitness([account], [(await payloadA).payload, (await payloadB).payload]))[0],
         )
         boundWitnesses.push(boundWitnessA, boundWitnessB, boundWitnessC)
-        await archivist.insert(boundWitnesses.map((b) => b.payload))
+        await archivist.insert(boundWitnesses.map(b => b.payload))
       })
       const cases: [title: string, payload_schemas: string[], expected: () => BoundWitnessWrapper[]][] = [
         ['single schema', [schemaA], () => [boundWitnesses[0], boundWitnesses[2]]],
@@ -191,7 +191,7 @@ describe(`/${moduleName}`, () => {
           const response = await diviner.divine([query])
           expect(response).toBeArrayOfSize(expected.length)
           const responseHashes = await PayloadBuilder.dataHashes(response)
-          expect(responseHashes).toContainAllValues(await Promise.all(expected.map((p) => p.dataHash())))
+          expect(responseHashes).toContainAllValues(await Promise.all(expected.map(p => p.dataHash())))
         })
       })
     })

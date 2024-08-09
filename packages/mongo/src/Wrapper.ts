@@ -65,10 +65,10 @@ export class MongoClientWrapper {
       while (this.delayCount > 0) {
         await this.delayedCloseMutex.runExclusive(async () => {
           if (this.connections > 0 || !this.connected) {
-            //cancel close
+            // cancel close
             this.delayCount = 0
           } else if (this.delayCount === 1) {
-            //out of delay, close it
+            // out of delay, close it
             await this.close()
             this.delayCount = 0
           } else {

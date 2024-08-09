@@ -20,7 +20,7 @@ export const handler = async (argv: ArgumentsCamelCase<BaseArguments>) => {
   try {
     const node = await getNode(argv)
     const modules = await node.resolve({ query: [[DivinerDivineQuerySchema]] }, { direction: 'down', identity: isDivinerInstance })
-    const descriptions = await Promise.all(modules.map((mod) => mod.state()))
+    const descriptions = await Promise.all(modules.map(mod => mod.state()))
     printLine(JSON.stringify(descriptions))
   } catch (error) {
     if (verbose) printError(JSON.stringify(error))

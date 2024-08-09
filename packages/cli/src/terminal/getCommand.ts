@@ -25,7 +25,7 @@ export const getCommand = async (node: NodeInstance): Promise<boolean> => {
       if (name === 'CTRL_C') resolve(false)
     })
     terminal.singleColumnMenu(
-      terminalItems.map((item) => item.text),
+      terminalItems.map(item => item.text),
       // eslint-disable-next-line @typescript-eslint/no-misused-promises
       async (error, response) => {
         if (error) {

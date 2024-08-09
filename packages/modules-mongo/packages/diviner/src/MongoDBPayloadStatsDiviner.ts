@@ -38,8 +38,7 @@ const moduleName = 'MongoDBPayloadStatsDiviner'
 
 export class MongoDBPayloadStatsDiviner
   extends MongoDBDivinerBase<DivinerParams, PayloadStatsQueryPayload, PayloadStatsPayload>
-  implements PayloadStatsDiviner<DivinerParams, PayloadStatsQueryPayload, PayloadStatsPayload>, JobProvider
-{
+  implements PayloadStatsDiviner<DivinerParams, PayloadStatsQueryPayload, PayloadStatsPayload>, JobProvider {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, PayloadStatsDivinerConfigSchema]
   static override readonly defaultConfigSchema: Schema = PayloadStatsDivinerConfigSchema
 
@@ -100,15 +99,15 @@ export class MongoDBPayloadStatsDiviner
 
   protected override async divineHandler(payloads?: Payload[]): Promise<Payload<PayloadStatsPayload>[]> {
     const query = payloads?.find<PayloadStatsQueryPayload>(isPayloadStatsQueryPayload)
-    const addresses =
-      query?.address ?
-        Array.isArray(query?.address) ?
-          query.address
-        : [query.address]
-      : undefined
-    const counts = addresses ? await Promise.all(addresses.map((address) => this.divineAddress(address))) : [await this.divineAllAddresses()]
+    const addresses
+      = query?.address
+        ? Array.isArray(query?.address)
+          ? query.address
+          : [query.address]
+        : undefined
+    const counts = addresses ? await Promise.all(addresses.map(address => this.divineAddress(address))) : [await this.divineAllAddresses()]
     return await Promise.all(
-      counts.map((count) => new PayloadBuilder<PayloadStatsPayload>({ schema: PayloadStatsDivinerSchema }).fields({ count }).build()),
+      counts.map(count => new PayloadBuilder<PayloadStatsPayload>({ schema: PayloadStatsDivinerSchema }).fields({ count }).build()),
     )
   }
 
@@ -183,14 +182,14 @@ export class MongoDBPayloadStatsDiviner
     const addressSpaceDiviners = await this.upResolver.resolve({ name: [assertEx(TYPES.AddressSpaceDiviner)] })
     const addressSpaceDiviner = asDivinerInstance(addressSpaceDiviners.pop(), `${moduleName}.DivineAddressesBatch: Missing AddressSpaceDiviner`)
     const result = (await addressSpaceDiviner.divine()) ?? []
-    const addresses = result.filter((x): x is WithSources<WithMeta<AddressPayload>> => x.schema === AddressSchema).map((x) => x.address)
+    const addresses = result.filter((x): x is WithSources<WithMeta<AddressPayload>> => x.schema === AddressSchema).map(x => x.address)
     const additions = this.addressIterator.addValues(addresses)
     this.logger?.log(`${moduleName}.DivineAddressesBatch: Incoming Addresses Total: ${addresses.length} New: ${additions}`)
     if (addresses.length > 0 && !this.backgroundDivineTask) this.backgroundDivineTask = this.backgroundDivine()
     this.logger?.log(`${moduleName}.DivineAddressesBatch: Updated Addresses`)
   }
 
-  private divineAllAddresses = () => this.payloads.useCollection((collection) => collection.estimatedDocumentCount())
+  private divineAllAddresses = () => this.payloads.useCollection(collection => collection.estimatedDocumentCount())
 
   private processChange = (change: ChangeStreamInsertDocument<BoundWitnessWithMongoMeta>) => {
     this.resumeAfter = change._id

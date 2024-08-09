@@ -6,7 +6,7 @@ import { getModuleByName, getModuleByNameFromChildNode } from '../Node/index.js'
 
 export const getDivinerByName = async (name: string, account?: AccountInstance): Promise<DivinerInstance> => {
   const diviner: DivinerInstance = asDivinerInstance(await getModuleByName(name), 'Failed to cast diviner')
-  //console.log(`getDivinerByName[name]: ${diviner}`)
+  // console.log(`getDivinerByName[name]: ${diviner}`)
   return account ? DivinerWrapper.wrap(diviner, account) : diviner
 }
 

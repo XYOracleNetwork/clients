@@ -9,6 +9,6 @@ export const getJobs = (container: Container): Job[] => {
   if (!container.isBound(TYPES.JobQueue)) return []
   return container
     .getAll<JobProvider>(TYPES.JobProvider)
-    .flatMap((provider) => provider?.jobs)
+    .flatMap(provider => provider?.jobs)
     .filter(exists)
 }

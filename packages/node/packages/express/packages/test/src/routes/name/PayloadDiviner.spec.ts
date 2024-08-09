@@ -47,7 +47,7 @@ describe(`/${moduleName}`, () => {
         const query: PayloadDivinerQueryPayload = { hash, schema }
         const response = await diviner.divine([query])
         expect(response).toBeArrayOfSize(1)
-        const responseHashes = await Promise.all(response.map((p) => PayloadBuilder.dataHash(p)))
+        const responseHashes = await Promise.all(response.map(p => PayloadBuilder.dataHash(p)))
         expect(responseHashes).toContainAllValues([await payload.dataHash()])
       })
       it('returns empty array for non-existent hash', async () => {
@@ -113,7 +113,7 @@ describe(`/${moduleName}`, () => {
       describe('with single schema', () => {
         it('divines Payloads by schema', async () => {
           const payloads = [payloadA]
-          const schemas = payloads.map((p) => p.schema())
+          const schemas = payloads.map(p => p.schema())
           const query: PayloadDivinerQueryPayload = { schema, schemas }
           const response = await diviner.divine([query])
           expect(response).toBeArrayOfSize(payloads.length)
@@ -126,20 +126,20 @@ describe(`/${moduleName}`, () => {
           // const insertedHashes = await Promise.all(inserted.map((p) => PayloadBuilder.hash(p)))
           // const inputDataHashes = await Promise.all(payloads.map((p) => p.dataHash()))
           // const inputHashes = await Promise.all(payloads.map((p) => p.hash()))
-          const payloadHashes = await Promise.all(payloads.map((p) => p.dataHash()))
-          const responseHashes = await Promise.all(response.map((p) => PayloadBuilder.dataHash(p)))
+          const payloadHashes = await Promise.all(payloads.map(p => p.dataHash()))
+          const responseHashes = await Promise.all(response.map(p => PayloadBuilder.dataHash(p)))
           expect(responseHashes).toContainAllValues(payloadHashes)
         })
       })
       describe('with multiple schemas', () => {
         it('divines Payloads by schema', async () => {
           const payloads = [payloadA, payloadB]
-          const schemas = payloads.map((p) => p.schema())
+          const schemas = payloads.map(p => p.schema())
           const query: PayloadDivinerQueryPayload = { schema, schemas }
           const response = await diviner.divine([query])
           expect(response).toBeArrayOfSize(payloads.length)
-          const responseHashes = await Promise.all(response.map((p) => PayloadBuilder.dataHash(p)))
-          const payloadsHashes = await Promise.all(payloads.map((p) => p.dataHash()))
+          const responseHashes = await Promise.all(response.map(p => PayloadBuilder.dataHash(p)))
+          const payloadsHashes = await Promise.all(payloads.map(p => p.dataHash()))
           expect(responseHashes).toContainAllValues(payloadsHashes)
         })
       })

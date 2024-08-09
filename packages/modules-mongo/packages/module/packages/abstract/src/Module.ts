@@ -78,7 +78,7 @@ const ensureIndexesExistOnCollection = async (
 ) => {
   await sdk.useCollection(async (collection) => {
     const collectionName = collection.collectionName.toLowerCase()
-    const indexes = configIndexes.filter((ix) => ix?.name?.toLowerCase().startsWith(collectionName))
+    const indexes = configIndexes.filter(ix => ix?.name?.toLowerCase().startsWith(collectionName))
     if (indexes.length === 0) return
     for (const ix of indexes) {
       try {

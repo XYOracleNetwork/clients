@@ -14,5 +14,5 @@ export const reportStockPrice = async (symbol: string): Promise<Payload[]> => {
 }
 
 export const reportStockPrices = async (symbols: string[] = ['XYLB']): Promise<Payload[]> => {
-  return (await Promise.all(symbols.map((symbol) => reportStockPrice(symbol)))).flat()
+  return (await Promise.all(symbols.map(symbol => reportStockPrice(symbol)))).flat()
 }

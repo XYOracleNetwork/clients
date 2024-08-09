@@ -44,8 +44,7 @@ export class MongoDBBoundWitnessStatsDiviner
   implements
     BoundWitnessStatsDiviner<DivinerParams, BoundWitnessStatsQueryPayload, BoundWitnessStatsPayload>,
     AttachableDivinerInstance<DivinerParams, BoundWitnessStatsQueryPayload, BoundWitnessStatsPayload>,
-    JobProvider
-{
+    JobProvider {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, BoundWitnessStatsDivinerConfigSchema]
   static override readonly defaultConfigSchema: Schema = BoundWitnessStatsDivinerConfigSchema
 
@@ -90,16 +89,16 @@ export class MongoDBBoundWitnessStatsDiviner
 
   protected override async divineHandler(payloads?: Payload[]): Promise<Payload<BoundWitnessStatsPayload>[]> {
     const query = payloads?.find<BoundWitnessStatsQueryPayload>(isBoundWitnessStatsQueryPayload)
-    const addresses =
-      query?.address ?
-        Array.isArray(query?.address) ?
-          query.address
-        : [query.address]
-      : undefined
-    const counts = addresses ? await Promise.all(addresses.map((address) => this.divineAddress(address))) : [await this.divineAllAddresses()]
+    const addresses
+      = query?.address
+        ? Array.isArray(query?.address)
+          ? query.address
+          : [query.address]
+        : undefined
+    const counts = addresses ? await Promise.all(addresses.map(address => this.divineAddress(address))) : [await this.divineAllAddresses()]
     return await Promise.all(
       counts.map(
-        async (count) => await new PayloadBuilder<BoundWitnessStatsPayload>({ schema: BoundWitnessStatsDivinerSchema }).fields({ count }).build(),
+        async count => await new PayloadBuilder<BoundWitnessStatsPayload>({ schema: BoundWitnessStatsDivinerSchema }).fields({ count }).build(),
       ),
     )
   }
@@ -141,7 +140,7 @@ export class MongoDBBoundWitnessStatsDiviner
   }
 
   private divineAddressFull = async (address: Address) => {
-    const count = await this.boundWitnesses.useCollection((collection) => collection.countDocuments({ addresses: { $in: [address] } }))
+    const count = await this.boundWitnesses.useCollection(collection => collection.countDocuments({ addresses: { $in: [address] } }))
     await this.storeDivinedResult(address, count)
     return count
   }
@@ -151,14 +150,14 @@ export class MongoDBBoundWitnessStatsDiviner
     const addressSpaceDiviners = await this.upResolver.resolve({ name: [assertEx(TYPES.AddressSpaceDiviner)] })
     const addressSpaceDiviner = asDivinerInstance(addressSpaceDiviners.pop(), `${moduleName}.DivineAddressesBatch: Missing AddressSpaceDiviner`)
     const result = (await addressSpaceDiviner.divine([])) || []
-    const addresses = result.filter((x): x is WithSources<WithMeta<AddressPayload>> => x.schema === AddressSchema).map((x) => x.address)
+    const addresses = result.filter((x): x is WithSources<WithMeta<AddressPayload>> => x.schema === AddressSchema).map(x => x.address)
     const additions = this.addressIterator.addValues(addresses)
     this.logger?.log(`${moduleName}.DivineAddressesBatch: Incoming Addresses Total: ${addresses.length} New: ${additions}`)
     if (addresses.length > 0 && !this.backgroundDivineTask) this.backgroundDivineTask = this.backgroundDivine()
     this.logger?.log(`${moduleName}.DivineAddressesBatch: Updated Addresses`)
   }
 
-  private divineAllAddresses = () => this.boundWitnesses.useCollection((collection) => collection.estimatedDocumentCount())
+  private divineAllAddresses = () => this.boundWitnesses.useCollection(collection => collection.estimatedDocumentCount())
 
   private processChange = (change: ChangeStreamInsertDocument<BoundWitnessWithMongoMeta>) => {
     this.resumeAfter = change._id

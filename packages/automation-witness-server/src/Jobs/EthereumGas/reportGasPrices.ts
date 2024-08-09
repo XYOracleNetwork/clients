@@ -22,11 +22,11 @@ export const reportGasPrices = async (provider = getProvider()): Promise<Payload
   )
   const config: SentinelConfig = {
     archiving: {
-      archivists: archivists.map((mod) => mod.address),
+      archivists: archivists.map(mod => mod.address),
     },
     schema: SentinelConfigSchema,
     synchronous: true,
-    tasks: witnesses.map((mod) => ({ mod: mod.address })),
+    tasks: witnesses.map(mod => ({ mod: mod.address })),
   }
   const account = await getAccount(WalletPaths.EthereumGas.Sentinel.Gas)
   const sentinel = await MemorySentinel.create({ account, config })

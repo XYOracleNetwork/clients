@@ -45,7 +45,7 @@ describe('Node API', () => {
       const response = await client.get<{ data: Payload[] }>(path)
       const data = response.data.data
       const { address: parentAddress } = getModuleAddress(data)
-      const child = data.find((p) => p.schema === AddressSchema && (p as AddressPayload)?.address !== parentAddress) as AddressPayload
+      const child = data.find(p => p.schema === AddressSchema && (p as AddressPayload)?.address !== parentAddress) as AddressPayload
       address = child.address
     })
     describe('GET', () => {
@@ -88,7 +88,7 @@ describe('Node API', () => {
 const getModuleAddress = (data: Payload[]) => {
   expect(data).toBeArray()
   expect(data.length).toBeGreaterThan(0)
-  const addressPayload = data.find((p) => p.schema === AddressSchema) as AddressPayload
+  const addressPayload = data.find(p => p.schema === AddressSchema) as AddressPayload
   expect(addressPayload).toBeObject()
   expect(addressPayload.address).toBeString()
   const { address } = addressPayload

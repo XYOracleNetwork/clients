@@ -15,13 +15,13 @@ export const getQueryConfig = async (mod: Module, req: Request, bw: QueryBoundWi
   const requestCanAccessArchive = await Promise.resolve(true)
   if (archive && requestCanAccessArchive) {
     // Recurse through payloads for nested BWs
-    const nestedBwAddresses =
-      payloads
+    const nestedBwAddresses
+      = payloads
         ?.flat(nestedBwAddressesDepth)
         .filter<BoundWitness>((payload): payload is BoundWitness => payload?.schema === BoundWitnessSchema)
-        .map((bw) => bw.addresses) || []
-    const addresses = [bw.addresses, ...nestedBwAddresses].filter((address) => address.length)
-    const allowed = addresses.length > 0 ? Object.fromEntries(archivist.queries.map((schema) => [schema, addresses])) : {}
+        .map(bw => bw.addresses) || []
+    const addresses = [bw.addresses, ...nestedBwAddresses].filter(address => address.length)
+    const allowed = addresses.length > 0 ? Object.fromEntries(archivist.queries.map(schema => [schema, addresses])) : {}
     const security = { allowed }
     return { schema: ModuleConfigSchema, security }
   }
