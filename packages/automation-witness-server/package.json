@@ -4,7 +4,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "2.89.1",
+  "version": "2.89.2",
   "description": "XYO Automation Witness",
   "repository": {
     "type": "git",
@@ -53,7 +53,7 @@
     "@xyo-network/manifest": "^2.111.3",
     "@xyo-network/module-factory-locator": "^2.111.3",
     "@xyo-network/module-model": "^2.111.3",
-    "@xyo-network/node-core-model": "^2.89.1",
+    "@xyo-network/node-core-model": "^2.89.2",
     "@xyo-network/node-memory": "^2.111.3",
     "@xyo-network/payload-model": "^2.111.3",
     "@xyo-network/sentinel-memory": "^2.111.3",
