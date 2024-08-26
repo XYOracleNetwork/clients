@@ -1,61 +1,52 @@
 {
   "$schema": "http://json.schemastore.org/package.json",
   "name": "@xyo-network/node-app",
-  "publishConfig": {
-    "access": "public"
-  },
   "version": "2.89.2",
   "description": "XYO Node App",
-  "sideeffects": false,
+  "license": "LGPL-3.0-only",
+  "author": "Arie Trouw",
+  "type": "module",
   "exports": {
     ".": {
       "node": {
-        "require": {
-          "types": "./dist/node/index.d.cts",
-          "default": "./dist/node/index.cjs"
-        },
         "import": {
-          "types": "./dist/node/index.d.mts",
+          "types": "./dist/node/index.d.ts",
           "default": "./dist/node/index.mjs"
         }
       }
     },
     "./app": {
       "node": {
-        "require": {
-          "types": "./dist/node/app.d.cts",
-          "default": "./dist/node/app.cjs"
-        },
         "import": {
-          "types": "./dist/node/app.d.mts",
+          "types": "./dist/node/app.d.ts",
           "default": "./dist/node/app.mjs"
         }
       }
     },
     "./package.json": "./package.json"
   },
-  "main": "dist/node/index.cjs",
   "module": "dist/node/index.mjs",
   "types": "dist/node/index.d.ts",
   "dependencies": {
     "@xylabs/sdk-api-express-ecs": "^2.0.4",
-    "@xyo-network/account": "^2.111.3",
-    "@xyo-network/account-model": "^2.111.3",
+    "@xyo-network/account": "^3.0.11",
+    "@xyo-network/account-model": "^3.0.11",
     "@xyo-network/express-node-server": "workspace:^",
     "@xyo-network/node-core-types": "workspace:^",
-    "@xyo-network/node-memory": "^2.111.3",
-    "@xyo-network/node-model": "^2.111.3",
-    "@xyo-network/payload-validator": "^2.111.3",
-    "@xyo-network/schema-name-validator": "^2.111.3",
+    "@xyo-network/node-memory": "^3.0.11",
+    "@xyo-network/node-model": "^3.0.11",
+    "@xyo-network/payload-validator": "^3.0.11",
+    "@xyo-network/schema-name-validator": "^3.0.11",
     "dotenv": "^16.4.5",
     "express": "^4.19.2"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.15.16",
-    "@xylabs/tsconfig": "^3.15.16",
+    "@xylabs/ts-scripts-yarn3": "^4.0.7",
+    "@xylabs/tsconfig": "^4.0.7",
     "typescript": "^5.5.4"
   },
-  "author": "Arie Trouw",
-  "license": "LGPL-3.0-only",
-  "type": "module"
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideeffects": false
 }

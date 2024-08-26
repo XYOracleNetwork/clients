@@ -1,56 +1,47 @@
 {
   "$schema": "http://json.schemastore.org/package.json",
   "name": "@xyo-network/node-core-lib",
-  "publishConfig": {
-    "access": "public"
-  },
   "version": "2.89.2",
   "description": "XYO Archivist",
-  "sideeffects": false,
-  "types": "dist/node/index.d.ts",
+  "license": "LGPL-3.0-only",
+  "author": "Arie Trouw",
+  "type": "module",
   "exports": {
     ".": {
       "browser": {
-        "require": {
-          "types": "./dist/browser/index.d.cts",
-          "default": "./dist/browser/index.cjs"
-        },
         "import": {
-          "types": "./dist/browser/index.d.mts",
+          "types": "./dist/browser/index.d.ts",
           "default": "./dist/browser/index.mjs"
         }
       },
       "node": {
-        "require": {
-          "types": "./dist/node/index.d.cts",
-          "default": "./dist/node/index.cjs"
-        },
         "import": {
-          "types": "./dist/node/index.d.mts",
+          "types": "./dist/node/index.d.ts",
           "default": "./dist/node/index.mjs"
         }
       }
     },
     "./package.json": "./package.json"
   },
-  "main": "dist/node/index.cjs",
   "module": "dist/node/index.mjs",
-  "author": "Arie Trouw",
-  "license": "LGPL-3.0-only",
+  "types": "dist/node/index.d.ts",
   "dependencies": {
     "@xyo-network/node-core-model": "^2.89.2",
-    "@xyo-network/payload-builder": "^2.111.3",
-    "@xyo-network/payload-model": "^2.111.3",
+    "@xyo-network/payload-builder": "^3.0.11",
+    "@xyo-network/payload-model": "^3.0.11",
     "@xyo-network/payload-mongodb": "workspace:^",
-    "@xyo-network/schema-cache": "^2.111.3",
-    "@xyo-network/schema-payload-plugin": "^2.111.3",
+    "@xyo-network/schema-cache": "^3.0.11",
+    "@xyo-network/schema-payload-plugin": "^3.0.11",
     "ajv": "^8.17.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.15.16",
-    "@xylabs/tsconfig": "^3.15.16",
-    "@xyo-network/payload-builder": "^2.111.3",
+    "@xylabs/ts-scripts-yarn3": "^4.0.7",
+    "@xylabs/tsconfig": "^4.0.7",
+    "@xyo-network/payload-builder": "^3.0.11",
     "typescript": "^5.5.4"
   },
-  "type": "module"
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideeffects": false
 }

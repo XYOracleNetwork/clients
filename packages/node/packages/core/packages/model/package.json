@@ -1,57 +1,48 @@
 {
   "$schema": "http://json.schemastore.org/package.json",
   "name": "@xyo-network/node-core-model",
-  "publishConfig": {
-    "access": "public"
-  },
   "version": "2.89.2",
   "description": "XYO Archivist",
-  "sideeffects": false,
+  "license": "LGPL-3.0-only",
+  "author": "Arie Trouw",
+  "type": "module",
   "exports": {
     ".": {
       "browser": {
-        "require": {
-          "types": "./dist/browser/index.d.cts",
-          "default": "./dist/browser/index.cjs"
-        },
         "import": {
-          "types": "./dist/browser/index.d.mts",
+          "types": "./dist/browser/index.d.ts",
           "default": "./dist/browser/index.mjs"
         }
       },
       "node": {
-        "require": {
-          "types": "./dist/node/index.d.cts",
-          "default": "./dist/node/index.cjs"
-        },
         "import": {
-          "types": "./dist/node/index.d.mts",
+          "types": "./dist/node/index.d.ts",
           "default": "./dist/node/index.mjs"
         }
       }
     },
     "./package.json": "./package.json"
   },
-  "main": "dist/node/index.cjs",
   "module": "dist/node/index.mjs",
-  "author": "Arie Trouw",
-  "license": "LGPL-3.0-only",
   "dependencies": {
-    "@xylabs/hex": "^3.6.12",
-    "@xylabs/object": "^3.6.12",
-    "@xyo-network/archivist-model": "^2.111.3",
-    "@xyo-network/boundwitness-model": "^2.111.3",
-    "@xyo-network/diviner-payload-model": "^2.111.3",
-    "@xyo-network/module-abstract": "^2.111.3",
-    "@xyo-network/payload-model": "^2.111.3",
+    "@xylabs/hex": "^4.0.5",
+    "@xylabs/object": "^4.0.5",
+    "@xyo-network/archivist-model": "^3.0.11",
+    "@xyo-network/boundwitness-model": "^3.0.11",
+    "@xyo-network/diviner-payload-model": "^3.0.11",
+    "@xyo-network/module-abstract": "^3.0.11",
+    "@xyo-network/payload-model": "^3.0.11",
     "@xyo-network/payload-mongodb": "workspace:^",
-    "@xyo-network/shared": "^2.111.3",
+    "@xyo-network/shared": "^3.0.11",
     "ajv": "^8.17.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.15.16",
-    "@xylabs/tsconfig": "^3.15.16",
+    "@xylabs/ts-scripts-yarn3": "^4.0.7",
+    "@xylabs/tsconfig": "^4.0.7",
     "typescript": "^5.5.4"
   },
-  "type": "module"
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideeffects": false
 }
