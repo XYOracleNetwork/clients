@@ -1,6 +1,6 @@
-import { Hash } from '@xylabs/hex'
-import { JsonObject } from '@xylabs/object'
-import { Payload } from '@xyo-network/payload-model'
+import type { Hash } from '@xylabs/hex'
+import type { JsonObject } from '@xylabs/object'
+import type { Payload } from '@xyo-network/payload-model'
 
 export interface PayloadMongoMeta {
   _$hash: Hash

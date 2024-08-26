@@ -1,7 +1,11 @@
 import { HDWallet } from '@xyo-network/account'
-import { ArchivistInstance, asArchivistInstance } from '@xyo-network/archivist-model'
+import type { ArchivistInstance } from '@xyo-network/archivist-model'
+import { asArchivistInstance } from '@xyo-network/archivist-model'
 import { HttpBridge, HttpBridgeConfigSchema } from '@xyo-network/bridge-http'
-import { PayloadAddressRule, PayloadPointerPayload, PayloadPointerSchema, PayloadSchemaRule } from '@xyo-network/node-core-model'
+import type {
+  PayloadAddressRule, PayloadPointerPayload, PayloadSchemaRule,
+} from '@xyo-network/node-core-model'
+import { PayloadPointerSchema } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 
 type DappInfo = [schema: string, address: string]
@@ -30,7 +34,12 @@ describe('Generation of automation payload pointers', () => {
     const schema = HttpBridgeConfigSchema
     const security = { allowAnonymous: true }
     const account = await HDWallet.random()
-    const bridge = await HttpBridge.create({ account, config: { discoverRoots: 'start', nodeUrl, schema, security } })
+    const bridge = await HttpBridge.create({
+      account,
+      config: {
+        discoverRoots: 'start', nodeUrl, schema, security,
+      },
+    })
     await bridge.start()
     const mod = await bridge.resolve('XYOPublic:Archivist')
     expect(mod).toBeDefined()

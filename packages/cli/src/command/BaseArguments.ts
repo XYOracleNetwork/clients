@@ -1,4 +1,4 @@
-import { ArgumentsCamelCase } from 'yargs'
+import type { ArgumentsCamelCase } from 'yargs'
 
 export type OutputType = 'json' | 'raw'
 

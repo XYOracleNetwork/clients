@@ -1,4 +1,4 @@
-import { Job } from '@xyo-network/shared'
+import type { Job } from '@xyo-network/shared'
 
 import { getJob as getCryptoMarketWitnessJob } from './CryptoMarket/index.js'
 import { getJob as getEthereumGasJob } from './EthereumGas/index.js'

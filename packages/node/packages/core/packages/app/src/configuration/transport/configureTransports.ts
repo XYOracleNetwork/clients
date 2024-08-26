@@ -1,6 +1,6 @@
-import { MemoryNode } from '@xyo-network/node-memory'
+import type { MemoryNode } from '@xyo-network/node-memory'
 
-import { NodeConfigurationFunction } from '../../model/index.js'
+import type { NodeConfigurationFunction } from '../../model/index.js'
 import { configureExpressHttpTransport, configureFileTransport } from './providers/index.js'
 
 export const configureTransports: NodeConfigurationFunction = async (node: MemoryNode) => {

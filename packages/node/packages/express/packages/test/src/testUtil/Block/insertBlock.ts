@@ -1,6 +1,6 @@
-import { AccountInstance } from '@xyo-network/account-model'
-import { BoundWitness } from '@xyo-network/boundwitness-model'
-import { Payload, WithMeta } from '@xyo-network/payload-model'
+import type { AccountInstance } from '@xyo-network/account-model'
+import type { BoundWitness } from '@xyo-network/boundwitness-model'
+import type { Payload, WithMeta } from '@xyo-network/payload-model'
 
 import { unitTestSigningAccount } from '../Account/index.js'
 import { getArchivistByName } from '../Archivist/index.js'

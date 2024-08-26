@@ -1,10 +1,14 @@
 import { forget } from '@xylabs/forget'
-import { EmptyObject } from '@xylabs/object'
+import type { EmptyObject } from '@xylabs/object'
 import { Tail } from 'tail'
-import { ArgumentsCamelCase, CommandBuilder, CommandModule } from 'yargs'
+import type {
+  ArgumentsCamelCase, CommandBuilder, CommandModule,
+} from 'yargs'
 
-import { errFile, outFile, restart, stop } from '../../../lib/index.js'
-import { BaseArguments } from '../../BaseArguments.js'
+import {
+  errFile, outFile, restart, stop,
+} from '../../../lib/index.js'
+import type { BaseArguments } from '../../BaseArguments.js'
 
 type Arguments = BaseArguments & {
   interactive?: boolean
@@ -60,5 +64,4 @@ const mod: CommandModule<EmptyObject, BaseArguments> = {
   handler,
 }
 
-// eslint-disable-next-line import/no-default-export
 export default mod

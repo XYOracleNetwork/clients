@@ -1,9 +1,10 @@
 import { assertEx } from '@xylabs/assert'
-import { asyncHandler, NoReqParams } from '@xylabs/sdk-api-express-ecs'
+import type { NoReqParams } from '@xylabs/sdk-api-express-ecs'
+import { asyncHandler } from '@xylabs/sdk-api-express-ecs'
 import { setRawResponseFormat } from '@xyo-network/express-node-middleware'
 import { TYPES } from '@xyo-network/node-core-types'
-import { PrometheusNodeWitness } from '@xyo-network/prometheus-node-plugin'
-import { RequestHandler } from 'express'
+import type { PrometheusNodeWitness } from '@xyo-network/prometheus-node-plugin'
+import type { RequestHandler } from 'express'
 
 const descriptionErrorMsg = () => 'Unable to resolve PrometheusWitness description'
 const resolutionErrorMsg = () => 'Unable to resolve PrometheusNodeWitness'

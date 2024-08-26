@@ -1,4 +1,4 @@
-import { Express } from 'express'
+import type { Express } from 'express'
 
 import { addDomainRoutes } from './addDomainRoutes.js'
 import { addMetricsRoutes } from './addMetricsRoutes.js'

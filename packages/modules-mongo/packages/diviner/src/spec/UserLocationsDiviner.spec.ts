@@ -1,11 +1,12 @@
-import { ArchivistInstance } from '@xyo-network/archivist-model'
-import { BoundWitness } from '@xyo-network/boundwitness-model'
-import { AbstractDiviner } from '@xyo-network/diviner-abstract'
-import { BoundWitnessDivinerQueryPayload } from '@xyo-network/diviner-boundwitness-model'
-import { DivinerParams } from '@xyo-network/diviner-model'
+import type { ArchivistInstance } from '@xyo-network/archivist-model'
+import type { BoundWitness } from '@xyo-network/boundwitness-model'
+import type { AbstractDiviner } from '@xyo-network/diviner-abstract'
+import type { BoundWitnessDivinerQueryPayload } from '@xyo-network/diviner-boundwitness-model'
+import type { DivinerParams } from '@xyo-network/diviner-model'
 import { mock } from 'jest-mock-extended'
 
-import { CoinCurrentUserWitnessPayload, CoinCurrentUserWitnessSchema, MemoryCoinUserLocationsDiviner } from '../UserLocationsDiviner.js'
+import type { CoinCurrentUserWitnessPayload } from '../UserLocationsDiviner.js'
+import { CoinCurrentUserWitnessSchema, MemoryCoinUserLocationsDiviner } from '../UserLocationsDiviner.js'
 
 describe.skip('MemoryCoinUserLocationsDiviner', () => {
   const archivist = mock<ArchivistInstance>()

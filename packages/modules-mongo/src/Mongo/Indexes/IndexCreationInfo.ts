@@ -1,3 +1,3 @@
-import { CreateIndexesOptions, IndexSpecification } from 'mongodb'
+import type { CreateIndexesOptions, IndexSpecification } from 'mongodb'
 
 export type IndexCreationInfo = [string, IndexSpecification, CreateIndexesOptions]

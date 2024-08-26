@@ -1,11 +1,15 @@
 import { Account } from '@xyo-network/account'
-import { AccountInstance } from '@xyo-network/account-model'
+import type { AccountInstance } from '@xyo-network/account-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
-import { DivinerDivineQuerySchema, DivinerInstance } from '@xyo-network/diviner-model'
-import { AddressPayload, AddressSchema } from '@xyo-network/module-model'
-import { WithMeta, WithSources } from '@xyo-network/payload-model'
+import type { DivinerInstance } from '@xyo-network/diviner-model'
+import { DivinerDivineQuerySchema } from '@xyo-network/diviner-model'
+import type { AddressPayload } from '@xyo-network/module-model'
+import { AddressSchema } from '@xyo-network/module-model'
+import type { WithMeta, WithSources } from '@xyo-network/payload-model'
 
-import { getDivinerByName, getNewPayload, insertPayload, validateStateResponse } from '../../testUtil/index.js'
+import {
+  getDivinerByName, getNewPayload, insertPayload, validateStateResponse,
+} from '../../testUtil/index.js'
 
 const divinerName = 'XYOPublic:AddressSpaceDiviner'
 

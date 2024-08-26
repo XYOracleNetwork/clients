@@ -1,20 +1,23 @@
-import { Address } from '@xylabs/hex'
+import type { Address } from '@xylabs/hex'
 import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
+import type {
+  SchemaStatsPayload,
+  SchemaStatsQueryPayload,
+} from '@xyo-network/diviner-schema-stats-model'
 import {
   SchemaStatsDivinerConfigSchema,
   SchemaStatsDivinerSchema,
-  SchemaStatsPayload,
-  SchemaStatsQueryPayload,
   SchemaStatsQuerySchema,
 } from '@xyo-network/diviner-schema-stats-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
-import { JobQueue } from '@xyo-network/node-core-model'
+import type { JobQueue } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { WithMeta } from '@xyo-network/payload-model'
-import { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
+import type { WithMeta } from '@xyo-network/payload-model'
+import type { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
-import { mock, MockProxy } from 'jest-mock-extended'
+import type { MockProxy } from 'jest-mock-extended'
+import { mock } from 'jest-mock-extended'
 
 import { MongoDBSchemaStatsDiviner } from '../MongoDBSchemaStatsDiviner.js'
 

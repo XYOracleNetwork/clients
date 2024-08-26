@@ -1,7 +1,7 @@
 import { exists } from '@xylabs/exists'
 import { TYPES } from '@xyo-network/node-core-types'
-import { Job, JobProvider } from '@xyo-network/shared'
-import { Container } from 'inversify'
+import type { Job, JobProvider } from '@xyo-network/shared'
+import type { Container } from 'inversify'
 
 // TODO: This is no longer Mongo-specific and can be
 // exposed in a non-DB module

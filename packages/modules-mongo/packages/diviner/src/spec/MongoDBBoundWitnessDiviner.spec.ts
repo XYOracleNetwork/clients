@@ -1,16 +1,16 @@
 import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
-import { AccountInstance } from '@xyo-network/account-model'
+import type { AccountInstance } from '@xyo-network/account-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { BoundWitnessSchema } from '@xyo-network/boundwitness-model'
+import type { BoundWitnessDivinerQueryPayload } from '@xyo-network/diviner-boundwitness-model'
 import {
   BoundWitnessDivinerConfigSchema,
-  BoundWitnessDivinerQueryPayload,
   BoundWitnessDivinerQuerySchema,
 } from '@xyo-network/diviner-boundwitness-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { BoundWitnessWithMongoMeta, BoundWitnessWithPartialMongoMeta } from '@xyo-network/payload-mongodb'
+import type { BoundWitnessWithMongoMeta, BoundWitnessWithPartialMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock } from 'jest-mock-extended'
 
@@ -68,7 +68,9 @@ describeIf(hasMongoDBConfig())('MongoDBBoundWitnessDiviner', () => {
       it.each([0, 1])('divines BWs for address', async (index) => {
         const account = accounts[index]
         const addresses = [account.address]
-        const query: BoundWitnessDivinerQueryPayload = { addresses, limit: 1, schema: BoundWitnessDivinerQuerySchema }
+        const query: BoundWitnessDivinerQueryPayload = {
+          addresses, limit: 1, schema: BoundWitnessDivinerQuerySchema,
+        }
         const result = await sut.divine([query])
         expect(result).toBeArrayOfSize(1)
         const actual = result[0] as BoundWitnessWithPartialMongoMeta

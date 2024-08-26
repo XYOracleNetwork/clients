@@ -1,10 +1,13 @@
 import { Account } from '@xyo-network/account'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload, unMeta } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
+import { unMeta } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
-import { getHash, getNewPayload, getTestSchemaName, insertPayload } from '../../../testUtil/index.js'
+import {
+  getHash, getNewPayload, getTestSchemaName, insertPayload,
+} from '../../../testUtil/index.js'
 import { createPointer, expectHashNotFoundError } from './get.payloadPointer.spec.js'
 
 describe('/:hash', () => {

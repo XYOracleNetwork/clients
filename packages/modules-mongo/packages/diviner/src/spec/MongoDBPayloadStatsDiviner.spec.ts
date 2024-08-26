@@ -1,15 +1,18 @@
 import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
+import type {
+  PayloadStatsPayload,
+  PayloadStatsQueryPayload,
+} from '@xyo-network/diviner-payload-stats-model'
 import {
   PayloadStatsDivinerConfigSchema,
   PayloadStatsDivinerSchema,
-  PayloadStatsPayload,
-  PayloadStatsQueryPayload,
   PayloadStatsQuerySchema,
 } from '@xyo-network/diviner-payload-stats-model'
 import { hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
-import { JobQueue } from '@xyo-network/node-core-model'
-import { mock, MockProxy } from 'jest-mock-extended'
+import type { JobQueue } from '@xyo-network/node-core-model'
+import type { MockProxy } from 'jest-mock-extended'
+import { mock } from 'jest-mock-extended'
 
 import { MongoDBPayloadStatsDiviner } from '../MongoDBPayloadStatsDiviner.js'
 

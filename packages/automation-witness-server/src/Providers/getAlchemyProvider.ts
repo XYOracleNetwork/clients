@@ -1,5 +1,6 @@
 import { assertEx } from '@xylabs/assert'
-import { AlchemyProvider, Provider } from 'ethers'
+import type { Provider } from 'ethers'
+import { AlchemyProvider } from 'ethers'
 
 let instance: AlchemyProvider | undefined
 

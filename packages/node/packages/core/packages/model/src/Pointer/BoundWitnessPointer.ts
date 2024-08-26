@@ -1,7 +1,7 @@
 import { BoundWitnessSchema } from '@xyo-network/boundwitness-model'
-import { Payload } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 
-import { PointerPayload } from './Pointer.js'
+import type { PointerPayload } from './Pointer.js'
 
 export type BoundWitnessPointerSchema = `${BoundWitnessSchema}.pointer`
 export const BoundWitnessPointerSchema: BoundWitnessPointerSchema = `${BoundWitnessSchema}.pointer`

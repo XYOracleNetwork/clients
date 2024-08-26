@@ -1,12 +1,13 @@
-import { Hash } from '@xylabs/hex'
-import { asyncHandler, NoReqBody, NoReqQuery } from '@xylabs/sdk-api-express-ecs'
+import type { Hash } from '@xylabs/hex'
+import type { NoReqBody, NoReqQuery } from '@xylabs/sdk-api-express-ecs'
+import { asyncHandler } from '@xylabs/sdk-api-express-ecs'
 import { setRawResponseFormat } from '@xyo-network/express-node-middleware'
-import { Payload } from '@xyo-network/payload-model'
-import { RequestHandler } from 'express'
+import type { Payload } from '@xyo-network/payload-model'
+import type { RequestHandler } from 'express'
 import { StatusCodes } from 'http-status-codes'
 
 import { getBlockForRequest } from './getBlockForRequest.js'
-import { HashPathParams } from './HashPathParams.js'
+import type { HashPathParams } from './HashPathParams.js'
 
 const reservedHashes = new Set(['archive', 'schema', 'doc', 'domain'])
 

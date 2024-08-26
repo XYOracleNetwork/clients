@@ -1,4 +1,4 @@
-import { Express } from 'express'
+import type { Express } from 'express'
 import { StatusCodes } from 'http-status-codes'
 
 import { getAddress, postAddress } from '../routes/index.js'

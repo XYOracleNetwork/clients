@@ -1,5 +1,5 @@
-import { AnyObject } from '@xylabs/object'
-import { PayloadFindFilter } from '@xyo-network/payload-model'
+import type { AnyObject } from '@xylabs/object'
+import type { PayloadFindFilter } from '@xyo-network/payload-model'
 
 /* Note: Added Omit to PayloadFindFilter for offset until we support hash based offsets */
 

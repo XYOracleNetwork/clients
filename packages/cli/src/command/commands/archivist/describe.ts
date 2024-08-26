@@ -1,8 +1,10 @@
-import { EmptyObject } from '@xylabs/object'
-import { Argv, CommandBuilder, CommandModule } from 'yargs'
+import type { EmptyObject } from '@xylabs/object'
+import type {
+  Argv, CommandBuilder, CommandModule,
+} from 'yargs'
 
 import { printError, printLine } from '../../../lib/index.js'
-import { ModuleArguments } from '../ModuleArguments.js'
+import type { ModuleArguments } from '../ModuleArguments.js'
 import { getArchivist } from './util/index.js'
 
 export const aliases: ReadonlyArray<string> = []
@@ -30,5 +32,4 @@ const mod: CommandModule<EmptyObject, ModuleArguments> = {
   handler,
 }
 
-// eslint-disable-next-line import/no-default-export
 export default mod

@@ -1,9 +1,11 @@
-import { Hash } from '@xylabs/hex'
-import { EmptyObject } from '@xylabs/object'
-import { ArgumentsCamelCase, Argv, CommandBuilder, CommandModule } from 'yargs'
+import type { Hash } from '@xylabs/hex'
+import type { EmptyObject } from '@xylabs/object'
+import type {
+  ArgumentsCamelCase, Argv, CommandBuilder, CommandModule,
+} from 'yargs'
 
 import { printError, printLine } from '../../../lib/index.js'
-import { ModuleArguments } from '../ModuleArguments.js'
+import type { ModuleArguments } from '../ModuleArguments.js'
 import { getArchivist } from './util/index.js'
 
 type Arguments = ModuleArguments & {
@@ -12,7 +14,9 @@ type Arguments = ModuleArguments & {
 
 export const aliases: ReadonlyArray<string> = []
 export const builder: CommandBuilder = (yargs: Argv) =>
-  yargs.usage('Usage: $0 archivist get <hashes..>').positional('hashes', { array: true, demandOption: false, type: 'string' })
+  yargs.usage('Usage: $0 archivist get <hashes..>').positional('hashes', {
+    array: true, demandOption: false, type: 'string',
+  })
 
 export const command = 'get <hashes..>'
 export const deprecated = false
@@ -37,5 +41,4 @@ const mod: CommandModule<EmptyObject, Arguments> = {
   handler,
 }
 
-// eslint-disable-next-line import/no-default-export
 export default mod

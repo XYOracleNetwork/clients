@@ -1,6 +1,7 @@
 import { assertEx } from '@xylabs/assert'
-import { ApiCallSchema, ApiUriTemplateCall } from '@xyo-network/api-call-witness'
-import { Payload } from '@xyo-network/payload-model'
+import type { ApiUriTemplateCall } from '@xyo-network/api-call-witness'
+import { ApiCallSchema } from '@xyo-network/api-call-witness'
+import type { Payload } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 
 import { getNode } from './getNode.js'

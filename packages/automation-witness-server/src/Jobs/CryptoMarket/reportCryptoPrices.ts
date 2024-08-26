@@ -1,8 +1,9 @@
-import { AttachableModuleInstance } from '@xyo-network/module-model'
+import type { AttachableModuleInstance } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
-import { Payload } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 import { MemorySentinel } from '@xyo-network/sentinel-memory'
-import { SentinelConfig, SentinelConfigSchema } from '@xyo-network/sentinel-model'
+import type { SentinelConfig } from '@xyo-network/sentinel-model'
+import { SentinelConfigSchema } from '@xyo-network/sentinel-model'
 
 import { getAccount, WalletPaths } from '../../Account/index.js'
 import { getArchivists } from '../../Archivists/index.js'
@@ -21,9 +22,7 @@ export const reportCryptoPrices = async (provider = getProvider()): Promise<Payl
     }),
   )
   const config: SentinelConfig = {
-    archiving: {
-      archivists: archivists.map(mod => mod.address),
-    },
+    archiving: { archivists: archivists.map(mod => mod.address) },
     schema: SentinelConfigSchema,
     synchronous: true,
     tasks: witnesses.map(mod => ({ mod: mod.address })),

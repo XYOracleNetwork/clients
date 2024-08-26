@@ -1,4 +1,4 @@
-import { interfaces } from 'inversify'
+import type { interfaces } from 'inversify'
 
 interface WithOptionalName {
   name?: string

@@ -1,7 +1,8 @@
 import { assertEx } from '@xylabs/assert'
-import { PocketProvider, Provider } from 'ethers'
+import type { Provider } from 'ethers'
+import { PocketProvider } from 'ethers'
 
-import { PocketProviderConfig } from '../Model/index.js'
+import type { PocketProviderConfig } from '../Model/index.js'
 
 let instance: PocketProvider | undefined
 

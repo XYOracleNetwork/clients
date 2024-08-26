@@ -1,6 +1,8 @@
 import Path from 'node:path'
 
-import { ArgumentsCamelCase, Argv, CommandBuilder, CommandModule } from 'yargs'
+import type {
+  ArgumentsCamelCase, Argv, CommandBuilder, CommandModule,
+} from 'yargs'
 
 import { printLine } from '../../lib/index.js'
 import { opts } from '../requireDirectoryOptions.js'
@@ -26,5 +28,4 @@ export const mod: CommandModule = {
   handler,
 }
 
-// eslint-disable-next-line import/no-default-export
 export default mod

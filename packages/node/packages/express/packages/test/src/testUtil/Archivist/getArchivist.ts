@@ -1,6 +1,7 @@
 import { assertEx } from '@xylabs/assert'
-import { AccountInstance } from '@xyo-network/account-model'
-import { ArchivistInstance, asArchivistInstance } from '@xyo-network/archivist-model'
+import type { AccountInstance } from '@xyo-network/account-model'
+import type { ArchivistInstance } from '@xyo-network/archivist-model'
+import { asArchivistInstance } from '@xyo-network/archivist-model'
 import { ArchivistWrapper } from '@xyo-network/archivist-wrapper'
 
 import { getModuleByName, getModuleByNameFromChildNode } from '../Node/index.js'

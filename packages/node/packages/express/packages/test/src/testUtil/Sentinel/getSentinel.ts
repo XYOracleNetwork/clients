@@ -1,5 +1,6 @@
-import { AccountInstance } from '@xyo-network/account-model'
-import { asSentinelInstance, SentinelInstance } from '@xyo-network/sentinel-model'
+import type { AccountInstance } from '@xyo-network/account-model'
+import type { SentinelInstance } from '@xyo-network/sentinel-model'
+import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { SentinelWrapper } from '@xyo-network/sentinel-wrapper'
 
 import { getModuleByName, getModuleByNameFromChildNode } from '../Node/index.js'

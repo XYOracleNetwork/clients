@@ -1,5 +1,5 @@
-import { JobQueue } from '@xyo-network/node-core-model'
-import { Job } from '@xyo-network/shared'
+import type { JobQueue } from '@xyo-network/node-core-model'
+import type { Job } from '@xyo-network/shared'
 
 export const scheduleJobs = async (jobQueue: JobQueue, jobs: Job[]) => {
   // eslint-disable-next-line unicorn/no-array-method-this-argument

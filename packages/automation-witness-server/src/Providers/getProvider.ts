@@ -1,6 +1,7 @@
-import { getDefaultProvider, Provider } from 'ethers'
+import type { Provider } from 'ethers'
+import { getDefaultProvider } from 'ethers'
 
-import { ProviderOptions } from '../Model/index.js'
+import type { ProviderOptions } from '../Model/index.js'
 import { canUseAlchemyProvider, getAlchemyProviderConfig } from './getAlchemyProvider.js'
 import { canUseEtherscanProvider, getEtherscanProviderConfig } from './getEtherscanProvider.js'
 import { canUseInfuraProvider, getInfuraProviderConfig } from './getInfuraProvider.js'
@@ -20,7 +21,9 @@ const getProviderOptions = (): ProviderOptions => {
   const etherscan = canUseEtherscanProvider() ? getEtherscanProviderConfig() : providerOmitted
   const infura = canUseInfuraProvider() ? getInfuraProviderConfig() : providerOmitted
   const pocket = canUsePocketProvider() ? getPocketProviderConfig() : providerOmitted
-  return { alchemy, etherscan, infura, pocket }
+  return {
+    alchemy, etherscan, infura, pocket,
+  }
 }
 
 export const hasNonDefaultProvider = (): boolean => {

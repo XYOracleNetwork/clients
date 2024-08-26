@@ -1,7 +1,8 @@
-import { asNodeInstance, NodeInstance } from '@xyo-network/node-model'
+import type { NodeInstance } from '@xyo-network/node-model'
+import { asNodeInstance } from '@xyo-network/node-model'
 
 import { printError } from '../../lib/index.js'
-import { BaseArguments } from '../BaseArguments.js'
+import type { BaseArguments } from '../BaseArguments.js'
 // import { getBridge } from './getBridge.js'
 
 export const getNode = async (args: BaseArguments): Promise<NodeInstance> => {
@@ -9,7 +10,8 @@ export const getNode = async (args: BaseArguments): Promise<NodeInstance> => {
   try {
     // const bridge = await getBridge(args)
     // eslint-disable-next-line unicorn/no-useless-undefined
-    const node = await Promise.resolve(undefined) // assertEx((await bridge.resolve({ address: [await bridge.getRootAddress()] }))?.pop(), 'Failed to resolve rootNode')
+    const node = await Promise.resolve(undefined)
+    // assertEx((await bridge.resolve({ address: [await bridge.getRootAddress()] }))?.pop(), 'Failed to resolve rootNode')
     return asNodeInstance(node, 'Not a NodeModule')
   } catch (error) {
     if (verbose) printError(JSON.stringify(error))

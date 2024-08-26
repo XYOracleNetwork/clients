@@ -1,12 +1,15 @@
 import { exists } from '@xylabs/exists'
-import { Hash } from '@xylabs/hex'
+import type { Hash } from '@xylabs/hex'
 import { AbstractArchivist } from '@xyo-network/archivist-abstract'
 import { ArchivistInsertQuerySchema } from '@xyo-network/archivist-model'
 import { MongoDBArchivistConfigSchema } from '@xyo-network/archivist-model-mongodb'
 import { MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload, Schema, WithMeta } from '@xyo-network/payload-model'
-import { fromDbRepresentation, PayloadWithMongoMeta, toDbRepresentation } from '@xyo-network/payload-mongodb'
+import type {
+  Payload, Schema, WithMeta,
+} from '@xyo-network/payload-model'
+import type { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
+import { fromDbRepresentation, toDbRepresentation } from '@xyo-network/payload-mongodb'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 import { validByType } from './lib/index.js'

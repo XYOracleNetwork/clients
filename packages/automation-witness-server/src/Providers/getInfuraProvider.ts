@@ -1,7 +1,8 @@
 import { assertEx } from '@xylabs/assert'
-import { InfuraProvider, Provider } from 'ethers'
+import type { Provider } from 'ethers'
+import { InfuraProvider } from 'ethers'
 
-import { InfuraProviderConfig } from '../Model/index.js'
+import type { InfuraProviderConfig } from '../Model/index.js'
 
 let instance: InfuraProvider | undefined
 

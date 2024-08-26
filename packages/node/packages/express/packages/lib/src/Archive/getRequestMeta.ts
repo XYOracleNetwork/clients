@@ -1,6 +1,6 @@
 import { getHttpHeader } from '@xylabs/sdk-api-express-ecs'
-import { BoundWitnessMongoMeta, PayloadMongoMeta } from '@xyo-network/payload-mongodb'
-import { Request } from 'express'
+import type { BoundWitnessMongoMeta, PayloadMongoMeta } from '@xyo-network/payload-mongodb'
+import type { Request } from 'express'
 
 export type RequestWithArchive = {
   archive?: string
@@ -15,8 +15,6 @@ export const getRequestMeta = <T extends RequestWithArchive>(req: Request<T>): [
     _timestamp,
     _user_agent,
   }
-  const payloadMetaData: Partial<PayloadMongoMeta> = {
-    _timestamp,
-  }
+  const payloadMetaData: Partial<PayloadMongoMeta> = { _timestamp }
   return [boundWitnessMetaData as BoundWitnessMongoMeta, payloadMetaData as PayloadMongoMeta]
 }

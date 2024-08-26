@@ -1,4 +1,4 @@
-import { Options } from 'yargs'
+import type { Options } from 'yargs'
 
 import { daemon } from './daemon.js'
 import { mod } from './mod.js'

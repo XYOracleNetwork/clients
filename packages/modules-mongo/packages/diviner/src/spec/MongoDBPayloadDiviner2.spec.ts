@@ -1,9 +1,12 @@
 /* eslint-disable max-nested-callbacks */
 import { MongoDBArchivist } from '@xyo-network/archivist-mongodb'
-import { PayloadDivinerQueryPayload, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
+import type { PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
+import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload, PayloadWithMeta, WithMeta } from '@xyo-network/payload-model'
+import type {
+  Payload, PayloadWithMeta, WithMeta,
+} from '@xyo-network/payload-model'
 
 import { MongoDBPayloadDiviner } from '../MongoDBPayloadDiviner.js'
 
@@ -93,7 +96,9 @@ describe('MongoDBPayloadDiviner2', () => {
         it('only return single payload of that schema (desc)', async () => {
           const schemas = ['network.xyo.debug']
           const query = await new PayloadBuilder<PayloadDivinerQueryPayload>({ schema: PayloadDivinerQuerySchema })
-            .fields({ limit: 1, order: 'desc', schemas })
+            .fields({
+              limit: 1, order: 'desc', schemas,
+            })
             .build()
           const results = await sut.divine([query])
           expect(results.length).toBe(1)
@@ -103,7 +108,9 @@ describe('MongoDBPayloadDiviner2', () => {
         it('only return single payload of that schema (asc)', async () => {
           const schemas = ['network.xyo.debug']
           const query = await new PayloadBuilder<PayloadDivinerQueryPayload>({ schema: PayloadDivinerQuerySchema })
-            .fields({ limit: 1, order: 'asc', schemas })
+            .fields({
+              limit: 1, order: 'asc', schemas,
+            })
             .build()
           const results = await sut.divine([query])
           expect(results.length).toBe(1)

@@ -1,2 +1,2 @@
-import { Address, Hash } from '@xylabs/hex'
+import type { Address, Hash } from '@xylabs/hex'
 export type AddressInfo = { address: Address; previousHash: Hash }

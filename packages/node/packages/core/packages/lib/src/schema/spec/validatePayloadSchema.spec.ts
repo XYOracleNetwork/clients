@@ -1,4 +1,4 @@
-import { Payload } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 import { Ajv } from 'ajv'
 
 import { validatePayloadSchema } from '../validatePayloadSchema.js'
@@ -7,18 +7,14 @@ const ajv = new Ajv()
 
 const payloadSchema = {
   additionalProperties: true,
-  properties: {
-    schema: { type: 'string' },
-  },
+  properties: { schema: { type: 'string' } },
   required: ['schema'],
   type: 'object',
 }
 const validate = ajv.compile(payloadSchema)
 
 const getPayload = (): Payload => {
-  return {
-    schema: 'foo',
-  }
+  return { schema: 'foo' }
 }
 
 describe('validatePayloadSchema', () => {

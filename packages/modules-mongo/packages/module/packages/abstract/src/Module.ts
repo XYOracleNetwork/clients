@@ -2,7 +2,9 @@ import { assertEx } from '@xylabs/assert'
 import { merge } from '@xylabs/lodash'
 import { staticImplements } from '@xylabs/static-implements'
 import { Module } from '@xyo-network/module-model'
-import { MongoDBModule, MongoDBModuleParams, MongoDBModuleStatic, MongoDBStorageClassLabels } from '@xyo-network/module-model-mongodb'
+import {
+  MongoDBModule, MongoDBModuleParams, MongoDBModuleStatic, MongoDBStorageClassLabels,
+} from '@xyo-network/module-model-mongodb'
 import { BoundWitnessWithMongoMeta, PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk, BaseMongoSdkConfig } from '@xyo-network/sdk-xyo-mongo-js'
 import { MongoServerError } from 'mongodb'
@@ -28,9 +30,12 @@ export const MongoDBModuleMixin = <
 
     get boundWitnessSdkConfig(): BaseMongoSdkConfig {
       const config = { collection: COLLECTIONS.BoundWitnesses, ...getBaseMongoSdkPrivateConfig() }
-      return merge(config, this.params.boundWitnessSdkConfig, this.config.boundWitnessSdkConfig, {
-        collection: this.config.boundWitnessSdkConfig?.collection ?? this.params.boundWitnessSdkConfig?.collection ?? COLLECTIONS.BoundWitnesses,
-      })
+      return merge(
+        config,
+        this.params.boundWitnessSdkConfig,
+        this.config.boundWitnessSdkConfig,
+        { collection: this.config.boundWitnessSdkConfig?.collection ?? this.params.boundWitnessSdkConfig?.collection ?? COLLECTIONS.BoundWitnesses },
+      )
     }
 
     get boundWitnesses() {
@@ -44,9 +49,12 @@ export const MongoDBModuleMixin = <
 
     get payloadSdkConfig(): BaseMongoSdkConfig {
       const config = { collection: COLLECTIONS.Payloads, ...getBaseMongoSdkPrivateConfig() }
-      return merge(config, this.params.payloadSdkConfig, this.config.payloadSdkConfig, {
-        collection: this.config.payloadSdkConfig?.collection ?? this.params.payloadSdkConfig?.collection ?? COLLECTIONS.Payloads,
-      })
+      return merge(
+        config,
+        this.params.payloadSdkConfig,
+        this.config.payloadSdkConfig,
+        { collection: this.config.payloadSdkConfig?.collection ?? this.params.payloadSdkConfig?.collection ?? COLLECTIONS.Payloads },
+      )
     }
 
     get payloads() {

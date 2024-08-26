@@ -1,5 +1,5 @@
 import yargs from 'yargs'
-// eslint-disable-next-line import/no-internal-modules
+// eslint-disable-next-line import-x/no-internal-modules
 import { hideBin } from 'yargs/helpers'
 
 import { options } from './options/index.js'

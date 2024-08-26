@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/package.json",
   "name": "@xyo-network/node-core-lib",
-  "version": "2.89.2",
+  "version": "3.0.0",
   "description": "XYO Archivist",
   "license": "LGPL-3.0-only",
   "author": "Arie Trouw",
@@ -26,7 +26,7 @@
   "module": "dist/node/index.mjs",
   "types": "dist/node/index.d.ts",
   "dependencies": {
-    "@xyo-network/node-core-model": "^2.89.2",
+    "@xyo-network/node-core-model": "^3.0.0",
     "@xyo-network/payload-builder": "^3.0.11",
     "@xyo-network/payload-model": "^3.0.11",
     "@xyo-network/payload-mongodb": "workspace:^",

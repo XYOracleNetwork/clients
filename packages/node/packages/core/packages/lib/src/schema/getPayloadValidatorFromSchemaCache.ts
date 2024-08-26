@@ -3,7 +3,7 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload } from '@xyo-network/payload-model'
 import type { PayloadWithPartialMongoMeta } from '@xyo-network/payload-mongodb'
 import { SchemaCache } from '@xyo-network/schema-cache'
-import { SchemaPayload } from '@xyo-network/schema-payload-plugin'
+import type { SchemaPayload } from '@xyo-network/schema-payload-plugin'
 import { Ajv } from 'ajv'
 
 const ajv = new Ajv()

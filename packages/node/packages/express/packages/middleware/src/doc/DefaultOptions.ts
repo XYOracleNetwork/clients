@@ -1,4 +1,4 @@
-import { SwaggerOptions } from 'swagger-ui-express'
+import type { SwaggerOptions } from 'swagger-ui-express'
 
 export const defaultOptions: SwaggerOptions = {
   basePath: '',

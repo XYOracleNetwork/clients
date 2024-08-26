@@ -1,7 +1,9 @@
-import { PackageManifestPayload } from '@xyo-network/manifest-model'
+import type { PackageManifestPayload } from '@xyo-network/manifest-model'
 
 import node from './node.json'
-import { imageThumbnailNode, nftContractNode, nftMetadataNode } from './PublicChildren/index.js'
+import {
+  imageThumbnailNode, nftContractNode, nftMetadataNode,
+} from './PublicChildren/index.js'
 
 /**
  * The default node
@@ -13,4 +15,6 @@ export const defaultNode = node as PackageManifestPayload
  */
 export const publicChildren: PackageManifestPayload[] = [imageThumbnailNode, nftContractNode, nftMetadataNode]
 
-export { imageThumbnailNode, nftContractNode, nftMetadataNode } from './PublicChildren/index.js'
+export {
+  imageThumbnailNode, nftContractNode, nftMetadataNode,
+} from './PublicChildren/index.js'

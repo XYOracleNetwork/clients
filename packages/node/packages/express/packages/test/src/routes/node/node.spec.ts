@@ -1,9 +1,11 @@
 import { Account } from '@xyo-network/account'
 import { QueryBoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
-import { BoundWitness, BoundWitnessSchema, QueryBoundWitness } from '@xyo-network/boundwitness-model'
-import { AddressPayload, AddressSchema, ModuleStateQuerySchema } from '@xyo-network/module-model'
+import type { BoundWitness, QueryBoundWitness } from '@xyo-network/boundwitness-model'
+import { BoundWitnessSchema } from '@xyo-network/boundwitness-model'
+import type { AddressPayload } from '@xyo-network/module-model'
+import { AddressSchema, ModuleStateQuerySchema } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 
 import { getRequestClient, validateStateResponse } from '../../testUtil/index.js'
 

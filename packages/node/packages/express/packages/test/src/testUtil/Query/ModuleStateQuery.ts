@@ -1,6 +1,10 @@
-import { AddressPayload, AddressSchema, ModuleStateQuerySchema, ModuleSubscribeQuerySchema } from '@xyo-network/module-model'
-import { Payload } from '@xyo-network/payload-model'
-import { QueryPayload, QuerySchema } from '@xyo-network/query-payload-plugin'
+import type { AddressPayload } from '@xyo-network/module-model'
+import {
+  AddressSchema, ModuleStateQuerySchema, ModuleSubscribeQuerySchema,
+} from '@xyo-network/module-model'
+import type { Payload } from '@xyo-network/payload-model'
+import type { QueryPayload } from '@xyo-network/query-payload-plugin'
+import { QuerySchema } from '@xyo-network/query-payload-plugin'
 
 const validateAddress = (response: Payload[]) => {
   expect(response).toBeArray()

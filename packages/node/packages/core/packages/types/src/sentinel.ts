@@ -1,3 +1,1 @@
-export const SENTINEL_TYPES = {
-  ThumbnailSentinel: 'ThumbnailSentinel',
-}
+export const SENTINEL_TYPES = { ThumbnailSentinel: 'ThumbnailSentinel' }

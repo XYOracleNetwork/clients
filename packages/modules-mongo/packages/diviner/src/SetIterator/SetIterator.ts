@@ -1,4 +1,6 @@
-import { difference, intersection, union } from '@xylabs/set'
+import {
+  difference, intersection, union,
+} from '@xylabs/set'
 
 export class SetIterator<T> implements Iterator<T> {
   private done: Set<T>

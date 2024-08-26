@@ -1,5 +1,5 @@
 import { getApp } from '@xyo-network/express-node-server'
-import { Express } from 'express'
+import type { Express } from 'express'
 import supertest from 'supertest'
 
 let app: Express | undefined

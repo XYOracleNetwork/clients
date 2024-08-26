@@ -1,4 +1,4 @@
-import { Options } from 'yargs'
+import type { Options } from 'yargs'
 
 export const verbose: [string, Options] = [
   'verbose',

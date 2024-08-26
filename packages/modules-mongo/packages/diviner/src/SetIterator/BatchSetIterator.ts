@@ -1,4 +1,6 @@
-import { difference, intersection, union } from '@xylabs/set'
+import {
+  difference, intersection, union,
+} from '@xylabs/set'
 
 export class BatchSetIterator<T> implements Iterator<T[]> {
   private batchSize: number

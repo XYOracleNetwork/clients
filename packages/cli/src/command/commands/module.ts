@@ -1,11 +1,13 @@
 import Path from 'node:path'
 
-import { EmptyObject } from '@xylabs/object'
-import { ArgumentsCamelCase, Argv, CommandBuilder, CommandModule } from 'yargs'
+import type { EmptyObject } from '@xylabs/object'
+import type {
+  ArgumentsCamelCase, Argv, CommandBuilder, CommandModule,
+} from 'yargs'
 
 import { printError, printLine } from '../../lib/index.js'
 import { opts } from '../requireDirectoryOptions.js'
-import { ModuleArguments } from './ModuleArguments.js'
+import type { ModuleArguments } from './ModuleArguments.js'
 import { getModuleFromArgs } from './util/index.js'
 
 export const aliases: ReadonlyArray<string> = []
@@ -34,5 +36,4 @@ const mod: CommandModule<EmptyObject, ModuleArguments> = {
   handler,
 }
 
-// eslint-disable-next-line import/no-default-export
 export default mod

@@ -1,8 +1,10 @@
-import { ArchivistInstance } from '@xyo-network/archivist-model'
-import { DivinerDivineQuerySchema, DivinerInstance } from '@xyo-network/diviner-model'
-import { PayloadDivinerQueryPayload, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
+import type { ArchivistInstance } from '@xyo-network/archivist-model'
+import type { DivinerInstance } from '@xyo-network/diviner-model'
+import { DivinerDivineQuerySchema } from '@xyo-network/diviner-model'
+import type { PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
+import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload, WithMeta } from '@xyo-network/payload-model'
+import type { Payload, WithMeta } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 import {

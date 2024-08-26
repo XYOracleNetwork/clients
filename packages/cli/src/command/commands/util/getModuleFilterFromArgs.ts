@@ -1,6 +1,6 @@
-import { AnyModuleFilter, ModuleFilter } from '@xyo-network/module-model'
+import type { AnyModuleFilter, ModuleFilter } from '@xyo-network/module-model'
 
-import { ModuleArguments } from '../ModuleArguments.js'
+import type { ModuleArguments } from '../ModuleArguments.js'
 
 export const getModuleFilterFromArgs = (args: ModuleArguments): ModuleFilter => {
   const filter: AnyModuleFilter = {}

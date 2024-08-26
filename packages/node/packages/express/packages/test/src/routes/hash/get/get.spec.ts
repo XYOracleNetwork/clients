@@ -1,11 +1,13 @@
 import { Account } from '@xyo-network/account'
-import { BoundWitness } from '@xyo-network/boundwitness-model'
+import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload } from '@xyo-network/payload-model'
-import { BoundWitnessWithPartialMongoMeta } from '@xyo-network/payload-mongodb'
+import type { Payload } from '@xyo-network/payload-model'
+import type { BoundWitnessWithPartialMongoMeta } from '@xyo-network/payload-mongodb'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 
-import { getHash, getNewBlocksWithPayloads, getRequestClient, insertBlock, insertPayload } from '../../../testUtil/index.js'
+import {
+  getHash, getNewBlocksWithPayloads, getRequestClient, insertBlock, insertPayload,
+} from '../../../testUtil/index.js'
 
 describe('/:hash', () => {
   const account = Account.random()

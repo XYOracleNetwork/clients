@@ -1,4 +1,4 @@
-import { ConfigurationFunction } from '../../model/index.js'
+import type { ConfigurationFunction } from '../../model/index.js'
 import { configureEnvironmentFromAWSSecret, configureEnvironmentFromDotEnv } from './providers/index.js'
 
 export const configureEnvironment: ConfigurationFunction = async () => {

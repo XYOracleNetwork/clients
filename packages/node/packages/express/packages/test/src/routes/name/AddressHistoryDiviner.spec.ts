@@ -1,10 +1,14 @@
 import { Account } from '@xyo-network/account'
-import { ArchivistInstance } from '@xyo-network/archivist-model'
-import { AddressHistoryQueryPayload, AddressHistoryQuerySchema } from '@xyo-network/diviner-address-history-model'
-import { DivinerDivineQuerySchema, DivinerInstance } from '@xyo-network/diviner-model'
+import type { ArchivistInstance } from '@xyo-network/archivist-model'
+import type { AddressHistoryQueryPayload } from '@xyo-network/diviner-address-history-model'
+import { AddressHistoryQuerySchema } from '@xyo-network/diviner-address-history-model'
+import type { DivinerInstance } from '@xyo-network/diviner-model'
+import { DivinerDivineQuerySchema } from '@xyo-network/diviner-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 
-import { getArchivistByName, getDivinerByName, getNewBoundWitnesses, validateStateResponse } from '../../testUtil/index.js'
+import {
+  getArchivistByName, getDivinerByName, getNewBoundWitnesses, validateStateResponse,
+} from '../../testUtil/index.js'
 
 const schema = AddressHistoryQuerySchema
 
@@ -38,7 +42,9 @@ describe(`/${divinerName}`, () => {
     })
     it.only('issues query', async () => {
       const address = (await account).address
-      const query: AddressHistoryQueryPayload = { address, limit, schema }
+      const query: AddressHistoryQueryPayload = {
+        address, limit, schema,
+      }
       const response = await sut.divine([query])
       expect(response).toBeArrayOfSize(limit)
       const responseHashes = await PayloadBuilder.dataHashes(response)

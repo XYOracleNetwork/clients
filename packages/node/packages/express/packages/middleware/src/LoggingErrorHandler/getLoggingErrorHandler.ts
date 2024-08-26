@@ -1,6 +1,8 @@
-import { Logger } from '@xylabs/logger'
-import { ExpressError } from '@xylabs/sdk-api-express-ecs'
-import { ErrorRequestHandler, NextFunction, Request, Response } from 'express'
+import type { Logger } from '@xylabs/logger'
+import type { ExpressError } from '@xylabs/sdk-api-express-ecs'
+import type {
+  ErrorRequestHandler, NextFunction, Request, Response,
+} from 'express'
 
 type PossibleError = ExpressError | Error
 

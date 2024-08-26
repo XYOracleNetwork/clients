@@ -1,11 +1,12 @@
 import 'reflect-metadata'
 
 import { assertEx } from '@xylabs/assert'
-import { getLogger, Logger, LoggerVerbosity } from '@xylabs/sdk-api-express-ecs'
+import type { Logger, LoggerVerbosity } from '@xylabs/sdk-api-express-ecs'
+import { getLogger } from '@xylabs/sdk-api-express-ecs'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { addMongoModules, canAddMongoModules } from '@xyo-network/node-core-modules-mongo'
 import { TYPES } from '@xyo-network/node-core-types'
-import { NodeInstance } from '@xyo-network/node-model'
+import type { NodeInstance } from '@xyo-network/node-model'
 import { config } from 'dotenv'
 import { Container } from 'inversify'
 

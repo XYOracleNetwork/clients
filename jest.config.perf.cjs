@@ -4,9 +4,7 @@ const generateJestConfig = ({ esModules }) => {
     coveragePathIgnorePatterns: ['<rootDir>/(.*)/dist'],
     extensionsToTreatAsEsm: ['.ts'],
     maxWorkers: '100%',
-    moduleNameMapper: {
-      '^(\\.{1,2}/.*)\\.js$': '$1',
-    },
+    moduleNameMapper: { '^(\\.{1,2}/.*)\\.js$': '$1' },
     preset: 'ts-jest',
     runner: 'groups',
     setupFiles: ['dotenv/config'],

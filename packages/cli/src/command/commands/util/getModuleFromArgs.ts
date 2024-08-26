@@ -1,8 +1,9 @@
-import { asModuleInstance, ModuleInstance } from '@xyo-network/module-model'
+import type { ModuleInstance } from '@xyo-network/module-model'
+import { asModuleInstance } from '@xyo-network/module-model'
 
 import { printError } from '../../../lib/index.js'
 import { getBridge } from '../../util/index.js'
-import { ModuleArguments } from '../ModuleArguments.js'
+import type { ModuleArguments } from '../ModuleArguments.js'
 import { getModuleFilterFromArgs } from './getModuleFilterFromArgs.js'
 
 export const getModuleFromArgs = async (args: ModuleArguments): Promise<ModuleInstance> => {

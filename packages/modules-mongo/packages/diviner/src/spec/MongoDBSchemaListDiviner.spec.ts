@@ -1,19 +1,21 @@
-import { Address } from '@xylabs/hex'
+import type { Address } from '@xylabs/hex'
 import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
-import { AccountInstance } from '@xyo-network/account-model'
+import type { AccountInstance } from '@xyo-network/account-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
+import type {
+  SchemaListPayload,
+  SchemaListQueryPayload,
+} from '@xyo-network/diviner-schema-list-model'
 import {
   SchemaListDivinerConfigSchema,
   SchemaListDivinerSchema,
-  SchemaListPayload,
-  SchemaListQueryPayload,
   SchemaListQuerySchema,
 } from '@xyo-network/diviner-schema-list-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { WithMeta, WithSources } from '@xyo-network/payload-model'
-import { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
+import type { WithMeta, WithSources } from '@xyo-network/payload-model'
+import type { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock } from 'jest-mock-extended'
 

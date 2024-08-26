@@ -1,5 +1,5 @@
 import { standardErrors } from '@xylabs/sdk-api-express-ecs'
-import { Express } from 'express'
+import type { Express } from 'express'
 
 export const addErrorHandlers = (app: Express) => {
   app.use(standardErrors)

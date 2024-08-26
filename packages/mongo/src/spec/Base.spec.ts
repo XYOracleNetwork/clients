@@ -1,5 +1,5 @@
 import { BaseMongoSdk } from '../Base.js'
-import { BaseMongoSdkConfig } from '../Config.js'
+import type { BaseMongoSdkConfig } from '../Config.js'
 
 describe('Base', () => {
   test('checking happy path', () => {

@@ -1,6 +1,7 @@
 import { assertEx } from '@xylabs/assert'
 import { DATABASES, getMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
-import { IndexDescription, MongoClient, WriteConcern } from 'mongodb'
+import type { IndexDescription } from 'mongodb'
+import { MongoClient, WriteConcern } from 'mongodb'
 
 import { AddressInfoIndexes } from './Specifications/index.js'
 

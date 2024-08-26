@@ -1,10 +1,13 @@
-import { AnyObject } from '@xylabs/object'
+import type { AnyObject } from '@xylabs/object'
 import { PayloadDiviner } from '@xyo-network/diviner-payload-abstract'
-import { isPayloadDivinerQueryPayload, PayloadDivinerConfigSchema, PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
-import { DefaultLimit, DefaultMaxTimeMS, DefaultOrder, MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
-import { Payload, Schema } from '@xyo-network/payload-model'
+import type { PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
+import { isPayloadDivinerQueryPayload, PayloadDivinerConfigSchema } from '@xyo-network/diviner-payload-model'
+import {
+  DefaultLimit, DefaultMaxTimeMS, DefaultOrder, MongoDBModuleMixin,
+} from '@xyo-network/module-abstract-mongodb'
+import type { Payload, Schema } from '@xyo-network/payload-model'
 import { fromDbRepresentation } from '@xyo-network/payload-mongodb'
-import { Filter, SortDirection } from 'mongodb'
+import type { Filter, SortDirection } from 'mongodb'
 
 const MongoDBDivinerBase = MongoDBModuleMixin(PayloadDiviner)
 
@@ -17,8 +20,11 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
     const query = payloads?.find<PayloadDivinerQueryPayload>(isPayloadDivinerQueryPayload)
     // TODO: Support multiple queries
     if (!query) throw new Error('Received payload is not a Query')
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { hash, limit = DefaultLimit, offset = 0, order = DefaultOrder, schema, schemas, timestamp, ...props } = query
+
+    const {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      hash, limit = DefaultLimit, offset = 0, order = DefaultOrder, schema, schemas, timestamp, ...props
+    } = query
     const direction = order === 'asc' ? 1 : -1
     const sort: { [key: string]: SortDirection } = { _timestamp: direction }
     // TODO: Joel, why is AnyObject needed?

@@ -1,5 +1,7 @@
-import { BaseArguments } from '../../BaseArguments.js'
-import { outputJsonError, outputJsonLog, outputRawError, outputRawLog } from './formatters/index.js'
+import type { BaseArguments } from '../../BaseArguments.js'
+import {
+  outputJsonError, outputJsonLog, outputRawError, outputRawLog,
+} from './formatters/index.js'
 
 export const outputContext = async (
   args: BaseArguments,

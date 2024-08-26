@@ -1,5 +1,5 @@
-import { JobQueue } from '@xyo-network/node-core-model'
-import { Job } from '@xyo-network/shared'
+import type { JobQueue } from '@xyo-network/node-core-model'
+import type { Job } from '@xyo-network/shared'
 
 // TODO: Depends on job schedule, calculate dynamically
 // to something like 25% of schedule to allow for retries

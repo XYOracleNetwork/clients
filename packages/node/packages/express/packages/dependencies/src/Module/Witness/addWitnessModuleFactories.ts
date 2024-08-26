@@ -3,26 +3,24 @@ import { CryptoNftCollectionWitness } from '@xyo-network/crypto-nft-collection-w
 import { CryptoWalletNftWitness } from '@xyo-network/crypto-nft-witness-wallet-plugin'
 import { EvmCallWitness } from '@xyo-network/evm-call-witness'
 import { ImageThumbnailWitness } from '@xyo-network/image-thumbnail-plugin'
-import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
+import type { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
 import { TYPES } from '@xyo-network/node-core-types'
-import { ERC721__factory, ERC721Enumerable__factory, ERC1155__factory } from '@xyo-network/open-zeppelin-typechain'
+import {
+  ERC721__factory, ERC721Enumerable__factory, ERC1155__factory,
+} from '@xyo-network/open-zeppelin-typechain'
 import { PrometheusNodeWitness } from '@xyo-network/prometheus-node-plugin'
 import { getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'
-import { Container } from 'inversify'
+import type { Container } from 'inversify'
 
 export const addWitnessModuleFactories = (container: Container) => {
   const locator = container.get<ModuleFactoryLocator>(TYPES.ModuleFactoryLocator)
   locator.register(
-    CryptoNftCollectionWitness.factory({
-      providers: () => getProvidersFromEnv(8),
-    }),
+    CryptoNftCollectionWitness.factory({ providers: () => getProvidersFromEnv(8) }),
   )
   locator.register(
-    CryptoWalletNftWitness.factory({
-      providers: () => getProvidersFromEnv(8),
-    }),
+    CryptoWalletNftWitness.factory({ providers: () => getProvidersFromEnv(8) }),
   )
   locator.register(ImageThumbnailWitness)
   locator.register(PrometheusNodeWitness)

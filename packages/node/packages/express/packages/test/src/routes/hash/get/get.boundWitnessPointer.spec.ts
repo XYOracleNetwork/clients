@@ -1,23 +1,26 @@
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
-import { Account, AccountInstance } from '@xyo-network/account'
-import { BoundWitness } from '@xyo-network/boundwitness-model'
+import type { AccountInstance } from '@xyo-network/account'
+import { Account } from '@xyo-network/account'
+import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import { BoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
-import { Order } from '@xyo-network/diviner-payload-model'
-import {
+import type { Order } from '@xyo-network/diviner-payload-model'
+import type {
   BoundWitnessPointerPayload,
-  BoundWitnessPointerSchema,
   PayloadAddressRule,
   PayloadRule,
   PayloadSchemaRule,
   PayloadTimestampOrderRule,
 } from '@xyo-network/node-core-model'
+import { BoundWitnessPointerSchema } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload, WithMeta } from '@xyo-network/payload-model'
+import type { Payload, WithMeta } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 
-import { getHash, getNewBoundWitness, getNewPayload, getTestSchemaName, insertBlock, insertPayload } from '../../../testUtil/index.js'
+import {
+  getHash, getNewBoundWitness, getNewPayload, getTestSchemaName, insertBlock, insertPayload,
+} from '../../../testUtil/index.js'
 
 const createPointer = async (
   addresses: string[][] = [],
@@ -55,7 +58,11 @@ const expectError = (result: Payload, detail: string, status: string, title?: st
   expect(result).toBeObject()
   const error = result as unknown as { errors: { detail: string; status: string; title?: string }[] }
   expect(error.errors?.length).toBeGreaterThan(0)
-  const expected = title ? { detail, status, title } : { detail, status }
+  const expected = title
+    ? {
+        detail, status, title,
+      }
+    : { detail, status }
   expect(error.errors[0]).toEqual(expected)
 }
 

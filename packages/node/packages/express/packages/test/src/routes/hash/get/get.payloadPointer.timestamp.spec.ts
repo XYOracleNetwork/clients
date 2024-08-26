@@ -1,8 +1,11 @@
 import { assertEx } from '@xylabs/assert'
-import { Account, AccountInstance } from '@xyo-network/account'
-import { Payload } from '@xyo-network/payload-model'
+import type { AccountInstance } from '@xyo-network/account'
+import { Account } from '@xyo-network/account'
+import type { Payload } from '@xyo-network/payload-model'
 
-import { getHash, getNewBoundWitness, insertBlock, insertPayload } from '../../../testUtil/index.js'
+import {
+  getHash, getNewBoundWitness, insertBlock, insertPayload,
+} from '../../../testUtil/index.js'
 import { createPointer, expectHashNotFoundError } from './get.payloadPointer.spec.js'
 
 describe('/:hash', () => {

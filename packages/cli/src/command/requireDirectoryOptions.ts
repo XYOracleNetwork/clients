@@ -1,6 +1,6 @@
 import Path from 'node:path'
 
-import { RequireDirectoryOptions } from 'yargs'
+import type { RequireDirectoryOptions } from 'yargs'
 
 /**
  * The extension of this file. Used to detect if running

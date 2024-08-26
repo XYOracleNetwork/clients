@@ -1,9 +1,10 @@
 import { assertEx } from '@xylabs/assert'
 import { ApiCallWitness } from '@xyo-network/api-call-witness'
-import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
+import type { PackageManifestPayload } from '@xyo-network/manifest'
+import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
-import { MemoryNode } from '@xyo-network/node-memory'
+import type { MemoryNode } from '@xyo-network/node-memory'
 import { TZeroApiCallJsonResultToSnapshotDiviner } from '@xyo-network/tzero-stock-market-plugin'
 
 import { getWallet, WalletPaths } from '../../Account/index.js'

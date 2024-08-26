@@ -1,16 +1,16 @@
 import { Account } from '@xyo-network/account'
 import { MongoDBArchivist } from '@xyo-network/archivist-mongodb'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
-import { BoundWitness } from '@xyo-network/boundwitness-model'
+import type { BoundWitness } from '@xyo-network/boundwitness-model'
+import type { BoundWitnessDivinerQueryPayload } from '@xyo-network/diviner-boundwitness-model'
 import {
   BoundWitnessDivinerConfigSchema,
-  BoundWitnessDivinerQueryPayload,
   BoundWitnessDivinerQuerySchema,
 } from '@xyo-network/diviner-boundwitness-model'
 import { COLLECTIONS } from '@xyo-network/module-abstract-mongodb'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { PayloadWithMeta, WithMeta } from '@xyo-network/payload-model'
+import type { PayloadWithMeta, WithMeta } from '@xyo-network/payload-model'
 
 import { MongoDBBoundWitnessDiviner } from '../MongoDBBoundWitnessDiviner.js'
 
@@ -106,7 +106,9 @@ describe('MemoryBoundWitnessDiviner2', () => {
         it('only return single bw that contains that schema', async () => {
           const payload_schemas = ['network.xyo.debug']
           const query = await new PayloadBuilder<BoundWitnessDivinerQueryPayload>({ schema: BoundWitnessDivinerQuerySchema })
-            .fields({ limit: 1, order: 'asc', payload_schemas })
+            .fields({
+              limit: 1, order: 'asc', payload_schemas,
+            })
             .build()
           const results = await sut.divine([query])
           expect(results.length).toBe(1)
@@ -116,7 +118,9 @@ describe('MemoryBoundWitnessDiviner2', () => {
         it('only return single bw that contains that schema (desc)', async () => {
           const payload_schemas = ['network.xyo.debug']
           const query = await new PayloadBuilder<BoundWitnessDivinerQueryPayload>({ schema: BoundWitnessDivinerQuerySchema })
-            .fields({ limit: 1, order: 'desc', payload_schemas })
+            .fields({
+              limit: 1, order: 'desc', payload_schemas,
+            })
             .build()
           const results = await sut.divine([query])
           expect(results.length).toBe(1)

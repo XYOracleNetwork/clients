@@ -1,9 +1,11 @@
-import { BoundWitness, BoundWitnessSchema, QueryBoundWitness } from '@xyo-network/boundwitness-model'
-import { AbstractModule } from '@xyo-network/module-abstract'
-import { Module, ModuleConfig, ModuleConfigSchema } from '@xyo-network/module-model'
-import { ArchiveModuleConfig } from '@xyo-network/node-core-model'
-import { Payload } from '@xyo-network/payload-model'
-import { Request } from 'express'
+import type { BoundWitness, QueryBoundWitness } from '@xyo-network/boundwitness-model'
+import { BoundWitnessSchema } from '@xyo-network/boundwitness-model'
+import type { AbstractModule } from '@xyo-network/module-abstract'
+import type { Module, ModuleConfig } from '@xyo-network/module-model'
+import { ModuleConfigSchema } from '@xyo-network/module-model'
+import type { ArchiveModuleConfig } from '@xyo-network/node-core-model'
+import type { Payload } from '@xyo-network/payload-model'
+import type { Request } from 'express'
 
 const nestedBwAddressesDepth = 5 as const
 

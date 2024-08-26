@@ -1,7 +1,7 @@
 import { assertEx } from '@xylabs/assert'
 import { getDefaultLogger } from '@xylabs/sdk-api-express-ecs'
 import { EthereumGasSchema } from '@xyo-network/gas-price-payload-plugin'
-import { Job } from '@xyo-network/shared'
+import type { Job } from '@xyo-network/shared'
 
 import { getDiviner } from './getDiviner.js'
 import { reportDivinerResult } from './reportDivinerResult.js'

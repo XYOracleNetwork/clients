@@ -1,7 +1,8 @@
 import { getDefaultLogger, getEnvFromAws } from '@xylabs/sdk-api-express-ecs'
 import compression from 'compression'
 import cors from 'cors'
-import express, { Express } from 'express'
+import type { Express } from 'express'
+import express from 'express'
 
 import { addDependencies } from './addDependencies.js'
 import { addDistributedJobs } from './addDistributedJobs.js'

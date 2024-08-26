@@ -1,17 +1,20 @@
 import { flatten } from '@xylabs/array'
 import { exists } from '@xylabs/exists'
 import { hexFromHexString } from '@xylabs/hex'
-import { BoundWitness } from '@xyo-network/boundwitness-model'
+import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import { BoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-abstract'
+import type { BoundWitnessDivinerQueryPayload } from '@xyo-network/diviner-boundwitness-model'
 import {
   BoundWitnessDivinerConfigSchema,
-  BoundWitnessDivinerQueryPayload,
   isBoundWitnessDivinerQueryPayload,
 } from '@xyo-network/diviner-boundwitness-model'
-import { DefaultLimit, DefaultMaxTimeMS, DefaultOrder, MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
-import { Payload, Schema } from '@xyo-network/payload-model'
-import { BoundWitnessWithMongoMeta, fromDbRepresentation } from '@xyo-network/payload-mongodb'
-import { Filter, SortDirection } from 'mongodb'
+import {
+  DefaultLimit, DefaultMaxTimeMS, DefaultOrder, MongoDBModuleMixin,
+} from '@xyo-network/module-abstract-mongodb'
+import type { Payload, Schema } from '@xyo-network/payload-model'
+import type { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
+import { fromDbRepresentation } from '@xyo-network/payload-mongodb'
+import type { Filter, SortDirection } from 'mongodb'
 
 const MongoDBDivinerBase = MongoDBModuleMixin(BoundWitnessDiviner)
 

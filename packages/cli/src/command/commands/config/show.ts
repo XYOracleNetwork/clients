@@ -1,9 +1,10 @@
-import { EmptyObject } from '@xylabs/object'
-import { ModuleConfig, ModuleConfigSchema } from '@xyo-network/module-model'
-import { CommandBuilder, CommandModule } from 'yargs'
+import type { EmptyObject } from '@xylabs/object'
+import type { ModuleConfig } from '@xyo-network/module-model'
+import { ModuleConfigSchema } from '@xyo-network/module-model'
+import type { CommandBuilder, CommandModule } from 'yargs'
 
 import { readFileDeep } from '../../../lib/index.js'
-import { BaseArguments } from '../../BaseArguments.js'
+import type { BaseArguments } from '../../BaseArguments.js'
 import { outputContext } from '../../util/index.js'
 
 // TODO: We don't want a single config payload
@@ -46,5 +47,4 @@ export const mod: CommandModule<EmptyObject, BaseArguments> = {
   handler,
 }
 
-// eslint-disable-next-line import/no-default-export
 export default mod

@@ -1,7 +1,8 @@
 import { assertEx } from '@xylabs/assert'
 import { HDWallet } from '@xyo-network/account'
-import { ApiConfig } from '@xyo-network/api-models'
-import { AttachableArchivistInstance, isAttachableArchivistInstance } from '@xyo-network/archivist-model'
+import type { ApiConfig } from '@xyo-network/api-models'
+import type { AttachableArchivistInstance } from '@xyo-network/archivist-model'
+import { isAttachableArchivistInstance } from '@xyo-network/archivist-model'
 import { HttpBridge, HttpBridgeConfigSchema } from '@xyo-network/bridge-http'
 
 import { getApiConfig } from './getApiConfig.js'
@@ -18,7 +19,12 @@ export const getArchivist = async (config: ApiConfig = getApiConfig()): Promise<
 export const tryGetArchivist = async (config: ApiConfig = getApiConfig()): Promise<AttachableArchivistInstance | undefined> => {
   const url = config.root ? `${config.apiDomain}/${config.root}` : config.apiDomain
   const account = await HDWallet.random()
-  const bridge = await HttpBridge.create({ account, config: { client: { discoverRoots, url }, schema, security } })
+  const bridge = await HttpBridge.create({
+    account,
+    config: {
+      client: { discoverRoots, url }, schema, security,
+    },
+  })
   await bridge.start()
   const mod = await bridge.resolve(archivistName)
   return isAttachableArchivistInstance(mod) ? mod : undefined

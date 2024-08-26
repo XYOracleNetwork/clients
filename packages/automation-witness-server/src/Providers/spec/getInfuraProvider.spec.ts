@@ -1,4 +1,6 @@
-import { canUseInfuraProvider, getInfuraProvider, getInfuraProviderConfig } from '../getInfuraProvider.js'
+import {
+  canUseInfuraProvider, getInfuraProvider, getInfuraProviderConfig,
+} from '../getInfuraProvider.js'
 
 describe('getInfuraProvider', () => {
   beforeEach(() => {

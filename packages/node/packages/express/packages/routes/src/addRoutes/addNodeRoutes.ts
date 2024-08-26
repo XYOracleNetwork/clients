@@ -1,7 +1,9 @@
-import { Express } from 'express'
+import type { Express } from 'express'
 import { StatusCodes } from 'http-status-codes'
 
-import { getAddress, getByHash, postAddress } from '../routes/index.js'
+import {
+  getAddress, getByHash, postAddress,
+} from '../routes/index.js'
 
 export const addNodeRoutes = (app: Express) => {
   // TODO: Allow other default modules to be mounted at root
@@ -19,7 +21,8 @@ export const addNodeRoutes = (app: Express) => {
     '/',
     (_req, res) => res.redirect(StatusCodes.TEMPORARY_REDIRECT, defaultModuleEndpoint),
     /* #swagger.tags = ['Node'] */
-    /* #swagger.summary = 'Execute the supplied queries, contained as Payloads in one or more Bound Witnesses, against the Node. Implementation is specific to the supplied payload schemas.' */
+    /* #swagger.summary = 'Execute the supplied queries, contained as Payloads in one or more Bound Witnesses, against the Node.
+    Implementation is specific to the supplied payload schemas.' */
   )
   app.get(
     '/:address',
@@ -33,7 +36,8 @@ export const addNodeRoutes = (app: Express) => {
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
     postAddress,
     /* #swagger.tags = ['Node'] */
-    /* #swagger.summary = 'Execute the supplied queries, contained as Payloads in one or more Bound Witnesses. Implementation is specific to the supplied payload schemas.' */
+    /* #swagger.summary = 'Execute the supplied queries, contained as Payloads in one or more Bound Witnesses.
+    Implementation is specific to the supplied payload schemas.' */
   )
   app.get(
     '/:hash',

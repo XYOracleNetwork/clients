@@ -1,9 +1,11 @@
 import { config } from 'dotenv'
-import yargs, { Argv } from 'yargs'
-// eslint-disable-next-line import/no-internal-modules
+import type { Argv } from 'yargs'
+import yargs from 'yargs'
+// eslint-disable-next-line import-x/no-internal-modules
 import { hideBin } from 'yargs/helpers'
 
-import { opts, OutputType } from './command/index.js'
+import type { OutputType } from './command/index.js'
+import { opts } from './command/index.js'
 
 config()
 
@@ -16,9 +18,7 @@ void yargs(hideBin(process.argv))
   .boolean('verbose')
   .options({
     // TODO: Config file
-    config: {
-      config: true,
-    },
+    config: { config: true },
     network: {
       choices: ['local', 'kerplunk', 'main'],
       default: 'kerplunk',

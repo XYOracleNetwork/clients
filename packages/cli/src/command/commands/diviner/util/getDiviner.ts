@@ -1,7 +1,8 @@
-import { asDivinerModule, DivinerModule } from '@xyo-network/diviner-model'
+import type { DivinerModule } from '@xyo-network/diviner-model'
+import { asDivinerModule } from '@xyo-network/diviner-model'
 
 import { printError } from '../../../../lib/index.js'
-import { ModuleArguments } from '../../ModuleArguments.js'
+import type { ModuleArguments } from '../../ModuleArguments.js'
 import { getModuleFromArgs } from '../../util/index.js'
 
 export const getDiviner = async (args: ModuleArguments): Promise<DivinerModule> => {

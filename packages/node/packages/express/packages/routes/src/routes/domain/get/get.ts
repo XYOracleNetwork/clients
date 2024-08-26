@@ -1,6 +1,7 @@
 import { asyncHandler } from '@xylabs/sdk-api-express-ecs'
-import { DomainPayload, DomainPayloadWrapper } from '@xyo-network/domain-payload-plugin'
-import { RequestHandler } from 'express'
+import type { DomainPayload } from '@xyo-network/domain-payload-plugin'
+import { DomainPayloadWrapper } from '@xyo-network/domain-payload-plugin'
+import type { RequestHandler } from 'express'
 import { StatusCodes } from 'http-status-codes'
 
 export type DomainPathParams = {

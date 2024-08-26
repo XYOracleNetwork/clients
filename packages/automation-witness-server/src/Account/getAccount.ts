@@ -1,4 +1,4 @@
-import { AccountInstance } from '@xyo-network/account'
+import type { AccountInstance } from '@xyo-network/account'
 
 import { getWallet } from './getWallet.js'
 

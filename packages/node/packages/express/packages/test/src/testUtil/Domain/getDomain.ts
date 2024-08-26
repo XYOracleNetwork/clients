@@ -1,4 +1,4 @@
-import { DomainPayload } from '@xyo-network/domain-payload-plugin'
+import type { DomainPayload } from '@xyo-network/domain-payload-plugin'
 import { StatusCodes } from 'http-status-codes'
 
 import { getRequestClient } from '../Server/index.js'

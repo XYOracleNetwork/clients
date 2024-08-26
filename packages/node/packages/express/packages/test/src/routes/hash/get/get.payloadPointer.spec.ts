@@ -1,19 +1,21 @@
 import { Account } from '@xyo-network/account'
-import { BoundWitness } from '@xyo-network/boundwitness-model'
-import { Order } from '@xyo-network/diviner-payload-model'
-import {
+import type { BoundWitness } from '@xyo-network/boundwitness-model'
+import type { Order } from '@xyo-network/diviner-payload-model'
+import type {
   PayloadAddressRule,
   PayloadPointerPayload,
-  PayloadPointerSchema,
   PayloadRule,
   PayloadSchemaRule,
   PayloadTimestampOrderRule,
 } from '@xyo-network/node-core-model'
+import { PayloadPointerSchema } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 
-import { getHash, getNewBoundWitness, insertBlock, insertPayload } from '../../../testUtil/index.js'
+import {
+  getHash, getNewBoundWitness, insertBlock, insertPayload,
+} from '../../../testUtil/index.js'
 
 export const createPointer = async (
   addresses: string[][] = [],
@@ -50,7 +52,11 @@ export const expectError = (result: Payload, detail: string, status: string, tit
   expect(result).toBeObject()
   const error = result as unknown as { errors: { detail: string; status: string; title?: string }[] }
   expect(error.errors).toBeArrayOfSize(1)
-  const expected = title ? { detail, status, title } : { detail, status }
+  const expected = title
+    ? {
+        detail, status, title,
+      }
+    : { detail, status }
   expect(error.errors[0]).toEqual(expected)
 }
 

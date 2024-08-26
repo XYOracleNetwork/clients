@@ -1,13 +1,17 @@
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
-import { ApiCallJsonResult, isApiCallJsonResult, isApiCallResult } from '@xyo-network/api-call-witness'
-import { ArchivistInstance } from '@xyo-network/archivist-model'
-import { DivinerInstance } from '@xyo-network/diviner-model'
-import { asNodeInstance, NodeInstance } from '@xyo-network/node-model'
-import { WithMeta, WithSources } from '@xyo-network/payload-model'
-import { SentinelInstance } from '@xyo-network/sentinel-model'
+import type { ApiCallJsonResult } from '@xyo-network/api-call-witness'
+import { isApiCallJsonResult, isApiCallResult } from '@xyo-network/api-call-witness'
+import type { ArchivistInstance } from '@xyo-network/archivist-model'
+import type { DivinerInstance } from '@xyo-network/diviner-model'
+import type { NodeInstance } from '@xyo-network/node-model'
+import { asNodeInstance } from '@xyo-network/node-model'
+import type { WithMeta, WithSources } from '@xyo-network/payload-model'
+import type { SentinelInstance } from '@xyo-network/sentinel-model'
 
-import { getArchivistByNameFromChildNode, getBridge, getDivinerByNameFromChildNode, getSentinelByNameFromChildNode } from '../../testUtil/index.js'
+import {
+  getArchivistByNameFromChildNode, getBridge, getDivinerByNameFromChildNode, getSentinelByNameFromChildNode,
+} from '../../testUtil/index.js'
 
 const nodeName = 'XYOPublic:NftMetadataNode'
 const sentinelName = 'NftMetadataSentinel'

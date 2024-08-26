@@ -4,9 +4,7 @@ const generateJestConfig = ({ esModules }: { esModules: string[] }) => {
     coveragePathIgnorePatterns: ['<rootDir>/(.*)/dist'],
     extensionsToTreatAsEsm: ['.ts'],
     maxWorkers: '100%',
-    moduleNameMapper: {
-      '^(\\.{1,2}/.*)\\.js$': '$1',
-    },
+    moduleNameMapper: { '^(\\.{1,2}/.*)\\.js$': '$1' },
     preset: 'ts-jest',
     runner: 'groups',
     setupFiles: ['dotenv/config'],
@@ -30,5 +28,4 @@ const generateJestConfig = ({ esModules }: { esModules: string[] }) => {
 
 const config = generateJestConfig({ esModules: ['is-ip', 'ip-regex', 'lodash-es', 'uuid', 'lodash-es'] })
 
-// eslint-disable-next-line import/no-default-export
 export default config

@@ -1,17 +1,21 @@
 import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
-import { Address, Hash, hexFromHexString } from '@xylabs/hex'
-import { BoundWitness } from '@xyo-network/boundwitness-model'
+import type { Address, Hash } from '@xylabs/hex'
+import { hexFromHexString } from '@xylabs/hex'
+import type { BoundWitness } from '@xyo-network/boundwitness-model'
+import type { AddressHistoryQueryPayload } from '@xyo-network/diviner-address-history'
 import {
   AddressHistoryDiviner,
   AddressHistoryDivinerConfigSchema,
-  AddressHistoryQueryPayload,
   isAddressHistoryQueryPayload,
 } from '@xyo-network/diviner-address-history'
-import { DefaultLimit, DefaultMaxTimeMS, MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
-import { Payload, Schema } from '@xyo-network/payload-model'
-import { BoundWitnessWithMongoMeta, fromDbRepresentation } from '@xyo-network/payload-mongodb'
-import { Filter } from 'mongodb'
+import {
+  DefaultLimit, DefaultMaxTimeMS, MongoDBModuleMixin,
+} from '@xyo-network/module-abstract-mongodb'
+import type { Payload, Schema } from '@xyo-network/payload-model'
+import type { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
+import { fromDbRepresentation } from '@xyo-network/payload-mongodb'
+import type { Filter } from 'mongodb'
 
 const MongoDBDivinerBase = MongoDBModuleMixin(AddressHistoryDiviner)
 
@@ -23,8 +27,11 @@ export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
     const query = payloads?.find<AddressHistoryQueryPayload>(isAddressHistoryQueryPayload)
     // TODO: Support multiple queries
     if (!query) return []
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { address, schema, limit, offset, order, ...props } = query
+
+    const {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      address, schema, limit, offset, order, ...props
+    } = query
     // TODO: The address field seems to be meant for the address
     // of the intended handler but is being used here to filter
     // for the query. This should be fixed to use a separate field.

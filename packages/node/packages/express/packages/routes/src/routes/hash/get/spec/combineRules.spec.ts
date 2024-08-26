@@ -1,4 +1,6 @@
-import { PayloadAddressRule, PayloadRule, PayloadSchemaRule, PayloadTimestampOrderRule } from '@xyo-network/node-core-model'
+import type {
+  PayloadAddressRule, PayloadRule, PayloadSchemaRule, PayloadTimestampOrderRule,
+} from '@xyo-network/node-core-model'
 
 import { combineRules } from '../combineRules.js'
 

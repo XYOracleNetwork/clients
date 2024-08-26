@@ -4,7 +4,8 @@ import { AddressHistoryDiviner } from '@xyo-network/diviner-address-history'
 import { MemoryAddressSpaceDiviner } from '@xyo-network/diviner-address-space'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness'
 import { MemoryBoundWitnessStatsDiviner } from '@xyo-network/diviner-boundwitness-stats'
-import { ForecastingDivinerParams, MemoryForecastingDiviner } from '@xyo-network/diviner-forecasting'
+import type { ForecastingDivinerParams } from '@xyo-network/diviner-forecasting'
+import { MemoryForecastingDiviner } from '@xyo-network/diviner-forecasting'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload'
 import { MemoryPayloadStatsDiviner } from '@xyo-network/diviner-payload-stats'
 import { MemorySchemaListDiviner } from '@xyo-network/diviner-schema-list'
@@ -24,10 +25,10 @@ import {
   ImageThumbnailQueryToImageThumbnailIndexQueryDiviner,
   ImageThumbnailStateToIndexCandidateDiviner,
 } from '@xyo-network/image-thumbnail-plugin'
-import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
+import type { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
 import { TYPES } from '@xyo-network/node-core-types'
-import { Container } from 'inversify'
+import type { Container } from 'inversify'
 
 const getMemoryForecastingDiviner = () => {
   const forecastingMethod = 'arimaForecasting'

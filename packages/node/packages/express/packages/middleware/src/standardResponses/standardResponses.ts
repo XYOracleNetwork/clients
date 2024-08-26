@@ -1,5 +1,5 @@
-import { NoResBody } from '@xylabs/sdk-api-express-ecs'
-import { Request, Response } from 'express'
+import type { NoResBody } from '@xylabs/sdk-api-express-ecs'
+import type { Request, Response } from 'express'
 import mung from 'express-mung'
 
 import { getResponseMetadata } from './getResponseMetadata.js'
@@ -53,6 +53,4 @@ const transformResponse = (body: unknown, _req: Request, res: Response<NoResBody
  * the standard response format (compatible with JSON API)
  */
 
-export const standardResponses = mung.json(transformResponse, {
-  mungError: false,
-})
+export const standardResponses = mung.json(transformResponse, { mungError: false })

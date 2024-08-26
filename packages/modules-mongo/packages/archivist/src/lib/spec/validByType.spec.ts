@@ -1,10 +1,11 @@
 import { Account } from '@xyo-network/account'
-import { ArchivistInsertQuery, ArchivistInsertQuerySchema } from '@xyo-network/archivist-model'
+import type { ArchivistInsertQuery } from '@xyo-network/archivist-model'
+import { ArchivistInsertQuerySchema } from '@xyo-network/archivist-model'
 import { BoundWitnessBuilder, QueryBoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
-import { BoundWitness } from '@xyo-network/boundwitness-model'
+import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload } from '@xyo-network/payload-model'
-import { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
+import type { Payload } from '@xyo-network/payload-model'
+import type { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
 
 import { validByType } from '../validByType.js'
 

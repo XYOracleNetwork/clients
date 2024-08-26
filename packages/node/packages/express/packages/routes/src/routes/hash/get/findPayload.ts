@@ -1,11 +1,14 @@
-import { ArchivistInstance } from '@xyo-network/archivist-model'
+import type { ArchivistInstance } from '@xyo-network/archivist-model'
 import { BoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
-import { BoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-abstract'
-import { BoundWitnessDivinerQueryPayload, BoundWitnessDivinerQuerySchema } from '@xyo-network/diviner-boundwitness-model'
-import { PayloadDiviner } from '@xyo-network/diviner-payload-abstract'
-import { PayloadDivinerQueryPayload, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
-import { isBoundWitnessPointer, PayloadSearchCriteria, PointerPayload } from '@xyo-network/node-core-model'
-import { Payload, Schema } from '@xyo-network/payload-model'
+import type { BoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-abstract'
+import type { BoundWitnessDivinerQueryPayload } from '@xyo-network/diviner-boundwitness-model'
+import { BoundWitnessDivinerQuerySchema } from '@xyo-network/diviner-boundwitness-model'
+import type { PayloadDiviner } from '@xyo-network/diviner-payload-abstract'
+import type { PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
+import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
+import type { PayloadSearchCriteria, PointerPayload } from '@xyo-network/node-core-model'
+import { isBoundWitnessPointer } from '@xyo-network/node-core-model'
+import type { Payload, Schema } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 import { combineRules } from './combineRules.js'
@@ -13,7 +16,9 @@ import { combineRules } from './combineRules.js'
 const limit = 1
 
 const createBoundWitnessFilterFromSearchCriteria = (searchCriteria: PayloadSearchCriteria): BoundWitnessDivinerQueryPayload[] => {
-  const { addresses, order = 'desc', schemas, timestamp } = searchCriteria
+  const {
+    addresses, order = 'desc', schemas, timestamp,
+  } = searchCriteria
   const query: BoundWitnessDivinerQueryPayload = {
     addresses,
     limit,
@@ -26,8 +31,12 @@ const createBoundWitnessFilterFromSearchCriteria = (searchCriteria: PayloadSearc
 }
 
 const createPayloadFilterFromSearchCriteria = (searchCriteria: PayloadSearchCriteria): Payload[] => {
-  const { order = 'desc', schemas, timestamp } = searchCriteria
-  const query: PayloadDivinerQueryPayload = { limit, order, schema: PayloadDivinerQuerySchema, schemas, timestamp }
+  const {
+    order = 'desc', schemas, timestamp,
+  } = searchCriteria
+  const query: PayloadDivinerQueryPayload = {
+    limit, order, schema: PayloadDivinerQuerySchema, schemas, timestamp,
+  }
   return [query]
 }
 

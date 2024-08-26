@@ -1,15 +1,17 @@
-import { Address } from '@xylabs/hex'
+import type { Address } from '@xylabs/hex'
 import { SchemaListDiviner } from '@xyo-network/diviner-schema-list-abstract'
+import type {
+  SchemaListPayload,
+  SchemaListQueryPayload,
+} from '@xyo-network/diviner-schema-list-model'
 import {
   isSchemaListQueryPayload,
   SchemaListDivinerConfigSchema,
   SchemaListDivinerSchema,
-  SchemaListPayload,
-  SchemaListQueryPayload,
 } from '@xyo-network/diviner-schema-list-model'
 import { MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload, Schema } from '@xyo-network/payload-model'
+import type { Payload, Schema } from '@xyo-network/payload-model'
 
 const MongoDBDivinerBase = MongoDBModuleMixin(SchemaListDiviner)
 

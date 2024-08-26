@@ -1,4 +1,4 @@
-import { Container } from 'inversify'
+import type { Container } from 'inversify'
 
 import { addArchivistModuleFactories } from './Archivist/index.js'
 import { addDivinerModuleFactories } from './Diviner/index.js'

@@ -1,7 +1,8 @@
 import { assertEx } from '@xylabs/assert'
 import { HDWallet } from '@xyo-network/account'
-import { HttpBridge, HttpBridgeConfig, HttpBridgeConfigSchema, HttpBridgeParams } from '@xyo-network/bridge-http'
-import { BridgeInstance } from '@xyo-network/bridge-model'
+import type { HttpBridgeConfig, HttpBridgeParams } from '@xyo-network/bridge-http'
+import { HttpBridge, HttpBridgeConfigSchema } from '@xyo-network/bridge-http'
+import type { BridgeInstance } from '@xyo-network/bridge-model'
 
 let bridge: HttpBridge<HttpBridgeParams>
 
@@ -12,7 +13,9 @@ export const getBridge = async (): Promise<BridgeInstance> => {
 
   const schema = HttpBridgeConfigSchema
   const security = { allowAnonymous: true }
-  const config: HttpBridgeConfig = { discoverRoots: 'start', name: 'TestBridge', nodeUrl, schema, security }
+  const config: HttpBridgeConfig = {
+    discoverRoots: 'start', name: 'TestBridge', nodeUrl, schema, security,
+  }
   const params: HttpBridgeParams = { account: await HDWallet.random(), config }
   bridge = await HttpBridge.create(params)
   await bridge.start()

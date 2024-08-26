@@ -1,12 +1,12 @@
 import { asArchivistInstance } from '@xyo-network/archivist-model'
-import { BoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-abstract'
+import type { BoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-abstract'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
-import { PayloadDiviner } from '@xyo-network/diviner-payload-abstract'
+import type { PayloadDiviner } from '@xyo-network/diviner-payload-abstract'
 import { resolveByName } from '@xyo-network/express-node-lib'
-import { PointerPayload } from '@xyo-network/node-core-model'
+import type { PointerPayload } from '@xyo-network/node-core-model'
 import { TYPES } from '@xyo-network/node-core-types'
-import { Payload } from '@xyo-network/payload-model'
-import { Request } from 'express'
+import type { Payload } from '@xyo-network/payload-model'
+import type { Request } from 'express'
 
 import { findPayload } from './findPayload.js'
 

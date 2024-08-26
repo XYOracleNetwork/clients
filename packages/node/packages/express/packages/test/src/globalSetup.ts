@@ -5,25 +5,26 @@ import { HDWallet } from '@xyo-network/account'
 import { getApp } from '@xyo-network/express-node-server'
 import { canAddMongoModules } from '@xyo-network/node-core-modules-mongo'
 import { WALLET_PATHS } from '@xyo-network/node-core-types'
-import { MemoryNode, MemoryNodeParams } from '@xyo-network/node-memory'
+import type { MemoryNodeParams } from '@xyo-network/node-memory'
+import { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadValidator } from '@xyo-network/payload-validator'
 import { SchemaNameValidator } from '@xyo-network/schema-name-validator'
-import { Express } from 'express'
-import { Config } from 'jest'
+import type { Express } from 'express'
+import type { Config } from 'jest'
 import { MongoMemoryReplSet } from 'mongodb-memory-server'
 import supertest from 'supertest'
-// eslint-disable-next-line import/no-internal-modules
+// eslint-disable-next-line import-x/no-internal-modules
 import type TestAgent from 'supertest/lib/agent.js'
 
 disableGloballyUnique()
 
 // Augment global scope with shared variables (must be var)
 declare global {
-  // eslint-disable-next-line no-var
+
   var app: Express
-  // eslint-disable-next-line no-var
+
   var mongo: MongoMemoryReplSet
-  // eslint-disable-next-line no-var
+
   var req: TestAgent
 }
 
@@ -79,5 +80,4 @@ const setup = async (_globalConfig: Config, _projectConfig: Config) => {
   await setupNode()
 }
 
-// eslint-disable-next-line id-denylist
 module.exports = setup

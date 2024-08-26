@@ -1,6 +1,8 @@
-import { Express } from 'express'
+import type { Express } from 'express'
 
-import { defineJobs, getJobQueue, scheduleJobs, startJobQueue } from '../JobQueue/index.js'
+import {
+  defineJobs, getJobQueue, scheduleJobs, startJobQueue,
+} from '../JobQueue/index.js'
 import { getJobs } from '../Jobs/index.js'
 
 export const addDistributedJobs = async (_app: Express) => {

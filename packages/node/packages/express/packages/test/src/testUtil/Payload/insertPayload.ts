@@ -1,5 +1,5 @@
-import { AccountInstance } from '@xyo-network/account-model'
-import { Payload } from '@xyo-network/payload-model'
+import type { AccountInstance } from '@xyo-network/account-model'
+import type { Payload } from '@xyo-network/payload-model'
 
 import { unitTestSigningAccount } from '../Account/index.js'
 import { getArchivistByName } from '../Archivist/index.js'

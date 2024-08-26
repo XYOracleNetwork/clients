@@ -1,8 +1,9 @@
 import { describeIf } from '@xylabs/jest-helpers'
-import { PayloadDivinerConfigSchema, PayloadDivinerQueryPayload, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
+import type { PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
+import { PayloadDivinerConfigSchema, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
+import type { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock } from 'jest-mock-extended'
 
@@ -34,7 +35,9 @@ describeIf(hasMongoDBConfig())('MongoDBPayloadDiviner', () => {
   describe('divine', () => {
     describe('with valid query', () => {
       it('divines', async () => {
-        const query: PayloadDivinerQueryPayload = { limit: 1, schema: PayloadDivinerQuerySchema, schemas: [testSchema] }
+        const query: PayloadDivinerQueryPayload = {
+          limit: 1, schema: PayloadDivinerQuerySchema, schemas: [testSchema],
+        }
         const result = await sut.divine([query])
         expect(result).toBeArrayOfSize(1)
         const actual = result[0]
@@ -45,7 +48,9 @@ describeIf(hasMongoDBConfig())('MongoDBPayloadDiviner', () => {
     })
     describe('with custom query prop', () => {
       it('returns payloads matching the filter criteria', async () => {
-        const query: PayloadDivinerQueryPayload & { url: string } = { limit: 1, schema: PayloadDivinerQuerySchema, url }
+        const query: PayloadDivinerQueryPayload & { url: string } = {
+          limit: 1, schema: PayloadDivinerQuerySchema, url,
+        }
         const result = await sut.divine([query])
         expect(result).toBeArrayOfSize(1)
         const actual = result[0]
@@ -55,7 +60,9 @@ describeIf(hasMongoDBConfig())('MongoDBPayloadDiviner', () => {
         expect((actual as { url?: string })?.url).toBe(url)
       })
       it('does not return payloads not matching the filter criteria', async () => {
-        const query: PayloadDivinerQueryPayload & { url: string } = { limit: 1, schema: PayloadDivinerQuerySchema, url: 'https://foo.bar' }
+        const query: PayloadDivinerQueryPayload & { url: string } = {
+          limit: 1, schema: PayloadDivinerQuerySchema, url: 'https://foo.bar',
+        }
         const result = await sut.divine([query])
         expect(result).toBeArrayOfSize(0)
       })

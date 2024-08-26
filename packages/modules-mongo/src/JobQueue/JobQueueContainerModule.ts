@@ -1,6 +1,7 @@
-import { JobQueue } from '@xyo-network/node-core-model'
+import type { JobQueue } from '@xyo-network/node-core-model'
 import { TYPES } from '@xyo-network/node-core-types'
-import { ContainerModule, interfaces } from 'inversify'
+import type { interfaces } from 'inversify'
+import { ContainerModule } from 'inversify'
 
 import { getJobQueue } from './getJobQueue.js'
 

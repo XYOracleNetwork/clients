@@ -1,8 +1,10 @@
-import { EmptyObject } from '@xylabs/object'
-import { ArgumentsCamelCase, CommandBuilder, CommandModule } from 'yargs'
+import type { EmptyObject } from '@xylabs/object'
+import type {
+  ArgumentsCamelCase, CommandBuilder, CommandModule,
+} from 'yargs'
 
 import { stop } from '../../../lib/index.js'
-import { BaseArguments } from '../../BaseArguments.js'
+import type { BaseArguments } from '../../BaseArguments.js'
 import { outputContext } from '../../util/index.js'
 
 type Arguments = BaseArguments & {
@@ -36,5 +38,4 @@ const mod: CommandModule<EmptyObject, Arguments> = {
   handler,
 }
 
-// eslint-disable-next-line import/no-default-export
 export default mod

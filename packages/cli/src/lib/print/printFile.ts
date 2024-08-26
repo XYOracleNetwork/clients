@@ -1,4 +1,6 @@
-import { ScreenBuffer, terminal, TextBuffer } from 'terminal-kit'
+import {
+  ScreenBuffer, terminal, TextBuffer,
+} from 'terminal-kit'
 
 type LoadFunction = (x: string) => Promise<void>
 

@@ -1,8 +1,9 @@
-import { Hash } from '@xylabs/hex'
-import { ArchivistInstance, asArchivistInstance } from '@xyo-network/archivist-model'
+import type { Hash } from '@xylabs/hex'
+import type { ArchivistInstance } from '@xyo-network/archivist-model'
+import { asArchivistInstance } from '@xyo-network/archivist-model'
 import { isPointerPayload } from '@xyo-network/node-core-model'
-import { Payload } from '@xyo-network/payload-model'
-import { Request } from 'express'
+import type { Payload } from '@xyo-network/payload-model'
+import type { Request } from 'express'
 
 import { resolvePointer } from './resolvePointer.js'
 

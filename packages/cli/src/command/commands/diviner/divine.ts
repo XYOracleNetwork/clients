@@ -1,4 +1,6 @@
-import { ArgumentsCamelCase, Argv, CommandBuilder, CommandModule } from 'yargs'
+import type {
+  ArgumentsCamelCase, Argv, CommandBuilder, CommandModule,
+} from 'yargs'
 
 import { printLine } from '../../../lib/index.js'
 
@@ -27,5 +29,4 @@ const mod: CommandModule = {
   handler,
 }
 
-// eslint-disable-next-line import/no-default-export
 export default mod

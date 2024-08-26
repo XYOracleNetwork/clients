@@ -1,23 +1,26 @@
-import { Address } from '@xylabs/hex'
+import type { Address } from '@xylabs/hex'
 import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
-import { AccountInstance } from '@xyo-network/account-model'
+import type { AccountInstance } from '@xyo-network/account-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
+import type {
+  BoundWitnessStatsPayload,
+  BoundWitnessStatsQueryPayload,
+} from '@xyo-network/diviner-boundwitness-stats-model'
 import {
   BoundWitnessStatsDivinerConfigSchema,
   BoundWitnessStatsDivinerSchema,
-  BoundWitnessStatsPayload,
-  BoundWitnessStatsQueryPayload,
   BoundWitnessStatsQuerySchema,
 } from '@xyo-network/diviner-boundwitness-stats-model'
-import { DivinerInstance, DivinerParams } from '@xyo-network/diviner-model'
+import type { DivinerInstance, DivinerParams } from '@xyo-network/diviner-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
-import { JobQueue } from '@xyo-network/node-core-model'
+import type { JobQueue } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { WithMeta } from '@xyo-network/payload-model'
-import { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
+import type { WithMeta } from '@xyo-network/payload-model'
+import type { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
-import { mock, MockProxy } from 'jest-mock-extended'
+import type { MockProxy } from 'jest-mock-extended'
+import { mock } from 'jest-mock-extended'
 
 import { MongoDBBoundWitnessStatsDiviner } from '../MongoDBBoundWitnessStatsDiviner.js'
 

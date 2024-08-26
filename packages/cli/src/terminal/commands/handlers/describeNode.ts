@@ -1,5 +1,6 @@
-import { ModuleDescriptionPayload, ModuleDescriptionSchema } from '@xyo-network/module-model'
-import { NodeInstance } from '@xyo-network/node-model'
+import type { ModuleDescriptionPayload } from '@xyo-network/module-model'
+import { ModuleDescriptionSchema } from '@xyo-network/module-model'
+import type { NodeInstance } from '@xyo-network/node-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 
 import { printLine, printTitle } from '../../../lib/index.js'

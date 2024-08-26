@@ -1,7 +1,9 @@
 import { assertEx } from '@xylabs/assert'
-import { Collection, DeleteResult, Document, Filter, FindCursor, MongoClient, OptionalUnlessRequiredId, UpdateFilter, WithId } from 'mongodb'
+import type {
+  Collection, DeleteResult, Document, Filter, FindCursor, MongoClient, OptionalUnlessRequiredId, UpdateFilter, WithId,
+} from 'mongodb'
 
-import { BaseMongoSdkConfig } from './Config.js'
+import type { BaseMongoSdkConfig } from './Config.js'
 import { MongoClientWrapper } from './Wrapper.js'
 
 export class BaseMongoSdk<T extends Document> {
@@ -14,6 +16,7 @@ export class BaseMongoSdk<T extends Document> {
   get uri() {
     return (
       this.config.dbConnectionString
+      // eslint-disable-next-line @stylistic/max-len
       ?? `mongodb+srv://${this.config.dbUserName}:${this.config.dbPassword}@${this.config.dbDomain}.mongodb.net/${this.config.dbName}?retryWrites=true&w=majority`
     )
   }

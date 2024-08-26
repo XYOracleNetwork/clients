@@ -1,4 +1,4 @@
-import { PackageManifestPayload } from '@xyo-network/manifest-model'
+import type { PackageManifestPayload } from '@xyo-network/manifest-model'
 
 import imageThumbnailNodeManifest from './imageThumbnailNode.json'
 import nftContractNodeManifest from './nftContractNode.json'

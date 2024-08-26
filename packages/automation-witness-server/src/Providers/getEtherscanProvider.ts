@@ -1,5 +1,6 @@
 import { assertEx } from '@xylabs/assert'
-import { EtherscanProvider, Provider } from 'ethers'
+import type { Provider } from 'ethers'
+import { EtherscanProvider } from 'ethers'
 
 let instance: EtherscanProvider | undefined
 

@@ -1,6 +1,7 @@
-import { BoundWitness, isBoundWitness, isQueryBoundWitness } from '@xyo-network/boundwitness-model'
+import type { BoundWitness } from '@xyo-network/boundwitness-model'
+import { isBoundWitness, isQueryBoundWitness } from '@xyo-network/boundwitness-model'
 import { BoundWitnessWrapper, QueryBoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
-import { Payload } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 export const validByType = async (payloads: Payload[] = []) => {

@@ -1,6 +1,6 @@
 import type { EventEmitter } from 'node:stream'
 
-import { Job } from '@xyo-network/shared'
+import type { Job } from '@xyo-network/shared'
 
 /** @internal */
 export interface DefineOptions {

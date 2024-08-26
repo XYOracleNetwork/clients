@@ -3,22 +3,31 @@ import { delay } from '@xylabs/delay'
 import { fulfilled, rejected } from '@xylabs/promise'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { SchemaStatsDiviner } from '@xyo-network/diviner-schema-stats-abstract'
+import type {
+  SchemaStatsPayload,
+  SchemaStatsQueryPayload,
+} from '@xyo-network/diviner-schema-stats-model'
 import {
   isSchemaStatsQueryPayload,
   SchemaStatsDivinerConfigSchema,
   SchemaStatsDivinerSchema,
-  SchemaStatsPayload,
-  SchemaStatsQueryPayload,
 } from '@xyo-network/diviner-schema-stats-model'
-import { COLLECTIONS, DATABASES, fromDbProperty, MongoDBModuleMixin, toDbProperty } from '@xyo-network/module-abstract-mongodb'
-import { AddressPayload, AddressSchema } from '@xyo-network/module-model'
+import {
+  COLLECTIONS, DATABASES, fromDbProperty, MongoDBModuleMixin, toDbProperty,
+} from '@xyo-network/module-abstract-mongodb'
+import type { AddressPayload } from '@xyo-network/module-model'
+import { AddressSchema } from '@xyo-network/module-model'
 import { TYPES } from '@xyo-network/node-core-types'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload, Schema, WithMeta, WithSources } from '@xyo-network/payload-model'
-import { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
+import type {
+  Payload, Schema, WithMeta, WithSources,
+} from '@xyo-network/payload-model'
+import type { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { MongoClientWrapper } from '@xyo-network/sdk-xyo-mongo-js'
-import { Job, JobProvider } from '@xyo-network/shared'
-import { ChangeStream, ChangeStreamInsertDocument, ChangeStreamOptions, ResumeToken, UpdateOptions } from 'mongodb'
+import type { Job, JobProvider } from '@xyo-network/shared'
+import type {
+  ChangeStream, ChangeStreamInsertDocument, ChangeStreamOptions, ResumeToken, UpdateOptions,
+} from 'mongodb'
 
 import { defineJobs, scheduleJobs } from './JobQueue/index.js'
 import { SetIterator } from './SetIterator/index.js'

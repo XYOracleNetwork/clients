@@ -1,7 +1,7 @@
 import { Account } from '@xyo-network/account'
 import { COLLECTIONS, getBaseMongoSdk } from '@xyo-network/module-abstract-mongodb'
 
-import { AddressInfo } from '../Mongo/index.js'
+import type { AddressInfo } from '../Mongo/index.js'
 import { MongoDBPreviousHashStore } from './MongoDBPreviousHashStore.js'
 
 export const addPreviousHashStore = () => {

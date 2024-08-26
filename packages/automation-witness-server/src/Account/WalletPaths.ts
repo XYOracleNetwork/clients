@@ -18,12 +18,8 @@ const ModulePath = {
 
 export const WalletPaths = {
   CryptoMarket: {
-    AdHocWitness: {
-      AssetDivinerResult: `${AutomationPath.CryptoMarket}${ModulePath.AdHocWitness}/1` as const,
-    } as const,
-    Diviner: {
-      Asset: `${AutomationPath.CryptoMarket}${ModulePath.Diviner}/1` as const,
-    } as const,
+    AdHocWitness: { AssetDivinerResult: `${AutomationPath.CryptoMarket}${ModulePath.AdHocWitness}/1` as const } as const,
+    Diviner: { Asset: `${AutomationPath.CryptoMarket}${ModulePath.Diviner}/1` as const } as const,
     Sentinel: {
       AssetDivinerResult: `${AutomationPath.CryptoMarket}${ModulePath.Sentinel}/2` as const,
       Market: `${AutomationPath.CryptoMarket}${ModulePath.Sentinel}/1` as const,
@@ -34,12 +30,8 @@ export const WalletPaths = {
     } as const,
   } as const,
   EthereumGas: {
-    AdHocWitness: {
-      PriceDivinerResult: `${AutomationPath.EthereumGas}${ModulePath.AdHocWitness}/1` as const,
-    } as const,
-    Diviner: {
-      Price: `${AutomationPath.EthereumGas}${ModulePath.Diviner}/1` as const,
-    } as const,
+    AdHocWitness: { PriceDivinerResult: `${AutomationPath.EthereumGas}${ModulePath.AdHocWitness}/1` as const } as const,
+    Diviner: { Price: `${AutomationPath.EthereumGas}${ModulePath.Diviner}/1` as const } as const,
     Sentinel: {
       Gas: `${AutomationPath.EthereumGas}${ModulePath.Sentinel}/1` as const,
       PriceDivinerResult: `${AutomationPath.EthereumGas}${ModulePath.Sentinel}/2` as const,
@@ -53,10 +45,6 @@ export const WalletPaths = {
       Ethgasstation: `${AutomationPath.EthereumGas}${ModulePath.Witness}/6` as const,
     } as const,
   } as const,
-  MediumRss: {
-    Node: `${AutomationPath.MediumRss}${ModulePath.Node}` as const,
-  } as const,
-  TZero: {
-    Node: `${AutomationPath.TZero}${ModulePath.Node}` as const,
-  } as const,
+  MediumRss: { Node: `${AutomationPath.MediumRss}${ModulePath.Node}` as const } as const,
+  TZero: { Node: `${AutomationPath.TZero}${ModulePath.Node}` as const } as const,
 }

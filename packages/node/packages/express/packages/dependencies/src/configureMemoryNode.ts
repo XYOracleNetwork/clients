@@ -2,18 +2,24 @@ import { readFile } from 'node:fs/promises'
 
 import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
-import { Hash } from '@xylabs/hex'
-import { AccountInstance, HDWallet } from '@xyo-network/account'
-import { ArchivistInsertQuerySchema, isArchivistInstance, withArchivistInstance } from '@xyo-network/archivist-model'
-import { ManifestWrapper, ModuleManifest, PackageManifestPayload } from '@xyo-network/manifest'
-import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
-import { ModuleConfig } from '@xyo-network/module-model'
+import type { Hash } from '@xylabs/hex'
+import type { AccountInstance } from '@xyo-network/account'
+import { HDWallet } from '@xyo-network/account'
+import {
+  ArchivistInsertQuerySchema, isArchivistInstance, withArchivistInstance,
+} from '@xyo-network/archivist-model'
+import type { ModuleManifest, PackageManifestPayload } from '@xyo-network/manifest'
+import { ManifestWrapper } from '@xyo-network/manifest'
+import type { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
+import type { ModuleConfig } from '@xyo-network/module-model'
 import { TYPES } from '@xyo-network/node-core-types'
-import { NodeInstance } from '@xyo-network/node-model'
+import type { NodeInstance } from '@xyo-network/node-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Container } from 'inversify'
+import type { Container } from 'inversify'
 
-import { defaultNode, nftContractNode, nftMetadataNode } from './Manifest/index.js'
+import {
+  defaultNode, nftContractNode, nftMetadataNode,
+} from './Manifest/index.js'
 import { witnessNftCollections } from './witnessNftCollections.js'
 
 // TODO: How to inject account for node that is to be created from config?

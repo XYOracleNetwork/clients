@@ -1,8 +1,10 @@
-import { EmptyObject } from '@xylabs/object'
-import { ArgumentsCamelCase, Argv, CommandBuilder, CommandModule } from 'yargs'
+import type { EmptyObject } from '@xylabs/object'
+import type {
+  ArgumentsCamelCase, Argv, CommandBuilder, CommandModule,
+} from 'yargs'
 
 import { printLine } from '../../../lib/index.js'
-import { ModuleArguments } from '../ModuleArguments.js'
+import type { ModuleArguments } from '../ModuleArguments.js'
 
 type Arguments = ModuleArguments & {
   payloads: string[]
@@ -10,7 +12,9 @@ type Arguments = ModuleArguments & {
 
 export const aliases: ReadonlyArray<string> = []
 export const builder: CommandBuilder = (yargs: Argv) =>
-  yargs.usage('Usage: $0 archivist insert <payloads..>').positional('payloads', { array: true, demandOption: true, type: 'string' })
+  yargs.usage('Usage: $0 archivist insert <payloads..>').positional('payloads', {
+    array: true, demandOption: true, type: 'string',
+  })
 
 export const command = 'insert <payloads..>'
 export const deprecated = false
@@ -28,5 +32,4 @@ const mod: CommandModule<EmptyObject, Arguments> = {
   handler,
 }
 
-// eslint-disable-next-line import/no-default-export
 export default mod

@@ -1,5 +1,5 @@
 import { assertEx } from '@xylabs/assert'
-import { JobQueue } from '@xyo-network/node-core-model'
+import type { JobQueue } from '@xyo-network/node-core-model'
 import { Agenda } from 'agenda'
 
 import { getName } from './getName.js'

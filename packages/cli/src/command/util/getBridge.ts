@@ -1,8 +1,10 @@
-import { HDWallet, WalletInstance } from '@xyo-network/account'
-import { HttpBridge, HttpBridgeParams } from '@xyo-network/bridge-http'
+import type { WalletInstance } from '@xyo-network/account'
+import { HDWallet } from '@xyo-network/account'
+import type { HttpBridgeParams } from '@xyo-network/bridge-http'
+import { HttpBridge } from '@xyo-network/bridge-http'
 
 import { printError } from '../../lib/index.js'
-import { BaseArguments } from '../BaseArguments.js'
+import type { BaseArguments } from '../BaseArguments.js'
 import { getBridgeConfig } from './getBridgeConfig.js'
 
 // TODO: Grab from config, rethink default path, use hardened path?

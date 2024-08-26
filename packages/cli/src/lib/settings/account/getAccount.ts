@@ -1,8 +1,8 @@
 import { generateMnemonic } from '@scure/bip39'
-// eslint-disable-next-line import/no-internal-modules
+// eslint-disable-next-line import-x/no-internal-modules
 import { wordlist } from '@scure/bip39/wordlists/english'
 import { HDWallet } from '@xyo-network/account'
-import { AccountInstance } from '@xyo-network/account-model'
+import type { AccountInstance } from '@xyo-network/account-model'
 
 import { loadMnemonic } from './loadMnemonic.js'
 import { saveMnemonic } from './saveMnemonic.js'

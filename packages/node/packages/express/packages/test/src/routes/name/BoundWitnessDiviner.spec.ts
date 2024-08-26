@@ -1,13 +1,15 @@
 import { assertEx } from '@xylabs/assert'
 import { Account } from '@xyo-network/account'
-import { AccountInstance } from '@xyo-network/account-model'
-import { ArchivistInstance } from '@xyo-network/archivist-model'
-import { BoundWitness } from '@xyo-network/boundwitness-model'
+import type { AccountInstance } from '@xyo-network/account-model'
+import type { ArchivistInstance } from '@xyo-network/archivist-model'
+import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import { BoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
-import { BoundWitnessDivinerQueryPayload, BoundWitnessDivinerQuerySchema } from '@xyo-network/diviner-boundwitness-model'
-import { DivinerDivineQuerySchema, DivinerInstance } from '@xyo-network/diviner-model'
+import type { BoundWitnessDivinerQueryPayload } from '@xyo-network/diviner-boundwitness-model'
+import { BoundWitnessDivinerQuerySchema } from '@xyo-network/diviner-boundwitness-model'
+import type { DivinerInstance } from '@xyo-network/diviner-model'
+import { DivinerDivineQuerySchema } from '@xyo-network/diviner-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 import {
@@ -145,7 +147,9 @@ describe(`/${moduleName}`, () => {
           const address = (await account).address
           const timestamp = assertEx(boundWitnesses.at(-1)?.boundwitness.timestamp, () => 'Missing timestamp in test BW') + 1
           const limit = boundWitnesses.length
-          const query: BoundWitnessDivinerQueryPayload = { address, limit, schema, timestamp }
+          const query: BoundWitnessDivinerQueryPayload = {
+            address, limit, schema, timestamp,
+          }
           const response = await diviner.divine([query])
           expect(response).toBeArrayOfSize(boundWitnesses.length)
           const responseHashes = await PayloadBuilder.dataHashes(response)

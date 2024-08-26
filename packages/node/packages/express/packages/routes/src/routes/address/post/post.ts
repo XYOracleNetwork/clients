@@ -1,14 +1,14 @@
 import { assertEx } from '@xylabs/assert'
-import { Address } from '@xylabs/hex'
+import type { Address } from '@xylabs/hex'
 import { asyncHandler } from '@xylabs/sdk-api-express-ecs'
-import { QueryBoundWitness } from '@xyo-network/boundwitness-model'
-import { Module, ModuleQueryResult } from '@xyo-network/module-model'
+import type { QueryBoundWitness } from '@xyo-network/boundwitness-model'
+import type { Module, ModuleQueryResult } from '@xyo-network/module-model'
 import { trimAddressPrefix } from '@xyo-network/node-core-lib'
-import { Payload } from '@xyo-network/payload-model'
-import { RequestHandler } from 'express'
+import type { Payload } from '@xyo-network/payload-model'
+import type { RequestHandler } from 'express'
 import { StatusCodes } from 'http-status-codes'
 
-import { AddressPathParams } from '../AddressPathParams.js'
+import type { AddressPathParams } from '../AddressPathParams.js'
 import { getQueryConfig } from './getQueryConfig.js'
 
 export type PostAddressRequestBody = [QueryBoundWitness, undefined | Payload[]]

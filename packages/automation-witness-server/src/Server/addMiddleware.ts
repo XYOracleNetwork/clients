@@ -6,7 +6,7 @@ import {
   responseProfiler,
   useRequestCounters,
 } from '@xylabs/sdk-api-express-ecs'
-import { Express } from 'express'
+import type { Express } from 'express'
 
 export const addMiddleware = (app: Express) => {
   app.use(responseProfiler)

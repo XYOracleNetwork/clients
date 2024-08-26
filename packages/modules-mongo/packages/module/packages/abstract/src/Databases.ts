@@ -1,3 +1,1 @@
-export const DATABASES = {
-  Archivist: 'archivist' as const,
-}
+export const DATABASES = { Archivist: 'archivist' as const }

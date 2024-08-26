@@ -1,7 +1,8 @@
 import { TYPES } from '@xyo-network/node-core-types'
-import { Job } from '@xyo-network/shared'
-import { Container } from 'inversify'
-import { mock, MockProxy } from 'jest-mock-extended'
+import type { Job } from '@xyo-network/shared'
+import type { Container } from 'inversify'
+import type { MockProxy } from 'jest-mock-extended'
+import { mock } from 'jest-mock-extended'
 
 import { getJobs } from '../getJobs.js'
 
@@ -12,9 +13,7 @@ describe('getJobs', () => {
     },
   })
   container.getAll.mockReturnValue([
-    {
-      jobs: [mock<Job>()],
-    },
+    { jobs: [mock<Job>()] },
   ])
   it('gets the jobs', () => {
     const jobs = getJobs(container)

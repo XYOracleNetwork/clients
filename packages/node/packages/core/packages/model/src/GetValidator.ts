@@ -1,3 +1,3 @@
-import { ValidateFunction } from 'ajv'
+import type { ValidateFunction } from 'ajv'
 
 export type GetValidator<T> = (x: T) => Promise<ValidateFunction | undefined>

@@ -1,12 +1,11 @@
-import { Payload } from '@xyo-network/payload-model'
-import { SchemaCache, SchemaCacheEntry } from '@xyo-network/schema-cache'
+import type { Payload } from '@xyo-network/payload-model'
+import type { SchemaCacheEntry } from '@xyo-network/schema-cache'
+import { SchemaCache } from '@xyo-network/schema-cache'
 
 import { getPayloadValidatorFromSchemaCache } from '../getPayloadValidatorFromSchemaCache.js'
 
 const getPayload = (): Payload => {
-  return {
-    schema: 'network.xyo.test',
-  }
+  return { schema: 'network.xyo.test' }
 }
 
 describe('getPayloadValidatorFromSchemaCache', () => {
@@ -17,7 +16,11 @@ describe('getPayloadValidatorFromSchemaCache', () => {
       const schema = 'network.xyo.schema'
       const definition = { $schema: 'http://json-schema.org/draft-07/schema#' }
       mock = jest.spyOn(SchemaCache.prototype, 'get').mockImplementation((_schema?: string) => {
-        const entry: SchemaCacheEntry = { payload: { definition, name, schema } }
+        const entry: SchemaCacheEntry = {
+          payload: {
+            definition, name, schema,
+          },
+        }
         return Promise.resolve(entry)
       })
     })

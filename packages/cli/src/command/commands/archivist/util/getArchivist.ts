@@ -1,9 +1,11 @@
-import { ArchivistInstance, asArchivistInstance } from '@xyo-network/archivist-model'
-import { Module } from '@xyo-network/module-model'
+import type { ArchivistInstance } from '@xyo-network/archivist-model'
+import { asArchivistInstance } from '@xyo-network/archivist-model'
+import type { Module } from '@xyo-network/module-model'
 
 import { printError } from '../../../../lib/index.js'
-import { BaseArguments } from '../../../BaseArguments.js'
-import { isModuleArguments, ModuleArguments } from '../../ModuleArguments.js'
+import type { BaseArguments } from '../../../BaseArguments.js'
+import type { ModuleArguments } from '../../ModuleArguments.js'
+import { isModuleArguments } from '../../ModuleArguments.js'
 import { getModuleByName, getModuleFromArgs } from '../../util/index.js'
 
 export const getArchivist = async (args: BaseArguments | ModuleArguments): Promise<ArchivistInstance> => {

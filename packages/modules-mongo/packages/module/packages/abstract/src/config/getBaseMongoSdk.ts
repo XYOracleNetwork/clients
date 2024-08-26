@@ -1,6 +1,7 @@
 import { assertEx } from '@xylabs/assert'
-import { BaseMongoSdk, BaseMongoSdkPrivateConfig } from '@xyo-network/sdk-xyo-mongo-js'
-import { Document } from 'mongodb'
+import type { BaseMongoSdkPrivateConfig } from '@xyo-network/sdk-xyo-mongo-js'
+import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
+import type { Document } from 'mongodb'
 
 import { getMongoDBConfig } from './getMongoDBConfig.js'
 
