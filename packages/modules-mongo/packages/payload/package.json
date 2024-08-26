@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/payload-mongodb",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Primary SDK for using XYO Protocol 2.0",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -43,9 +43,9 @@
     "@xylabs/hex": "^4.0.5",
     "@xylabs/lodash": "^4.0.5",
     "@xylabs/object": "^4.0.5",
-    "@xyo-network/boundwitness-model": "^3.0.11",
-    "@xyo-network/payload-builder": "^3.0.11",
-    "@xyo-network/payload-model": "^3.0.11"
+    "@xyo-network/boundwitness-model": "^3.0.15",
+    "@xyo-network/payload-builder": "^3.0.15",
+    "@xyo-network/payload-model": "^3.0.15"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^4.0.7",

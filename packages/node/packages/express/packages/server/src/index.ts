@@ -45,7 +45,7 @@ export class ExpressPayloadTransport extends PayloadTransport {
 }
 
 export const getApp = async (node?: NodeInstance): Promise<Express> => {
-  node = node ?? (await MemoryNode.create())
+  node = node ?? (await MemoryNode.create({ account: 'random' }))
   await configureEnvironment()
   await configureDependencies(node)
   const transport = new ExpressPayloadTransport(node)
@@ -53,7 +53,7 @@ export const getApp = async (node?: NodeInstance): Promise<Express> => {
 }
 
 export const getServer = async (port = 80, node?: MemoryNode) => {
-  node = node ?? (await MemoryNode.create())
+  node = node ?? (await MemoryNode.create({ account: 'random' }))
   const app = await getApp(node)
   await startJobQueue()
   const logger = container.get<Logger>(TYPES.Logger)

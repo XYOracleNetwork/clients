@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/package.json",
   "name": "@xyo-network/express-node-lib",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "XYO Express Node Lib",
   "license": "LGPL-3.0-only",
   "author": "Arie Trouw",
@@ -28,8 +28,8 @@
   "dependencies": {
     "@xylabs/assert": "^4.0.5",
     "@xylabs/sdk-api-express-ecs": "^2.0.4",
-    "@xyo-network/module-model": "^3.0.11",
-    "@xyo-network/node-model": "^3.0.11",
+    "@xyo-network/module-model": "^3.0.15",
+    "@xyo-network/node-model": "^3.0.15",
     "@xyo-network/payload-mongodb": "workspace:^",
     "express": "^4.19.2"
   },
