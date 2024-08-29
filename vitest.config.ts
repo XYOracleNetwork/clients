@@ -8,5 +8,6 @@ export default defineConfig({
   test: {
     globals: true,
     setupFiles: ['./vitest.startup.ts'],
+    globalSetup: ['./packages/node/packages/express/packages/test/src/globalSetup.ts'],
   },
 })

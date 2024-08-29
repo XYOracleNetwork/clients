@@ -38,8 +38,8 @@ const setupMongo = async () => {
   const mongo = await MongoMemoryReplSet.create({
     instanceOpts: [
       { port: 55_391, replicaMemberConfig: { buildIndexes: true } },
-      { port: 55_392, replicaMemberConfig: { arbiterOnly: true, buildIndexes: true } },
-      { port: 55_393, replicaMemberConfig: { arbiterOnly: true, buildIndexes: true } },
+      { port: 55_392, replicaMemberConfig: {} },
+      { port: 55_393, replicaMemberConfig: {} },
     ],
     replSet: { count: 3, storageEngine: 'wiredTiger' },
   }) // This will create an ReplSet with 3 members and storage-engine "wiredTiger"
@@ -73,11 +73,17 @@ const setupNode = async () => {
  * Jest global setup method runs before any tests are run
  * https://jestjs.io/docs/configuration#globalsetup-string
  */
-const setup = async (_globalConfig: Config, _projectConfig: Config) => {
+export const setup = async (_globalConfig: Config, _projectConfig: Config) => {
   console.log('')
   PayloadValidator.setSchemaNameValidatorFactory((schema: string) => new SchemaNameValidator(schema))
   if (canAddMongoModules()) await setupMongo()
   await setupNode()
 }
 
-module.exports = setup
+/**
+ * Jest global teardown method runs after all tests are run
+ * https://jestjs.io/docs/configuration#globalteardown-string
+ */
+export const teardown = async (_globalConfig: Config, _projectConfig: Config) => {
+  if (canAddMongoModules()) await globalThis.mongo.stop()
+}
