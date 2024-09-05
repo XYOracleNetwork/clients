@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/package.json",
   "name": "@xyo-network/express-node-middleware",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "XYO Express Node Middleware",
   "license": "LGPL-3.0-only",
   "author": "Arie Trouw",
@@ -24,9 +24,9 @@
   "module": "dist/node/index.mjs",
   "types": "dist/node/index.d.ts",
   "dependencies": {
-    "@xylabs/logger": "^4.0.5",
+    "@xylabs/logger": "^4.0.9",
     "@xylabs/sdk-api-express-ecs": "^2.0.4",
-    "@xyo-network/node-model": "^3.0.15",
+    "@xyo-network/node-model": "^3.1.9",
     "express": "^4.19.2",
     "express-mung": "^0.5.1",
     "swagger-autogen": "^2.23.7",
