@@ -21,7 +21,7 @@
     "@xylabs/hex": "^4.1.0",
     "@xylabs/sdk-api-express-ecs": "^2.0.4",
     "@xyo-network/account": "^3.2.0",
-    "@xyo-network/api-call-witness": "^3.0.17",
+    "@xyo-network/api-call-witness": "^3.1.0",
     "@xyo-network/archivist-memory": "^3.2.0",
     "@xyo-network/archivist-model": "^3.2.0",
     "@xyo-network/crypto-nft-collection-diviner-score-plugin": "^3.1.0",

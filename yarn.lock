@@ -5985,7 +5985,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xyo-network/api-call-witness@npm:^3.0.17, @xyo-network/api-call-witness@npm:^3.1.0":
+"@xyo-network/api-call-witness@npm:^3.1.0":
   version: 3.1.0
   resolution: "@xyo-network/api-call-witness@npm:3.1.0"
   dependencies:
@@ -6161,7 +6161,7 @@ __metadata:
     "@xylabs/tsconfig": "npm:^4.1.0"
     "@xylabs/tsconfig-jest": "npm:^4.1.0"
     "@xyo-network/account": "npm:^3.2.0"
-    "@xyo-network/api-call-witness": "npm:^3.0.17"
+    "@xyo-network/api-call-witness": "npm:^3.1.0"
     "@xyo-network/api-models": "npm:^3.2.0"
     "@xyo-network/archivist-model": "npm:^3.2.0"
     "@xyo-network/blocknative-ethereum-gas-plugin": "npm:^3.1.0"
@@ -7715,7 +7715,7 @@ __metadata:
     "@xylabs/ts-scripts-yarn3": "npm:^4.1.0"
     "@xylabs/tsconfig": "npm:^4.1.0"
     "@xyo-network/account": "npm:^3.2.0"
-    "@xyo-network/api-call-witness": "npm:^3.0.17"
+    "@xyo-network/api-call-witness": "npm:^3.1.0"
     "@xyo-network/archivist-memory": "npm:^3.2.0"
     "@xyo-network/archivist-model": "npm:^3.2.0"
     "@xyo-network/crypto-nft-collection-diviner-score-plugin": "npm:^3.1.0"
@@ -7883,7 +7883,7 @@ __metadata:
     "@xylabs/tsconfig-jest": "npm:^4.1.0"
     "@xyo-network/account": "npm:^3.2.0"
     "@xyo-network/account-model": "npm:^3.2.0"
-    "@xyo-network/api-call-witness": "npm:^3.0.17"
+    "@xyo-network/api-call-witness": "npm:^3.1.0"
     "@xyo-network/archivist-model": "npm:^3.2.0"
     "@xyo-network/archivist-wrapper": "npm:^3.2.0"
     "@xyo-network/boundwitness-builder": "npm:^3.2.0"
