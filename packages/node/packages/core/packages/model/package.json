@@ -25,13 +25,13 @@
   "dependencies": {
     "@xylabs/hex": "^4.1.0",
     "@xylabs/object": "^4.1.0",
-    "@xyo-network/archivist-model": "^3.1.9",
-    "@xyo-network/boundwitness-model": "^3.1.9",
-    "@xyo-network/diviner-payload-model": "^3.1.9",
-    "@xyo-network/module-abstract": "^3.1.9",
-    "@xyo-network/payload-model": "^3.1.9",
+    "@xyo-network/archivist-model": "^3.2.0",
+    "@xyo-network/boundwitness-model": "^3.2.0",
+    "@xyo-network/diviner-payload-model": "^3.2.0",
+    "@xyo-network/module-abstract": "^3.2.0",
+    "@xyo-network/payload-model": "^3.2.0",
     "@xyo-network/payload-mongodb": "workspace:^",
-    "@xyo-network/shared": "^3.1.9",
+    "@xyo-network/shared": "^3.2.0",
     "ajv": "^8.17.1"
   },
   "devDependencies": {

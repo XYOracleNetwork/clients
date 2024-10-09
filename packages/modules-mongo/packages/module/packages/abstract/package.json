@@ -41,7 +41,7 @@
     "@xylabs/exists": "^4.1.0",
     "@xylabs/lodash": "^4.1.0",
     "@xylabs/static-implements": "^4.1.0",
-    "@xyo-network/module-model": "^3.1.9",
+    "@xyo-network/module-model": "^3.2.0",
     "@xyo-network/module-model-mongodb": "workspace:^",
     "@xyo-network/payload-mongodb": "workspace:^",
     "@xyo-network/sdk-xyo-mongo-js": "workspace:^",
