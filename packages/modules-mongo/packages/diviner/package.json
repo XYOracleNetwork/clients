@@ -80,7 +80,7 @@
     "@xyo-network/payload-wrapper": "^3.2.0",
     "@xyo-network/sdk-xyo-mongo-js": "workspace:^",
     "@xyo-network/shared": "^3.2.0",
-    "mongodb": "^6.9.0",
+    "mongodb": "~6.8.2",
     "reflect-metadata": "^0.2.2"
   },
   "devDependencies": {

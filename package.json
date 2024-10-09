@@ -64,7 +64,6 @@
   "resolutions": {
     "bn.js": "^5",
     "ethers": "^6",
-    "mongodb": "6.8.0",
     "quick-lru": "^5"
   },
   "dependencies": {

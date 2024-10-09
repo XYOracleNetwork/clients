@@ -41,7 +41,7 @@
     "@xyo-network/shared": "^3.2.0",
     "agenda": "^5.0.0",
     "inversify": "^6.0.2",
-    "mongodb": "^6.9.0",
+    "mongodb": "~6.8.2",
     "uuid": "^10.0.0"
   },
   "devDependencies": {

@@ -75,6 +75,55 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@aws-sdk/client-cognito-identity@npm:3.667.0":
+  version: 3.667.0
+  resolution: "@aws-sdk/client-cognito-identity@npm:3.667.0"
+  dependencies:
+    "@aws-crypto/sha256-browser": "npm:5.2.0"
+    "@aws-crypto/sha256-js": "npm:5.2.0"
+    "@aws-sdk/client-sso-oidc": "npm:3.667.0"
+    "@aws-sdk/client-sts": "npm:3.667.0"
+    "@aws-sdk/core": "npm:3.667.0"
+    "@aws-sdk/credential-provider-node": "npm:3.667.0"
+    "@aws-sdk/middleware-host-header": "npm:3.667.0"
+    "@aws-sdk/middleware-logger": "npm:3.667.0"
+    "@aws-sdk/middleware-recursion-detection": "npm:3.667.0"
+    "@aws-sdk/middleware-user-agent": "npm:3.667.0"
+    "@aws-sdk/region-config-resolver": "npm:3.667.0"
+    "@aws-sdk/types": "npm:3.667.0"
+    "@aws-sdk/util-endpoints": "npm:3.667.0"
+    "@aws-sdk/util-user-agent-browser": "npm:3.667.0"
+    "@aws-sdk/util-user-agent-node": "npm:3.667.0"
+    "@smithy/config-resolver": "npm:^3.0.9"
+    "@smithy/core": "npm:^2.4.8"
+    "@smithy/fetch-http-handler": "npm:^3.2.9"
+    "@smithy/hash-node": "npm:^3.0.7"
+    "@smithy/invalid-dependency": "npm:^3.0.7"
+    "@smithy/middleware-content-length": "npm:^3.0.9"
+    "@smithy/middleware-endpoint": "npm:^3.1.4"
+    "@smithy/middleware-retry": "npm:^3.0.23"
+    "@smithy/middleware-serde": "npm:^3.0.7"
+    "@smithy/middleware-stack": "npm:^3.0.7"
+    "@smithy/node-config-provider": "npm:^3.1.8"
+    "@smithy/node-http-handler": "npm:^3.2.4"
+    "@smithy/protocol-http": "npm:^4.1.4"
+    "@smithy/smithy-client": "npm:^3.4.0"
+    "@smithy/types": "npm:^3.5.0"
+    "@smithy/url-parser": "npm:^3.0.7"
+    "@smithy/util-base64": "npm:^3.0.0"
+    "@smithy/util-body-length-browser": "npm:^3.0.0"
+    "@smithy/util-body-length-node": "npm:^3.0.0"
+    "@smithy/util-defaults-mode-browser": "npm:^3.0.23"
+    "@smithy/util-defaults-mode-node": "npm:^3.0.23"
+    "@smithy/util-endpoints": "npm:^2.1.3"
+    "@smithy/util-middleware": "npm:^3.0.7"
+    "@smithy/util-retry": "npm:^3.0.7"
+    "@smithy/util-utf8": "npm:^3.0.0"
+    tslib: "npm:^2.6.2"
+  checksum: 10/8a8e5abdd8d22fa36b11b86ec9102fabc9b26e6c383f6d1bb6f7852b5e33aa5bc4141fb9dddd67c5c52d7412cd934d0380d0c9f3dfe40c04c38ec83cb7cb1864
+  languageName: node
+  linkType: hard
+
 "@aws-sdk/client-secrets-manager@npm:^3.535.0":
   version: 3.667.0
   resolution: "@aws-sdk/client-secrets-manager@npm:3.667.0"
@@ -287,6 +336,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@aws-sdk/credential-provider-cognito-identity@npm:3.667.0":
+  version: 3.667.0
+  resolution: "@aws-sdk/credential-provider-cognito-identity@npm:3.667.0"
+  dependencies:
+    "@aws-sdk/client-cognito-identity": "npm:3.667.0"
+    "@aws-sdk/types": "npm:3.667.0"
+    "@smithy/property-provider": "npm:^3.1.7"
+    "@smithy/types": "npm:^3.5.0"
+    tslib: "npm:^2.6.2"
+  checksum: 10/2c01a2d62fcb3b2edce2e0c1066acdf684a7ac649eebd4f3a50d72d20b7c4dd19569e950c8bcd44f60b7c447cbcc210f0eeba2eae1230adc7e2efa500f98fee9
+  languageName: node
+  linkType: hard
+
 "@aws-sdk/credential-provider-env@npm:3.667.0":
   version: 3.667.0
   resolution: "@aws-sdk/credential-provider-env@npm:3.667.0"
@@ -402,6 +464,31 @@ __metadata:
   peerDependencies:
     "@aws-sdk/client-sts": ^3.667.0
   checksum: 10/a8f50f878119a748a84731e772e958feae281e667071d08acb47632b1572f4f275aa7b3e38efde6cb143817e1d3ed43b8061cb60e2608ea670dbcb0d8865415c
+  languageName: node
+  linkType: hard
+
+"@aws-sdk/credential-providers@npm:^3.186.0":
+  version: 3.667.0
+  resolution: "@aws-sdk/credential-providers@npm:3.667.0"
+  dependencies:
+    "@aws-sdk/client-cognito-identity": "npm:3.667.0"
+    "@aws-sdk/client-sso": "npm:3.667.0"
+    "@aws-sdk/client-sts": "npm:3.667.0"
+    "@aws-sdk/core": "npm:3.667.0"
+    "@aws-sdk/credential-provider-cognito-identity": "npm:3.667.0"
+    "@aws-sdk/credential-provider-env": "npm:3.667.0"
+    "@aws-sdk/credential-provider-http": "npm:3.667.0"
+    "@aws-sdk/credential-provider-ini": "npm:3.667.0"
+    "@aws-sdk/credential-provider-node": "npm:3.667.0"
+    "@aws-sdk/credential-provider-process": "npm:3.667.0"
+    "@aws-sdk/credential-provider-sso": "npm:3.667.0"
+    "@aws-sdk/credential-provider-web-identity": "npm:3.667.0"
+    "@aws-sdk/types": "npm:3.667.0"
+    "@smithy/credential-provider-imds": "npm:^3.2.4"
+    "@smithy/property-provider": "npm:^3.1.7"
+    "@smithy/types": "npm:^3.5.0"
+    tslib: "npm:^2.6.2"
+  checksum: 10/0025d215c9c4f854fc198923c74b029994baad7cd95227efeb3f57e06d27bd96cba5720d38890b76befacc86350b7f3163d970a40b2e2529692261cf9d77934f
   languageName: node
   linkType: hard
 
@@ -3374,7 +3461,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mongodb-js/saslprep@npm:^1.1.5":
+"@mongodb-js/saslprep@npm:^1.1.0, @mongodb-js/saslprep@npm:^1.1.5":
   version: 1.1.9
   resolution: "@mongodb-js/saslprep@npm:1.1.9"
   dependencies:
@@ -4976,6 +5063,16 @@ __metadata:
   dependencies:
     "@types/webidl-conversions": "npm:*"
   checksum: 10/23a0c45aff51817807b473a6adb181d6e3bb0d27dde54e84883d5d5bc93358e95204d2188e7ff7fdc2cdaf157e97e1188ef0a22ec79228da300fc30d4a05b56a
+  languageName: node
+  linkType: hard
+
+"@types/whatwg-url@npm:^8.2.1":
+  version: 8.2.2
+  resolution: "@types/whatwg-url@npm:8.2.2"
+  dependencies:
+    "@types/node": "npm:*"
+    "@types/webidl-conversions": "npm:*"
+  checksum: 10/5dc5afe078dfa1a8a266745586fa3db9baa8ce7cc904789211d1dca1d34d7f3dd17d0b7423c36bc9beab9d98aa99338f1fc60798c0af6cbb8356f20e20d9f243
   languageName: node
   linkType: hard
 
@@ -7233,7 +7330,7 @@ __metadata:
     fake-indexeddb: "npm:^6.0.0"
     jest: "npm:^29.7.0"
     jest-mock-extended: "npm:^3.0.7"
-    mongodb: "npm:^6.9.0"
+    mongodb: "npm:~6.8.2"
     reflect-metadata: "npm:^0.2.2"
     typescript: "npm:^5.6.3"
   languageName: unknown
@@ -8119,7 +8216,7 @@ __metadata:
     "@xyo-network/payload-mongodb": "workspace:^"
     "@xyo-network/sdk-xyo-mongo-js": "workspace:^"
     fake-indexeddb: "npm:^6.0.0"
-    mongodb: "npm:^6.9.0"
+    mongodb: "npm:~6.8.2"
     typescript: "npm:^5.6.3"
   languageName: unknown
   linkType: soft
@@ -8402,7 +8499,7 @@ __metadata:
     inversify: "npm:^6.0.2"
     jest: "npm:^29.7.0"
     jest-mock-extended: "npm:^3.0.7"
-    mongodb: "npm:^6.9.0"
+    mongodb: "npm:~6.8.2"
     typescript: "npm:^5.6.3"
     uuid: "npm:^10.0.0"
   languageName: unknown
@@ -8737,7 +8834,7 @@ __metadata:
     "@xylabs/ts-scripts-yarn3": "npm:^4.1.0"
     "@xylabs/tsconfig": "npm:^4.1.0"
     async-mutex: "npm:^0.5.0"
-    mongodb: "npm:^6.9.0"
+    mongodb: "npm:~6.8.2"
     typescript: "npm:^5.6.3"
   languageName: unknown
   linkType: soft
@@ -9836,6 +9933,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bson@npm:^4.7.2":
+  version: 4.7.2
+  resolution: "bson@npm:4.7.2"
+  dependencies:
+    buffer: "npm:^5.6.0"
+  checksum: 10/9bc1a5c0e3774d171f291b5d44bcc6dacbdbba14184893eb810a5ca889b0dbcae5e0870fb2c731b069ce8ee77f3ebe3750669ed952d30de6a087baca59359781
+  languageName: node
+  linkType: hard
+
 "bson@npm:^6.7.0":
   version: 6.8.0
   resolution: "bson@npm:6.8.0"
@@ -9854,6 +9960,16 @@ __metadata:
   version: 1.1.2
   resolution: "buffer-from@npm:1.1.2"
   checksum: 10/0448524a562b37d4d7ed9efd91685a5b77a50672c556ea254ac9a6d30e3403a517d8981f10e565db24e8339413b43c97ca2951f10e399c6125a0d8911f5679bb
+  languageName: node
+  linkType: hard
+
+"buffer@npm:^5.6.0":
+  version: 5.7.1
+  resolution: "buffer@npm:5.7.1"
+  dependencies:
+    base64-js: "npm:^1.3.1"
+    ieee754: "npm:^1.1.13"
+  checksum: 10/997434d3c6e3b39e0be479a80288875f71cd1c07d75a3855e6f08ef848a3c966023f79534e22e415ff3a5112708ce06127277ab20e527146d55c84566405c7c6
   languageName: node
   linkType: hard
 
@@ -13597,7 +13713,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ieee754@npm:^1.2.1":
+"ieee754@npm:^1.1.13, ieee754@npm:^1.2.1":
   version: 1.2.1
   resolution: "ieee754@npm:1.2.1"
   checksum: 10/d9f2557a59036f16c282aaeb107832dc957a93d73397d89bbad4eb1130560560eb695060145e8e6b3b498b15ab95510226649a0b8f52ae06583575419fe10fc4
@@ -15985,6 +16101,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mongodb-connection-string-url@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "mongodb-connection-string-url@npm:2.6.0"
+  dependencies:
+    "@types/whatwg-url": "npm:^8.2.1"
+    whatwg-url: "npm:^11.0.0"
+  checksum: 10/d0903b98240e3a32a96091fd78d59de0616070c5e39881b598ff1c3cc9cd3335473c43d30e8b33c679ad0ab6133ff1112a7465f8c2f81b0d13b1b3f2174c9fe7
+  languageName: node
+  linkType: hard
+
 "mongodb-connection-string-url@npm:^3.0.0":
   version: 3.0.1
   resolution: "mongodb-connection-string-url@npm:3.0.1"
@@ -16025,9 +16151,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mongodb@npm:6.8.0":
-  version: 6.8.0
-  resolution: "mongodb@npm:6.8.0"
+"mongodb@npm:^4.11.0":
+  version: 4.17.2
+  resolution: "mongodb@npm:4.17.2"
+  dependencies:
+    "@aws-sdk/credential-providers": "npm:^3.186.0"
+    "@mongodb-js/saslprep": "npm:^1.1.0"
+    bson: "npm:^4.7.2"
+    mongodb-connection-string-url: "npm:^2.6.0"
+    socks: "npm:^2.7.1"
+  dependenciesMeta:
+    "@aws-sdk/credential-providers":
+      optional: true
+    "@mongodb-js/saslprep":
+      optional: true
+  checksum: 10/e9f252c13a12b6339b5b4912c32d40f447eaeae77f0b0d0e36b7fbaa6800eae69ae68c6e6f005f97e90c90ad2a9f56369a0924963b83f959c83a4c1398093642
+  languageName: node
+  linkType: hard
+
+"mongodb@npm:^6.9.0":
+  version: 6.9.0
+  resolution: "mongodb@npm:6.9.0"
   dependencies:
     "@mongodb-js/saslprep": "npm:^1.1.5"
     bson: "npm:^6.7.0"
@@ -16055,7 +16199,41 @@ __metadata:
       optional: true
     socks:
       optional: true
-  checksum: 10/c9adf8b694e8e510421c8e6e44c337fe6d58e7d33374dc28b355095df92a807fb5a3c691eaf376a87ae693f6ec0779e8aae41a32bbdc63f2961289c616bcbb9a
+  checksum: 10/c2b1af2affc27d67ffd966e1821585d88970bfefae21a3f7232d2f32345df3ea1ff329118844904527f6d74cc4fcab7fcafae1f6a4d6b12a58c3f24a9a5e4e9b
+  languageName: node
+  linkType: hard
+
+"mongodb@npm:~6.8.2":
+  version: 6.8.2
+  resolution: "mongodb@npm:6.8.2"
+  dependencies:
+    "@mongodb-js/saslprep": "npm:^1.1.5"
+    bson: "npm:^6.7.0"
+    mongodb-connection-string-url: "npm:^3.0.0"
+  peerDependencies:
+    "@aws-sdk/credential-providers": ^3.188.0
+    "@mongodb-js/zstd": ^1.1.0
+    gcp-metadata: ^5.2.0
+    kerberos: ^2.0.1
+    mongodb-client-encryption: ">=6.0.0 <7"
+    snappy: ^7.2.2
+    socks: ^2.7.1
+  peerDependenciesMeta:
+    "@aws-sdk/credential-providers":
+      optional: true
+    "@mongodb-js/zstd":
+      optional: true
+    gcp-metadata:
+      optional: true
+    kerberos:
+      optional: true
+    mongodb-client-encryption:
+      optional: true
+    snappy:
+      optional: true
+    socks:
+      optional: true
+  checksum: 10/1c52488fc7e54c2c26587f57749797a556677066f678784785fd85b8c22cb78b8909ebad0991dae473e9639665f03aa5b001558271785d83360e01c1fc8b5809
   languageName: node
   linkType: hard
 
@@ -18943,7 +19121,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"socks@npm:^2.8.3":
+"socks@npm:^2.7.1, socks@npm:^2.8.3":
   version: 2.8.3
   resolution: "socks@npm:2.8.3"
   dependencies:
