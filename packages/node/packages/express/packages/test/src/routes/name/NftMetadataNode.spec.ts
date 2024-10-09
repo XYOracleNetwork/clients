@@ -46,7 +46,7 @@ describe(`${nodeName}`, () => {
     let diviner: DivinerInstance
     let archivist: ArchivistInstance
     beforeAll(async () => {
-      await delay(10_000) // Allow enough time for index to propagate
+      await delay(3000) // Allow enough time for index to propagate
       diviner = await getDivinerByNameFromChildNode(indexDivinerName, nodeName)
       expect(diviner).toBeDefined()
       archivist = await getArchivistByNameFromChildNode(archivistName, nodeName)
