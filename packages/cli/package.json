@@ -60,14 +60,14 @@
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.12",
-    "@types/node": "^22.5.4",
+    "@types/jest": "^29.5.13",
+    "@types/node": "^22.7.5",
     "@types/tail": "^2.2.3",
     "@types/terminal-kit": "^2.5.6",
     "@xylabs/ts-scripts-yarn3": "^4.1.0",
     "@xylabs/tsconfig": "^4.1.0",
     "@xylabs/tsconfig-jest": "^4.1.0",
-    "typescript": "^5.5.4"
+    "typescript": "^5.6.3"
   },
   "publishConfig": {
     "access": "public"
