@@ -32,5 +32,6 @@ export const configureDoc = async (app: Application, options: ConfigureDocOption
   }
   await swaggerAutogen()(swaggerJsonFile, endpointsFiles, mergedOptions)
 
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises
   app.use('/doc', serve, setup(undefined, uiOptions))
 }

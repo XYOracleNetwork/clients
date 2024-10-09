@@ -28,6 +28,7 @@ export class ExpressPayloadTransport extends PayloadTransport {
     super(node)
     this.app.set('etag', false)
     this.app.use(cors())
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     this.app.use(compression())
     addDependencies(this.app)
     addMiddleware(this.app)

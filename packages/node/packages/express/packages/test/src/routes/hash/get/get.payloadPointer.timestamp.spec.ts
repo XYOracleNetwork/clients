@@ -1,4 +1,5 @@
 import { assertEx } from '@xylabs/assert'
+import { delay } from '@xylabs/delay'
 import type { AccountInstance } from '@xyo-network/account'
 import { Account } from '@xyo-network/account'
 import type { Payload } from '@xyo-network/payload-model'
@@ -16,7 +17,9 @@ describe('/:hash', () => {
     beforeAll(async () => {
       account = await Account.random()
       const [bwA, payloadsA] = await getNewBoundWitness([account])
+      await delay(100) // to ensure different timestamps
       const [bwB, payloadsB] = await getNewBoundWitness([account])
+      await delay(100) // to ensure different timestamps
       const [bwC, payloadsC] = await getNewBoundWitness([account])
       payloads = [...payloadsA, ...payloadsB, ...payloadsC]
       const boundWitnesses = [bwA, bwB, bwC]

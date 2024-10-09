@@ -38,11 +38,18 @@ export class SetIterator<T> implements Iterator<T> {
     }
 
     const value = this.todo.values().next().value
-    this.todo.delete(value)
-    this.done.add(value)
+    if (value !== undefined) {
+      this.todo.delete(value)
+      this.done.add(value)
+
+      return {
+        done: false,
+        value,
+      }
+    }
 
     return {
-      done: false,
+      done: true,
       value,
     }
   }

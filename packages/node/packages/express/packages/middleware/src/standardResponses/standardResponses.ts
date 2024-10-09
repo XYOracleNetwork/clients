@@ -55,4 +55,5 @@ const transformResponse = (body: unknown, _req: Request, res: Response<NoResBody
  * the standard response format (compatible with JSON API)
  */
 
+// eslint-disable-next-line @typescript-eslint/no-misused-promises
 export const standardResponses: RequestHandler = mung.json(transformResponse, { mungError: false })
