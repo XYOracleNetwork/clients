@@ -23,20 +23,20 @@
   },
   "module": "dist/node/index.mjs",
   "dependencies": {
-    "@xylabs/hex": "^4.1.0",
-    "@xylabs/object": "^4.1.0",
-    "@xyo-network/archivist-model": "^3.2.0",
-    "@xyo-network/boundwitness-model": "^3.2.0",
-    "@xyo-network/diviner-payload-model": "^3.2.0",
-    "@xyo-network/module-abstract": "^3.2.0",
-    "@xyo-network/payload-model": "^3.2.0",
+    "@xylabs/hex": "^4.3.3",
+    "@xylabs/object": "^4.3.3",
+    "@xyo-network/archivist-model": "^3.3.2",
+    "@xyo-network/boundwitness-model": "^3.3.2",
+    "@xyo-network/diviner-payload-model": "^3.3.2",
+    "@xyo-network/module-abstract": "^3.3.2",
+    "@xyo-network/payload-model": "^3.3.2",
     "@xyo-network/payload-mongodb": "workspace:^",
-    "@xyo-network/shared": "^3.2.0",
+    "@xyo-network/shared": "^3.3.2",
     "ajv": "^8.17.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^4.1.0",
-    "@xylabs/tsconfig": "^4.1.0",
+    "@xylabs/ts-scripts-yarn3": "^4.2.3",
+    "@xylabs/tsconfig": "^4.2.3",
     "typescript": "^5.6.3"
   },
   "publishConfig": {

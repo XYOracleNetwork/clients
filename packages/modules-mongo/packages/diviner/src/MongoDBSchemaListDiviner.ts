@@ -11,7 +11,9 @@ import {
 } from '@xyo-network/diviner-schema-list-model'
 import { MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Payload, Schema } from '@xyo-network/payload-model'
+import {
+  isSchema, type Payload, type Schema,
+} from '@xyo-network/payload-model'
 
 const MongoDBDivinerBase = MongoDBModuleMixin(SchemaListDiviner)
 
@@ -43,13 +45,13 @@ export class MongoDBSchemaListDiviner extends MongoDBDivinerBase {
     const result = await this.boundWitnesses.useCollection((collection) => {
       return collection.distinct('payload_schemas', { addresses: { $in: [archive] } })
     })
-    return result
+    return result.filter(isSchema)
   }
 
   private divineAllAddresses = async (): Promise<string[]> => {
     const result = await this.boundWitnesses.useCollection((collection) => {
       return collection.distinct('payload_schemas')
     })
-    return result
+    return result.filter(isSchema)
   }
 }
