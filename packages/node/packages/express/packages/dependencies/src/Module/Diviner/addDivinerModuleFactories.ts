@@ -1,7 +1,6 @@
 import { NftCollectionScoreDiviner } from '@xyo-network/crypto-nft-collection-diviner-score-plugin'
 import { NftScoreDiviner } from '@xyo-network/crypto-nft-diviner-score-plugin'
 import { AddressHistoryDiviner } from '@xyo-network/diviner-address-history'
-import { MemoryAddressSpaceDiviner } from '@xyo-network/diviner-address-space'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness'
 import { MemoryBoundWitnessStatsDiviner } from '@xyo-network/diviner-boundwitness-stats'
 import type { ForecastingDivinerParams } from '@xyo-network/diviner-forecasting'
@@ -55,7 +54,7 @@ export const addDivinerModuleFactories = (container: Container) => {
   locator.register(ImageThumbnailQueryToImageThumbnailIndexQueryDiviner)
   locator.register(ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner)
   locator.register(ImageThumbnailDiviner)
-  locator.register(MemoryAddressSpaceDiviner)
+  // locator.register(MemoryAddressSpaceDiviner)
   locator.register(MemoryBoundWitnessDiviner)
   locator.register(MemoryBoundWitnessStatsDiviner)
   locator.register(getMemoryForecastingDiviner())
