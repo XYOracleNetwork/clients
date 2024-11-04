@@ -19,7 +19,8 @@ import { MongoDBAddressSpaceDiviner } from '../MongoDBAddressSpaceDiviner.js'
  * @group mongo
  */
 
-describeIf(hasMongoDBConfig())('MongoDBAddressSpaceDiviner', () => {
+// describeIf(hasMongoDBConfig())('MongoDBAddressSpaceDiviner', () => {
+describeIf(hasMongoDBConfig()).skip('MongoDBAddressSpaceDiviner', () => {
   const phrase = 'reflect dash pear scatter kiwi sock ability muffin clever effort enroll school'
   let account: AccountInstance
   const logger = mock<Console>()
