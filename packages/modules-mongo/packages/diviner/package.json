@@ -87,6 +87,7 @@
     "@xylabs/jest-helpers": "^4.3.3",
     "@xylabs/ts-scripts-yarn3": "^4.2.3",
     "@xylabs/tsconfig": "^4.2.3",
+    "@xylabs/tsconfig-jest": "^4.1.0",
     "@xyo-network/archivist-mongodb": "workspace:^",
     "@xyo-network/boundwitness-builder": "^3.3.2",
     "@xyo-network/diviner-abstract": "^3.3.2",
