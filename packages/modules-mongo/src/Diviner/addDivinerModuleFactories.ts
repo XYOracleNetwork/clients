@@ -1,7 +1,5 @@
 import {
   MongoDBAddressHistoryDiviner,
-  MongoDBAddressSpaceBatchDiviner,
-  MongoDBAddressSpaceDiviner,
   MongoDBBoundWitnessDiviner,
   MongoDBBoundWitnessStatsDiviner,
   MongoDBPayloadDiviner,
@@ -38,8 +36,8 @@ const getMongoDBSchemaStatsDiviner = (container: Container) => {
 export const addDivinerModuleFactories = (container: Container) => {
   const locator = container.get<ModuleFactoryLocator>(TYPES.ModuleFactoryLocator)
   locator.register(MongoDBAddressHistoryDiviner)
-  locator.register(MongoDBAddressSpaceDiviner)
-  locator.register(MongoDBAddressSpaceBatchDiviner)
+  // locator.register(MongoDBAddressSpaceDiviner)
+  // locator.register(MongoDBAddressSpaceBatchDiviner)
   locator.register(MongoDBBoundWitnessDiviner)
   locator.register(getMongoDBBoundWitnessStatsDiviner(container))
   locator.register(MongoDBPayloadDiviner)

@@ -526,30 +526,6 @@
           },
           {
             "config": {
-              "accountPath": "3'/2'/2'",
-              "archivist": "Archivist",
-              "labels": {
-                "network.xyo.storage.class": "mongodb"
-              },
-              "language": "javascript",
-              "name": "AddressSpaceDiviner",
-              "schema": "network.xyo.diviner.address.space.diviner.config"
-            }
-          },
-          {
-            "config": {
-              "accountPath": "3'/2'/11'",
-              "archivist": "Archivist",
-              "labels": {
-                "network.xyo.storage.class": "mongodb"
-              },
-              "language": "javascript",
-              "name": "AddressSpaceBatchDiviner",
-              "schema": "network.xyo.diviner.address.space.batch.diviner.config"
-            }
-          },
-          {
-            "config": {
               "accountPath": "3'/2'/3'",
               "archivist": "Archivist",
               "boundWitnessSdkConfig": {
@@ -798,9 +774,7 @@
             "config": {
               "accountPath": "3'/3'/1'",
               "archiving": {
-                "archivists": [
-                  "ImageThumbnailArchivist"
-                ]
+                "archivists": ["ImageThumbnailArchivist"]
               },
               "archivist": "ImageThumbnailArchivist",
               "language": "javascript",
