@@ -6,7 +6,7 @@
       "type": "node",
       "request": "launch",
       "name": "MemoryNode",
-      "program": "${workspaceFolder}/packages/node/packages/core/packages/app/dist/node/app.js",
+      "program": "${workspaceFolder}/packages/node/packages/core/packages/app/dist/node/app.mjs",
       "outFiles": [
         "${workspaceFolder}/dist/**/*.js"
       ],
