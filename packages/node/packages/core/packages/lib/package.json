@@ -24,18 +24,18 @@
   "module": "dist/node/index.mjs",
   "types": "dist/node/index.d.ts",
   "dependencies": {
-    "@xyo-network/node-core-model": "^3.1.2",
-    "@xyo-network/payload-builder": "^3.3.2",
-    "@xyo-network/payload-model": "^3.3.2",
+    "@xyo-network/node-core-model": "^3.1.1",
+    "@xyo-network/payload-builder": "^3.4.0",
+    "@xyo-network/payload-model": "^3.4.0",
     "@xyo-network/payload-mongodb": "workspace:^",
-    "@xyo-network/schema-cache": "^3.3.2",
-    "@xyo-network/schema-payload-plugin": "^3.3.2",
+    "@xyo-network/schema-cache": "^3.4.0",
+    "@xyo-network/schema-payload-plugin": "^3.4.0",
     "ajv": "^8.17.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^4.2.3",
-    "@xylabs/tsconfig": "^4.2.3",
-    "@xyo-network/payload-builder": "^3.3.2",
+    "@xylabs/ts-scripts-yarn3": "^4.2.4",
+    "@xylabs/tsconfig": "^4.2.4",
+    "@xyo-network/payload-builder": "^3.4.0",
     "typescript": "^5.6.3"
   },
   "publishConfig": {

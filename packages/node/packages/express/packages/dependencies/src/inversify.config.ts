@@ -8,6 +8,7 @@ import { addMongoModules, canAddMongoModules } from '@xyo-network/node-core-modu
 import { TYPES } from '@xyo-network/node-core-types'
 import type { NodeInstance } from '@xyo-network/node-model'
 import { config } from 'dotenv'
+import type { interfaces } from 'inversify'
 import { Container } from 'inversify'
 
 import { configureMemoryNode } from './configureMemoryNode.js'
@@ -40,7 +41,7 @@ export const configureDependencies = async (node?: NodeInstance) => {
   container.bind<string>(TYPES.AccountMnemonic).toConstantValue(mnemonic)
   container.bind<ModuleFactoryLocator>(TYPES.ModuleFactoryLocator).toConstantValue(new ModuleFactoryLocator())
 
-  container.bind<Logger>(TYPES.Logger).toDynamicValue((context) => {
+  container.bind<Logger>(TYPES.Logger).toDynamicValue((context: interfaces.Context) => {
     const service = tryGetServiceName(context)
     // TODO: Configure logger with service name
     // const defaultMeta = { service }

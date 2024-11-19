@@ -12,5 +12,6 @@ export const addRoutes = (app: Express): Express => {
   // This needs to be the last true route handler since it is
   // a catch-all for the root paths
   addNodeRoutes(app)
+
   return app
 }

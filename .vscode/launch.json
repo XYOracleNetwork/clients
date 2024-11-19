@@ -83,25 +83,36 @@
       "pauseForSourceMap": true,
     },
     {
-      "name": "Jest",
+      "name": "Vitest",
       "type": "node",
       "request": "launch",
       "osx": {
-        "program": "${workspaceRoot}/node_modules/.bin/jest"
+        "program": "${workspaceFolder}/node_modules/vitest/vitest.mjs",
       },
       "windows": {
-        "program": "${workspaceRoot}/node_modules/jest/bin/jest.js"
+        "program": "${workspaceRoot}/node_modules/vitest/bin/vitest.mjs"
       },
       "args": [
-        "--forceExit",
-        "--runInBand",
-        "--testTimeout=120000",
-        "packages/automation-witness-server/src/Jobs/XyoMediumRss/spec/reportMediumRssFeeds.spec.ts"
+        "--run",
+        "--inspect-brk",
+        "--no-file-parallelism",
+        "packages/node/packages/express/packages/test/src/routes/root/root.spec.ts"
+      ],
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "**/node_modules/**"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/dist/**/*.*",
+        "${workspaceFolder}/node_modules/**/*.*"
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
-      "cwd": "${workspaceFolder}",
-      "envFile": "${workspaceFolder}/.env"
+      "cwd": "${workspaceRoot}",
+      "env": {
+        "NODE_ENV": "test"
+      },
+      "envFile": "${workspaceRoot}/.env",
     },
     {
       "name": "Jest-NoMongo",

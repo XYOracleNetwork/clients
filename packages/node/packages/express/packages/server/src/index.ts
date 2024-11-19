@@ -57,7 +57,7 @@ export const getServer = async (port = 80, node?: MemoryNode) => {
   node = node ?? (await MemoryNode.create({ account: 'random' }))
   const app = await getApp(node)
   await startJobQueue()
-  const logger = container.get<Logger>(TYPES.Logger)
+  const logger = container.get(TYPES.Logger) as Logger
   const host = process.env.PUBLIC_ORIGIN || `http://${hostname}:${port}`
   await configureDoc(app, { host })
   const server = app.listen(port, hostname, () => logger.log(`Server listening at http://${hostname}:${port}`))
