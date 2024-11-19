@@ -28,11 +28,13 @@ export type PostAddressRequestBody = [QueryBoundWitness, undefined | Payload[]]
   }
 } */
 
-// eslint-disable-next-line @typescript-eslint/no-misused-promises, max-statements
+// eslint-disable-next-line @typescript-eslint/no-misused-promises
 const handler: RequestHandler<AddressPathParams, ModuleQueryResult | ModuleError, PostAddressRequestBody> = async (req, res, next) => {
   const returnError = async (code: number, message = 'An error occurred', details?: JsonObject) => {
     const error = await new ModuleErrorBuilder().message(message).details(details).build()
+    res.locals.rawResponse = false
     res.status(code).json(error)
+    next()
   }
 
   console.log('postAddress', req.params.address)
@@ -94,8 +96,6 @@ const handler: RequestHandler<AddressPathParams, ModuleQueryResult | ModuleError
   } else {
     await returnError(StatusCodes.NOT_FOUND, 'Module not found', { address })
   }
-
-  next()
 }
 
 export const postAddress = asyncHandler(handler)

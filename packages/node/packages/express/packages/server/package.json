@@ -26,7 +26,7 @@
   "dependencies": {
     "@xylabs/assert": "^4.3.13",
     "@xylabs/logger": "^4.3.13",
-    "@xylabs/sdk-api-express-ecs": "^2.0.4",
+    "@xylabs/sdk-api-express-ecs": "^2.1.0",
     "@xyo-network/express-node-dependencies": "workspace:^",
     "@xyo-network/express-node-middleware": "workspace:^",
     "@xyo-network/express-node-routes": "workspace:^",

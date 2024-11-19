@@ -42,12 +42,12 @@ describe('Root API', () => {
       })
     })
     describe('POST-Bad', () => {
-      it.only('issues insert query to Node', async () => {
+      it('issues insert query to Node', async () => {
         const queryPayload = await new PayloadBuilder({ schema: ArchivistInsertQuerySchema }).build()
         const query = await (await new QueryBoundWitnessBuilder().signer(await account).query(queryPayload)).build()
         const send = [query[1], [...query[1]]]
         const response = await client.post(path, send)
-        const error = response.data
+        const error = response.data.error
         expect(error).toBeObject()
         expect(response.status).toBe(400)
         expect(error.schema).toBe('network.xyo.error.module')

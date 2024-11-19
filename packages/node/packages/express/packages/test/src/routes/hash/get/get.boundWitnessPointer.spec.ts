@@ -56,14 +56,13 @@ const createPointer = async (
 
 const expectError = (result: Payload, detail: string, status: string, title?: string) => {
   expect(result).toBeObject()
-  const error = result as unknown as { errors: { detail: string; status: string; title?: string }[] }
-  expect(error.errors?.length).toBeGreaterThan(0)
+  const error = (result as unknown as { error: { detail: string; status: string; title?: string } }).error
   const expected = title
     ? {
         detail, status, title,
       }
     : { detail, status }
-  expect(error.errors[0]).toEqual(expected)
+  expect(error).toEqual(expected)
 }
 
 const expectHashNotFoundError = (result: Payload) => {

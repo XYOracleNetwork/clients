@@ -47,7 +47,11 @@ export const isRawResponseFormatSet = (res: Response): boolean => {
  * @returns The transformed response body
  */
 const transformResponse = (body: unknown, _req: Request, res: Response<NoResBody, TransformResponseLocals>) => {
-  return isRawResponseFormatSet(res) ? body : { data: body, meta: getResponseMetadata(res) }
+  return isRawResponseFormatSet(res)
+    ? body
+    : (res.statusCode >= 200 && res.statusCode < 300)
+        ? { data: body, meta: getResponseMetadata(res) }
+        : { error: body, meta: getResponseMetadata(res) }
 }
 
 /**
@@ -56,4 +60,4 @@ const transformResponse = (body: unknown, _req: Request, res: Response<NoResBody
  */
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
-export const standardResponses: RequestHandler = mung.json(transformResponse, { mungError: false })
+export const standardResponses: RequestHandler = mung.json(transformResponse, { mungError: true })

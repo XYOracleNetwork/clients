@@ -25,7 +25,7 @@
   "types": "dist/node/index.d.ts",
   "dependencies": {
     "@xylabs/assert": "^4.3.13",
-    "@xylabs/sdk-api-express-ecs": "^2.0.4",
+    "@xylabs/sdk-api-express-ecs": "^2.1.0",
     "@xyo-network/module-model": "^3.4.0",
     "@xyo-network/node-model": "^3.4.0",
     "@xyo-network/payload-mongodb": "workspace:^",
