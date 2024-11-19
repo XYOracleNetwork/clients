@@ -41,9 +41,9 @@
     "@xylabs/hex": "^4.3.13",
     "@xylabs/lodash": "^4.3.13",
     "@xylabs/object": "^4.3.13",
-    "@xyo-network/boundwitness-model": "^3.4.0",
-    "@xyo-network/payload-builder": "^3.4.0",
-    "@xyo-network/payload-model": "^3.4.0"
+    "@xyo-network/boundwitness-model": "^3.4.1",
+    "@xyo-network/payload-builder": "^3.4.1",
+    "@xyo-network/payload-model": "^3.4.1"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^4.2.4",
