@@ -37,14 +37,8 @@ const handler: RequestHandler<AddressPathParams, ModuleQueryResult | ModuleError
     next()
   }
 
-  console.log('postAddress', req.params.address)
   const { address } = req.params
   const { node } = req.app
-  // console.log(`address post[${node.address}]: ${address}`)
-  // console.log('\nManifest')
-  // console.log(JSON.stringify(await node.manifest(), null, 2))
-  // console.log('\nDump')
-  // await dumpModulesDown(node)
   const [bw, payloads] = Array.isArray(req.body) ? req.body : []
   if (!address) {
     return await returnError(StatusCodes.BAD_REQUEST, 'Missing address')
