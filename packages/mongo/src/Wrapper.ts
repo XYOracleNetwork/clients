@@ -2,6 +2,7 @@ import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
 import { forget } from '@xylabs/forget'
 import { Mutex } from 'async-mutex'
+import type { MongoClientOptions } from 'mongodb'
 import { MongoClient } from 'mongodb'
 
 export class MongoClientWrapper {
@@ -20,7 +21,7 @@ export class MongoClientWrapper {
 
   constructor(uri: string, maxPoolSize?: number, closeDelay?: number) {
     this.uri = uri
-    this.client = new MongoClient(uri, { maxPoolSize })
+    this.client = new MongoClient(uri, { maxPoolSize } as MongoClientOptions)
     this.closeDelay = closeDelay ?? 10 * 1000 /* 10 seconds default */
   }
 

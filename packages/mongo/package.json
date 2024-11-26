@@ -43,16 +43,16 @@
   "module": "dist/node/index.mjs",
   "types": "dist/node/index.d.ts",
   "dependencies": {
-    "@xylabs/assert": "^4.3.14",
-    "@xylabs/delay": "^4.3.14",
-    "@xylabs/forget": "^4.3.14",
+    "@xylabs/assert": "^4.4.9",
+    "@xylabs/delay": "^4.4.9",
+    "@xylabs/forget": "^4.4.9",
     "async-mutex": "^0.5.0",
-    "mongodb": "~6.8.2"
+    "mongodb": "~6.11.0"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^4.2.4",
     "@xylabs/tsconfig": "^4.2.4",
-    "typescript": "^5.6.3"
+    "typescript": "^5.7.2"
   },
   "publishConfig": {
     "access": "public"
