@@ -6532,23 +6532,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xyo-network/diviner-address-space-memory@npm:^3.5.1":
-  version: 3.5.1
-  resolution: "@xyo-network/diviner-address-space-memory@npm:3.5.1"
-  dependencies:
-    "@xylabs/assert": "npm:^4.4.9"
-    "@xylabs/hex": "npm:^4.4.9"
-    "@xyo-network/archivist-wrapper": "npm:^3.5.1"
-    "@xyo-network/boundwitness-model": "npm:^3.5.1"
-    "@xyo-network/diviner-address-space-abstract": "npm:^3.5.1"
-    "@xyo-network/diviner-address-space-model": "npm:^3.5.1"
-    "@xyo-network/module-model": "npm:^3.5.1"
-    "@xyo-network/payload-builder": "npm:^3.5.1"
-    "@xyo-network/payload-model": "npm:^3.5.1"
-  checksum: 10/1559010503360e34f8276f79dcdd5c22df0e4b72a0abf5d39a4d1e68cc36540c420bb890008aab31a54c1a087dce337cab4680f801497f980471d7ab1d144a2a
-  languageName: node
-  linkType: hard
-
 "@xyo-network/diviner-address-space-model@npm:^3.5.1":
   version: 3.5.1
   resolution: "@xyo-network/diviner-address-space-model@npm:3.5.1"
@@ -6556,17 +6539,6 @@ __metadata:
     "@xyo-network/diviner-model": "npm:^3.5.1"
     "@xyo-network/module-model": "npm:^3.5.1"
   checksum: 10/4dd5077079654d4a61d63af4498c1d5b76e65d9a6b867a2f43dbf54f41b839dbd5e626902814697f78ea3b517cfa8e6e52d91385a568aec5638b73a36a156371
-  languageName: node
-  linkType: hard
-
-"@xyo-network/diviner-address-space@npm:^3.5.1":
-  version: 3.5.1
-  resolution: "@xyo-network/diviner-address-space@npm:3.5.1"
-  dependencies:
-    "@xyo-network/diviner-address-space-abstract": "npm:^3.5.1"
-    "@xyo-network/diviner-address-space-memory": "npm:^3.5.1"
-    "@xyo-network/diviner-address-space-model": "npm:^3.5.1"
-  checksum: 10/854484248cd60903a6fd4b9a84a2de4642bf4fce9c8843c9642fcc029b7e2905a6945d3f9aa79e960dabbc8c972bd44a685276ab09f221e4cd2fea584db5eb3e
   languageName: node
   linkType: hard
 
@@ -7525,7 +7497,6 @@ __metadata:
     "@xyo-network/crypto-nft-payload-plugin": "npm:^3.1.2"
     "@xyo-network/crypto-nft-witness-wallet-plugin": "npm:^3.1.2"
     "@xyo-network/diviner-address-history": "npm:^3.5.1"
-    "@xyo-network/diviner-address-space": "npm:^3.5.1"
     "@xyo-network/diviner-boundwitness": "npm:^3.5.1"
     "@xyo-network/diviner-boundwitness-stats": "npm:^3.5.1"
     "@xyo-network/diviner-forecasting": "npm:^3.5.1"
@@ -7630,7 +7601,6 @@ __metadata:
     "@xyo-network/node-core-lib": "workspace:^"
     "@xyo-network/node-core-model": "workspace:^"
     "@xyo-network/node-core-types": "workspace:^"
-    "@xyo-network/payload-builder": "npm:^3.5.1"
     "@xyo-network/payload-model": "npm:^3.5.1"
     "@xyo-network/payload-wrapper": "npm:^3.5.1"
     "@xyo-network/prometheus-node-plugin": "npm:^3.1.2"
