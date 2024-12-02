@@ -58,9 +58,7 @@ export const configureMemoryNode = async (container: Container, _memoryNode?: No
 const loadNodeFromConfig = async (container: Container, config?: string) => {
   const manifest: PackageManifestPayload
     = config ? (JSON.parse(await readFile(config, 'utf8')) as PackageManifestPayload) : (defaultNode as PackageManifestPayload)
-  // TODO: Import all public children from manifest once we're OK to move the image thumbnail
-  // modules from the main node to a child node
-  const manifestPublicChildren: ModuleManifest[] = config ? [] : [...nftContractNode.nodes, ...nftMetadataNode.nodes]
+  const manifestPublicChildren: ModuleManifest[] = config ? [] : []
   const mnemonic = container.get<string>(TYPES.AccountMnemonic)
   const wallet = await HDWallet.fromPhrase(mnemonic)
   const locator = container.get<ModuleFactoryLocator>(TYPES.ModuleFactoryLocator)
