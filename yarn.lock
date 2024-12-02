@@ -5976,7 +5976,7 @@ __metadata:
     "@xyo-network/manifest": "npm:^3.5.1"
     "@xyo-network/module-factory-locator": "npm:^3.5.1"
     "@xyo-network/module-model": "npm:^3.5.1"
-    "@xyo-network/node-core-model": "npm:^3.1.4"
+    "@xyo-network/node-core-model": "npm:^3.1.5"
     "@xyo-network/node-memory": "npm:^3.5.1"
     "@xyo-network/node-model": "npm:^3.5.1"
     "@xyo-network/payload-builder": "npm:^3.5.1"
@@ -8117,7 +8117,7 @@ __metadata:
   dependencies:
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.4"
     "@xylabs/tsconfig": "npm:^4.2.4"
-    "@xyo-network/node-core-model": "npm:^3.1.4"
+    "@xyo-network/node-core-model": "npm:^3.1.5"
     "@xyo-network/payload-builder": "npm:^3.5.1"
     "@xyo-network/payload-model": "npm:^3.5.1"
     "@xyo-network/payload-mongodb": "workspace:^"
@@ -8128,7 +8128,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xyo-network/node-core-model@npm:^3.1.4, @xyo-network/node-core-model@workspace:^, @xyo-network/node-core-model@workspace:packages/node/packages/core/packages/model":
+"@xyo-network/node-core-model@npm:^3.1.5, @xyo-network/node-core-model@workspace:^, @xyo-network/node-core-model@workspace:packages/node/packages/core/packages/model":
   version: 0.0.0-use.local
   resolution: "@xyo-network/node-core-model@workspace:packages/node/packages/core/packages/model"
   dependencies:
