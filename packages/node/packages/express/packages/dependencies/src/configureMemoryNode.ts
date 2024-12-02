@@ -17,10 +17,7 @@ import type { NodeInstance } from '@xyo-network/node-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Container } from 'inversify'
 
-import {
-  defaultNode, nftContractNode, nftMetadataNode,
-} from './Manifest/index.js'
-import { witnessNftCollections } from './witnessNftCollections.js'
+import { defaultNode } from './Manifest/index.js'
 
 // TODO: How to inject account for node that is to be created from config?
 export const configureMemoryNode = async (container: Container, _memoryNode?: NodeInstance, _account?: AccountInstance) => {
@@ -46,9 +43,6 @@ export const configureMemoryNode = async (container: Container, _memoryNode?: No
       // TODO: Register additional modules specified by hashes
     }
   }
-  if (process.env.WITNESS_NFT_COLLECTIONS) {
-    await witnessNftCollections(node)
-  }
   const modules = await node.resolve('*', { direction: 'down', maxDepth: 10 })
   for (const mod of modules) {
     console.log(`Expose: ${mod.address} [${mod.id}]`)
@@ -58,9 +52,7 @@ export const configureMemoryNode = async (container: Container, _memoryNode?: No
 const loadNodeFromConfig = async (container: Container, config?: string) => {
   const manifest: PackageManifestPayload
     = config ? (JSON.parse(await readFile(config, 'utf8')) as PackageManifestPayload) : (defaultNode as PackageManifestPayload)
-  // TODO: Import all public children from manifest once we're OK to move the image thumbnail
-  // modules from the main node to a child node
-  const manifestPublicChildren: ModuleManifest[] = config ? [] : [...nftContractNode.nodes, ...nftMetadataNode.nodes]
+  const manifestPublicChildren: ModuleManifest[] = config ? [] : []
   const mnemonic = container.get<string>(TYPES.AccountMnemonic)
   const wallet = await HDWallet.fromPhrase(mnemonic)
   const locator = container.get<ModuleFactoryLocator>(TYPES.ModuleFactoryLocator)
