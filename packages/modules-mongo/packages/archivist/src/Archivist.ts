@@ -34,6 +34,26 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
     return head[0] ? PayloadWrapper.wrap(head[0]).payload : undefined
   }
 
+  protected async findOneByHash(hash: Hash) {
+    const dataPayload = (await this.payloads.findOne({ _$hash: hash }))
+    if (dataPayload) {
+      return dataPayload
+    } else {
+      const dataBw = (await this.boundWitnesses.findOne({ _$hash: hash }))
+      if (dataBw) {
+        return dataBw
+      } else {
+        const payload = (await this.payloads.findOne({ _hash: hash }))
+        if (payload) {
+          return payload
+        } else {
+          const bw = (await this.boundWitnesses.findOne({ _hash: hash }))
+          return bw ?? undefined
+        }
+      }
+    }
+  }
+
   protected override async getHandler(hashes: Hash[]): Promise<WithMeta<Payload>[]> {
     let remainingHashes = [...hashes]
 
@@ -78,6 +98,7 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
   }
 
   protected override async nextHandler(options?: ArchivistNextOptions): Promise<WithMeta<Payload>[]> {
+    // Sanitize inputs and set defaults
     let {
       limit, offset, order,
     } = options ?? { limit: 10, order: 'desc' }
@@ -86,37 +107,24 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
     if (limit > 100) limit = 100
 
     if (order != 'asc') order = 'desc'
-    const sort = order === 'asc' ? 1 : -1
 
     let id: ObjectId = order === 'asc' ? ObjectId.createFromTime(0) : ObjectId.createFromTime(Date.now() / 1000)
     if (offset) {
-      const dataPayload = (await this.payloads.findOne({ _$hash: offset }))
-      if (dataPayload) {
-        id = dataPayload._id
+      const payload = await this.findOneByHash(offset)
+      if (payload) {
+        id = payload._id
       } else {
-        const dataBw = (await this.boundWitnesses.findOne({ _$hash: offset }))
-        if (dataBw) {
-          id = dataBw._id
-        } else {
-          const payload = (await this.payloads.findOne({ _hash: offset }))
-          if (payload) {
-            id = payload._id
-          } else {
-            const bw = (await this.boundWitnesses.findOne({ _hash: offset }))
-            if (bw) {
-              id = bw._id
-            } else {
-              return []
-            }
-          }
-        }
+        return []
       }
     }
 
+    // Create aggregate criteria
+    const sort = order === 'asc' ? 1 : -1
     // TODO: How to handle random component of ID across multiple collections
     // to ensure we don't skip some payloads
     const match = order === 'asc' ? { _id: { $gt: id } } : { _id: { $lt: id } }
 
+    // Run the aggregate query
     const foundPayloads = await this.payloads.useCollection((collection) => {
       return collection
         .aggregate<PayloadWithMongoMeta>([
@@ -146,8 +154,8 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
         .toArray()
     })
 
-    const result = await PayloadBuilder.build(foundPayloads.map(fromDbRepresentation))
-    return result
+    // Convert from DB representation to Payloads
+    return await PayloadBuilder.build(foundPayloads.map(fromDbRepresentation))
   }
 
   protected override async startHandler() {
