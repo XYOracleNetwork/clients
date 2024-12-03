@@ -108,15 +108,15 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
 
     if (order != 'asc') order = 'desc'
 
-    let id: ObjectId = order === 'asc' ? ObjectId.createFromTime(0) : ObjectId.createFromTime(Date.now() / 1000)
+    let id: ObjectId | undefined
     if (offset) {
       const payload = await this.findOneByHash(offset)
-      if (payload) {
-        id = payload._id
-      } else {
-        return []
-      }
+      // TODO: Should we throw an error if the requested payload is not found?
+      if (payload) id = payload._id
+    } else {
+      id = order === 'asc' ? ObjectId.createFromTime(0) : ObjectId.createFromTime(Date.now() / 1000)
     }
+    if (!id) return []
 
     // Create aggregate criteria
     const sort = order === 'asc' ? 1 : -1
