@@ -30,10 +30,6 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
   protected readonly aggregateTimeoutMs = 10_000
 
   override async head(): Promise<Payload | undefined> {
-    return await this.findHead()
-  }
-
-  protected async findHead(): Promise<Payload | undefined> {
     const headBoundWitness = await (await this.boundWitnesses.find({})).sort({ _timestamp: -1 }).limit(1).toArray()
     const headPayload = await (await this.payloads.find({})).sort({ _timestamp: -1 }).limit(1).toArray()
     const head = [...headBoundWitness, ...headPayload].sort((a, b) => b._timestamp - a._timestamp)
@@ -100,8 +96,31 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
     if (offset) {
       // TODO: Find payload by hash
       // TODO: Update id with Payload._id
+      const dataPayload = (await this.payloads.findOne({ _$hash: offset }))
+      if (dataPayload) {
+        id = dataPayload._id
+      } else {
+        const dataBw = (await this.boundWitnesses.findOne({ _$hash: offset }))
+        if (dataBw) {
+          id = dataBw._id
+        } else {
+          const payload = (await this.payloads.findOne({ _hash: offset }))
+          if (payload) {
+            id = payload._id
+          } else {
+            const bw = (await this.boundWitnesses.findOne({ _hash: offset }))
+            if (bw) {
+              id = bw._id
+            } else {
+              return []
+            }
+          }
+        }
+      }
     }
 
+    // TODO: How to handle random component of ID across multiple collections
+    // to ensure we don't skip some payloads
     const match = order === 'asc' ? { _id: { $gt: id } } : { _id: { $lt: id } }
 
     const foundPayloads = await this.payloads.useCollection((collection) => {
