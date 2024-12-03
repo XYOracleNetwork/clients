@@ -87,18 +87,19 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
 
     // if (!offset) offset = (await this.head())
     // TODO: Get from the last payload
-    const startingId = ObjectId.createFromTime(Date.now() / 1000)
+    const id = ObjectId.createFromTime(Date.now() / 1000)
 
     if (order != 'asc') order = 'desc'
-    await Promise.reject(new Error('Not implemented'))
+    const sort = order === 'asc' ? 1 : -1
+    const match = order === 'asc' ? { _id: { $gt: id } } : { _id: { $lt: id } }
 
     const foundPayloads = await this.payloads.useCollection((collection) => {
       return collection
         .aggregate<PayloadWithMongoMeta>([
           // Pre-filter payloads collection
-          { $match: { _id: { $gt: startingId } } },
+          { $match: match },
           // Sort payloads by _id
-          { $sort: { _id: 1 } },
+          { $sort: { _id: sort } },
           // Limit payloads to the first N payloads
           { $limit: limit },
           // Combine with filtered boundWitnesses collection
@@ -106,14 +107,14 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
             $unionWith: {
               coll: this.boundWitnessSdkConfig.collection,
               pipeline: [
-                { $match: { _id: { $gt: startingId } } }, // Pre-filter boundWitnesses
-                { $sort: { _id: 1 } }, // Sort boundWitnesses by _id
+                { $match: match }, // Pre-filter boundWitnesses
+                { $sort: { _id: sort } }, // Sort boundWitnesses by _id
                 { $limit: limit }, // Limit boundWitnesses to the first N boundWitnesses
               ],
             },
           },
           // Sort the combined result by _id
-          { $sort: { _id: 1 } },
+          { $sort: { _id: sort } },
           // Limit the final result to N documents
           { $limit: limit },
         ])
