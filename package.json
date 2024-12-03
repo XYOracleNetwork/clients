@@ -57,7 +57,7 @@
     "start-cli-cjs": "node ./packages/cli/dist/xyo.js",
     "start-cli-esm": "node ./packages/cli/dist/xyo.mjs",
     "start-esm": "node ./packages/node/packages/core/packages/app/dist/node/app.mjs",
-    "test": "vitest run",
+    "test": "vitest --watch false run",
     "xyo": "node ./packages/cli/dist/cjs/index.js",
     "xyo-ts": "yarn workspace @xyo-network/node-cli xyo-ts"
   },

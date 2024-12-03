@@ -8,6 +8,7 @@ export default defineConfig({
     globals: true,
     reporters: ['verbose'],
     setupFiles: ['./vitest.startup.ts'],
+    teardownTimeout: 1000,
     globalSetup: ['./packages/node/packages/express/packages/test/src/globalSetup.ts'],
   },
 })
