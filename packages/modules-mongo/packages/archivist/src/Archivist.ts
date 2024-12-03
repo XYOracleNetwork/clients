@@ -30,7 +30,13 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
   protected readonly aggregateTimeoutMs = 10_000
 
   override async head(): Promise<Payload | undefined> {
-    const head = await (await this.payloads.find({})).sort({ _timestamp: -1 }).limit(1).toArray()
+    return await this.findHead()
+  }
+
+  protected async findHead(): Promise<Payload | undefined> {
+    const headBoundWitness = await (await this.boundWitnesses.find({})).sort({ _timestamp: -1 }).limit(1).toArray()
+    const headPayload = await (await this.payloads.find({})).sort({ _timestamp: -1 }).limit(1).toArray()
+    const head = [...headBoundWitness, ...headPayload].sort((a, b) => b._timestamp - a._timestamp)
     return head[0] ? PayloadWrapper.wrap(head[0]).payload : undefined
   }
 
