@@ -1,6 +1,7 @@
 import { exists } from '@xylabs/exists'
 import type { Hash } from '@xylabs/hex'
 import { AbstractArchivist } from '@xyo-network/archivist-abstract'
+import type { ArchivistNextOptions } from '@xyo-network/archivist-model'
 import { ArchivistInsertQuerySchema } from '@xyo-network/archivist-model'
 import { MongoDBArchivistConfigSchema } from '@xyo-network/archivist-model-mongodb'
 import { MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
@@ -68,6 +69,21 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
     }
 
     return await PayloadBuilder.build([...boundWitnessesWithExternalMeta, ...payloadsWithExternalMeta])
+  }
+
+  protected override async nextHandler(options?: ArchivistNextOptions): Promise<WithMeta<Payload>[]> {
+    let {
+      limit, offset, order,
+    } = options ?? {}
+
+    if (!limit) limit = 10
+    if (limit > 100) limit = 100
+
+    // if (!offset) offset = (await this.head())
+
+    if (order != 'asc') order = 'desc'
+    await Promise.reject(new Error('Not implemented'))
+    return []
   }
 
   protected override async startHandler() {
