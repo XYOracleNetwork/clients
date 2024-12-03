@@ -12,6 +12,7 @@ import type {
 import type { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { fromDbRepresentation, toDbRepresentation } from '@xyo-network/payload-mongodb'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
+import { ObjectId } from 'mongodb'
 
 import { validByType } from './lib/index.js'
 
@@ -22,6 +23,11 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
   static override readonly defaultConfigSchema: Schema = MongoDBArchivistConfigSchema
 
   override readonly queries: string[] = [ArchivistInsertQuerySchema, ...super.queries]
+
+  /**
+   * The amount of time to allow the aggregate query to execute
+   */
+  protected readonly aggregateTimeoutMs = 10_000
 
   override async head(): Promise<Payload | undefined> {
     const head = await (await this.payloads.find({})).sort({ _timestamp: -1 }).limit(1).toArray()
@@ -74,16 +80,49 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
   protected override async nextHandler(options?: ArchivistNextOptions): Promise<WithMeta<Payload>[]> {
     let {
       limit, offset, order,
-    } = options ?? {}
+    } = options ?? { limit: 10, order: 'desc' }
 
     if (!limit) limit = 10
     if (limit > 100) limit = 100
 
     // if (!offset) offset = (await this.head())
+    // TODO: Get from the last payload
+    const startingId = ObjectId.createFromTime(Date.now() / 1000)
 
     if (order != 'asc') order = 'desc'
     await Promise.reject(new Error('Not implemented'))
-    return []
+
+    const foundPayloads = await this.payloads.useCollection((collection) => {
+      return collection
+        .aggregate<PayloadWithMongoMeta>([
+          // Pre-filter payloads collection
+          { $match: { _id: { $gt: startingId } } },
+          // Sort payloads by _id
+          { $sort: { _id: 1 } },
+          // Limit payloads to the first N payloads
+          { $limit: limit },
+          // Combine with filtered boundWitnesses collection
+          {
+            $unionWith: {
+              coll: this.boundWitnessSdkConfig.collection,
+              pipeline: [
+                { $match: { _id: { $gt: startingId } } }, // Pre-filter boundWitnesses
+                { $sort: { _id: 1 } }, // Sort boundWitnesses by _id
+                { $limit: limit }, // Limit boundWitnesses to the first N boundWitnesses
+              ],
+            },
+          },
+          // Sort the combined result by _id
+          { $sort: { _id: 1 } },
+          // Limit the final result to N documents
+          { $limit: limit },
+        ])
+        .maxTimeMS(this.aggregateTimeoutMs)
+        .toArray()
+    })
+
+    const result = await PayloadBuilder.build(foundPayloads.map(fromDbRepresentation))
+    return result
   }
 
   protected override async startHandler() {
