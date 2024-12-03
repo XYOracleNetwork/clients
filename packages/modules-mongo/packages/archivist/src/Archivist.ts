@@ -30,9 +30,7 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
   protected readonly aggregateTimeoutMs = 10_000
 
   override async head(): Promise<Payload | undefined> {
-    const headBoundWitness = await (await this.boundWitnesses.find({})).sort({ _timestamp: -1 }).limit(1).toArray()
-    const headPayload = await (await this.payloads.find({})).sort({ _timestamp: -1 }).limit(1).toArray()
-    const head = [...headBoundWitness, ...headPayload].sort((a, b) => b._timestamp - a._timestamp)
+    const head = await this.next({ limit: 1, order: 'desc' })
     return head[0] ? PayloadWrapper.wrap(head[0]).payload : undefined
   }
 
@@ -91,11 +89,7 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
     const sort = order === 'asc' ? 1 : -1
 
     let id: ObjectId = order === 'asc' ? ObjectId.createFromTime(0) : ObjectId.createFromTime(Date.now() / 1000)
-    // if (!offset) offset = (await this.head())
-    // TODO: Get from the last payload
     if (offset) {
-      // TODO: Find payload by hash
-      // TODO: Update id with Payload._id
       const dataPayload = (await this.payloads.findOne({ _$hash: offset }))
       if (dataPayload) {
         id = dataPayload._id
