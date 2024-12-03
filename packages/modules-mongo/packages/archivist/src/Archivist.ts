@@ -85,12 +85,17 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
     if (!limit) limit = 10
     if (limit > 100) limit = 100
 
-    // if (!offset) offset = (await this.head())
-    // TODO: Get from the last payload
-    const id = ObjectId.createFromTime(Date.now() / 1000)
-
     if (order != 'asc') order = 'desc'
     const sort = order === 'asc' ? 1 : -1
+
+    let id: ObjectId = order === 'asc' ? ObjectId.createFromTime(0) : ObjectId.createFromTime(Date.now() / 1000)
+    // if (!offset) offset = (await this.head())
+    // TODO: Get from the last payload
+    if (offset) {
+      // TODO: Find payload by hash
+      // TODO: Update id with Payload._id
+    }
+
     const match = order === 'asc' ? { _id: { $gt: id } } : { _id: { $lt: id } }
 
     const foundPayloads = await this.payloads.useCollection((collection) => {
