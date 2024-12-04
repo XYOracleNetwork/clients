@@ -44,7 +44,7 @@
     "@xyo-network/schema-name-validator": "^3.5.2",
     "@xyo-network/sentinel-model": "^3.5.2",
     "@xyo-network/sentinel-wrapper": "^3.5.2",
-    "dotenv": "^16.4.5",
+    "dotenv": "^16.4.7",
     "express": "^4.21.1",
     "http-status-codes": "^2.3.0",
     "jest": "^29.7.0",
