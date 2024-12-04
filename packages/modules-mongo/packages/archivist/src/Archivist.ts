@@ -94,7 +94,7 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
         throw new Error('MongoDBDeterministicArchivist: Error inserting BoundWitnesses')
     }
 
-    return await PayloadBuilder.build([...boundWitnessesWithExternalMeta, ...payloadsWithExternalMeta])
+    return await PayloadBuilder.build([...boundWitnessesWithExternalMeta, ...payloadsWithExternalMeta].map(fromDbRepresentation))
   }
 
   protected override async nextHandler(options?: ArchivistNextOptions): Promise<WithMeta<Payload>[]> {
