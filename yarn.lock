@@ -5477,7 +5477,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xylabs/arraybuffer@npm:^4.4.10, @xylabs/arraybuffer@npm:^4.4.9":
+"@xylabs/arraybuffer@npm:^4.4.9":
   version: 4.4.10
   resolution: "@xylabs/arraybuffer@npm:4.4.10"
   dependencies:
@@ -5866,7 +5866,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xylabs/vitest-extended@npm:^4.4.10":
+"@xylabs/vitest-extended@npm:^4.4.10, @xylabs/vitest-extended@npm:^4.4.9":
   version: 4.4.10
   resolution: "@xylabs/vitest-extended@npm:4.4.10"
   dependencies:
@@ -6050,14 +6050,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/archivist-mongodb@workspace:packages/modules-mongo/packages/archivist"
   dependencies:
-    "@xylabs/arraybuffer": "npm:^4.4.10"
+    "@xylabs/assert": "npm:^4.4.10"
+    "@xylabs/delay": "npm:^4.4.10"
     "@xylabs/exists": "npm:^4.4.10"
     "@xylabs/hex": "npm:^4.4.10"
     "@xylabs/jest-helpers": "npm:^4.4.10"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.4"
     "@xylabs/tsconfig": "npm:^4.2.4"
+    "@xylabs/vitest-extended": "npm:^4.4.9"
     "@xyo-network/account": "npm:^3.5.2"
-    "@xyo-network/account-model": "npm:^3.5.2"
     "@xyo-network/archivist-abstract": "npm:^3.5.2"
     "@xyo-network/archivist-model": "npm:^3.5.2"
     "@xyo-network/archivist-model-mongodb": "workspace:^"

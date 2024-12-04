@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
 import { describeIf } from '@xylabs/jest-helpers'
@@ -11,6 +13,10 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { PayloadWrapperBase } from '@xyo-network/payload-wrapper'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import type { BaseMongoSdkConfig } from '@xyo-network/sdk-xyo-mongo-js'
+import {
+  beforeAll,
+  describe, expect, it,
+} from 'vitest'
 
 import { MongoDBArchivist } from '../Archivist.js'
 

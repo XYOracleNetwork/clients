@@ -57,7 +57,7 @@
     "@xylabs/jest-helpers": "^4.4.10",
     "@xylabs/ts-scripts-yarn3": "^4.2.4",
     "@xylabs/tsconfig": "^4.2.4",
-    "@xylabs/tsconfig-jest": "^4.2.4",
+    "@xylabs/vitest-extended": "^4.4.9",
     "@xyo-network/account": "^3.5.2",
     "@xyo-network/archivist-wrapper": "^3.5.2",
     "@xyo-network/boundwitness-builder": "^3.5.2",
