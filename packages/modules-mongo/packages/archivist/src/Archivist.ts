@@ -2,7 +2,7 @@ import { exists } from '@xylabs/exists'
 import type { Hash } from '@xylabs/hex'
 import { AbstractArchivist } from '@xyo-network/archivist-abstract'
 import type { ArchivistNextOptions } from '@xyo-network/archivist-model'
-import { ArchivistInsertQuerySchema } from '@xyo-network/archivist-model'
+import { ArchivistInsertQuerySchema, ArchivistNextQuerySchema } from '@xyo-network/archivist-model'
 import { MongoDBArchivistConfigSchema } from '@xyo-network/archivist-model-mongodb'
 import { MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
@@ -22,7 +22,7 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, MongoDBArchivistConfigSchema]
   static override readonly defaultConfigSchema: Schema = MongoDBArchivistConfigSchema
 
-  override readonly queries: string[] = [ArchivistInsertQuerySchema, ...super.queries]
+  override readonly queries: string[] = [ArchivistInsertQuerySchema, ArchivistNextQuerySchema, ...super.queries]
 
   /**
    * The amount of time to allow the aggregate query to execute
