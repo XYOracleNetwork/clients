@@ -1,6 +1,7 @@
 import { delay } from '@xylabs/delay'
 import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
+import type { ArchivistNextOptions } from '@xyo-network/archivist-model'
 import { ArchivistWrapper } from '@xyo-network/archivist-wrapper'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { BoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
@@ -125,10 +126,25 @@ describeIf(hasMongoDBConfig())('Archivist', () => {
       }
       await archivist.insert(payloads.map(w => w.payload))
     })
-    it.only('des', async () => {
-      const results = await archivist.next({ limit: payloads.length, order: 'desc' })
+    it.only('asc', async () => {
+      const options: ArchivistNextOptions = {
+        limit: payloads.length, order: 'asc', offset: await payloads[0].dataHash(),
+      }
+      const results = await archivist.next(options)
       expect(results).toBeArrayOfSize(payloads.length)
-      for (const [i, result] of results.entries()) {
+      for (const [i, result] of results.reverse().entries()) {
+        const payload = payloads[i]
+        expect(result.$hash).toEqual(await payload.dataHash())
+        expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))
+        expect(await PayloadBuilder.hash(result)).toEqual(await PayloadBuilder.hash(payload.payload))
+        expect(result).toEqual(payload.payload)
+      }
+    })
+    it.only('desc', async () => {
+      const options: ArchivistNextOptions = { limit: payloads.length, order: 'desc' }
+      const results = await archivist.next(options)
+      expect(results).toBeArrayOfSize(payloads.length)
+      for (const [i, result] of results.reverse().entries()) {
         const payload = payloads[i]
         expect(result.$hash).toEqual(await payload.dataHash())
         expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))
