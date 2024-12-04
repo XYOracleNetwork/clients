@@ -1,3 +1,4 @@
+import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
 import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
@@ -106,7 +107,7 @@ describeIf(hasMongoDBConfig())('Archivist', () => {
       }
     })
   })
-  describe.only('next', () => {
+  describe('next', () => {
     const payloads: BoundWitnessWrapper | PayloadWrapper[] = []
     beforeAll(async () => {
       for (let i = 0; i < 10; i++) {
@@ -122,35 +123,60 @@ describeIf(hasMongoDBConfig())('Archivist', () => {
           .signer(signer)
           .build())[0]
         const boundWitnessWrapper = BoundWitnessWrapper.parse(boundWitness, [payload1, payload2])
+        await archivist.insert([boundWitnessWrapper.payload])
+        await archivist.insert([payloadWrapper1.payload])
+        await archivist.insert([payloadWrapper2.payload])
         payloads.push(boundWitnessWrapper, payloadWrapper1, payloadWrapper2)
       }
-      await archivist.insert(payloads.map(w => w.payload))
     })
-    it('asc', async () => {
-      const options: ArchivistNextOptions = {
-        limit: payloads.length, order: 'asc', offset: await payloads[0].dataHash(),
-      }
-      const results = await archivist.next(options)
-      expect(results).toBeArrayOfSize(payloads.length)
-      for (const [i, result] of results.entries()) {
-        const payload = payloads[i]
-        expect(result.$hash).toEqual(await payload.dataHash())
-        expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))
-        expect(await PayloadBuilder.hash(result)).toEqual(await PayloadBuilder.hash(payload.payload))
-        expect(result).toEqual(payload.payload)
-      }
+    describe('asc', () => {
+      it('from offset', async () => {
+        const start = payloads[0]
+        const expected = payloads.slice(1)
+        const options: ArchivistNextOptions = {
+          limit: payloads.length, order: 'asc', offset: await start.dataHash(),
+        }
+        const results = await archivist.next(options)
+        expect(results).toBeArrayOfSize(expected.length)
+        for (const [i, result] of results.entries()) {
+          const payload = expected[i]
+          expect(result.$hash).toEqual(await payload.dataHash())
+          expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))
+          expect(await PayloadBuilder.hash(result)).toEqual(await PayloadBuilder.hash(payload.payload))
+          expect(result).toEqual(payload.payload)
+        }
+      })
     })
-    it('desc', async () => {
-      const options: ArchivistNextOptions = { limit: payloads.length, order: 'desc' }
-      const results = await archivist.next(options)
-      expect(results).toBeArrayOfSize(payloads.length)
-      for (const [i, result] of results.reverse().entries()) {
-        const payload = payloads[i]
-        expect(result.$hash).toEqual(await payload.dataHash())
-        expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))
-        expect(await PayloadBuilder.hash(result)).toEqual(await PayloadBuilder.hash(payload.payload))
-        expect(result).toEqual(payload.payload)
-      }
+    describe('desc', () => {
+      it('with no offset', async () => {
+        const expected = payloads
+        const options: ArchivistNextOptions = { limit: expected.length, order: 'desc' }
+        const results = await archivist.next(options)
+        expect(results).toBeArrayOfSize(expected.length)
+        for (const [i, result] of results.reverse().entries()) {
+          const payload = expected[i]
+          expect(result.$hash).toEqual(await payload.dataHash())
+          expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))
+          expect(await PayloadBuilder.hash(result)).toEqual(await PayloadBuilder.hash(payload.payload))
+          expect(result).toEqual(payload.payload)
+        }
+      })
+      it('from offset', async () => {
+        const start = assertEx(payloads.at(-1))
+        const expected = payloads.slice(0, -1)
+        const options: ArchivistNextOptions = {
+          limit: expected.length, order: 'desc', offset: await start.dataHash(),
+        }
+        const results = await archivist.next(options)
+        expect(results).toBeArrayOfSize(expected.length)
+        for (const [i, result] of results.reverse().entries()) {
+          const payload = expected[i]
+          expect(result.$hash).toEqual(await payload.dataHash())
+          expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))
+          expect(await PayloadBuilder.hash(result)).toEqual(await PayloadBuilder.hash(payload.payload))
+          expect(result).toEqual(payload.payload)
+        }
+      })
     })
   })
 })

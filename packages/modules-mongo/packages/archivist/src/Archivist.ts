@@ -114,7 +114,12 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
       // TODO: Should we throw an error if the requested payload is not found?
       if (payload) id = payload._id
     } else {
-      id = order === 'asc' ? ObjectId.createFromTime(0) : ObjectId.createFromTime(Date.now() / 1000)
+      id = order === 'asc'
+      // If ascending, start from the beginning of time
+        ? ObjectId.createFromTime(0)
+        // If descending, start from now (plus a bit more in the future to ensure
+        // them most recent ObjectIds are included)
+        : ObjectId.createFromTime((Date.now() + 10_000) / 1000)
     }
     if (!id) return []
 
