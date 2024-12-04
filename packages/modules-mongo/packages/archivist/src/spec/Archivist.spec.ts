@@ -106,7 +106,7 @@ describeIf(hasMongoDBConfig())('Archivist', () => {
       }
     })
   })
-  describe('next', () => {
+  describe.only('next', () => {
     const payloads: BoundWitnessWrapper | PayloadWrapper[] = []
     beforeAll(async () => {
       for (let i = 0; i < 10; i++) {
@@ -126,13 +126,13 @@ describeIf(hasMongoDBConfig())('Archivist', () => {
       }
       await archivist.insert(payloads.map(w => w.payload))
     })
-    it.only('asc', async () => {
+    it('asc', async () => {
       const options: ArchivistNextOptions = {
         limit: payloads.length, order: 'asc', offset: await payloads[0].dataHash(),
       }
       const results = await archivist.next(options)
       expect(results).toBeArrayOfSize(payloads.length)
-      for (const [i, result] of results.reverse().entries()) {
+      for (const [i, result] of results.entries()) {
         const payload = payloads[i]
         expect(result.$hash).toEqual(await payload.dataHash())
         expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))
@@ -140,7 +140,7 @@ describeIf(hasMongoDBConfig())('Archivist', () => {
         expect(result).toEqual(payload.payload)
       }
     })
-    it.only('desc', async () => {
+    it('desc', async () => {
       const options: ArchivistNextOptions = { limit: payloads.length, order: 'desc' }
       const results = await archivist.next(options)
       expect(results).toBeArrayOfSize(payloads.length)
