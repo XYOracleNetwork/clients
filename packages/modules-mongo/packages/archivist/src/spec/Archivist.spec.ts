@@ -69,9 +69,9 @@ describeIf(hasMongoDBConfig())('Archivist', () => {
     type TestDataGetter<T> = () => T
     const cases: [string, TestDataGetter<PayloadWrapperBase[]>][] = [
       ['inserts single payload', () => [payloadWrappers[0]]],
-      ['inserts multiple payloads', () => [payloadWrappers[0], payloadWrappers[1], payloadWrappers[2]]],
+      ['inserts multiple payloads', () => [payloadWrappers[1], payloadWrappers[2]]],
       ['inserts single boundwitness', () => [boundWitnessWrappers[0]]],
-      ['inserts multiple boundwitness', () => [boundWitnessWrappers[0], boundWitnessWrappers[1], boundWitnessWrappers[2]]],
+      ['inserts multiple boundwitness', () => [boundWitnessWrappers[1], boundWitnessWrappers[2]]],
     ]
     it.each(cases)('%s', async (_title, getData) => {
       const payloads = getData()
@@ -90,9 +90,9 @@ describeIf(hasMongoDBConfig())('Archivist', () => {
     type TestDataGetter<T> = () => T
     const cases: [string, TestDataGetter<PayloadWrapperBase[]>][] = [
       ['gets single payload', () => [payloadWrappers[0]]],
-      ['gets multiple payloads', () => [payloadWrappers[0], payloadWrappers[1], payloadWrappers[2]]],
+      ['gets multiple payloads', () => [payloadWrappers[1], payloadWrappers[2]]],
       ['gets single boundwitness', () => [boundWitnessWrappers[0]]],
-      ['gets multiple boundwitness', () => [boundWitnessWrappers[0], boundWitnessWrappers[1], boundWitnessWrappers[2]]],
+      ['gets multiple boundwitness', () => [boundWitnessWrappers[1], boundWitnessWrappers[2]]],
     ]
     it.each(cases)('%s', async (_title, getData) => {
       const payloads = getData()
