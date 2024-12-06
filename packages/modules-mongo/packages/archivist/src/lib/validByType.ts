@@ -12,7 +12,7 @@ export const validByType = async (payloads: Payload[] = []) => {
         const wrapper = isQueryBoundWitness(payload) ? QueryBoundWitnessWrapper : BoundWitnessWrapper
         const bw = wrapper.parse(payload)
         if (await bw.getValid()) {
-          results[0].push(bw.payload)
+          results[0].push(payload)
         } else {
           const errors = await bw.getErrors()
           console.log(`validByType.Error: ${JSON.stringify(errors, null, 2)}`)
@@ -20,7 +20,7 @@ export const validByType = async (payloads: Payload[] = []) => {
       } else {
         const payloadWrapper = PayloadWrapper.wrap(payload)
         if (await payloadWrapper.getValid()) {
-          results[1].push(payloadWrapper.payload)
+          results[1].push(payload)
         }
       }
       return
