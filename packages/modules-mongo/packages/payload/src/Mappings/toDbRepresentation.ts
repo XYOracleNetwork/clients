@@ -9,7 +9,8 @@ import type { PayloadWithMongoMeta } from '../Payload/index.js'
 
 export const payloadToDbRepresentation = async <T extends Payload>(payload: T, index = 0): Promise<PayloadWithMongoMeta<T>> => {
   const clone: JsonObject = structuredClone(payload) as unknown as JsonObject
-  const _hash = await PayloadBuilder.hash(payload)
+  const _$hash = await PayloadBuilder.hash(payload)
+  const _hash = await PayloadBuilder.dataHash(payload)
   const metaNormalized: JsonObject = {}
   for (const key of Object.keys(clone)) {
     if (key.startsWith('$')) {
@@ -19,7 +20,7 @@ export const payloadToDbRepresentation = async <T extends Payload>(payload: T, i
     }
   }
   return {
-    ...metaNormalized, _hash, _timestamp: Date.now() + index,
+    ...metaNormalized, _hash, _$hash, _timestamp: Date.now() + index,
   } as PayloadWithMongoMeta<T>
 }
 
