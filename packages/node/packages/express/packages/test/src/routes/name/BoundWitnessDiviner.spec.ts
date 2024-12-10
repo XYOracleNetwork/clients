@@ -21,7 +21,7 @@ import {
   nonExistentHash,
   unitTestSigningAccount,
   validateStateResponse,
-} from '../../testUtil'
+} from '../../testUtil/index.ts'
 
 const schema = BoundWitnessDivinerQuerySchema
 
@@ -44,20 +44,22 @@ describe(`/${moduleName}`, () => {
     })
   })
   describe('DivinerDivineQuerySchema', () => {
-    const accountA = Account.random()
-    const accountB = Account.random()
+    let accountA: AccountInstance
+    let accountB: AccountInstance
     const boundWitnesses: BoundWitnessWrapper[] = []
     beforeAll(async () => {
+      accountA = await Account.random()
+      accountB = await Account.random()
       const boundWitnessA = BoundWitnessWrapper.parse((await getNewBoundWitness([await accountA], [await getNewPayload()]))[0])
       const boundWitnessB = BoundWitnessWrapper.parse((await getNewBoundWitness([await accountB], [await getNewPayload()]))[0])
       const boundWitnessC = BoundWitnessWrapper.parse(
-        (await getNewBoundWitness([await accountA, await accountB], [await getNewPayload(), await getNewPayload()]))[0],
+        (await getNewBoundWitness([accountA, accountB], [await getNewPayload(), await getNewPayload()]))[0],
       )
       boundWitnesses.push(boundWitnessA, boundWitnessB, boundWitnessC)
       await archivist.insert(boundWitnesses.map(b => b.boundwitness))
     })
     describe('address', () => {
-      const cases: [title: string, accounts: Promise<AccountInstance>[], expected: () => BoundWitnessWrapper[]][] = [
+      const cases: [title: string, accounts: AccountInstance[], expected: () => BoundWitnessWrapper[]][] = [
         ['single address returns boundWitnesses signed by address', [accountA], () => [boundWitnesses[0], boundWitnesses[2]]],
         ['single address returns boundWitnesses signed by address', [accountB], () => [boundWitnesses[1], boundWitnesses[2]]],
         ['multiple addresses returns boundWitnesses signed by both addresses', [accountA, accountB], () => [boundWitnesses[2]]],
