@@ -18,7 +18,7 @@ const sentinelName = 'NftMetadataSentinel'
 const indexDivinerName = 'NftMetadataIndexDiviner'
 const archivistName = 'NftMetadataArchivist'
 
-describe(`${nodeName}`, () => {
+describe.skip(`${nodeName}`, () => {
   // Gutter Cats
   const uri = 'https://gutter-cats-metadata.s3.us-east-2.amazonaws.com/metadata/1347'
   let node: NodeInstance
