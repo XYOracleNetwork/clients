@@ -1,25 +1,29 @@
 import type { AccountInstance } from '@xyo-network/account-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
-import type { BoundWitness } from '@xyo-network/boundwitness-model'
-import type { ModuleError, Payload } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 
 import { unitTestSigningAccount } from '../Account/index.js'
 import { getNewPayloads } from '../Payload/index.js'
 
-export const getNewBoundWitness = async (signers?: AccountInstance[], payloads?: Payload[]): Promise<[BoundWitness, Payload[], ModuleError[]]> => {
-  return await (await new BoundWitnessBuilder().payloads(payloads ?? (await getNewPayloads(1))))
-    .witnesses(signers ?? [await unitTestSigningAccount()])
-    .build()
+type BoundWitnessBuilderBuildResult = Awaited<ReturnType<BoundWitnessBuilder['build']>>
+
+export const getNewBoundWitness = async (signers?: AccountInstance[], payloads?: Payload[]): Promise<BoundWitnessBuilderBuildResult> => {
+  const p = payloads ?? await getNewPayloads(1)
+  const accounts: AccountInstance[] = signers ?? [await unitTestSigningAccount()]
+  return await (new BoundWitnessBuilder().payloads(p)).signers(accounts).build()
 }
 
 export const getNewBoundWitnesses = async (
   signers?: AccountInstance[],
   numBoundWitnesses = 1,
   numPayloads = 1,
-): Promise<[BoundWitness, Payload[], ModuleError[]][]> => {
-  const response: [BoundWitness, Payload[], ModuleError[]][] = []
+): Promise<BoundWitnessBuilderBuildResult[]> => {
+  const accounts = signers ?? [await unitTestSigningAccount()]
+  const response: BoundWitnessBuilderBuildResult[] = []
   for (let i = 0; i < numBoundWitnesses; i++) {
-    response.push(await getNewBoundWitness(signers ?? [await unitTestSigningAccount()], await getNewPayloads(numPayloads)))
+    const payloads = await getNewPayloads(numPayloads)
+    const bw = await getNewBoundWitness(accounts, payloads)
+    response.push(bw)
   }
   return response
 }
