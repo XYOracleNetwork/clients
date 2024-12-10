@@ -16,11 +16,13 @@ import type { DivinerInstance, DivinerParams } from '@xyo-network/diviner-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import type { JobQueue } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { WithMeta } from '@xyo-network/payload-model'
 import type { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import type { MockProxy } from 'jest-mock-extended'
 import { mock } from 'jest-mock-extended'
+import {
+  beforeAll, describe, expect, it,
+} from 'vitest'
 
 import { MongoDBBoundWitnessStatsDiviner } from '../MongoDBBoundWitnessStatsDiviner.js'
 
@@ -62,7 +64,7 @@ describeIf(hasMongoDBConfig())('MongoDBBoundWitnessStatsDiviner', () => {
         const actual = result[0]
         expect(actual).toBeObject()
         expect(actual.schema).toBe(BoundWitnessStatsDivinerSchema)
-        expect((actual as WithMeta<BoundWitnessStatsPayload>).count).toBeNumber()
+        expect((actual as BoundWitnessStatsPayload).count).toBeNumber()
       })
     })
     describe('with no address supplied in query', () => {
@@ -73,7 +75,7 @@ describeIf(hasMongoDBConfig())('MongoDBBoundWitnessStatsDiviner', () => {
         const actual = result[0]
         expect(actual).toBeObject()
         expect(actual.schema).toBe(BoundWitnessStatsDivinerSchema)
-        expect((actual as WithMeta<BoundWitnessStatsPayload>).count).toBeNumber()
+        expect((actual as BoundWitnessStatsPayload).count).toBeNumber()
       })
     })
   })

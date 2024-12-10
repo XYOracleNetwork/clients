@@ -4,7 +4,7 @@ import { DivinerDivineQuerySchema } from '@xyo-network/diviner-model'
 import type { PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
 import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Payload, WithMeta } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 import {
@@ -94,13 +94,13 @@ describe(`/${moduleName}`, () => {
     describe('schema', () => {
       let payloadA: PayloadWrapper
       let payloadB: PayloadWrapper
-      let inserted: WithMeta<Payload>[]
+      let inserted: Payload[]
       beforeAll(async () => {
         const schemaA = getTestSchemaName()
         const schemaB = getTestSchemaName()
-        const payloadBaseA = await PayloadBuilder.build({ ...(await getNewPayload()), schema: schemaA })
+        const payloadBaseA = { ...(await getNewPayload()), schema: schemaA }
         payloadA = PayloadWrapper.wrap(payloadBaseA)
-        const payloadBaseB = await PayloadBuilder.build({ ...(await getNewPayload()), schema: schemaB })
+        const payloadBaseB = { ...(await getNewPayload()), schema: schemaB }
         payloadB = PayloadWrapper.wrap(payloadBaseB)
         inserted = await archivist.insert([payloadA.payload, payloadB.payload])
 

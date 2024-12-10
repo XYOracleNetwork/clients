@@ -37,13 +37,13 @@
   "module": "dist/node/index.mjs",
   "types": "dist/node/index.d.ts",
   "dependencies": {
-    "@xylabs/assert": "^4.4.10",
-    "@xylabs/hex": "^4.4.10",
-    "@xylabs/lodash": "^4.4.10",
-    "@xylabs/object": "^4.4.10",
-    "@xyo-network/boundwitness-model": "^3.5.2",
-    "@xyo-network/payload-builder": "^3.5.2",
-    "@xyo-network/payload-model": "^3.5.2"
+    "@xylabs/assert": "^4.4.12",
+    "@xylabs/hex": "^4.4.12",
+    "@xylabs/lodash": "^4.4.12",
+    "@xylabs/object": "^4.4.12",
+    "@xyo-network/boundwitness-model": "^3.6.0-rc.1",
+    "@xyo-network/payload-builder": "^3.6.0-rc.1",
+    "@xyo-network/payload-model": "^3.6.0-rc.1"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^4.2.4",

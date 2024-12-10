@@ -14,9 +14,7 @@ import type { DivinerParams } from '@xyo-network/diviner-model'
 import type { LocationPayload } from '@xyo-network/location-payload-plugin'
 import { LocationSchema } from '@xyo-network/location-payload-plugin'
 import type { AnyConfigSchema } from '@xyo-network/module-model'
-import type {
-  Payload, Schema, WithMeta,
-} from '@xyo-network/payload-model'
+import type { Payload, Schema } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 export type CoinCurrentUserWitnessSchema = 'co.coinapp.current.user.witness'
@@ -82,7 +80,7 @@ export class MemoryCoinUserLocationsDiviner<
         }
         return locations
       })
-      const locations = compact(await this.params.archivist.get(locationHashes)) as WithMeta<LocationPayload>[]
+      const locations = compact(await this.params.archivist.get(locationHashes)) as LocationPayload[]
       this.logger?.log('CoinUserLocationsDiviner.Divine: Processed query')
       return locations
     }

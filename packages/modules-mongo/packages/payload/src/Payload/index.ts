@@ -1,2 +1,2 @@
-export * from './PayloadMeta.js'
-export * from './PayloadWithMeta.js'
+export * from './PayloadMongoMeta.ts'
+export * from './PayloadWithMongoMeta.ts'

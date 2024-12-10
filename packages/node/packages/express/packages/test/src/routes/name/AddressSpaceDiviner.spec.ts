@@ -5,7 +5,7 @@ import type { DivinerInstance } from '@xyo-network/diviner-model'
 import { DivinerDivineQuerySchema } from '@xyo-network/diviner-model'
 import type { AddressPayload } from '@xyo-network/module-model'
 import { AddressSchema } from '@xyo-network/module-model'
-import type { WithMeta, WithSources } from '@xyo-network/payload-model'
+import type { WithSources } from '@xyo-network/payload-model'
 
 import {
   getDivinerByName, getNewPayload, insertPayload, validateStateResponse,
@@ -41,7 +41,7 @@ describe(`/${divinerName}`, () => {
       const response = await sut.divine([])
       expect(response).toBeArray()
       expect(response.length).toBeGreaterThan(0)
-      const addressPayloads = response.filter((p): p is WithSources<WithMeta<AddressPayload>> => p.schema === AddressSchema)
+      const addressPayloads = response.filter((p): p is WithSources<AddressPayload> => p.schema === AddressSchema)
       const addresses = addressPayloads.map(p => p.address)
       expect(addresses).toBeArray()
       expect(addresses.length).toBeGreaterThan(0)

@@ -6,7 +6,7 @@ import type { ArchivistInstance } from '@xyo-network/archivist-model'
 import type { DivinerInstance } from '@xyo-network/diviner-model'
 import type { NodeInstance } from '@xyo-network/node-model'
 import { asNodeInstance } from '@xyo-network/node-model'
-import type { WithMeta, WithSources } from '@xyo-network/payload-model'
+import type { WithSources } from '@xyo-network/payload-model'
 import type { SentinelInstance } from '@xyo-network/sentinel-model'
 
 import {
@@ -55,7 +55,7 @@ describe(`${nodeName}`, () => {
     it('indexes NFT metadata by URI', async () => {
       // const query = { schema: 'network.xyo.diviner.payload.query', uri }
       const query = { schema: 'network.xyo.diviner.payload.query' }
-      const results = (await diviner.divine([query])) as WithSources<WithMeta<{ schema: string; uri: string }>>[]
+      const results = (await diviner.divine([query])) as WithSources<{ schema: string; uri: string }>[]
       expect(results).toBeDefined()
       expect(results).toBeArrayOfSize(1)
       const result = results[0]
@@ -65,7 +65,7 @@ describe(`${nodeName}`, () => {
       expect(result.sources?.length).toBeGreaterThan(0)
       const sources = await archivist.get(result.sources ?? [])
       expect(sources).toBeArrayOfSize(result.sources?.length || 0)
-      const responses = sources.filter(isApiCallResult) as WithSources<WithMeta<ApiCallJsonResult>>[]
+      const responses = sources.filter(isApiCallResult) as WithSources<ApiCallJsonResult>[]
       expect(responses).toBeArrayOfSize(1)
       expect(responses[0]?.call).toBe(uri)
       expect(responses[0]?.data).toBeObject()

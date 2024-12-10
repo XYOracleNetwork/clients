@@ -14,7 +14,7 @@ import type {
 } from '@xyo-network/node-core-model'
 import { BoundWitnessPointerSchema } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Payload, WithMeta } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 
@@ -234,7 +234,7 @@ describe('/:hash', () => {
         await delay(100)
         boundWitnesses = [bwA, bwB, bwC]
         expectedSchema = payloadsA[0].schema
-        const insertedPayloads: WithMeta<Payload>[] = []
+        const insertedPayloads: Payload[] = []
         for (const bw of boundWitnesses) {
           const blockResponse = await insertBlock(bw, account)
           expect(blockResponse.length).toBe(1)

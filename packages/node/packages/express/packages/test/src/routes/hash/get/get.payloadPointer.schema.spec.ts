@@ -2,7 +2,6 @@ import { Account } from '@xyo-network/account'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload } from '@xyo-network/payload-model'
-import { unMeta } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 import {
@@ -37,7 +36,7 @@ describe('/:hash', () => {
         const pointerHash = await createPointer([[]], [[schema]])
         const result = await getHash(pointerHash)
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        expect(unMeta(result as any)).toEqual(unMeta((await expected).payload as any))
+        expect(result as any).toEqual((await expected).payload as any)
       })
     })
     describe('single schema [w/address]', () => {

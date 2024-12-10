@@ -10,7 +10,10 @@ import {
 import { COLLECTIONS } from '@xyo-network/module-abstract-mongodb'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { PayloadWithMeta, WithMeta } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
+import {
+  beforeAll, describe, expect, it,
+} from 'vitest'
 
 import { MongoDBBoundWitnessDiviner } from '../MongoDBBoundWitnessDiviner.js'
 
@@ -28,28 +31,28 @@ describe('MemoryBoundWitnessDiviner2', () => {
   let archivist: MongoDBArchivist
   let sut: MongoDBBoundWitnessDiviner
   let node: MemoryNode
-  let payloadA: PayloadWithMeta<{ schema: string; url: string }>
-  let payloadB: PayloadWithMeta<{ foo: string[]; schema: string }>
-  let payloadC: PayloadWithMeta<{ foo: string[]; schema: string }>
-  let payloadD: PayloadWithMeta<{ foo: string[]; schema: string }>
-  const bws: WithMeta<BoundWitness>[] = []
+  let payloadA: Payload<{ schema: string; url: string }>
+  let payloadB: Payload<{ foo: string[]; schema: string }>
+  let payloadC: Payload<{ foo: string[]; schema: string }>
+  let payloadD: Payload<{ foo: string[]; schema: string }>
+  const bws: BoundWitness[] = []
   beforeAll(async () => {
-    payloadA = await PayloadBuilder.build({
+    payloadA = {
       schema: 'network.xyo.test',
       url: 'https://xyo.network',
-    })
-    payloadB = await PayloadBuilder.build({
+    }
+    payloadB = {
       foo: ['bar', 'baz'],
       schema: 'network.xyo.debug',
-    })
-    payloadC = await PayloadBuilder.build({
+    }
+    payloadC = {
       foo: ['one', 'two'],
       schema: 'network.xyo.debug',
-    })
-    payloadD = await PayloadBuilder.build({
+    }
+    payloadD = {
       foo: ['aaa', 'bbb'],
       schema: 'network.xyo.debug',
-    })
+    }
 
     const account = Account.random()
 
@@ -112,7 +115,7 @@ describe('MemoryBoundWitnessDiviner2', () => {
             .build()
           const results = await sut.divine([query])
           expect(results.length).toBe(1)
-          expect(results[0].$hash).toBe(bws[1].$hash)
+          expect(await PayloadBuilder.dataHash(results[0])).toBe(await PayloadBuilder.dataHash(bws[1]))
           expect(results.every(result => result.payload_schemas.includes('network.xyo.debug'))).toBe(true)
         })
         it('only return single bw that contains that schema (desc)', async () => {
@@ -124,7 +127,7 @@ describe('MemoryBoundWitnessDiviner2', () => {
             .build()
           const results = await sut.divine([query])
           expect(results.length).toBe(1)
-          expect(results[0].$hash).toBe(bws[4].$hash)
+          expect(await PayloadBuilder.dataHash(results[0])).toBe(await PayloadBuilder.dataHash(bws[4]))
           expect(results.every(result => result.payload_schemas.includes('network.xyo.debug'))).toBe(true)
         })
       })
@@ -136,7 +139,7 @@ describe('MemoryBoundWitnessDiviner2', () => {
             .build()
           const results = await sut.divine([query])
           expect(results.length).toBeGreaterThan(0)
-          expect(results[0].$hash).toBe(bws[4].$hash)
+          expect(await PayloadBuilder.dataHash(results[0])).toBe(await PayloadBuilder.dataHash(bws[4]))
           expect(results.every(result => payload_schemas.includes(result.payload_schemas[0]))).toBe(true)
         })
       })

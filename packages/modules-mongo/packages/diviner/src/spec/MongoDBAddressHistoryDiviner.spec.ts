@@ -9,10 +9,12 @@ import type { AddressHistoryQueryPayload } from '@xyo-network/diviner-address-hi
 import { AddressHistoryDivinerConfigSchema, AddressHistoryQuerySchema } from '@xyo-network/diviner-address-history'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { WithMeta } from '@xyo-network/payload-model'
 import type { BoundWitnessWithMongoMeta, BoundWitnessWithPartialMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock } from 'jest-mock-extended'
+import {
+  beforeAll, describe, expect, it,
+} from 'vitest'
 
 import { toPayloadWithMongoMeta } from '../lib/index.js'
 import { MongoDBAddressHistoryDiviner } from '../MongoDBAddressHistoryDiviner.js'
@@ -57,7 +59,7 @@ describeIf(hasMongoDBConfig())('MongoDBAddressHistoryDiviner', () => {
         }
         const result = await sut.divine([query])
         expect(result).toBeArrayOfSize(2)
-        const actual = result[0] as WithMeta<BoundWitnessWithPartialMongoMeta>
+        const actual = result[0] as BoundWitnessWithPartialMongoMeta
         expect(actual).toBeObject()
         expect(actual.schema).toBe(BoundWitnessSchema)
       })

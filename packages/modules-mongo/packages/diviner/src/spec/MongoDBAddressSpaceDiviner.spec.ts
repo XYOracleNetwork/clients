@@ -7,11 +7,14 @@ import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mong
 import type { AddressPayload } from '@xyo-network/module-model'
 import { AddressSchema } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { isPayloadOfSchemaTypeWithMeta } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import type { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import { mock } from 'jest-mock-extended'
+import {
+  beforeAll, describe, expect, it,
+} from 'vitest'
 
 import { MongoDBAddressSpaceDiviner } from '../MongoDBAddressSpaceDiviner.js'
 
@@ -44,7 +47,7 @@ describeIf(hasMongoDBConfig()).skip('MongoDBAddressSpaceDiviner', () => {
   describe('divine', () => {
     describe('with valid query', () => {
       it('divines', async () => {
-        const result = (await sut.divine([])).filter(isPayloadOfSchemaTypeWithMeta<AddressPayload>(AddressSchema))
+        const result = (await sut.divine([])).filter(isPayloadOfSchemaType<AddressPayload>(AddressSchema))
         expect(result).toBeArray()
         expect(result.length).toBeGreaterThan(0)
         await Promise.all(
