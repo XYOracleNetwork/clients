@@ -1,7 +1,7 @@
 import { Account } from '@xyo-network/account'
-import type { BoundWitness } from '@xyo-network/boundwitness-model'
+import { type BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Payload } from '@xyo-network/payload-model'
+import { isAnyPayload, type Payload } from '@xyo-network/payload-model'
 import type { BoundWitnessWithPartialMongoMeta } from '@xyo-network/payload-mongodb'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 
@@ -31,15 +31,16 @@ describe('/:hash', () => {
     beforeAll(async () => {
       const blocks = await getNewBlocksWithPayloads(2, 2)
       expect(blocks).toBeTruthy()
-      boundWitness = blocks[0]
+      boundWitness = blocks[0][0]
       expect(boundWitness).toBeTruthy()
       boundWitnessHash = await PayloadBuilder.dataHash(boundWitness)
       expect(boundWitnessHash).toBeTruthy()
-      // payload = boundWitness?._payloads?.[0] as Payload
-      // expect(payload).toBeTruthy()
+      payload = blocks[0][1][0]
+      expect(payload).toBeTruthy()
       payloadHash = boundWitness?.payload_hashes?.[0]
       expect(payloadHash).toBeTruthy()
-      const blockResponse = await insertBlock(blocks)
+      const boundWitnesses = blocks.map(([bw]) => bw)
+      const blockResponse = await insertBlock(boundWitnesses)
       expect(blockResponse.length).toBe(blocks.length)
       const payloadResponse = await insertPayload(payload, await account)
       expect(payloadResponse.length).toBe(1)
@@ -48,6 +49,7 @@ describe('/:hash', () => {
       const response = await getHash(boundWitnessHash)
       expect(response).toBeTruthy()
       expect(Array.isArray(response)).toBe(false)
+      expect(isBoundWitness(response)).toBe(true)
       const actual = response as BoundWitness
       expect(actual.addresses).toEqual(boundWitness.addresses)
       expect(actual.payload_hashes).toEqual(boundWitness.payload_hashes)
@@ -58,6 +60,7 @@ describe('/:hash', () => {
       const response = await getHash(payloadHash)
       expect(response).toBeTruthy()
       expect(Array.isArray(response)).toBe(false)
+      expect(isAnyPayload(response)).toBe(true)
       const actual = response as Payload
       expect(actual.schema).toEqual(payload?.schema)
     })
