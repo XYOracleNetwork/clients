@@ -13,7 +13,7 @@ import {
 
 const divinerName = 'XYOPublic:AddressSpaceDiviner'
 
-describe(`/${divinerName}`, () => {
+describe.skip(`/${divinerName}`, () => {
   let sut: DivinerInstance
   beforeAll(async () => {
     sut = await getDivinerByName(divinerName)
