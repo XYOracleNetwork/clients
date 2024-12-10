@@ -15,7 +15,7 @@ import {
 import type { Payload, Schema } from '@xyo-network/payload-model'
 import type { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { fromDbRepresentation } from '@xyo-network/payload-mongodb'
-import type { Filter } from 'mongodb'
+import type { Filter, Sort } from 'mongodb'
 
 const MongoDBDivinerBase = MongoDBModuleMixin(AddressHistoryDiviner)
 
@@ -52,11 +52,23 @@ export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
   private getBlocks = async (hash: Hash, address: Address, limit: number): Promise<BoundWitnessWithMongoMeta[]> => {
     let nextHash = hash
     const blocks: BoundWitnessWithMongoMeta[] = []
+    const defaultFilter: Filter<BoundWitnessWithMongoMeta> = { addresses: address }
+    const sort: Sort = { _timestamp: -1 }
     for (let i = 0; i < limit; i++) {
-      const filter: Filter<BoundWitnessWithMongoMeta> = { addresses: address }
-      if (nextHash) filter._$hash = nextHash
-      const found = await this.boundWitnesses.find(filter)
-      const block = (await found.sort({ _timestamp: -1 }).limit(1).maxTimeMS(DefaultMaxTimeMS).toArray()).pop()
+      let block: BoundWitnessWithMongoMeta | undefined = undefined
+      const byDataHash: Filter<BoundWitnessWithMongoMeta> = { ...defaultFilter }
+      if (nextHash) byDataHash._hash = nextHash
+      const foundByDataHash = (await (await this.boundWitnesses.find(byDataHash)).sort(sort).limit(1).maxTimeMS(DefaultMaxTimeMS).toArray()).pop()
+      if (foundByDataHash) {
+        block = foundByDataHash
+      } else {
+        const byRootHash: Filter<BoundWitnessWithMongoMeta> = { ...defaultFilter }
+        if (nextHash) byRootHash._$hash = nextHash
+        const foundByRootHash = (await (await this.boundWitnesses.find(byRootHash)).sort(sort).limit(1).maxTimeMS(DefaultMaxTimeMS).toArray()).pop()
+        if (foundByRootHash) {
+          block = foundByRootHash
+        }
+      }
       if (!block) break
       blocks.push(block)
       const addressIndex = block.addresses.indexOf(address)
