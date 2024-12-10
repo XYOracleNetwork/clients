@@ -40,13 +40,13 @@ describeIf(hasMongoDBConfig())('Archivist', () => {
       payloadSdkConfig: payloadsConfig,
     })
     archivist = new ArchivistWrapper({ mod: mod, account: await Account.random() })
-    const payload1 = await PayloadBuilder.build({ nonce: Date.now(), schema: 'network.xyo.debug' })
+    const payload1 = { nonce: Date.now(), schema: 'network.xyo.debug' }
     await delay(2)
-    const payload2 = await PayloadBuilder.build({ nonce: Date.now(), schema: 'network.xyo.test' })
+    const payload2 = { nonce: Date.now(), schema: 'network.xyo.test' }
     await delay(2)
-    const payload3 = await PayloadBuilder.build({ nonce: Date.now(), schema: 'network.xyo.debug' })
+    const payload3 = { nonce: Date.now(), schema: 'network.xyo.debug' }
     await delay(2)
-    const payload4 = await PayloadBuilder.build({ nonce: Date.now(), schema: 'network.xyo.test' })
+    const payload4 = { nonce: Date.now(), schema: 'network.xyo.test' }
     await delay(2)
     const payloadWrapper1 = PayloadWrapper.wrap(payload1)
     const payloadWrapper2 = PayloadWrapper.wrap(payload2)
@@ -87,7 +87,7 @@ describeIf(hasMongoDBConfig())('Archivist', () => {
       expect(results).toBeArrayOfSize(payloads.length)
       for (const [i, result] of results.entries()) {
         const payload = payloads[i]
-        expect(result.$hash).toEqual(await payload.dataHash())
+        expect(await PayloadBuilder.dataHash(result)).toEqual(await payload.dataHash())
         expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))
         expect(await PayloadBuilder.hash(result)).toEqual(await PayloadBuilder.hash(payload.payload))
         expect(result).toEqual(payload.payload)
@@ -106,7 +106,7 @@ describeIf(hasMongoDBConfig())('Archivist', () => {
       const results = await archivist.get(await Promise.all(payloads.map(p => p.dataHash())))
       for (const [i, result] of results.entries()) {
         const payload = payloads[i]
-        expect(result.$hash).toEqual(await payload.dataHash())
+        expect(await PayloadBuilder.dataHash(result)).toEqual(await payload.dataHash())
         expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))
         expect(await PayloadBuilder.hash(result)).toEqual(await PayloadBuilder.hash(payload.payload))
         expect(result).toEqual(payload.payload)
@@ -119,10 +119,10 @@ describeIf(hasMongoDBConfig())('Archivist', () => {
     const payloads: BoundWitnessWrapper | PayloadWrapper[] = []
     beforeAll(async () => {
       for (let i = 0; i < 10; i++) {
-        const payload1 = await PayloadBuilder.build({ nonce: Date.now(), schema: 'network.xyo.debug' })
+        const payload1 = { nonce: Date.now(), schema: 'network.xyo.debug' }
         const payloadWrapper1 = PayloadWrapper.wrap(payload1)
         await delay(2)
-        const payload2 = await PayloadBuilder.build({ nonce: Date.now(), schema: 'network.xyo.test' })
+        const payload2 = { nonce: Date.now(), schema: 'network.xyo.test' }
         const payloadWrapper2 = PayloadWrapper.wrap(payload2)
         await delay(2)
         const signer = await Account.random()
@@ -149,7 +149,7 @@ describeIf(hasMongoDBConfig())('Archivist', () => {
           expect(results).toBeArrayOfSize(expected.length)
           for (const [i, result] of results.entries()) {
             const payload = expected[i]
-            expect(result.$hash).toEqual(await payload.dataHash())
+            expect(await PayloadBuilder.dataHash(result)).toEqual(await payload.dataHash())
             expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))
             expect(await PayloadBuilder.hash(result)).toEqual(await PayloadBuilder.hash(payload.payload))
             expect(result).toEqual(payload.payload)
@@ -167,7 +167,7 @@ describeIf(hasMongoDBConfig())('Archivist', () => {
           expect(results).toBeArrayOfSize(expected.length)
           for (const [i, result] of results.entries()) {
             const payload = expected[i]
-            expect(result.$hash).toEqual(await payload.dataHash())
+            expect(await PayloadBuilder.dataHash(result)).toEqual(await payload.dataHash())
             expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))
             expect(await PayloadBuilder.hash(result)).toEqual(await PayloadBuilder.hash(payload.payload))
             expect(result).toEqual(payload.payload)
@@ -184,7 +184,7 @@ describeIf(hasMongoDBConfig())('Archivist', () => {
           expect(results).toBeArrayOfSize(expected.length)
           for (const [i, result] of results.reverse().entries()) {
             const payload = expected[i]
-            expect(result.$hash).toEqual(await payload.dataHash())
+            expect(await PayloadBuilder.dataHash(result)).toEqual(await payload.dataHash())
             expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))
             expect(await PayloadBuilder.hash(result)).toEqual(await PayloadBuilder.hash(payload.payload))
             expect(result).toEqual(payload.payload)
@@ -202,7 +202,7 @@ describeIf(hasMongoDBConfig())('Archivist', () => {
           expect(results).toBeArrayOfSize(expected.length)
           for (const [i, result] of results.reverse().entries()) {
             const payload = expected[i]
-            expect(result.$hash).toEqual(await payload.dataHash())
+            expect(await PayloadBuilder.dataHash(result)).toEqual(await payload.dataHash())
             expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))
             expect(await PayloadBuilder.hash(result)).toEqual(await PayloadBuilder.hash(payload.payload))
             expect(result).toEqual(payload.payload)
