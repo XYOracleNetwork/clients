@@ -7,7 +7,7 @@ import { getArchivistByName } from '../Archivist/index.js'
 import { getNewBlock } from './getNewBlock.js'
 
 export const insertBlock = async (boundWitnesses?: BoundWitness | BoundWitness[], account?: AccountInstance): Promise<Payload[]> => {
-  boundWitnesses = boundWitnesses ?? (await getNewBlock())
+  boundWitnesses = boundWitnesses ?? (await getNewBlock())[0]
   const archivist = await getArchivistByName('XYOPublic:Archivist', account ?? (await unitTestSigningAccount()))
   const data = Array.isArray(boundWitnesses) ? boundWitnesses : [boundWitnesses]
   return archivist.insert(data)
