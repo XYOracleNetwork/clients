@@ -18,7 +18,10 @@ export const payloadFromDbRepresentation = (value: PayloadWithMongoMeta): Payloa
       metaNormalized[key] = clone[key]
     }
   }
-  return PayloadBuilder.omitStorageMeta(metaNormalized as unknown as Payload)
+  // Remove $hash (which we added in toDbRepresentation) to prevent altering root hash
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { $hash, ...payload } = metaNormalized
+  return PayloadBuilder.omitStorageMeta(payload as unknown as Payload)
 }
 
 export const boundWitnessFromDbRepresentation = (value: BoundWitnessWithMongoMeta): BoundWitness => {
