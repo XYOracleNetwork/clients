@@ -10,7 +10,7 @@ type BoundWitnessBuilderBuildResult = Awaited<ReturnType<BoundWitnessBuilder['bu
 export const getNewBoundWitness = async (signers?: AccountInstance[], payloads?: Payload[]): Promise<BoundWitnessBuilderBuildResult> => {
   const p = payloads ?? getNewPayloads(1)
   const accounts: AccountInstance[] = signers ?? [await unitTestSigningAccount()]
-  return await (new BoundWitnessBuilder().payloads(p)).signers(accounts).build()
+  return await new BoundWitnessBuilder().payloads(p).signers(accounts).build()
 }
 
 export const getNewBoundWitnesses = async (
@@ -21,7 +21,7 @@ export const getNewBoundWitnesses = async (
   const accounts = signers ?? [await unitTestSigningAccount()]
   const response: BoundWitnessBuilderBuildResult[] = []
   for (let i = 0; i < numBoundWitnesses; i++) {
-    const payloads = await getNewPayloads(numPayloads)
+    const payloads = getNewPayloads(numPayloads)
     const bw = await getNewBoundWitness(accounts, payloads)
     response.push(bw)
   }
