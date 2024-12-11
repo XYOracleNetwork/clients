@@ -8,7 +8,7 @@ import { getNewPayloads } from '../Payload/index.js'
 type BoundWitnessBuilderBuildResult = Awaited<ReturnType<BoundWitnessBuilder['build']>>
 
 export const getNewBoundWitness = async (signers?: AccountInstance[], payloads?: Payload[]): Promise<BoundWitnessBuilderBuildResult> => {
-  const p = payloads ?? await getNewPayloads(1)
+  const p = payloads ?? getNewPayloads(1)
   const accounts: AccountInstance[] = signers ?? [await unitTestSigningAccount()]
   return await (new BoundWitnessBuilder().payloads(p)).signers(accounts).build()
 }

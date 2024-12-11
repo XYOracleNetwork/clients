@@ -96,7 +96,7 @@
         "--run",
         "--inspect-brk",
         "--no-file-parallelism",
-        "packages/node/packages/express/packages/test/src/routes/name/AddressHistoryDiviner.spec.ts"
+        "packages/node/packages/express/packages/test/src/routes/name/BoundWitnessDiviner.spec.ts"
       ],
       "resolveSourceMapLocations": [
         "${workspaceFolder}/**",
