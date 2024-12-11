@@ -59,20 +59,20 @@ describe(`/${moduleName}`, () => {
       await archivist.insert(boundWitnesses.map(b => b.boundwitness))
     })
     describe('address', () => {
-      const cases: [title: string, accounts: AccountInstance[], expected: () => BoundWitnessWrapper[]][] = [
-        ['single address returns boundWitnesses signed by address', [accountA], () => [boundWitnesses[0], boundWitnesses[2]]],
-        ['single address returns boundWitnesses signed by address', [accountB], () => [boundWitnesses[1], boundWitnesses[2]]],
-        ['multiple addresses returns boundWitnesses signed by both addresses', [accountA, accountB], () => [boundWitnesses[2]]],
+      const cases: [title: string, accounts: () => AccountInstance[], expected: () => BoundWitnessWrapper[]][] = [
+        ['single address returns boundWitnesses signed by address', () => [accountA], () => [boundWitnesses[0], boundWitnesses[2]]],
+        ['single address returns boundWitnesses signed by address', () => [accountB], () => [boundWitnesses[1], boundWitnesses[2]]],
+        ['multiple addresses returns boundWitnesses signed by both addresses', () => [accountA, accountB], () => [boundWitnesses[2]]],
         [
           'multiple addresses returns boundWitnesses signed by both addresses (independent of order)',
-          [accountB, accountA],
+          () => [accountB, accountA],
           () => [boundWitnesses[2]],
         ],
       ]
       describe.each(cases)('with %s', (_title, addresses, data) => {
         it('divines BoundWitnesses by address', async () => {
           const expected = data().map(d => d.payload)
-          const query: BoundWitnessDivinerQueryPayload = { addresses: (await Promise.all(addresses)).map(account => account.address), schema }
+          const query: BoundWitnessDivinerQueryPayload = { addresses: addresses().map(account => account.address), schema }
           const response = await diviner.divine([query])
           expect(response).toBeArrayOfSize(expected.length)
           const responseHashes = await PayloadBuilder.dataHashes(response)
@@ -176,8 +176,8 @@ describe(`/${moduleName}`, () => {
       const payloadB: PayloadWrapper = PayloadWrapper.wrap(payloadBaseB)
       const boundWitnesses: BoundWitnessWrapper[] = []
       beforeAll(async () => {
-        const boundWitnessA = BoundWitnessWrapper.parse((await getNewBoundWitness([account], [(payloadA).payload]))[0])
-        const boundWitnessB = BoundWitnessWrapper.parse((await getNewBoundWitness([account], [(payloadB).payload]))[0])
+        const boundWitnessA = BoundWitnessWrapper.parse((await getNewBoundWitness([account], [payloadA.payload]))[0])
+        const boundWitnessB = BoundWitnessWrapper.parse((await getNewBoundWitness([account], [payloadB.payload]))[0])
         const boundWitnessC = BoundWitnessWrapper.parse(
           (await getNewBoundWitness([account], [payloadA.payload, payloadB.payload]))[0],
         )
