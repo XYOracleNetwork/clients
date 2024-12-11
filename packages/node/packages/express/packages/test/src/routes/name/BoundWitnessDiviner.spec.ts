@@ -1,4 +1,3 @@
-import { assertEx } from '@xylabs/assert'
 import { Account } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'
 import type { ArchivistInstance } from '@xyo-network/archivist-model'
@@ -138,20 +137,36 @@ describe(`/${moduleName}`, () => {
     describe('offset', () => {
       let account: AccountInstance
       let boundWitnesses: BoundWitnessWrapper[]
+      const timestamp = Date.now()
       beforeAll(async () => {
         account = await Account.random()
         boundWitnesses = await Promise.all(
-          [(await getNewBoundWitness([account]))[0], (await getNewBoundWitness([account]))[0]].map(bw => BoundWitnessWrapper.parse(bw)),
+          [
+            (await getNewBoundWitness([account]))[0],
+            (await getNewBoundWitness([account]))[0],
+          ].map(bw => BoundWitnessWrapper.parse(bw)),
         )
         await archivist.insert(boundWitnesses.map(b => b.boundwitness))
       })
       describe('with timestamp', () => {
         it('divines BoundWitnesses from offset', async () => {
           const address = account.address
-          const timestamp = assertEx(boundWitnesses.at(-1)?.boundwitness.$timestamp, () => 'Missing timestamp in test BW') + 1
           const limit = boundWitnesses.length
           const query: BoundWitnessDivinerQueryPayload = {
-            address, limit, schema, timestamp,
+            address, limit, schema, timestamp, order: 'asc',
+          }
+          const response = await diviner.divine([query])
+          expect(response).toBeArrayOfSize(boundWitnesses.length)
+          const responseHashes = await PayloadBuilder.dataHashes(response)
+          const expected = await Promise.all(boundWitnesses.map(p => p.dataHash()))
+          expect(responseHashes).toContainAllValues(expected)
+        })
+        it('divines BoundWitnesses from offset', async () => {
+          const timestamp = Date.now()
+          const address = account.address
+          const limit = boundWitnesses.length
+          const query: BoundWitnessDivinerQueryPayload = {
+            address, limit, schema, timestamp, order: 'desc',
           }
           const response = await diviner.divine([query])
           expect(response).toBeArrayOfSize(boundWitnesses.length)
