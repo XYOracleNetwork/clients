@@ -10,11 +10,11 @@ import { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadValidator } from '@xyo-network/payload-validator'
 import { SchemaNameValidator } from '@xyo-network/schema-name-validator'
 import type { Express } from 'express'
-import type { Config } from 'jest'
 import { MongoMemoryReplSet } from 'mongodb-memory-server'
 import supertest from 'supertest'
 // eslint-disable-next-line import-x/no-internal-modules
 import type TestAgent from 'supertest/lib/agent.js'
+import type { RuntimeConfig } from 'vitest'
 
 disableGloballyUnique()
 
@@ -73,7 +73,7 @@ const setupNode = async () => {
  * Jest global setup method runs before any tests are run
  * https://jestjs.io/docs/configuration#globalsetup-string
  */
-export const setup = async (_globalConfig: Config, _projectConfig: Config) => {
+export const setup = async (_globalConfig: RuntimeConfig, _projectConfig: RuntimeConfig) => {
   console.log('')
   PayloadValidator.setSchemaNameValidatorFactory((schema: string) => new SchemaNameValidator(schema))
   if (canAddMongoModules()) await setupMongo()
@@ -84,6 +84,6 @@ export const setup = async (_globalConfig: Config, _projectConfig: Config) => {
  * Jest global teardown method runs after all tests are run
  * https://jestjs.io/docs/configuration#globalteardown-string
  */
-export const teardown = async (_globalConfig: Config, _projectConfig: Config) => {
+export const teardown = async (_globalConfig: RuntimeConfig, _projectConfig: RuntimeConfig) => {
   if (canAddMongoModules()) await globalThis.mongo.stop()
 }

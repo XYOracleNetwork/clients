@@ -1,5 +1,6 @@
 import { assertEx } from '@xylabs/assert'
 import type { ModuleInstance } from '@xyo-network/module-model'
+import { expect } from 'vitest'
 
 import { getBridge } from '../Bridge/index.js'
 

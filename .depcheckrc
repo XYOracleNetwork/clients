@@ -1,11 +1,9 @@
 ignores: [
-  "@types/jest",
   "@types/supertest",
   "@typescript-eslint/eslint-plugin",
   "@typescript-eslint/parser",
   "@xylabs/eslint-config-base",
   "@xylabs/eslint-config",
-  "@xylabs/tsconfig-jest",
   "eslint-import-resolver-typescript",
   "eslint-plugin-deprecation",
   "eslint-plugin-import",

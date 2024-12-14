@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import type { AddressPayload } from '@xyo-network/module-model'
 import {
   AddressSchema, ModuleStateQuerySchema, ModuleSubscribeQuerySchema,
@@ -5,6 +7,7 @@ import {
 import type { Payload } from '@xyo-network/payload-model'
 import type { QueryPayload } from '@xyo-network/query-payload-plugin'
 import { QuerySchema } from '@xyo-network/query-payload-plugin'
+import { expect } from 'vitest'
 
 const validateAddress = (response: Payload[]) => {
   expect(response).toBeArray()

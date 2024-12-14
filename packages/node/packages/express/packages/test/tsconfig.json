@@ -1,9 +1,4 @@
 {
-  "compilerOptions": {
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "incremental": false
-  },
   "exclude": [
     "**/build",
     "**/dist",
@@ -12,6 +7,6 @@
     "**/*.example.*",
     "**/stories/*"
   ],
-  "extends": "@xylabs/tsconfig-jest"
+  "extends": "@xylabs/tsconfig"
 }
 

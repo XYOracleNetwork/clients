@@ -1,5 +1,6 @@
 import type { DomainPayload } from '@xyo-network/domain-payload-plugin'
 import { StatusCodes } from 'http-status-codes'
+import { expect } from 'vitest'
 
 import { getRequestClient } from '../Server/index.js'
 
