@@ -17,12 +17,14 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, PayloadDivinerConfigSchema]
   static override readonly defaultConfigSchema: Schema = PayloadDivinerConfigSchema
 
+  // eslint-disable-next-line complexity
   protected override async divineHandler(payloads?: Payload[]): Promise<Payload[]> {
     const query = payloads?.find(isPayloadDivinerQueryPayload) as PayloadDivinerQueryPayload
     // TODO: Support multiple queries
     if (!query) throw new Error('Received payload is not a Query')
 
     const {
+      hash,
       limit = DefaultLimit,
       cursor = (query.order ?? DefaultOrder) === 'asc' ? SequenceConstants.minLocalSequence : SequenceConstants.maxLocalSequence,
       order = DefaultOrder,
@@ -54,9 +56,20 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
 
     let result
 
-    const filtered = await this.payloads.find(filter)
-    result = (await filtered.sort(sort).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(fromDbRepresentation)
-
+    if (hash) {
+      filter._hash = hash
+      const filtered = await this.payloads.find(filter)
+      result = (await filtered.sort(sort).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(fromDbRepresentation)
+      if (result.length === 0) {
+        delete filter._hash
+        filter._$hash = hash
+        const filtered = await this.payloads.find(filter)
+        result = (await filtered.sort(sort).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(fromDbRepresentation)
+      }
+    } else {
+      const filtered = await this.payloads.find(filter)
+      result = (await filtered.sort(sort).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(fromDbRepresentation)
+    }
     return result.map(fromDbRepresentation)
   }
 
