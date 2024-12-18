@@ -24,7 +24,7 @@ export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
   static override readonly defaultConfigSchema: Schema = AddressHistoryDivinerConfigSchema
 
   protected override async divineHandler(payloads?: Payload[]): Promise<BoundWitness[]> {
-    const query = payloads?.find<AddressHistoryQueryPayload>(isAddressHistoryQueryPayload)
+    const query = payloads?.find(isAddressHistoryQueryPayload) as AddressHistoryQueryPayload | undefined
     // TODO: Support multiple queries
     if (!query) return []
 

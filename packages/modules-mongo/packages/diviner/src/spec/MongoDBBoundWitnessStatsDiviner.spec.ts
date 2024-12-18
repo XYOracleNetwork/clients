@@ -1,5 +1,4 @@
 import type { Address } from '@xylabs/hex'
-import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
@@ -18,11 +17,10 @@ import type { JobQueue } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
-import type { MockProxy } from 'jest-mock-extended'
-import { mock } from 'jest-mock-extended'
 import {
   beforeAll, describe, expect, it,
 } from 'vitest'
+import { mock } from 'vitest-mock-extended'
 
 import { MongoDBBoundWitnessStatsDiviner } from '../MongoDBBoundWitnessStatsDiviner.js'
 
@@ -30,7 +28,7 @@ import { MongoDBBoundWitnessStatsDiviner } from '../MongoDBBoundWitnessStatsDivi
  * @group mongo
  */
 
-describeIf(hasMongoDBConfig())('MongoDBBoundWitnessStatsDiviner', () => {
+describe.runIf(hasMongoDBConfig())('MongoDBBoundWitnessStatsDiviner', () => {
   const phrase = 'forum travel tattoo shock team artist stone fine will fan answer tribe'
   let account: AccountInstance
   let address: Address
@@ -39,7 +37,7 @@ describeIf(hasMongoDBConfig())('MongoDBBoundWitnessStatsDiviner', () => {
     collection: COLLECTIONS.BoundWitnesses,
     dbConnectionString: process.env.MONGO_CONNECTION_STRING,
   })
-  const jobQueue: MockProxy<JobQueue> = mock<JobQueue>()
+  const jobQueue: JobQueue = mock<JobQueue>()
   let sut: DivinerInstance<DivinerParams, BoundWitnessStatsQueryPayload, BoundWitnessStatsPayload>
   beforeAll(async () => {
     account = await Account.create({ phrase })
@@ -51,8 +49,8 @@ describeIf(hasMongoDBConfig())('MongoDBBoundWitnessStatsDiviner', () => {
       logger,
     })
     // TODO: Insert via archivist
-    const payload = await new PayloadBuilder({ schema: 'network.xyo.test' }).build()
-    const bw = (await (await new BoundWitnessBuilder().payload(payload)).witness(account).build())[0]
+    const payload = new PayloadBuilder({ schema: 'network.xyo.test' }).build()
+    const bw = (await (new BoundWitnessBuilder().payload(payload)).signer(account).build())[0]
     await boundWitnessSdk.insertOne(bw as unknown as BoundWitnessWithMongoMeta)
   })
   describe('divine', () => {

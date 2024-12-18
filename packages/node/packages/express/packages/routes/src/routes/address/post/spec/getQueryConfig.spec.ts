@@ -10,11 +10,11 @@ import { ModuleConfigSchema, ModuleStateQuerySchema } from '@xyo-network/module-
 import type { ArchiveModuleConfig } from '@xyo-network/node-core-model'
 import { ArchiveModuleConfigSchema } from '@xyo-network/node-core-model'
 import type { Request } from 'express'
-import { mock } from 'jest-mock-extended'
 import {
   beforeAll, describe, expect,
   it,
 } from 'vitest'
+import { mock } from 'vitest-mock-extended'
 
 import { getQueryConfig } from '../getQueryConfig.js'
 

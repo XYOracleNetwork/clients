@@ -1,4 +1,8 @@
 import {
+  beforeEach, describe, expect, it,
+} from 'vitest'
+
+import {
   canUseInfuraProvider, getInfuraProvider, getInfuraProviderConfig,
 } from '../getInfuraProvider.js'
 

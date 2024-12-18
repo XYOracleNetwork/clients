@@ -4,6 +4,10 @@ import { BoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { PayloadWrapperBase } from '@xyo-network/payload-wrapper'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
+import {
+  beforeAll,
+  describe, expect, it,
+} from 'vitest'
 
 import {
   getArchivistByName,

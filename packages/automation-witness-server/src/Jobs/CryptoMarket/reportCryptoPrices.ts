@@ -14,7 +14,7 @@ export const reportCryptoPrices = async (provider = getProvider()): Promise<Payl
   const archivists = await getArchivists()
   const witnesses = await getCryptoMarketWitness(provider)
   const modules: AttachableModuleInstance[] = [...archivists, ...witnesses]
-  const node = await MemoryNode.create()
+  const node = await MemoryNode.create({ account: 'random' })
   await Promise.all(
     modules.map(async (mod) => {
       await node.register(mod)

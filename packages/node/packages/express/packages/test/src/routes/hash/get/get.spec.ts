@@ -4,6 +4,9 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { isAnyPayload, type Payload } from '@xyo-network/payload-model'
 import type { BoundWitnessWithPartialMongoMeta } from '@xyo-network/payload-mongodb'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
+import {
+  beforeAll, describe, expect, it, vi,
+} from 'vitest'
 
 import {
   getHash, getNewBlocksWithPayloads, getRequestClient, insertBlock, insertPayload,
@@ -13,7 +16,7 @@ describe('/:hash', () => {
   const account = Account.random()
   describe('with nonexistent hash', () => {
     beforeAll(() => {
-      jest.spyOn(console, 'error').mockImplementation(() => {
+      vi.spyOn(console, 'error').mockImplementation(() => {
         // Stop expected errors from being logged
       })
     })

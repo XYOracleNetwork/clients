@@ -1,6 +1,11 @@
 import type { Payload } from '@xyo-network/payload-model'
 import type { SchemaCacheEntry } from '@xyo-network/schema-cache'
 import { SchemaCache } from '@xyo-network/schema-cache'
+import type { MockInstance } from 'vitest'
+import {
+  afterAll,
+  beforeAll, describe, expect, it, vi,
+} from 'vitest'
 
 import { getPayloadValidatorFromSchemaCache } from '../getPayloadValidatorFromSchemaCache.js'
 
@@ -10,12 +15,12 @@ const getPayload = (): Payload => {
 
 describe('getPayloadValidatorFromSchemaCache', () => {
   describe('when validator exists', () => {
-    let mock: jest.SpyInstance
+    let mock: MockInstance
     beforeAll(() => {
       const name = 'foo'
       const schema = 'network.xyo.schema'
       const definition = { $schema: 'http://json-schema.org/draft-07/schema#' }
-      mock = jest.spyOn(SchemaCache.prototype, 'get').mockImplementation((_schema?: string) => {
+      mock = vi.spyOn(SchemaCache.prototype, 'get').mockImplementation((_schema?: string) => {
         const entry: SchemaCacheEntry = {
           payload: {
             definition, name, schema,
@@ -34,9 +39,9 @@ describe('getPayloadValidatorFromSchemaCache', () => {
     })
   })
   describe('when validator does not exist', () => {
-    let mock: jest.SpyInstance
+    let mock: MockInstance
     beforeAll(() => {
-      mock = jest.spyOn(SchemaCache.prototype, 'get').mockImplementation((_schema?: string) => {
+      mock = vi.spyOn(SchemaCache.prototype, 'get').mockImplementation((_schema?: string) => {
         // eslint-disable-next-line unicorn/no-useless-undefined
         return Promise.resolve(undefined)
       })
@@ -51,9 +56,9 @@ describe('getPayloadValidatorFromSchemaCache', () => {
     })
   })
   describe('when there is an error obtaining validator', () => {
-    let mock: jest.SpyInstance
+    let mock: MockInstance
     beforeAll(() => {
-      mock = jest.spyOn(SchemaCache.prototype, 'get').mockResolvedValue(null)
+      mock = vi.spyOn(SchemaCache.prototype, 'get').mockResolvedValue(null)
     })
     afterAll(() => {
       mock?.mockClear()

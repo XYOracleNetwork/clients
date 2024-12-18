@@ -1,6 +1,9 @@
 import { assertEx } from '@xylabs/assert'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { isSnapshot } from '@xyo-network/tzero-stock-market-payload-plugin'
+import {
+  describe, expect, it,
+} from 'vitest'
 
 import { getArchivist } from '../../../Archivists/index.js'
 import { reportStockPrice } from '../reportStockPrices.js'

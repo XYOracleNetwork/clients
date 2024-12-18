@@ -1,4 +1,6 @@
-import { describeIf } from '@xylabs/jest-helpers'
+import {
+  describe, expect, it,
+} from 'vitest'
 
 import { hasNonDefaultProvider } from '../../../Providers/index.js'
 import { reportCryptoPrices } from '../reportCryptoPrices.js'
@@ -8,7 +10,7 @@ import { reportCryptoPrices } from '../reportCryptoPrices.js'
  * @group slow
  */
 
-describeIf(hasNonDefaultProvider())('reportCryptoPrices', () => {
+describe.runIf(hasNonDefaultProvider())('reportCryptoPrices', () => {
   it('gets prices using default provider if no provider supplied', async () => {
     const [bw, ...payloads] = await reportCryptoPrices()
     expect(bw).toBeTruthy()

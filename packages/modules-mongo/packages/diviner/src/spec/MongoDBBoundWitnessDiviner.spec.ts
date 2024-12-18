@@ -1,4 +1,3 @@
-import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
@@ -12,7 +11,10 @@ import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mong
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { BoundWitnessWithMongoMeta, BoundWitnessWithPartialMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
-import { mock } from 'jest-mock-extended'
+import {
+  beforeAll, describe, expect, it,
+} from 'vitest'
+import { mock } from 'vitest-mock-extended'
 
 import { MongoDBBoundWitnessDiviner } from '../MongoDBBoundWitnessDiviner.js'
 
@@ -20,7 +22,7 @@ import { MongoDBBoundWitnessDiviner } from '../MongoDBBoundWitnessDiviner.js'
  * @group mongo
  */
 
-describeIf(hasMongoDBConfig())('MongoDBBoundWitnessDiviner', () => {
+describe.runIf(hasMongoDBConfig())('MongoDBBoundWitnessDiviner', () => {
   const phrase = 'reflect dash pear scatter kiwi sock ability muffin clever effort enroll school'
   let account: AccountInstance
   const logger = mock<Console>()

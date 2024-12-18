@@ -8,7 +8,6 @@ ignores: [
   "eslint-plugin-deprecation",
   "eslint-plugin-import",
   "eslint",
-  "jest-environment-jsdom",
   "mongodb-memory-server",
   "reflect-metadata",
   "supertest"

@@ -2,7 +2,6 @@ import '@xylabs/vitest-extended'
 
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
-import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
 import type { ArchivistNextOptions } from '@xyo-network/archivist-model'
 import { ArchivistWrapper } from '@xyo-network/archivist-wrapper'
@@ -22,7 +21,7 @@ import { MongoDBArchivist } from '../Archivist.js'
 
 type TestDataGetter<T> = () => T
 
-describeIf(hasMongoDBConfig())('Archivist', () => {
+describe.runIf(hasMongoDBConfig())('Archivist', () => {
   const boundWitnessesConfig: BaseMongoSdkConfig = { collection: COLLECTIONS.BoundWitnesses }
   const payloadsConfig: BaseMongoSdkConfig = { collection: COLLECTIONS.Payloads }
 

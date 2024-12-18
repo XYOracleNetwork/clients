@@ -2,12 +2,12 @@ import type { JsonObject } from '@xylabs/object'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import { isBoundWitness } from '@xyo-network/boundwitness-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Payload } from '@xyo-network/payload-model'
+import type { Payload, WithStorageMeta } from '@xyo-network/payload-model'
 
-import type { BoundWitnessWithMongoMeta } from '../BoundWitness/index.js'
+import type { BoundWitnessWithMongoMeta } from '../BoundWitness/index.ts'
 import type { PayloadWithMongoMeta } from '../Payload/index.js'
 
-export const payloadFromDbRepresentation = (value: PayloadWithMongoMeta): Payload => {
+export const payloadFromDbRepresentation = <T extends Payload = Payload>(value: PayloadWithMongoMeta<T>): WithStorageMeta<T> => {
   const clone: JsonObject = structuredClone(value) as unknown as JsonObject
   const metaNormalized: JsonObject = {}
   for (const key of Object.keys(clone)) {
@@ -18,18 +18,15 @@ export const payloadFromDbRepresentation = (value: PayloadWithMongoMeta): Payloa
       metaNormalized[key] = clone[key]
     }
   }
-  // Remove $hash (which we added in toDbRepresentation) to prevent altering root hash
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { $hash, ...payload } = metaNormalized
-  return PayloadBuilder.omitStorageMeta(payload as unknown as Payload)
+  return PayloadBuilder.omitPrivateStorageMeta(metaNormalized as Payload) as WithStorageMeta<T>
 }
 
-export const boundWitnessFromDbRepresentation = (value: BoundWitnessWithMongoMeta): BoundWitness => {
-  return payloadFromDbRepresentation(value) as unknown as BoundWitness
+export const boundWitnessFromDbRepresentation = <T extends BoundWitness = BoundWitness>(value: BoundWitnessWithMongoMeta<T>): WithStorageMeta<T> => {
+  return payloadFromDbRepresentation(value)
 }
 
-export const fromDbRepresentation = <T = PayloadWithMongoMeta | BoundWitnessWithMongoMeta>(value: T) => {
+export const fromDbRepresentation = <T extends Payload = Payload>(value: PayloadWithMongoMeta<T>): WithStorageMeta<T> => {
   return isBoundWitness(value)
-    ? (boundWitnessFromDbRepresentation(value as unknown as BoundWitnessWithMongoMeta))
-    : (payloadFromDbRepresentation(value as PayloadWithMongoMeta))
+    ? (boundWitnessFromDbRepresentation(value))
+    : (payloadFromDbRepresentation(value))
 }

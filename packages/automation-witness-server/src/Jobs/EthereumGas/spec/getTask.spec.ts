@@ -1,3 +1,7 @@
+import {
+  describe, expect, it,
+} from 'vitest'
+
 import { getTask } from '../getTask.js'
 
 describe('getTask', () => {

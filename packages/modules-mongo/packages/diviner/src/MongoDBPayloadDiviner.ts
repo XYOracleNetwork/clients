@@ -5,7 +5,9 @@ import { isPayloadDivinerQueryPayload, PayloadDivinerConfigSchema } from '@xyo-n
 import {
   DefaultLimit, DefaultMaxTimeMS, DefaultOrder, MongoDBModuleMixin,
 } from '@xyo-network/module-abstract-mongodb'
-import type { Payload, Schema } from '@xyo-network/payload-model'
+import {
+  type Payload, type Schema, SequenceConstants,
+} from '@xyo-network/payload-model'
 import { fromDbRepresentation } from '@xyo-network/payload-mongodb'
 import type { Filter, SortDirection } from 'mongodb'
 
@@ -17,21 +19,25 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
 
   // eslint-disable-next-line complexity
   protected override async divineHandler(payloads?: Payload[]): Promise<Payload[]> {
-    const query = payloads?.find<PayloadDivinerQueryPayload>(isPayloadDivinerQueryPayload)
+    const query = payloads?.find(isPayloadDivinerQueryPayload) as PayloadDivinerQueryPayload
     // TODO: Support multiple queries
     if (!query) throw new Error('Received payload is not a Query')
 
     const {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      hash, limit = DefaultLimit, offset = 0, order = DefaultOrder, schema, schemas, timestamp, ...props
+      hash,
+      limit = DefaultLimit,
+      cursor = (query.order ?? DefaultOrder) === 'asc' ? SequenceConstants.minLocalSequence : SequenceConstants.maxLocalSequence,
+      order = DefaultOrder,
+      // schema,
+      schemas,
+      ...props
     } = query
     const direction = order === 'asc' ? 1 : -1
     const sort: { [key: string]: SortDirection } = { _timestamp: direction }
     // TODO: Joel, why is AnyObject needed?
     const filter: Filter<AnyObject> = {}
-    if (timestamp) {
-      const parsedTimestamp = (timestamp ?? order === 'desc') ? Date.now() : 0
-      filter._timestamp = order === 'desc' ? { $lt: parsedTimestamp } : { $gt: parsedTimestamp }
+    if (cursor) {
+      filter._sequence = order === 'desc' ? { $lt: cursor } : { $gt: cursor }
     }
 
     // TODO: Optimize for single schema supplied too
@@ -53,16 +59,16 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
     if (hash) {
       filter._hash = hash
       const filtered = await this.payloads.find(filter)
-      result = (await filtered.sort(sort).skip(offset).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(fromDbRepresentation)
+      result = (await filtered.sort(sort).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(fromDbRepresentation)
       if (result.length === 0) {
         delete filter._hash
         filter._$hash = hash
         const filtered = await this.payloads.find(filter)
-        result = (await filtered.sort(sort).skip(offset).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(fromDbRepresentation)
+        result = (await filtered.sort(sort).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(fromDbRepresentation)
       }
     } else {
       const filtered = await this.payloads.find(filter)
-      result = (await filtered.sort(sort).skip(offset).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(fromDbRepresentation)
+      result = (await filtered.sort(sort).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(fromDbRepresentation)
     }
     return result.map(fromDbRepresentation)
   }

@@ -3,7 +3,10 @@ import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import type { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import type { BoundWitnessDivinerQueryPayload } from '@xyo-network/diviner-boundwitness-model'
 import type { DivinerParams } from '@xyo-network/diviner-model'
-import { mock } from 'jest-mock-extended'
+import {
+  beforeAll, describe, expect, it,
+} from 'vitest'
+import { mock } from 'vitest-mock-extended'
 
 import type { CoinCurrentUserWitnessPayload } from '../UserLocationsDiviner.js'
 import { CoinCurrentUserWitnessSchema, MemoryCoinUserLocationsDiviner } from '../UserLocationsDiviner.js'

@@ -1,17 +1,11 @@
-import type { Hash } from '@xylabs/hex'
-import type { JsonObject } from '@xylabs/object'
-import type { Payload } from '@xyo-network/payload-model'
+import type { Payload, StorageMeta } from '@xyo-network/payload-model'
 
-export interface PayloadMongoMeta {
-  _$hash: Hash
-  _$meta?: JsonObject
-  _archive?: string
-  _client?: string
-  _hash: Hash
-  _observeDuration?: number
-  _reportedHash?: string
-  _schemaValid?: boolean
-  _sources?: Payload[]
-  _timestamp: number
-  _user_agent?: string
+export interface PayloadMongoMeta extends StorageMeta {
+  __archive?: string
+  __client?: string
+  __observeDuration?: number
+  __schemaValid?: boolean
+  __sources?: Payload[]
+  __timestamp: number
+  __user_agent?: string
 }

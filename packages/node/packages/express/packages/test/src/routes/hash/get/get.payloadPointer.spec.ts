@@ -12,6 +12,9 @@ import { PayloadPointerSchema } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload } from '@xyo-network/payload-model'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
+import {
+  beforeAll, describe, expect, it,
+} from 'vitest'
 
 import {
   getHash, getNewBoundWitness, insertBlock, insertPayload,

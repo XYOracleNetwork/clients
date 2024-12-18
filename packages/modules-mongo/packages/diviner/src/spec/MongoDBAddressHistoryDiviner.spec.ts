@@ -1,6 +1,5 @@
 import { delay } from '@xylabs/delay'
 import type { Address } from '@xylabs/hex'
-import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
@@ -12,10 +11,10 @@ import {
   type BoundWitnessWithMongoMeta, type BoundWitnessWithPartialMongoMeta, toDbRepresentation,
 } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
-import { mock } from 'jest-mock-extended'
 import {
   beforeAll, describe, expect, it,
 } from 'vitest'
+import { mock } from 'vitest-mock-extended'
 
 import { MongoDBAddressHistoryDiviner } from '../MongoDBAddressHistoryDiviner.js'
 
@@ -23,7 +22,7 @@ import { MongoDBAddressHistoryDiviner } from '../MongoDBAddressHistoryDiviner.js
  * @group mongo
  */
 
-describeIf(hasMongoDBConfig())('MongoDBAddressHistoryDiviner', () => {
+describe.runIf(hasMongoDBConfig())('MongoDBAddressHistoryDiviner', () => {
   let account: AccountInstance
   let address: Address
   const logger = mock<Console>()

@@ -3,6 +3,9 @@ import { delay } from '@xylabs/delay'
 import type { AccountInstance } from '@xyo-network/account'
 import { Account } from '@xyo-network/account'
 import type { Payload } from '@xyo-network/payload-model'
+import {
+  beforeAll, describe, expect, it,
+} from 'vitest'
 
 import {
   getHash, getNewBoundWitness, insertBlock, insertPayload,

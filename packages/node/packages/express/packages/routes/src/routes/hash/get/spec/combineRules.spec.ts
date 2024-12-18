@@ -1,12 +1,15 @@
 import type {
   PayloadAddressRule, PayloadRule, PayloadSchemaRule, PayloadTimestampOrderRule,
 } from '@xyo-network/node-core-model'
+import {
+  describe, expect, it, vi,
+} from 'vitest'
 
 import { combineRules } from '../combineRules.js'
 
 // Mock Date.now
 const now = new Date()
-jest.useFakeTimers().setSystemTime(now)
+vi.useFakeTimers().setSystemTime(now)
 
 const validRules = (): PayloadRule[][] => {
   return [[{ schema: 'network.xyo.debug' }], [{ order: 'desc', timestamp: Date.now() }]]

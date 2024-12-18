@@ -6,6 +6,10 @@ import { DivinerDivineQuerySchema } from '@xyo-network/diviner-model'
 import type { AddressPayload } from '@xyo-network/module-model'
 import { AddressSchema } from '@xyo-network/module-model'
 import type { WithSources } from '@xyo-network/payload-model'
+import {
+  beforeAll, describe, expect,
+  it,
+} from 'vitest'
 
 import {
   getDivinerByName, getNewPayload, insertPayload, validateStateResponse,

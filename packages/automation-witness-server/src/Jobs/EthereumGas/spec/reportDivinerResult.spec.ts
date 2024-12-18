@@ -1,4 +1,7 @@
 import { PayloadBuilder } from '@xyo-network/payload-builder'
+import {
+  describe, expect, it,
+} from 'vitest'
 
 import { reportDivinerResult } from '../reportDivinerResult.js'
 

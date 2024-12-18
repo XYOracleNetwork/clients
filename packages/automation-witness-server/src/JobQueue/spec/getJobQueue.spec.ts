@@ -1,3 +1,7 @@
+import {
+  describe, expect, it,
+} from 'vitest'
+
 import { getJobQueue } from '../getJobQueue.js'
 
 describe('getJobQueue', () => {

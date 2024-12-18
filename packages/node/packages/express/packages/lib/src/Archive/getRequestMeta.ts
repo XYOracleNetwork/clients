@@ -7,14 +7,13 @@ export type RequestWithArchive = {
 }
 
 export const getRequestMeta = <T extends RequestWithArchive>(req: Request<T>): [BoundWitnessMongoMeta, PayloadMongoMeta] => {
-  const _source_ip = req.ip ?? undefined
-  const _timestamp = Date.now()
-  const _user_agent = getHttpHeader('User-agent', req) || undefined
+  const __source_ip = req.ip ?? undefined
+  const __timestamp = Date.now()
+  const __user_agent = getHttpHeader('User-agent', req) || undefined
   const boundWitnessMetaData: Partial<BoundWitnessMongoMeta> = {
-    _source_ip,
-    _timestamp,
-    _user_agent,
+    __source_ip,
+    __user_agent,
   }
-  const payloadMetaData: Partial<PayloadMongoMeta> = { _timestamp }
+  const payloadMetaData: Partial<PayloadMongoMeta> = { __timestamp }
   return [boundWitnessMetaData as BoundWitnessMongoMeta, payloadMetaData as PayloadMongoMeta]
 }

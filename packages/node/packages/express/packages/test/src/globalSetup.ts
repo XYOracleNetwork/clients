@@ -71,7 +71,6 @@ const setupNode = async () => {
 
 /**
  * Jest global setup method runs before any tests are run
- * https://jestjs.io/docs/configuration#globalsetup-string
  */
 export const setup = async (_globalConfig: RuntimeConfig, _projectConfig: RuntimeConfig) => {
   console.log('')
@@ -82,7 +81,6 @@ export const setup = async (_globalConfig: RuntimeConfig, _projectConfig: Runtim
 
 /**
  * Jest global teardown method runs after all tests are run
- * https://jestjs.io/docs/configuration#globalteardown-string
  */
 export const teardown = async (_globalConfig: RuntimeConfig, _projectConfig: RuntimeConfig) => {
   if (canAddMongoModules()) await globalThis.mongo.stop()

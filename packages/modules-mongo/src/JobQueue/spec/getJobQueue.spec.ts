@@ -1,9 +1,11 @@
-import { describeIf } from '@xylabs/jest-helpers'
+import {
+  describe, expect, it,
+} from 'vitest'
 
 import { canAddMongoModules } from '../../canAddMongoModules.js'
 import { getJobQueue } from '../getJobQueue.js'
 
-describeIf(canAddMongoModules())('getJobQueue', () => {
+describe.runIf(canAddMongoModules())('getJobQueue', () => {
   it('gets the job queue', async () => {
     const jobQueue = await getJobQueue()
     expect(jobQueue).toBeObject()

@@ -9,7 +9,7 @@ import {
 } from '@xylabs/eslint-config-flat'
 
 export default [
-  { ignores: ['.yarn/**', 'jest.config.cjs', '**/dist/**', 'dist', 'build/**', 'node_modules/**', 'public', '.storybook', 'storybook-static', 'eslint.config.mjs', '**/*.js', '**/*.cjs', '*.mjs'] },
+  { ignores: ['.yarn/**', '**/dist/**', 'dist', 'build/**', 'node_modules/**', 'public', '.storybook', 'storybook-static', 'eslint.config.mjs', '**/*.js', '**/*.cjs', '*.mjs'] },
   unicornConfig,
   workspacesConfig,
   rulesConfig,

@@ -11,7 +11,9 @@ import {
 import {
   DefaultLimit, DefaultMaxTimeMS, DefaultOrder, MongoDBModuleMixin,
 } from '@xyo-network/module-abstract-mongodb'
-import type { Payload, Schema } from '@xyo-network/payload-model'
+import {
+  type Payload, type Schema, SequenceConstants,
+} from '@xyo-network/payload-model'
 import type { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { fromDbRepresentation } from '@xyo-network/payload-mongodb'
 import type { Filter, SortDirection } from 'mongodb'
@@ -35,20 +37,18 @@ export class MongoDBBoundWitnessDiviner extends MongoDBDivinerBase {
       destination,
       hash,
       limit = DefaultLimit,
-      offset = 0,
+      cursor = (query.order ?? DefaultOrder) === 'asc' ? SequenceConstants.minLocalSequence : SequenceConstants.maxLocalSequence,
       order = DefaultOrder,
       payload_hashes,
       payload_schemas,
       sourceQuery,
-      timestamp,
     } = query
 
     const direction = order === 'asc' ? 1 : -1
-    const sort: { [key: string]: SortDirection } = { _timestamp: direction }
+    const sort: { [key: string]: SortDirection } = { _sequence: direction }
     const filter: Filter<BoundWitnessWithMongoMeta> = {}
-    if (timestamp) {
-      // TODO: Should we sort by timestamp instead of _timestamp here as well?
-      filter._timestamp = order === 'desc' ? { $exists: true, $lt: timestamp } : { $exists: true, $gt: timestamp }
+    if (cursor) {
+      filter._sequence = order === 'desc' ? { $exists: true, $lt: cursor } : { $exists: true, $gt: cursor }
     }
 
     // NOTE: Defaulting to $all since it makes the most sense when singing addresses are supplied
@@ -67,18 +67,18 @@ export class MongoDBBoundWitnessDiviner extends MongoDBDivinerBase {
       const filter1 = { ...filter }
       if (hash) filter1._hash = hash
       const resultSetOne = (
-        await (await this.boundWitnesses.find(filter1)).sort(sort).skip(offset).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()
+        await (await this.boundWitnesses.find(filter1)).sort(sort).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()
       ).map(fromDbRepresentation)
 
       const filter2 = { ...filter }
       if (hash) filter2._$hash = hash
       const resultSetTwo = (
-        await (await this.boundWitnesses.find(filter2)).sort(sort).skip(offset).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()
+        await (await this.boundWitnesses.find(filter2)).sort(sort).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()
       ).map(fromDbRepresentation)
       const result = [...resultSetOne, ...resultSetTwo].map(fromDbRepresentation) as BoundWitness[]
       return result
     } else {
-      const result = (await (await this.boundWitnesses.find(filter)).sort(sort).skip(offset).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(
+      const result = (await (await this.boundWitnesses.find(filter)).sort(sort).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(
         fromDbRepresentation,
       ) as BoundWitness[]
       return result

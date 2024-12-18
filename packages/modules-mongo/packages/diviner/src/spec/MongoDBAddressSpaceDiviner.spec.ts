@@ -1,4 +1,3 @@
-import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
@@ -11,10 +10,10 @@ import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import type { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
-import { mock } from 'jest-mock-extended'
 import {
   beforeAll, describe, expect, it,
 } from 'vitest'
+import { mock } from 'vitest-mock-extended'
 
 import { MongoDBAddressSpaceDiviner } from '../MongoDBAddressSpaceDiviner.js'
 
@@ -23,7 +22,7 @@ import { MongoDBAddressSpaceDiviner } from '../MongoDBAddressSpaceDiviner.js'
  */
 
 // describeIf(hasMongoDBConfig())('MongoDBAddressSpaceDiviner', () => {
-describeIf(hasMongoDBConfig()).skip('MongoDBAddressSpaceDiviner', () => {
+describe.runIf(hasMongoDBConfig()).skip('MongoDBAddressSpaceDiviner', () => {
   const phrase = 'reflect dash pear scatter kiwi sock ability muffin clever effort enroll school'
   let account: AccountInstance
   const logger = mock<Console>()

@@ -1,3 +1,7 @@
+import {
+  describe, expect, it,
+} from 'vitest'
+
 import { getApiConfig } from '../getApiConfig.js'
 
 describe('getApiConfig', () => {

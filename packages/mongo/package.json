@@ -43,11 +43,11 @@
   "module": "dist/node/index.mjs",
   "types": "dist/node/index.d.ts",
   "dependencies": {
-    "@xylabs/assert": "^4.4.12",
-    "@xylabs/delay": "^4.4.12",
-    "@xylabs/forget": "^4.4.12",
+    "@xylabs/assert": "^4.4.21",
+    "@xylabs/delay": "^4.4.21",
+    "@xylabs/forget": "^4.4.21",
     "async-mutex": "^0.5.0",
-    "mongodb": "~6.11.0"
+    "mongodb": "~6.12.0"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^4.2.4",

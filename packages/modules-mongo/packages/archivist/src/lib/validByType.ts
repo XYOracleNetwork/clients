@@ -1,11 +1,11 @@
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import { isBoundWitness, isQueryBoundWitness } from '@xyo-network/boundwitness-model'
 import { BoundWitnessWrapper, QueryBoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
-import type { Payload } from '@xyo-network/payload-model'
+import type { Payload, WithStorageMeta } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
-export const validByType = async (payloads: Payload[] = []) => {
-  const results: [BoundWitness[], Payload[]] = [[], []]
+export const validByType = async (payloads: WithStorageMeta<Payload>[] = []) => {
+  const results: [WithStorageMeta<BoundWitness>[], WithStorageMeta<Payload>[]] = [[], []]
   await Promise.all(
     payloads.map(async (payload) => {
       if (isBoundWitness(payload)) {

@@ -10,6 +10,9 @@ import { DivinerDivineQuerySchema } from '@xyo-network/diviner-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
+import {
+  beforeAll, describe, expect, it,
+} from 'vitest'
 
 import {
   getArchivistByName,
@@ -137,7 +140,6 @@ describe(`/${moduleName}`, () => {
     describe('offset', () => {
       let account: AccountInstance
       let boundWitnesses: BoundWitnessWrapper[]
-      const timestamp = Date.now()
       beforeAll(async () => {
         account = await Account.random()
         boundWitnesses = await Promise.all(
@@ -153,7 +155,7 @@ describe(`/${moduleName}`, () => {
           const address = account.address
           const limit = boundWitnesses.length
           const query: BoundWitnessDivinerQueryPayload = {
-            address, limit, schema, timestamp, order: 'asc',
+            address, limit, schema, order: 'asc',
           }
           const response = await diviner.divine([query])
           expect(response).toBeArrayOfSize(boundWitnesses.length)
@@ -162,11 +164,10 @@ describe(`/${moduleName}`, () => {
           expect(responseHashes).toContainAllValues(expected)
         })
         it('divines BoundWitnesses from offset', async () => {
-          const timestamp = Date.now()
           const address = account.address
           const limit = boundWitnesses.length
           const query: BoundWitnessDivinerQueryPayload = {
-            address, limit, schema, timestamp, order: 'desc',
+            address, limit, schema, order: 'desc',
           }
           const response = await diviner.divine([query])
           expect(response).toBeArrayOfSize(boundWitnesses.length)

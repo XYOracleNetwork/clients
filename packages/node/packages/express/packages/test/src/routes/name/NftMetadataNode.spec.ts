@@ -1,13 +1,18 @@
+import { filterAs } from '@xylabs/array'
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
-import type { ApiCallJsonResult } from '@xyo-network/api-call-witness'
-import { isApiCallJsonResult, isApiCallResult } from '@xyo-network/api-call-witness'
+import {
+  asApiCallJsonResult, asApiCallResult, isApiCallJsonResult,
+} from '@xyo-network/api-call-witness'
 import type { ArchivistInstance } from '@xyo-network/archivist-model'
 import type { DivinerInstance } from '@xyo-network/diviner-model'
 import type { NodeInstance } from '@xyo-network/node-model'
 import { asNodeInstance } from '@xyo-network/node-model'
 import type { WithSources } from '@xyo-network/payload-model'
 import type { SentinelInstance } from '@xyo-network/sentinel-model'
+import {
+  beforeAll, describe, expect, it,
+} from 'vitest'
 
 import {
   getArchivistByNameFromChildNode, getBridge, getDivinerByNameFromChildNode, getSentinelByNameFromChildNode,
@@ -60,15 +65,15 @@ describe.skip(`${nodeName}`, () => {
       expect(results).toBeArrayOfSize(1)
       const result = results[0]
       expect(result.uri).toBe(uri)
-      expect(result.sources).toBeDefined()
-      expect(result.sources).toBeArray()
-      expect(result.sources?.length).toBeGreaterThan(0)
-      const sources = await archivist.get(result.sources ?? [])
-      expect(sources).toBeArrayOfSize(result.sources?.length || 0)
-      const responses = sources.filter(isApiCallResult) as WithSources<ApiCallJsonResult>[]
+      expect(result.$sources).toBeDefined()
+      expect(result.$sources).toBeArray()
+      expect(result.$sources?.length).toBeGreaterThan(0)
+      const sources = await archivist.get(result.$sources ?? [])
+      expect(sources).toBeArrayOfSize(result.$sources?.length || 0)
+      const responses = filterAs(sources, asApiCallResult)
       expect(responses).toBeArrayOfSize(1)
       expect(responses[0]?.call).toBe(uri)
-      expect(responses[0]?.data).toBeObject()
+      expect(asApiCallJsonResult(responses[0])?.data).toBeObject()
     })
   })
 })
