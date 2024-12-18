@@ -17,6 +17,9 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
+import {
+  beforeAll, describe, expect, it,
+} from 'vitest'
 
 import {
   getHash, getNewBoundWitness, getNewPayload, getTestSchemaName, insertBlock, insertPayload,

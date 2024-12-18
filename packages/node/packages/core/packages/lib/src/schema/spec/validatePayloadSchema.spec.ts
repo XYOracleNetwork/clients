@@ -1,5 +1,8 @@
 import type { Payload } from '@xyo-network/payload-model'
 import { Ajv } from 'ajv'
+import {
+  describe, expect, it,
+} from 'vitest'
 
 import { validatePayloadSchema } from '../validatePayloadSchema.js'
 

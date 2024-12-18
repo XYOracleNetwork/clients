@@ -6,6 +6,9 @@ import { AddressHistoryQuerySchema } from '@xyo-network/diviner-address-history-
 import type { DivinerInstance } from '@xyo-network/diviner-model'
 import { DivinerDivineQuerySchema } from '@xyo-network/diviner-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
+import {
+  beforeAll, describe, expect, it,
+} from 'vitest'
 
 import {
   getArchivistByName, getDivinerByName, getNewBoundWitnesses, validateStateResponse,

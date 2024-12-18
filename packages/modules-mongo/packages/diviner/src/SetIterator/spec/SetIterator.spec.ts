@@ -1,3 +1,7 @@
+import {
+  describe, expect, it,
+} from 'vitest'
+
 import { SetIterator } from '../SetIterator.js'
 
 describe('SetIterator', () => {

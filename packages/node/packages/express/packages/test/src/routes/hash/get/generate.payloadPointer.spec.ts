@@ -7,6 +7,10 @@ import type {
 } from '@xyo-network/node-core-model'
 import { PayloadPointerSchema } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
+import {
+  beforeAll, describe, expect,
+  it,
+} from 'vitest'
 
 type DappInfo = [schema: string, address: string]
 
