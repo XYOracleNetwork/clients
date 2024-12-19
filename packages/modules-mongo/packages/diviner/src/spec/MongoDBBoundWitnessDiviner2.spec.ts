@@ -1,3 +1,4 @@
+import { delay } from '@xylabs/delay'
 import { Account } from '@xyo-network/account'
 import { MongoDBArchivist } from '@xyo-network/archivist-mongodb'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
@@ -74,9 +75,15 @@ describe('MemoryBoundWitnessDiviner2', () => {
       config: { schema: MongoDBArchivist.defaultConfigSchema },
     })
 
-    await archivist.insert([payloadA, payloadB])
-    await archivist.insert([payloadC, payloadD])
-    await archivist.insert([bwA, bwB, bwC, bwD, bwAB])
+    const insert = async (payloads: Payload[]) => {
+      for (const payload of payloads) {
+        await archivist.insert([payload])
+        await delay(1)
+      }
+    }
+
+    await insert([payloadA, payloadB, payloadC, payloadD, bwA, bwB, bwC, bwD, bwAB])
+
     sut = await MongoDBBoundWitnessDiviner.create({
       account: account,
       boundWitnessSdkConfig,
@@ -117,6 +124,7 @@ describe('MemoryBoundWitnessDiviner2', () => {
             .build()
           const results = await sut.divine([query])
           expect(results.length).toBe(1)
+          // expect(results[0]).toEqual(bws[1])
           expect(await PayloadBuilder.dataHash(results[0])).toBe(await PayloadBuilder.dataHash(bws[1]))
           expect(results.every(result => result.payload_schemas.includes(schemaB))).toBe(true)
         })
@@ -129,6 +137,7 @@ describe('MemoryBoundWitnessDiviner2', () => {
             .build()
           const results = await sut.divine([query])
           expect(results.length).toBe(1)
+          // expect(results[0]).toEqual(bws[4])
           expect(await PayloadBuilder.dataHash(results[0])).toBe(await PayloadBuilder.dataHash(bws[4]))
           expect(results.every(result => result.payload_schemas.includes(schemaB))).toBe(true)
         })

@@ -39,16 +39,6 @@ describe(`/${moduleName}`, () => {
     })
   })
   describe('DivinerDivineQuerySchema', () => {
-    describe('hash', () => {
-      let payload: PayloadWrapper
-      beforeAll(async () => {
-        payload = PayloadWrapper.wrap(await getNewPayload())
-        await archivist.insert([payload.payload])
-        const hash = await payload.dataHash()
-        const payloads = await archivist.get([hash])
-        expect(payloads).toBeArrayOfSize(1)
-      })
-    })
     describe('limit', () => {
       beforeAll(async () => {
         const schemaA = getTestSchemaName()

@@ -5433,6 +5433,8 @@ __metadata:
     "@babel/core": "npm:^7.26.0"
     "@babel/preset-env": "npm:^7.26.0"
     "@babel/preset-typescript": "npm:^7.26.0"
+    "@ethersproject/address": "npm:^5.7.0"
+    "@ethersproject/bignumber": "npm:^5.7.0"
     "@types/supertest": "npm:^6.0.2"
     "@typescript-eslint/eslint-plugin": "npm:^8.18.1"
     "@typescript-eslint/parser": "npm:^8.18.1"
@@ -5452,6 +5454,7 @@ __metadata:
     dotenv: "npm:^16.4.7"
     eslint: "npm:^9.17.0"
     eslint-import-resolver-typescript: "npm:^3.7.0"
+    jsbi: "npm:^4.3.0"
     mongodb-memory-server: "npm:^10.1.2"
     nodemon: "npm:^3.1.9"
     reflect-metadata: "npm:^0.2.2"
@@ -12147,6 +12150,13 @@ __metadata:
   version: 3.2.5
   resolution: "jsbi@npm:3.2.5"
   checksum: 10/2cceb3a06dcb16493e936aa22384d912dd5f0a1fd474b97b5c6705011bd0aac8214d9a392a730b3f3ffb61a8fbe910a34d0fe881329be6a02857520d7a61ace6
+  languageName: node
+  linkType: hard
+
+"jsbi@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "jsbi@npm:4.3.0"
+  checksum: 10/c2195d79c1da263d4d00973c1d7c6676678eafd8cf2ef5fa4ffa684ae3e948a2267cb3de213744e767d22a10dcb6266c88320820ec19f11d282e99acb361e4c9
   languageName: node
   linkType: hard
 

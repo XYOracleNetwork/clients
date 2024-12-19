@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import {
   describe, expect, it,
 } from 'vitest'

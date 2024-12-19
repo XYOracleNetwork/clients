@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import { assertEx } from '@xylabs/assert'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { isSnapshot } from '@xyo-network/tzero-stock-market-payload-plugin'

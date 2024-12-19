@@ -82,20 +82,6 @@ describe(`/${moduleName}`, () => {
         })
       })
     })
-    describe('hash', () => {
-      let boundWitness: BoundWitnessWrapper
-      beforeAll(async () => {
-        boundWitness = BoundWitnessWrapper.parse((await getNewBoundWitness([account]))[0])
-        await archivist.insert([boundWitness.payload])
-      })
-    })
-    describe('dataHash', () => {
-      let boundWitness: BoundWitnessWrapper
-      beforeAll(async () => {
-        boundWitness = BoundWitnessWrapper.parse((await getNewBoundWitness([account]))[0])
-        await archivist.insert([boundWitness.payload])
-      })
-    })
     describe('limit', () => {
       let boundWitnesses: BoundWitness[]
       beforeAll(async () => {
