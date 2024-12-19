@@ -52,7 +52,6 @@
     "mongodb": "~6.12.0"
   },
   "devDependencies": {
-    "@xylabs/assert": "^4.4.25",
     "@xylabs/delay": "^4.4.25",
     "@xylabs/ts-scripts-yarn3": "^4.2.6",
     "@xylabs/tsconfig": "^4.2.6",

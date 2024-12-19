@@ -9,7 +9,6 @@ import { BoundWitnessSchema } from '@xyo-network/boundwitness-model'
 import type { AddressHistoryQueryPayload } from '@xyo-network/diviner-address-history'
 import { AddressHistoryDivinerConfigSchema, AddressHistoryQuerySchema } from '@xyo-network/diviner-address-history'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
 import {
   type BoundWitnessWithMongoMeta, type BoundWitnessWithPartialMongoMeta, toDbRepresentation,
 } from '@xyo-network/payload-mongodb'

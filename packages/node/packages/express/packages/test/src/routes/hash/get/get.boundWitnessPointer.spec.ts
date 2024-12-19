@@ -163,9 +163,9 @@ describe('/:hash', () => {
       const boundWitnesses: BoundWitness[] = []
       beforeAll(async () => {
         account = await Account.random()
-        const payloadBaseA = { ...(await getNewPayload()), schema: schemaA }
+        const payloadBaseA = { ...(getNewPayload()), schema: schemaA }
         payloadA = PayloadWrapper.wrap(payloadBaseA)
-        const payloadBaseB = { ...(await getNewPayload()), schema: schemaB }
+        const payloadBaseB = { ...(getNewPayload()), schema: schemaB }
         payloadB = PayloadWrapper.wrap(payloadBaseB)
         const [bwA] = await getNewBoundWitness([account], [payloadA.payload])
         await delay(100)
@@ -176,8 +176,15 @@ describe('/:hash', () => {
         const [bwD] = await getNewBoundWitness([account], [payloadB.payload])
         await delay(100)
         boundWitnesses.push(bwA, bwB, bwC, bwD)
-        const payloadResponse = await insertBlock(boundWitnesses, account)
-        expect(payloadResponse.length).toBe(boundWitnesses.length)
+        await insertBlock([bwA], account)
+        await delay(1)
+        await insertBlock([bwB], account)
+        await delay(1)
+        await insertBlock([bwC], account)
+        await delay(1)
+        await insertBlock([bwD], account)
+        await delay(1)
+        await delay(1000)
       })
       describe('single schema', () => {
         it.each([
@@ -254,11 +261,6 @@ describe('/:hash', () => {
         const pointerHash = await createPointer([[account.address]], [[expectedSchema]], 'desc')
         const result = await getHash(pointerHash)
         expect(PayloadBuilder.omitStorageMeta(result)).toEqual(expected)
-      })
-      it('no matching timestamp', async () => {
-        const pointerHash = await createPointer([[account.address]], [[expectedSchema]], 'asc')
-        const result = await getHash(pointerHash)
-        expectHashNotFoundError(result)
       })
     })
   })

@@ -60,8 +60,8 @@ export class MongoDBBoundWitnessDiviner extends MongoDBDivinerBase {
     if (allAddresses.length > 0) filter.addresses = allAddresses.length === 1 ? allAddresses[0] : { $all: allAddresses }
     if (payload_hashes?.length) filter.payload_hashes = { $in: payload_hashes }
     if (payload_schemas?.length) filter.payload_schemas = { $all: payload_schemas }
-    if (sourceQuery) filter['_$meta.sourceQuery'] = sourceQuery
-    if (destination?.length) filter['_$meta.destination'] = { $in: destination }
+    if (sourceQuery) filter['_$sourceQuery'] = sourceQuery
+    if (destination?.length) filter['_$destination'] = { $in: destination }
     const result = (await (await this.boundWitnesses.find(filter)).sort(sort).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(
       fromDbRepresentation,
     ) as BoundWitness[]
