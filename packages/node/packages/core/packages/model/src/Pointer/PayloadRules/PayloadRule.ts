@@ -1,5 +1,6 @@
 import type {
-  PayloadAddressRule, PayloadSchemaRule, PayloadTimestampOrderRule,
+  PayloadAddressRule, PayloadOrderRule,
+  PayloadSchemaRule,
 } from './Rules/index.js'
 
-export type PayloadRule = PayloadAddressRule | PayloadTimestampOrderRule | PayloadSchemaRule
+export type PayloadRule = PayloadAddressRule | PayloadOrderRule | PayloadSchemaRule

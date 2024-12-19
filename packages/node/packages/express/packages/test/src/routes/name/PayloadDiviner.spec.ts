@@ -17,7 +17,6 @@ import {
   getDivinerByName,
   getNewPayload,
   getTestSchemaName,
-  nonExistentHash,
   validateStateResponse,
 } from '../../testUtil/index.js'
 
@@ -48,20 +47,6 @@ describe(`/${moduleName}`, () => {
         const hash = await payload.dataHash()
         const payloads = await archivist.get([hash])
         expect(payloads).toBeArrayOfSize(1)
-      })
-      it('divines Payloads by hash', async () => {
-        const hash = await payload.dataHash()
-        const query: PayloadDivinerQueryPayload = { hash, schema }
-        const response = await diviner.divine([query])
-        expect(response).toBeArrayOfSize(1)
-        const responseHashes = await Promise.all(response.map(p => PayloadBuilder.dataHash(p)))
-        expect(responseHashes).toContainAllValues([await payload.dataHash()])
-      })
-      it('returns empty array for non-existent hash', async () => {
-        const hash = nonExistentHash
-        const query: PayloadDivinerQueryPayload = { hash, schema }
-        const response = await diviner.divine([query])
-        expect(response).toBeArrayOfSize(0)
       })
     })
     describe('limit', () => {

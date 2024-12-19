@@ -37,18 +37,18 @@ describe('/:hash', () => {
     })
     it('ascending', async () => {
       const expected = assertEx(payloads.at(0))
-      const pointerHash = await createPointer([[account.address]], [[expectedSchema]], 0, 'asc')
+      const pointerHash = await createPointer([[account.address]], [[expectedSchema]], 'asc')
       const result = await getHash(pointerHash)
       expect(PayloadBuilder.omitStorageMeta(result)).toEqual(expected)
     })
     it('descending', async () => {
       const expected = assertEx(payloads.at(-1))
-      const pointerHash = await createPointer([[account.address]], [[expectedSchema]], Date.now(), 'desc')
+      const pointerHash = await createPointer([[account.address]], [[expectedSchema]], 'desc')
       const result = await getHash(pointerHash)
       expect(PayloadBuilder.omitStorageMeta(result)).toEqual(expected)
     })
     it('no matching timestamp', async () => {
-      const pointerHash = await createPointer([[account.address]], [[expectedSchema]], Date.now(), 'asc')
+      const pointerHash = await createPointer([[account.address]], [[expectedSchema]], 'asc')
       const result = await getHash(pointerHash)
       expectHashNotFoundError(result)
     })

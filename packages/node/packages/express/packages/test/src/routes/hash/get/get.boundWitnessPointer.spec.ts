@@ -8,9 +8,9 @@ import type { Order } from '@xyo-network/diviner-payload-model'
 import type {
   BoundWitnessPointerPayload,
   PayloadAddressRule,
+  PayloadOrderRule,
   PayloadRule,
   PayloadSchemaRule,
-  PayloadTimestampOrderRule,
 } from '@xyo-network/node-core-model'
 import { BoundWitnessPointerSchema } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
@@ -28,7 +28,6 @@ import {
 const createPointer = async (
   addresses: string[][] = [],
   schemas: string[][] = [],
-  timestamp = Date.now(),
   order: Order = 'desc',
 ): Promise<string> => {
   const reference: PayloadRule[][] = []
@@ -47,7 +46,7 @@ const createPointer = async (
   })
   if (addressRules.length > 0) reference.push(...addressRules)
 
-  const timestampRule: PayloadTimestampOrderRule = { order, timestamp }
+  const timestampRule: PayloadOrderRule = { order }
   reference.push([timestampRule])
 
   const pointer = await new PayloadBuilder<BoundWitnessPointerPayload>({ schema: BoundWitnessPointerSchema }).fields({ reference }).build()
@@ -246,18 +245,18 @@ describe('/:hash', () => {
       })
       it('ascending', async () => {
         const expected = BoundWitnessWrapper.parse(assertEx(boundWitnesses.at(0))).payload
-        const pointerHash = await createPointer([[account.address]], [[expectedSchema]], 0, 'asc')
+        const pointerHash = await createPointer([[account.address]], [[expectedSchema]], 'asc')
         const result = await getHash(pointerHash)
         expect(PayloadBuilder.omitStorageMeta(result)).toEqual(expected)
       })
       it('descending', async () => {
         const expected = BoundWitnessWrapper.parse(assertEx(boundWitnesses.at(-1))).payload
-        const pointerHash = await createPointer([[account.address]], [[expectedSchema]], Date.now(), 'desc')
+        const pointerHash = await createPointer([[account.address]], [[expectedSchema]], 'desc')
         const result = await getHash(pointerHash)
         expect(PayloadBuilder.omitStorageMeta(result)).toEqual(expected)
       })
       it('no matching timestamp', async () => {
-        const pointerHash = await createPointer([[account.address]], [[expectedSchema]], Date.now(), 'asc')
+        const pointerHash = await createPointer([[account.address]], [[expectedSchema]], 'asc')
         const result = await getHash(pointerHash)
         expectHashNotFoundError(result)
       })

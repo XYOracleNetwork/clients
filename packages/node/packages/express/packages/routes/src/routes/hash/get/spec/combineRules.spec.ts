@@ -1,5 +1,6 @@
 import type {
-  PayloadAddressRule, PayloadRule, PayloadSchemaRule, PayloadTimestampOrderRule,
+  PayloadAddressRule,
+  PayloadRule, PayloadSchemaRule,
 } from '@xyo-network/node-core-model'
 import {
   describe, expect, it, vi,
@@ -12,7 +13,7 @@ const now = new Date()
 vi.useFakeTimers().setSystemTime(now)
 
 const validRules = (): PayloadRule[][] => {
-  return [[{ schema: 'network.xyo.debug' }], [{ order: 'desc', timestamp: Date.now() }]]
+  return [[{ schema: 'network.xyo.debug' }], [{ order: 'desc' }]]
 }
 
 describe('combineRules', () => {
@@ -33,18 +34,6 @@ describe('combineRules', () => {
         combineRules(rules)
       }).toThrow()
     })
-    describe('for timestamp defaults to', () => {
-      it('timestamp set to current time', () => {
-        const rules = validRules().filter(rule => !(rule?.[0] as PayloadTimestampOrderRule)?.timestamp)
-        const actual = combineRules(rules)
-        expect(actual.timestamp).toBe(+now)
-      })
-      it('direction defaults to desc', () => {
-        const rules = validRules().filter(rule => !(rule?.[0] as PayloadTimestampOrderRule)?.timestamp)
-        const actual = combineRules(rules)
-        expect(actual.order).toBe('desc')
-      })
-    })
   })
   describe('with PayloadAddressRule rules', () => {
     it('combines multiple rules', () => {
@@ -57,7 +46,7 @@ describe('combineRules', () => {
   })
   describe('with PayloadSchemaRule rules', () => {
     it('combines multiple rules', () => {
-      const rules: PayloadRule[][] = [[{ order: 'desc', timestamp: Date.now() }], [{ schema: 'network.xyo.test' }, { schema: 'network.xyo.debug' }]]
+      const rules: PayloadRule[][] = [[{ order: 'desc' }], [{ schema: 'network.xyo.test' }, { schema: 'network.xyo.debug' }]]
       const actual = combineRules(rules)
       expect(actual.schemas.sort()).toEqual(['network.xyo.debug', 'network.xyo.test'])
     })
@@ -67,8 +56,8 @@ describe('combineRules', () => {
       const rules: PayloadRule[][] = [
         [{ schema: 'network.xyo.debug' }],
         [
-          { order: 'desc', timestamp: Date.now() },
-          { order: 'asc', timestamp: Date.now() },
+          { order: 'desc' },
+          { order: 'asc' },
         ],
       ]
       expect(() => {
