@@ -35,7 +35,6 @@ export class MongoDBBoundWitnessDiviner extends MongoDBDivinerBase {
       address,
       addresses,
       destination,
-      hash,
       limit = DefaultLimit,
       cursor = (query.order ?? DefaultOrder) === 'asc' ? SequenceConstants.minLocalSequence : SequenceConstants.maxLocalSequence,
       order = DefaultOrder,
@@ -63,26 +62,10 @@ export class MongoDBBoundWitnessDiviner extends MongoDBDivinerBase {
     if (payload_schemas?.length) filter.payload_schemas = { $all: payload_schemas }
     if (sourceQuery) filter['_$meta.sourceQuery'] = sourceQuery
     if (destination?.length) filter['_$meta.destination'] = { $in: destination }
-    if (hash) {
-      const filter1 = { ...filter }
-      if (hash) filter1._hash = hash
-      const resultSetOne = (
-        await (await this.boundWitnesses.find(filter1)).sort(sort).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()
-      ).map(fromDbRepresentation)
-
-      const filter2 = { ...filter }
-      if (hash) filter2._$hash = hash
-      const resultSetTwo = (
-        await (await this.boundWitnesses.find(filter2)).sort(sort).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()
-      ).map(fromDbRepresentation)
-      const result = [...resultSetOne, ...resultSetTwo].map(fromDbRepresentation) as BoundWitness[]
-      return result
-    } else {
-      const result = (await (await this.boundWitnesses.find(filter)).sort(sort).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(
-        fromDbRepresentation,
-      ) as BoundWitness[]
-      return result
-    }
+    const result = (await (await this.boundWitnesses.find(filter)).sort(sort).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(
+      fromDbRepresentation,
+    ) as BoundWitness[]
+    return result
   }
 
   protected override async startHandler() {
