@@ -1,6 +1,5 @@
 import '@xylabs/vitest-extended'
 
-import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
 import { Account } from '@xyo-network/account'
 import type { ArchivistNextOptions } from '@xyo-network/archivist-model'

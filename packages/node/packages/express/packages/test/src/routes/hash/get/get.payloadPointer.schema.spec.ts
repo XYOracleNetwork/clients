@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import { Account } from '@xyo-network/account'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
@@ -39,7 +41,7 @@ describe('/:hash', () => {
         const pointerHash = await createPointer([[]], [[schema]])
         const result = await getHash(pointerHash)
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        expect(result as any).toEqual((expected).payload as any)
+        expect(PayloadBuilder.omitStorageMeta(result)).toEqual((expected).payload as any)
       })
     })
     describe('single schema [w/address]', () => {

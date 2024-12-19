@@ -20,7 +20,6 @@ import {
   getNewBoundWitness,
   getNewPayload,
   getTestSchemaName,
-  nonExistentHash,
   unitTestSigningAccount,
   validateStateResponse,
 } from '../../testUtil/index.ts'

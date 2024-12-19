@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import { delay } from '@xylabs/delay'
 import type { Address } from '@xylabs/hex'
 import { Account } from '@xyo-network/account'

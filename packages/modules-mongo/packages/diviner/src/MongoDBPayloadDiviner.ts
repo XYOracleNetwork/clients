@@ -26,7 +26,8 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
       limit = DefaultLimit,
       cursor = (query.order ?? DefaultOrder) === 'asc' ? SequenceConstants.minLocalSequence : SequenceConstants.maxLocalSequence,
       order = DefaultOrder,
-      // schema,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      schema,
       schemas,
       ...props
     } = query
