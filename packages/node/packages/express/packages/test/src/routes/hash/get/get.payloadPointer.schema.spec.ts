@@ -59,7 +59,7 @@ describe('/:hash', () => {
         console.log(`h1: ${h1}`)
         const h2 = await PayloadBuilder.dataHash(result)
         console.log(`h2 ${h2}`)
-        expect(result).toEqual(expectedPayload)
+        expect(PayloadBuilder.omitStorageMeta(result)).toEqual(expectedPayload)
       })
     })
     describe('multiple schema rules', () => {

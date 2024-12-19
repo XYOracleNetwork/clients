@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import type { Address } from '@xylabs/hex'
 import { Account } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'

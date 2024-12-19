@@ -1,8 +1,10 @@
+import '@xylabs/vitest-extended'
+
 import type { PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
 import { PayloadDivinerConfigSchema, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
+import { type PayloadWithMongoMeta, toDbRepresentation } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import {
   beforeAll, describe, expect, it,
@@ -30,9 +32,15 @@ describe.runIf(hasMongoDBConfig())('MongoDBPayloadDiviner', () => {
       config: { schema: PayloadDivinerConfigSchema },
       logger,
     })
-    // TODO: Insert via archivist
-    const payload = await new PayloadBuilder<{ schema: string; url: string }>({ schema: testSchema }).fields({ url }).build()
-    await payloadSdk.insertOne(payload as unknown as PayloadWithMongoMeta)
+
+    const payload = await toDbRepresentation(
+      await PayloadBuilder.addStorageMeta(
+        new PayloadBuilder<{ schema: string; url: string }>({ schema: testSchema })
+          .fields({ url })
+          .build(),
+      ),
+    )
+    await payloadSdk.insertOne(payload)
   })
   describe('divine', () => {
     describe('with valid query', () => {

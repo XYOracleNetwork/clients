@@ -2,6 +2,7 @@ import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
 import type { AccountInstance } from '@xyo-network/account'
 import { Account } from '@xyo-network/account'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload } from '@xyo-network/payload-model'
 import {
   beforeAll, describe, expect, it,
@@ -38,13 +39,13 @@ describe('/:hash', () => {
       const expected = assertEx(payloads.at(0))
       const pointerHash = await createPointer([[account.address]], [[expectedSchema]], 0, 'asc')
       const result = await getHash(pointerHash)
-      expect(result).toEqual(expected)
+      expect(PayloadBuilder.omitStorageMeta(result)).toEqual(expected)
     })
     it('descending', async () => {
       const expected = assertEx(payloads.at(-1))
       const pointerHash = await createPointer([[account.address]], [[expectedSchema]], Date.now(), 'desc')
       const result = await getHash(pointerHash)
-      expect(result).toEqual(expected)
+      expect(PayloadBuilder.omitStorageMeta(result)).toEqual(expected)
     })
     it('no matching timestamp', async () => {
       const pointerHash = await createPointer([[account.address]], [[expectedSchema]], Date.now(), 'asc')

@@ -91,7 +91,7 @@ describe('/:hash', () => {
       expect(response).toBeTruthy()
       expect(Array.isArray(response)).toBe(false)
       // expect(PayloadWrapper.parse(response).valid).toBeTrue()
-      expect(response).toEqual(expected)
+      expect(PayloadBuilder.omitStorageMeta(response)).toEqual(expected)
     })
     it(`${ReasonPhrases.NOT_FOUND} if no Payloads match the criteria`, async () => {
       const result = await getHash('non_existent_hash')

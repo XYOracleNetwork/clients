@@ -14,8 +14,8 @@ export const payloadFromDbRepresentation = <T extends Payload = Payload>(value: 
     if (key.startsWith('_$')) {
       // remove _ from _$ fields
       metaNormalized[key.slice(1)] = clone[key]
-    } else if (!key.startsWith('_')) {
-      // only add the field if it is not prefixed with _ since that is reserved for mongoDB
+    } else if (key !== '_id') {
+      // special case for _id, which is reserved by MongoDB
       metaNormalized[key] = clone[key]
     }
   }

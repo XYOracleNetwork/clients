@@ -31,7 +31,7 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
       ...props
     } = query
     const direction = order === 'asc' ? 1 : -1
-    const sort: { [key: string]: SortDirection } = { _timestamp: direction }
+    const sort: { [key: string]: SortDirection } = { _sequence: direction }
     // TODO: Joel, why is AnyObject needed?
     const filter: Filter<AnyObject> = {}
     if (cursor) {
