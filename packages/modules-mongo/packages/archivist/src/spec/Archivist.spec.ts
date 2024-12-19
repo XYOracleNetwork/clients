@@ -89,7 +89,7 @@ describe.runIf(hasMongoDBConfig())('Archivist', () => {
         expect(await PayloadBuilder.dataHash(result)).toEqual(await payload.dataHash())
         expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))
         expect(await PayloadBuilder.hash(result)).toEqual(await PayloadBuilder.hash(payload.payload))
-        expect(result).toEqual(payload.payload)
+        expect(PayloadBuilder.omitStorageMeta(result)).toEqual(payload.payload)
       }
     })
   })
@@ -108,7 +108,7 @@ describe.runIf(hasMongoDBConfig())('Archivist', () => {
         expect(await PayloadBuilder.dataHash(result)).toEqual(await payload.dataHash())
         expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))
         expect(await PayloadBuilder.hash(result)).toEqual(await PayloadBuilder.hash(payload.payload))
-        expect(result).toEqual(payload.payload)
+        expect(PayloadBuilder.omitStorageMeta(result)).toEqual(payload.payload)
       }
     })
   })
