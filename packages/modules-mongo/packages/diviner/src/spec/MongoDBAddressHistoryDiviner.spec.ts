@@ -9,6 +9,7 @@ import { BoundWitnessSchema } from '@xyo-network/boundwitness-model'
 import type { AddressHistoryQueryPayload } from '@xyo-network/diviner-address-history'
 import { AddressHistoryDivinerConfigSchema, AddressHistoryQuerySchema } from '@xyo-network/diviner-address-history'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import {
   type BoundWitnessWithMongoMeta, type BoundWitnessWithPartialMongoMeta, toDbRepresentation,
 } from '@xyo-network/payload-mongodb'
@@ -46,6 +47,7 @@ describe.runIf(hasMongoDBConfig())('MongoDBAddressHistoryDiviner', () => {
     const [bw] = await new BoundWitnessBuilder().payload(payload).signer(account).build()
     const mongoBw = await toDbRepresentation(bw)
     await boundWitnessSdk.insertOne(mongoBw)
+    await delay(1)
     const [bw2] = await new BoundWitnessBuilder().payload(payload).signer(account).build()
     const mongoBw2 = await toDbRepresentation(bw2)
     await boundWitnessSdk.insertOne(mongoBw2)
