@@ -11,7 +11,9 @@ import {
 } from '@xyo-network/diviner-boundwitness-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { BoundWitnessWithMongoMeta, BoundWitnessWithPartialMongoMeta } from '@xyo-network/payload-mongodb'
+import {
+  type BoundWitnessWithMongoMeta, type BoundWitnessWithPartialMongoMeta, toDbRepresentation,
+} from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import {
   beforeAll, describe, expect, it,
@@ -50,12 +52,17 @@ describe.runIf(hasMongoDBConfig())('MongoDBBoundWitnessDiviner', () => {
       logger,
     })
     // TODO: Insert via archivist
-    const payloadA = await new PayloadBuilder({ schema: 'network.xyo.test' }).fields({ nonce: 1 }).build()
-    const bwA = (await new BoundWitnessBuilder().payload(payloadA).witness(accountA).build())[0]
-    await boundWitnessSdk.insertOne(bwA as unknown as BoundWitnessWithMongoMeta)
-    const payloadB = await new PayloadBuilder({ schema: 'network.xyo.test' }).fields({ nonce: 2 }).build()
-    const bwB = (await new BoundWitnessBuilder().payload(payloadB).witness(accountB).build())[0]
-    await boundWitnessSdk.insertOne(bwB as unknown as BoundWitnessWithMongoMeta)
+    const payloadA = new PayloadBuilder({ schema: 'network.xyo.test' }).fields({ nonce: 1 }).build()
+
+    const [bwAWithoutMeta] = await new BoundWitnessBuilder().payload(payloadA).signer(accountA).build()
+    const bwA = await PayloadBuilder.addStorageMeta(bwAWithoutMeta)
+    await boundWitnessSdk.insertOne(await toDbRepresentation(bwA))
+
+    const payloadB = new PayloadBuilder({ schema: 'network.xyo.test' }).fields({ nonce: 2 }).build()
+
+    const [bwBWithoutMeta] = await new BoundWitnessBuilder().payload(payloadB).signer(accountB).build()
+    const bwB = await PayloadBuilder.addStorageMeta(bwBWithoutMeta)
+    await boundWitnessSdk.insertOne(await toDbRepresentation(bwB))
   })
   describe('divine', () => {
     describe('with valid query', () => {

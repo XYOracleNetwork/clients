@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import { Account } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
@@ -17,12 +19,8 @@ import { mock } from 'vitest-mock-extended'
 
 import { MongoDBAddressSpaceDiviner } from '../MongoDBAddressSpaceDiviner.js'
 
-/**
- * @group mongo
- */
-
 // describeIf(hasMongoDBConfig())('MongoDBAddressSpaceDiviner', () => {
-describe.runIf(hasMongoDBConfig()).skip('MongoDBAddressSpaceDiviner', () => {
+describe.runIf(hasMongoDBConfig())('MongoDBAddressSpaceDiviner', () => {
   const phrase = 'reflect dash pear scatter kiwi sock ability muffin clever effort enroll school'
   let account: AccountInstance
   const logger = mock<Console>()

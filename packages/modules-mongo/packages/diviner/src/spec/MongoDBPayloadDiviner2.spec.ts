@@ -1,4 +1,4 @@
-/* eslint-disable max-nested-callbacks */
+import { delay } from '@xylabs/delay'
 import { MongoDBArchivist } from '@xyo-network/archivist-mongodb'
 import type { PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
 import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
@@ -47,9 +47,14 @@ describe('MongoDBPayloadDiviner2', () => {
       config: { schema: MongoDBArchivist.defaultConfigSchema },
     })
 
-    const insertedPayloads: Payload[] = []
+    const insert = async (payloads: Payload[]) => {
+      for (const payload of payloads) {
+        await archivist.insert([payload])
+        await delay(1)
+      }
+    }
 
-    insertedPayloads.push(...(await archivist.insert([payloadA, payloadB])), ...(await archivist.insert([payloadC, payloadD])))
+    const insertedPayloads = await insert([payloadA, payloadB, payloadC, payloadD])
 
     console.log('insertedPayloads', insertedPayloads)
 
