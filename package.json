@@ -71,6 +71,7 @@
     "swagger-ui-express": "^4"
   },
   "dependencies": {
+    "@xylabs/sdk-api-express-ecs": "^2.1.0",
     "@xyo-network/automation-witness-server": "workspace:^",
     "@xyo-network/cli": "workspace:^",
     "@xyo-network/express-node": "workspace:^"
@@ -86,7 +87,6 @@
     "@typescript-eslint/parser": "^8.18.1",
     "@xylabs/eslint-config-flat": "^4.2.6",
     "@xylabs/object": "^4.4.25",
-    "@xylabs/sdk-api-express-ecs": "^2.1.0",
     "@xylabs/ts-scripts-yarn3": "^4.2.6",
     "@xylabs/tsconfig": "^4.2.6",
     "@xylabs/vitest-extended": "^4.4.25",
