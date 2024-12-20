@@ -68,6 +68,7 @@
     "DNSSEC",
     "edns",
     "Etherchain",
+    "ethersproject",
     "filepond",
     "geotiff",
     "haensl",
