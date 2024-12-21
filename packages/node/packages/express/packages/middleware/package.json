@@ -26,7 +26,7 @@
   "dependencies": {
     "@xylabs/logger": "^4.4.25",
     "@xylabs/sdk-api-express-ecs": "^2.1.0",
-    "@xyo-network/node-model": "^3.6.0-rc.13",
+    "@xyo-network/node-model": "^3.6.0-rc.16",
     "express": "^4.21.2",
     "express-mung": "^0.5.1",
     "swagger-autogen": "^2.23.7",

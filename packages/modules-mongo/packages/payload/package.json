@@ -38,9 +38,9 @@
   "types": "dist/node/index.d.ts",
   "dependencies": {
     "@xylabs/object": "^4.4.25",
-    "@xyo-network/boundwitness-model": "^3.6.0-rc.13",
-    "@xyo-network/payload-builder": "^3.6.0-rc.13",
-    "@xyo-network/payload-model": "^3.6.0-rc.13"
+    "@xyo-network/boundwitness-model": "^3.6.0-rc.16",
+    "@xyo-network/payload-builder": "^3.6.0-rc.16",
+    "@xyo-network/payload-model": "^3.6.0-rc.16"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^4.2.6",
