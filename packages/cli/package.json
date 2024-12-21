@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/cli",
-  "version": "3.1.7",
+  "version": "3.2.0-rc.1",
   "description": "Primary SDK for using XYO Protocol 2.0",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -73,5 +73,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "docs": "dist/docs.json"
+  "docs": "dist/docs.json",
+  "stableVersion": "3.1.7"
 }
