@@ -1,8 +1,13 @@
+import '@xylabs/vitest-extended'
+
 import { TYPES } from '@xyo-network/node-core-types'
 import type { Job } from '@xyo-network/shared'
 import type { Container } from 'inversify'
-import type { MockProxy } from 'jest-mock-extended'
-import { mock } from 'jest-mock-extended'
+import {
+  describe, expect, it,
+} from 'vitest'
+import type { MockProxy } from 'vitest-mock-extended'
+import { mock } from 'vitest-mock-extended'
 
 import { getJobs } from '../getJobs.js'
 

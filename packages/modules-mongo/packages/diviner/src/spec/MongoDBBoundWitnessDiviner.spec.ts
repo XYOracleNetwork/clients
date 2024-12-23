@@ -1,4 +1,5 @@
-import { describeIf } from '@xylabs/jest-helpers'
+import '@xylabs/vitest-extended'
+
 import { Account } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
@@ -10,9 +11,14 @@ import {
 } from '@xyo-network/diviner-boundwitness-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { BoundWitnessWithMongoMeta, BoundWitnessWithPartialMongoMeta } from '@xyo-network/payload-mongodb'
+import {
+  type BoundWitnessWithMongoMeta, type BoundWitnessWithPartialMongoMeta, toDbRepresentation,
+} from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
-import { mock } from 'jest-mock-extended'
+import {
+  beforeAll, describe, expect, it,
+} from 'vitest'
+import { mock } from 'vitest-mock-extended'
 
 import { MongoDBBoundWitnessDiviner } from '../MongoDBBoundWitnessDiviner.js'
 
@@ -20,7 +26,7 @@ import { MongoDBBoundWitnessDiviner } from '../MongoDBBoundWitnessDiviner.js'
  * @group mongo
  */
 
-describeIf(hasMongoDBConfig())('MongoDBBoundWitnessDiviner', () => {
+describe.runIf(hasMongoDBConfig())('MongoDBBoundWitnessDiviner', () => {
   const phrase = 'reflect dash pear scatter kiwi sock ability muffin clever effort enroll school'
   let account: AccountInstance
   const logger = mock<Console>()
@@ -46,12 +52,17 @@ describeIf(hasMongoDBConfig())('MongoDBBoundWitnessDiviner', () => {
       logger,
     })
     // TODO: Insert via archivist
-    const payloadA = await new PayloadBuilder({ schema: 'network.xyo.test' }).fields({ nonce: 1 }).build()
-    const bwA = (await new BoundWitnessBuilder().payload(payloadA).witness(accountA).build())[0]
-    await boundWitnessSdk.insertOne(bwA as unknown as BoundWitnessWithMongoMeta)
-    const payloadB = await new PayloadBuilder({ schema: 'network.xyo.test' }).fields({ nonce: 2 }).build()
-    const bwB = (await new BoundWitnessBuilder().payload(payloadB).witness(accountB).build())[0]
-    await boundWitnessSdk.insertOne(bwB as unknown as BoundWitnessWithMongoMeta)
+    const payloadA = new PayloadBuilder({ schema: 'network.xyo.test' }).fields({ nonce: 1 }).build()
+
+    const [bwAWithoutMeta] = await new BoundWitnessBuilder().payload(payloadA).signer(accountA).build()
+    const bwA = await PayloadBuilder.addStorageMeta(bwAWithoutMeta)
+    await boundWitnessSdk.insertOne(await toDbRepresentation(bwA))
+
+    const payloadB = new PayloadBuilder({ schema: 'network.xyo.test' }).fields({ nonce: 2 }).build()
+
+    const [bwBWithoutMeta] = await new BoundWitnessBuilder().payload(payloadB).signer(accountB).build()
+    const bwB = await PayloadBuilder.addStorageMeta(bwBWithoutMeta)
+    await boundWitnessSdk.insertOne(await toDbRepresentation(bwB))
   })
   describe('divine', () => {
     describe('with valid query', () => {

@@ -1,11 +1,14 @@
 import type { JobQueue } from '@xyo-network/node-core-model'
-import type { MockProxy } from 'jest-mock-extended'
-import { mock } from 'jest-mock-extended'
+import {
+  beforeEach, describe, expect,
+  it,
+} from 'vitest'
+import { mock } from 'vitest-mock-extended'
 
 import { startJobQueue } from '../startJobQueue.js'
 
 describe('startJobQueue', () => {
-  let jobQueue: MockProxy<JobQueue>
+  let jobQueue: JobQueue
   beforeEach(() => {
     jobQueue = mock<JobQueue>()
   })

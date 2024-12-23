@@ -15,7 +15,7 @@ import type { LocationPayload } from '@xyo-network/location-payload-plugin'
 import { LocationSchema } from '@xyo-network/location-payload-plugin'
 import type { AnyConfigSchema } from '@xyo-network/module-model'
 import type {
-  Payload, Schema, WithMeta,
+  Payload, Schema, WithStorageMeta,
 } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
@@ -60,7 +60,7 @@ export class MemoryCoinUserLocationsDiviner<
   static override readonly configSchemas: Schema[] = [...super.configSchemas, ArchivistPayloadDivinerConfigSchema]
   static override readonly defaultConfigSchema: Schema = ArchivistPayloadDivinerConfigSchema
 
-  protected override async divineHandler(payloads?: Payload[]): Promise<Payload<LocationPayload>[]> {
+  protected override async divineHandler(payloads?: Payload[]): Promise<LocationPayload[]> {
     const user = payloads?.find<CoinCurrentUserWitnessPayload>(
       (payload): payload is CoinCurrentUserWitnessPayload => payload?.schema === CoinCurrentUserWitnessSchema,
     )
@@ -82,7 +82,7 @@ export class MemoryCoinUserLocationsDiviner<
         }
         return locations
       })
-      const locations = compact(await this.params.archivist.get(locationHashes)) as WithMeta<LocationPayload>[]
+      const locations = compact(await this.params.archivist.get(locationHashes)) as WithStorageMeta<LocationPayload>[]
       this.logger?.log('CoinUserLocationsDiviner.Divine: Processed query')
       return locations
     }

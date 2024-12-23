@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import { HDWallet } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'
 import type { AbstractArchivist } from '@xyo-network/archivist-abstract'
@@ -8,7 +10,11 @@ import { ModuleConfigSchema, ModuleStateQuerySchema } from '@xyo-network/module-
 import type { ArchiveModuleConfig } from '@xyo-network/node-core-model'
 import { ArchiveModuleConfigSchema } from '@xyo-network/node-core-model'
 import type { Request } from 'express'
-import { mock } from 'jest-mock-extended'
+import {
+  beforeAll, describe, expect,
+  it,
+} from 'vitest'
+import { mock } from 'vitest-mock-extended'
 
 import { getQueryConfig } from '../getQueryConfig.js'
 
@@ -27,7 +33,7 @@ describe('getQueryConfig', () => {
       testAccount1 = await HDWallet.create({ phrase: 'spare thunder amount street dune expect quick prison defy divert wrong thrive' })
     })
     it('generates query config for current query', async () => {
-      const query = await (await new QueryBoundWitnessBuilder().query({ schema: ModuleStateQuerySchema })).witness(testAccount1).build()
+      const query = await new QueryBoundWitnessBuilder().query({ schema: ModuleStateQuerySchema }).signer(testAccount1).build()
       const config = await getQueryConfig(mod, req, query[0], query[1])
       expect(config?.security?.allowed).toContainKey(ModuleStateQuerySchema)
       expect(config?.security?.allowed?.[ModuleStateQuerySchema]).toBeArrayOfSize(1)
@@ -56,45 +62,42 @@ describe('getQueryConfig', () => {
         // canAccess = true
       })
       it('generates config for single-signer requests', async () => {
-        const query = await (await new QueryBoundWitnessBuilder().query({ schema: ModuleStateQuerySchema })).witness(testAccount1).build()
+        const query = await (await new QueryBoundWitnessBuilder().query({ schema: ModuleStateQuerySchema })).signer(testAccount1).build()
         const config = await getQueryConfig(mod, req, query[0], query[1])
         expect(config).toMatchSnapshot()
       })
       it('generates config for multi-signer requests', async () => {
         const query = await (await new QueryBoundWitnessBuilder().query({ schema: ModuleStateQuerySchema }))
-          .witness(testAccount1)
-          .witness(testAccount2)
+          .signer(testAccount1)
+          .signer(testAccount2)
           .build()
         const config = await getQueryConfig(mod, req, query[0], query[1])
         expect(config).toMatchSnapshot()
       })
       it('generates config for nested-signed requests', async () => {
-        const bw = await new BoundWitnessBuilder().witness(testAccount3).witness(testAccount4).build()
-        const query = await (
-          await (await new QueryBoundWitnessBuilder().query({ schema: ModuleStateQuerySchema }))
-            .witness(testAccount1)
-            .witness(testAccount2)
-            .payload(bw[0])
-        ).build()
+        const bw = await new BoundWitnessBuilder().signer(testAccount3).signer(testAccount4).build()
+        const query = await new QueryBoundWitnessBuilder().query({ schema: ModuleStateQuerySchema })
+          .signer(testAccount1)
+          .signer(testAccount2)
+          .payload(bw[0])
+          .build()
         const config = await getQueryConfig(mod, req, query[0], query[1])
         expect(config).toMatchSnapshot()
       })
       it('generates config for nested-signed multi-signer requests', async () => {
-        const bw1 = await new BoundWitnessBuilder().witness(testAccount3).build()
-        const bw2 = await new BoundWitnessBuilder().witness(testAccount4).build()
-        const query = await (
-          await (
-            await (await new QueryBoundWitnessBuilder().query({ schema: ModuleStateQuerySchema }))
-              .witness(testAccount1)
-              .witness(testAccount2)
-              .payload(bw1[0])
-          ).payload(bw2[0])
-        ).build()
+        const bw1 = await new BoundWitnessBuilder().signer(testAccount3).build()
+        const bw2 = await new BoundWitnessBuilder().signer(testAccount4).build()
+        const query = await new QueryBoundWitnessBuilder().query({ schema: ModuleStateQuerySchema })
+          .signer(testAccount1)
+          .signer(testAccount2)
+          .payload(bw1[0])
+          .payload(bw2[0])
+          .build()
         const config = await getQueryConfig(mod, req, query[0], query[1])
         expect(config).toMatchSnapshot()
       })
       it('generates config for unsigned requests', async () => {
-        const query = await (await new QueryBoundWitnessBuilder().query({ schema: ModuleStateQuerySchema })).build()
+        const query = await new QueryBoundWitnessBuilder().query({ schema: ModuleStateQuerySchema }).build()
         const config = await getQueryConfig(mod, req, query[0], query[1])
         expect(config).toMatchSnapshot()
       })

@@ -8,12 +8,12 @@ import type {
   PayloadWithPartialMongoMeta,
 } from '@xyo-network/payload-mongodb'
 
-export async function augmentWithMetadata(
+export async function augmentWithStorageMetadata(
   payloads: BoundWitnessWithPartialMongoMeta[],
   meta: BoundWitnessMongoMeta,
 ): Promise<BoundWitnessWithMongoMeta[]>
-export async function augmentWithMetadata(payloads: PayloadWithPartialMongoMeta[], meta: PayloadMongoMeta): Promise<PayloadWithMongoMeta[]>
-export async function augmentWithMetadata(payloads: PayloadWithPartialMongoMeta[], meta: PayloadMongoMeta): Promise<PayloadWithMongoMeta[]> {
+export async function augmentWithStorageMetadata(payloads: PayloadWithPartialMongoMeta[], meta: PayloadMongoMeta): Promise<PayloadWithMongoMeta[]>
+export async function augmentWithStorageMetadata(payloads: PayloadWithPartialMongoMeta[], meta: PayloadMongoMeta): Promise<PayloadWithMongoMeta[]> {
   const result = await Promise.all(
     payloads.map(async (payload) => {
       return {

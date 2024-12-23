@@ -1,39 +1,33 @@
-import { assertEx } from '@xylabs/assert'
-import { omitBy } from '@xylabs/lodash'
-import type { BoundWitness, BoundWitnessFields } from '@xyo-network/boundwitness-model'
+import type { JsonObject } from '@xylabs/object'
+import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import { isBoundWitness } from '@xyo-network/boundwitness-model'
-import type { Payload, PayloadMetaFields } from '@xyo-network/payload-model'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
+import type { Payload, WithStorageMeta } from '@xyo-network/payload-model'
 
-import type { BoundWitnessWithMongoMeta } from '../BoundWitness/index.js'
+import type { BoundWitnessWithMongoMeta } from '../BoundWitness/index.ts'
 import type { PayloadWithMongoMeta } from '../Payload/index.js'
 
-const omitByPredicate = (prefix: string) => (_: unknown, key: string) => {
-  assertEx(typeof key === 'string', () => `Invalid key type [${key}, ${typeof key}]`)
-  return key.startsWith(prefix)
+export const payloadFromDbRepresentation = <T extends Payload = Payload>(value: PayloadWithMongoMeta<T>): WithStorageMeta<T> => {
+  const clone: JsonObject = structuredClone(value) as unknown as JsonObject
+  const metaNormalized: JsonObject = {}
+  for (const key of Object.keys(clone)) {
+    if (key.startsWith('_$')) {
+      // remove _ from _$ fields
+      metaNormalized[key.slice(1)] = clone[key]
+    } else if (key !== '_id') {
+      // special case for _id, which is reserved by MongoDB
+      metaNormalized[key] = clone[key]
+    }
+  }
+  return PayloadBuilder.omitPrivateStorageMeta(metaNormalized as Payload) as WithStorageMeta<T>
 }
 
-export const payloadFromDbRepresentation = (value: PayloadWithMongoMeta): Payload<PayloadMetaFields> => {
-  const {
-    _$hash, _$meta, ...other
-  } = value
-  const sanitized = omitBy(other, omitByPredicate('_'))
-  return {
-    ...sanitized, $hash: _$hash, $meta: _$meta,
-  } as Payload<PayloadMetaFields>
+export const boundWitnessFromDbRepresentation = <T extends BoundWitness = BoundWitness>(value: BoundWitnessWithMongoMeta<T>): WithStorageMeta<T> => {
+  return payloadFromDbRepresentation(value)
 }
 
-export const boundWitnessFromDbRepresentation = (value: BoundWitnessWithMongoMeta): BoundWitness<BoundWitnessFields> => {
-  const {
-    _$hash, _$meta, ...other
-  } = value
-  const sanitized = omitBy(other, omitByPredicate('_'))
-  return {
-    ...sanitized, $hash: _$hash, $meta: _$meta,
-  } as unknown as BoundWitness<BoundWitnessFields>
-}
-
-export const fromDbRepresentation = <T = PayloadWithMongoMeta | BoundWitnessWithMongoMeta>(value: T) => {
+export const fromDbRepresentation = <T extends Payload = Payload>(value: PayloadWithMongoMeta<T>): WithStorageMeta<T> => {
   return isBoundWitness(value)
-    ? (boundWitnessFromDbRepresentation(value as unknown as BoundWitnessWithMongoMeta) as BoundWitness<BoundWitnessFields>)
-    : (payloadFromDbRepresentation(value as PayloadWithMongoMeta) as Payload<PayloadMetaFields>)
+    ? (boundWitnessFromDbRepresentation(value))
+    : (payloadFromDbRepresentation(value))
 }

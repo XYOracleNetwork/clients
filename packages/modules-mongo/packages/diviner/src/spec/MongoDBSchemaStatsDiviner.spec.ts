@@ -1,5 +1,6 @@
+import '@xylabs/vitest-extended'
+
 import type { Address } from '@xylabs/hex'
-import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
 import type {
   SchemaStatsPayload,
@@ -13,11 +14,12 @@ import {
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import type { JobQueue } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { WithMeta } from '@xyo-network/payload-model'
 import type { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
-import type { MockProxy } from 'jest-mock-extended'
-import { mock } from 'jest-mock-extended'
+import {
+  beforeAll, describe, expect, it,
+} from 'vitest'
+import { mock } from 'vitest-mock-extended'
 
 import { MongoDBSchemaStatsDiviner } from '../MongoDBSchemaStatsDiviner.js'
 
@@ -25,7 +27,7 @@ import { MongoDBSchemaStatsDiviner } from '../MongoDBSchemaStatsDiviner.js'
  * @group mongo
  */
 
-describeIf(hasMongoDBConfig())('MongoDBSchemaStatsDiviner', () => {
+describe.runIf(hasMongoDBConfig())('MongoDBSchemaStatsDiviner', () => {
   const phrase = 'forum travel tattoo shock team artist stone fine will fan answer tribe'
   let address: Address
   const logger = mock<Console>()
@@ -34,7 +36,7 @@ describeIf(hasMongoDBConfig())('MongoDBSchemaStatsDiviner', () => {
     collection: COLLECTIONS.Payloads,
     dbConnectionString: process.env.MONGO_CONNECTION_STRING,
   })
-  const jobQueue: MockProxy<JobQueue> = mock<JobQueue>()
+  const jobQueue: JobQueue = mock<JobQueue>()
   let sut: MongoDBSchemaStatsDiviner
   beforeAll(async () => {
     address = (await Account.create({ phrase })).address
@@ -54,7 +56,7 @@ describeIf(hasMongoDBConfig())('MongoDBSchemaStatsDiviner', () => {
         const query: SchemaStatsQueryPayload = { address, schema: SchemaStatsQuerySchema }
         const result = await sut.divine([query])
         expect(result).toBeArrayOfSize(1)
-        const actual = result[0] as WithMeta<SchemaStatsPayload>
+        const actual = result[0] as SchemaStatsPayload
         expect(actual).toBeObject()
         expect(actual.schema).toBe(SchemaStatsDivinerSchema)
         expect(actual.count).toBeObject()

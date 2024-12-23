@@ -1,5 +1,9 @@
 import { Account } from '@xyo-network/account'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload } from '@xyo-network/payload-model'
+import {
+  beforeAll, describe, expect, it,
+} from 'vitest'
 
 import {
   getHash, getNewBoundWitness, insertBlock, insertPayload,
@@ -36,7 +40,7 @@ describe('/:hash', () => {
         const expected = getData()
         const pointerHash = await createPointer([[(await account).address]], [[expected.schema]])
         const result = await getHash(pointerHash)
-        expect(result).toEqual(expected)
+        expect(PayloadBuilder.omitStorageMeta(result)).toEqual(expected)
       })
     })
     describe('multiple address rules', () => {
@@ -45,7 +49,7 @@ describe('/:hash', () => {
           const expected = payloads[4]
           const pointerHash = await createPointer([[(await accountC).address], [(await accountD).address]], [[expected.schema]])
           const result = await getHash(pointerHash)
-          expect(result).toEqual(expected)
+          expect(PayloadBuilder.omitStorageMeta(result)).toEqual(expected)
         })
       })
       describe('combined in parallel', () => {
@@ -53,7 +57,7 @@ describe('/:hash', () => {
           const expected = payloads[4]
           const pointerHash = await createPointer([[(await accountC).address, (await accountD).address]], [[expected.schema]])
           const result = await getHash(pointerHash)
-          expect(result).toEqual(expected)
+          expect(PayloadBuilder.omitStorageMeta(result)).toEqual(expected)
         })
       })
     })

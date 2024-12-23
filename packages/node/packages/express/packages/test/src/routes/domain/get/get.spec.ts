@@ -1,3 +1,7 @@
+import {
+  describe, expect, it,
+} from 'vitest'
+
 import { getDomain } from '../../../testUtil/index.js'
 
 const domain = 'network.xyo'

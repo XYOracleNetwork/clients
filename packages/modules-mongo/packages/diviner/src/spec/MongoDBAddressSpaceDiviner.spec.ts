@@ -1,4 +1,5 @@
-import { describeIf } from '@xylabs/jest-helpers'
+import '@xylabs/vitest-extended'
+
 import { Account } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
@@ -7,20 +8,19 @@ import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mong
 import type { AddressPayload } from '@xyo-network/module-model'
 import { AddressSchema } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { isPayloadOfSchemaTypeWithMeta } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import type { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
-import { mock } from 'jest-mock-extended'
+import {
+  beforeAll, describe, expect, it,
+} from 'vitest'
+import { mock } from 'vitest-mock-extended'
 
 import { MongoDBAddressSpaceDiviner } from '../MongoDBAddressSpaceDiviner.js'
 
-/**
- * @group mongo
- */
-
 // describeIf(hasMongoDBConfig())('MongoDBAddressSpaceDiviner', () => {
-describeIf(hasMongoDBConfig()).skip('MongoDBAddressSpaceDiviner', () => {
+describe.runIf(hasMongoDBConfig())('MongoDBAddressSpaceDiviner', () => {
   const phrase = 'reflect dash pear scatter kiwi sock ability muffin clever effort enroll school'
   let account: AccountInstance
   const logger = mock<Console>()
@@ -44,7 +44,7 @@ describeIf(hasMongoDBConfig()).skip('MongoDBAddressSpaceDiviner', () => {
   describe('divine', () => {
     describe('with valid query', () => {
       it('divines', async () => {
-        const result = (await sut.divine([])).filter(isPayloadOfSchemaTypeWithMeta<AddressPayload>(AddressSchema))
+        const result = (await sut.divine([])).filter(isPayloadOfSchemaType<AddressPayload>(AddressSchema))
         expect(result).toBeArray()
         expect(result.length).toBeGreaterThan(0)
         await Promise.all(

@@ -6,6 +6,9 @@ import type { AddressPayload } from '@xyo-network/module-model'
 import { AddressSchema, ModuleStateQuerySchema } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload } from '@xyo-network/payload-model'
+import {
+  beforeAll, describe, expect, it, vi,
+} from 'vitest'
 
 import { getRequestClient, validateStateResponse } from '../../testUtil/index.js'
 
@@ -14,7 +17,7 @@ describe('Node API', () => {
   const client = getRequestClient()
   const path = '/node'
   beforeAll(() => {
-    jest.spyOn(console, 'log').mockImplementation(() => {
+    vi.spyOn(console, 'log').mockImplementation(() => {
       // Stop expected logs from being generated during tests
     })
   })

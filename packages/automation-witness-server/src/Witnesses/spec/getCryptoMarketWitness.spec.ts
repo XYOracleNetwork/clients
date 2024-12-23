@@ -1,3 +1,9 @@
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect, it,
+} from 'vitest'
+
 import { getProvider } from '../../Providers/index.js'
 import { getCryptoMarketWitness } from '../getCryptoMarketWitness.js'
 

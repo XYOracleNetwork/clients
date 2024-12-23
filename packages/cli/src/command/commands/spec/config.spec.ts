@@ -1,3 +1,6 @@
+import {
+  describe, expect, it,
+} from 'vitest'
 import yargs from 'yargs'
 
 import { mod } from '../config.js'

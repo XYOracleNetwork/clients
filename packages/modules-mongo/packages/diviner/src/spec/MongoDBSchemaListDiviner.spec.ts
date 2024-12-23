@@ -1,5 +1,6 @@
+import '@xylabs/vitest-extended'
+
 import type { Address } from '@xylabs/hex'
-import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
@@ -14,10 +15,13 @@ import {
 } from '@xyo-network/diviner-schema-list-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { WithMeta, WithSources } from '@xyo-network/payload-model'
+import type { WithSources, WithStorageMeta } from '@xyo-network/payload-model'
 import type { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
-import { mock } from 'jest-mock-extended'
+import {
+  beforeAll, describe, expect, it,
+} from 'vitest'
+import { mock } from 'vitest-mock-extended'
 
 import { MongoDBSchemaListDiviner } from '../MongoDBSchemaListDiviner.js'
 
@@ -25,7 +29,7 @@ import { MongoDBSchemaListDiviner } from '../MongoDBSchemaListDiviner.js'
  * @group mongo
  */
 
-describeIf(hasMongoDBConfig())('MongoDBSchemaListDiviner', () => {
+describe.runIf(hasMongoDBConfig())('MongoDBSchemaListDiviner', () => {
   let account: AccountInstance
   let address: Address
   const phrase = 'guide drop pole matter mandate sand social chest toe scene primary alien'
@@ -44,8 +48,8 @@ describeIf(hasMongoDBConfig())('MongoDBSchemaListDiviner', () => {
       logger,
     })
     // TODO: Insert via archivist
-    const payload = await new PayloadBuilder({ schema: 'network.xyo.test' }).build()
-    const bw = (await (await new BoundWitnessBuilder().payload(payload)).witness(account).build())[0]
+    const payload = new PayloadBuilder({ schema: 'network.xyo.test' }).build()
+    const bw = (await (new BoundWitnessBuilder().payload(payload)).witness(account).build())[0]
     await boundWitnessSdk.insertOne(bw as unknown as BoundWitnessWithMongoMeta)
   })
   describe('divine', () => {
@@ -54,7 +58,7 @@ describeIf(hasMongoDBConfig())('MongoDBSchemaListDiviner', () => {
         const query: SchemaListQueryPayload = { address, schema: SchemaListQuerySchema }
         const result = await sut.divine([query])
         expect(result).toBeArrayOfSize(1)
-        const actual = result[0] as WithSources<WithMeta<SchemaListPayload>>
+        const actual = result[0] as WithSources<WithStorageMeta<SchemaListPayload>>
         expect(actual).toBeObject()
         expect(actual.schema).toBe(SchemaListDivinerSchema)
         expect(actual.schemas).toBeArray()
@@ -68,7 +72,7 @@ describeIf(hasMongoDBConfig())('MongoDBSchemaListDiviner', () => {
         const query: SchemaListQueryPayload = { schema: SchemaListQuerySchema }
         const result = await sut.divine([query])
         expect(result).toBeArrayOfSize(1)
-        const actual = result[0] as WithSources<WithMeta<SchemaListPayload>>
+        const actual = result[0] as WithSources<WithStorageMeta<SchemaListPayload>>
         expect(actual).toBeObject()
         expect(actual.schema).toBe(SchemaListDivinerSchema)
         expect(actual.schemas).toBeArray()

@@ -1,39 +1,25 @@
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
+import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import type { Payload } from '@xyo-network/payload-model'
-import type { BoundWitnessWithPartialMongoMeta, PayloadWithPartialMongoMeta } from '@xyo-network/payload-mongodb'
 
-import { unitTestSigningAccount } from '../Account/index.js'
-import { getNewPayloads } from '../Payload/index.js'
+import { unitTestSigningAccount } from '../Account/index.ts'
+import { getNewBoundWitnesses } from '../BoundWitness/index.ts'
 
-export const getNewBlock = async (...payloads: Payload[]): Promise<BoundWitnessWithPartialMongoMeta & PayloadWithPartialMongoMeta> => {
-  return (await (await new BoundWitnessBuilder().witness(await unitTestSigningAccount()).payloads(payloads)).build())[0]
+type BoundWitnessBuilderBuildResult = Awaited<ReturnType<BoundWitnessBuilder['build']>>
+
+export const getNewBlock = async (...payloads: Payload[]): Promise<BoundWitnessBuilderBuildResult> => {
+  const signer = await unitTestSigningAccount()
+  return await new BoundWitnessBuilder().signer(signer).payloads(payloads).build()
 }
 
-export const getNewBlockWithPayloads = async (numPayloads = 1) => {
-  return getNewBlock(...(await getNewPayloads(numPayloads)))
-}
-
-export const getNewBlocks = async (numBoundWitnesses = 1): Promise<Array<BoundWitnessWithPartialMongoMeta & PayloadWithPartialMongoMeta>> => {
-  const sequence = Array.from({ length: numBoundWitnesses }).fill(0)
-  const values = await Promise.all(
-    sequence.map(async () => {
-      return (await new BoundWitnessBuilder().witness(await unitTestSigningAccount()).build())[0]
-    }),
-  )
-  return values
+export const getNewBlocks = async (numBoundWitnesses = 1): Promise<BoundWitness[]> => {
+  const blocksWithPayloads = await getNewBlocksWithPayloads(numBoundWitnesses)
+  return blocksWithPayloads.map(([block]) => block)
 }
 
 export const getNewBlocksWithPayloads = async (
   numBoundWitnesses = 1,
   numPayloads = 1,
-): Promise<Array<BoundWitnessWithPartialMongoMeta & PayloadWithPartialMongoMeta>> => {
-  return await Promise.all(
-    Array.from({ length: numBoundWitnesses })
-      .fill(0)
-      .map(async () => {
-        return (
-          await (await new BoundWitnessBuilder().witness(await unitTestSigningAccount()).payloads(await getNewPayloads(numPayloads))).build()
-        )[0]
-      }),
-  )
+): Promise<BoundWitnessBuilderBuildResult[]> => {
+  return await getNewBoundWitnesses([await unitTestSigningAccount()], numBoundWitnesses, numPayloads)
 }

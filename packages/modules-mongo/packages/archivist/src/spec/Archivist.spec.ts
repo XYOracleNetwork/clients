@@ -1,8 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
-import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
 import type { ArchivistNextOptions } from '@xyo-network/archivist-model'
 import { ArchivistWrapper } from '@xyo-network/archivist-wrapper'
@@ -22,7 +20,7 @@ import { MongoDBArchivist } from '../Archivist.js'
 
 type TestDataGetter<T> = () => T
 
-describeIf(hasMongoDBConfig())('Archivist', () => {
+describe.runIf(hasMongoDBConfig())('Archivist', () => {
   const boundWitnessesConfig: BaseMongoSdkConfig = { collection: COLLECTIONS.BoundWitnesses }
   const payloadsConfig: BaseMongoSdkConfig = { collection: COLLECTIONS.Payloads }
 
@@ -40,13 +38,13 @@ describeIf(hasMongoDBConfig())('Archivist', () => {
       payloadSdkConfig: payloadsConfig,
     })
     archivist = new ArchivistWrapper({ mod: mod, account: await Account.random() })
-    const payload1 = await PayloadBuilder.build({ nonce: Date.now(), schema: 'network.xyo.debug' })
+    const payload1 = { nonce: Date.now(), schema: 'network.xyo.debug' }
     await delay(2)
-    const payload2 = await PayloadBuilder.build({ nonce: Date.now(), schema: 'network.xyo.test' })
+    const payload2 = { nonce: Date.now(), schema: 'network.xyo.test' }
     await delay(2)
-    const payload3 = await PayloadBuilder.build({ nonce: Date.now(), schema: 'network.xyo.debug' })
+    const payload3 = { nonce: Date.now(), schema: 'network.xyo.debug' }
     await delay(2)
-    const payload4 = await PayloadBuilder.build({ nonce: Date.now(), schema: 'network.xyo.test' })
+    const payload4 = { nonce: Date.now(), schema: 'network.xyo.test' }
     await delay(2)
     const payloadWrapper1 = PayloadWrapper.wrap(payload1)
     const payloadWrapper2 = PayloadWrapper.wrap(payload2)
@@ -87,10 +85,10 @@ describeIf(hasMongoDBConfig())('Archivist', () => {
       expect(results).toBeArrayOfSize(payloads.length)
       for (const [i, result] of results.entries()) {
         const payload = payloads[i]
-        expect(result.$hash).toEqual(await payload.dataHash())
+        expect(await PayloadBuilder.dataHash(result)).toEqual(await payload.dataHash())
         expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))
         expect(await PayloadBuilder.hash(result)).toEqual(await PayloadBuilder.hash(payload.payload))
-        expect(result).toEqual(payload.payload)
+        expect(PayloadBuilder.omitStorageMeta(result)).toEqual(payload.payload)
       }
     })
   })
@@ -106,10 +104,10 @@ describeIf(hasMongoDBConfig())('Archivist', () => {
       const results = await archivist.get(await Promise.all(payloads.map(p => p.dataHash())))
       for (const [i, result] of results.entries()) {
         const payload = payloads[i]
-        expect(result.$hash).toEqual(await payload.dataHash())
+        expect(await PayloadBuilder.dataHash(result)).toEqual(await payload.dataHash())
         expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))
         expect(await PayloadBuilder.hash(result)).toEqual(await PayloadBuilder.hash(payload.payload))
-        expect(result).toEqual(payload.payload)
+        expect(PayloadBuilder.omitStorageMeta(result)).toEqual(payload.payload)
       }
     })
   })
@@ -119,10 +117,10 @@ describeIf(hasMongoDBConfig())('Archivist', () => {
     const payloads: BoundWitnessWrapper | PayloadWrapper[] = []
     beforeAll(async () => {
       for (let i = 0; i < 10; i++) {
-        const payload1 = await PayloadBuilder.build({ nonce: Date.now(), schema: 'network.xyo.debug' })
+        const payload1 = { nonce: Date.now(), schema: 'network.xyo.debug' }
         const payloadWrapper1 = PayloadWrapper.wrap(payload1)
         await delay(2)
-        const payload2 = await PayloadBuilder.build({ nonce: Date.now(), schema: 'network.xyo.test' })
+        const payload2 = { nonce: Date.now(), schema: 'network.xyo.test' }
         const payloadWrapper2 = PayloadWrapper.wrap(payload2)
         await delay(2)
         const signer = await Account.random()
@@ -140,41 +138,6 @@ describeIf(hasMongoDBConfig())('Archivist', () => {
         payloads.push(boundWitnessWrapper, payloadWrapper1, payloadWrapper2)
       }
     })
-    describe('asc', () => {
-      describe('with no offset', () => {
-        it('returns payloads from the first one inserted in ascending order', async () => {
-          const expected = payloads
-          const options: ArchivistNextOptions = { limit: expected.length, order: 'asc' }
-          const results = await archivist.next(options)
-          expect(results).toBeArrayOfSize(expected.length)
-          for (const [i, result] of results.entries()) {
-            const payload = expected[i]
-            expect(result.$hash).toEqual(await payload.dataHash())
-            expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))
-            expect(await PayloadBuilder.hash(result)).toEqual(await PayloadBuilder.hash(payload.payload))
-            expect(result).toEqual(payload.payload)
-          }
-        })
-      })
-      describe('with offset', () => {
-        it('returns payloads from the offset in ascending order', async () => {
-          const start = payloads[0]
-          const expected = payloads.slice(1)
-          const options: ArchivistNextOptions = {
-            limit: expected.length, order: 'asc', offset: await start.dataHash(),
-          }
-          const results = await archivist.next(options)
-          expect(results).toBeArrayOfSize(expected.length)
-          for (const [i, result] of results.entries()) {
-            const payload = expected[i]
-            expect(result.$hash).toEqual(await payload.dataHash())
-            expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))
-            expect(await PayloadBuilder.hash(result)).toEqual(await PayloadBuilder.hash(payload.payload))
-            expect(result).toEqual(payload.payload)
-          }
-        })
-      })
-    })
     describe('desc', () => {
       describe('with no offset', () => {
         it('returns payloads from the last one inserted in descending order', async () => {
@@ -184,25 +147,7 @@ describeIf(hasMongoDBConfig())('Archivist', () => {
           expect(results).toBeArrayOfSize(expected.length)
           for (const [i, result] of results.reverse().entries()) {
             const payload = expected[i]
-            expect(result.$hash).toEqual(await payload.dataHash())
-            expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))
-            expect(await PayloadBuilder.hash(result)).toEqual(await PayloadBuilder.hash(payload.payload))
-            expect(result).toEqual(payload.payload)
-          }
-        })
-      })
-      describe('with offset', () => {
-        it('returns payloads from the offset in descending order', async () => {
-          const start = assertEx(payloads.at(-1))
-          const expected = payloads.slice(0, -1)
-          const options: ArchivistNextOptions = {
-            limit: expected.length, order: 'desc', offset: await start.dataHash(),
-          }
-          const results = await archivist.next(options)
-          expect(results).toBeArrayOfSize(expected.length)
-          for (const [i, result] of results.reverse().entries()) {
-            const payload = expected[i]
-            expect(result.$hash).toEqual(await payload.dataHash())
+            expect(await PayloadBuilder.dataHash(result)).toEqual(await payload.dataHash())
             expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))
             expect(await PayloadBuilder.hash(result)).toEqual(await PayloadBuilder.hash(payload.payload))
             expect(result).toEqual(payload.payload)

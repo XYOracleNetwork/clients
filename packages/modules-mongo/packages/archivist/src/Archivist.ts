@@ -7,11 +7,10 @@ import { MongoDBArchivistConfigSchema } from '@xyo-network/archivist-model-mongo
 import { MongoDBModuleMixin } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type {
-  Payload, Schema, WithMeta,
+  Payload, Schema, Sequence, WithStorageMeta,
 } from '@xyo-network/payload-model'
 import type { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { fromDbRepresentation, toDbRepresentation } from '@xyo-network/payload-mongodb'
-import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { ObjectId } from 'mongodb'
 
 import { validByType } from './lib/index.js'
@@ -28,11 +27,6 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
    * The amount of time to allow the aggregate query to execute
    */
   protected readonly aggregateTimeoutMs = 10_000
-
-  override async head(): Promise<Payload | undefined> {
-    const head = await this.next({ limit: 1, order: 'desc' })
-    return head[0] ? PayloadWrapper.wrap(head[0]).payload : undefined
-  }
 
   protected async findOneByHash(hash: Hash) {
     const dataPayload = (await this.payloads.findOne({ _$hash: hash }))
@@ -54,15 +48,25 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
     }
   }
 
-  protected override async getHandler(hashes: Hash[]): Promise<WithMeta<Payload>[]> {
+  protected async findOneBySequence(sequence: Sequence) {
+    const dataPayload = (await this.payloads.findOne({ _sequence: sequence }))
+    if (dataPayload) {
+      return dataPayload
+    } else {
+      const dataBw = (await this.boundWitnesses.findOne({ _sequence: sequence }))
+      return dataBw
+    }
+  }
+
+  protected override async getHandler(hashes: Hash[]): Promise<WithStorageMeta<Payload>[]> {
     let remainingHashes = [...hashes]
 
-    const dataPayloads = (await Promise.all(remainingHashes.map(_$hash => this.payloads.findOne({ _$hash })))).filter(exists)
-    const dataPayloadsHashes = new Set(dataPayloads.map(payload => payload._$hash))
+    const dataPayloads = (await Promise.all(remainingHashes.map(_dataHash => this.payloads.findOne({ _dataHash })))).filter(exists)
+    const dataPayloadsHashes = new Set(dataPayloads.map(payload => payload._dataHash))
     remainingHashes = remainingHashes.filter(hash => !dataPayloadsHashes.has(hash))
 
-    const dataBws = (await Promise.all(remainingHashes.map(_$hash => this.boundWitnesses.findOne({ _$hash })))).filter(exists)
-    const dataBwsHashes = new Set(dataBws.map(payload => payload._$hash))
+    const dataBws = (await Promise.all(remainingHashes.map(_dataHash => this.boundWitnesses.findOne({ _dataHash })))).filter(exists)
+    const dataBwsHashes = new Set(dataBws.map(payload => payload._dataHash))
     remainingHashes = remainingHashes.filter(hash => !dataBwsHashes.has(hash))
 
     const payloads = (await Promise.all(remainingHashes.map(_hash => this.payloads.findOne({ _hash })))).filter(exists)
@@ -73,34 +77,34 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
     const bwsHashes = new Set(bws.map(payload => payload._hash))
     remainingHashes = remainingHashes.filter(hash => !bwsHashes.has(hash))
 
-    const foundPayloads = [...dataPayloads, ...dataBws, ...payloads, ...bws] as PayloadWithMongoMeta<Payload & { _$hash: Hash; _$meta?: unknown }>[]
-    const result = await PayloadBuilder.build(foundPayloads.map(fromDbRepresentation))
+    const foundPayloads = [...dataPayloads, ...dataBws, ...payloads, ...bws] as PayloadWithMongoMeta<Payload>[]
+    const result = foundPayloads.map(fromDbRepresentation)
     // console.log(`getHandler: ${JSON.stringify(hashes, null, 2)}:${JSON.stringify(result, null, 2)}`)
     return result
   }
 
-  protected override async insertHandler(payloads: Payload[]): Promise<WithMeta<Payload>[]> {
-    const [bw, p] = await validByType(payloads)
-    const payloadsWithExternalMeta = await Promise.all(p.map((value, index) => toDbRepresentation(value, index)))
+  protected override async insertHandler(payloads: Payload[]): Promise<WithStorageMeta<Payload>[]> {
+    const [bw, p] = await validByType(await PayloadBuilder.addStorageMeta(payloads))
+    const payloadsWithExternalMeta = await Promise.all(p.map(value => toDbRepresentation(value)))
     if (payloadsWithExternalMeta.length > 0) {
       const payloadsResult = await this.payloads.insertMany(payloadsWithExternalMeta)
       if (!payloadsResult.acknowledged || payloadsResult.insertedCount !== payloadsWithExternalMeta.length)
         throw new Error('MongoDBArchivist: Error inserting Payloads')
     }
-    const boundWitnessesWithExternalMeta = await Promise.all(bw.map((value, index) => toDbRepresentation(value, index)))
+    const boundWitnessesWithExternalMeta = await Promise.all(bw.map(value => toDbRepresentation(value)))
     if (boundWitnessesWithExternalMeta.length > 0) {
       const boundWitnessesResult = await this.boundWitnesses.insertMany(boundWitnessesWithExternalMeta)
       if (!boundWitnessesResult.acknowledged || boundWitnessesResult.insertedCount !== boundWitnessesWithExternalMeta.length)
         throw new Error('MongoDBArchivist: Error inserting BoundWitnesses')
     }
 
-    return await PayloadBuilder.build([...boundWitnessesWithExternalMeta, ...payloadsWithExternalMeta].map(fromDbRepresentation))
+    return [...boundWitnessesWithExternalMeta, ...payloadsWithExternalMeta].map(fromDbRepresentation)
   }
 
-  protected override async nextHandler(options?: ArchivistNextOptions): Promise<WithMeta<Payload>[]> {
+  protected override async nextHandler(options?: ArchivistNextOptions): Promise<WithStorageMeta<Payload>[]> {
     // Sanitize inputs and set defaults
     let {
-      limit, offset, order,
+      limit, cursor, order,
     } = options ?? { limit: 10, order: 'desc' }
 
     if (!limit) limit = 10
@@ -109,8 +113,8 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
     if (order != 'asc') order = 'desc'
 
     let id: ObjectId | undefined
-    if (offset) {
-      const payload = await this.findOneByHash(offset)
+    if (cursor) {
+      const payload = await this.findOneBySequence(cursor)
       // TODO: Should we throw an error if the requested payload is not found?
       if (payload) id = payload._id
     } else {
@@ -160,7 +164,7 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
     })
 
     // Convert from DB representation to Payloads
-    return await PayloadBuilder.build(foundPayloads.map(fromDbRepresentation))
+    return foundPayloads.map(fromDbRepresentation)
   }
 
   protected override async startHandler() {

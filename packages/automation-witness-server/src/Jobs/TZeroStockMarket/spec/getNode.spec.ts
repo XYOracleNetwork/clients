@@ -1,4 +1,9 @@
+import '@xylabs/vitest-extended'
+
 import { isNodeInstance } from '@xyo-network/node-model'
+import {
+  describe, expect, it,
+} from 'vitest'
 
 import { getNode } from '../getNode.js'
 

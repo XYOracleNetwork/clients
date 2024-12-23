@@ -6,5 +6,4 @@ export interface PayloadSearchCriteria {
   addresses: Address[]
   order: Order
   schemas: Schema[]
-  timestamp: number
 }

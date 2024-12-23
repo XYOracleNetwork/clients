@@ -3,15 +3,18 @@ import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import type { Order } from '@xyo-network/diviner-payload-model'
 import type {
   PayloadAddressRule,
+  PayloadOrderRule,
   PayloadPointerPayload,
   PayloadRule,
   PayloadSchemaRule,
-  PayloadTimestampOrderRule,
 } from '@xyo-network/node-core-model'
 import { PayloadPointerSchema } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload } from '@xyo-network/payload-model'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
+import {
+  beforeAll, describe, expect, it,
+} from 'vitest'
 
 import {
   getHash, getNewBoundWitness, insertBlock, insertPayload,
@@ -20,7 +23,6 @@ import {
 export const createPointer = async (
   addresses: string[][] = [],
   schemas: string[][] = [],
-  timestamp = Date.now(),
   order: Order = 'desc',
 ): Promise<string> => {
   const reference: PayloadRule[][] = []
@@ -39,7 +41,7 @@ export const createPointer = async (
   })
   if (addressRules.length > 0) reference.push(...addressRules)
 
-  const timestampRule: PayloadTimestampOrderRule = { order, timestamp }
+  const timestampRule: PayloadOrderRule = { order }
   reference.push([timestampRule])
 
   const pointer = await new PayloadBuilder<PayloadPointerPayload>({ schema: PayloadPointerSchema }).fields({ reference }).build()
@@ -88,7 +90,7 @@ describe('/:hash', () => {
       expect(response).toBeTruthy()
       expect(Array.isArray(response)).toBe(false)
       // expect(PayloadWrapper.parse(response).valid).toBeTrue()
-      expect(response).toEqual(expected)
+      expect(PayloadBuilder.omitStorageMeta(response)).toEqual(expected)
     })
     it(`${ReasonPhrases.NOT_FOUND} if no Payloads match the criteria`, async () => {
       const result = await getHash('non_existent_hash')

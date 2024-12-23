@@ -1,3 +1,7 @@
+import {
+  describe, expect, test,
+} from 'vitest'
+
 import { BaseMongoSdk } from '../Base.js'
 import type { BaseMongoSdkConfig } from '../Config.js'
 

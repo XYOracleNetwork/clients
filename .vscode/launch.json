@@ -96,7 +96,7 @@
         "--run",
         "--inspect-brk",
         "--no-file-parallelism",
-        "packages/modules-mongo/packages/archivist/src/spec/Archivist.spec.ts"
+        "packages/node/packages/express/packages/test/src/routes/name/BoundWitnessDiviner.spec.ts"
       ],
       "resolveSourceMapLocations": [
         "${workspaceFolder}/**",
@@ -113,32 +113,6 @@
         "NODE_ENV": "test"
       },
       "envFile": "${workspaceRoot}/.env",
-    },
-    {
-      "name": "Jest-NoMongo",
-      "type": "node",
-      "request": "launch",
-      "osx": {
-        "program": "${workspaceRoot}/node_modules/.bin/jest"
-      },
-      "windows": {
-        "program": "${workspaceRoot}/node_modules/jest/bin/jest.js"
-      },
-      "args": [
-        "--forceExit",
-        "--runInBand",
-        "--testTimeout=120000",
-        "-c=./jest.config.no-mongo.ts",
-        "packages/automation-witness-server/src/Jobs/XyoMediumRss/spec/reportMediumRssBlogPosts.spec.ts"
-      ],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "cwd": "${workspaceFolder}",
-      "envFile": "${workspaceFolder}/.env",
-      "resolveSourceMapLocations": [
-        "${workspaceFolder}/**",
-        "**/node_modules/**"
-      ],
     }
   ]
 }

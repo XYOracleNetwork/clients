@@ -8,15 +8,18 @@ import type { Order } from '@xyo-network/diviner-payload-model'
 import type {
   BoundWitnessPointerPayload,
   PayloadAddressRule,
+  PayloadOrderRule,
   PayloadRule,
   PayloadSchemaRule,
-  PayloadTimestampOrderRule,
 } from '@xyo-network/node-core-model'
 import { BoundWitnessPointerSchema } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Payload, WithMeta } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
+import {
+  beforeAll, describe, expect, it,
+} from 'vitest'
 
 import {
   getHash, getNewBoundWitness, getNewPayload, getTestSchemaName, insertBlock, insertPayload,
@@ -25,7 +28,6 @@ import {
 const createPointer = async (
   addresses: string[][] = [],
   schemas: string[][] = [],
-  timestamp = Date.now(),
   order: Order = 'desc',
 ): Promise<string> => {
   const reference: PayloadRule[][] = []
@@ -44,7 +46,7 @@ const createPointer = async (
   })
   if (addressRules.length > 0) reference.push(...addressRules)
 
-  const timestampRule: PayloadTimestampOrderRule = { order, timestamp }
+  const timestampRule: PayloadOrderRule = { order }
   reference.push([timestampRule])
 
   const pointer = await new PayloadBuilder<BoundWitnessPointerPayload>({ schema: BoundWitnessPointerSchema }).fields({ reference }).build()
@@ -86,7 +88,7 @@ describe('/:hash', () => {
       expect(response).toBeTruthy()
       expect(Array.isArray(response)).toBe(false)
       expect(await PayloadWrapper.wrap(response).getValid()).toBeTrue()
-      expect(response).toEqual(expected)
+      expect(PayloadBuilder.omitStorageMeta(response)).toEqual(expected)
     })
     it(`${ReasonPhrases.NOT_FOUND} if no BoundWitnesses match the criteria`, async () => {
       const result = await getHash('non_existent_hash')
@@ -122,7 +124,7 @@ describe('/:hash', () => {
           const expected = data()
           const pointerHash = await createPointer([[(await account).address]], [[payloads[0].schema]])
           const result = await getHash(pointerHash)
-          expect(result).toEqual(expected)
+          expect(PayloadBuilder.omitStorageMeta(result)).toEqual(expected)
         })
       })
       describe('multiple address rules', () => {
@@ -131,7 +133,7 @@ describe('/:hash', () => {
             const expected = BoundWitnessWrapper.parse(bws[4]).payload
             const pointerHash = await createPointer([[(await accountC).address], [(await accountD).address]], [[payloads[0].schema]])
             const result = await getHash(pointerHash)
-            expect(result).toEqual(expected)
+            expect(PayloadBuilder.omitStorageMeta(result)).toEqual(expected)
           })
         })
         describe('combined in parallel', () => {
@@ -139,7 +141,7 @@ describe('/:hash', () => {
             const expected = BoundWitnessWrapper.parse(bws[4]).payload
             const pointerHash = await createPointer([[(await accountC).address, (await accountD).address]], [[payloads[0].schema]])
             const result = await getHash(pointerHash)
-            expect(result).toEqual(expected)
+            expect(PayloadBuilder.omitStorageMeta(result)).toEqual(expected)
           })
         })
       })
@@ -161,9 +163,9 @@ describe('/:hash', () => {
       const boundWitnesses: BoundWitness[] = []
       beforeAll(async () => {
         account = await Account.random()
-        const payloadBaseA = { ...(await getNewPayload()), schema: schemaA }
+        const payloadBaseA = { ...(getNewPayload()), schema: schemaA }
         payloadA = PayloadWrapper.wrap(payloadBaseA)
-        const payloadBaseB = { ...(await getNewPayload()), schema: schemaB }
+        const payloadBaseB = { ...(getNewPayload()), schema: schemaB }
         payloadB = PayloadWrapper.wrap(payloadBaseB)
         const [bwA] = await getNewBoundWitness([account], [payloadA.payload])
         await delay(100)
@@ -174,8 +176,15 @@ describe('/:hash', () => {
         const [bwD] = await getNewBoundWitness([account], [payloadB.payload])
         await delay(100)
         boundWitnesses.push(bwA, bwB, bwC, bwD)
-        const payloadResponse = await insertBlock(boundWitnesses, account)
-        expect(payloadResponse.length).toBe(boundWitnesses.length)
+        await insertBlock([bwA], account)
+        await delay(1)
+        await insertBlock([bwB], account)
+        await delay(1)
+        await insertBlock([bwC], account)
+        await delay(1)
+        await insertBlock([bwD], account)
+        await delay(1)
+        await delay(1000)
       })
       describe('single schema', () => {
         it.each([
@@ -187,7 +196,7 @@ describe('/:hash', () => {
           const pointerHash = await createPointer([[account.address]], [[schema]])
           const result = await getHash(pointerHash)
           console.log('result', result)
-          expect(result).toEqual(expected)
+          expect(PayloadBuilder.omitStorageMeta(result)).toEqual(expected)
         })
       })
       describe('multiple schema rules', () => {
@@ -234,7 +243,7 @@ describe('/:hash', () => {
         await delay(100)
         boundWitnesses = [bwA, bwB, bwC]
         expectedSchema = payloadsA[0].schema
-        const insertedPayloads: WithMeta<Payload>[] = []
+        const insertedPayloads: Payload[] = []
         for (const bw of boundWitnesses) {
           const blockResponse = await insertBlock(bw, account)
           expect(blockResponse.length).toBe(1)
@@ -243,20 +252,15 @@ describe('/:hash', () => {
       })
       it('ascending', async () => {
         const expected = BoundWitnessWrapper.parse(assertEx(boundWitnesses.at(0))).payload
-        const pointerHash = await createPointer([[account.address]], [[expectedSchema]], 0, 'asc')
+        const pointerHash = await createPointer([[account.address]], [[expectedSchema]], 'asc')
         const result = await getHash(pointerHash)
-        expect(result).toEqual(expected)
+        expect(PayloadBuilder.omitStorageMeta(result)).toEqual(expected)
       })
       it('descending', async () => {
         const expected = BoundWitnessWrapper.parse(assertEx(boundWitnesses.at(-1))).payload
-        const pointerHash = await createPointer([[account.address]], [[expectedSchema]], Date.now(), 'desc')
+        const pointerHash = await createPointer([[account.address]], [[expectedSchema]], 'desc')
         const result = await getHash(pointerHash)
-        expect(result).toEqual(expected)
-      })
-      it('no matching timestamp', async () => {
-        const pointerHash = await createPointer([[account.address]], [[expectedSchema]], Date.now(), 'asc')
-        const result = await getHash(pointerHash)
-        expectHashNotFoundError(result)
+        expect(PayloadBuilder.omitStorageMeta(result)).toEqual(expected)
       })
     })
   })

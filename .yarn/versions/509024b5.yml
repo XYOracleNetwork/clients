@@ -1,0 +1,24 @@
+releases:
+  "@xyo-network/archivist-model-mongodb": minor
+  "@xyo-network/archivist-mongodb": minor
+  "@xyo-network/automation-witness-server": minor
+  "@xyo-network/cli": minor
+  "@xyo-network/clients": minor
+  "@xyo-network/diviner-mongodb": minor
+  "@xyo-network/express-node": minor
+  "@xyo-network/express-node-dependencies": minor
+  "@xyo-network/express-node-lib": minor
+  "@xyo-network/express-node-middleware": minor
+  "@xyo-network/express-node-routes": minor
+  "@xyo-network/express-node-server": minor
+  "@xyo-network/express-node-test": minor
+  "@xyo-network/module-abstract-mongodb": minor
+  "@xyo-network/module-model-mongodb": minor
+  "@xyo-network/module-mongodb": minor
+  "@xyo-network/node-app": minor
+  "@xyo-network/node-core-lib": minor
+  "@xyo-network/node-core-model": minor
+  "@xyo-network/node-core-modules-mongo": minor
+  "@xyo-network/node-core-types": minor
+  "@xyo-network/payload-mongodb": minor
+  "@xyo-network/sdk-xyo-mongo-js": minor

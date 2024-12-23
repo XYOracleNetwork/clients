@@ -1,3 +1,9 @@
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect, it,
+} from 'vitest'
+
 import { BatchSetIterator } from '../BatchSetIterator.js'
 
 describe('BatchIterator', () => {

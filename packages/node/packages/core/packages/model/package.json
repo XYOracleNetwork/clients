@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/package.json",
   "name": "@xyo-network/node-core-model",
-  "version": "3.1.7",
+  "version": "3.2.0-rc.1",
   "description": "XYO Archivist",
   "license": "LGPL-3.0-only",
   "author": "Arie Trouw",
@@ -23,24 +23,25 @@
   },
   "module": "dist/node/index.mjs",
   "dependencies": {
-    "@xylabs/hex": "^4.4.10",
-    "@xylabs/object": "^4.4.10",
-    "@xyo-network/archivist-model": "^3.5.2",
-    "@xyo-network/boundwitness-model": "^3.5.2",
-    "@xyo-network/diviner-payload-model": "^3.5.2",
-    "@xyo-network/module-abstract": "^3.5.2",
-    "@xyo-network/payload-model": "^3.5.2",
+    "@xylabs/hex": "^4.4.26",
+    "@xylabs/object": "^4.4.26",
+    "@xyo-network/archivist-model": "^3.6.0",
+    "@xyo-network/boundwitness-model": "^3.6.0",
+    "@xyo-network/diviner-payload-model": "^3.6.0",
+    "@xyo-network/module-abstract": "^3.6.0",
+    "@xyo-network/payload-model": "^3.6.0",
     "@xyo-network/payload-mongodb": "workspace:^",
-    "@xyo-network/shared": "^3.5.2",
+    "@xyo-network/shared": "^3.6.0",
     "ajv": "^8.17.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^4.2.4",
-    "@xylabs/tsconfig": "^4.2.4",
+    "@xylabs/ts-scripts-yarn3": "^4.2.6",
+    "@xylabs/tsconfig": "^4.2.6",
     "typescript": "^5.7.2"
   },
   "publishConfig": {
     "access": "public"
   },
-  "sideeffects": false
+  "sideeffects": false,
+  "stableVersion": "3.1.7"
 }

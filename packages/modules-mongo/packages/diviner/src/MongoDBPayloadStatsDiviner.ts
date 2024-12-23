@@ -21,7 +21,7 @@ import { AddressSchema } from '@xyo-network/module-model'
 import { TYPES } from '@xyo-network/node-core-types'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type {
-  Payload, Schema, WithMeta, WithSources,
+  Payload, Schema, WithSources,
 } from '@xyo-network/payload-model'
 import type { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { MongoClientWrapper } from '@xyo-network/sdk-xyo-mongo-js'
@@ -192,7 +192,7 @@ export class MongoDBPayloadStatsDiviner
     const addressSpaceDiviners = await this.upResolver.resolve({ name: [assertEx(TYPES.AddressSpaceDiviner)] })
     const addressSpaceDiviner = asDivinerInstance(addressSpaceDiviners.pop(), `${moduleName}.DivineAddressesBatch: Missing AddressSpaceDiviner`)
     const result = (await addressSpaceDiviner.divine()) ?? []
-    const addresses = result.filter((x): x is WithSources<WithMeta<AddressPayload>> => x.schema === AddressSchema).map(x => x.address)
+    const addresses = result.filter((x): x is WithSources<AddressPayload> => x.schema === AddressSchema).map(x => x.address)
     const additions = this.addressIterator.addValues(addresses)
     this.logger?.log(`${moduleName}.DivineAddressesBatch: Incoming Addresses Total: ${addresses.length} New: ${additions}`)
     if (addresses.length > 0 && !this.backgroundDivineTask) this.backgroundDivineTask = this.backgroundDivine()

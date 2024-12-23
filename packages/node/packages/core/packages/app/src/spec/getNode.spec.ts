@@ -1,3 +1,9 @@
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect, it,
+} from 'vitest'
+
 import { getNode } from '../getNode.js'
 
 describe.skip('getNode', () => {
