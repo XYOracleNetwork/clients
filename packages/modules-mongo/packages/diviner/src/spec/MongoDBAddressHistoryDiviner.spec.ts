@@ -44,11 +44,11 @@ describe.runIf(hasMongoDBConfig())('MongoDBAddressHistoryDiviner', () => {
     // TODO: Insert via archivist
     const payload = { schema: 'network.xyo.test' }
     const [bw] = await new BoundWitnessBuilder().payload(payload).signer(account).build()
-    const mongoBw = await toDbRepresentation(bw)
+    const mongoBw = toDbRepresentation(await BoundWitnessBuilder.addStorageMeta(bw))
     await boundWitnessSdk.insertOne(mongoBw)
     await delay(1)
     const [bw2] = await new BoundWitnessBuilder().payload(payload).signer(account).build()
-    const mongoBw2 = await toDbRepresentation(bw2)
+    const mongoBw2 = toDbRepresentation(await BoundWitnessBuilder.addStorageMeta(bw2))
     await boundWitnessSdk.insertOne(mongoBw2)
     await delay(1000)
   })

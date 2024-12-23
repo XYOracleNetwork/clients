@@ -1,10 +1,9 @@
-import { delay } from '@xylabs/delay'
 import { MongoDBArchivist } from '@xyo-network/archivist-mongodb'
 import type { PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
 import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { type Payload, SequenceComparer } from '@xyo-network/payload-model'
+import { type Payload } from '@xyo-network/payload-model'
 import {
   beforeAll, describe, expect, it,
 } from 'vitest'
@@ -31,15 +30,15 @@ describe('MongoDBPayloadDiviner2', () => {
     }
     payloadB = {
       foo: ['bar', 'baz'],
-      schema: 'network.xyo.debug',
+      schema: 'network.xyo.debug.payload',
     }
     payloadC = {
       foo: ['one', 'two'],
-      schema: 'network.xyo.debug',
+      schema: 'network.xyo.debug.payload',
     }
     payloadD = {
       foo: ['aaa', 'bbb'],
-      schema: 'network.xyo.debug',
+      schema: 'network.xyo.debug.payload',
     }
 
     archivist = await MongoDBArchivist.create({
@@ -75,7 +74,7 @@ describe('MongoDBPayloadDiviner2', () => {
   describe('with filter for', () => {
     describe('schema', () => {
       describe('single', () => {
-        it.each(['network.xyo.test', 'network.xyo.debug'])('only returns payloads of that schema', async (schema) => {
+        it.each(['network.xyo.test', 'network.xyo.debug.payload'])('only returns payloads of that schema', async (schema) => {
           const schemas = [schema]
           const query = new PayloadBuilder<PayloadDivinerQueryPayload>({ schema: PayloadDivinerQuerySchema }).fields({ schemas }).build()
           const results = await sut.divine([query])
@@ -83,7 +82,7 @@ describe('MongoDBPayloadDiviner2', () => {
           expect(results.every(result => result.schema === schema)).toBe(true)
         })
         it('only return single payload of that schema', async () => {
-          const schemas = ['network.xyo.debug']
+          const schemas = ['network.xyo.debug.payload']
           const query = new PayloadBuilder<PayloadDivinerQueryPayload>({ schema: PayloadDivinerQuerySchema })
             .fields({ limit: 1, schemas })
             .build()
@@ -91,10 +90,10 @@ describe('MongoDBPayloadDiviner2', () => {
           expect(results.length).toBe(1)
           expect(PayloadBuilder.omitStorageMeta(results[0])).toEqual(payloadD)
           expect(await PayloadBuilder.dataHash(results[0])).toBe(await PayloadBuilder.dataHash(payloadD))
-          expect(results.every(result => result.schema === 'network.xyo.debug')).toBe(true)
+          expect(results.every(result => result.schema === 'network.xyo.debug.payload')).toBe(true)
         })
         it('only return single payload of that schema (desc)', async () => {
-          const schemas = ['network.xyo.debug']
+          const schemas = ['network.xyo.debug.payload']
           const query = new PayloadBuilder<PayloadDivinerQueryPayload>({ schema: PayloadDivinerQuerySchema })
             .fields({
               limit: 1, order: 'desc', schemas,
@@ -104,10 +103,10 @@ describe('MongoDBPayloadDiviner2', () => {
           expect(results.length).toBe(1)
           expect(PayloadBuilder.omitStorageMeta(results[0])).toEqual(payloadD)
           expect(await PayloadBuilder.dataHash(results[0])).toBe(await PayloadBuilder.dataHash(payloadD))
-          expect(results.every(result => result.schema === 'network.xyo.debug')).toBe(true)
+          expect(results.every(result => result.schema === 'network.xyo.debug.payload')).toBe(true)
         })
         it('only return single payload of that schema (asc)', async () => {
-          const schemas = ['network.xyo.debug']
+          const schemas = ['network.xyo.debug.payload']
           const query = new PayloadBuilder<PayloadDivinerQueryPayload>({ schema: PayloadDivinerQuerySchema })
             .fields({
               limit: 1, order: 'asc', schemas,
@@ -117,12 +116,12 @@ describe('MongoDBPayloadDiviner2', () => {
           expect(results.length).toBe(1)
           // expect(PayloadBuilder.omitStorageMeta(results[0])).toEqual(payloadB)
           expect(await PayloadBuilder.dataHash(results[0])).toBe(await PayloadBuilder.dataHash(payloadB))
-          expect(results.every(result => result.schema === 'network.xyo.debug')).toBe(true)
+          expect(results.every(result => result.schema === 'network.xyo.debug.payload')).toBe(true)
         })
       })
       describe('multiple', () => {
         it('only returns payloads of that schema', async () => {
-          const schemas = ['network.xyo.test', 'network.xyo.debug']
+          const schemas = ['network.xyo.test', 'network.xyo.debug.payload']
           const query = new PayloadBuilder<PayloadDivinerQueryPayload>({ schema: PayloadDivinerQuerySchema }).fields({ schemas }).build()
           const results = await sut.divine([query])
           expect(results.length).toBeGreaterThan(0)

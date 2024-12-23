@@ -56,13 +56,13 @@ describe.runIf(hasMongoDBConfig())('MongoDBBoundWitnessDiviner', () => {
 
     const [bwAWithoutMeta] = await new BoundWitnessBuilder().payload(payloadA).signer(accountA).build()
     const bwA = await PayloadBuilder.addStorageMeta(bwAWithoutMeta)
-    await boundWitnessSdk.insertOne(await toDbRepresentation(bwA))
+    await boundWitnessSdk.insertOne(toDbRepresentation(bwA))
 
     const payloadB = new PayloadBuilder({ schema: 'network.xyo.test' }).fields({ nonce: 2 }).build()
 
     const [bwBWithoutMeta] = await new BoundWitnessBuilder().payload(payloadB).signer(accountB).build()
     const bwB = await PayloadBuilder.addStorageMeta(bwBWithoutMeta)
-    await boundWitnessSdk.insertOne(await toDbRepresentation(bwB))
+    await boundWitnessSdk.insertOne(toDbRepresentation(bwB))
   })
   describe('divine', () => {
     describe('with valid query', () => {

@@ -53,7 +53,7 @@ describe('Generation of automation payload pointers', () => {
     const addressRule: PayloadAddressRule = { address }
     const schemaRule: PayloadSchemaRule = { schema }
     const fields = { reference: [[addressRule], [schemaRule]], schema: PayloadPointerSchema }
-    const payload = await new PayloadBuilder<PayloadPointerPayload>({ schema: PayloadPointerSchema }).fields(fields).build()
+    const payload = new PayloadBuilder<PayloadPointerPayload>({ schema: PayloadPointerSchema }).fields(fields).build()
     await archivist.insert([payload])
     const hash = await PayloadBuilder.dataHash(payload)
     const url = `${nodeUrl}/${hash}`

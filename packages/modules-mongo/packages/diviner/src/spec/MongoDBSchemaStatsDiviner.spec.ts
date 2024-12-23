@@ -14,7 +14,7 @@ import {
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import type { JobQueue } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
+import { type PayloadWithMongoMeta, toDbRepresentation } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import {
   beforeAll, describe, expect, it,
@@ -47,8 +47,8 @@ describe.runIf(hasMongoDBConfig())('MongoDBSchemaStatsDiviner', () => {
       logger,
     })
     // TODO: Insert via archivist
-    const payload = await new PayloadBuilder({ schema: 'network.xyo.test' }).build()
-    await payloadSdk.insertOne(payload as unknown as PayloadWithMongoMeta)
+    const payload = new PayloadBuilder({ schema: 'network.xyo.test' }).build()
+    await payloadSdk.insertOne(toDbRepresentation(await PayloadBuilder.addStorageMeta(payload)))
   })
   describe('divine', () => {
     describe('with address supplied in query', () => {

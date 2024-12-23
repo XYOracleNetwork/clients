@@ -16,7 +16,7 @@ import {
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { WithSources, WithStorageMeta } from '@xyo-network/payload-model'
-import type { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
+import { type BoundWitnessWithMongoMeta, toDbRepresentation } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import {
   beforeAll, describe, expect, it,
@@ -49,8 +49,8 @@ describe.runIf(hasMongoDBConfig())('MongoDBSchemaListDiviner', () => {
     })
     // TODO: Insert via archivist
     const payload = new PayloadBuilder({ schema: 'network.xyo.test' }).build()
-    const bw = (await (new BoundWitnessBuilder().payload(payload)).witness(account).build())[0]
-    await boundWitnessSdk.insertOne(bw as unknown as BoundWitnessWithMongoMeta)
+    const [bw] = (await (new BoundWitnessBuilder().payload(payload)).signer(account).build())
+    await boundWitnessSdk.insertOne(toDbRepresentation(await BoundWitnessBuilder.addStorageMeta(bw)))
   })
   describe('divine', () => {
     describe('with address supplied in query', () => {

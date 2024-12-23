@@ -45,7 +45,6 @@
     "@xyo-network/boundwitness-model": "^3.6.1",
     "@xyo-network/boundwitness-wrapper": "^3.6.1",
     "@xyo-network/module-abstract-mongodb": "workspace:^",
-    "@xyo-network/payload-builder": "^3.6.1",
     "@xyo-network/payload-model": "^3.6.1",
     "@xyo-network/payload-mongodb": "workspace:^",
     "@xyo-network/payload-wrapper": "^3.6.1",

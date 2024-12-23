@@ -33,7 +33,7 @@ describe.runIf(hasMongoDBConfig())('MongoDBPayloadDiviner', () => {
       logger,
     })
 
-    const payload = await toDbRepresentation(
+    const payload = toDbRepresentation(
       await PayloadBuilder.addStorageMeta(
         new PayloadBuilder<{ schema: string; url: string }>({ schema: testSchema })
           .fields({ url })
