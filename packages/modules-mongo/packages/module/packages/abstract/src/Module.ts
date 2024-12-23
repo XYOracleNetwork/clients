@@ -16,6 +16,18 @@ import { IndexDescription } from './IndexDescription.js'
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AnyAbstractModule<TParams extends MongoDBModuleParams = MongoDBModuleParams> = abstract new (...args: any[]) => Module<TParams>
 
+const standardIndexes: IndexDescription[] = [
+  {
+    name: 'UX__hash', key: { _hash: 1 }, unique: true,
+  },
+  {
+    name: 'IX__dataHash', key: { _dataHash: 1 }, unique: false,
+  },
+  {
+    name: 'UX__sequence', key: { _sequence: 1 }, unique: true,
+  },
+]
+
 export const MongoDBModuleMixin = <
   TParams extends MongoDBModuleParams = MongoDBModuleParams,
   TModule extends AnyAbstractModule<TParams> = AnyAbstractModule<TParams>,
@@ -68,8 +80,13 @@ export const MongoDBModuleMixin = <
      */
     async ensureIndexes(): Promise<void> {
       const configIndexes = (this.config as { storage?: { indexes?: IndexDescription[] } })?.storage?.indexes ?? []
-      await ensureIndexesExistOnCollection(this.boundWitnesses, configIndexes)
-      await ensureIndexesExistOnCollection(this.payloads, configIndexes)
+      const boundWitnessesCollectionName = this.boundWitnessSdkConfig.collection
+      const payloadCollectionName = this.payloadSdkConfig.collection
+
+      const bwStandardIndexes = standardIndexes.map(ix => ({ ...ix, name: `${boundWitnessesCollectionName}.${ix.name}` }))
+      await ensureIndexesExistOnCollection(this.boundWitnesses, [...bwStandardIndexes, ...configIndexes])
+      const payloadStandardIndexes = standardIndexes.map(ix => ({ ...ix, name: `${payloadCollectionName}.${ix.name}` }))
+      await ensureIndexesExistOnCollection(this.payloads, [...payloadStandardIndexes, ...configIndexes])
     }
   }
   return MongoModuleBase
