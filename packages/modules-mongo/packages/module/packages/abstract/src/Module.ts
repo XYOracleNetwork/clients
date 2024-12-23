@@ -18,13 +18,13 @@ export type AnyAbstractModule<TParams extends MongoDBModuleParams = MongoDBModul
 
 const standardIndexes: IndexDescription[] = [
   {
-    name: 'UX__hash', key: { _hash: 1 }, unique: true,
+    name: 'IX__hash', key: { _hash: 1 }, unique: false,
   },
   {
     name: 'IX__dataHash', key: { _dataHash: 1 }, unique: false,
   },
   {
-    name: 'UX__sequence', key: { _sequence: 1 }, unique: true,
+    name: 'IX__sequence', key: { _sequence: 1 }, unique: false,
   },
 ]
 
