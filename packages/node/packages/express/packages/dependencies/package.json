@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/package.json",
   "name": "@xyo-network/express-node-dependencies",
-  "version": "3.2.0-rc.1",
+  "version": "3.2.0",
   "description": "XYO Express Node Dependencies",
   "license": "LGPL-3.0-only",
   "author": "Arie Trouw",
@@ -65,6 +65,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "sideeffects": false,
-  "stableVersion": "3.1.7"
+  "sideeffects": false
 }

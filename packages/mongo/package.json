@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/sdk-xyo-mongo-js",
-  "version": "3.2.0-rc.1",
+  "version": "3.2.0",
   "description": "Base functionality used throughout XYO TypeScript/JavaScript libraries that access Mongo DB",
   "keywords": [
     "xyo",
@@ -57,6 +57,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "stableVersion": "3.1.7"
+  }
 }

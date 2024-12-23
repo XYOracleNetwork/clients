@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/clients",
-  "version": "3.2.0-rc.1",
+  "version": "3.2.0",
   "description": "Primary SDK for using XYO Protocol 2.0",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -114,6 +114,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "resolutions_comment": "We set the above resolutions to make sure we pull in the latest versions of these packages even if some sub packages request earlier versions",
-  "stableVersion": "3.1.7"
+  "resolutions_comment": "We set the above resolutions to make sure we pull in the latest versions of these packages even if some sub packages request earlier versions"
 }
