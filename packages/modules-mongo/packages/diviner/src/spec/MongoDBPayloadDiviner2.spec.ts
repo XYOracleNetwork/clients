@@ -4,7 +4,7 @@ import type { PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-mo
 import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Payload } from '@xyo-network/payload-model'
+import { type Payload, SequenceComparer } from '@xyo-network/payload-model'
 import {
   beforeAll, describe, expect, it,
 } from 'vitest'
@@ -47,14 +47,7 @@ describe('MongoDBPayloadDiviner2', () => {
       config: { schema: MongoDBArchivist.defaultConfigSchema },
     })
 
-    const insert = async (payloads: Payload[]) => {
-      for (const payload of payloads) {
-        await archivist.insert([payload])
-        await delay(1)
-      }
-    }
-
-    const insertedPayloads = await insert([payloadA, payloadB, payloadC, payloadD])
+    const insertedPayloads = await archivist.insert([payloadA, payloadB, payloadC, payloadD])
 
     console.log('insertedPayloads', insertedPayloads)
 
@@ -96,7 +89,7 @@ describe('MongoDBPayloadDiviner2', () => {
             .build()
           const results = await sut.divine([query])
           expect(results.length).toBe(1)
-          // expect(PayloadBuilder.omitStorageMeta(results[0])).toEqual(payloadD)
+          expect(PayloadBuilder.omitStorageMeta(results[0])).toEqual(payloadD)
           expect(await PayloadBuilder.dataHash(results[0])).toBe(await PayloadBuilder.dataHash(payloadD))
           expect(results.every(result => result.schema === 'network.xyo.debug')).toBe(true)
         })
@@ -109,7 +102,7 @@ describe('MongoDBPayloadDiviner2', () => {
             .build()
           const results = await sut.divine([query])
           expect(results.length).toBe(1)
-          // expect(PayloadBuilder.omitStorageMeta(results[0])).toEqual(payloadD)
+          expect(PayloadBuilder.omitStorageMeta(results[0])).toEqual(payloadD)
           expect(await PayloadBuilder.dataHash(results[0])).toBe(await PayloadBuilder.dataHash(payloadD))
           expect(results.every(result => result.schema === 'network.xyo.debug')).toBe(true)
         })
@@ -155,6 +148,7 @@ describe('MongoDBPayloadDiviner2', () => {
           const query = new PayloadBuilder<PayloadDivinerQueryPayload & WithFoo>({ schema: PayloadDivinerQuerySchema }).fields({ foo }).build()
           const results = await sut.divine([query])
           expect(results.length).toBeGreaterThan(0)
+          // eslint-disable-next-line max-nested-callbacks
           expect(results.every(result => foo.every(v => (result as unknown as WithFoo)?.foo?.includes(v)))).toBe(true)
         })
       })
