@@ -7,6 +7,6 @@ import { printLine, printTitle } from '../../../lib/index.js'
 
 export const describeNode = async (node: NodeInstance) => {
   printTitle('Describe Node')
-  const description = (await node.state()).find<ModuleDescriptionPayload>(isPayloadOfSchemaType(ModuleDescriptionSchema))
+  const description = (await node.state()).find(isPayloadOfSchemaType<ModuleDescriptionPayload>(ModuleDescriptionSchema))
   printLine(JSON.stringify(description, undefined, 2))
 }

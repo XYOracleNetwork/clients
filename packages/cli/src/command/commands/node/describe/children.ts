@@ -19,11 +19,11 @@ export const handler = async (argv: BaseArguments) => {
   const { verbose } = argv
   try {
     const node: NodeInstance = await getNode(argv)
-    const description = (await node.state()).find<ModuleDescriptionPayload>(isPayloadOfSchemaType(ModuleDescriptionSchema))
+    const description = (await node.state()).find(isPayloadOfSchemaType<ModuleDescriptionPayload>(ModuleDescriptionSchema))
     const childAddresses = (description?.children || []) as Address[]
     const children = await Promise.all(childAddresses?.map(child => node.resolve({ address: [child] }, { direction: 'down' })))
     const childDescriptions = await Promise.all(
-      children.flat().map(async mod => (await mod.state()).find<ModuleDescriptionPayload>(isPayloadOfSchemaType(ModuleDescriptionSchema))),
+      children.flat().map(async mod => (await mod.state()).find(isPayloadOfSchemaType<ModuleDescriptionPayload>(ModuleDescriptionSchema))),
     )
     printLine(JSON.stringify(childDescriptions))
   } catch (error) {
