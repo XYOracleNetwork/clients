@@ -24,9 +24,9 @@
   "module": "dist/node/index.mjs",
   "types": "dist/node/index.d.ts",
   "dependencies": {
-    "@xylabs/assert": "^4.4.32",
-    "@xylabs/exists": "^4.4.32",
-    "@xylabs/hex": "^4.4.32",
+    "@xylabs/assert": "^4.4.34",
+    "@xylabs/exists": "^4.4.34",
+    "@xylabs/hex": "^4.4.34",
     "@xyo-network/account": "^3.6.7",
     "@xyo-network/archivist-mongodb": "workspace:^",
     "@xyo-network/diviner-mongodb": "workspace:^",
@@ -47,7 +47,7 @@
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^4.2.6",
     "@xylabs/tsconfig": "^4.2.6",
-    "@xylabs/vitest-extended": "^4.4.32",
+    "@xylabs/vitest-extended": "^4.4.34",
     "reflect-metadata": "^0.2.2",
     "typescript": "^5.7.2",
     "vitest": "^2.1.8",
