@@ -43,17 +43,17 @@
   "module": "dist/node/index.mjs",
   "types": "dist/node/index.d.ts",
   "dependencies": {
-    "@xylabs/assert": "^4.4.34",
-    "@xylabs/delay": "^4.4.34",
-    "@xylabs/forget": "^4.4.34",
+    "@xylabs/assert": "^4.5.1",
+    "@xylabs/delay": "^4.5.1",
+    "@xylabs/forget": "^4.5.1",
     "async-mutex": "^0.5.0",
     "mongodb": "~6.12.0"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^4.2.6",
     "@xylabs/tsconfig": "^4.2.6",
-    "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.4"
   },
   "publishConfig": {
     "access": "public"

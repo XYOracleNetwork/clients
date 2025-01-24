@@ -44,7 +44,7 @@ export const createPointer = async (
   const timestampRule: PayloadOrderRule = { order }
   reference.push([timestampRule])
 
-  const pointer = await new PayloadBuilder<PayloadPointerPayload>({ schema: PayloadPointerSchema }).fields({ reference }).build()
+  const pointer = new PayloadBuilder<PayloadPointerPayload>({ schema: PayloadPointerSchema }).fields({ reference }).build()
   const pointerResponse = await insertPayload(pointer)
   expect(pointerResponse).toBeArrayOfSize(1)
   return await PayloadBuilder.dataHash(pointer)
