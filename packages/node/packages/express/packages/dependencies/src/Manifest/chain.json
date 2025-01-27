@@ -1,0 +1,108 @@
+{
+  "$schema": "https://raw.githubusercontent.com/XYOracleNetwork/sdk-xyo-client-js/main/packages/manifest/src/schema.json",
+  "nodes": [
+    {
+      "config": {
+        "accountPath": "3'/0'/1'",
+        "name": "XYOChain",
+        "schema": "network.xyo.node.config"
+      },
+      "modules": {
+        "private": [],
+        "public": [
+          {
+            "config": {
+              "accountPath": "3'/1'/0'",
+              "boundWitnessSdkConfig": {
+                "collection": "bound_witnesses"
+              },
+              "labels": {
+                "network.xyo.storage.class": "mongodb"
+              },
+              "language": "javascript",
+              "name": "Pending",
+              "payloadSdkConfig": {
+                "collection": "payloads"
+              },
+              "schema": "network.xyo.archivist.config",
+              "storage": {
+                "indexes": [
+                  {
+                    "key": {
+                      "_hash": 1
+                    },
+                    "name": "bound_witnesses.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "_$hash": 1
+                    },
+                    "name": "bound_witnesses.IX__$hash"
+                  },
+                  {
+                    "key": {
+                      "_hash": 1
+                    },
+                    "name": "payloads.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "_$hash": 1
+                    },
+                    "name": "payloads.IX__$hash"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "config": {
+              "accountPath": "3'/1'/1'",
+              "boundWitnessSdkConfig": {
+                "collection": "bound_witnesses"
+              },
+              "labels": {
+                "network.xyo.storage.class": "mongodb"
+              },
+              "language": "javascript",
+              "name": "Confirmed",
+              "payloadSdkConfig": {
+                "collection": "payloads"
+              },
+              "schema": "network.xyo.archivist.config",
+              "storage": {
+                "indexes": [
+                  {
+                    "key": {
+                      "_hash": 1
+                    },
+                    "name": "bound_witnesses.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "_$hash": 1
+                    },
+                    "name": "bound_witnesses.IX__$hash"
+                  },
+                  {
+                    "key": {
+                      "_hash": 1
+                    },
+                    "name": "payloads.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "_$hash": 1
+                    },
+                    "name": "payloads.IX__$hash"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "schema": "network.xyo.manifest"
+}
