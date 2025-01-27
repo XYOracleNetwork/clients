@@ -3,7 +3,7 @@
   "nodes": [
     {
       "config": {
-        "accountPath": "3'/0'/1'",
+        "accountPath": "1",
         "name": "XYOChain",
         "schema": "network.xyo.node.config"
       },
@@ -12,7 +12,7 @@
         "public": [
           {
             "config": {
-              "accountPath": "3'/1'/0'",
+              "accountPath": "1/1/1",
               "boundWitnessSdkConfig": {
                 "collection": "xyo_chain_bound_witnesses"
               },
@@ -57,7 +57,7 @@
           },
           {
             "config": {
-              "accountPath": "3'/1'/1'",
+              "accountPath": "1/1/2",
               "boundWitnessSdkConfig": {
                 "collection": "xyo_chain_pending_bound_witnesses"
               },
