@@ -14,15 +14,15 @@
             "config": {
               "accountPath": "3'/1'/0'",
               "boundWitnessSdkConfig": {
-                "collection": "bound_witnesses"
+                "collection": "xyo_chain_bound_witnesses"
               },
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
               "language": "javascript",
-              "name": "Pending",
+              "name": "Chain",
               "payloadSdkConfig": {
-                "collection": "payloads"
+                "collection": "xyo_chain_payloads"
               },
               "schema": "network.xyo.archivist.config",
               "storage": {
@@ -31,25 +31,25 @@
                     "key": {
                       "_hash": 1
                     },
-                    "name": "bound_witnesses.IX__hash"
+                    "name": "xyo_chain_bound_witnesses.IX__hash"
                   },
                   {
                     "key": {
                       "_$hash": 1
                     },
-                    "name": "bound_witnesses.IX__$hash"
+                    "name": "xyo_chain_bound_witnesses.IX__$hash"
                   },
                   {
                     "key": {
                       "_hash": 1
                     },
-                    "name": "payloads.IX__hash"
+                    "name": "xyo_chain_payloads.IX__hash"
                   },
                   {
                     "key": {
                       "_$hash": 1
                     },
-                    "name": "payloads.IX__$hash"
+                    "name": "xyo_chain_payloads.IX__$hash"
                   }
                 ]
               }
@@ -59,15 +59,15 @@
             "config": {
               "accountPath": "3'/1'/1'",
               "boundWitnessSdkConfig": {
-                "collection": "bound_witnesses"
+                "collection": "xyo_chain_pending_bound_witnesses"
               },
               "labels": {
                 "network.xyo.storage.class": "mongodb"
               },
               "language": "javascript",
-              "name": "Confirmed",
+              "name": "Pending",
               "payloadSdkConfig": {
-                "collection": "payloads"
+                "collection": "xyo_chain_pending_payloads"
               },
               "schema": "network.xyo.archivist.config",
               "storage": {
@@ -76,25 +76,25 @@
                     "key": {
                       "_hash": 1
                     },
-                    "name": "bound_witnesses.IX__hash"
+                    "name": "xyo_chain_pending_bound_witnesses.IX__hash"
                   },
                   {
                     "key": {
                       "_$hash": 1
                     },
-                    "name": "bound_witnesses.IX__$hash"
+                    "name": "xyo_chain_pending_bound_witnesses.IX__$hash"
                   },
                   {
                     "key": {
                       "_hash": 1
                     },
-                    "name": "payloads.IX__hash"
+                    "name": "xyo_chain_pending_payloads.IX__hash"
                   },
                   {
                     "key": {
                       "_$hash": 1
                     },
-                    "name": "payloads.IX__$hash"
+                    "name": "xyo_chain_pending_payloads.IX__$hash"
                   }
                 ]
               }
