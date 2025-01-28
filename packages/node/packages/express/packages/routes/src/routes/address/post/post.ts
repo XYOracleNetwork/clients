@@ -57,13 +57,13 @@ const handler: RequestHandler<AddressPathParams, ModuleQueryResult | ModuleError
   if (node.address === normalizedAddress) modules = [node]
   else {
     const typedAddress = asAddress(address)
-    const byAddress = typedAddress ? await node.resolve({ address: [typedAddress] }, { maxDepth: 10 }) : undefined
+    const byAddress = typedAddress ? await node.resolve(typedAddress, { maxDepth: 10 }) : undefined
 
-    if (byAddress) modules = byAddress
+    if (byAddress) modules = [byAddress]
     else {
-      const byName = await node.resolve({ name: [address] }, { direction: 'down' })
-      if (byName.length > 0) {
-        const moduleAddress = assertEx(byName.pop()?.address, () => 'Error redirecting to module by address')
+      const byName = await node.resolve(address, { direction: 'down' })
+      if (byName) {
+        const moduleAddress = assertEx(byName?.address, () => 'Error redirecting to module by address')
         // console.log(`address post[${node.address}]: ${address} [redirect]`)
         res.redirect(StatusCodes.TEMPORARY_REDIRECT, `/${moduleAddress}`)
         return

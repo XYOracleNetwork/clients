@@ -1,3 +1,4 @@
+import { exists } from '@xylabs/exists'
 import type { Address } from '@xylabs/hex'
 import type { EmptyObject } from '@xylabs/object'
 import type { ModuleDescriptionPayload } from '@xyo-network/module-model'
@@ -21,7 +22,7 @@ export const handler = async (argv: BaseArguments) => {
     const node: NodeInstance = await getNode(argv)
     const description = (await node.state()).find(isPayloadOfSchemaType<ModuleDescriptionPayload>(ModuleDescriptionSchema))
     const childAddresses = (description?.children || []) as Address[]
-    const children = await Promise.all(childAddresses?.map(child => node.resolve({ address: [child] }, { direction: 'down' })))
+    const children = (await Promise.all(childAddresses?.map(child => node.resolve(child, { direction: 'down' })))).filter(exists)
     const childDescriptions = await Promise.all(
       children.flat().map(async mod => (await mod.state()).find(isPayloadOfSchemaType<ModuleDescriptionPayload>(ModuleDescriptionSchema))),
     )

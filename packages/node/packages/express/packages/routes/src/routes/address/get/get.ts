@@ -18,12 +18,12 @@ const handler: RequestHandler<AddressPathParams, Payload[]> = async (req, res, n
     const normalizedAddress = trimAddressPrefix(address).toLowerCase() as Address
     if (node.address === normalizedAddress) modules = [node]
     else {
-      const byAddress = await node.resolve({ address: [normalizedAddress] }, { direction: 'down' })
-      if (byAddress.length > 0) modules = byAddress
+      const byAddress = await node.resolve(normalizedAddress, { direction: 'down' })
+      if (byAddress) modules = [byAddress]
       else {
-        const byName = await node.resolve({ name: [address] }, { direction: 'down' })
-        if (byName.length > 0) {
-          const moduleAddress = assertEx(byName.pop()?.address, () => 'Error redirecting to module by address')
+        const byName = await node.resolve(address, { direction: 'down' })
+        if (byName) {
+          const moduleAddress = assertEx(byName?.address, () => 'Error redirecting to module by address')
           res.redirect(StatusCodes.MOVED_TEMPORARILY, `/${moduleAddress}`)
           return
         }

@@ -1,7 +1,7 @@
 import Path from 'node:path'
 
 import type { EmptyObject } from '@xylabs/object'
-import { ArchivistGetQuerySchema, isArchivistInstance } from '@xyo-network/archivist-model'
+import { isArchivistInstance } from '@xyo-network/archivist-model'
 import type {
   ArgumentsCamelCase, Argv, CommandBuilder, CommandModule,
 } from 'yargs'
@@ -21,7 +21,7 @@ export const handler = async (argv: ArgumentsCamelCase<BaseArguments>) => {
   const { verbose } = argv
   try {
     const node = await getNode(argv)
-    const modules = await node.resolve({ query: [[ArchivistGetQuerySchema]] }, { direction: 'down', identity: isArchivistInstance })
+    const modules = await node.resolve('*', { direction: 'down', identity: isArchivistInstance })
     const state = await Promise.all(modules.map(mod => mod.state()))
     printLine(JSON.stringify(state, null, 2))
   } catch (error) {
