@@ -8,7 +8,7 @@ import { HDWallet } from '@xyo-network/account'
 import {
   ArchivistInsertQuerySchema, isArchivistInstance, withArchivistInstance,
 } from '@xyo-network/archivist-model'
-import type { ModuleManifest, PackageManifestPayload } from '@xyo-network/manifest'
+import type { PackageManifestPayload } from '@xyo-network/manifest'
 import { ManifestWrapper } from '@xyo-network/manifest'
 import type { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import type { ModuleConfig } from '@xyo-network/module-model'
@@ -17,7 +17,7 @@ import type { NodeInstance } from '@xyo-network/node-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Container } from 'inversify'
 
-import { defaultNode } from './Manifest/index.js'
+import { defaultNode, manifestPublicChildren } from './Manifest/index.js'
 
 // TODO: How to inject account for node that is to be created from config?
 export const configureMemoryNode = async (container: Container, _memoryNode?: NodeInstance, _account?: AccountInstance) => {
@@ -52,7 +52,6 @@ export const configureMemoryNode = async (container: Container, _memoryNode?: No
 const loadNodeFromConfig = async (container: Container, config?: string) => {
   const manifest: PackageManifestPayload
     = config ? (JSON.parse(await readFile(config, 'utf8')) as PackageManifestPayload) : (defaultNode as PackageManifestPayload)
-  const manifestPublicChildren: ModuleManifest[] = config ? [] : []
   const mnemonic = container.get<string>(TYPES.AccountMnemonic)
   const wallet = await HDWallet.fromPhrase(mnemonic)
   const locator = container.get<ModuleFactoryLocator>(TYPES.ModuleFactoryLocator)

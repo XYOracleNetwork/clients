@@ -1,0 +1,153 @@
+{
+  "$schema": "https://raw.githubusercontent.com/XYOracleNetwork/sdk-xyo-client-js/main/packages/manifest/src/schema.json",
+  "nodes": [
+    {
+      "config": {
+        "accountPath": "1",
+        "name": "XYOChain",
+        "schema": "network.xyo.node.config"
+      },
+      "modules": {
+        "private": [],
+        "public": [
+          {
+            "config": {
+              "accountPath": "1/1/1",
+              "boundWitnessSdkConfig": {
+                "collection": "xyo_chain_bound_witnesses"
+              },
+              "labels": {
+                "network.xyo.storage.class": "mongodb"
+              },
+              "language": "javascript",
+              "name": "Chain",
+              "payloadSdkConfig": {
+                "collection": "xyo_chain_payloads"
+              },
+              "schema": "network.xyo.archivist.config",
+              "storage": {
+                "indexes": [
+                  {
+                    "key": {
+                      "_hash": 1
+                    },
+                    "name": "xyo_chain_bound_witnesses.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "_$hash": 1
+                    },
+                    "name": "xyo_chain_bound_witnesses.IX__$hash"
+                  },
+                  {
+                    "key": {
+                      "_hash": 1
+                    },
+                    "name": "xyo_chain_payloads.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "_$hash": 1
+                    },
+                    "name": "xyo_chain_payloads.IX__$hash"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "config": {
+              "accountPath": "1/1/2",
+              "boundWitnessSdkConfig": {
+                "collection": "xyo_chain_pending_bound_witnesses"
+              },
+              "labels": {
+                "network.xyo.storage.class": "mongodb"
+              },
+              "language": "javascript",
+              "name": "Pending",
+              "payloadSdkConfig": {
+                "collection": "xyo_chain_pending_payloads"
+              },
+              "schema": "network.xyo.archivist.config",
+              "storage": {
+                "indexes": [
+                  {
+                    "key": {
+                      "_hash": 1
+                    },
+                    "name": "xyo_chain_pending_bound_witnesses.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "_$hash": 1
+                    },
+                    "name": "xyo_chain_pending_bound_witnesses.IX__$hash"
+                  },
+                  {
+                    "key": {
+                      "_hash": 1
+                    },
+                    "name": "xyo_chain_pending_payloads.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "_$hash": 1
+                    },
+                    "name": "xyo_chain_pending_payloads.IX__$hash"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "config": {
+              "accountPath": "1/1/3",
+              "boundWitnessSdkConfig": {
+                "collection": "xyo_chain_stake_bound_witnesses"
+              },
+              "labels": {
+                "network.xyo.storage.class": "mongodb"
+              },
+              "language": "javascript",
+              "name": "Stake",
+              "payloadSdkConfig": {
+                "collection": "xyo_chain_stake_payloads"
+              },
+              "schema": "network.xyo.archivist.config",
+              "storage": {
+                "indexes": [
+                  {
+                    "key": {
+                      "_hash": 1
+                    },
+                    "name": "xyo_chain_stake_bound_witnesses.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "_$hash": 1
+                    },
+                    "name": "xyo_chain_stake_bound_witnesses.IX__$hash"
+                  },
+                  {
+                    "key": {
+                      "_hash": 1
+                    },
+                    "name": "xyo_chain_stake_payloads.IX__hash"
+                  },
+                  {
+                    "key": {
+                      "_$hash": 1
+                    },
+                    "name": "xyo_chain_stake_payloads.IX__$hash"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "schema": "network.xyo.manifest"
+}
