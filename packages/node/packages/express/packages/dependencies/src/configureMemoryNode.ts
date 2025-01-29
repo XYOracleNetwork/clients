@@ -5,9 +5,7 @@ import { exists } from '@xylabs/exists'
 import type { Hash } from '@xylabs/hex'
 import type { AccountInstance } from '@xyo-network/account'
 import { HDWallet } from '@xyo-network/account'
-import {
-  ArchivistInsertQuerySchema, isArchivistInstance, withArchivistInstance,
-} from '@xyo-network/archivist-model'
+import { isArchivistInstance, withArchivistInstance } from '@xyo-network/archivist-model'
 import type { PackageManifestPayload } from '@xyo-network/manifest'
 import { ManifestWrapper } from '@xyo-network/manifest'
 import type { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
@@ -29,7 +27,7 @@ export const configureMemoryNode = async (container: Container, _memoryNode?: No
     const hashes = configHashes.split(',').filter(exists) as Hash[]
     if (hashes.length > 0) {
       const configPayloads: Record<string, ModuleConfig> = {}
-      const mods = await node.resolve({ query: [[ArchivistInsertQuerySchema]] }, { direction: 'down', identity: isArchivistInstance })
+      const mods = await node.resolve('*', { direction: 'down', identity: isArchivistInstance })
       for (const mod of mods) {
         await withArchivistInstance(mod, async (archivist) => {
           const payloads = await archivist.get(hashes)
