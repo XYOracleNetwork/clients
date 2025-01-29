@@ -1,3 +1,4 @@
+import type { AccountInstance } from '@xyo-network/account'
 import { Account } from '@xyo-network/account'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import type { Order } from '@xyo-network/diviner-payload-model'
@@ -72,24 +73,24 @@ export const expectSchemaNotSuppliedError = (result: Payload) => {
 
 describe('/:hash', () => {
   describe('return format is', () => {
-    const account = Account.random()
+    let account: AccountInstance
     let bw: BoundWitness
     let payloads: Payload[]
     beforeAll(async () => {
+      account = await Account.random()
       // Create data pointer will reference
-      ;[bw, payloads] = await getNewBoundWitness([await account])
-      const blockResponse = await insertBlock(bw, await account)
+      ;[bw, payloads] = await getNewBoundWitness([account])
+      const blockResponse = await insertBlock(bw, account)
       expect(blockResponse.length).toBe(1)
-      const payloadResponse = await insertPayload(payloads, await account)
+      const payloadResponse = await insertPayload(payloads, account)
       expect(payloadResponse.length).toBe(1)
     })
     it('a single Payload matching the pointer criteria', async () => {
       const expected = payloads[0]
-      const pointerHash = await createPointer([[(await account).address]], [[expected.schema]])
+      const pointerHash = await createPointer([[account.address]], [[expected.schema]])
       const response = await getHash(pointerHash)
       expect(response).toBeTruthy()
       expect(Array.isArray(response)).toBe(false)
-      // expect(PayloadWrapper.parse(response).valid).toBeTrue()
       expect(PayloadBuilder.omitStorageMeta(response)).toEqual(expected)
     })
     it(`${ReasonPhrases.NOT_FOUND} if no Payloads match the criteria`, async () => {
