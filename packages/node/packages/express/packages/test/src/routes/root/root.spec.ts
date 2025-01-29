@@ -96,7 +96,7 @@ describe('Root API', () => {
       }
       it('issues query to module at address', async () => {
         const queryPayload = await new PayloadBuilder({ schema: ModuleStateQuerySchema }).build()
-        const query = await (await new QueryBoundWitnessBuilder().witness(await account).query(queryPayload)).build()
+        const query = await (await new QueryBoundWitnessBuilder().signer(await account).query(queryPayload)).build()
         const data = [query[0], [...query[1]]] as [QueryBoundWitness, Payload[]]
         await postModuleQuery(data, address)
       })

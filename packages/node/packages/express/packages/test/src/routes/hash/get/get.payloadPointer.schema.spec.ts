@@ -27,7 +27,7 @@ describe('/:hash', () => {
     beforeAll(async () => {
       const [bw] = await new BoundWitnessBuilder()
         .payloads([(payloadA).payload, (payloadB).payload])
-        .witness(await account)
+        .signer(await account)
         .build()
       const payloads: Payload[] = [bw, (payloadA).payload, (payloadB).payload]
       const payloadResponse = await insertPayload(payloads, await account)
