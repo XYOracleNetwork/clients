@@ -4,52 +4,46 @@ import { delay } from '@xylabs/delay'
 import type { Address } from '@xylabs/hex'
 import { Account } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'
+import { MongoDBArchivist } from '@xyo-network/archivist-mongodb'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { BoundWitnessSchema } from '@xyo-network/boundwitness-model'
 import type { AddressHistoryQueryPayload } from '@xyo-network/diviner-address-history'
-import { AddressHistoryDivinerConfigSchema, AddressHistoryQuerySchema } from '@xyo-network/diviner-address-history'
-import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
-import {
-  type BoundWitnessWithMongoMeta, type BoundWitnessWithPartialMongoMeta, toDbRepresentation,
-} from '@xyo-network/payload-mongodb'
-import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
+import { AddressHistoryQuerySchema } from '@xyo-network/diviner-address-history'
+import { hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
+import type { Payload } from '@xyo-network/payload-model'
+import { type BoundWitnessWithPartialMongoMeta } from '@xyo-network/payload-mongodb'
 import {
   beforeAll, describe, expect, it,
 } from 'vitest'
-import { mock } from 'vitest-mock-extended'
 
 import { MongoDBAddressHistoryDiviner } from '../MongoDBAddressHistoryDiviner.js'
 
 /**
  * @group mongo
  */
-
 describe.runIf(hasMongoDBConfig())('MongoDBAddressHistoryDiviner', () => {
   let account: AccountInstance
   let address: Address
-  const logger = mock<Console>()
-  const boundWitnessSdk = new BaseMongoSdk<BoundWitnessWithMongoMeta>({
-    collection: COLLECTIONS.BoundWitnesses,
-    dbConnectionString: process.env.MONGO_CONNECTION_STRING,
-  })
   let sut: MongoDBAddressHistoryDiviner
+
+  const getNewPayload = (): Payload => {
+    const fields = { salt: `${Date.now()}` }
+    const result = new PayloadBuilder({ schema: 'network.xyo.test' }).fields(fields).build()
+    return result
+  }
+
   beforeAll(async () => {
     account = await Account.random()
     address = account.address
-    sut = await MongoDBAddressHistoryDiviner.create({
-      account: 'random',
-      config: { schema: AddressHistoryDivinerConfigSchema },
-      logger,
-    })
-    // TODO: Insert via archivist
-    const payload = { schema: 'network.xyo.test' }
-    const [bw] = await new BoundWitnessBuilder().payload(payload).signer(account).build()
-    const mongoBw = toDbRepresentation(await BoundWitnessBuilder.addStorageMeta(bw))
-    await boundWitnessSdk.insertOne(mongoBw)
-    await delay(1)
-    const [bw2] = await new BoundWitnessBuilder().payload(payload).signer(account).build()
-    const mongoBw2 = toDbRepresentation(await BoundWitnessBuilder.addStorageMeta(bw2))
-    await boundWitnessSdk.insertOne(mongoBw2)
+    sut = await MongoDBAddressHistoryDiviner.create({ account: 'random' })
+    const archivist = await MongoDBArchivist.create({ account: 'random' })
+    for (let i = 0; i < 2; i++) {
+      const payload = getNewPayload()
+      const [bw, payloads] = await new BoundWitnessBuilder().payload(payload).signer(account).build()
+      await archivist.insert([bw, ...payloads])
+      await delay(2)
+    }
     await delay(1000)
   })
   describe('divine', () => {
