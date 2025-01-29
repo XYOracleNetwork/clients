@@ -104,7 +104,7 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
   protected override async nextHandler(options?: ArchivistNextOptions): Promise<WithStorageMeta<Payload>[]> {
     // Sanitize inputs and set defaults
     let {
-      limit, cursor, order,
+      limit, cursor, order, open,
     } = options ?? { limit: 10, order: 'desc' }
 
     if (!limit) limit = 10
@@ -131,7 +131,7 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
     const sort = order === 'asc' ? 1 : -1
     // TODO: How to handle random component of ID across multiple collections
     // to ensure we don't skip some payloads
-    const match = order === 'asc' ? { _id: { $gt: id } } : { _id: { $lt: id } }
+    const match = order === 'asc' ? (open ? { _id: { $gte: id } } : { _id: { $gt: id } }) : (open ? { _id: { $lte: id } } : { _id: { $lt: id } })
 
     // Run the aggregate query
     const foundPayloads = await this.payloads.useCollection((collection) => {
