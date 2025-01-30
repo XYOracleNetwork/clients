@@ -13,9 +13,9 @@ const resolutionErrorMsg = () => 'Unable to resolve PrometheusNodeWitness'
 const handler: RequestHandler<NoReqParams> = async (req, res) => {
   setRawResponseFormat(res)
   const { node } = req.app
-  const name = [assertEx(TYPES.PrometheusWitness, descriptionErrorMsg)]
-  const modules = await node.resolve({ name }, { direction: 'down' })
-  const Prometheus = assertEx(modules.pop() as PrometheusNodeWitness, resolutionErrorMsg)
+  const name = assertEx(TYPES.PrometheusWitness, descriptionErrorMsg)
+  const mod = await node.resolve(name, { direction: 'down' })
+  const Prometheus = assertEx(mod as PrometheusNodeWitness, resolutionErrorMsg)
   res.contentType(Prometheus.registry.contentType)
   res.end(await Prometheus.registry.metrics())
 }
