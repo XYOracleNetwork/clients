@@ -47,7 +47,6 @@ export const createPointer = async (
 
   const pointer = new PayloadBuilder<PayloadPointerPayload>({ schema: PayloadPointerSchema }).fields({ reference }).build()
   await insertPayload(pointer)
-  // expect(pointerResponse).toBeArrayOfSize(1)
   return await PayloadBuilder.dataHash(pointer)
 }
 
