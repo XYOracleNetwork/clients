@@ -120,10 +120,10 @@ describe('/:hash', () => {
       })
       describe('single address', () => {
         it.each([
-          [accountA, () => BoundWitnessWrapper.parse(bws[0]).payload],
-          [accountB, () => BoundWitnessWrapper.parse(bws[1]).payload],
-        ])('returns BoundWitness signed by address', async (account, data) => {
-          const expected = data()
+          [() => [accountA, BoundWitnessWrapper.parse(bws[0]).payload] as const],
+          [() => [accountB, BoundWitnessWrapper.parse(bws[1]).payload] as const],
+        ])('returns BoundWitness signed by address', async (data) => {
+          const [account, expected] = data()
           const pointerHash = await createPointer([[account.address]], [[payloads[0].schema]])
           const result = await getHash(pointerHash)
           expect(PayloadBuilder.omitStorageMeta(result)).toEqual(expected)

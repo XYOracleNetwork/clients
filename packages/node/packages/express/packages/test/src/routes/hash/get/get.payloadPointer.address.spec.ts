@@ -38,10 +38,10 @@ describe('/:hash [with rules for address]', () => {
   })
   describe('single address', () => {
     it.each([
-      [accountA, () => payloads[0]],
-      [accountB, () => payloads[1]],
-    ])('returns Payload signed by address', async (account, getData) => {
-      const expected = getData()
+      [() => [accountA, payloads[0]] as const],
+      [() => [accountB, payloads[1]] as const],
+    ])('returns Payload signed by address', async (getData) => {
+      const [account, expected] = getData()
       const pointerHash = await createPointer([[account.address]], [[expected.schema]])
       const result = await getHash(pointerHash)
       expect(PayloadBuilder.omitStorageMeta(result)).toEqual(expected)
