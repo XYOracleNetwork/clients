@@ -1,5 +1,6 @@
 import '@xylabs/vitest-extended'
 
+import type { AccountInstance } from '@xyo-network/account'
 import { Account } from '@xyo-network/account'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
@@ -15,7 +16,7 @@ import {
 import { createPointer, expectHashNotFoundError } from './get.payloadPointer.spec.js'
 
 describe('/:hash [with rules for schema]', () => {
-  const account = Account.random()
+  let account: AccountInstance
   const schemaA = getTestSchemaName()
   const schemaB = getTestSchemaName()
   const payloadBaseA = { ...(getNewPayload()), schema: schemaA }
@@ -24,12 +25,13 @@ describe('/:hash [with rules for schema]', () => {
   const payloadB: PayloadWrapper = (() => PayloadWrapper.wrap(payloadBaseB))()
   const schemas = [schemaA, schemaB]
   beforeAll(async () => {
+    account = await Account.random()
     const [bw] = await new BoundWitnessBuilder()
       .payloads([(payloadA).payload, (payloadB).payload])
-      .signer(await account)
+      .signer(account)
       .build()
     const payloads: Payload[] = [bw, (payloadA).payload, (payloadB).payload]
-    const payloadResponse = await insertPayload(payloads, await account)
+    const payloadResponse = await insertPayload(payloads, account)
     expect(payloadResponse.length).toBe(payloads.length)
   })
   describe('single schema', () => {
@@ -48,7 +50,7 @@ describe('/:hash [with rules for schema]', () => {
       [schemaA, payloadA],
       [schemaB, payloadB],
     ])('returns Payload of schema type', async (schema, expected) => {
-      const pointerHash = await createPointer([[(await account).address]], [[schema]])
+      const pointerHash = await createPointer([[account.address]], [[schema]])
       const result = await getHash(pointerHash)
       const expectedPayload = (expected).payload
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -66,7 +68,7 @@ describe('/:hash [with rules for schema]', () => {
   describe('multiple schema rules', () => {
     describe('combined serially', () => {
       it('returns Payload of either schema', async () => {
-        const pointerHash = await createPointer([[]], [[(payloadA).schema(), (await payloadB).schema()]])
+        const pointerHash = await createPointer([[]], [[(payloadA).schema(), payloadB.schema()]])
         const result = await getHash(pointerHash)
         expect(result).toBeDefined()
         expect(schemas).toContain(result.schema)
@@ -74,7 +76,7 @@ describe('/:hash [with rules for schema]', () => {
     })
     describe('combined serially [w/address]', () => {
       it('returns Payload of either schema', async () => {
-        const pointerHash = await createPointer([[(await account).address]], [[(await payloadA).schema(), (await payloadB).schema()]])
+        const pointerHash = await createPointer([[account.address]], [[payloadA.schema(), payloadB.schema()]])
         const result = await getHash(pointerHash)
         expect(result).toBeDefined()
         expect(schemas).toContain(result.schema)
@@ -82,21 +84,21 @@ describe('/:hash [with rules for schema]', () => {
     })
     describe('combined in parallel', () => {
       it('returns Payload of either schema', async () => {
-        const pointerHash = await createPointer([[]], [[(payloadA).schema()], [(await payloadB).schema()]])
+        const pointerHash = await createPointer([[]], [[(payloadA).schema()], [payloadB.schema()]])
         const result = await getHash(pointerHash)
         expect(schemas).toContain(result.schema)
       })
     })
     describe('combined in parallel [w/address]', () => {
       it('returns Payload of either schema', async () => {
-        const pointerHash = await createPointer([[(await account).address]], [[(await payloadA).schema()], [(await payloadB).schema()]])
+        const pointerHash = await createPointer([[account.address]], [[payloadA.schema()], [payloadB.schema()]])
         const result = await getHash(pointerHash)
         expect(schemas).toContain(result.schema)
       })
     })
   })
   it('no matching schema', async () => {
-    const pointerHash = await createPointer([[(await account).address]], [['network.xyo.test']])
+    const pointerHash = await createPointer([[account.address]], [['network.xyo.test']])
     const result = await getHash(pointerHash)
     expectHashNotFoundError(result)
   })

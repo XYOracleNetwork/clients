@@ -1,3 +1,4 @@
+import type { AccountInstance } from '@xyo-network/account'
 import { Account } from '@xyo-network/account'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload } from '@xyo-network/payload-model'
@@ -11,19 +12,23 @@ import {
 import { createPointer, expectHashNotFoundError } from './get.payloadPointer.spec.js'
 
 describe('/:hash [with rules for address]', () => {
-  const accountA = Account.random()
-  const accountB = Account.random()
-  const accountC = Account.random()
-  const accountD = Account.random()
+  let accountA: AccountInstance
+  let accountB: AccountInstance
+  let accountC: AccountInstance
+  let accountD: AccountInstance
   const payloads: Payload[] = []
   beforeAll(async () => {
-    const [bwA, payloadsA] = await getNewBoundWitness([await accountA])
-    const [bwB, payloadsB] = await getNewBoundWitness([await accountB])
-    const [bwC, payloadsC] = await getNewBoundWitness([await accountC])
-    const [bwD, payloadsD] = await getNewBoundWitness([await accountD])
-    const [bwE, payloadsE] = await getNewBoundWitness([await accountC, await accountD])
-    const [bwF, payloadsF] = await getNewBoundWitness([await accountC])
-    const [bwG, payloadsG] = await getNewBoundWitness([await accountD])
+    accountA = await Account.random()
+    accountB = await Account.random()
+    accountC = await Account.random()
+    accountD = await Account.random()
+    const [bwA, payloadsA] = await getNewBoundWitness([accountA])
+    const [bwB, payloadsB] = await getNewBoundWitness([accountB])
+    const [bwC, payloadsC] = await getNewBoundWitness([accountC])
+    const [bwD, payloadsD] = await getNewBoundWitness([accountD])
+    const [bwE, payloadsE] = await getNewBoundWitness([accountC, accountD])
+    const [bwF, payloadsF] = await getNewBoundWitness([accountC])
+    const [bwG, payloadsG] = await getNewBoundWitness([accountD])
     payloads.push(...payloadsA, ...payloadsB, ...payloadsC, ...payloadsD, ...payloadsE, ...payloadsF, ...payloadsG)
     const boundWitnesses = [bwA, bwB, bwC, bwD, bwE, bwF, bwG]
     const blockResponse = await insertBlock(boundWitnesses)
@@ -37,7 +42,7 @@ describe('/:hash [with rules for address]', () => {
       [accountB, () => payloads[1]],
     ])('returns Payload signed by address', async (account, getData) => {
       const expected = getData()
-      const pointerHash = await createPointer([[(await account).address]], [[expected.schema]])
+      const pointerHash = await createPointer([[account.address]], [[expected.schema]])
       const result = await getHash(pointerHash)
       expect(PayloadBuilder.omitStorageMeta(result)).toEqual(expected)
     })
@@ -46,7 +51,7 @@ describe('/:hash [with rules for address]', () => {
     describe('combined serially', () => {
       it('returns Payload signed by both addresses', async () => {
         const expected = payloads[4]
-        const pointerHash = await createPointer([[(await accountC).address], [(await accountD).address]], [[expected.schema]])
+        const pointerHash = await createPointer([[accountC.address], [accountD.address]], [[expected.schema]])
         const result = await getHash(pointerHash)
         expect(PayloadBuilder.omitStorageMeta(result)).toEqual(expected)
       })
@@ -54,7 +59,7 @@ describe('/:hash [with rules for address]', () => {
     describe('combined in parallel', () => {
       it('returns Payload signed by both address', async () => {
         const expected = payloads[4]
-        const pointerHash = await createPointer([[(await accountC).address, (await accountD).address]], [[expected.schema]])
+        const pointerHash = await createPointer([[accountC.address, accountD.address]], [[expected.schema]])
         const result = await getHash(pointerHash)
         expect(PayloadBuilder.omitStorageMeta(result)).toEqual(expected)
       })
