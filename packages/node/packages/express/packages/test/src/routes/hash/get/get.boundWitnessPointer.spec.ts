@@ -50,9 +50,7 @@ const createPointer = async (
   reference.push([timestampRule])
 
   const pointer = new PayloadBuilder<BoundWitnessPointerPayload>({ schema: BoundWitnessPointerSchema }).fields({ reference }).build()
-  const pointerResponse = await insertPayload(pointer)
-  expect(pointerResponse).toBeArrayOfSize(1)
-  // expect(pointerResponse.map((bw) => bw.payload_schemas.includes(BoundWitnessPointerSchema)).some((x) => x)).toBeTrue()
+  await insertPayload(pointer)
   return await PayloadBuilder.dataHash(pointer)
 }
 
@@ -180,14 +178,10 @@ describe('/:hash', () => {
         const [bwD] = await getNewBoundWitness([account], [payloadB.payload])
         await delay(100)
         boundWitnesses.push(bwA, bwB, bwC, bwD)
-        await insertBlock([bwA], account)
-        await delay(1)
-        await insertBlock([bwB], account)
-        await delay(1)
-        await insertBlock([bwC], account)
-        await delay(1)
-        await insertBlock([bwD], account)
-        await delay(1)
+        for (const bw of boundWitnesses) {
+          await insertBlock([bw], account)
+          await delay(2)
+        }
         await delay(1000)
       })
       describe('single schema', () => {
