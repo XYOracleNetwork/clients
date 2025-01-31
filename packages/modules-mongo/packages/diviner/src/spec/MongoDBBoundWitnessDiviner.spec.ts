@@ -11,6 +11,7 @@ import {
 } from '@xyo-network/diviner-boundwitness-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
+import type { Payload } from '@xyo-network/payload-model'
 import {
   type BoundWitnessWithMongoMeta, type BoundWitnessWithPartialMongoMeta, toDbRepresentation,
 } from '@xyo-network/payload-mongodb'
@@ -52,13 +53,13 @@ describe.runIf(hasMongoDBConfig())('MongoDBBoundWitnessDiviner', () => {
       logger,
     })
     // TODO: Insert via archivist
-    const payloadA = new PayloadBuilder({ schema: 'network.xyo.test' }).fields({ nonce: 1 }).build()
+    const payloadA: Payload = new PayloadBuilder({ schema: 'network.xyo.test' }).fields({ nonce: 1 }).build()
 
     const [bwAWithoutMeta] = await new BoundWitnessBuilder().payload(payloadA).signer(accountA).build()
     const bwA = await PayloadBuilder.addStorageMeta(bwAWithoutMeta)
     await boundWitnessSdk.insertOne(toDbRepresentation(bwA))
 
-    const payloadB = new PayloadBuilder({ schema: 'network.xyo.test' }).fields({ nonce: 2 }).build()
+    const payloadB: Payload = new PayloadBuilder({ schema: 'network.xyo.test' }).fields({ nonce: 2 }).build()
 
     const [bwBWithoutMeta] = await new BoundWitnessBuilder().payload(payloadB).signer(accountB).build()
     const bwB = await PayloadBuilder.addStorageMeta(bwBWithoutMeta)

@@ -17,6 +17,7 @@ import type { DivinerInstance, DivinerParams } from '@xyo-network/diviner-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import type { JobQueue } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
+import type { Payload } from '@xyo-network/payload-model'
 import { type BoundWitnessWithMongoMeta, toDbRepresentation } from '@xyo-network/payload-mongodb'
 import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import {
@@ -51,7 +52,7 @@ describe.runIf(hasMongoDBConfig())('MongoDBBoundWitnessStatsDiviner', () => {
       logger,
     })
     // TODO: Insert via archivist
-    const payload = new PayloadBuilder({ schema: 'network.xyo.test' }).build()
+    const payload: Payload = new PayloadBuilder({ schema: 'network.xyo.test' }).build()
     const bw = (await (new BoundWitnessBuilder().payload(payload)).signer(account).build())[0]
     await boundWitnessSdk.insertOne(toDbRepresentation(await BoundWitnessBuilder.addStorageMeta(bw)))
   })

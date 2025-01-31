@@ -23,11 +23,11 @@ describe('validByType', () => {
     beforeAll(async () => {
       const payload1 = new PayloadBuilder<DebugPayloadWithMongoMeta>({ schema: 'network.xyo.debug' }).fields({ nonce: '1' }).build()
       const payload2 = new PayloadBuilder<DebugPayloadWithMongoMeta>({ schema: 'network.xyo.debug' }).fields({ nonce: '2' }).build()
-      const inner = await (new BoundWitnessBuilder().signer(await account).payload(payload2)).build()
-      const outer = await (new BoundWitnessBuilder().signer(await account).payloads([payload1, inner[0]])).build()
+      const [innerBw] = await (new BoundWitnessBuilder().signer(await account).payload(payload2)).build()
+      const outer = await (new BoundWitnessBuilder().signer(await account).payloads([payload1, innerBw as Payload])).build()
       const queryPayload: ArchivistInsertQuery = { schema: ArchivistInsertQuerySchema }
       const query = await (new QueryBoundWitnessBuilder().signer(await account).query(queryPayload)).build()
-      const values = await PayloadBuilder.addStorageMeta([query[0], outer[0], inner[0], payload1, payload2])
+      const values = await PayloadBuilder.addStorageMeta([query[0], outer[0], innerBw as Payload, payload1, payload2])
       result = await validByType(values)
     })
     it('extracts the BoundWitnesses', () => {
@@ -43,9 +43,9 @@ describe('validByType', () => {
     beforeAll(async () => {
       const payload1 = new PayloadBuilder<DebugPayloadWithMongoMeta>({ schema: 'network.xyo.debug' }).fields({ nonce: '1' }).build()
       const payload2 = new PayloadBuilder<DebugPayloadWithMongoMeta>({ schema: 'network.xyo.debug' }).fields({ nonce: '2' }).build()
-      const inner = await (new BoundWitnessBuilder().signer(await account).payload(payload2)).build()
-      const outer = await (new BoundWitnessBuilder().signer(await account).payloads([payload1, inner[0]])).build()
-      const values = await PayloadBuilder.addStorageMeta([outer[0], inner[0], payload1, payload2])
+      const [innerBw] = await (new BoundWitnessBuilder().signer(await account).payload(payload2)).build()
+      const outer = await (new BoundWitnessBuilder().signer(await account).payloads([payload1, innerBw as Payload])).build()
+      const values = await PayloadBuilder.addStorageMeta([outer[0], innerBw as Payload, payload1, payload2])
       result = await validByType(values)
     })
     it('extracts the BoundWitnesses', () => {

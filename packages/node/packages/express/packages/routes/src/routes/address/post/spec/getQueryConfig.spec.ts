@@ -9,6 +9,7 @@ import type { ModuleConfig } from '@xyo-network/module-model'
 import { ModuleConfigSchema, ModuleStateQuerySchema } from '@xyo-network/module-model'
 import type { ArchiveModuleConfig } from '@xyo-network/node-core-model'
 import { ArchiveModuleConfigSchema } from '@xyo-network/node-core-model'
+import type { Payload } from '@xyo-network/payload-model'
 import type { Request } from 'express'
 import {
   beforeAll, describe, expect,
@@ -75,11 +76,11 @@ describe('getQueryConfig', () => {
         expect(config).toMatchSnapshot()
       })
       it('generates config for nested-signed requests', async () => {
-        const bw = await new BoundWitnessBuilder().signer(testAccount3).signer(testAccount4).build()
+        const [bw] = await new BoundWitnessBuilder().signer(testAccount3).signer(testAccount4).build()
         const query = await new QueryBoundWitnessBuilder().query({ schema: ModuleStateQuerySchema })
           .signer(testAccount1)
           .signer(testAccount2)
-          .payload(bw[0])
+          .payload(bw as Payload)
           .build()
         const config = await getQueryConfig(mod, req, query[0], query[1])
         expect(config).toMatchSnapshot()
@@ -90,8 +91,8 @@ describe('getQueryConfig', () => {
         const query = await new QueryBoundWitnessBuilder().query({ schema: ModuleStateQuerySchema })
           .signer(testAccount1)
           .signer(testAccount2)
-          .payload(bw1[0])
-          .payload(bw2[0])
+          .payload(bw1[0] as Payload)
+          .payload(bw2[0] as Payload)
           .build()
         const config = await getQueryConfig(mod, req, query[0], query[1])
         expect(config).toMatchSnapshot()

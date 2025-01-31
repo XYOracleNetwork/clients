@@ -41,11 +41,11 @@
     "@xylabs/exists": "^4.5.1",
     "@xylabs/lodash": "^4.5.1",
     "@xylabs/static-implements": "^4.5.1",
-    "@xyo-network/module-model": "^3.7.2",
+    "@xyo-network/module-model": "^3.8.0",
     "@xyo-network/module-model-mongodb": "workspace:^",
     "@xyo-network/payload-mongodb": "workspace:^",
     "@xyo-network/sdk-xyo-mongo-js": "workspace:^",
-    "mongodb": "~6.12.0"
+    "mongodb": "~6.13.0"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^4.2.6",
