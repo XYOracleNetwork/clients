@@ -11,8 +11,11 @@ import {
 } from '@xyo-network/payload-model'
 import type { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
 import { fromDbRepresentation, toDbRepresentation } from '@xyo-network/payload-mongodb'
+import type { MongoError } from 'mongodb'
 
 const MongoDBArchivistBaseV2 = MongoDBModuleMixinV2(AbstractArchivist)
+
+const MONGODB_DUPLICATE_KEY_ERROR = 11_000
 
 export class MongoDBArchivistV2 extends MongoDBArchivistBaseV2 {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, MongoDBArchivistConfigSchema]
@@ -63,11 +66,16 @@ export class MongoDBArchivistV2 extends MongoDBArchivistBaseV2 {
   protected override async insertHandler(payloads: WithStorageMeta<Payload>[]): Promise<WithStorageMeta<Payload>[]> {
     const payloadsWithExternalMeta = payloads.map(value => toDbRepresentation(value))
     if (payloadsWithExternalMeta.length > 0) {
-      const payloadsResult = await this.payloads.insertMany(payloadsWithExternalMeta)
-      if (!payloadsResult.acknowledged || payloadsResult.insertedCount !== payloadsWithExternalMeta.length)
-        throw new Error('MongoDBArchivist: Error inserting Payloads')
+      try {
+        const payloadsResult = await this.payloads.insertMany(payloadsWithExternalMeta, { ordered: false })
+        if (!payloadsResult.acknowledged) throw new Error('MongoDBArchivist: Error inserting Payloads')
+      } catch (error) {
+        const mongoError = error as MongoError
+        // NOTE: Intentional coercive equality since Mongo error codes are
+        // of type string | number
+        if (mongoError?.code != MONGODB_DUPLICATE_KEY_ERROR) throw error
+      }
     }
-
     return [...payloadsWithExternalMeta].map(fromDbRepresentation)
   }
 
