@@ -1,6 +1,16 @@
 import { assertEx } from '@xylabs/assert'
 import type {
-  Collection, DeleteResult, Document, Filter, FindCursor, MongoClient, OptionalUnlessRequiredId, UpdateFilter, WithId,
+  BulkWriteOptions,
+  Collection,
+  DeleteResult,
+  Document,
+  Filter,
+  FindCursor,
+  InsertOneOptions,
+  MongoClient,
+  OptionalUnlessRequiredId,
+  UpdateFilter,
+  WithId,
 } from 'mongodb'
 
 import type { BaseMongoSdkConfig } from './Config.js'
@@ -39,15 +49,15 @@ export class BaseMongoSdk<T extends Document> {
     })
   }
 
-  async insertMany(items: OptionalUnlessRequiredId<T>[]) {
+  async insertMany(items: OptionalUnlessRequiredId<T>[], options?: BulkWriteOptions) {
     return await this.useCollection(async (collection: Collection<T>) => {
-      return await collection.insertMany(items)
+      return await collection.insertMany(items, options)
     })
   }
 
-  async insertOne(item: OptionalUnlessRequiredId<T>) {
+  async insertOne(item: OptionalUnlessRequiredId<T>, options?: InsertOneOptions) {
     return await this.useCollection(async (collection: Collection<T>) => {
-      return await collection.insertOne(item)
+      return await collection.insertOne(item, options)
     })
   }
 
