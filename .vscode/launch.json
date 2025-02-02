@@ -95,7 +95,7 @@
         "--run",
         "--inspect-brk",
         "--no-file-parallelism",
-        "packages/node/packages/express/packages/test/src/routes/hash/get/get.payloadPointer.spec.ts"
+        "packages/modules-mongo/packages/archivist/src/spec/ArchivistV2.spec.ts"
       ],
       "resolveSourceMapLocations": [
         "${workspaceFolder}/**",

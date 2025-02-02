@@ -72,7 +72,26 @@ describe.runIf(hasMongoDBConfig())('Archivist', () => {
     ]
     it.each(cases)('%s', async (_title, getData) => {
       const payloads = getData()
-      const results = await archivist.insert(payloads.map(w => w))
+      const results = await archivist.insert(payloads)
+      expect(results).toBeArrayOfSize(payloads.length)
+      for (const [i, result] of results.entries()) {
+        const payload = payloads[i]
+        expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload))
+        expect(await PayloadBuilder.hash(result)).toEqual(await PayloadBuilder.hash(payload))
+        expect(PayloadBuilder.omitStorageMeta(result)).toEqual(payload)
+      }
+    })
+  })
+  describe('insert (duplicates)', () => {
+    const cases: [string, TestDataGetter<Payload[]>][] = [
+      ['inserts single payload', () => [payloads[0]]],
+      ['inserts multiple payloads', () => [payloads[1], payloads[2]]],
+      ['inserts single boundwitness', () => [boundWitnesses[0]]],
+      ['inserts multiple boundwitness', () => [boundWitnesses[1], boundWitnesses[2]]],
+    ]
+    it.each(cases)('%s', async (_title, getData) => {
+      const payloads = getData()
+      const results = await archivist.insert(payloads)
       expect(results).toBeArrayOfSize(payloads.length)
       for (const [i, result] of results.entries()) {
         const payload = payloads[i]
