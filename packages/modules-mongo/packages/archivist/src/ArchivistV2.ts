@@ -110,9 +110,11 @@ export class MongoDBArchivistV2 extends MongoDBArchivistBaseV2 {
 
     const match = order === 'asc'
       ? (open
-          ? { _sequence: { $gte: sequence } }
-          : { _sequence: { $gt: sequence } })
-      : (open ? { _sequence: { $lte: sequence } } : { _sequence: { $lt: sequence } })
+          ? { _sequence: { $gt: sequence } }
+          : { _sequence: { $gte: sequence } })
+      : (open
+          ? { _sequence: { $lt: sequence } }
+          : { _sequence: { $lte: sequence } })
 
     // Run the aggregate query
     const foundPayloads = await this.payloads.useCollection((collection) => {
