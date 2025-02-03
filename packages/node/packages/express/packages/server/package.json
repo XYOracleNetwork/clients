@@ -44,8 +44,8 @@
     "@types/cors": "^2.8.17",
     "@types/express": "4.17.21",
     "@types/nconf": "^0.10.7",
-    "@xylabs/ts-scripts-yarn3": "^4.2.6",
-    "@xylabs/tsconfig": "^4.2.6",
+    "@xylabs/ts-scripts-yarn3": "^5.0.1",
+    "@xylabs/tsconfig": "^5.0.1",
     "typescript": "^5.7.3"
   },
   "publishConfig": {
