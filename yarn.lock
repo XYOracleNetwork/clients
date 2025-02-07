@@ -4957,6 +4957,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xyo-network/archivist-acceptance-tests@npm:^3.8.5":
+  version: 3.8.5
+  resolution: "@xyo-network/archivist-acceptance-tests@npm:3.8.5"
+  dependencies:
+    "@xylabs/array": "npm:^4.5.1"
+    "@xylabs/assert": "npm:^4.5.1"
+    "@xylabs/exists": "npm:^4.5.1"
+    "@xylabs/hex": "npm:^4.5.1"
+    "@xylabs/object": "npm:^4.5.1"
+    "@xylabs/promise": "npm:^4.5.1"
+    "@xylabs/set": "npm:^4.5.1"
+    "@xyo-network/account-model": "npm:^3.8.5"
+    "@xyo-network/archivist-model": "npm:^3.8.5"
+    "@xyo-network/boundwitness-model": "npm:^3.8.5"
+    "@xyo-network/boundwitness-wrapper": "npm:^3.8.5"
+    "@xyo-network/id-payload-plugin": "npm:^3.8.5"
+    "@xyo-network/module-abstract": "npm:^3.8.5"
+    "@xyo-network/module-model": "npm:^3.8.5"
+    "@xyo-network/payload-builder": "npm:^3.8.5"
+    "@xyo-network/payload-model": "npm:^3.8.5"
+    uuid: "npm:^11.0.5"
+  checksum: 10/ca07c04142dd942a083b03fd8f76c836004dc5c6c0e00f6d2987bed5ca06fcd57d473bfd81ac7d725b1907d2b475c45c25b212d71e81514ea6efd8a0906f41e9
+  languageName: node
+  linkType: hard
+
 "@xyo-network/archivist-memory@npm:^3.8.5":
   version: 3.8.5
   resolution: "@xyo-network/archivist-memory@npm:3.8.5"
@@ -5019,6 +5044,7 @@ __metadata:
     "@xylabs/vitest-extended": "npm:^4.5.1"
     "@xyo-network/account": "npm:^3.8.5"
     "@xyo-network/archivist-abstract": "npm:^3.8.5"
+    "@xyo-network/archivist-acceptance-tests": "npm:^3.8.5"
     "@xyo-network/archivist-model": "npm:^3.8.5"
     "@xyo-network/archivist-model-mongodb": "workspace:^"
     "@xyo-network/archivist-wrapper": "npm:^3.8.5"
@@ -6893,6 +6919,17 @@ __metadata:
     "@xyo-network/account": "npm:^3.8.5"
     "@xyo-network/payload-model": "npm:^3.8.5"
   checksum: 10/6f736cdf3e6ee27fa7f8598c84c644c0e62341f0ed51bd0582d996fa43396d91bfe288a38c63bebd8fa97d64a3f6aed8ef32c33210c6b27f86feaccb620bba13
+  languageName: node
+  linkType: hard
+
+"@xyo-network/id-payload-plugin@npm:^3.8.5":
+  version: 3.8.5
+  resolution: "@xyo-network/id-payload-plugin@npm:3.8.5"
+  dependencies:
+    "@xylabs/object": "npm:^4.5.1"
+    "@xyo-network/payload-model": "npm:^3.8.5"
+    "@xyo-network/payload-plugin": "npm:^3.8.5"
+  checksum: 10/d227162456f6e1e0baabe799a6eae0bb1b4f9820a422a3a2bd9e01b718e0f65b088fc8b203439d68c4b45ac0e9a01b65ae030e1d9e692561d398b74cc7dae52f
   languageName: node
   linkType: hard
 
