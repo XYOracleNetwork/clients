@@ -2,7 +2,7 @@ import '@xylabs/vitest-extended'
 
 import { delay } from '@xylabs/delay'
 import { Account } from '@xyo-network/account'
-import type { ArchivistNextOptions } from '@xyo-network/archivist-model'
+import { generateArchivistNextTests } from '@xyo-network/archivist-acceptance-tests'
 import { ArchivistWrapper } from '@xyo-network/archivist-wrapper'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
@@ -120,45 +120,7 @@ describe.runIf(hasMongoDBConfig())('Archivist', () => {
       }
     })
   })
-  // NOTE: Skipped because memory DB re-used by all tests
-  // causing these tests to be non-deterministic and fail
-  describe.skip('next', () => {
-    const payloads: Payload[] = []
-    beforeAll(async () => {
-      for (let i = 0; i < 10; i++) {
-        const payload1: Payload = new PayloadBuilder({ schema: 'network.xyo.debug' }).fields({ nonce: Date.now() }).build()
-        await delay(2)
-        const payload2: Payload = new PayloadBuilder({ schema: 'network.xyo.test' }).fields({ nonce: Date.now() }).build()
-        await delay(2)
-        const signer = await Account.random()
-        const boundWitness = (await new BoundWitnessBuilder()
-          .payloads([payload1, payload2])
-          .signer(signer)
-          .build())[0]
-        await archivist.insert([boundWitness])
-        await delay(2)
-        await archivist.insert([payload1])
-        await delay(2)
-        await archivist.insert([payload2])
-        await delay(2)
-        payloads.push(boundWitness, payload1, payload2)
-      }
-    })
-    describe('desc', () => {
-      describe('with no offset', () => {
-        it('returns payloads from the last one inserted in descending order', async () => {
-          const expected = payloads
-          const options: ArchivistNextOptions = { limit: expected.length, order: 'desc' }
-          const results = await archivist.next(options)
-          expect(results).toBeArrayOfSize(expected.length)
-          for (const [i, result] of results.reverse().entries()) {
-            const payload = expected[i]
-            expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload))
-            expect(await PayloadBuilder.hash(result)).toEqual(await PayloadBuilder.hash(payload))
-            expect(result).toEqual(payload)
-          }
-        })
-      })
-    })
+  generateArchivistNextTests(() => {
+    return Promise.resolve(archivist)
   })
 })

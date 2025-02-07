@@ -82,7 +82,7 @@ export class MongoDBArchivistV2 extends MongoDBArchivistBaseV2 {
   protected override async nextHandler(options?: ArchivistNextOptions): Promise<WithStorageMeta<Payload>[]> {
     // Sanitize inputs and set defaults
     let {
-      limit, cursor, order, open,
+      limit, cursor, order, open = true,
     } = options ?? { limit: 10, order: 'desc' }
 
     if (!limit) limit = 10
