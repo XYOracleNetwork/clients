@@ -2,7 +2,7 @@ import '@xylabs/vitest-extended'
 
 import { delay } from '@xylabs/delay'
 import { Account } from '@xyo-network/account'
-import type { ArchivistNextOptions } from '@xyo-network/archivist-model'
+import { generateArchivistNextTests } from '@xyo-network/archivist-acceptance-tests'
 import { ArchivistWrapper } from '@xyo-network/archivist-wrapper'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
@@ -119,5 +119,8 @@ describe.runIf(hasMongoDBConfig())('Archivist', () => {
         expect(PayloadBuilder.omitStorageMeta(result)).toEqual(payload)
       }
     })
+  })
+  generateArchivistNextTests(() => {
+    return Promise.resolve(archivist)
   })
 })
