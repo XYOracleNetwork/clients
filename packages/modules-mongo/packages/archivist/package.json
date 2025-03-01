@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/archivist-mongodb",
-  "version": "3.3.6",
+  "version": "3.3.7",
   "description": "Primary SDK for using XYO Protocol 2.0",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -48,7 +48,7 @@
     "@xyo-network/payload-model": "^3.9.23",
     "@xyo-network/payload-mongodb": "workspace:^",
     "@xyo-network/payload-wrapper": "^3.9.23",
-    "mongodb": "~6.14.0"
+    "mongodb": "~6.13"
   },
   "devDependencies": {
     "@xylabs/delay": "^4.5.1",
