@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/package.json",
   "name": "@xyo-network/express-node",
-  "version": "3.3.5",
+  "version": "3.3.6",
   "description": "XYO Express Node CLI",
   "license": "LGPL-3.0-only",
   "author": "Arie Trouw",
@@ -34,10 +34,10 @@
     "@xyo-network/express-node-server": "workspace:^"
   },
   "devDependencies": {
-    "@swc/core": "^1.10.14",
-    "@xylabs/ts-scripts-yarn3": "^5.0.22",
-    "@xylabs/tsconfig": "^5.0.22",
-    "typescript": "^5.7.3"
+    "@swc/core": "^1.11.5",
+    "@xylabs/ts-scripts-yarn3": "^5.0.39",
+    "@xylabs/tsconfig": "^5.0.39",
+    "typescript": "^5.8.2"
   },
   "publishConfig": {
     "access": "public"

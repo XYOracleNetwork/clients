@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/archivist-mongodb",
-  "version": "3.3.5",
+  "version": "3.3.6",
   "description": "Primary SDK for using XYO Protocol 2.0",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -39,31 +39,31 @@
   "dependencies": {
     "@xylabs/exists": "^4.5.1",
     "@xylabs/hex": "^4.5.1",
-    "@xyo-network/archivist-abstract": "^3.8.5",
-    "@xyo-network/archivist-model": "^3.8.5",
+    "@xyo-network/archivist-abstract": "^3.9.23",
+    "@xyo-network/archivist-model": "^3.9.23",
     "@xyo-network/archivist-model-mongodb": "workspace:^",
-    "@xyo-network/boundwitness-model": "^3.8.5",
-    "@xyo-network/boundwitness-wrapper": "^3.8.5",
+    "@xyo-network/boundwitness-model": "^3.9.23",
+    "@xyo-network/boundwitness-wrapper": "^3.9.23",
     "@xyo-network/module-abstract-mongodb": "workspace:^",
-    "@xyo-network/payload-model": "^3.8.5",
+    "@xyo-network/payload-model": "^3.9.23",
     "@xyo-network/payload-mongodb": "workspace:^",
-    "@xyo-network/payload-wrapper": "^3.8.5",
-    "mongodb": "~6.13.0"
+    "@xyo-network/payload-wrapper": "^3.9.23",
+    "mongodb": "~6.14.0"
   },
   "devDependencies": {
     "@xylabs/delay": "^4.5.1",
-    "@xylabs/ts-scripts-yarn3": "^5.0.22",
-    "@xylabs/tsconfig": "^5.0.22",
+    "@xylabs/ts-scripts-yarn3": "^5.0.39",
+    "@xylabs/tsconfig": "^5.0.39",
     "@xylabs/vitest-extended": "^4.5.1",
-    "@xyo-network/account": "^3.8.5",
-    "@xyo-network/archivist-acceptance-tests": "^3.8.5",
-    "@xyo-network/archivist-wrapper": "^3.8.5",
-    "@xyo-network/boundwitness-builder": "^3.8.5",
-    "@xyo-network/payload-builder": "^3.8.5",
+    "@xyo-network/account": "^3.9.23",
+    "@xyo-network/archivist-acceptance-tests": "^3.9.23",
+    "@xyo-network/archivist-wrapper": "^3.9.23",
+    "@xyo-network/boundwitness-builder": "^3.9.23",
+    "@xyo-network/payload-builder": "^3.9.23",
     "@xyo-network/sdk-xyo-mongo-js": "workspace:^",
     "fake-indexeddb": "^6.0.0",
-    "typescript": "^5.7.3",
-    "vitest": "^3.0.5"
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.7"
   },
   "publishConfig": {
     "access": "public"
