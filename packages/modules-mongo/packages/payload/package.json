@@ -43,8 +43,8 @@
     "@xyo-network/payload-model": "^3.9.37"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.0.5",
-    "@xylabs/tsconfig": "^6.0.5",
+    "@xylabs/ts-scripts-yarn3": "^6.0.8",
+    "@xylabs/tsconfig": "^6.0.8",
     "fake-indexeddb": "^6.0.0",
     "typescript": "^5.8.2"
   },

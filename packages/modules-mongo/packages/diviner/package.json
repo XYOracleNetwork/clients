@@ -84,8 +84,8 @@
     "reflect-metadata": "^0.2.2"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.0.5",
-    "@xylabs/tsconfig": "^6.0.5",
+    "@xylabs/ts-scripts-yarn3": "^6.0.8",
+    "@xylabs/tsconfig": "^6.0.8",
     "@xylabs/vitest-extended": "^4.6.0",
     "@xyo-network/archivist-mongodb": "workspace:^",
     "@xyo-network/boundwitness-builder": "^3.9.37",

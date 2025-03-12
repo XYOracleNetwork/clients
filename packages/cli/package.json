@@ -66,8 +66,8 @@
     "@types/tail": "^2.2.3",
     "@types/terminal-kit": "^2.5.7",
     "@types/yargs": "^17.0.33",
-    "@xylabs/ts-scripts-yarn3": "^6.0.5",
-    "@xylabs/tsconfig": "^6.0.5",
+    "@xylabs/ts-scripts-yarn3": "^6.0.8",
+    "@xylabs/tsconfig": "^6.0.8",
     "typescript": "^5.8.2",
     "vitest": "^3.0.8"
   },

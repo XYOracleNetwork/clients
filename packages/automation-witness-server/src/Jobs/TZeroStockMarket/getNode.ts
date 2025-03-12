@@ -9,7 +9,7 @@ import { TZeroApiCallJsonResultToSnapshotDiviner } from '@xyo-network/tzero-stoc
 
 import { getWallet, WalletPaths } from '../../Account/index.js'
 import { getArchivist } from '../../Archivists/index.js'
-import tZeroMarketSnapshotDiviner from './ApiCallWitnessManifest.json' assert { type: 'json' }
+import tZeroMarketSnapshotDiviner from './ApiCallWitnessManifest.json' with { type: 'json' }
 
 export const getNode = async (): Promise<MemoryNode> => {
   const apiKey = assertEx(process.env.TZERO_MARKETDATA_API_KEY, () => 'TZERO_MARKETDATA_API_KEY is not set')

@@ -1,6 +1,6 @@
 import type { ModuleManifest, PackageManifestPayload } from '@xyo-network/manifest-model'
 
-import node from './node.json' assert { type: 'json' }
+import node from './node.json' with { type: 'json' }
 
 /**
  * The default node
