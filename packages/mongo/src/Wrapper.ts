@@ -6,7 +6,7 @@ import type { MongoClientOptions } from 'mongodb'
 import { MongoClient } from 'mongodb'
 
 export class MongoClientWrapper {
-  static clients = new Map<string, MongoClientWrapper>()
+  static readonly clients = new Map<string, MongoClientWrapper>()
 
   private checkFrequency = 100
   private client: MongoClient

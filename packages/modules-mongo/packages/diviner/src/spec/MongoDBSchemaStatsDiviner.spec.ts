@@ -60,10 +60,10 @@ describe.runIf(hasMongoDBConfig())('MongoDBSchemaStatsDiviner', () => {
         expect(actual).toBeObject()
         expect(actual.schema).toBe(SchemaStatsDivinerSchema)
         expect(actual.count).toBeObject()
-        Object.entries(actual.count).map((entry) => {
+        for (const entry of Object.entries(actual.count)) {
           expect(entry[0]).toBeString()
           expect(entry[1]).toBeNumber()
-        })
+        }
       })
     })
     describe('with no address supplied in query', () => {

@@ -145,7 +145,7 @@ describe.runIf(hasMongoDBConfig())('Archivist', () => {
           const options: ArchivistNextOptions = { limit: expected.length, order: 'desc' }
           const results = await archivist.next(options)
           expect(results).toBeArrayOfSize(expected.length)
-          for (const [i, result] of results.reverse().entries()) {
+          for (const [i, result] of results.toReversed().entries()) {
             const payload = expected[i]
             expect(await PayloadBuilder.dataHash(result)).toEqual(await payload.dataHash())
             expect(await PayloadBuilder.dataHash(result)).toEqual(await PayloadBuilder.dataHash(payload.payload))

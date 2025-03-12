@@ -64,9 +64,9 @@ describe.runIf(hasMongoDBConfig())('MongoDBSchemaListDiviner', () => {
         expect(actual).toBeObject()
         expect(actual.schema).toBe(SchemaListDivinerSchema)
         expect(actual.schemas).toBeArray()
-        actual.schemas.map((schema) => {
+        for (const schema of actual.schemas) {
           expect(schema).toBeString()
-        })
+        }
       })
     })
     describe('with no address supplied in query', () => {
@@ -78,9 +78,9 @@ describe.runIf(hasMongoDBConfig())('MongoDBSchemaListDiviner', () => {
         expect(actual).toBeObject()
         expect(actual.schema).toBe(SchemaListDivinerSchema)
         expect(actual.schemas).toBeArray()
-        actual.schemas.map((schema) => {
+        for (const schema of actual.schemas) {
           expect(schema).toBeString()
-        })
+        }
       })
     })
   })

@@ -35,7 +35,7 @@ describe.skip(`/${divinerName}`, () => {
       for (let i = 0; i < 5; i++) {
         const account = await Account.random()
         accounts.push(account)
-        const payload = await getNewPayload()
+        const payload = getNewPayload()
         const [bw] = await new BoundWitnessBuilder().payload(payload).signer(account).build()
         await insertPayload(payload, account)
         await insertPayload(bw, account)

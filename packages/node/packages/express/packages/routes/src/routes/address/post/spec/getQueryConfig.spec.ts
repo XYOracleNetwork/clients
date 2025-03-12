@@ -63,12 +63,12 @@ describe('getQueryConfig', () => {
         // canAccess = true
       })
       it('generates config for single-signer requests', async () => {
-        const query = await (await new QueryBoundWitnessBuilder().query({ schema: ModuleStateQuerySchema })).signer(testAccount1).build()
+        const query = await new QueryBoundWitnessBuilder().query({ schema: ModuleStateQuerySchema }).signer(testAccount1).build()
         const config = await getQueryConfig(mod, req, query[0], query[1])
         expect(config).toMatchSnapshot()
       })
       it('generates config for multi-signer requests', async () => {
-        const query = await (await new QueryBoundWitnessBuilder().query({ schema: ModuleStateQuerySchema }))
+        const query = await new QueryBoundWitnessBuilder().query({ schema: ModuleStateQuerySchema })
           .signer(testAccount1)
           .signer(testAccount2)
           .build()

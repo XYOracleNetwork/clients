@@ -49,13 +49,11 @@ describe.runIf(hasMongoDBConfig())('MongoDBAddressSpaceDiviner', () => {
         const result = (await sut.divine([])).filter(isPayloadOfSchemaType<AddressPayload>(AddressSchema))
         expect(result).toBeArray()
         expect(result.length).toBeGreaterThan(0)
-        await Promise.all(
-          result.map((address) => {
-            const payload = PayloadWrapper.wrap<AddressPayload>(address)
-            expect(payload.schema()).toBe(AddressSchema)
-            expect(payload.payload.address).toBeString()
-          }),
-        )
+        for (const address of result) {
+          const payload = PayloadWrapper.wrap<AddressPayload>(address)
+          expect(payload.schema()).toBe(AddressSchema)
+          expect(payload.payload.address).toBeString()
+        }
       })
     })
   })

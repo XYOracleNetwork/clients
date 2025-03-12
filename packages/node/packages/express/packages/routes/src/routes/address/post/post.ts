@@ -30,8 +30,8 @@ export type PostAddressRequestBody = [QueryBoundWitness, undefined | Payload[]]
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
 const handler: RequestHandler<AddressPathParams, ModuleQueryResult | ModuleError, PostAddressRequestBody> = async (req, res, next) => {
-  const returnError = async (code: number, message = 'An error occurred', details?: JsonObject) => {
-    const error = await new ModuleErrorBuilder().message(message).details(details).build()
+  const returnError = (code: number, message = 'An error occurred', details?: JsonObject) => {
+    const error = new ModuleErrorBuilder().message(message).details(details).build()
     res.locals.rawResponse = false
     res.status(code).json(error)
     next()
@@ -41,15 +41,15 @@ const handler: RequestHandler<AddressPathParams, ModuleQueryResult | ModuleError
   const { node } = req.app
   const [bw, payloads] = Array.isArray(req.body) ? req.body : []
   if (!address) {
-    return await returnError(StatusCodes.BAD_REQUEST, 'Missing address')
+    return returnError(StatusCodes.BAD_REQUEST, 'Missing address')
   }
 
   if (!bw) {
-    return await returnError(StatusCodes.BAD_REQUEST, 'Missing boundwitness')
+    return returnError(StatusCodes.BAD_REQUEST, 'Missing boundwitness')
   }
 
   if (!isQueryBoundWitness(bw)) {
-    return await returnError(StatusCodes.BAD_REQUEST, 'Invalid query boundwitness')
+    return returnError(StatusCodes.BAD_REQUEST, 'Invalid query boundwitness')
   }
 
   let modules: Module[] = []
@@ -68,7 +68,7 @@ const handler: RequestHandler<AddressPathParams, ModuleQueryResult | ModuleError
         res.redirect(StatusCodes.TEMPORARY_REDIRECT, `/${moduleAddress}`)
         return
       } else {
-        return await returnError(StatusCodes.NOT_FOUND, 'Module not found', { address })
+        return returnError(StatusCodes.NOT_FOUND, 'Module not found', { address })
       }
     }
   }
@@ -84,11 +84,10 @@ const handler: RequestHandler<AddressPathParams, ModuleQueryResult | ModuleError
       // console.warn(`queryResult1: ${JSON.stringify(queryResult[1], null, 2)}`)
       res.json(queryResult)
     } catch (ex) {
-      return await returnError(StatusCodes.INTERNAL_SERVER_ERROR, 'Query Failed', { message: (ex as Error)?.message ?? 'Unknown Error' })
+      return returnError(StatusCodes.INTERNAL_SERVER_ERROR, 'Query Failed', { message: (ex as Error)?.message ?? 'Unknown Error' })
     }
-    return
   } else {
-    await returnError(StatusCodes.NOT_FOUND, 'Module not found', { address })
+    return returnError(StatusCodes.NOT_FOUND, 'Module not found', { address })
   }
 }
 

@@ -28,10 +28,7 @@ export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
     // TODO: Support multiple queries
     if (!query) return []
 
-    const {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      address, schema, limit, order, ...props
-    } = query
+    const { address, limit } = query
     // TODO: The address field seems to be meant for the address
     // of the intended handler but is being used here to filter
     // for the query. This should be fixed to use a separate field.
@@ -79,16 +76,15 @@ export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
 }
 
 const sanitizeAddress = (a: string | string[] | undefined): Address => {
-  return (
-    ([] as (string | undefined)[])
+  return assertEx(
+    (
+      ([] as (string | undefined)[])
       // eslint-disable-next-line unicorn/prefer-spread
-      .concat(a)
-      .filter(exists)
-      .map(x => x.toLowerCase())
-      .map(z => hexFromHexString(z, { prefix: false }))
-      .filter(exists)
-      // TODO: We're only taking the last address with this
-      // eslint-disable-next-line unicorn/no-array-reduce
-      .reduce(x => x)
+        .concat(a)
+        .filter(exists)
+        .map(x => x.toLowerCase())
+        .map(z => hexFromHexString(z, { prefix: false }))
+        .findLast(exists)
+    ), () => 'MongoDBAddressHistoryDiviner: Invalid address',
   )
 }

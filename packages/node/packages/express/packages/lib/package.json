@@ -9,32 +9,32 @@
   "exports": {
     ".": {
       "browser": {
-        "types": "./dist/browser/index.d.ts",
+        "types": "./dist/types/index.d.ts",
         "default": "./dist/browser/index.mjs"
       },
       "node": {
-        "types": "./dist/node/index.d.ts",
+        "types": "./dist/types/index.d.ts",
         "default": "./dist/node/index.mjs"
       },
-      "types": "./dist/node/index.d.ts",
+      "types": "./dist/types/index.d.ts",
       "default": "./dist/node/index.mjs"
     },
     "./package.json": "./package.json"
   },
   "module": "dist/node/index.mjs",
-  "types": "dist/node/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "dependencies": {
-    "@xylabs/assert": "^4.5.1",
+    "@xylabs/assert": "^4.6.0",
     "@xylabs/sdk-api-express-ecs": "^2.1.0",
-    "@xyo-network/module-model": "^3.9.23",
-    "@xyo-network/node-model": "^3.9.23",
+    "@xyo-network/module-model": "^3.9.37",
+    "@xyo-network/node-model": "^3.9.37",
     "@xyo-network/payload-mongodb": "workspace:^",
     "express": "^4.21.2"
   },
   "devDependencies": {
-    "@types/express": "4.17.21",
-    "@xylabs/ts-scripts-yarn3": "^5.0.39",
-    "@xylabs/tsconfig": "^5.0.39",
+    "@types/express": "^4.17.21",
+    "@xylabs/ts-scripts-yarn3": "^6.0.5",
+    "@xylabs/tsconfig": "^6.0.5",
     "typescript": "^5.8.2"
   },
   "publishConfig": {

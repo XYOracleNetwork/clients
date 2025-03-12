@@ -8,6 +8,6 @@ export type MongoDBModuleParamsV2 = ModuleParams<
   AnyConfigSchema<MongoDBModuleConfigV2>,
   {
     jobQueue?: JobQueue
-    payloadSdkConfig?: (BaseMongoSdkPrivateConfig & Partial<BaseMongoSdkPublicConfig>) | undefined
+    payloadSdkConfig?: (BaseMongoSdkPrivateConfig & Partial<BaseMongoSdkPublicConfig>)
   }
 >

@@ -13,6 +13,7 @@ import { addMiddleware } from './addMiddleware.js'
 export const getApp = (): Express => {
   const app = express()
   app.set('etag', false)
+  // eslint-disable-next-line sonarjs/cors
   app.use(cors())
   app.use(compression())
   addDependencies(app)

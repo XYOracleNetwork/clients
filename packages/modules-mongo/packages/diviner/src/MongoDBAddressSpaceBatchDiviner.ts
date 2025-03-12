@@ -89,7 +89,7 @@ export class MongoDBAddressSpaceBatchDiviner extends MongoDBDivinerBase {
       assertEx(archivistMod, () => `${moduleName}.Start: No archivists found`)
       const archivist = ArchivistWrapper.wrap(archivistMod, this.account)
       // Pre-mint response payload pointer for dereferencing results
-      const divinedAnswerPointer = await new PayloadBuilder<BoundWitnessPointerPayload>({ schema: BoundWitnessPointerSchema })
+      const divinedAnswerPointer = new PayloadBuilder<BoundWitnessPointerPayload>({ schema: BoundWitnessPointerSchema })
         .fields({ reference: [[{ address: (await this.getPaginationAccount()).address }], [{ schema: AddressSchema }]] })
         .build()
       // Ensure the pointer exists in the archivist (but don't insert it twice)

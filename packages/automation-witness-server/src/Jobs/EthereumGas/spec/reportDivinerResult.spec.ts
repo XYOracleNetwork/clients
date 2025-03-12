@@ -9,7 +9,7 @@ import { reportDivinerResult } from '../reportDivinerResult.js'
 
 describe('reportDivinerResult', () => {
   it('reports diviner result', async () => {
-    const payload = await new PayloadBuilder({ schema: 'network.xyo.test' }).build()
+    const payload = new PayloadBuilder({ schema: 'network.xyo.test' }).build()
     const result = await reportDivinerResult(payload)
     expect(result).toBeArray()
   })

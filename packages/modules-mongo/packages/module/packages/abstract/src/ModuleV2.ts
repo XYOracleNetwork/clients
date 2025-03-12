@@ -33,7 +33,7 @@ export const MongoDBModuleMixinV2 = <
 ) => {
   @staticImplements<MongoDBModuleStatic>()
   abstract class MongoModuleBase extends ModuleBase implements MongoDBModuleV2 {
-    static labels = MongoDBStorageClassLabels
+    static readonly labels = MongoDBStorageClassLabels
     _payloadSdk: BaseMongoSdk<PayloadWithMongoMeta> | undefined
 
     get jobQueue() {

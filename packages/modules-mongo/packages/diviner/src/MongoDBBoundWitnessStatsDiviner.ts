@@ -105,10 +105,8 @@ export class MongoDBBoundWitnessStatsDiviner
           : [query.address]
         : undefined
     const counts = addresses ? await Promise.all(addresses.map(address => this.divineAddress(address))) : [await this.divineAllAddresses()]
-    return await Promise.all(
-      counts.map(
-        async count => await new PayloadBuilder<BoundWitnessStatsPayload>({ schema: BoundWitnessStatsDivinerSchema }).fields({ count }).build(),
-      ),
+    return counts.map(
+      count => new PayloadBuilder<BoundWitnessStatsPayload>({ schema: BoundWitnessStatsDivinerSchema }).fields({ count }).build(),
     )
   }
 

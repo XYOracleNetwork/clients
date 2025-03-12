@@ -3,7 +3,7 @@ import type { Payload } from '@xyo-network/payload-model'
 
 import { schema } from './schema.js'
 
-export const knownPayloadPromise = new PayloadBuilder<Payload<Record<string, unknown>>>({ schema })
+export const knownPayload = new PayloadBuilder<Payload<Record<string, unknown>>>({ schema })
   .fields({
     balance: 10_000,
     daysOld: 1,
@@ -15,7 +15,6 @@ export const knownPayloadPromise = new PayloadBuilder<Payload<Record<string, unk
   .build()
 
 export const knownPayloadHash = async () => {
-  const knownPayload = await knownPayloadPromise
   const result = await PayloadBuilder.dataHash(knownPayload)
   return result
 }

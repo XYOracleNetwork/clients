@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/assertions-in-tests */
 import { Account } from '@xyo-network/account'
 import { QueryBoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import type { BoundWitness, QueryBoundWitness } from '@xyo-network/boundwitness-model'
@@ -31,8 +32,8 @@ describe('Node API', () => {
     })
     describe('POST', () => {
       it('issues query to Node', async () => {
-        const queryPayload = await new PayloadBuilder({ schema: ModuleStateQuerySchema }).build()
-        const query = await (await new QueryBoundWitnessBuilder().signer(await account).query(queryPayload)).build()
+        const queryPayload = new PayloadBuilder({ schema: ModuleStateQuerySchema }).build()
+        const query = await new QueryBoundWitnessBuilder().signer(await account).query(queryPayload).build()
         const send = [query[0], [...query[1]]]
         const response = await client.post(path, send)
         const data = response.data.data
@@ -81,8 +82,8 @@ describe('Node API', () => {
         return [bw, payloads]
       }
       it('issues query to module at address', async () => {
-        const queryPayload = await new PayloadBuilder({ schema: ModuleStateQuerySchema }).build()
-        const query = await (await new QueryBoundWitnessBuilder().signer(await account).query(queryPayload)).build()
+        const queryPayload = new PayloadBuilder({ schema: ModuleStateQuerySchema }).build()
+        const query = await new QueryBoundWitnessBuilder().signer(await account).query(queryPayload).build()
         const data = [query[0], [...query[1]]] as [QueryBoundWitness, Payload[]]
         await postModuleQuery(data, address)
       })

@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-unused-collection */
 import type { ArchivistInstance } from '@xyo-network/archivist-model'
 import { ArchivistGetQuerySchema, ArchivistInsertQuerySchema } from '@xyo-network/archivist-model'
 import { BoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'
@@ -34,11 +35,11 @@ describe(`/${moduleName}`, () => {
   beforeAll(async () => {
     const account = await unitTestSigningAccount()
     archivist = await getArchivistByName()
-    const payloadWrapperA = PayloadWrapper.wrap(await getNewPayload())
-    const payloadWrapperB = PayloadWrapper.wrap(await getNewPayload())
-    const payloadWrapperC = PayloadWrapper.wrap(await getNewPayload())
-    const payloadWrapperD = PayloadWrapper.wrap(await getNewPayload())
-    const payloadWrapperE = PayloadWrapper.wrap(await getNewPayload())
+    const payloadWrapperA = PayloadWrapper.wrap(getNewPayload())
+    const payloadWrapperB = PayloadWrapper.wrap(getNewPayload())
+    const payloadWrapperC = PayloadWrapper.wrap(getNewPayload())
+    const payloadWrapperD = PayloadWrapper.wrap(getNewPayload())
+    const payloadWrapperE = PayloadWrapper.wrap(getNewPayload())
     payloadWrappers.push(payloadWrapperA, payloadWrapperB, payloadWrapperC, payloadWrapperD, payloadWrapperE)
     const boundWitnessWrapperA = BoundWitnessWrapper.parse((await getNewBoundWitness([account], [payloadWrapperA.payload]))[0])
     const boundWitnessWrapperB = BoundWitnessWrapper.parse((await getNewBoundWitness([account], [payloadWrapperB.payload]))[0])

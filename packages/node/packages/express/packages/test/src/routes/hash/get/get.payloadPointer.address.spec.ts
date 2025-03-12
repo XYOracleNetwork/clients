@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/assertions-in-tests */
 import type { AccountInstance } from '@xyo-network/account'
 import { Account } from '@xyo-network/account'
 import { PayloadBuilder } from '@xyo-network/payload-builder'

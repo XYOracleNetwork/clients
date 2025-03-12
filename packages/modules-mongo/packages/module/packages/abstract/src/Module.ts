@@ -33,7 +33,7 @@ export const MongoDBModuleMixin = <
 ) => {
   @staticImplements<MongoDBModuleStatic>()
   abstract class MongoModuleBase extends ModuleBase implements MongoDBModule {
-    static labels = MongoDBStorageClassLabels
+    static readonly labels = MongoDBStorageClassLabels
     _boundWitnessSdk: BaseMongoSdk<BoundWitnessWithMongoMeta> | undefined
     _payloadSdk: BaseMongoSdk<PayloadWithMongoMeta> | undefined
 

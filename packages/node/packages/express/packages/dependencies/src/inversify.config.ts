@@ -13,7 +13,7 @@ import { Container } from 'inversify'
 
 import { configureMemoryNode } from './configureMemoryNode.js'
 import { addMemoryModules } from './Module/index.js'
-import { tryGetServiceName } from './Util/index.js'
+// import { tryGetServiceName } from './Util/index.js'
 config()
 
 export const container = new Container({
@@ -41,12 +41,12 @@ export const configureDependencies = async (node?: NodeInstance) => {
   container.bind<string>(TYPES.AccountMnemonic).toConstantValue(mnemonic)
   container.bind<ModuleFactoryLocator>(TYPES.ModuleFactoryLocator).toConstantValue(new ModuleFactoryLocator())
 
-  container.bind<Logger>(TYPES.Logger).toDynamicValue((context: interfaces.Context) => {
-    const service = tryGetServiceName(context)
+  container.bind<Logger>(TYPES.Logger).toDynamicValue((_context: interfaces.Context) => {
+    // const service = tryGetServiceName(context)
     // TODO: Configure logger with service name
     // const defaultMeta = { service }
     // const config = { defaultMeta }
-    return service ? logger : logger
+    return logger
   })
   addMemoryModules(container)
   if (canAddMongoModules()) await addMongoModules(container)

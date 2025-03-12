@@ -6,12 +6,12 @@ import type { Job } from '@xyo-network/shared'
 const options = { lockLifetime: 10_000 }
 
 export const defineJobs = (jobQueue: JobQueue, jobs: Job[]) => {
-  jobs.map((job) => {
+  for (const job of jobs) {
     const { name, task } = job
     jobQueue.define(name, options, task)
     if (job.onComplete) jobQueue.on(`complete:${name}`, job.onComplete)
     if (job.onFail) jobQueue.on(`fail:${name}`, job.onFail)
     if (job.onStart) jobQueue.on(`start:${name}`, job.onStart)
     if (job.onSuccess) jobQueue.on(`success:${name}`, job.onSuccess)
-  })
+  }
 }

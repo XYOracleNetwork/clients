@@ -74,6 +74,7 @@ export class MongoDBArchivist extends MongoDBArchivistBase {
 
     const bws = (await Promise.all(remainingHashes.map(_hash => this.boundWitnesses.findOne({ _hash })))).filter(exists)
     const bwsHashes = new Set(bws.map(payload => payload._hash))
+    // eslint-disable-next-line sonarjs/no-dead-store
     remainingHashes = remainingHashes.filter(hash => !bwsHashes.has(hash))
 
     const foundPayloads = [...dataPayloads, ...dataBws, ...payloads, ...bws] as PayloadWithMongoMeta<Payload>[]

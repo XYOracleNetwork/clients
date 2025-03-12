@@ -127,7 +127,7 @@ export class MongoDBSchemaStatsDiviner extends MongoDBDivinerBase implements Job
           ? query.address
           : [query.address]
         : undefined
-    const counts = addresses ? await Promise.all(addresses.map(address => this.divineAddress(address))) : [await this.divineAllAddresses()]
+    const counts = addresses ? await Promise.all(addresses.map(address => this.divineAddress(address))) : [this.divineAllAddresses()]
     return await Promise.all(
       counts.map(count => new PayloadBuilder<SchemaStatsPayload>({ schema: SchemaStatsDivinerSchema }).fields({ count }).build()),
     )
@@ -200,9 +200,9 @@ export class MongoDBSchemaStatsDiviner extends MongoDBDivinerBase implements Job
       })
       if (result.length === 0) break
       // Add current counts to total
-      result.map((schema) => {
+      for (const schema of result) {
         totals[schema._id] = totals[schema._id] || 0 + schema.count
-      })
+      }
     }
     await this.storeDivinedResult(address, totals)
     return totals

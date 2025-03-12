@@ -23,7 +23,6 @@ export const validByType = async (payloads: WithStorageMeta<Payload>[] = []) => 
           results[1].push(payload)
         }
       }
-      return
     }),
   )
   return results

@@ -22,21 +22,21 @@
   "exports": {
     ".": {
       "browser": {
-        "types": "./dist/browser/index.d.ts",
+        "types": "./dist/types/index.d.ts",
         "default": "./dist/browser/index.mjs"
       },
       "node": {
-        "types": "./dist/node/index.d.ts",
+        "types": "./dist/types/index.d.ts",
         "default": "./dist/node/index.mjs"
       },
-      "types": "./dist/node/index.d.ts",
+      "types": "./dist/types/index.d.ts",
       "default": "./dist/node/index.mjs"
     },
     "./package.json": "./package.json",
     "./README.md": "./README.md"
   },
   "module": "./dist/node/index.mjs",
-  "types": "./dist/node/index.d.ts",
+  "types": "./dist/types/index.d.ts",
   "workspaces": [
     "packages/**/*"
   ],
@@ -76,27 +76,27 @@
     "@xyo-network/express-node": "workspace:^"
   },
   "devDependencies": {
-    "@babel/core": "^7.26.9",
+    "@babel/core": "^7.26.10",
     "@babel/preset-env": "^7.26.9",
     "@babel/preset-typescript": "^7.26.0",
     "@ethersproject/address": "^5.8.0",
     "@ethersproject/bignumber": "^5.8.0",
     "@types/supertest": "^6.0.2",
-    "@typescript-eslint/eslint-plugin": "^8.25.0",
-    "@typescript-eslint/parser": "^8.25.0",
-    "@xylabs/eslint-config-flat": "^5.0.39",
-    "@xylabs/object": "^4.5.1",
-    "@xylabs/ts-scripts-yarn3": "^5.0.39",
-    "@xylabs/tsconfig": "^5.0.39",
-    "@xylabs/vitest-extended": "^4.5.1",
-    "@xyo-network/account": "^3.9.23",
-    "@xyo-network/node-memory": "^3.9.23",
-    "@xyo-network/payload-builder": "^3.9.23",
-    "@xyo-network/payload-validator": "^3.9.23",
-    "@xyo-network/schema-name-validator": "^3.9.23",
+    "@typescript-eslint/eslint-plugin": "^8.26.1",
+    "@typescript-eslint/parser": "^8.26.1",
+    "@xylabs/eslint-config-flat": "^6.0.5",
+    "@xylabs/object": "^4.6.0",
+    "@xylabs/ts-scripts-yarn3": "^6.0.5",
+    "@xylabs/tsconfig": "^6.0.5",
+    "@xylabs/vitest-extended": "^4.6.0",
+    "@xyo-network/account": "^3.9.37",
+    "@xyo-network/node-memory": "^3.9.37",
+    "@xyo-network/payload-builder": "^3.9.37",
+    "@xyo-network/payload-validator": "^3.9.37",
+    "@xyo-network/schema-name-validator": "^3.9.37",
     "dotenv": "^16.4.7",
-    "eslint": "^9.21.0",
-    "eslint-import-resolver-typescript": "^3.8.3",
+    "eslint": "^9.22.0",
+    "eslint-import-resolver-typescript": "^3.8.5",
     "eslint-plugin-sonarjs": "^3.0.2",
     "jsbi": "^4.3.0",
     "mongodb-memory-server": "^10.1.4",
@@ -105,7 +105,7 @@
     "supertest": "^7.0.0",
     "typedoc": "^0.27.9",
     "typescript": "^5.8.2",
-    "vitest": "^3.0.7"
+    "vitest": "^3.0.8"
   },
   "packageManager": "yarn@4.6.0",
   "volta": {

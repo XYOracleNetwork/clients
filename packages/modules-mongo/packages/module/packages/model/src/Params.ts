@@ -7,8 +7,8 @@ import type { MongoDBModuleConfig } from './Config.js'
 export type MongoDBModuleParams = ModuleParams<
   AnyConfigSchema<MongoDBModuleConfig>,
   {
-    boundWitnessSdkConfig?: (BaseMongoSdkPrivateConfig & Partial<BaseMongoSdkPublicConfig>) | undefined
+    boundWitnessSdkConfig?: (BaseMongoSdkPrivateConfig & Partial<BaseMongoSdkPublicConfig>)
     jobQueue?: JobQueue
-    payloadSdkConfig?: (BaseMongoSdkPrivateConfig & Partial<BaseMongoSdkPublicConfig>) | undefined
+    payloadSdkConfig?: (BaseMongoSdkPrivateConfig & Partial<BaseMongoSdkPublicConfig>)
   }
 >

@@ -28,32 +28,32 @@
   "exports": {
     ".": {
       "browser": {
-        "types": "./dist/browser/index.d.ts",
+        "types": "./dist/types/index.d.ts",
         "default": "./dist/browser/index.mjs"
       },
       "node": {
-        "types": "./dist/node/index.d.ts",
+        "types": "./dist/types/index.d.ts",
         "default": "./dist/node/index.mjs"
       },
-      "types": "./dist/node/index.d.ts",
+      "types": "./dist/types/index.d.ts",
       "default": "./dist/node/index.mjs"
     },
     "./package.json": "./package.json"
   },
   "module": "dist/node/index.mjs",
-  "types": "dist/node/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "dependencies": {
-    "@xylabs/assert": "^4.5.1",
-    "@xylabs/delay": "^4.5.1",
-    "@xylabs/forget": "^4.5.1",
+    "@xylabs/assert": "^4.6.0",
+    "@xylabs/delay": "^4.6.0",
+    "@xylabs/forget": "^4.6.0",
     "async-mutex": "^0.5.0",
-    "mongodb": "~6.13"
+    "mongodb": "~6.13.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^5.0.39",
-    "@xylabs/tsconfig": "^5.0.39",
+    "@xylabs/ts-scripts-yarn3": "^6.0.5",
+    "@xylabs/tsconfig": "^6.0.5",
     "typescript": "^5.8.2",
-    "vitest": "^3.0.7"
+    "vitest": "^3.0.8"
   },
   "publishConfig": {
     "access": "public"

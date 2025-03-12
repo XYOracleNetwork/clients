@@ -7,5 +7,5 @@ import type { DefineOptions } from 'agenda'
 const options: DefineOptions = { lockLifetime: 10_000 }
 
 export const defineJobs = (jobQueue: JobQueue, jobs: Job[]) => {
-  jobs.map(job => jobQueue.define(job.name, options, job.task))
+  for (const job of jobs) jobQueue.define(job.name, options, job.task)
 }
