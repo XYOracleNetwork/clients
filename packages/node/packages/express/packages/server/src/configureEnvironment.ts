@@ -1,4 +1,4 @@
-import { getEnvFromAws } from '@xylabs/sdk-api-express-ecs'
+import { getEnvFromAws } from '@xylabs/express'
 
 export const configureEnvironment = async () => {
   // If an AWS ARN was supplied for Secrets Manager

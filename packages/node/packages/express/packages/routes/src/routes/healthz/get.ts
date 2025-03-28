@@ -1,4 +1,4 @@
-import type { NoReqParams } from '@xylabs/sdk-api-express-ecs'
+import type { NoReqParams } from '@xylabs/express'
 import { setRawResponseFormat } from '@xyo-network/express-node-middleware'
 import type { RequestHandler } from 'express'
 import { ReasonPhrases } from 'http-status-codes'

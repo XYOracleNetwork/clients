@@ -1,6 +1,6 @@
 import type { Hash } from '@xylabs/hex'
-import type { NoReqBody, NoReqQuery } from '@xylabs/sdk-api-express-ecs'
-import { asyncHandler } from '@xylabs/sdk-api-express-ecs'
+import type { NoReqBody, NoReqQuery } from '@xylabs/express'
+import { asyncHandler } from '@xylabs/express'
 import { setRawResponseFormat } from '@xyo-network/express-node-middleware'
 import type { Payload } from '@xyo-network/payload-model'
 import type { RequestHandler } from 'express'

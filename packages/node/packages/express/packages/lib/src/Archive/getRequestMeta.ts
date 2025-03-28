@@ -1,4 +1,4 @@
-import { getHttpHeader } from '@xylabs/sdk-api-express-ecs'
+import { getHttpHeader } from '@xylabs/express'
 import type { BoundWitnessMongoMeta, PayloadMongoMeta } from '@xyo-network/payload-mongodb'
 import type { Request } from 'express'
 

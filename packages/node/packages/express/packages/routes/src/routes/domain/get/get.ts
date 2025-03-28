@@ -1,4 +1,4 @@
-import { asyncHandler } from '@xylabs/sdk-api-express-ecs'
+import { asyncHandler } from '@xylabs/express'
 import type { DomainPayload } from '@xyo-network/domain-payload-plugin'
 import { DomainPayloadWrapper } from '@xyo-network/domain-payload-plugin'
 import type { RequestHandler } from 'express'

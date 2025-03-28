@@ -1,5 +1,5 @@
 import { assertEx } from '@xylabs/assert'
-import { getDefaultLogger } from '@xylabs/sdk-api-express-ecs'
+import { getDefaultLogger } from '@xylabs/express'
 import { EthereumGasSchema } from '@xyo-network/gas-price-payload-plugin'
 import type { Job } from '@xyo-network/shared'
 

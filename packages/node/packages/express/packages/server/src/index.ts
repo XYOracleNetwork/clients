@@ -1,4 +1,4 @@
-import type { Logger } from '@xylabs/sdk-api-express-ecs'
+import type { Logger } from '@xylabs/express'
 import { configureDependencies, container } from '@xyo-network/express-node-dependencies'
 import { configureDoc } from '@xyo-network/express-node-middleware'
 import { addRoutes } from '@xyo-network/express-node-routes'

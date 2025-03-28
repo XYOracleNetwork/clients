@@ -1,4 +1,4 @@
-import { getEnvFromAws } from '@xylabs/sdk-api-express-ecs'
+import { getEnvFromAws } from '@xylabs/express'
 
 import type { ConfigurationFunction } from '../../../model/index.js'
 

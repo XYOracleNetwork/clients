@@ -1,4 +1,4 @@
-import { tryParseInt } from '@xylabs/sdk-api-express-ecs'
+import { tryParseInt } from '@xylabs/express'
 import { getServer } from '@xyo-network/express-node-server'
 import type { MemoryNode } from '@xyo-network/node-memory'
 

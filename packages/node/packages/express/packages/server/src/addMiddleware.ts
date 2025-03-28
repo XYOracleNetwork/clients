@@ -6,7 +6,7 @@ import {
   getJsonBodyParserOptions,
   responseProfiler,
   useRequestCounters,
-} from '@xylabs/sdk-api-express-ecs'
+} from '@xylabs/express'
 import { standardResponses } from '@xyo-network/express-node-middleware'
 import type { Express } from 'express'
 

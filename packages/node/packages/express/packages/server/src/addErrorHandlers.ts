@@ -1,4 +1,4 @@
-import { standardErrors } from '@xylabs/sdk-api-express-ecs'
+import { standardErrors } from '@xylabs/express'
 import { getLoggingErrorHandler } from '@xyo-network/express-node-middleware'
 import type { Express } from 'express'
 

@@ -1,4 +1,4 @@
-import type { NoResBody } from '@xylabs/sdk-api-express-ecs'
+import type { NoResBody } from '@xylabs/express'
 import type {
   Request, RequestHandler, Response,
 } from 'express'

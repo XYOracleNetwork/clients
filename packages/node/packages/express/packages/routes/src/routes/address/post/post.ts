@@ -1,7 +1,7 @@
 import { assertEx } from '@xylabs/assert'
 import { type Address, asAddress } from '@xylabs/hex'
 import type { JsonObject } from '@xylabs/object'
-import { asyncHandler } from '@xylabs/sdk-api-express-ecs'
+import { asyncHandler } from '@xylabs/express'
 import { isQueryBoundWitness, type QueryBoundWitness } from '@xyo-network/boundwitness-model'
 import { ModuleErrorBuilder } from '@xyo-network/module-abstract'
 import type { Module, ModuleQueryResult } from '@xyo-network/module-model'

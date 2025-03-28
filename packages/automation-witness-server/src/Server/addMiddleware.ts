@@ -5,7 +5,7 @@ import {
   jsonBodyParser,
   responseProfiler,
   useRequestCounters,
-} from '@xylabs/sdk-api-express-ecs'
+} from '@xylabs/express'
 import type { Express } from 'express'
 
 export const addMiddleware = (app: Express) => {
