@@ -23,8 +23,8 @@
   },
   "module": "dist/node/index.mjs",
   "dependencies": {
-    "@xylabs/hex": "^4.7.13",
-    "@xylabs/object": "^4.7.13",
+    "@xylabs/hex": "^4.7.15",
+    "@xylabs/object": "^4.7.15",
     "@xyo-network/archivist-model": "^3.10.6",
     "@xyo-network/boundwitness-model": "^3.10.6",
     "@xyo-network/diviner-payload-model": "^3.10.6",
@@ -35,8 +35,8 @@
     "ajv": "^8.17.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.1.13",
-    "@xylabs/tsconfig": "^6.1.13",
+    "@xylabs/ts-scripts-yarn3": "^6.2.1",
+    "@xylabs/tsconfig": "^6.2.1",
     "typescript": "^5.8.2"
   },
   "publishConfig": {

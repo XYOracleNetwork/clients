@@ -24,9 +24,9 @@
   "module": "dist/node/index.mjs",
   "types": "dist/types/index.d.ts",
   "dependencies": {
-    "@xylabs/assert": "^4.7.13",
-    "@xylabs/express": "^4.7.13",
-    "@xylabs/logger": "^4.7.13",
+    "@xylabs/assert": "^4.7.15",
+    "@xylabs/express": "^4.7.15",
+    "@xylabs/logger": "^4.7.15",
     "@xyo-network/express-node-dependencies": "workspace:^",
     "@xyo-network/express-node-middleware": "workspace:^",
     "@xyo-network/express-node-routes": "workspace:^",
@@ -44,8 +44,8 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/nconf": "^0.10.7",
-    "@xylabs/ts-scripts-yarn3": "^6.1.13",
-    "@xylabs/tsconfig": "^6.1.13",
+    "@xylabs/ts-scripts-yarn3": "^6.2.1",
+    "@xylabs/tsconfig": "^6.2.1",
     "typescript": "^5.8.2"
   },
   "publishConfig": {

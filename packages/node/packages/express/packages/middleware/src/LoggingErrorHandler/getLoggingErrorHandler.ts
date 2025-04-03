@@ -1,5 +1,5 @@
-import type { Logger } from '@xylabs/logger'
 import type { ExpressError } from '@xylabs/express'
+import type { Logger } from '@xylabs/logger'
 import type {
   ErrorRequestHandler, NextFunction, Request, Response,
 } from 'express'

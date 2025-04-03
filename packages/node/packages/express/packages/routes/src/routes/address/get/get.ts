@@ -1,6 +1,6 @@
 import { assertEx } from '@xylabs/assert'
-import { asAddress } from '@xylabs/hex'
 import { asyncHandler } from '@xylabs/express'
+import { asAddress } from '@xylabs/hex'
 import { isModuleIdentifierPart } from '@xyo-network/module-model'
 import { trimAddressPrefix } from '@xyo-network/node-core-lib'
 import type { Payload } from '@xyo-network/payload-model'
