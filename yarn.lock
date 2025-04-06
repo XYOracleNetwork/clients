@@ -6662,6 +6662,7 @@ __metadata:
     "@xylabs/delay": "npm:^4.7.15"
     "@xylabs/express": "npm:^4.7.15"
     "@xylabs/forget": "npm:^4.7.15"
+    "@xylabs/hex": "npm:^4.7.15"
     "@xylabs/object": "npm:^4.7.15"
     "@xylabs/ts-scripts-yarn3": "npm:^6.2.1"
     "@xylabs/tsconfig": "npm:^6.2.1"

@@ -1,3 +1,4 @@
+import type { Address } from '@xylabs/hex'
 import { HDWallet } from '@xyo-network/account'
 import type { ArchivistInstance } from '@xyo-network/archivist-model'
 import { asArchivistInstance } from '@xyo-network/archivist-model'
@@ -12,7 +13,7 @@ import {
   it,
 } from 'vitest'
 
-type DappInfo = [schema: string, address: string]
+type DappInfo = [schema: string, address: Address]
 
 const beta = true
 
