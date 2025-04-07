@@ -1,5 +1,5 @@
 import type { NoReqParams } from '@xylabs/express'
-import { setRawResponseFormat } from '@xyo-network/express-node-middleware'
+import { setRawResponseFormat } from '@xylabs/express'
 import type { RequestHandler } from 'express'
 import { ReasonPhrases } from 'http-status-codes'
 

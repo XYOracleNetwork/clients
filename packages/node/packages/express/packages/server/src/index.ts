@@ -1,6 +1,6 @@
 import type { Logger } from '@xylabs/express'
+import { configureDoc } from '@xylabs/express'
 import { configureDependencies, container } from '@xyo-network/express-node-dependencies'
-import { configureDoc } from '@xyo-network/express-node-middleware'
 import { addRoutes } from '@xyo-network/express-node-routes'
 import { TYPES } from '@xyo-network/node-core-types'
 import { MemoryNode } from '@xyo-network/node-memory'

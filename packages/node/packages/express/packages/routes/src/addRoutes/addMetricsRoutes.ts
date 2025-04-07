@@ -1,4 +1,4 @@
-import { isDevelopment } from '@xyo-network/express-node-middleware'
+import { isDevelopment } from '@xylabs/express'
 import type { Express } from 'express'
 
 import { getHealthz, getMetrics } from '../routes/index.js'

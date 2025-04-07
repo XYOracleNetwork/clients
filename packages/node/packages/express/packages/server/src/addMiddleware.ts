@@ -5,9 +5,9 @@ import {
   getJsonBodyParser,
   getJsonBodyParserOptions,
   responseProfiler,
+  standardResponses,
   useRequestCounters,
 } from '@xylabs/express'
-import { standardResponses } from '@xyo-network/express-node-middleware'
 import type { Express } from 'express'
 
 export const addMiddleware = (app: Express) => {

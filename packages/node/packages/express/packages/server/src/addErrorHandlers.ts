@@ -1,5 +1,4 @@
-import { standardErrors } from '@xylabs/express'
-import { getLoggingErrorHandler } from '@xyo-network/express-node-middleware'
+import { getLoggingErrorHandler, standardErrors } from '@xylabs/express'
 import type { Express } from 'express'
 
 export const addErrorHandlers = (app: Express) => {
