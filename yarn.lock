@@ -6563,6 +6563,7 @@ __metadata:
     "@xyo-network/node-core-lib": "workspace:^"
     "@xyo-network/node-core-model": "workspace:^"
     "@xyo-network/node-core-types": "workspace:^"
+    "@xyo-network/node-model": "npm:^3.10.7"
     "@xyo-network/payload-model": "npm:^3.10.7"
     "@xyo-network/payload-wrapper": "npm:^3.10.7"
     "@xyo-network/prometheus-node-plugin": "npm:^3.4.6"
