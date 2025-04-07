@@ -55,8 +55,11 @@ describe('Generation of automation payload pointers', () => {
     const schemaRule: PayloadSchemaRule = { schema }
     const fields = { reference: [[addressRule], [schemaRule]], schema: PayloadPointerSchema }
     const payload = new PayloadBuilder<PayloadPointerPayload>({ schema: PayloadPointerSchema }).fields(fields).build()
-    await archivist.insert([payload])
     const hash = await PayloadBuilder.dataHash(payload)
+    const [existing] = await archivist.get([hash])
+    if (!existing) {
+      await archivist.insert([payload])
+    }
     const url = `${nodeUrl}/${hash}`
     console.log(`Dapp: ${schema} Pointer: ${url}`)
   })
