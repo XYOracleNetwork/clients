@@ -1,6 +1,5 @@
 import type { Logger } from '@xylabs/express'
 import { configureDependencies, container } from '@xyo-network/express-node-dependencies'
-import { configureDoc } from '@xyo-network/express-node-middleware'
 import { addRoutes } from '@xyo-network/express-node-routes'
 import { TYPES } from '@xyo-network/node-core-types'
 import { MemoryNode } from '@xyo-network/node-memory'
@@ -57,8 +56,6 @@ export const getServer = async (port = 80, node?: MemoryNode) => {
   const app = await getApp(node)
   await startJobQueue()
   const logger = container.get(TYPES.Logger) as Logger
-  const host = process.env.PUBLIC_ORIGIN || `http://${hostname}:${port}`
-  await configureDoc(app, { host })
   const server = app.listen(port, hostname, () => logger.log(`Server listening at http://${hostname}:${port}`))
   server.setTimeout(20_000)
   return server

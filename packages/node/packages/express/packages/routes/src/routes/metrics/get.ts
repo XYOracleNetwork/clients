@@ -1,7 +1,6 @@
 import { assertEx } from '@xylabs/assert'
 import type { NoReqParams } from '@xylabs/express'
-import { asyncHandler } from '@xylabs/express'
-import { setRawResponseFormat } from '@xyo-network/express-node-middleware'
+import { asyncHandler, setRawResponseFormat } from '@xylabs/express'
 import { TYPES } from '@xyo-network/node-core-types'
 import type { PrometheusNodeWitness } from '@xyo-network/prometheus-node-plugin'
 import type { RequestHandler } from 'express'

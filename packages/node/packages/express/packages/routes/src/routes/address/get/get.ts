@@ -22,8 +22,8 @@ const handler: RequestHandler<AddressPathParams, Payload[]> = async (req, res, n
     }
   }
   if (isModuleIdentifierPart(rawAddress)) {
-    const normalizedAddress = trimAddressPrefix(rawAddress).toLowerCase()
-    const mod = await node.resolve(normalizedAddress, { direction: 'down' })
+    const moduleIdentifier = trimAddressPrefix(rawAddress)
+    const mod = await node.resolve(moduleIdentifier, { direction: 'down' })
     if (mod) {
       const moduleAddress = assertEx(mod?.address, () => 'Error redirecting to module by address')
       res.redirect(StatusCodes.MOVED_TEMPORARILY, `/${moduleAddress}`)
