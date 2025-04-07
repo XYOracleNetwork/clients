@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/package.json",
   "name": "@xyo-network/automation-witness-server",
-  "version": "3.4.3",
+  "version": "3.4.4",
   "description": "XYO Automation Witness",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
     "@xyo-network/manifest": "^3.10.7",
     "@xyo-network/module-factory-locator": "^3.10.7",
     "@xyo-network/module-model": "^3.10.7",
-    "@xyo-network/node-core-model": "^3.4.3",
+    "@xyo-network/node-core-model": "^3.4.4",
     "@xyo-network/node-memory": "^3.10.7",
     "@xyo-network/payload-model": "^3.10.7",
     "@xyo-network/sentinel-memory": "^3.10.7",
