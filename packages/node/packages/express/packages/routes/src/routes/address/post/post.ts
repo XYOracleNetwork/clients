@@ -40,7 +40,7 @@ const handler: RequestHandler<AddressPathParams, ModuleQueryResult | ModuleError
   }
 
   let modules: Module[] = []
-  const normalizedAddress = trimAddressPrefix(address).toLowerCase() as Address
+  const normalizedAddress = trimAddressPrefix(address) as Address
   if (node.address === normalizedAddress) modules = [node]
   else {
     const typedAddress = asAddress(address)
