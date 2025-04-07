@@ -15,19 +15,6 @@ import { getQueryConfig } from './getQueryConfig.js'
 
 export type PostAddressRequestBody = [QueryBoundWitness, undefined | Payload[]]
 
-/* const dumpModulesDown = async (module: ModuleInstance, maxDepth = 10) => {
-  const padding = Array(10 - maxDepth)
-    .fill('--')
-    .join('')
-  console.log(padding, module.address, `[${module.id}]`)
-  const children = (await module.resolve('*', { direction: 'down', maxDepth: 3, visibility: 'public' })).filter(
-    (mod) => mod.address !== module.address,
-  )
-  for (const child of children) {
-    await dumpModulesDown(child, maxDepth - 1)
-  }
-} */
-
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
 const handler: RequestHandler<AddressPathParams, ModuleQueryResult | ModuleError, PostAddressRequestBody> = async (req, res, next) => {
   const returnError = (code: number, message = 'An error occurred', details?: JsonObject) => {
@@ -64,7 +51,6 @@ const handler: RequestHandler<AddressPathParams, ModuleQueryResult | ModuleError
       const byName = await node.resolve(address, { direction: 'down' })
       if (byName) {
         const moduleAddress = assertEx(byName?.address, () => 'Error redirecting to module by address')
-        // console.log(`address post[${node.address}]: ${address} [redirect]`)
         res.redirect(StatusCodes.TEMPORARY_REDIRECT, `/${moduleAddress}`)
         return
       } else {
@@ -76,12 +62,8 @@ const handler: RequestHandler<AddressPathParams, ModuleQueryResult | ModuleError
   if (modules.length > 0) {
     const mod = modules[0]
     const queryConfig = await getQueryConfig(mod, req, bw, payloads)
-    // console.warn(`bw: ${JSON.stringify(bw, null, 2)}`)
     try {
       const queryResult = await mod.query(bw, payloads, queryConfig)
-      // console.log(`address post[${node.address}]: ${address} [${queryResult.length}]`)
-      // console.warn(`queryResult0: ${JSON.stringify(queryResult[0], null, 2)}`)
-      // console.warn(`queryResult1: ${JSON.stringify(queryResult[1], null, 2)}`)
       res.json(queryResult)
     } catch (ex) {
       return returnError(StatusCodes.INTERNAL_SERVER_ERROR, 'Query Failed', { message: (ex as Error)?.message ?? 'Unknown Error' })
