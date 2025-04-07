@@ -38,15 +38,15 @@
   "types": "dist/types/index.d.ts",
   "dependencies": {
     "@xylabs/object": "^4.7.15",
-    "@xyo-network/boundwitness-model": "^3.10.6",
-    "@xyo-network/payload-builder": "^3.10.6",
-    "@xyo-network/payload-model": "^3.10.6"
+    "@xyo-network/boundwitness-model": "^3.10.7",
+    "@xyo-network/payload-builder": "^3.10.7",
+    "@xyo-network/payload-model": "^3.10.7"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^6.2.1",
     "@xylabs/tsconfig": "^6.2.1",
     "fake-indexeddb": "^6.0.0",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.3"
   },
   "publishConfig": {
     "access": "public"
