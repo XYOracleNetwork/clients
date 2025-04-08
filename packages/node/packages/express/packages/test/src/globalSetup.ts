@@ -1,6 +1,6 @@
 import { config } from 'dotenv'
 config()
-import { disableGloballyUnique } from '@xylabs/object'
+import { disableGloballyUnique } from '@xylabs/base'
 import { HDWallet } from '@xyo-network/account'
 import { getApp } from '@xyo-network/express-node-server'
 import { canAddMongoModules } from '@xyo-network/node-core-modules-mongo'

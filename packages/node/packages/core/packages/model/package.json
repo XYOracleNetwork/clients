@@ -23,15 +23,15 @@
   },
   "module": "dist/node/index.mjs",
   "dependencies": {
-    "@xylabs/hex": "^4.7.15",
-    "@xylabs/object": "^4.7.15",
-    "@xyo-network/archivist-model": "^3.10.7",
-    "@xyo-network/boundwitness-model": "^3.10.7",
-    "@xyo-network/diviner-payload-model": "^3.10.7",
-    "@xyo-network/module-abstract": "^3.10.7",
-    "@xyo-network/payload-model": "^3.10.7",
+    "@xylabs/hex": "^4.8.0",
+    "@xylabs/object": "^4.8.0",
+    "@xyo-network/archivist-model": "^3.11.0",
+    "@xyo-network/boundwitness-model": "^3.11.0",
+    "@xyo-network/diviner-payload-model": "^3.11.0",
+    "@xyo-network/module-abstract": "^3.11.0",
+    "@xyo-network/payload-model": "^3.11.0",
     "@xyo-network/payload-mongodb": "workspace:^",
-    "@xyo-network/shared": "^3.10.7",
+    "@xyo-network/shared": "^3.11.0",
     "ajv": "^8.17.1"
   },
   "devDependencies": {

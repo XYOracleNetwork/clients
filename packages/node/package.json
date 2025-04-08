@@ -33,7 +33,7 @@
     "@xyo-network/express-node-server": "workspace:^"
   },
   "devDependencies": {
-    "@swc/core": "^1.11.16",
+    "@swc/core": "^1.11.18",
     "@xylabs/ts-scripts-yarn3": "^6.2.1",
     "@xylabs/tsconfig": "^6.2.1",
     "typescript": "^5.8.3"
