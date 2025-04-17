@@ -69,7 +69,7 @@
     "@xyo-network/diviner-payload-model": "^3.12.4",
     "@xyo-network/node-core-model": "workspace:^",
     "@xyo-network/node-model": "^3.12.4",
-    "@xyo-network/payload-mongodb": "workspace:^",
+    "@xyo-network/payload-mongodb": "^3.12.5",
     "@xyo-network/payload-wrapper": "^3.12.4",
     "mongodb-memory-server": "^10.1.4",
     "typescript": "^5.8.3"

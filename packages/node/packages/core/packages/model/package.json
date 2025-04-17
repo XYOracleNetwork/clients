@@ -30,7 +30,7 @@
     "@xyo-network/diviner-payload-model": "^3.12.4",
     "@xyo-network/module-abstract": "^3.12.4",
     "@xyo-network/payload-model": "^3.12.4",
-    "@xyo-network/payload-mongodb": "workspace:^",
+    "@xyo-network/payload-mongodb": "^3.12.5",
     "@xyo-network/shared": "^3.12.4",
     "ajv": "^8.17.1"
   },

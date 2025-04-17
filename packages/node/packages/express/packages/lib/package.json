@@ -28,7 +28,7 @@
     "@xylabs/express": "^4.8.7",
     "@xyo-network/module-model": "^3.12.4",
     "@xyo-network/node-model": "^3.12.4",
-    "@xyo-network/payload-mongodb": "workspace:^",
+    "@xyo-network/payload-mongodb": "^3.12.5",
     "express": "^4.21.2"
   },
   "devDependencies": {

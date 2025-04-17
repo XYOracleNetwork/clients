@@ -27,7 +27,7 @@
     "@xyo-network/node-core-model": "workspace:^",
     "@xyo-network/payload-builder": "^3.12.4",
     "@xyo-network/payload-model": "^3.12.4",
-    "@xyo-network/payload-mongodb": "workspace:^",
+    "@xyo-network/payload-mongodb": "^3.12.5",
     "@xyo-network/schema-cache": "^3.12.4",
     "@xyo-network/schema-payload-plugin": "^3.12.4",
     "ajv": "^8.17.1"
