@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/deprecation */
 import {
   describe, expect, test,
 } from 'vitest'

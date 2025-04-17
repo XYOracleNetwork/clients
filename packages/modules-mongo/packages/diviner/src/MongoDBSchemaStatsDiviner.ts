@@ -1,5 +1,6 @@
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
+import { MongoClientWrapper } from '@xylabs/mongo'
 import { fulfilled, rejected } from '@xylabs/promise'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { SchemaStatsDiviner } from '@xyo-network/diviner-schema-stats-abstract'
@@ -23,7 +24,6 @@ import type {
   Payload, Schema, WithSources,
 } from '@xyo-network/payload-model'
 import type { BoundWitnessWithMongoMeta } from '@xyo-network/payload-mongodb'
-import { MongoClientWrapper } from '@xyo-network/sdk-xyo-mongo-js'
 import type { Job, JobProvider } from '@xyo-network/shared'
 import type {
   ChangeStream, ChangeStreamInsertDocument, ChangeStreamOptions, ResumeToken, UpdateOptions,

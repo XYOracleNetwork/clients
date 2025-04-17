@@ -1,6 +1,6 @@
 import type { Address, Hash } from '@xylabs/hex'
+import type { BaseMongoSdk } from '@xylabs/mongo'
 import type { PreviousHashStore } from '@xyo-network/previous-hash-store-model'
-import type { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 
 import type { AddressInfo } from '../Mongo/index.js'
 

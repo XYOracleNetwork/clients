@@ -1,6 +1,7 @@
 import '@xylabs/vitest-extended'
 
 import type { Address } from '@xylabs/hex'
+import { BaseMongoSdk } from '@xylabs/mongo'
 import { Account } from '@xyo-network/account'
 import type {
   SchemaStatsPayload,
@@ -15,7 +16,6 @@ import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mong
 import type { JobQueue } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { type PayloadWithMongoMeta, toDbRepresentation } from '@xyo-network/payload-mongodb'
-import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import {
   beforeAll, describe, expect, it,
 } from 'vitest'

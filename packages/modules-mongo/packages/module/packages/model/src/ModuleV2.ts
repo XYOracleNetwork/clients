@@ -1,5 +1,5 @@
+import type { BaseMongoSdk, BaseMongoSdkConfig } from '@xylabs/mongo'
 import type { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
-import type { BaseMongoSdk, BaseMongoSdkConfig } from '@xyo-network/sdk-xyo-mongo-js'
 
 export interface MongoDBModuleV2 {
   get payloadSdkConfig(): BaseMongoSdkConfig

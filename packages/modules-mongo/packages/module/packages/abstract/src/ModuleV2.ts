@@ -1,11 +1,11 @@
 import { assertEx } from '@xylabs/assert'
 import { merge } from '@xylabs/lodash'
+import { BaseMongoSdk, BaseMongoSdkConfig } from '@xylabs/mongo'
 import { staticImplements } from '@xylabs/static-implements'
 import {
   MongoDBModuleParamsV2, MongoDBModuleStatic, MongoDBModuleV2, MongoDBStorageClassLabels,
 } from '@xyo-network/module-model-mongodb'
 import { PayloadWithMongoMeta } from '@xyo-network/payload-mongodb'
-import { BaseMongoSdk, BaseMongoSdkConfig } from '@xyo-network/sdk-xyo-mongo-js'
 import { MongoServerError } from 'mongodb'
 
 import { AnyAbstractModule } from './AnyAbstractModule.ts'

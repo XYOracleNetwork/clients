@@ -1,5 +1,6 @@
 import '@xylabs/vitest-extended'
 
+import { BaseMongoSdk } from '@xylabs/mongo'
 import { Account } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
@@ -15,7 +16,6 @@ import type { Payload } from '@xyo-network/payload-model'
 import {
   type BoundWitnessWithMongoMeta, type BoundWitnessWithPartialMongoMeta, toDbRepresentation,
 } from '@xyo-network/payload-mongodb'
-import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import {
   beforeAll, describe, expect, it,
 } from 'vitest'

@@ -1,5 +1,5 @@
+import type { BaseMongoSdkPublicConfig } from '@xylabs/mongo'
 import type { ModuleConfig } from '@xyo-network/module-model'
-import type { BaseMongoSdkPublicConfig } from '@xyo-network/sdk-xyo-mongo-js'
 
 import type { MongoDBModuleConfigSchema } from './Schema.ts'
 

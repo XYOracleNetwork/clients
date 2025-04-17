@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/deprecation */
 import { assertEx } from '@xylabs/assert'
 import type {
   BulkWriteOptions,
@@ -16,6 +17,7 @@ import type {
 import type { BaseMongoSdkConfig } from './Config.js'
 import { MongoClientWrapper } from './Wrapper.js'
 
+/** @deprecated - use from @xylabs/mongo instead */
 export class BaseMongoSdk<T extends Document> {
   config: BaseMongoSdkConfig
 

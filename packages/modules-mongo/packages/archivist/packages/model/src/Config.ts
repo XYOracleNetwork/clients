@@ -1,5 +1,5 @@
+import type { BaseMongoSdkPublicConfig } from '@xylabs/mongo'
 import type { ArchivistConfig } from '@xyo-network/archivist-model'
-import type { BaseMongoSdkPublicConfig } from '@xyo-network/sdk-xyo-mongo-js'
 
 import type { MongoDBArchivistConfigSchema } from './Schema.js'
 

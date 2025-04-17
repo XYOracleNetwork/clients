@@ -1,11 +1,11 @@
 import '@xylabs/vitest-extended'
 
+import { BaseMongoSdk } from '@xylabs/mongo'
 import type { PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
 import { PayloadDivinerConfigSchema, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { type PayloadWithMongoMeta, toDbRepresentation } from '@xyo-network/payload-mongodb'
-import { BaseMongoSdk } from '@xyo-network/sdk-xyo-mongo-js'
 import {
   beforeAll, describe, expect, it,
 } from 'vitest'

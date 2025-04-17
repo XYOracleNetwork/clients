@@ -35,9 +35,9 @@
   "module": "dist/node/index.mjs",
   "types": "dist/types/index.d.ts",
   "dependencies": {
+    "@xylabs/mongo": "^4.8.7",
     "@xyo-network/archivist-model": "^3.12.4",
-    "@xyo-network/module-model": "^3.12.4",
-    "@xyo-network/sdk-xyo-mongo-js": "workspace:^"
+    "@xyo-network/module-model": "^3.12.4"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^6.2.1",

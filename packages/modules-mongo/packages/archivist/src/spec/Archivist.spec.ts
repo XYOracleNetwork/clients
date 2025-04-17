@@ -1,6 +1,7 @@
 import '@xylabs/vitest-extended'
 
 import { delay } from '@xylabs/delay'
+import type { BaseMongoSdkConfig } from '@xylabs/mongo'
 import { Account } from '@xyo-network/account'
 import type { ArchivistNextOptions } from '@xyo-network/archivist-model'
 import { ArchivistWrapper } from '@xyo-network/archivist-wrapper'
@@ -10,7 +11,6 @@ import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mong
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { PayloadWrapperBase } from '@xyo-network/payload-wrapper'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
-import type { BaseMongoSdkConfig } from '@xyo-network/sdk-xyo-mongo-js'
 import {
   beforeAll,
   describe, expect, it,

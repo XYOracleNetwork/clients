@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/deprecation */
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
 import { forget } from '@xylabs/forget'
@@ -5,6 +6,7 @@ import { Mutex } from 'async-mutex'
 import type { MongoClientOptions } from 'mongodb'
 import { MongoClient } from 'mongodb'
 
+/** @deprecated - use from @xylabs/mongo instead */
 export class MongoClientWrapper {
   static readonly clients = new Map<string, MongoClientWrapper>()
 
