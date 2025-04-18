@@ -115,7 +115,7 @@ export class MongoDBBoundWitnessStatsDiviner
     await this.ensureIndexes()
     await this.registerWithChangeStream()
     defineJobs(this.jobQueue, this.jobs)
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+
     this.jobQueue.once('ready', async () => await scheduleJobs(this.jobQueue, this.jobs))
     return true
   }

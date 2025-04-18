@@ -25,18 +25,18 @@
   "dependencies": {
     "@xylabs/hex": "^4.8.7",
     "@xylabs/object": "^4.8.7",
-    "@xyo-network/archivist-model": "^3.12.4",
-    "@xyo-network/boundwitness-model": "^3.12.4",
-    "@xyo-network/diviner-payload-model": "^3.12.4",
-    "@xyo-network/module-abstract": "^3.12.4",
-    "@xyo-network/payload-model": "^3.12.4",
+    "@xyo-network/archivist-model": "^3.12.5",
+    "@xyo-network/boundwitness-model": "^3.12.5",
+    "@xyo-network/diviner-payload-model": "^3.12.5",
+    "@xyo-network/module-abstract": "^3.12.5",
+    "@xyo-network/payload-model": "^3.12.5",
     "@xyo-network/payload-mongodb": "^3.12.5",
-    "@xyo-network/shared": "^3.12.4",
+    "@xyo-network/shared": "^3.12.5",
     "ajv": "^8.17.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.2.1",
-    "@xylabs/tsconfig": "^6.2.1",
+    "@xylabs/ts-scripts-yarn3": "^6.3.1",
+    "@xylabs/tsconfig": "^6.3.1",
     "typescript": "^5.8.3"
   },
   "publishConfig": {
