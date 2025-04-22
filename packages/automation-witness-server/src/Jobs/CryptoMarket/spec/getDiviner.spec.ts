@@ -4,7 +4,7 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-import { getDiviner } from '../getDiviner.js'
+import { getDiviner } from '../getDiviner.ts'
 
 describe('getCryptoMarketAssetDiviner', () => {
   it('gets the getCryptoMarketAssetDiviner', async () => {

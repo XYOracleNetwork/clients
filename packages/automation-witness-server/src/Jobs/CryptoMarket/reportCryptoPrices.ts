@@ -5,10 +5,10 @@ import { MemorySentinel } from '@xyo-network/sentinel-memory'
 import type { SentinelConfig } from '@xyo-network/sentinel-model'
 import { SentinelConfigSchema } from '@xyo-network/sentinel-model'
 
-import { getAccount, WalletPaths } from '../../Account/index.js'
-import { getArchivists } from '../../Archivists/index.js'
-import { getProvider } from '../../Providers/index.js'
-import { getCryptoMarketWitness } from '../../Witnesses/index.js'
+import { getAccount, WalletPaths } from '../../Account/index.ts'
+import { getArchivists } from '../../Archivists/index.ts'
+import { getProvider } from '../../Providers/index.ts'
+import { getCryptoMarketWitness } from '../../Witnesses/index.ts'
 
 export const reportCryptoPrices = async (provider = getProvider()): Promise<Payload[]> => {
   const archivists = await getArchivists()

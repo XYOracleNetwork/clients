@@ -5,7 +5,7 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-import { getNode } from '../getNode.js'
+import { getNode } from '../getNode.ts'
 
 describe('getNode', () => {
   it('gets the node', async () => {

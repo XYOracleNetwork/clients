@@ -7,8 +7,8 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-import { getStorageArchivist } from '../../../Archivists/index.js'
-import { reportStockPrice } from '../reportStockPrices.js'
+import { getStorageArchivist } from '../../../Archivists/index.ts'
+import { reportStockPrice } from '../reportStockPrices.ts'
 
 describe('reportStockPrices', () => {
   describe('reportStockPrice', () => {

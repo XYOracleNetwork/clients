@@ -4,7 +4,7 @@ import { ApiCallSchema } from '@xyo-network/api-call-witness'
 import type { Payload } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 
-import { getNode } from './getNode.js'
+import { getNode } from './getNode.ts'
 
 export const reportStockPrice = async (symbol: string): Promise<Payload[]> => {
   const call: ApiUriTemplateCallPayload = { params: { symbol }, schema: ApiCallSchema }
