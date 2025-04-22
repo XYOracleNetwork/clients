@@ -1,31 +1,30 @@
 import { assertEx } from '@xylabs/assert'
-import type { ApiConfig } from '@xyo-network/api-models'
 import type { AttachableArchivistInstance } from '@xyo-network/archivist-model'
 import { isAttachableArchivistInstance } from '@xyo-network/archivist-model'
 import { HttpBridge, HttpBridgeConfigSchema } from '@xyo-network/bridge-http'
 
+import type { ApiModuleConfig } from './getApiModuleConfig.ts'
 import {
-  getApiConfigs, getChainSubmissionsArchivistApiConfig, getStorageArchivistApiConfig,
-} from './getApiConfig.ts'
+  getApiConfigs, getChainSubmissionsArchivistApiModuleConfig, getStorageArchivistApiModuleConfig,
+} from './getApiModuleConfig.ts'
 
-const archivistName = 'XYOPublic:Archivist' // TODO: This should be configurable
 const discoverRoots = 'start'
 const schema = HttpBridgeConfigSchema
 const security = { allowAnonymous: true }
 
-export const getArchivist = async (config: ApiConfig): Promise<AttachableArchivistInstance> => {
+export const getArchivist = async (config: ApiModuleConfig): Promise<AttachableArchivistInstance> => {
   return assertEx(await tryGetArchivist(config), () => 'Archivist not found')
 }
 
 export const getStorageArchivist = async (): Promise<AttachableArchivistInstance> => {
-  return assertEx(await tryGetArchivist(getStorageArchivistApiConfig()), () => 'Storage Archivist not found')
+  return assertEx(await tryGetArchivist(getStorageArchivistApiModuleConfig()), () => 'Storage Archivist not found')
 }
 
 export const getChainSubmissionsArchivist = async (): Promise<AttachableArchivistInstance> => {
-  return assertEx(await tryGetArchivist(getChainSubmissionsArchivistApiConfig()), () => 'Chain Submissions Archivist not found')
+  return assertEx(await tryGetArchivist(getChainSubmissionsArchivistApiModuleConfig()), () => 'Chain Submissions Archivist not found')
 }
 
-export const tryGetArchivist = async (config: ApiConfig): Promise<AttachableArchivistInstance | undefined> => {
+export const tryGetArchivist = async (config: ApiModuleConfig): Promise<AttachableArchivistInstance | undefined> => {
   const url = config.root ? `${config.apiDomain}/${config.root}` : config.apiDomain
   const bridge = await HttpBridge.create({
     account: 'random',
@@ -34,11 +33,11 @@ export const tryGetArchivist = async (config: ApiConfig): Promise<AttachableArch
     },
   })
   await bridge.start()
-  const mod = await bridge.resolve(archivistName)
+  const mod = await bridge.resolve(config.id)
   return isAttachableArchivistInstance(mod) ? mod : undefined
 }
 
-export const tryGetArchivists = async (configs: ApiConfig[] = getApiConfigs()): Promise<AttachableArchivistInstance[]> => {
+export const tryGetArchivists = async (configs = getApiConfigs()): Promise<AttachableArchivistInstance[]> => {
   const archivists: AttachableArchivistInstance[] = []
   for (const config of configs) {
     const archivist = await tryGetArchivist(config)
@@ -47,7 +46,7 @@ export const tryGetArchivists = async (configs: ApiConfig[] = getApiConfigs()): 
   return archivists
 }
 
-export const getArchivists = async (configs: ApiConfig[] = getApiConfigs()): Promise<AttachableArchivistInstance[]> => {
+export const getArchivists = async (configs = getApiConfigs()): Promise<AttachableArchivistInstance[]> => {
   const archivists: AttachableArchivistInstance[] = []
   for (const config of configs) {
     archivists.push(await getArchivist(config))

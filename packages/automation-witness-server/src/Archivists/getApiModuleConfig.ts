@@ -5,14 +5,14 @@ export type ApiModuleConfig = ApiConfig & {
   id: ModuleIdentifier
 }
 
-export const getStorageArchivistApiConfig = (): ApiModuleConfig => {
+export const getStorageArchivistApiModuleConfig = (): ApiModuleConfig => {
   return {
     apiDomain: process.env.ARCHIVIST_API_DOMAIN || 'https://beta.api.archivist.xyo.network',
     id: 'XYOPublic:Archivist',
   }
 }
 
-export const getChainSubmissionsArchivistApiConfig = (): ApiModuleConfig => {
+export const getChainSubmissionsArchivistApiModuleConfig = (): ApiModuleConfig => {
   return {
     apiDomain: process.env.CHAIN_SUBMISSIONS_ARCHIVIST_API_DOMAIN || 'https://beta.api.chain.xyo.network/',
     id: 'XYOChain:Chain:Submissions',
@@ -21,7 +21,7 @@ export const getChainSubmissionsArchivistApiConfig = (): ApiModuleConfig => {
 
 export const getApiConfigs = (): ApiModuleConfig[] => {
   return [
-    getStorageArchivistApiConfig(),
-    getChainSubmissionsArchivistApiConfig(),
+    getStorageArchivistApiModuleConfig(),
+    getChainSubmissionsArchivistApiModuleConfig(),
   ]
 }
