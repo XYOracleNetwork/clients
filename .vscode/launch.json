@@ -95,7 +95,7 @@
         "--run",
         "--inspect-brk",
         "--no-file-parallelism",
-        "packages/modules-mongo/packages/archivist/src/spec/ArchivistV2.spec.ts"
+        "packages/automation-witness-server/src/Jobs/CryptoMarket/spec/reportCryptoPrices.spec.ts"
       ],
       "resolveSourceMapLocations": [
         "${workspaceFolder}/**",
