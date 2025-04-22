@@ -7,7 +7,7 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-import { getArchivist } from '../../../Archivists/index.js'
+import { getStorageArchivist } from '../../../Archivists/index.js'
 import { reportStockPrice } from '../reportStockPrices.js'
 
 describe('reportStockPrices', () => {
@@ -21,7 +21,7 @@ describe('reportStockPrices', () => {
         expect(snapshot?.symbol).toBe('XYLB')
         expect(await PayloadBuilder.dataHash(snapshot)).toBeDefined()
         const hash = assertEx(await PayloadBuilder.dataHash(snapshot), () => 'Missing hash')
-        const archivist = await getArchivist()
+        const archivist = await getStorageArchivist()
         expect(archivist).toBeDefined()
         const stored = await archivist.get([hash])
         expect(stored).toBeArray()
