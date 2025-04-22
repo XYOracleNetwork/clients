@@ -17,12 +17,12 @@ export const getArchivist = async (config: ApiConfig): Promise<AttachableArchivi
   return assertEx(await tryGetArchivist(config), () => 'Archivist not found')
 }
 
-export const getStorageArchivist = async (config: ApiConfig = getStorageArchivistApiConfig()): Promise<AttachableArchivistInstance> => {
-  return assertEx(await tryGetArchivist(config), () => 'Storage Archivist not found')
+export const getStorageArchivist = async (): Promise<AttachableArchivistInstance> => {
+  return assertEx(await tryGetArchivist(getStorageArchivistApiConfig()), () => 'Storage Archivist not found')
 }
 
-export const getChainSubmissionsArchivist = async (config: ApiConfig = getChainSubmissionsArchivistApiConfig()): Promise<AttachableArchivistInstance> => {
-  return assertEx(await tryGetArchivist(config), () => 'Chain Submissions Archivist not found')
+export const getChainSubmissionsArchivist = async (): Promise<AttachableArchivistInstance> => {
+  return assertEx(await tryGetArchivist(getChainSubmissionsArchivistApiConfig()), () => 'Chain Submissions Archivist not found')
 }
 
 export const tryGetArchivist = async (config: ApiConfig): Promise<AttachableArchivistInstance | undefined> => {
