@@ -12,16 +12,8 @@ export const getStorageArchivistApiModuleConfig = (): ApiModuleConfig => {
   }
 }
 
-export const getPendingTransactionsArchivistApiModuleConfig = (): ApiModuleConfig => {
-  return {
-    apiDomain: process.env.CHAIN_SUBMISSIONS_ARCHIVIST_API_DOMAIN || 'https://beta.api.chain.xyo.network/',
-    id: 'XYOChain:Pending:PendingTransactions',
-  }
-}
-
 export const getApiConfigs = (): ApiModuleConfig[] => {
   return [
     getStorageArchivistApiModuleConfig(),
-    getPendingTransactionsArchivistApiModuleConfig(),
   ]
 }

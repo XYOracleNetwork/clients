@@ -4,9 +4,7 @@ import { isAttachableArchivistInstance } from '@xyo-network/archivist-model'
 import { HttpBridge, HttpBridgeConfigSchema } from '@xyo-network/bridge-http'
 
 import type { ApiModuleConfig } from './getApiModuleConfig.ts'
-import {
-  getApiConfigs, getPendingTransactionsArchivistApiModuleConfig, getStorageArchivistApiModuleConfig,
-} from './getApiModuleConfig.ts'
+import { getApiConfigs, getStorageArchivistApiModuleConfig } from './getApiModuleConfig.ts'
 
 const discoverRoots = 'start'
 const schema = HttpBridgeConfigSchema
@@ -18,10 +16,6 @@ export const getArchivist = async (config: ApiModuleConfig): Promise<AttachableA
 
 export const getStorageArchivist = async (): Promise<AttachableArchivistInstance> => {
   return assertEx(await tryGetArchivist(getStorageArchivistApiModuleConfig()), () => 'Storage Archivist not found')
-}
-
-export const getPendingTransactionsArchivist = async (): Promise<AttachableArchivistInstance> => {
-  return assertEx(await tryGetArchivist(getPendingTransactionsArchivistApiModuleConfig()), () => 'Chain Submissions Archivist not found')
 }
 
 export const tryGetArchivist = async (config: ApiModuleConfig): Promise<AttachableArchivistInstance | undefined> => {
