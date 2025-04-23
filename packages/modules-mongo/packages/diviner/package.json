@@ -70,7 +70,7 @@
     "@xyo-network/diviner-schema-list-model": "^3.13.0",
     "@xyo-network/diviner-schema-stats-abstract": "^3.13.0",
     "@xyo-network/diviner-schema-stats-model": "^3.13.0",
-    "@xyo-network/location-payload-plugin": "^3.5.2",
+    "@xyo-network/location-payload-plugin": "^3.5.3",
     "@xyo-network/module-abstract-mongodb": "^3.13.0",
     "@xyo-network/module-model": "^3.13.0",
     "@xyo-network/node-core-model": "workspace:^",

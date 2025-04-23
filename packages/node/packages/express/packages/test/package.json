@@ -62,7 +62,7 @@
     "@xylabs/delay": "^4.8.7",
     "@xylabs/ts-scripts-yarn3": "^6.3.5",
     "@xylabs/tsconfig": "^6.3.5",
-    "@xyo-network/api-call-witness": "^3.5.2",
+    "@xyo-network/api-call-witness": "^3.5.3",
     "@xyo-network/boundwitness-wrapper": "^3.13.0",
     "@xyo-network/diviner-address-history-model": "^3.13.0",
     "@xyo-network/diviner-boundwitness-model": "^3.13.0",
