@@ -4,8 +4,8 @@ import {
   defaultCoins,
   defaultCurrencies,
 } from '@xyo-network/coingecko-crypto-market-plugin'
-import { UniswapCryptoMarketWitnessConfigSchema } from '@xyo-network/uniswap-crypto-market-payload-plugin'
-import { UniswapCryptoMarketWitness, UniswapPoolContracts } from '@xyo-network/uniswap-crypto-market-plugin'
+import { UniswapV4CryptoMarketWitnessConfigSchema } from '@xyo-network/uniswap-crypto-market-payload-plugin'
+import { UniswapV4CryptoMarketWitness, UniswapV4DefaultPools } from '@xyo-network/uniswap-v4-crypto-market-plugin'
 import type { AttachableWitnessInstance } from '@xyo-network/witness-model'
 import type { Provider } from 'ethers'
 
@@ -23,11 +23,11 @@ export const getCryptoMarketWitness: WitnessProvider<Provider> = async (provider
         schema: CoingeckoCryptoMarketWitnessConfigSchema,
       },
     }),
-    await UniswapCryptoMarketWitness.create({
+    await UniswapV4CryptoMarketWitness.create({
       account: await getAccount(WalletPaths.CryptoMarket.Witness.Uniswap),
       config: {
-        pools: UniswapPoolContracts,
-        schema: UniswapCryptoMarketWitnessConfigSchema,
+        poolKeys: Object.values(UniswapV4DefaultPools),
+        schema: UniswapV4CryptoMarketWitnessConfigSchema,
       },
       provider,
     }),

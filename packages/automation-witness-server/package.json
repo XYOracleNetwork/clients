@@ -49,7 +49,7 @@
     "@xyo-network/shared": "^3.13.0",
     "@xyo-network/tzero-stock-market-plugin": "^3.5.2",
     "@xyo-network/uniswap-crypto-market-payload-plugin": "^3.5.2",
-    "@xyo-network/uniswap-crypto-market-plugin": "^3.5.2",
+    "@xyo-network/uniswap-v4-crypto-market-plugin": "^3.5.2",
     "@xyo-network/witness-adhoc": "^3.13.0",
     "@xyo-network/witness-model": "^3.13.0",
     "agenda": "^5.0.0",

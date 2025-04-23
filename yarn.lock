@@ -5002,7 +5002,7 @@ __metadata:
     "@xyo-network/tzero-stock-market-payload-plugin": "npm:^3.5.2"
     "@xyo-network/tzero-stock-market-plugin": "npm:^3.5.2"
     "@xyo-network/uniswap-crypto-market-payload-plugin": "npm:^3.5.2"
-    "@xyo-network/uniswap-crypto-market-plugin": "npm:^3.5.2"
+    "@xyo-network/uniswap-v4-crypto-market-plugin": "npm:^3.5.2"
     "@xyo-network/witness-adhoc": "npm:^3.13.0"
     "@xyo-network/witness-model": "npm:^3.13.0"
     agenda: "npm:^5.0.0"
@@ -7629,45 +7629,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xyo-network/uniswap-crypto-market-plugin@npm:^3.5.2":
-  version: 3.5.2
-  resolution: "@xyo-network/uniswap-crypto-market-plugin@npm:3.5.2"
-  dependencies:
-    "@xyo-network/uniswap-v3-crypto-market-plugin": "npm:^3.5.2"
-    "@xyo-network/uniswap-v4-crypto-market-plugin": "npm:^3.5.2"
-  checksum: 10/948ce5f714d9dbdee5f7384cb94664c45c3c75fd6f3eee3997236576d2c811cc23ea7ece289223812b675938bf2ccc00a386f456b85a4663fbd0fbb3b5709c61
-  languageName: node
-  linkType: hard
-
 "@xyo-network/uniswap-typechain@npm:^3.5.2":
   version: 3.5.2
   resolution: "@xyo-network/uniswap-typechain@npm:3.5.2"
   dependencies:
     ethers: "npm:^6.13.6"
   checksum: 10/a42c1b9190af90481d0dee80e2652bcc3afe97250178dfc3ccbf35e5ba38831b97876a11bf9d775103232c147d14c3781585bc4f272495c12ad9bd1647fad80e
-  languageName: node
-  linkType: hard
-
-"@xyo-network/uniswap-v3-crypto-market-plugin@npm:^3.5.2":
-  version: 3.5.2
-  resolution: "@xyo-network/uniswap-v3-crypto-market-plugin@npm:3.5.2"
-  dependencies:
-    "@uniswap/sdk-core": "npm:^7.7.2"
-    "@uniswap/v3-sdk": "npm:^3.25.2"
-    "@xylabs/assert": "npm:^4.8.7"
-    "@xylabs/delay": "npm:^4.8.7"
-    "@xylabs/enum": "npm:^4.8.7"
-    "@xylabs/promise": "npm:^4.8.7"
-    "@xyo-network/abstract-witness": "npm:^3.13.0"
-    "@xyo-network/module-model": "npm:^3.13.0"
-    "@xyo-network/open-zeppelin-typechain": "npm:^3.5.2"
-    "@xyo-network/payload-model": "npm:^3.13.0"
-    "@xyo-network/payloadset-plugin": "npm:^3.13.0"
-    "@xyo-network/uniswap-crypto-market-payload-plugin": "npm:^3.5.2"
-    "@xyo-network/uniswap-typechain": "npm:^3.5.2"
-    "@xyo-network/witness-model": "npm:^3.13.0"
-    ethers: "npm:^6.13.6"
-  checksum: 10/f8ae657a29c39fb6a362a7a3eb5fdf198d918cc2dfa334bbeafeac0b7051f4f74647755bf868151915915c9a6ecd537dff1c56b5c9e1b02a862d3ba509c2dcec
   languageName: node
   linkType: hard
 
