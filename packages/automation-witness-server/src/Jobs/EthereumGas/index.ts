@@ -1,1 +1,1 @@
-export * from './getJob.js'
+export * from './getJob.ts'

@@ -1,6 +1,6 @@
 import type { Job } from '@xyo-network/shared'
 
-import { getTask } from './getTask.js'
+import { getTask } from './getTask.ts'
 const name = 'cryptoMarketWitness'
 
 export const getJob = (): Job => {

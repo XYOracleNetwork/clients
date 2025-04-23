@@ -2,8 +2,8 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-import { getProvider } from '../../../Providers/index.js'
-import { reportGasPrices } from '../reportGasPrices.js'
+import { getProvider } from '../../../Providers/index.ts'
+import { reportGasPrices } from '../reportGasPrices.ts'
 
 /**
  * @group crypto

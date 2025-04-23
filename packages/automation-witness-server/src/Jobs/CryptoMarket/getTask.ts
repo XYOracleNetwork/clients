@@ -3,9 +3,10 @@ import { getDefaultLogger } from '@xylabs/express'
 import { CryptoMarketAssetSchema } from '@xyo-network/crypto-asset-payload-plugin'
 import type { Job } from '@xyo-network/shared'
 
-import { getDiviner } from './getDiviner.js'
-import { reportCryptoPrices } from './reportCryptoPrices.js'
-import { reportDivinerResult } from './reportDivinerResult.js'
+import { sendTransaction } from '../../Chain/index.ts'
+import { getDiviner } from './getDiviner.ts'
+import { reportCryptoPrices } from './reportCryptoPrices.ts'
+import { reportDivinerResult } from './reportDivinerResult.ts'
 
 export const getTask = (): Job['task'] => {
   const logger = getDefaultLogger()
@@ -23,6 +24,9 @@ export const getTask = (): Job['task'] => {
       logger.log('Reporting Aggregated Crypto Prices')
       await reportDivinerResult(answer)
       logger.log('Reported Aggregated Crypto Prices')
+      logger.log('Submit Transaction of Aggregated Crypto Prices')
+      await sendTransaction([], [answer])
+      logger.log('Submitted Transaction of Aggregated Crypto Prices')
     } catch (error) {
       logger.error(error)
     }

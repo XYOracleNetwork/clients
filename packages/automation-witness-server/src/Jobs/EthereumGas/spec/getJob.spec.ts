@@ -4,7 +4,7 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-import { getJob } from '../getJob.js'
+import { getJob } from '../getJob.ts'
 
 describe('getJob', () => {
   it('gets the job', () => {

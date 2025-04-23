@@ -5,7 +5,7 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-import { reportDivinerResult } from '../reportDivinerResult.js'
+import { reportDivinerResult } from '../reportDivinerResult.ts'
 
 describe('reportDivinerResult', () => {
   it('reports diviner results', async () => {
