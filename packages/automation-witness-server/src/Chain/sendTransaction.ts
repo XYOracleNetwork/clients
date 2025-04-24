@@ -13,7 +13,7 @@ import {
 const accountPath = "m/44'/60'/0'/0/0" as const
 
 const getAccount = async (): Promise<AccountInstance | undefined> => {
-  const phrase = process.env.XYO_WALLET_PHRASE
+  const phrase = process.env.XYO_WALLET_MNEMONIC
   if (!phrase) return
   const account = await HDWallet.fromPhrase(phrase, accountPath)
   return account
