@@ -65,8 +65,7 @@
     "bn.js": "^5",
     "ethers": "^6",
     "express": "^4",
-    "quick-lru": "^5",
-    "swagger-ui-express": "^4"
+    "quick-lru": "^5"
   },
   "dependencies": {
     "@xylabs/express": "^4.8.7",
