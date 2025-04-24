@@ -9,8 +9,9 @@ import {
 } from '@xyo-network/xl1-rpc'
 
 const getProvider = async (): Promise<MemoryXyoProvider> => {
+  const rpcUrl = process.env.XYO_CHAIN_RPC_URL || 'http://localhost:3000'
   const account = await Account.random()
-  const transport = new HttpRpcTransport('http://localhost:3000', XyoRunnerRpcSchemas)
+  const transport = new HttpRpcTransport(rpcUrl, XyoRunnerRpcSchemas)
   const runner = new JsonRpcXyoRunner(transport)
   const signer = new MemoryXyoSigner(account)
   const provider = new MemoryXyoProvider({ runner, signer })
