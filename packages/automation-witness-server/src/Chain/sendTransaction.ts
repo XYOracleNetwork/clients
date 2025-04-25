@@ -3,12 +3,9 @@ import { HDWallet } from '@xyo-network/account'
 import type { Signed } from '@xyo-network/boundwitness-model'
 import type { Payload } from '@xyo-network/payload-model'
 import type { AllowedBlockPayload, TransactionBoundWitness } from '@xyo-network/xl1-model'
-import type { RpcSchemaMap, RpcTransport, XyoProviderRpcSchemas } from '@xyo-network/xl1-rpc'
+import type { RpcTransport } from '@xyo-network/xl1-rpc'
 import {
-  HttpRpcTransport,
-  JsonRpcXyoRunner, JsonRpcXyoViewer, MemoryXyoProvider,
-  MemoryXyoSigner, MemoryXyoWallet, XyoRunnerRpcSchemas,
-  XyoViewerRpcSchemas,
+  HttpRpcTransport, JsonRpcXyoRunner, JsonRpcXyoViewer, MemoryXyoProvider, MemoryXyoSigner, MemoryXyoWallet, XyoRunnerRpcSchemas, XyoViewerRpcSchemas,
 } from '@xyo-network/xl1-rpc'
 
 const accountPath = "m/44'/60'/0'/0/0" as const
@@ -38,7 +35,9 @@ const getProvider = async (): Promise<MemoryXyoProvider | undefined> => {
   const wallet = new MemoryXyoWallet(account)
   const chainId = await viewer.chainId()
   wallet.addChain(chainId)
-  const provider = new MemoryXyoProvider({ runner, signer, viewer, wallet })
+  const provider = new MemoryXyoProvider({
+    runner, signer, viewer, wallet,
+  })
   return provider
 }
 
