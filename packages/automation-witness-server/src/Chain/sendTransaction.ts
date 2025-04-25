@@ -3,11 +3,12 @@ import { HDWallet } from '@xyo-network/account'
 import type { Signed } from '@xyo-network/boundwitness-model'
 import type { Payload } from '@xyo-network/payload-model'
 import type { AllowedBlockPayload, TransactionBoundWitness } from '@xyo-network/xl1-model'
-import type { RpcTransport } from '@xyo-network/xl1-rpc'
+import type { RpcSchemaMap, RpcTransport, XyoProviderRpcSchemas } from '@xyo-network/xl1-rpc'
 import {
   HttpRpcTransport,
-  JsonRpcXyoRunner, MemoryXyoProvider,
-  MemoryXyoSigner, XyoRunnerRpcSchemas,
+  JsonRpcXyoRunner, JsonRpcXyoViewer, MemoryXyoProvider,
+  MemoryXyoSigner, MemoryXyoWallet, XyoRunnerRpcSchemas,
+  XyoViewerRpcSchemas,
 } from '@xyo-network/xl1-rpc'
 
 const accountPath = "m/44'/60'/0'/0/0" as const
@@ -19,10 +20,10 @@ const getAccount = async (): Promise<AccountInstance | undefined> => {
   return account
 }
 
-const getRpcTransport = (): RpcTransport<typeof XyoRunnerRpcSchemas> | undefined => {
+const getRpcTransport = (): RpcTransport<typeof XyoRunnerRpcSchemas & typeof XyoViewerRpcSchemas> | undefined => {
   const rpcUrl = process.env.XYO_CHAIN_RPC_URL
   if (!rpcUrl) return
-  const transport = new HttpRpcTransport(rpcUrl, XyoRunnerRpcSchemas)
+  const transport = new HttpRpcTransport(rpcUrl, {...XyoRunnerRpcSchemas, ...XyoViewerRpcSchemas})
   return transport
 }
 
@@ -33,7 +34,11 @@ const getProvider = async (): Promise<MemoryXyoProvider | undefined> => {
   const transport = getRpcTransport()
   if (!transport) return
   const runner = new JsonRpcXyoRunner(transport)
-  const provider = new MemoryXyoProvider({ runner, signer })
+  const viewer = new JsonRpcXyoViewer(transport)
+  const wallet = new MemoryXyoWallet(account)
+  const chainId = await viewer.chainId()
+  wallet.addChain(chainId)
+  const provider = new MemoryXyoProvider({ runner, signer, viewer, wallet })
   return provider
 }
 
