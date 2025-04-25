@@ -23,7 +23,7 @@ const getAccount = async (): Promise<AccountInstance | undefined> => {
 const getRpcTransport = (): RpcTransport<typeof XyoRunnerRpcSchemas & typeof XyoViewerRpcSchemas> | undefined => {
   const rpcUrl = process.env.XYO_CHAIN_RPC_URL
   if (!rpcUrl) return
-  const transport = new HttpRpcTransport(rpcUrl, {...XyoRunnerRpcSchemas, ...XyoViewerRpcSchemas})
+  const transport = new HttpRpcTransport(rpcUrl, { ...XyoRunnerRpcSchemas, ...XyoViewerRpcSchemas })
   return transport
 }
 
