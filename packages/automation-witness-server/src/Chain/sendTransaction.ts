@@ -34,7 +34,8 @@ const getProvider = async (): Promise<MemoryXyoProvider | undefined> => {
   const viewer = new JsonRpcXyoViewer(transport)
   const wallet = new MemoryXyoWallet(account)
   const chainId = await viewer.chainId()
-  wallet.addChain(chainId)
+  wallet.addChain(chainId, 'XL1')
+  wallet.switchChain(chainId)
   const provider = new MemoryXyoProvider({
     runner, signer, viewer, wallet,
   })
