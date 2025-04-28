@@ -1,6 +1,6 @@
 /* eslint-disable sonarjs/assertions-in-tests */
-import type { AccountInstance } from '@xyo-network/account'
 import { Account } from '@xyo-network/account'
+import type { AccountInstance } from '@xyo-network/account-model'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import type { Order } from '@xyo-network/diviner-payload-model'
 import type {

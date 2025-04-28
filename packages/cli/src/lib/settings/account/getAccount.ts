@@ -1,7 +1,7 @@
 import { generateMnemonic } from '@scure/bip39'
 import { wordlist } from '@scure/bip39/wordlists/english'
-import { HDWallet } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'
+import { HDWallet } from '@xyo-network/wallet'
 
 import { loadMnemonic } from './loadMnemonic.js'
 import { saveMnemonic } from './saveMnemonic.js'

@@ -1,8 +1,8 @@
 /* eslint-disable sonarjs/assertions-in-tests */
 import '@xylabs/vitest-extended'
 
-import type { AccountInstance } from '@xyo-network/account'
 import { Account } from '@xyo-network/account'
+import type { AccountInstance } from '@xyo-network/account-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload } from '@xyo-network/payload-model'

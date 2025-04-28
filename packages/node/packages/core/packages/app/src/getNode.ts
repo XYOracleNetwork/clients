@@ -1,4 +1,3 @@
-import { HDWallet } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'
 import { WALLET_PATHS } from '@xyo-network/node-core-types'
 import type { MemoryNodeParams } from '@xyo-network/node-memory'
@@ -6,6 +5,7 @@ import { MemoryNode } from '@xyo-network/node-memory'
 import { NodeConfigSchema } from '@xyo-network/node-model'
 import { PayloadValidator } from '@xyo-network/payload-validator'
 import { SchemaNameValidator } from '@xyo-network/schema-name-validator'
+import { HDWallet } from '@xyo-network/wallet'
 
 import { configureEnvironment, configureTransports } from './configuration/index.js'
 

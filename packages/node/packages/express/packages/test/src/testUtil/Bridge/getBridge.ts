@@ -1,8 +1,8 @@
 import { assertEx } from '@xylabs/assert'
-import { HDWallet } from '@xyo-network/account'
 import type { HttpBridgeConfig, HttpBridgeParams } from '@xyo-network/bridge-http'
 import { HttpBridge, HttpBridgeConfigSchema } from '@xyo-network/bridge-http'
 import type { BridgeInstance } from '@xyo-network/bridge-model'
+import { HDWallet } from '@xyo-network/wallet'
 
 let bridge: HttpBridge<HttpBridgeParams>
 

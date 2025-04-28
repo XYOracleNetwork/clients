@@ -1,6 +1,5 @@
 import '@xylabs/vitest-extended'
 
-import { HDWallet } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'
 import type { AbstractArchivist } from '@xyo-network/archivist-abstract'
 import { BoundWitnessBuilder, QueryBoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
@@ -10,6 +9,7 @@ import { ModuleConfigSchema, ModuleStateQuerySchema } from '@xyo-network/module-
 import type { ArchiveModuleConfig } from '@xyo-network/node-core-model'
 import { ArchiveModuleConfigSchema } from '@xyo-network/node-core-model'
 import type { Payload } from '@xyo-network/payload-model'
+import { HDWallet } from '@xyo-network/wallet'
 import type { Request } from 'express'
 import {
   beforeAll, describe, expect,

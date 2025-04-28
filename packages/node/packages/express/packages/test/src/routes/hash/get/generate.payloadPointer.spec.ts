@@ -1,5 +1,4 @@
 import type { Address } from '@xylabs/hex'
-import { HDWallet } from '@xyo-network/account'
 import type { ArchivistInstance } from '@xyo-network/archivist-model'
 import { asArchivistInstance } from '@xyo-network/archivist-model'
 import { HttpBridge, HttpBridgeConfigSchema } from '@xyo-network/bridge-http'
@@ -8,6 +7,7 @@ import type {
 } from '@xyo-network/node-core-model'
 import { PayloadPointerSchema } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
+import { HDWallet } from '@xyo-network/wallet'
 import {
   beforeAll, describe, expect,
   it,

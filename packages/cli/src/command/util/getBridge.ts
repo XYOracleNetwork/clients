@@ -1,7 +1,7 @@
-import type { WalletInstance } from '@xyo-network/account'
-import { HDWallet } from '@xyo-network/account'
 import type { HttpBridgeParams } from '@xyo-network/bridge-http'
 import { HttpBridge } from '@xyo-network/bridge-http'
+import { HDWallet } from '@xyo-network/wallet'
+import type { WalletInstance } from '@xyo-network/wallet-model'
 
 import { printError } from '../../lib/index.js'
 import type { BaseArguments } from '../BaseArguments.js'

@@ -1,9 +1,9 @@
-import { HDWallet } from '@xyo-network/account'
 import { MemoryNode } from '@xyo-network/node-memory'
 import type { Payload } from '@xyo-network/payload-model'
 import { MemorySentinel } from '@xyo-network/sentinel-memory'
 import type { SentinelConfig } from '@xyo-network/sentinel-model'
 import { SentinelConfigSchema } from '@xyo-network/sentinel-model'
+import { HDWallet } from '@xyo-network/wallet'
 
 import { getAccount, WalletPaths } from '../../Account/index.ts'
 import { getArchivists } from '../../Archivists/index.ts'

@@ -1,5 +1,5 @@
-import type { AccountInstance } from '@xyo-network/account'
 import { Account } from '@xyo-network/account'
+import type { AccountInstance } from '@xyo-network/account-model'
 import type { ArchivistInstance } from '@xyo-network/archivist-model'
 import type { AddressHistoryQueryPayload } from '@xyo-network/diviner-address-history-model'
 import { AddressHistoryQuerySchema } from '@xyo-network/diviner-address-history-model'

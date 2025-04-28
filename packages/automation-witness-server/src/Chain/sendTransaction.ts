@@ -1,7 +1,7 @@
-import type { AccountInstance } from '@xyo-network/account'
-import { HDWallet } from '@xyo-network/account'
+import type { AccountInstance } from '@xyo-network/account-model'
 import type { Signed } from '@xyo-network/boundwitness-model'
 import type { Payload } from '@xyo-network/payload-model'
+import { HDWallet } from '@xyo-network/wallet'
 import type { AllowedBlockPayload, TransactionBoundWitness } from '@xyo-network/xl1-model'
 import type { RpcTransport } from '@xyo-network/xl1-rpc'
 import {

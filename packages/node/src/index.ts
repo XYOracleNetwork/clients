@@ -1,4 +1,3 @@
-export * from '@xylabs/express'
 export * from '@xyo-network/express-node-dependencies'
 export * from '@xyo-network/express-node-lib'
 export * from '@xyo-network/express-node-routes'
