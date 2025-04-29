@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/clients",
-  "version": "3.6.3",
+  "version": "3.6.4",
   "description": "Primary SDK for using XYO Protocol 2.0",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -63,7 +63,6 @@
   },
   "resolutions": {
     "@types/express": "^4",
-    "bn.js": "^5",
     "express": "^4",
     "swagger-ui-express": "^4"
   },
