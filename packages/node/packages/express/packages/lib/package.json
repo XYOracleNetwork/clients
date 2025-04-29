@@ -26,9 +26,9 @@
   "dependencies": {
     "@xylabs/assert": "^4.8.9",
     "@xylabs/express": "^4.8.9",
-    "@xyo-network/module-model": "^3.14.15",
-    "@xyo-network/node-model": "^3.14.15",
-    "@xyo-network/payload-mongodb": "^3.14.15",
+    "@xyo-network/module-model": "^3.14.16",
+    "@xyo-network/node-model": "^3.14.16",
+    "@xyo-network/payload-mongodb": "^3.14.16",
     "express": "^4.21.2"
   },
   "devDependencies": {
