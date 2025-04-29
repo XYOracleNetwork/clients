@@ -1,8 +1,8 @@
 import 'reflect-metadata'
 
 import { assertEx } from '@xylabs/assert'
+import { exists } from '@xylabs/exists'
 import type { Hash } from '@xylabs/hex'
-import { compact } from '@xylabs/lodash'
 import type { ArchivistInstance } from '@xyo-network/archivist-model'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import type { ArchivistPayloadDivinerConfig } from '@xyo-network/diviner-archivist'
@@ -82,7 +82,7 @@ export class MemoryCoinUserLocationsDiviner<
         }
         return locations
       })
-      const locations = compact(await this.params.archivist.get(locationHashes)) as WithStorageMeta<LocationPayload>[]
+      const locations = (await this.params.archivist.get(locationHashes)).filter(exists) as WithStorageMeta<LocationPayload>[]
       this.logger?.log('CoinUserLocationsDiviner.Divine: Processed query')
       return locations
     }
