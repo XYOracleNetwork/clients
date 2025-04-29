@@ -73,11 +73,6 @@
     "@xyo-network/express-node": "workspace:^"
   },
   "devDependencies": {
-    "@babel/core": "^7.26.10",
-    "@babel/preset-env": "^7.26.9",
-    "@babel/preset-typescript": "^7.27.0",
-    "@ethersproject/address": "^5.8.0",
-    "@ethersproject/bignumber": "^5.8.0",
     "@types/supertest": "^6.0.3",
     "@typescript-eslint/eslint-plugin": "^8.31.1",
     "@typescript-eslint/parser": "^8.31.1",
