@@ -24,8 +24,8 @@
   "module": "dist/node/index.mjs",
   "types": "dist/types/index.d.ts",
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.4.6",
-    "@xylabs/tsconfig": "^6.4.6",
+    "@xylabs/ts-scripts-yarn3": "^6.5.7",
+    "@xylabs/tsconfig": "^6.5.7",
     "typescript": "^5.8.3"
   },
   "publishConfig": {
