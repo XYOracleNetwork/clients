@@ -62,7 +62,7 @@
     "xyo-ts": "yarn workspace @xyo-network/node-cli xyo-ts"
   },
   "dependencies": {
-    "@xylabs/express": "^4.10.0",
+    "@xylabs/express": "^4.10.1",
     "@xyo-network/automation-witness-server": "workspace:^",
     "@xyo-network/cli": "workspace:^",
     "@xyo-network/express-node": "workspace:^"
@@ -73,12 +73,12 @@
     "@typescript-eslint/eslint-plugin": "^8.32.1",
     "@typescript-eslint/parser": "^8.32.1",
     "@vitest/coverage-v8": "^3.1.4",
-    "@xylabs/base": "^4.10.0",
+    "@xylabs/base": "^4.10.1",
     "@xylabs/eslint-config-flat": "^6.5.7",
-    "@xylabs/object": "^4.10.0",
+    "@xylabs/object": "^4.10.1",
     "@xylabs/ts-scripts-yarn3": "^6.5.7",
     "@xylabs/tsconfig": "^6.5.7",
-    "@xylabs/vitest-extended": "^4.10.0",
+    "@xylabs/vitest-extended": "^4.10.1",
     "@xyo-network/account": "^3.17.0",
     "@xyo-network/node-memory": "^3.17.0",
     "@xyo-network/payload-builder": "^3.17.0",
@@ -92,7 +92,7 @@
     "eslint-plugin-sonarjs": "^3.0.2",
     "glob": "^11.0.2",
     "jsbi": "^4.3.2",
-    "knip": "^5.57.0",
+    "knip": "^5.57.2",
     "mongodb-memory-server": "^10.1.4",
     "nodemon": "^3.1.10",
     "reflect-metadata": "^0.2.2",

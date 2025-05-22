@@ -24,9 +24,9 @@
   "module": "dist/node/index.mjs",
   "types": "dist/types/index.d.ts",
   "dependencies": {
-    "@xylabs/assert": "^4.10.0",
-    "@xylabs/express": "^4.10.0",
-    "@xylabs/logger": "^4.10.0",
+    "@xylabs/assert": "^4.10.1",
+    "@xylabs/express": "^4.10.1",
+    "@xylabs/logger": "^4.10.1",
     "@xyo-network/express-node-dependencies": "workspace:^",
     "@xyo-network/express-node-routes": "workspace:^",
     "@xyo-network/node-core-model": "workspace:^",
@@ -39,7 +39,7 @@
     "nconf": "^0.13.0"
   },
   "devDependencies": {
-    "@types/compression": "^1.7.5",
+    "@types/compression": "^1.8.0",
     "@types/cors": "^2.8.18",
     "@types/express": "^5.0.2",
     "@types/nconf": "^0.10.7",
