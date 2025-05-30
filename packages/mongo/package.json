@@ -43,9 +43,9 @@
   "module": "dist/node/index.mjs",
   "types": "dist/types/index.d.ts",
   "dependencies": {
-    "@xylabs/assert": "^4.11.2",
-    "@xylabs/delay": "^4.11.2",
-    "@xylabs/forget": "^4.11.2",
+    "@xylabs/assert": "^4.11.4",
+    "@xylabs/delay": "^4.11.4",
+    "@xylabs/forget": "^4.11.4",
     "async-mutex": "^0.5.0",
     "mongodb": "~6.16.0"
   },
