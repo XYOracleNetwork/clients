@@ -31,7 +31,8 @@ export const getTask = (): Job['task'] => {
       // NOTE: Create hash payload instead of non-elevated until validation passes for non-elevated
       const hash = await PayloadBuilder.hash(answer)
       const hashPayload = new PayloadBuilder<HashPayload>({ schema: HashSchema }).fields({ hash }).build()
-      await sendTransaction([hashPayload], [])
+      const tx = await sendTransaction([hashPayload], [])
+      logger.log(`Sent transaction to chain: [${tx?.from}] [${JSON.stringify(tx?.fees, null, 2)}]`)
       logger.log('Submitted Transaction of Aggregated Crypto Prices')
     } catch (error) {
       logger.error(error)

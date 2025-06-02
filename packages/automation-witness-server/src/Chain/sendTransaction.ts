@@ -1,3 +1,4 @@
+import type { Logger } from '@xylabs/express'
 import type { AccountInstance } from '@xyo-network/account-model'
 import type { Signed } from '@xyo-network/boundwitness-model'
 import type { Payload } from '@xyo-network/payload-model'
