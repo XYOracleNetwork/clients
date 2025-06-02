@@ -4144,7 +4144,7 @@ __metadata:
     "@xyo-network/manifest": "npm:^3.18.0"
     "@xyo-network/module-factory-locator": "npm:^3.18.0"
     "@xyo-network/module-model": "npm:^3.18.0"
-    "@xyo-network/node-core-model": "npm:^3.7.6"
+    "@xyo-network/node-core-model": "npm:^3.7.7"
     "@xyo-network/node-memory": "npm:^3.18.0"
     "@xyo-network/node-model": "npm:^3.18.0"
     "@xyo-network/payload-builder": "npm:^3.18.0"
@@ -6292,7 +6292,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xyo-network/node-core-model@npm:^3.7.6, @xyo-network/node-core-model@workspace:^, @xyo-network/node-core-model@workspace:packages/node/packages/core/packages/model":
+"@xyo-network/node-core-model@npm:^3.7.7, @xyo-network/node-core-model@workspace:^, @xyo-network/node-core-model@workspace:packages/node/packages/core/packages/model":
   version: 0.0.0-use.local
   resolution: "@xyo-network/node-core-model@workspace:packages/node/packages/core/packages/model"
   dependencies:
