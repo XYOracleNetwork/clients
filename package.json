@@ -62,7 +62,7 @@
     "xyo-ts": "yarn workspace @xyo-network/node-cli xyo-ts"
   },
   "dependencies": {
-    "@xylabs/express": "^4.11.4",
+    "@xylabs/express": "^4.11.8",
     "@xyo-network/automation-witness-server": "workspace:^",
     "@xyo-network/cli": "workspace:^",
     "@xyo-network/express-node": "workspace:^"
@@ -70,15 +70,15 @@
   "devDependencies": {
     "@ethersproject/bignumber": "^5.8.0",
     "@types/supertest": "^6.0.3",
-    "@typescript-eslint/eslint-plugin": "^8.33.0",
-    "@typescript-eslint/parser": "^8.33.0",
+    "@typescript-eslint/eslint-plugin": "^8.33.1",
+    "@typescript-eslint/parser": "^8.33.1",
     "@vitest/coverage-v8": "^3.2.0",
-    "@xylabs/base": "^4.11.4",
+    "@xylabs/base": "^4.11.8",
     "@xylabs/eslint-config-flat": "^6.5.7",
-    "@xylabs/object": "^4.11.4",
+    "@xylabs/object": "^4.11.8",
     "@xylabs/ts-scripts-yarn3": "^6.5.7",
     "@xylabs/tsconfig": "^6.5.7",
-    "@xylabs/vitest-extended": "^4.11.4",
+    "@xylabs/vitest-extended": "^4.11.8",
     "@xyo-network/account": "^3.18.0",
     "@xyo-network/node-memory": "^3.18.0",
     "@xyo-network/payload-builder": "^3.18.0",

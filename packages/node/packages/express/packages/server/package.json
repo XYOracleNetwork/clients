@@ -24,9 +24,9 @@
   "module": "dist/node/index.mjs",
   "types": "dist/types/index.d.ts",
   "dependencies": {
-    "@xylabs/assert": "^4.11.4",
-    "@xylabs/express": "^4.11.4",
-    "@xylabs/logger": "^4.11.4",
+    "@xylabs/assert": "^4.11.8",
+    "@xylabs/express": "^4.11.8",
+    "@xylabs/logger": "^4.11.8",
     "@xyo-network/express-node-dependencies": "workspace:^",
     "@xyo-network/express-node-routes": "workspace:^",
     "@xyo-network/node-core-model": "workspace:^",

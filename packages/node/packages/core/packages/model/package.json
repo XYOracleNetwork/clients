@@ -23,8 +23,8 @@
   },
   "module": "dist/node/index.mjs",
   "dependencies": {
-    "@xylabs/hex": "^4.11.4",
-    "@xylabs/object": "^4.11.4",
+    "@xylabs/hex": "^4.11.8",
+    "@xylabs/object": "^4.11.8",
     "@xyo-network/archivist-model": "^3.18.0",
     "@xyo-network/boundwitness-model": "^3.18.0",
     "@xyo-network/diviner-payload-model": "^3.18.0",

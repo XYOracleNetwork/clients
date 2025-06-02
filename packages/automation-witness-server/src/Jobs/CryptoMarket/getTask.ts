@@ -32,8 +32,7 @@ export const getTask = (): Job['task'] => {
       const hash = await PayloadBuilder.hash(answer)
       const hashPayload = new PayloadBuilder<HashPayload>({ schema: HashSchema }).fields({ hash }).build()
       const tx = await sendTransaction([hashPayload], [])
-      logger.log(`Sent transaction to chain: [${tx?.from}] [${JSON.stringify(tx?.fees, null, 2)}]`)
-      logger.log('Submitted Transaction of Aggregated Crypto Prices')
+      logger.log('Submitted Transaction of Aggregated Crypto Prices', tx)
     } catch (error) {
       logger.error(error)
     }

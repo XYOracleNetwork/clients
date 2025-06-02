@@ -17,8 +17,8 @@ export const getTask = () => {
       // NOTE: Create hash payload instead of non-elevated until validation passes for non-elevated
       const hashes = await Promise.all(result.map(p => PayloadBuilder.hash(p)))
       const hashPayloads = hashes.map(hash => new PayloadBuilder<HashPayload>({ schema: HashSchema }).fields({ hash }).build())
-      await sendTransaction(hashPayloads, [])
-      logger.log('Submitted Transaction of TZero Stock Prices')
+      const tx = await sendTransaction(hashPayloads, [])
+      logger.log('Submitted Transaction of TZero Stock Prices', tx)
     } catch (error) {
       logger.error(error)
     }
