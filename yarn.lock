@@ -4144,7 +4144,7 @@ __metadata:
     "@xyo-network/manifest": "npm:^3.18.0"
     "@xyo-network/module-factory-locator": "npm:^3.18.0"
     "@xyo-network/module-model": "npm:^3.18.0"
-    "@xyo-network/node-core-model": "npm:^3.7.7"
+    "@xyo-network/node-core-model": "npm:^3.7.8"
     "@xyo-network/node-memory": "npm:^3.18.0"
     "@xyo-network/node-model": "npm:^3.18.0"
     "@xyo-network/payload-builder": "npm:^3.18.0"
@@ -4161,7 +4161,7 @@ __metadata:
     "@xyo-network/witness-adhoc": "npm:^3.18.0"
     "@xyo-network/witness-model": "npm:^3.18.0"
     "@xyo-network/xl1-model": "npm:^1.3.8"
-    "@xyo-network/xl1-rpc": "npm:^1.5.6"
+    "@xyo-network/xl1-rpc": "npm:^1.5.7"
     agenda: "npm:^5.0.0"
     compression: "npm:^1.8.0"
     cors: "npm:^2.8.5"
@@ -6292,7 +6292,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xyo-network/node-core-model@npm:^3.7.7, @xyo-network/node-core-model@workspace:^, @xyo-network/node-core-model@workspace:packages/node/packages/core/packages/model":
+"@xyo-network/node-core-model@npm:^3.7.8, @xyo-network/node-core-model@workspace:^, @xyo-network/node-core-model@workspace:packages/node/packages/core/packages/model":
   version: 0.0.0-use.local
   resolution: "@xyo-network/node-core-model@workspace:packages/node/packages/core/packages/model"
   dependencies:
@@ -6949,9 +6949,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xyo-network/xl1-protocol-sdk@npm:^1.5.6":
-  version: 1.5.6
-  resolution: "@xyo-network/xl1-protocol-sdk@npm:1.5.6"
+"@xyo-network/xl1-protocol-sdk@npm:^1.5.7":
+  version: 1.5.7
+  resolution: "@xyo-network/xl1-protocol-sdk@npm:1.5.7"
   dependencies:
     "@xylabs/assert": "npm:^4.11.8"
     "@xylabs/hex": "npm:^4.11.8"
@@ -6964,7 +6964,7 @@ __metadata:
     "@xyo-network/payload-builder": "npm:^3.18.0"
     "@xyo-network/payload-model": "npm:^3.18.0"
     "@xyo-network/xl1-protocol": "npm:^1.4.14"
-  checksum: 10/74565f85a28343c166a424dab57ba091ccf4fbfdf3e78b113e2b800d1208c933a5a1f5f7396ed750238c16228eec2d4840b5bfd2803d87b7943d066e60e4fcb2
+  checksum: 10/11c70de0801c7fafb5d11b4299900d36d2125c85f5db14705bdd8ecc0c33b06327adb400862ecebc37859cd6a3f602b506e55c5755415831d247b3ab6a7ec963
   languageName: node
   linkType: hard
 
@@ -6989,9 +6989,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xyo-network/xl1-rpc@npm:^1.5.6":
-  version: 1.5.6
-  resolution: "@xyo-network/xl1-rpc@npm:1.5.6"
+"@xyo-network/xl1-rpc@npm:^1.5.7":
+  version: 1.5.7
+  resolution: "@xyo-network/xl1-rpc@npm:1.5.7"
   dependencies:
     "@metamask/json-rpc-engine": "npm:^10.0.3"
     "@xylabs/assert": "npm:^4.11.8"
@@ -7008,11 +7008,11 @@ __metadata:
     "@xyo-network/payload-model": "npm:^3.18.0"
     "@xyo-network/payload-wrapper": "npm:^3.18.0"
     "@xyo-network/xl1-protocol": "npm:^1.4.14"
-    "@xyo-network/xl1-protocol-sdk": "npm:^1.5.6"
+    "@xyo-network/xl1-protocol-sdk": "npm:^1.5.7"
     axios: "npm:^1.9.0"
     uuid: "npm:^11.1.0"
     zod: "npm:^3.25.48"
-  checksum: 10/f2a1f85537c659c61619128e5ea05276c0cc1dfbf14ffdeaab4038c08a75d8d9f59cbe8e028bbe6626e15aa2db60e9c12b0120171056dc8f9c3df14a00433883
+  checksum: 10/443f79e85ab8c2efe3f1b287f5d99642240e9ffb517371bb973e53f67356bdcc9e955275a6defe6b80c5bf694f671c36131f75e08338fece6cfdcd2b515d22ef
   languageName: node
   linkType: hard
 
