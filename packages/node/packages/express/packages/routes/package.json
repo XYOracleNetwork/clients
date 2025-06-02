@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/package.json",
   "name": "@xyo-network/express-node-routes",
-  "version": "3.7.4",
+  "version": "3.7.5",
   "description": "XYO Express Node Routes",
   "license": "LGPL-3.0-only",
   "author": "Arie Trouw",
@@ -62,7 +62,7 @@
     "@xyo-network/boundwitness-builder": "^3.18.0",
     "@xyo-network/wallet": "^3.18.0",
     "typescript": "^5.8.3",
-    "vitest": "^3.1.4",
+    "vitest": "^3.2.0",
     "vitest-mock-extended": "^3.1.0"
   },
   "publishConfig": {
