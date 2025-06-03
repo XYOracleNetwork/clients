@@ -16,7 +16,7 @@ export const getJobQueue = async (): Promise<JobQueue> => {
 
   // TODO: Depends on minimum job interval, set to 20 seconds for
   // default since we should never be running jobs faster than every minute
-  const jobProcessingInterval = process.env.JOB_PROCESSING_INTERVAL || '300 seconds'
+  const jobProcessingInterval = process.env.JOB_PROCESSING_INTERVAL || '20 seconds'
   jobQueue.processEvery(jobProcessingInterval)
 
   return jobQueue
