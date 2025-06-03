@@ -37,7 +37,7 @@
     "@xylabs/tsconfig": "^6.5.7",
     "@xyo-network/payload-builder": "^3.18.0",
     "typescript": "^5.8.3",
-    "vitest": "^3.2.0"
+    "vitest": "^3.2.1"
   },
   "publishConfig": {
     "access": "public"
