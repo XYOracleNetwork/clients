@@ -3721,13 +3721,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xylabs/lodash@npm:^4.11.14":
-  version: 4.11.14
-  resolution: "@xylabs/lodash@npm:4.11.14"
-  checksum: 10/b2ace8cd87f3c5921ca874d13f69c8216907ebb8b1a784b8b7c1022a1059f58565542c65104afcab7ab8af402ab57642a2bc8035d626af9bfefe1607cf441db4
-  languageName: node
-  linkType: hard
-
 "@xylabs/logger@npm:^4.11.10, @xylabs/logger@npm:^4.11.14, @xylabs/logger@npm:^4.8.7":
   version: 4.11.14
   resolution: "@xylabs/logger@npm:4.11.14"
@@ -4375,14 +4368,11 @@ __metadata:
     "@xylabs/assert": "npm:^4.11.14"
     "@xylabs/delay": "npm:^4.11.14"
     "@xylabs/exists": "npm:^4.11.14"
-    "@xylabs/express": "npm:^4.11.14"
     "@xylabs/forget": "npm:^4.11.14"
     "@xylabs/hex": "npm:^4.11.14"
-    "@xylabs/lodash": "npm:^4.11.14"
     "@xylabs/object": "npm:^4.11.14"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.8"
     "@xylabs/tsconfig": "npm:^6.5.8"
-    "@xyo-network/account": "npm:^3.18.4"
     "@xyo-network/account-model": "npm:^3.18.4"
     "@xyo-network/archivist-model": "npm:^3.18.4"
     "@xyo-network/bridge-http": "npm:^3.18.4"
@@ -4436,6 +4426,7 @@ __metadata:
     eslint: "npm:^9.28.0"
     eslint-import-resolver-typescript: "npm:^4.4.3"
     eslint-plugin-sonarjs: "npm:^3.0.2"
+    express: "npm:^5.1.0"
     glob: "npm:^11.0.2"
     jsbi: "npm:^4.3.2"
     knip: "npm:^5.60.2"
@@ -5153,7 +5144,6 @@ __metadata:
     "@xylabs/delay": "npm:^4.11.14"
     "@xylabs/exists": "npm:^4.11.14"
     "@xylabs/hex": "npm:^4.11.14"
-    "@xylabs/lodash": "npm:^4.11.14"
     "@xylabs/mongo": "npm:^4.11.14"
     "@xylabs/object": "npm:^4.11.14"
     "@xylabs/promise": "npm:^4.11.14"
@@ -5689,7 +5679,6 @@ __metadata:
     "@xylabs/hex": "npm:^4.11.14"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.8"
     "@xylabs/tsconfig": "npm:^6.5.8"
-    "@xyo-network/account": "npm:^3.18.4"
     "@xyo-network/account-model": "npm:^3.18.4"
     "@xyo-network/api-call-witness": "npm:^3.6.1"
     "@xyo-network/archivist-memory": "npm:^3.18.4"
@@ -5803,7 +5792,6 @@ __metadata:
     "@types/nconf": "npm:^0.10.7"
     "@xylabs/assert": "npm:^4.11.14"
     "@xylabs/express": "npm:^4.11.14"
-    "@xylabs/logger": "npm:^4.11.14"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.8"
     "@xylabs/tsconfig": "npm:^6.5.8"
     "@xyo-network/express-node-dependencies": "workspace:^"
@@ -5834,7 +5822,6 @@ __metadata:
     "@xylabs/express": "npm:^4.11.14"
     "@xylabs/forget": "npm:^4.11.14"
     "@xylabs/hex": "npm:^4.11.14"
-    "@xylabs/object": "npm:^4.11.14"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.8"
     "@xylabs/tsconfig": "npm:^6.5.8"
     "@xylabs/vitest-extended": "npm:^4.11.14"
@@ -6274,7 +6261,6 @@ __metadata:
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.8"
     "@xylabs/tsconfig": "npm:^6.5.8"
     "@xylabs/vitest-extended": "npm:^4.11.14"
-    "@xyo-network/account": "npm:^3.18.4"
     "@xyo-network/account-model": "npm:^3.18.4"
     "@xyo-network/express-node-server": "workspace:^"
     "@xyo-network/node-core-types": "workspace:^"
@@ -6644,13 +6630,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/sdk-xyo-mongo-js@workspace:packages/mongo"
   dependencies:
-    "@xylabs/assert": "npm:^4.11.14"
-    "@xylabs/delay": "npm:^4.11.14"
-    "@xylabs/forget": "npm:^4.11.14"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.8"
     "@xylabs/tsconfig": "npm:^6.5.8"
-    async-mutex: "npm:^0.5.0"
-    mongodb: "npm:~6.17.0"
     typescript: "npm:^5.8.3"
     vitest: "npm:^3.2.2"
   languageName: unknown

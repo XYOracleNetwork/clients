@@ -29,13 +29,13 @@
     "@xyo-network/payload-model": "^3.18.4",
     "@xyo-network/payload-mongodb": "^3.18.4",
     "@xyo-network/schema-cache": "^3.18.4",
-    "@xyo-network/schema-payload-plugin": "^3.18.4",
     "ajv": "^8.17.1"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^6.5.8",
     "@xylabs/tsconfig": "^6.5.8",
     "@xyo-network/payload-builder": "^3.18.4",
+    "@xyo-network/schema-payload-plugin": "^3.18.4",
     "typescript": "^5.8.3",
     "vitest": "^3.2.2"
   },

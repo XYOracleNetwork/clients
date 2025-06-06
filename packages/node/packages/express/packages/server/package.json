@@ -26,17 +26,14 @@
   "dependencies": {
     "@xylabs/assert": "^4.11.14",
     "@xylabs/express": "^4.11.14",
-    "@xylabs/logger": "^4.11.14",
     "@xyo-network/express-node-dependencies": "workspace:^",
     "@xyo-network/express-node-routes": "workspace:^",
-    "@xyo-network/node-core-model": "workspace:^",
     "@xyo-network/node-core-types": "workspace:^",
     "@xyo-network/node-memory": "^3.18.4",
     "@xyo-network/node-model": "^3.18.4",
     "compression": "^1.8.0",
     "cors": "^2.8.5",
-    "express": "^5.1.0",
-    "nconf": "^0.13.0"
+    "express": "^5.1.0"
   },
   "devDependencies": {
     "@types/compression": "^1.8.0",
@@ -45,6 +42,8 @@
     "@types/nconf": "^0.10.7",
     "@xylabs/ts-scripts-yarn3": "^6.5.8",
     "@xylabs/tsconfig": "^6.5.8",
+    "@xyo-network/node-core-model": "workspace:^",
+    "nconf": "^0.13.0",
     "typescript": "^5.8.3"
   },
   "publishConfig": {

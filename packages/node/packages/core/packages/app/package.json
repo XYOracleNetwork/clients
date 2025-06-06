@@ -21,7 +21,6 @@
   "types": "dist/types/index.d.ts",
   "dependencies": {
     "@xylabs/express": "^4.11.14",
-    "@xyo-network/account": "^3.18.4",
     "@xyo-network/account-model": "^3.18.4",
     "@xyo-network/express-node-server": "workspace:^",
     "@xyo-network/node-core-types": "workspace:^",

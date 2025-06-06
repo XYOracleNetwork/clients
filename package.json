@@ -65,7 +65,8 @@
     "@xylabs/express": "^4.11.14",
     "@xyo-network/automation-witness-server": "workspace:^",
     "@xyo-network/cli": "workspace:^",
-    "@xyo-network/express-node": "workspace:^"
+    "@xyo-network/express-node": "workspace:^",
+    "express": "^5.1.0"
   },
   "devDependencies": {
     "@ethersproject/bignumber": "^5.8.0",
