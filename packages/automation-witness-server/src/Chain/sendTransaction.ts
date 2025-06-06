@@ -1,4 +1,4 @@
-import type { Logger } from '@xylabs/express'
+import { isUndefined } from '@xylabs/typeof'
 import type { AccountInstance } from '@xyo-network/account-model'
 import type { Signed } from '@xyo-network/boundwitness-model'
 import type { Payload } from '@xyo-network/payload-model'
@@ -13,14 +13,14 @@ const accountPath = "m/44'/60'/0'/0/0" as const
 
 const getAccount = async (): Promise<AccountInstance | undefined> => {
   const phrase = process.env.XYO_WALLET_MNEMONIC
-  if (!phrase) return
+  if (isUndefined(phrase)) return
   const account = await HDWallet.fromPhrase(phrase, accountPath)
   return account
 }
 
 const getRpcTransport = (): RpcTransport<typeof XyoRunnerRpcSchemas & typeof XyoViewerRpcSchemas> | undefined => {
   const rpcUrl = process.env.XYO_CHAIN_RPC_URL
-  if (!rpcUrl) return
+  if (isUndefined(rpcUrl)) return
   const transport = new HttpRpcTransport(rpcUrl, { ...XyoRunnerRpcSchemas, ...XyoViewerRpcSchemas })
   return transport
 }

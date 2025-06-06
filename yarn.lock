@@ -3878,6 +3878,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xylabs/typeof@npm:^4.11.14":
+  version: 4.11.14
+  resolution: "@xylabs/typeof@npm:4.11.14"
+  checksum: 10/b095f11c7d860e0731c1c47eec4fb02bbf02a0ae75df44dcb38a3e7052a3189800f710c10c7aab16620d063a40cf928900a0978d2690eddccd3ffbc2d96ee1a9
+  languageName: node
+  linkType: hard
+
 "@xylabs/url@npm:^4.11.2":
   version: 4.11.2
   resolution: "@xylabs/url@npm:4.11.2"
@@ -4123,6 +4130,7 @@ __metadata:
     "@xylabs/express": "npm:^4.11.10"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.7"
     "@xylabs/tsconfig": "npm:^6.5.7"
+    "@xylabs/typeof": "npm:^4.11.14"
     "@xylabs/vitest-extended": "npm:^4.11.10"
     "@xyo-network/account": "npm:^3.18.0"
     "@xyo-network/account-model": "npm:^3.18.0"
