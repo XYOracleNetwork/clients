@@ -88,7 +88,7 @@
     "@xyo-network/wallet": "^3.18.8",
     "chalk": "^5.4.1",
     "dotenv": "^16.5.0",
-    "eslint": "^9.28.0",
+    "eslint": "^9.29.0",
     "eslint-import-resolver-typescript": "^4.4.3",
     "eslint-plugin-sonarjs": "^3.0.2",
     "glob": "^11.0.3",
