@@ -1,34 +1,25 @@
 import { assertEx } from '@xylabs/assert'
-import { isDefined, isUndefined } from '@xylabs/typeof'
+import { isDefined } from '@xylabs/typeof'
 import type { Provider } from 'ethers'
-import { JsonRpcProvider } from 'ethers'
+import { QuickNodeProvider } from 'ethers'
 
-let instance: JsonRpcProvider | undefined
+let instance: QuickNodeProvider | undefined
 
 export const getQuickNodeProvider = (): Provider => {
   if (instance) return instance
   const config = getQuickNodeProviderConfig()
-  instance = new JsonRpcProvider(config.rpcUrl, config.network)
+  instance = new QuickNodeProvider('homestead', config)
   return instance
 }
 
 export const canUseQuickNodeProvider = (): boolean => {
-  return isDefined(process.env.QUICKNODE_RPC_URL)
+  return isDefined(process.env.QUICKNODE_API_TOKEN)
 }
 
-export interface QuickNodeProviderConfig {
-  network: string
-  rpcUrl: string
-}
-
-export const getQuickNodeProviderConfig = (): QuickNodeProviderConfig => {
-  const rpcUrl = assertEx(
-    process.env.QUICKNODE_RPC_URL,
-    () => 'Missing QUICKNODE_RPC_URL ENV VAR',
+export const getQuickNodeProviderConfig = (): string => {
+  const token = assertEx(
+    process.env.QUICKNODE_API_TOKEN,
+    () => 'Missing QUICKNODE_API_TOKEN ENV VAR',
   )
-
-  let network = process.env.QUICKNODE_NETWORK
-  if (isUndefined(network)) network = 'homestead'
-
-  return { network, rpcUrl }
+  return token
 }

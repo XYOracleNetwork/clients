@@ -1,4 +1,5 @@
 import { assertEx } from '@xylabs/assert'
+import { isDefined } from '@xylabs/typeof'
 import type { Provider } from 'ethers'
 import { AlchemyProvider } from 'ethers'
 
@@ -12,7 +13,7 @@ export const getAlchemyProvider = (): Provider => {
 }
 
 export const canUseAlchemyProvider = (): boolean => {
-  return process.env.ALCHEMY_PROJECT_KEY ? true : false
+  return isDefined(process.env.ALCHEMY_PROJECT_KEY)
 }
 
 export const getAlchemyProviderConfig = (): string => {

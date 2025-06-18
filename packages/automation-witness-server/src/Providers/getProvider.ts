@@ -6,6 +6,7 @@ import { canUseAlchemyProvider, getAlchemyProviderConfig } from './getAlchemyPro
 import { canUseEtherscanProvider, getEtherscanProviderConfig } from './getEtherscanProvider.ts'
 import { canUseInfuraProvider, getInfuraProviderConfig } from './getInfuraProvider.ts'
 import { canUsePocketProvider, getPocketProviderConfig } from './getPocketProvider.ts'
+import { canUseQuickNodeProvider, getQuickNodeProviderConfig } from './getQuicknodeProvider.ts'
 import { providerOmitted } from './ProviderOmitted.ts'
 
 let instance: Provider | undefined
@@ -21,8 +22,9 @@ const getProviderOptions = (): ProviderOptions => {
   const etherscan = canUseEtherscanProvider() ? getEtherscanProviderConfig() : providerOmitted
   const infura = canUseInfuraProvider() ? getInfuraProviderConfig() : providerOmitted
   const pocket = canUsePocketProvider() ? getPocketProviderConfig() : providerOmitted
+  const quicknode = canUseQuickNodeProvider() ? getQuickNodeProviderConfig() : providerOmitted
   return {
-    alchemy, etherscan, infura, pocket,
+    alchemy, etherscan, infura, pocket, quicknode,
   }
 }
 

@@ -1,4 +1,5 @@
 import { assertEx } from '@xylabs/assert'
+import { isDefined } from '@xylabs/typeof'
 import type { Provider } from 'ethers'
 import { PocketProvider } from 'ethers'
 
@@ -14,7 +15,7 @@ export const getPocketProvider = (): Provider => {
 }
 
 export const canUsePocketProvider = (): boolean => {
-  return !!process.env.POCKET_PORTAL_ID && !!process.env.POCKET_SECRET_KEY ? true : false
+  return isDefined(process.env.POCKET_PORTAL_ID) && isDefined(process.env.POCKET_SECRET_KEY)
 }
 
 export const getPocketProviderConfig = (): PocketProviderConfig => {
