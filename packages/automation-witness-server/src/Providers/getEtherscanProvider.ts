@@ -1,4 +1,5 @@
 import { assertEx } from '@xylabs/assert'
+import { isDefined } from '@xylabs/typeof'
 import type { Provider } from 'ethers'
 import { EtherscanProvider } from 'ethers'
 
@@ -12,7 +13,7 @@ export const getEtherscanProvider = (): Provider => {
 }
 
 export const canUseEtherscanProvider = (): boolean => {
-  return process.env.ETHERSCAN_API_KEY ? true : false
+  return isDefined(process.env.ETHERSCAN_API_KEY)
 }
 
 export const getEtherscanProviderConfig = (): string => {

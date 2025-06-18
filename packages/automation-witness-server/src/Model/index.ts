@@ -1,3 +1,4 @@
-export * from './InfuraProviderConfig.js'
-export * from './PocketProviderConfig.js'
-export * from './ProviderOptions.js'
+export * from './InfuraProviderConfig.ts'
+export * from './PocketProviderConfig.ts'
+export * from './ProviderOptions.ts'
+export * from './QuicknodeProviderConfig.ts'

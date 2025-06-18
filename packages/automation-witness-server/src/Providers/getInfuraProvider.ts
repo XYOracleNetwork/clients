@@ -1,4 +1,5 @@
 import { assertEx } from '@xylabs/assert'
+import { isDefined } from '@xylabs/typeof'
 import type { Provider } from 'ethers'
 import { InfuraProvider } from 'ethers'
 
@@ -14,7 +15,7 @@ export const getInfuraProvider = (): Provider => {
 }
 
 export const canUseInfuraProvider = (): boolean => {
-  return !!process.env.INFURA_PROJECT_ID && !!process.env.INFURA_PROJECT_SECRET ? true : false
+  return isDefined(process.env.INFURA_PROJECT_ID) && isDefined(process.env.INFURA_PROJECT_SECRET)
 }
 
 export const getInfuraProviderConfig = (): InfuraProviderConfig => {
