@@ -1,2 +1,2 @@
-export * from './getEtherscanProvider.js'
-export * from './getProvider.js'
+export * from './getEtherscanProvider.ts'
+export * from './getProvider.ts'
