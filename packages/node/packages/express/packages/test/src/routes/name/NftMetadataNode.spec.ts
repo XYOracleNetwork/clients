@@ -30,7 +30,7 @@ describe.skip(`${nodeName}`, () => {
   beforeAll(async () => {
     const bridge = await getBridge()
     const mod = await bridge.resolve(nodeName)
-    node = asNodeInstance(assertEx(mod), 'Not a node')
+    node = asNodeInstance(assertEx(mod), () => 'Not a node', { required: true })
     expect(node).toBeDefined()
   })
   describe(`${sentinelName}`, () => {

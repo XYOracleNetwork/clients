@@ -12,7 +12,7 @@ export const getArchivist = async (args: BaseArguments | ModuleArguments): Promi
   const { verbose } = args
   try {
     const mod: Module = isModuleArguments(args) ? await getModuleFromArgs(args) : await getModuleByName(args, 'Archivist')
-    return asArchivistInstance(mod, () => 'Failed to get Archivist')
+    return asArchivistInstance(mod, () => 'Failed to get Archivist', { required: true })
   } catch (error) {
     if (verbose) printError(JSON.stringify(error))
     throw new Error('Unable to obtain module for supplied address')

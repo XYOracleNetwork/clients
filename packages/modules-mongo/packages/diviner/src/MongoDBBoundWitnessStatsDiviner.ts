@@ -141,8 +141,8 @@ export class MongoDBBoundWitnessStatsDiviner
     const stats = await this.boundWitnesses.useMongo(async (mongo) => {
       return await mongo.db(DATABASES.Archivist).collection<Stats>(COLLECTIONS.ArchivistStats).findOne({ address: address })
     })
-    const remote = stats?.bound_witnesses?.count || 0
-    const local = this.pendingCounts[address] || 0
+    const remote = stats?.bound_witnesses?.count ?? 0
+    const local = this.pendingCounts[address] ?? 0
     return remote + local
   }
 
@@ -155,8 +155,12 @@ export class MongoDBBoundWitnessStatsDiviner
   private divineAddressesBatch = async () => {
     this.logger?.log(`${moduleName}.DivineAddressesBatch: Updating Addresses`)
     const addressSpaceDiviners = await this.upResolver.resolve(assertEx(TYPES.AddressSpaceDiviner))
-    const addressSpaceDiviner = asDivinerInstance(addressSpaceDiviners, `${moduleName}.DivineAddressesBatch: Missing AddressSpaceDiviner`)
-    const result = (await addressSpaceDiviner.divine([])) || []
+    const addressSpaceDiviner = asDivinerInstance(
+      addressSpaceDiviners,
+      () => `${moduleName}.DivineAddressesBatch: Missing AddressSpaceDiviner`,
+      { required: true },
+    )
+    const result = await addressSpaceDiviner.divine([]) ?? []
     const addresses = result.filter((x): x is WithSources<AddressPayload> => x.schema === AddressSchema).map(x => x.address)
     const additions = this.addressIterator.addValues(addresses)
     this.logger?.log(`${moduleName}.DivineAddressesBatch: Incoming Addresses Total: ${addresses.length} New: ${additions}`)

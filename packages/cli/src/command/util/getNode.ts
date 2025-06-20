@@ -12,7 +12,7 @@ export const getNode = async (args: BaseArguments): Promise<NodeInstance> => {
     // eslint-disable-next-line unicorn/no-useless-undefined
     const node = await Promise.resolve(undefined)
     // assertEx((await bridge.resolve({ address: [await bridge.getRootAddress()] }))?.pop(), 'Failed to resolve rootNode')
-    return asNodeInstance(node, 'Not a NodeModule')
+    return asNodeInstance(node, 'Not a NodeModule', { required: true })
   } catch (error) {
     if (verbose) printError(JSON.stringify(error))
     throw new Error('Unable to connect to XYO Node')

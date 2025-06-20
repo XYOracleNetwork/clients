@@ -48,7 +48,7 @@ describe('Generation of automation payload pointers', () => {
     await bridge.start()
     const mod = await bridge.resolve('XYOPublic:Archivist')
     expect(mod).toBeDefined()
-    archivist = asArchivistInstance(mod, 'Failed to cast module')
+    archivist = asArchivistInstance(mod, () => 'Failed to cast module', { required: true })
   })
   it.each(cases)('Generates automation witness payload for %s schema', async (schema, address) => {
     const addressRule: PayloadAddressRule = { address }

@@ -11,7 +11,7 @@ export const getModuleFromArgs = async (args: ModuleArguments): Promise<ModuleIn
     const bridge = await getBridge(args)
     const id: ModuleIdentifier | undefined = args.address ?? args.name
     const resolved = id ? await bridge.resolve(id) : undefined
-    return asModuleInstance(resolved, `Failed to load module from id [${id}]`)
+    return asModuleInstance(resolved, () => `Failed to load module from id [${id}]`, { required: true })
   } catch (error) {
     if (verbose) printError(JSON.stringify(error))
     throw new Error('Unable to connect to XYO Node')

@@ -12,7 +12,7 @@ let archivist: ArchivistInstance
 export const getBlockForRequest = async (req: Request, hash: Hash): Promise<Payload | undefined> => {
   if (!archivist) {
     const { node } = req.app
-    archivist = asArchivistInstance(await node.resolve('Archivist'), 'Failed to cast module to ArchivistInstance')
+    archivist = asArchivistInstance(await node.resolve('Archivist'), () => 'Failed to cast module to ArchivistInstance', { required: true })
   }
   const block = (await archivist.get([hash])).pop()
   if (block) {
