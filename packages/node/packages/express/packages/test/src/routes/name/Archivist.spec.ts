@@ -1,4 +1,3 @@
-/* eslint-disable sonarjs/no-unused-collection */
 import type { ArchivistInstance } from '@xyo-network/archivist-model'
 import { ArchivistGetQuerySchema, ArchivistInsertQuerySchema } from '@xyo-network/archivist-model'
 import { BoundWitnessWrapper } from '@xyo-network/boundwitness-wrapper'

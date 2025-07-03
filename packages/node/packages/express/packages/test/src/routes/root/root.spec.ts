@@ -1,4 +1,3 @@
-/* eslint-disable sonarjs/assertions-in-tests */
 import { Account } from '@xyo-network/account'
 import { ArchivistInsertQuerySchema } from '@xyo-network/archivist-model'
 import { QueryBoundWitnessBuilder } from '@xyo-network/boundwitness-builder'

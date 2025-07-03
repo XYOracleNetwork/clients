@@ -1,4 +1,3 @@
-/* eslint-disable sonarjs/assertions-in-tests */
 import { Account } from '@xyo-network/account'
 import { QueryBoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import type { BoundWitness, QueryBoundWitness } from '@xyo-network/boundwitness-model'

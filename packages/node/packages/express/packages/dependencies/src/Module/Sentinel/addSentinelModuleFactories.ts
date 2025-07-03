@@ -5,5 +5,5 @@ import type { Container } from 'inversify'
 
 export const addSentinelModuleFactories = (container: Container) => {
   const locator = container.get<ModuleFactoryLocator>(TYPES.ModuleFactoryLocator)
-  locator.register(MemorySentinel)
+  locator.register(MemorySentinel.factory())
 }

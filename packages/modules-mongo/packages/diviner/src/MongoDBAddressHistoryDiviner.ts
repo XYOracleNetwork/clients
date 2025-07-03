@@ -41,7 +41,6 @@ export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
   protected override async startHandler() {
     await super.startHandler()
     await this.ensureIndexes()
-    return true
   }
 
   private getBlocks = async (address: Address, limit: number): Promise<BoundWitnessWithMongoMeta[]> => {

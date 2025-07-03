@@ -46,13 +46,12 @@ export type CoinCurrentLocationWitnessPayload = Payload<{
 
 export const isLocationPayload = (x?: Payload | null): x is LocationPayload => x?.schema === LocationSchema
 
-export type CoinUserLocationsDivinerParams<T extends Payload = Payload> = DivinerParams<
-  AnyConfigSchema<ArchivistPayloadDivinerConfig<T>>,
-  {
-    archivist: ArchivistInstance
-    bws: BoundWitnessDiviner
-  }
->
+export interface CoinUserLocationsDivinerParams<T extends Payload = Payload> extends DivinerParams<
+  AnyConfigSchema<ArchivistPayloadDivinerConfig<T>>>
+{
+  archivist: ArchivistInstance
+  bws: BoundWitnessDiviner
+}
 
 export class MemoryCoinUserLocationsDiviner<
   TParams extends CoinUserLocationsDivinerParams = CoinUserLocationsDivinerParams,

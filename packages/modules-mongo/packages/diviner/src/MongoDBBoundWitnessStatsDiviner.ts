@@ -117,7 +117,6 @@ export class MongoDBBoundWitnessStatsDiviner
     defineJobs(this.jobQueue, this.jobs)
 
     this.jobQueue.once('ready', async () => await scheduleJobs(this.jobQueue, this.jobs))
-    return true
   }
 
   protected override async stopHandler() {

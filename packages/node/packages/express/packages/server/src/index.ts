@@ -12,7 +12,6 @@ import express from 'express'
 import { addDependencies } from './addDependencies.js'
 import { addErrorHandlers } from './addErrorHandlers.js'
 import { addMiddleware } from './addMiddleware.js'
-import { configureEnvironment } from './configureEnvironment.js'
 import { startJobQueue } from './startJobQueue.js'
 
 const hostname = '::'
@@ -45,7 +44,6 @@ export class ExpressPayloadTransport extends PayloadTransport {
 
 export const getApp = async (node?: NodeInstance): Promise<Express> => {
   node = node ?? (await MemoryNode.create({ account: 'random' }))
-  await configureEnvironment()
   await configureDependencies(node)
   const transport = new ExpressPayloadTransport(node)
   return transport.app

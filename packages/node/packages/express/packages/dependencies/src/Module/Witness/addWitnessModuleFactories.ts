@@ -1,6 +1,9 @@
+import type { ApiCallWitnessParams } from '@xyo-network/api-call-witness'
 import { ApiCallWitness, ApiCallWitnessConfigSchema } from '@xyo-network/api-call-witness'
+import type { CryptoNftCollectionWitnessParams } from '@xyo-network/crypto-nft-collection-witness-plugin'
 import { CryptoNftCollectionWitness } from '@xyo-network/crypto-nft-collection-witness-plugin'
 import { CryptoWalletNftWitness } from '@xyo-network/crypto-nft-witness-wallet-plugin'
+import type { EvmCallWitnessParams } from '@xyo-network/evm-call-witness'
 import { EvmCallWitness } from '@xyo-network/evm-call-witness'
 import { ImageThumbnailWitness } from '@xyo-network/image-thumbnail-plugin'
 import type { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
@@ -17,19 +20,19 @@ import type { Container } from 'inversify'
 export const addWitnessModuleFactories = (container: Container) => {
   const locator = container.get<ModuleFactoryLocator>(TYPES.ModuleFactoryLocator)
   locator.register(
-    CryptoNftCollectionWitness.factory({ providers: () => getProvidersFromEnv(8) }),
+    CryptoNftCollectionWitness.factory({ providers: () => getProvidersFromEnv(8) } as CryptoNftCollectionWitnessParams),
   )
   locator.register(
-    CryptoWalletNftWitness.factory({ providers: () => getProvidersFromEnv(8) }),
+    CryptoWalletNftWitness.factory({ providers: () => getProvidersFromEnv(8) } as CryptoNftCollectionWitnessParams),
   )
-  locator.register(ImageThumbnailWitness)
-  locator.register(PrometheusNodeWitness)
-  locator.register(TimestampWitness)
+  locator.register(ImageThumbnailWitness.factory())
+  locator.register(PrometheusNodeWitness.factory())
+  locator.register(TimestampWitness.factory())
   locator.register(
     new ModuleFactory(EvmCallWitness, {
       config: { abi: ERC721__factory.abi },
       providers: () => getProvidersFromEnv(8),
-    }),
+    } as EvmCallWitnessParams),
     { 'network.xyo.evm.interface': 'Erc721' },
   )
 
@@ -37,7 +40,7 @@ export const addWitnessModuleFactories = (container: Container) => {
     new ModuleFactory(EvmCallWitness, {
       config: { abi: ERC721Enumerable__factory.abi },
       providers: () => getProvidersFromEnv(8),
-    }),
+    } as EvmCallWitnessParams),
     { 'network.xyo.evm.interface': 'Erc721Enumerable' },
   )
 
@@ -45,13 +48,13 @@ export const addWitnessModuleFactories = (container: Container) => {
     new ModuleFactory(EvmCallWitness, {
       config: { abi: ERC1155__factory.abi },
       providers: () => getProvidersFromEnv(8),
-    }),
+    } as EvmCallWitnessParams),
     { 'network.xyo.evm.interface': 'Erc1155' },
   )
   locator.register(
     new ModuleFactory(ApiCallWitness, {
       config: { schema: ApiCallWitnessConfigSchema },
       ipfsGateway: '5d7b6582.beta.decentralnetworkservices.com',
-    }),
+    } as ApiCallWitnessParams),
   )
 }

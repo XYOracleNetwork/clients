@@ -10,7 +10,6 @@ import type { HashPathParams } from './HashPathParams.js'
 
 const reservedHashes = new Set(['archive', 'schema', 'doc', 'domain'])
 
-// eslint-disable-next-line @typescript-eslint/no-misused-promises
 const handler: RequestHandler<HashPathParams, Payload, NoReqBody, NoReqQuery> = async (req, res, next) => {
   if (res.headersSent) {
     return

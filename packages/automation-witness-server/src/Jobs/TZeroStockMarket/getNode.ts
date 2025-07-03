@@ -1,4 +1,5 @@
 import { assertEx } from '@xylabs/assert'
+import type { ApiCallWitnessParams } from '@xyo-network/api-call-witness'
 import { ApiCallWitness } from '@xyo-network/api-call-witness'
 import type { PackageManifestPayload } from '@xyo-network/manifest'
 import { ManifestWrapper } from '@xyo-network/manifest'
@@ -15,8 +16,8 @@ export const getNode = async (): Promise<MemoryNode> => {
   const apiKey = assertEx(process.env.TZERO_MARKETDATA_API_KEY, () => 'TZERO_MARKETDATA_API_KEY is not set')
   const wallet = await getWallet(WalletPaths.TZero.Node)
   const locator = new ModuleFactoryLocator()
-  locator.register(new ModuleFactory(ApiCallWitness, { headers: { 'x-apikey': apiKey } }))
-  locator.register(TZeroApiCallJsonResultToSnapshotDiviner)
+  locator.register(new ModuleFactory(ApiCallWitness, { config: {}, headers: { 'x-apikey': apiKey } } as ApiCallWitnessParams))
+  locator.register(TZeroApiCallJsonResultToSnapshotDiviner.factory())
   const manifest = new ManifestWrapper(tZeroMarketSnapshotDiviner as PackageManifestPayload, wallet, locator)
   const node = await manifest.loadNodeFromIndex(0)
   // Attach archivist to node to allow for dynamic archiving of

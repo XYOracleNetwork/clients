@@ -3,8 +3,8 @@ import type { ArgumentsCamelCase } from 'yargs'
 
 import type { BaseArguments } from '../BaseArguments.js'
 
-export type ModuleArguments = BaseArguments &
-  ArgumentsCamelCase<{
+export type ModuleArguments = BaseArguments
+  & ArgumentsCamelCase<{
     address?: Address
     name?: string
   }>

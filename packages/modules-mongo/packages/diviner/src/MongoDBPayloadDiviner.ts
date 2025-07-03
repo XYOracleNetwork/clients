@@ -26,7 +26,7 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
       limit = DefaultLimit,
       cursor = (query.order ?? DefaultOrder) === 'asc' ? SequenceConstants.minLocalSequence : SequenceConstants.maxLocalSequence,
       order = DefaultOrder,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
       schema,
       schemas,
       ...props
@@ -63,6 +63,5 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
   protected override async startHandler() {
     await super.startHandler()
     await this.ensureIndexes()
-    return true
   }
 }

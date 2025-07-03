@@ -71,6 +71,5 @@ export class MongoDBBoundWitnessDiviner extends MongoDBDivinerBase {
   protected override async startHandler() {
     await super.startHandler()
     await this.ensureIndexes()
-    return true
   }
 }

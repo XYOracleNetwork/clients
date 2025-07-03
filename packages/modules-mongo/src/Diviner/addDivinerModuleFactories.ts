@@ -35,13 +35,13 @@ const getMongoDBSchemaStatsDiviner = (container: Container) => {
 
 export const addDivinerModuleFactories = (container: Container) => {
   const locator = container.get<ModuleFactoryLocator>(TYPES.ModuleFactoryLocator)
-  locator.register(MongoDBAddressHistoryDiviner)
+  locator.register(MongoDBAddressHistoryDiviner.factory())
   // locator.register(MongoDBAddressSpaceDiviner)
   // locator.register(MongoDBAddressSpaceBatchDiviner)
-  locator.register(MongoDBBoundWitnessDiviner)
+  locator.register(MongoDBBoundWitnessDiviner.factory())
   locator.register(getMongoDBBoundWitnessStatsDiviner(container))
-  locator.register(MongoDBPayloadDiviner)
+  locator.register(MongoDBPayloadDiviner.factory())
   locator.register(getMongoDBPayloadStatsDiviner(container))
-  locator.register(MongoDBSchemaListDiviner)
+  locator.register(MongoDBSchemaListDiviner.factory())
   locator.register(getMongoDBSchemaStatsDiviner(container))
 }

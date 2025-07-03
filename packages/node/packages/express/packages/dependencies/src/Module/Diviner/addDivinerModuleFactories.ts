@@ -5,7 +5,7 @@ import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness'
 import { MemoryBoundWitnessStatsDiviner } from '@xyo-network/diviner-boundwitness-stats'
 import type { ForecastingDivinerParams } from '@xyo-network/diviner-forecasting'
 import { MemoryForecastingDiviner } from '@xyo-network/diviner-forecasting'
-import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload'
+import { GenericPayloadDiviner } from '@xyo-network/diviner-payload'
 import { MemoryPayloadStatsDiviner } from '@xyo-network/diviner-payload-stats'
 import { MemorySchemaListDiviner } from '@xyo-network/diviner-schema-list'
 import { MemorySchemaStatsDiviner } from '@xyo-network/diviner-schema-stats'
@@ -48,26 +48,26 @@ const getMemoryForecastingDiviner = () => {
 
 export const addDivinerModuleFactories = (container: Container) => {
   const locator = container.get<ModuleFactoryLocator>(TYPES.ModuleFactoryLocator)
-  locator.register(AddressHistoryDiviner)
-  locator.register(ImageThumbnailStateToIndexCandidateDiviner)
-  locator.register(ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner)
-  locator.register(ImageThumbnailQueryToImageThumbnailIndexQueryDiviner)
-  locator.register(ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner)
-  locator.register(ImageThumbnailDiviner)
+  locator.register(AddressHistoryDiviner.factory())
+  locator.register(ImageThumbnailStateToIndexCandidateDiviner.factory())
+  locator.register(ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner.factory())
+  locator.register(ImageThumbnailQueryToImageThumbnailIndexQueryDiviner.factory())
+  locator.register(ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner.factory())
+  locator.register(ImageThumbnailDiviner.factory())
   // locator.register(MemoryAddressSpaceDiviner)
-  locator.register(MemoryBoundWitnessDiviner)
-  locator.register(MemoryBoundWitnessStatsDiviner)
+  locator.register(MemoryBoundWitnessDiviner.factory())
+  locator.register(MemoryBoundWitnessStatsDiviner.factory())
   locator.register(getMemoryForecastingDiviner())
-  locator.register(MemoryPayloadDiviner)
-  locator.register(MemoryPayloadStatsDiviner)
-  locator.register(MemorySchemaListDiviner)
-  locator.register(MemorySchemaStatsDiviner)
-  locator.register(NftCollectionScoreDiviner)
-  locator.register(NftScoreDiviner)
-  locator.register(EvmCallDiviner)
-  locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner)
-  locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner)
-  locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner)
-  locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner)
-  locator.register(TemporalIndexingDiviner)
+  locator.register(GenericPayloadDiviner.factory())
+  locator.register(MemoryPayloadStatsDiviner.factory())
+  locator.register(MemorySchemaListDiviner.factory())
+  locator.register(MemorySchemaStatsDiviner.factory())
+  locator.register(NftCollectionScoreDiviner.factory())
+  locator.register(NftScoreDiviner.factory())
+  locator.register(EvmCallDiviner.factory())
+  locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner.factory())
+  locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner.factory())
+  locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner.factory())
+  locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner.factory())
+  locator.register(TemporalIndexingDiviner.factory())
 }

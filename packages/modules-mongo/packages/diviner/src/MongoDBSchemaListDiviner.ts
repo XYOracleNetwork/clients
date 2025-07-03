@@ -38,7 +38,6 @@ export class MongoDBSchemaListDiviner extends MongoDBDivinerBase {
   protected override async startHandler() {
     await super.startHandler()
     await this.ensureIndexes()
-    return true
   }
 
   private divineAddress = async (archive: Address): Promise<Schema[]> => {

@@ -110,6 +110,5 @@ export class MongoDBAddressSpaceBatchDiviner extends MongoDBDivinerBase {
     await super.startHandler()
     await this.ensureIndexes()
     void this.backgroundDivine()
-    return true
   }
 }

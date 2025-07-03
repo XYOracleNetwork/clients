@@ -8,6 +8,6 @@ export type PayloadFilterPredicate<T extends AnyObject = AnyObject> = Partial<{
   // hash: string
   offset: number
   schemas: string[]
-}> &
-Omit<PayloadFindFilter, 'offset'> &
-Partial<T>
+}>
+& Omit<PayloadFindFilter, 'offset'>
+& Partial<T>

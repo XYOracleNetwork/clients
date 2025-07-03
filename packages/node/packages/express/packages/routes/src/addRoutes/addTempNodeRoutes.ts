@@ -9,8 +9,8 @@ export const addTempNodeRoutes = (app: Express) => {
   const defaultModuleEndpoint = `/node/${address}`
   app.get('/node', (_req, res) => res.redirect(StatusCodes.MOVED_TEMPORARILY, defaultModuleEndpoint))
   app.post('/node', (_req, res) => res.redirect(StatusCodes.TEMPORARY_REDIRECT, defaultModuleEndpoint))
-  // eslint-disable-next-line @typescript-eslint/no-misused-promises
+
   app.get('/node/:address', getAddress)
-  // eslint-disable-next-line @typescript-eslint/no-misused-promises
+
   app.post('/node/:address', postAddress)
 }

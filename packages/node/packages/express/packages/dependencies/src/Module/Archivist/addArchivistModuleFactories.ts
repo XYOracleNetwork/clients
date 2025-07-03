@@ -5,5 +5,5 @@ import type { Container } from 'inversify'
 
 export const addArchivistModuleFactories = (container: Container) => {
   const locator = container.get<ModuleFactoryLocator>(TYPES.ModuleFactoryLocator)
-  locator.register(MemoryArchivist)
+  locator.register(MemoryArchivist.factory())
 }

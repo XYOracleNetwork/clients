@@ -9,7 +9,6 @@ import { StatusCodes } from 'http-status-codes'
 
 import type { AddressPathParams } from '../AddressPathParams.ts'
 
-// eslint-disable-next-line @typescript-eslint/no-misused-promises
 const handler: RequestHandler<AddressPathParams, Payload[]> = async (req, res, next) => {
   const { address: rawAddress } = req.params
   const { node } = req.app

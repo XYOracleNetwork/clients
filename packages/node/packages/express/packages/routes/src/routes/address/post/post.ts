@@ -15,7 +15,6 @@ import { getQueryConfig } from './getQueryConfig.js'
 
 export type PostAddressRequestBody = [QueryBoundWitness, undefined | Payload[]]
 
-// eslint-disable-next-line @typescript-eslint/no-misused-promises
 const handler: RequestHandler<AddressPathParams, ModuleQueryResult | ModuleError, PostAddressRequestBody> = async (req, res, next) => {
   const returnError = (code: number, message = 'An error occurred', details?: JsonObject) => {
     const error = new ModuleErrorBuilder().message(message).details(details).build()

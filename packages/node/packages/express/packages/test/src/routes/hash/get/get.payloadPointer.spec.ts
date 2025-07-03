@@ -1,4 +1,3 @@
-/* eslint-disable sonarjs/assertions-in-tests */
 import { Account } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'

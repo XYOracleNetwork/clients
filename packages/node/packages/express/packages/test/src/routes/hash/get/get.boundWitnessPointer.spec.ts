@@ -1,4 +1,3 @@
-/* eslint-disable sonarjs/assertions-in-tests */
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
 import { Account } from '@xyo-network/account'
@@ -242,7 +241,7 @@ describe('/:hash', () => {
         await delay(100)
         boundWitnesses = [bwA, bwB, bwC]
         expectedSchema = payloadsA[0].schema
-        // eslint-disable-next-line sonarjs/no-unused-collection
+
         const insertedPayloads: Payload[] = []
         for (const bw of boundWitnesses) {
           const blockResponse = await insertBlock(bw, account)

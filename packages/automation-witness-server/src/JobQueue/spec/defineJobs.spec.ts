@@ -1,4 +1,3 @@
-/* eslint-disable sonarjs/assertions-in-tests */
 import type { JobQueue } from '@xyo-network/node-core-model'
 import type { Job } from '@xyo-network/shared'
 import {

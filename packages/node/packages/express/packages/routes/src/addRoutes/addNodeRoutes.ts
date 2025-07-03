@@ -21,17 +21,17 @@ export const addNodeRoutes = (app: Express) => {
   )
   app.get(
     '/:address',
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+
     getAddress,
   )
   app.post(
     '/:address',
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+
     postAddress,
   )
   app.get(
     '/:hash',
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+
     getByHash,
   )
 }
