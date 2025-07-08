@@ -25,17 +25,17 @@
   "types": "dist/types/index.d.ts",
   "dependencies": {
     "@xyo-network/node-core-model": "workspace:^",
-    "@xyo-network/payload-builder": "^4.0.1",
-    "@xyo-network/payload-model": "^4.0.1",
-    "@xyo-network/payload-mongodb": "^4.0.1",
-    "@xyo-network/schema-cache": "^4.0.1",
+    "@xyo-network/payload-builder": "^4.0.2",
+    "@xyo-network/payload-model": "^4.0.2",
+    "@xyo-network/payload-mongodb": "^4.0.2",
+    "@xyo-network/schema-cache": "^4.0.2",
     "ajv": "^8.17.1"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^6.5.12",
     "@xylabs/tsconfig": "^6.5.12",
-    "@xyo-network/payload-builder": "^4.0.1",
-    "@xyo-network/schema-payload-plugin": "^4.0.1",
+    "@xyo-network/payload-builder": "^4.0.2",
+    "@xyo-network/schema-payload-plugin": "^4.0.2",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
   },

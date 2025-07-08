@@ -95,7 +95,7 @@
         "--run",
         "--inspect-brk",
         "--no-file-parallelism",
-        "packages/automation-witness-server/src/Jobs/CryptoMarket/spec/reportCryptoPrices.spec.ts"
+        "packages/automation-witness-server/src/Jobs/TZeroStockMarket/spec/reportStockPrices.spec.ts"
       ],
       "resolveSourceMapLocations": [
         "${workspaceFolder}/**",
