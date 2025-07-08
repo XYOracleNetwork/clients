@@ -4075,6 +4075,7 @@ __metadata:
     "@types/supertest": "npm:^6.0.3"
     "@typescript-eslint/eslint-plugin": "npm:^8.36.0"
     "@typescript-eslint/parser": "npm:^8.36.0"
+    "@typescript-eslint/types": "npm:^8.36.0"
     "@vitest/coverage-v8": "npm:^3.2.4"
     "@xylabs/base": "npm:^4.12.42"
     "@xylabs/eslint-config-flat": "npm:^6.5.12"
