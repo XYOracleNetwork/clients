@@ -4,7 +4,7 @@ const config: XyTsupConfig = {
     browser: {},
     neutral: {},
     entryMode: 'all',
-    node: { src: { entry: ['src/**/*.ts', '!src/**/*.spec.*'] } },
+    node: { src: true },
   },
 }
 

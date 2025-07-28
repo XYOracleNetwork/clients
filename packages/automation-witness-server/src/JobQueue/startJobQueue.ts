@@ -1,5 +1,5 @@
-import type { JobQueue } from '@xyo-network/node-core-model'
+import type { NodeJobQueue } from '@xyo-network/node-core-model'
 
-export const startJobQueue = async (jobQueue: JobQueue) => {
+export const startJobQueue = async (jobQueue: NodeJobQueue) => {
   await jobQueue.start()
 }

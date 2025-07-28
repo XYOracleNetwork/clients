@@ -22,21 +22,21 @@
   "exports": {
     ".": {
       "browser": {
-        "types": "./dist/types/index.d.ts",
+        "types": "./dist/browser/index.d.ts",
         "default": "./dist/browser/index.mjs"
       },
       "node": {
-        "types": "./dist/types/index.d.ts",
+        "types": "./dist/node/index.d.ts",
         "default": "./dist/node/index.mjs"
       },
-      "types": "./dist/types/index.d.ts",
+      "types": "./dist/node/index.d.ts",
       "default": "./dist/node/index.mjs"
     },
     "./package.json": "./package.json",
     "./README.md": "./README.md"
   },
   "module": "./dist/node/index.mjs",
-  "types": "./dist/types/index.d.ts",
+  "types": "./dist/node/index.d.ts",
   "workspaces": [
     "packages/**/*"
   ],
@@ -62,45 +62,43 @@
     "xyo-ts": "yarn workspace @xyo-network/node-cli xyo-ts"
   },
   "dependencies": {
-    "@xylabs/express": "^4.12.42",
     "@xyo-network/automation-witness-server": "workspace:^",
     "@xyo-network/cli": "workspace:^",
-    "@xyo-network/express-node": "workspace:^",
-    "express": "^5.1.0"
+    "@xyo-network/express-node": "workspace:^"
   },
   "devDependencies": {
     "@ethersproject/bignumber": "^5.8.0",
     "@types/supertest": "^6.0.3",
-    "@typescript-eslint/eslint-plugin": "^8.36.0",
-    "@typescript-eslint/parser": "^8.36.0",
-    "@typescript-eslint/types": "^8.36.0",
+    "@typescript-eslint/eslint-plugin": "^8.38.0",
+    "@typescript-eslint/parser": "^8.38.0",
+    "@typescript-eslint/types": "^8.38.0",
     "@vitest/coverage-v8": "^3.2.4",
-    "@xylabs/base": "^4.12.42",
-    "@xylabs/eslint-config-flat": "^6.5.12",
-    "@xylabs/object": "^4.12.42",
-    "@xylabs/ts-scripts-yarn3": "^6.5.12",
-    "@xylabs/tsconfig": "^6.5.12",
-    "@xylabs/vitest-extended": "^4.12.42",
-    "@xyo-network/account": "^4.0.2",
-    "@xyo-network/node-memory": "^4.0.2",
-    "@xyo-network/payload-builder": "^4.0.2",
-    "@xyo-network/payload-validator": "^4.0.2",
-    "@xyo-network/schema-name-validator": "^4.0.2",
-    "@xyo-network/wallet": "^4.0.2",
+    "@xylabs/base": "^4.15.1",
+    "@xylabs/eslint-config-flat": "^7.0.1",
+    "@xylabs/object": "^4.15.1",
+    "@xylabs/ts-scripts-yarn3": "^7.0.1",
+    "@xylabs/tsconfig": "^7.0.1",
+    "@xylabs/vitest-extended": "^4.15.1",
+    "@xyo-network/account": "^4.3.0",
+    "@xyo-network/node-memory": "^4.3.0",
+    "@xyo-network/payload-builder": "^4.3.0",
+    "@xyo-network/payload-validator": "^4.3.0",
+    "@xyo-network/schema-name-validator": "^4.3.0",
+    "@xyo-network/wallet": "^4.3.0",
     "chalk": "^5.4.1",
-    "dotenv": "^17.1.0",
-    "eslint": "^9.30.1",
+    "dotenv": "^17.2.1",
+    "eslint": "^9.32.0",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-sonarjs": "^3.0.4",
     "glob": "^11.0.3",
     "jsbi": "^4.3.2",
-    "knip": "^5.61.3",
+    "knip": "^5.62.0",
     "lodash.merge": "^4.6.2",
     "mongodb-memory-server": "^10.1.4",
     "nodemon": "^3.1.10",
     "reflect-metadata": "^0.2.2",
-    "supertest": "^7.1.3",
-    "typedoc": "^0.28.7",
+    "supertest": "^7.1.4",
+    "typedoc": "^0.28.8",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
   },

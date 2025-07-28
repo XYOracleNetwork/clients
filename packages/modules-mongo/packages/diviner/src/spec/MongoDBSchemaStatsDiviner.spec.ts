@@ -13,9 +13,9 @@ import {
   SchemaStatsQuerySchema,
 } from '@xyo-network/diviner-schema-stats-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
-import type { JobQueue } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { type PayloadWithMongoMeta, toDbRepresentation } from '@xyo-network/payload-mongodb'
+import type { JobQueue } from '@xyo-network/shared'
 import {
   beforeAll, describe, expect, it,
 } from 'vitest'

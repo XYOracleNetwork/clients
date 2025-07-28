@@ -17,18 +17,18 @@ type DappInfo = [schema: string, address: Address]
 
 const beta = true
 
-const betaDapps: DappInfo[] = [
+const betaDapps = [
   ['network.xyo.blockchain.ethereum.gas', '85e7a0494c1feb184a80d64aca7bef07d8efd960'],
   ['network.xyo.crypto.asset', 'f90b9ad30ea94d3df17d51c727c416b46faf18b6'],
   ['network.xyo.crypto.market.uniswap', '2d0fb5708b9d68bfaa96c6e426cbc66a341f117d'],
   ['network.xyo.stock.market.tzero.snapshot', '8985400ba079e4ae51d2765e4dcac9d76df1a7f9'],
-]
-const prodDapps: DappInfo[] = [
+] as DappInfo[]
+const prodDapps = [
   ['network.xyo.blockchain.ethereum.gas', '5b1037aa01cbba864f0908a7916b6c1de2f2be20'],
   ['network.xyo.crypto.asset', 'fce4ff8050a80076d2f95b77c61c847ae0d8b77f'],
   ['network.xyo.crypto.market.uniswap', 'd6ceab805cd617bb5b1ce86d11f24aae8ec7e26f'],
   ['network.xyo.stock.market.tzero.snapshot', '85a89bf47aa00a52f92e77291da5b20d06667a76'],
-]
+] as DappInfo[]
 
 const cases = beta ? betaDapps : prodDapps
 const nodeUrl = beta ? 'https://beta.api.archivist.xyo.network' : 'https://api.archivist.xyo.network'

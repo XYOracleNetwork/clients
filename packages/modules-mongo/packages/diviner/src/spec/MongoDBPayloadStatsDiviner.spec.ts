@@ -11,7 +11,7 @@ import {
   PayloadStatsQuerySchema,
 } from '@xyo-network/diviner-payload-stats-model'
 import { hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
-import type { JobQueue } from '@xyo-network/node-core-model'
+import type { JobQueue } from '@xyo-network/shared'
 import {
   beforeAll, describe, expect,
   it,

@@ -1,5 +1,5 @@
-import type { JobQueue } from '@xyo-network/node-core-model'
 import { TYPES } from '@xyo-network/node-core-types'
+import type { JobQueue } from '@xyo-network/shared'
 import type { interfaces } from 'inversify'
 import { ContainerModule } from 'inversify'
 

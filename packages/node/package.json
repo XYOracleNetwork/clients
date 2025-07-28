@@ -9,20 +9,20 @@
   "exports": {
     ".": {
       "browser": {
-        "types": "./dist/types/index.d.ts",
+        "types": "./dist/browser/index.d.ts",
         "default": "./dist/browser/index.mjs"
       },
       "node": {
-        "types": "./dist/types/index.d.ts",
+        "types": "./dist/node/index.d.ts",
         "default": "./dist/node/index.mjs"
       },
-      "types": "./dist/types/index.d.ts",
+      "types": "./dist/node/index.d.ts",
       "default": "./dist/node/index.mjs"
     },
     "./package.json": "./package.json"
   },
   "module": "dist/node/index.mjs",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/node/index.d.ts",
   "workspaces": [
     "packages/**/*"
   ],
@@ -33,9 +33,9 @@
     "@xyo-network/express-node-server": "workspace:^"
   },
   "devDependencies": {
-    "@swc/core": "^1.12.11",
-    "@xylabs/ts-scripts-yarn3": "^6.5.12",
-    "@xylabs/tsconfig": "^6.5.12",
+    "@swc/core": "^1.13.2",
+    "@xylabs/ts-scripts-yarn3": "^7.0.1",
+    "@xylabs/tsconfig": "^7.0.1",
     "typescript": "^5.8.3"
   },
   "publishConfig": {

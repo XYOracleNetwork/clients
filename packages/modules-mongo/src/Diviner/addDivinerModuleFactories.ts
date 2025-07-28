@@ -10,8 +10,8 @@ import {
 import type { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
 import type { MongoDBModuleParams } from '@xyo-network/module-model-mongodb'
-import type { JobQueue } from '@xyo-network/node-core-model'
 import { TYPES } from '@xyo-network/node-core-types'
+import type { JobQueue } from '@xyo-network/shared'
 import type { Container } from 'inversify'
 
 const getMongoDBBoundWitnessStatsDiviner = (container: Container) => {

@@ -1,4 +1,4 @@
-import type { JobQueue } from '@xyo-network/node-core-model'
+import type { NodeJobQueue } from '@xyo-network/node-core-model'
 import { Agenda } from 'agenda'
 
 import { getName } from './getName.js'
@@ -8,7 +8,7 @@ import { getName } from './getName.js'
  */
 const collection = 'automationWitness'
 
-export const getJobQueue = async (): Promise<JobQueue> => {
+export const getJobQueue = async (): Promise<NodeJobQueue> => {
   const address = process.env.MONGO_CONNECTION_STRING || 'mongodb://root:example@localhost:27017/job?authSource=admin'
   const db = { address, collection }
   const name = await getName()

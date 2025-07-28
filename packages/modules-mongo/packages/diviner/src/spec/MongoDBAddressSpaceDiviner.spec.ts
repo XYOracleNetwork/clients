@@ -10,7 +10,7 @@ import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mong
 import type { AddressPayload } from '@xyo-network/module-model'
 import { AddressSchema } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { AnyPayload, Payload } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { type BoundWitnessWithMongoMeta, toDbRepresentation } from '@xyo-network/payload-mongodb'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
@@ -40,7 +40,7 @@ describe.runIf(hasMongoDBConfig())('MongoDBAddressSpaceDiviner', () => {
     })
     // TODO: Insert via archivist
     const payload: Payload = new PayloadBuilder({ schema: 'network.xyo.test' }).build()
-    const [bw] = (await (new BoundWitnessBuilder<UnsignedBoundWitness, AnyPayload>().payload(payload)).signer(account).build())
+    const [bw] = (await (new BoundWitnessBuilder<UnsignedBoundWitness, Payload>().payload(payload)).signer(account).build())
     await boundWitnessSdk.insertOne(toDbRepresentation(await BoundWitnessBuilder.addStorageMeta(bw)))
   })
   describe('divine', () => {

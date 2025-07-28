@@ -16,10 +16,10 @@ import {
 } from '@xyo-network/diviner-boundwitness-stats-model'
 import type { DivinerInstance, DivinerParams } from '@xyo-network/diviner-model'
 import { COLLECTIONS, hasMongoDBConfig } from '@xyo-network/module-abstract-mongodb'
-import type { JobQueue } from '@xyo-network/node-core-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload } from '@xyo-network/payload-model'
 import { type BoundWitnessWithMongoMeta, toDbRepresentation } from '@xyo-network/payload-mongodb'
+import type { JobQueue } from '@xyo-network/shared'
 import {
   beforeAll, describe, expect, it,
 } from 'vitest'

@@ -1,11 +1,11 @@
-import type { JobQueue } from '@xyo-network/node-core-model'
+import type { NodeJobQueue } from '@xyo-network/node-core-model'
 import type { Job } from '@xyo-network/shared'
 
 // TODO: Depends on job schedule, calculate dynamically
 // to something like 25% of schedule to allow for retries
 const options = { lockLifetime: 10_000 }
 
-export const defineJobs = (jobQueue: JobQueue, jobs: Job[]) => {
+export const defineJobs = (jobQueue: NodeJobQueue, jobs: Job[]) => {
   for (const job of jobs) {
     const { name, task } = job
     jobQueue.define(name, options, task)

@@ -2,7 +2,6 @@ import { assertEx } from '@xylabs/assert'
 import { asyncHandler } from '@xylabs/express'
 import { asAddress } from '@xylabs/hex'
 import { isModuleIdentifierPart } from '@xyo-network/module-model'
-import { trimAddressPrefix } from '@xyo-network/node-core-lib'
 import type { Payload } from '@xyo-network/payload-model'
 import type { RequestHandler } from 'express'
 import { StatusCodes } from 'http-status-codes'
@@ -21,7 +20,7 @@ const handler: RequestHandler<AddressPathParams, Payload[]> = async (req, res, n
     }
   }
   if (isModuleIdentifierPart(rawAddress)) {
-    const moduleIdentifier = trimAddressPrefix(rawAddress)
+    const moduleIdentifier = rawAddress
     const mod = await node.resolve(moduleIdentifier, { direction: 'down' })
     if (mod) {
       const moduleAddress = assertEx(mod?.address, () => 'Error redirecting to module by address')

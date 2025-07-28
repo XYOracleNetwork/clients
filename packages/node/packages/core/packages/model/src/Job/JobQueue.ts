@@ -8,7 +8,7 @@ export interface DefineOptions {
 }
 
 /** @internal */
-export interface JobQueue extends EventEmitter {
+export interface NodeJobQueue extends EventEmitter {
   define: (name: string, options: DefineOptions, processor: Job['task']) => void
   every: (
     interval: string,

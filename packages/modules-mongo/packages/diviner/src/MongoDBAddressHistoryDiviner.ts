@@ -1,7 +1,7 @@
 import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
 import type { Address, Hash } from '@xylabs/hex'
-import { hexFromHexString } from '@xylabs/hex'
+import { asAddress, hexFromHexString } from '@xylabs/hex'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import type { AddressHistoryQueryPayload } from '@xyo-network/diviner-address-history'
 import {
@@ -82,7 +82,7 @@ const sanitizeAddress = (a: string | string[] | undefined): Address => {
         .concat(a)
         .filter(exists)
         .map(x => x.toLowerCase())
-        .map(z => hexFromHexString(z, { prefix: false }))
+        .map(z => asAddress(hexFromHexString(z, { prefix: false })))
         .findLast(exists)
     ), () => 'MongoDBAddressHistoryDiviner: Invalid address',
   )

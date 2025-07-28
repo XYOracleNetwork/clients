@@ -1,12 +1,14 @@
+import { assertEx } from '@xylabs/assert'
 import { isUndefined } from '@xylabs/typeof'
 import type { AccountInstance } from '@xyo-network/account-model'
-import type { Signed } from '@xyo-network/boundwitness-model'
 import type { Payload } from '@xyo-network/payload-model'
 import { HDWallet } from '@xyo-network/wallet'
-import type { AllowedBlockPayload, TransactionBoundWitness } from '@xyo-network/xl1-protocol'
+import type {
+  AllowedBlockPayload, HydratedTransaction, XyoGatewayProvider,
+} from '@xyo-network/xl1-protocol'
 import type { RpcTransport } from '@xyo-network/xl1-rpc'
 import {
-  HttpRpcTransport, JsonRpcXyoRunner, JsonRpcXyoViewer, MemoryXyoProvider, MemoryXyoSigner, MemoryXyoWallet, XyoRunnerRpcSchemas, XyoViewerRpcSchemas,
+  HttpRpcTransport, MemoryXyoGateway, MemoryXyoSigner, RpcXyoConnection, XyoRunnerRpcSchemas, XyoViewerRpcSchemas,
 } from '@xyo-network/xl1-rpc'
 
 const accountPath = "m/44'/60'/0'/0/0" as const
@@ -25,29 +27,23 @@ const getRpcTransport = (): RpcTransport<typeof XyoRunnerRpcSchemas & typeof Xyo
   return transport
 }
 
-const getProvider = async (): Promise<MemoryXyoProvider | undefined> => {
+const getGateway = async (): Promise<XyoGatewayProvider | undefined> => {
   const account = await getAccount()
   if (!account) return
   const signer = new MemoryXyoSigner(account)
+  const endpoint = assertEx(process.env.XYO_CHAIN_RPC_URL, () => 'XYO_CHAIN_RPC_URL must be set')
   const transport = getRpcTransport()
   if (!transport) return
-  const runner = new JsonRpcXyoRunner(transport)
-  const viewer = new JsonRpcXyoViewer(transport)
-  const wallet = new MemoryXyoWallet(account)
-  const chainId = await viewer.chainId()
-  wallet.addChain(chainId, 'XL1')
-  wallet.switchChain(chainId)
-  const provider = new MemoryXyoProvider({
-    runner, signer, viewer, wallet,
-  })
-  return provider
+  const connection = new RpcXyoConnection({ account, endpoint })
+  const gateway = new MemoryXyoGateway(signer, connection)
+  return gateway
 }
 
 export const sendTransaction = async (
   elevatedPayloads: AllowedBlockPayload[],
   additionalPayloads: Payload[],
-): Promise<Signed<TransactionBoundWitness> | undefined> => {
-  const provider = await getProvider()
-  if (!provider) return
-  return await provider.send(elevatedPayloads, additionalPayloads)
+): Promise<HydratedTransaction | undefined> => {
+  const gateway = await getGateway()
+  if (!gateway) return
+  return await gateway.submitTransaction(elevatedPayloads, additionalPayloads)
 }

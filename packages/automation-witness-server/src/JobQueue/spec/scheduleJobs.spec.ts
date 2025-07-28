@@ -1,4 +1,4 @@
-import type { JobQueue } from '@xyo-network/node-core-model'
+import type { NodeJobQueue } from '@xyo-network/node-core-model'
 import type { Job } from '@xyo-network/shared'
 import {
   beforeEach, describe, it,
@@ -8,10 +8,10 @@ import { mock } from 'vitest-mock-extended'
 import { scheduleJobs } from '../scheduleJobs.js'
 
 describe('scheduleJobs', () => {
-  let jobQueue: JobQueue
+  let jobQueue: NodeJobQueue
   let jobs: Job[] = []
   beforeEach(() => {
-    jobQueue = mock<JobQueue>()
+    jobQueue = mock<NodeJobQueue>()
     jobs = [mock<Job>()]
   })
   it('schedules the supplied jobs', async () => {

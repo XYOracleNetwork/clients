@@ -1,6 +1,6 @@
 import { container } from '@xyo-network/express-node-dependencies'
-import type { JobQueue } from '@xyo-network/node-core-model'
 import { TYPES } from '@xyo-network/node-core-types'
+import type { JobQueue } from '@xyo-network/shared'
 
 export const startJobQueue = async () => {
   if (!container.isBound(TYPES.JobQueue)) return

@@ -1,5 +1,5 @@
 import { assertEx } from '@xylabs/assert'
-import type { JobQueue } from '@xyo-network/node-core-model'
+import type { JobQueue } from '@xyo-network/shared'
 import { Agenda } from 'agenda'
 
 import { getName } from './getName.js'
@@ -37,5 +37,5 @@ export const getJobQueue = (): JobQueue => {
   const jobProcessingInterval = process.env.JOB_PROCESSING_INTERVAL || '20 seconds'
   jobQueue.processEvery(jobProcessingInterval)
 
-  return jobQueue
+  return jobQueue as unknown as JobQueue
 }
