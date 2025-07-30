@@ -5,6 +5,7 @@
   "description": "XYO Node App",
   "license": "LGPL-3.0-only",
   "author": "Arie Trouw",
+  "sideEffects": false,
   "type": "module",
   "exports": {
     ".": {
@@ -19,22 +20,26 @@
   },
   "module": "dist/node/index.mjs",
   "types": "dist/node/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "dependencies": {
-    "@xylabs/express": "^4.15.1",
-    "@xyo-network/account-model": "^4.3.0",
+    "@xylabs/express": "^5.0.0",
+    "@xyo-network/account-model": "^5.0.0",
     "@xyo-network/express-node-server": "workspace:^",
     "@xyo-network/node-core-types": "workspace:^",
-    "@xyo-network/node-memory": "^4.3.0",
-    "@xyo-network/node-model": "^4.3.0",
-    "@xyo-network/payload-validator": "^4.3.0",
-    "@xyo-network/schema-name-validator": "^4.3.0",
-    "@xyo-network/wallet": "^4.3.0",
+    "@xyo-network/node-memory": "^5.0.0",
+    "@xyo-network/node-model": "^5.0.0",
+    "@xyo-network/payload-validator": "^5.0.0",
+    "@xyo-network/schema-name-validator": "^5.0.0",
+    "@xyo-network/wallet": "^5.0.0",
     "dotenv": "^17.2.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^7.0.1",
-    "@xylabs/tsconfig": "^7.0.1",
-    "@xylabs/vitest-extended": "^4.15.1",
+    "@xylabs/ts-scripts-yarn3": "^7.0.2",
+    "@xylabs/tsconfig": "^7.0.2",
+    "@xylabs/vitest-extended": "^5.0.0",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
   },
