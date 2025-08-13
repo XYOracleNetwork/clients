@@ -4,11 +4,11 @@ import type { AccountInstance } from '@xyo-network/account-model'
 import type { Payload } from '@xyo-network/payload-model'
 import { HDWallet } from '@xyo-network/wallet'
 import type {
-  AllowedBlockPayload, HydratedTransaction, XyoGatewayProvider,
+  AllowedBlockPayload, SignedHydratedTransaction, XyoGatewayProvider,
 } from '@xyo-network/xl1-protocol'
 import type { RpcTransport } from '@xyo-network/xl1-rpc'
 import {
-  HttpRpcTransport, MemoryXyoGateway, MemoryXyoSigner, RpcXyoConnection, XyoRunnerRpcSchemas, XyoViewerRpcSchemas,
+  HttpRpcTransport, HttpRpcXyoConnection, MemoryXyoGateway, MemoryXyoSigner, XyoRunnerRpcSchemas, XyoViewerRpcSchemas,
 } from '@xyo-network/xl1-rpc'
 
 const accountPath = "m/44'/60'/0'/0/0" as const
@@ -34,7 +34,7 @@ const getGateway = async (): Promise<XyoGatewayProvider | undefined> => {
   const endpoint = assertEx(process.env.XYO_CHAIN_RPC_URL, () => 'XYO_CHAIN_RPC_URL must be set')
   const transport = getRpcTransport()
   if (!transport) return
-  const connection = new RpcXyoConnection({ account, endpoint })
+  const connection = new HttpRpcXyoConnection({ account, endpoint })
   const gateway = new MemoryXyoGateway(signer, connection)
   return gateway
 }
@@ -42,8 +42,8 @@ const getGateway = async (): Promise<XyoGatewayProvider | undefined> => {
 export const sendTransaction = async (
   elevatedPayloads: AllowedBlockPayload[],
   additionalPayloads: Payload[],
-): Promise<HydratedTransaction | undefined> => {
+): Promise<SignedHydratedTransaction | undefined> => {
   const gateway = await getGateway()
   if (!gateway) return
-  return await gateway.submitTransaction(elevatedPayloads, additionalPayloads)
+  return await gateway.submitTransaction?.(elevatedPayloads, additionalPayloads)
 }

@@ -17,7 +17,10 @@ import { startJobQueue } from './startJobQueue.js'
 const hostname = '::'
 
 export abstract class PayloadTransport {
-  constructor(protected readonly node: NodeInstance) {}
+  protected readonly node: NodeInstance
+  constructor(node: NodeInstance) {
+    this.node = node
+  }
 }
 
 export class ExpressPayloadTransport extends PayloadTransport {

@@ -29,18 +29,18 @@
     "src"
   ],
   "dependencies": {
-    "@xylabs/assert": "^5.0.0",
-    "@xylabs/express": "^5.0.0",
-    "@xyo-network/module-model": "^5.0.0",
-    "@xyo-network/node-model": "^5.0.0",
-    "@xyo-network/payload-mongodb": "^5.0.0",
-    "express": "^5.1.0"
+    "@xylabs/assert": "~5.0.7",
+    "@xylabs/express": "~5.0.7",
+    "@xyo-network/module-model": "~5.0.3",
+    "@xyo-network/node-model": "~5.0.3",
+    "@xyo-network/payload-mongodb": "~5.0.3",
+    "express": "~5.1.0"
   },
   "devDependencies": {
-    "@types/express": "^5.0.3",
-    "@xylabs/ts-scripts-yarn3": "^7.0.2",
-    "@xylabs/tsconfig": "^7.0.2",
-    "typescript": "^5.8.3"
+    "@types/express": "~5.0.3",
+    "@xylabs/ts-scripts-yarn3": "~7.1.0",
+    "@xylabs/tsconfig": "~7.1.0",
+    "typescript": "~5.9.2"
   },
   "publishConfig": {
     "access": "public"

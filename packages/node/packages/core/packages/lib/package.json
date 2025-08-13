@@ -30,19 +30,19 @@
   ],
   "dependencies": {
     "@xyo-network/node-core-model": "workspace:^",
-    "@xyo-network/payload-builder": "^5.0.0",
-    "@xyo-network/payload-model": "^5.0.0",
-    "@xyo-network/payload-mongodb": "^5.0.0",
-    "@xyo-network/schema-cache": "^5.0.0",
-    "ajv": "^8.17.1"
+    "@xyo-network/payload-builder": "~5.0.3",
+    "@xyo-network/payload-model": "~5.0.3",
+    "@xyo-network/payload-mongodb": "~5.0.3",
+    "@xyo-network/schema-cache": "~5.0.3",
+    "ajv": "~8.17.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^7.0.2",
-    "@xylabs/tsconfig": "^7.0.2",
-    "@xyo-network/payload-builder": "^5.0.0",
-    "@xyo-network/schema-payload-plugin": "^5.0.0",
-    "typescript": "^5.8.3",
-    "vitest": "^3.2.4"
+    "@xylabs/ts-scripts-yarn3": "~7.1.0",
+    "@xylabs/tsconfig": "~7.1.0",
+    "@xyo-network/payload-builder": "~5.0.3",
+    "@xyo-network/schema-payload-plugin": "~5.0.3",
+    "typescript": "~5.9.2",
+    "vitest": "~3.2.4"
   },
   "publishConfig": {
     "access": "public"

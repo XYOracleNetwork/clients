@@ -5,7 +5,10 @@ import type { PreviousHashStore } from '@xyo-network/previous-hash-store-model'
 import type { AddressInfo } from '../Mongo/index.js'
 
 export class MongoDBPreviousHashStore implements PreviousHashStore {
-  constructor(protected readonly addressInfoSdk: BaseMongoSdk<AddressInfo>) {}
+  protected readonly addressInfoSdk
+  constructor(addressInfoSdk: BaseMongoSdk<AddressInfo>) {
+    this.addressInfoSdk = addressInfoSdk
+  }
 
   async getItem(address: Address): Promise<Hash | null> {
     const value = await this.addressInfoSdk.findOne({ address })
