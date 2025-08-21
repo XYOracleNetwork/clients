@@ -9,8 +9,6 @@ export const addTempNodeRoutes = (app: Express) => {
   const defaultModuleEndpoint = `/node/${address}`
   app.get('/node', (_req, res) => res.redirect(StatusCodes.MOVED_TEMPORARILY, defaultModuleEndpoint))
   app.post('/node', (_req, res) => res.redirect(StatusCodes.TEMPORARY_REDIRECT, defaultModuleEndpoint))
-
   app.get('/node/:address', getAddress)
-
   app.post('/node/:address', postAddress)
 }
