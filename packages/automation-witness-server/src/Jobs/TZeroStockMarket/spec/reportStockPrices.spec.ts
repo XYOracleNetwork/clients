@@ -1,7 +1,7 @@
 import '@xylabs/vitest-extended'
-import { delay } from '@xylabs/delay'
 
 import { assertEx } from '@xylabs/assert'
+import { delay } from '@xylabs/delay'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { isSnapshot } from '@xyo-network/tzero-stock-market-payload-plugin'
 import {
