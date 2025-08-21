@@ -1,5 +1,5 @@
 import { setRawResponseFormat } from '@xylabs/express'
-import { asHash } from '@xylabs/hex'
+import { asHash, isHash } from '@xylabs/hex'
 import { isDefined } from '@xylabs/typeof'
 import type {
   ArchivistInstance,
@@ -11,9 +11,8 @@ import type { NodeInstance } from '@xyo-network/node-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload } from '@xyo-network/payload-model'
 import { isAnyPayload, isSequence } from '@xyo-network/payload-model'
-import type { Router } from 'express'
+import type { Request, Router } from 'express'
 import express from 'express'
-import type { Request } from 'express-serve-static-core'
 
 const resolveArchivist = async (node: NodeInstance, archivistModuleIdentifier: ModuleIdentifier): Promise<ArchivistInstance> => {
   const mod = await node.resolve(archivistModuleIdentifier)
@@ -71,7 +70,7 @@ export const archivistMiddleware = (options: ArchivistMiddlewareOptions): Router
     setRawResponseFormat(res)
     const { hash: rawHash } = req.params
     const hash = asHash(rawHash)
-    if (isDefined(hash)) {
+    if (isHash(hash)) {
       const archivist = await getArchivist(node, archivistModuleIdentifier)
       const [payload] = await archivist.get([hash])
       if (isAnyPayload(payload)) {
