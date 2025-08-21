@@ -5490,6 +5490,7 @@ __metadata:
     "@xyo-network/node-core-model": "workspace:^"
     "@xyo-network/node-core-types": "workspace:^"
     "@xyo-network/node-model": "npm:~5.0.3"
+    "@xyo-network/payload-builder": "npm:~5.0.3"
     "@xyo-network/payload-model": "npm:~5.0.3"
     "@xyo-network/payload-wrapper": "npm:~5.0.3"
     "@xyo-network/prometheus-node-plugin": "npm:~5.0.1"
