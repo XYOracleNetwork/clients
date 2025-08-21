@@ -7,7 +7,7 @@ import { hideBin } from 'yargs/helpers'
 import type { OutputType } from './command/index.js'
 import { opts } from './command/index.js'
 
-config()
+config({ quiet: true })
 
 void yargs(hideBin(process.argv))
   .commandDir('./command/commands', opts)

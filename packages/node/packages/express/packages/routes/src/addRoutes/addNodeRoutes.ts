@@ -19,19 +19,7 @@ export const addNodeRoutes = (app: Express) => {
     '/',
     (_req, res) => res.redirect(StatusCodes.TEMPORARY_REDIRECT, defaultModuleEndpoint),
   )
-  app.get(
-    '/:address',
-
-    getAddress,
-  )
-  app.post(
-    '/:address',
-
-    postAddress,
-  )
-  app.get(
-    '/:hash',
-
-    getByHash,
-  )
+  app.get('/:address', getAddress)
+  app.post('/:address', postAddress)
+  app.get('/:hash', getByHash)
 }

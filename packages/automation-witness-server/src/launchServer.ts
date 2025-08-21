@@ -3,6 +3,6 @@ import { config } from 'dotenv'
 
 import { server } from './Server/index.js'
 
-config()
+config({ quiet: true })
 
 void server(tryParseInt(process.env.APP_PORT))

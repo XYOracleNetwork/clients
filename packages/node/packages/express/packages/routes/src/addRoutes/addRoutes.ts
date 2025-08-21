@@ -1,5 +1,6 @@
 import type { Express } from 'express'
 
+import { addDataLakeRoutes } from './addDataLakeRoutes.ts'
 import { addDomainRoutes } from './addDomainRoutes.js'
 import { addMetricsRoutes } from './addMetricsRoutes.js'
 import { addNodeRoutes } from './addNodeRoutes.js'
@@ -9,6 +10,7 @@ export const addRoutes = (app: Express): Express => {
   addDomainRoutes(app)
   addTempNodeRoutes(app)
   addMetricsRoutes(app)
+  addDataLakeRoutes(app)
   // This needs to be the last true route handler since it is
   // a catch-all for the root paths
   addNodeRoutes(app)
