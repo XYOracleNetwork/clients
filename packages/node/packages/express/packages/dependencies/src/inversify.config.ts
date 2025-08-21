@@ -14,7 +14,7 @@ import { Container } from 'inversify'
 import { configureMemoryNode } from './configureMemoryNode.js'
 import { addMemoryModules } from './Module/index.js'
 // import { tryGetServiceName } from './Util/index.js'
-config()
+config({ quiet: true })
 
 export const container = new Container({
   autoBindInjectable: true,

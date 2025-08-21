@@ -1,5 +1,5 @@
 import { config } from 'dotenv'
-config()
+config({ quiet: true })
 import { disableGloballyUnique } from '@xylabs/base'
 import { getApp } from '@xyo-network/express-node-server'
 import { canAddMongoModules } from '@xyo-network/node-core-modules-mongo'
