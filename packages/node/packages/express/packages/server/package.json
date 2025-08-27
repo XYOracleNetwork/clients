@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/package.json",
   "name": "@xyo-network/express-node-server",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "description": "XYO Express Node Server",
   "license": "LGPL-3.0-only",
   "author": "Arie Trouw",
@@ -29,13 +29,13 @@
     "src"
   ],
   "dependencies": {
-    "@xylabs/assert": "~5.0.7",
-    "@xylabs/express": "~5.0.7",
+    "@xylabs/assert": "~5.0.11",
+    "@xylabs/express": "~5.0.11",
     "@xyo-network/express-node-dependencies": "workspace:^",
     "@xyo-network/express-node-routes": "workspace:^",
     "@xyo-network/node-core-types": "workspace:^",
-    "@xyo-network/node-memory": "~5.0.3",
-    "@xyo-network/node-model": "~5.0.3",
+    "@xyo-network/node-memory": "~5.1.0",
+    "@xyo-network/node-model": "~5.1.0",
     "compression": "~1.8.1",
     "cors": "~2.8.5",
     "express": "~5.1.0"
@@ -45,10 +45,10 @@
     "@types/cors": "~2.8.19",
     "@types/express": "~5.0.3",
     "@types/nconf": "~0.10.7",
-    "@xylabs/ts-scripts-yarn3": "~7.1.0",
-    "@xylabs/tsconfig": "~7.1.0",
+    "@xylabs/ts-scripts-yarn3": "~7.1.7",
+    "@xylabs/tsconfig": "~7.1.7",
     "@xyo-network/node-core-model": "workspace:^",
-    "@xyo-network/shared": "~5.0.3",
+    "@xyo-network/shared": "~5.1.0",
     "nconf": "~0.13.0",
     "typescript": "~5.9.2"
   },

@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/sdk-xyo-mongo-js",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "description": "Base functionality used throughout XYO TypeScript/JavaScript libraries that access Mongo DB",
   "keywords": [
     "xyo",
@@ -47,8 +47,8 @@
     "src"
   ],
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.1.0",
-    "@xylabs/tsconfig": "~7.1.0",
+    "@xylabs/ts-scripts-yarn3": "~7.1.7",
+    "@xylabs/tsconfig": "~7.1.7",
     "typescript": "~5.9.2",
     "vitest": "~3.2.4"
   },

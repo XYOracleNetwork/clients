@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/clients",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "description": "Primary SDK for using XYO Protocol 2.0",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -65,9 +65,6 @@
     "xyo": "node ./packages/cli/dist/cjs/index.js",
     "xyo-ts": "yarn workspace @xyo-network/node-cli xyo-ts"
   },
-  "resolutions": {
-    "typescript": "~5.8"
-  },
   "dependencies": {
     "@xyo-network/automation-witness-server": "workspace:^",
     "@xyo-network/cli": "workspace:^",
@@ -76,36 +73,36 @@
   "devDependencies": {
     "@ethersproject/bignumber": "~5.8.0",
     "@types/supertest": "~6.0.3",
-    "@typescript-eslint/eslint-plugin": "~8.39.1",
-    "@typescript-eslint/parser": "~8.39.1",
-    "@typescript-eslint/types": "~8.39.1",
+    "@typescript-eslint/eslint-plugin": "~8.41.0",
+    "@typescript-eslint/parser": "~8.41.0",
+    "@typescript-eslint/types": "~8.41.0",
     "@vitest/coverage-v8": "~3.2.4",
-    "@xylabs/base": "~5.0.7",
-    "@xylabs/eslint-config-flat": "~7.1.0",
-    "@xylabs/object": "~5.0.7",
-    "@xylabs/ts-scripts-yarn3": "~7.1.0",
-    "@xylabs/tsconfig": "~7.1.0",
-    "@xylabs/vitest-extended": "~5.0.7",
-    "@xyo-network/account": "~5.0.3",
-    "@xyo-network/node-memory": "~5.0.3",
-    "@xyo-network/payload-builder": "~5.0.3",
-    "@xyo-network/payload-validator": "~5.0.3",
-    "@xyo-network/schema-name-validator": "~5.0.3",
-    "@xyo-network/wallet": "~5.0.3",
-    "chalk": "~5.5.0",
+    "@xylabs/base": "~5.0.11",
+    "@xylabs/eslint-config-flat": "~7.1.7",
+    "@xylabs/object": "~5.0.11",
+    "@xylabs/ts-scripts-yarn3": "~7.1.7",
+    "@xylabs/tsconfig": "~7.1.7",
+    "@xylabs/vitest-extended": "~5.0.11",
+    "@xyo-network/account": "~5.1.0",
+    "@xyo-network/node-memory": "~5.1.0",
+    "@xyo-network/payload-builder": "~5.1.0",
+    "@xyo-network/payload-validator": "~5.1.0",
+    "@xyo-network/schema-name-validator": "~5.1.0",
+    "@xyo-network/wallet": "~5.1.0",
+    "chalk": "~5.6.0",
     "dotenv": "~17.2.1",
-    "eslint": "~9.33.0",
+    "eslint": "~9.34.0",
     "eslint-import-resolver-typescript": "~4.4.4",
-    "eslint-plugin-sonarjs": "~3.0.4",
+    "eslint-plugin-sonarjs": "~3.0.5",
     "glob": "~11.0.3",
     "jsbi": "~4.3.2",
-    "knip": "~5.62.0",
+    "knip": "~5.63.0",
     "lodash.merge": "~4.6.2",
     "mongodb-memory-server": "~10.2.0",
     "nodemon": "~3.1.10",
     "reflect-metadata": "~0.2.2",
     "supertest": "~7.1.4",
-    "typedoc": "~0.28.10",
+    "typedoc": "~0.28.11",
     "typescript": "~5.9.2",
     "vitest": "~3.2.4"
   },
@@ -116,6 +113,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "resolutions_comment": "We set the above resolutions to make sure we pull in the latest versions of these packages even if some sub packages request earlier versions"
+  }
 }

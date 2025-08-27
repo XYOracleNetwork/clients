@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/package.json",
   "name": "@xyo-network/node-core-lib",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "description": "XYO Archivist",
   "license": "LGPL-3.0-only",
   "author": "Arie Trouw",
@@ -30,17 +30,17 @@
   ],
   "dependencies": {
     "@xyo-network/node-core-model": "workspace:^",
-    "@xyo-network/payload-builder": "~5.0.3",
-    "@xyo-network/payload-model": "~5.0.3",
-    "@xyo-network/payload-mongodb": "~5.0.3",
-    "@xyo-network/schema-cache": "~5.0.3",
+    "@xyo-network/payload-builder": "~5.1.0",
+    "@xyo-network/payload-model": "~5.1.0",
+    "@xyo-network/payload-mongodb": "~5.1.0",
+    "@xyo-network/schema-cache": "~5.1.0",
     "ajv": "~8.17.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.1.0",
-    "@xylabs/tsconfig": "~7.1.0",
-    "@xyo-network/payload-builder": "~5.0.3",
-    "@xyo-network/schema-payload-plugin": "~5.0.3",
+    "@xylabs/ts-scripts-yarn3": "~7.1.7",
+    "@xylabs/tsconfig": "~7.1.7",
+    "@xyo-network/payload-builder": "~5.1.0",
+    "@xyo-network/schema-payload-plugin": "~5.1.0",
     "typescript": "~5.9.2",
     "vitest": "~3.2.4"
   },
