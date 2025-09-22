@@ -60,7 +60,7 @@
     "@xylabs/hex": "~5.0.11",
     "@xylabs/ts-scripts-yarn3": "~7.1.7",
     "@xylabs/tsconfig": "~7.1.7",
-    "@xyo-network/api-call-witness": "~5.1.2",
+    "@xyo-network/api-call-witness": "~5.1.3",
     "@xyo-network/boundwitness-wrapper": "~5.1.2",
     "@xyo-network/diviner-address-history-model": "~5.1.2",
     "@xyo-network/diviner-boundwitness-model": "~5.1.2",

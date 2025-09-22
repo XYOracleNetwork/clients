@@ -71,7 +71,7 @@
     "@xyo-network/diviner-schema-list-model": "~5.1.2",
     "@xyo-network/diviner-schema-stats-abstract": "~5.1.2",
     "@xyo-network/diviner-schema-stats-model": "~5.1.2",
-    "@xyo-network/location-payload-plugin": "~5.1.2",
+    "@xyo-network/location-payload-plugin": "~5.1.3",
     "@xyo-network/module-abstract-mongodb": "~5.1.2",
     "@xyo-network/module-model": "~5.1.2",
     "@xyo-network/node-core-model": "workspace:^",
