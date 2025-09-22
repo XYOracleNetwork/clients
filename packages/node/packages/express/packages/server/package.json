@@ -34,8 +34,8 @@
     "@xyo-network/express-node-dependencies": "workspace:^",
     "@xyo-network/express-node-routes": "workspace:^",
     "@xyo-network/node-core-types": "workspace:^",
-    "@xyo-network/node-memory": "~5.1.0",
-    "@xyo-network/node-model": "~5.1.0",
+    "@xyo-network/node-memory": "~5.1.2",
+    "@xyo-network/node-model": "~5.1.2",
     "compression": "~1.8.1",
     "cors": "~2.8.5",
     "express": "~5.1.0"
@@ -48,7 +48,7 @@
     "@xylabs/ts-scripts-yarn3": "~7.1.7",
     "@xylabs/tsconfig": "~7.1.7",
     "@xyo-network/node-core-model": "workspace:^",
-    "@xyo-network/shared": "~5.1.0",
+    "@xyo-network/shared": "~5.1.2",
     "nconf": "~0.13.0",
     "typescript": "~5.9.2"
   },
