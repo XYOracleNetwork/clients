@@ -6,12 +6,13 @@ import type { SentinelConfig } from '@xyo-network/sentinel-model'
 import { SentinelConfigSchema } from '@xyo-network/sentinel-model'
 
 import { getAccount, WalletPaths } from '../../Account/index.ts'
-import { getArchivists } from '../../Archivists/index.ts'
+import { getBridge, getBridgedArchivist } from '../../Archivists/index.ts'
 import { getProvider } from '../../Providers/index.ts'
 import { getCryptoMarketWitness } from '../../Witnesses/index.ts'
 
 export const reportCryptoPrices = async (provider = getProvider()): Promise<Payload[]> => {
-  const archivists = await getArchivists()
+  const bridge = await getBridge()
+  const archivists = await getBridgedArchivist(bridge)
   const witnesses = await getCryptoMarketWitness(provider)
   const modules: AttachableModuleInstance[] = [...archivists, ...witnesses]
   const node = await MemoryNode.create({ account: 'random' })
