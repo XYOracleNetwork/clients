@@ -9,7 +9,7 @@ import type { MemoryNode } from '@xyo-network/node-memory'
 import { TZeroApiCallJsonResultToSnapshotDiviner } from '@xyo-network/tzero-stock-market-plugin'
 
 import { getWallet, WalletPaths } from '../../Account/index.ts'
-import { getArchivists } from '../../Archivists/index.ts'
+import { getBridge } from '../../Archivists/index.ts'
 import tZeroMarketSnapshotDiviner from './ApiCallWitnessManifest.json' with { type: 'json' }
 
 export const getNode = async (): Promise<MemoryNode> => {
@@ -20,14 +20,12 @@ export const getNode = async (): Promise<MemoryNode> => {
   locator.register(TZeroApiCallJsonResultToSnapshotDiviner.factory())
   const manifest = new ManifestWrapper(tZeroMarketSnapshotDiviner as PackageManifestPayload, wallet, locator)
   const node = await manifest.loadNodeFromIndex(0)
-  // Attach archivist to node to allow for dynamic archiving of
+  // Attach bridge to node to allow for dynamic archiving of
   // sentinel reports based on environment. The Archivist is
   // already declared in the manifest but doesn't exist as we
   // dynamically bridge to it based on the environment.
-  const archivists = await getArchivists()
-  for (const archivist of archivists) {
-    await node.register(archivist)
-    await node.attach(archivist.address, false)
-  }
+  const bridge = await getBridge()
+  await node.register(bridge)
+  await node.attach(bridge.address, false)
   return node
 }

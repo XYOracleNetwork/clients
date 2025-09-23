@@ -6,20 +6,21 @@ import { SentinelConfigSchema } from '@xyo-network/sentinel-model'
 import { AdhocWitness, AdhocWitnessConfigSchema } from '@xyo-network/witness-adhoc'
 
 import { getAccount, WalletPaths } from '../../Account/index.ts'
-import { getArchivists } from '../../Archivists/index.ts'
+import { getBridge, getBridgedArchivist } from '../../Archivists/index.ts'
 
 export const reportDivinerResult = async (payload: Payload): Promise<Payload[]> => {
-  const adHocWitnessAccount = await getAccount(WalletPaths.EthereumGas.AdHocWitness.PriceDivinerResult)
-  const archivists = await getArchivists()
-  const witnesses = [await AdhocWitness.create({ account: adHocWitnessAccount, config: { payload, schema: AdhocWitnessConfigSchema } })]
-  const modules = [...archivists, ...witnesses]
+  // Create a memory node to attach modules to
   const node = await MemoryNode.create({ account: 'random' })
-  await Promise.all(
-    modules.map(async (mod) => {
-      await node.register(mod)
-      await node.attach(mod.address)
-    }),
-  )
+
+  // Get the bridge
+  const bridge = await getBridge()
+
+  // Get the witnesses
+  const adHocWitnessAccount = await getAccount(WalletPaths.EthereumGas.AdHocWitness.PriceDivinerResult)
+  const witnesses = [await AdhocWitness.create({ account: adHocWitnessAccount, config: { payload, schema: AdhocWitnessConfigSchema } })]
+
+  // Get the sentinel
+  const archivists = await getBridgedArchivist(bridge)
   const config: SentinelConfig = {
     archiving: { archivists: archivists.map(mod => mod.address) },
     schema: SentinelConfigSchema,
@@ -28,8 +29,17 @@ export const reportDivinerResult = async (payload: Payload): Promise<Payload[]> 
   }
   const sentinelAccount = await getAccount(WalletPaths.EthereumGas.Sentinel.PriceDivinerResult)
   const sentinel = await MemorySentinel.create({ account: sentinelAccount, config })
-  await node.register(sentinel)
-  await node.attach(sentinelAccount.address, true)
+
+  // Register and attach all modules to the node
+  const modules = [bridge, ...witnesses, sentinel]
+  await Promise.all(
+    modules.map(async (mod) => {
+      await node.register(mod)
+      await node.attach(mod.address)
+    }),
+  )
+
+  // Report
   const report = await sentinel.report()
   return report
 }
