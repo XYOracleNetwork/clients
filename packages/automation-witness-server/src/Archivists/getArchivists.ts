@@ -1,7 +1,9 @@
 import { assertEx } from '@xylabs/assert'
+import { isDefined } from '@xylabs/typeof'
 import type { AttachableArchivistInstance } from '@xyo-network/archivist-model'
 import { isAttachableArchivistInstance } from '@xyo-network/archivist-model'
 import { HttpBridge, HttpBridgeConfigSchema } from '@xyo-network/bridge-http'
+import type { AttachableModuleInstance } from '@xyo-network/module-model'
 
 import type { ApiModuleConfig } from './getApiModuleConfig.ts'
 import { getApiConfigs, getStorageArchivistApiModuleConfig } from './getApiModuleConfig.ts'
@@ -19,7 +21,7 @@ export const getStorageArchivist = async (): Promise<AttachableArchivistInstance
 }
 
 export const tryGetArchivist = async (config: ApiModuleConfig): Promise<AttachableArchivistInstance | undefined> => {
-  const url = config.root ? `${config.apiDomain}/${config.root}` : config.apiDomain
+  const url = isDefined(config.root) ? `${config.apiDomain}/${config.root}` : config.apiDomain
   const bridge = await HttpBridge.create({
     account: 'random',
     config: {
@@ -44,6 +46,17 @@ export const getArchivists = async (configs = getApiConfigs()): Promise<Attachab
   const archivists: AttachableArchivistInstance[] = []
   for (const config of configs) {
     archivists.push(await getArchivist(config))
+  }
+  return archivists
+}
+
+export const getBridgedArchivist = async (bridge: AttachableModuleInstance, configs = getApiConfigs()): Promise<AttachableArchivistInstance[]> => {
+  const archivists: AttachableArchivistInstance[] = []
+  for (const config of configs) {
+    const mod = await bridge.resolve(config.id)
+    if (isAttachableArchivistInstance(mod)) {
+      archivists.push(mod)
+    }
   }
   return archivists
 }
