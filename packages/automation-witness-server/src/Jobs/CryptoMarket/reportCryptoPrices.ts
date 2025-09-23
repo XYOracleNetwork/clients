@@ -11,27 +11,36 @@ import { getProvider } from '../../Providers/index.ts'
 import { getCryptoMarketWitness } from '../../Witnesses/index.ts'
 
 export const reportCryptoPrices = async (provider = getProvider()): Promise<Payload[]> => {
-  const bridge = await getBridge()
-  const archivists = await getBridgedArchivist(bridge)
-  const witnesses = await getCryptoMarketWitness(provider)
-  const modules: AttachableModuleInstance[] = [...archivists, ...witnesses]
+  // Create a memory node to attach modules to
   const node = await MemoryNode.create({ account: 'random' })
-  await Promise.all(
-    modules.map(async (mod) => {
-      await node.register(mod)
-      await node.attach(mod.address, true)
-    }),
-  )
+
+  // Get the bridge
+  const bridge = await getBridge()
+
+  // Get the witnesses
+  const witnesses = await getCryptoMarketWitness(provider)
+
+  // Get the sentinel
+  const archivists = await getBridgedArchivist(bridge)
+  const account = await getAccount(WalletPaths.CryptoMarket.Sentinel.Market)
   const config: SentinelConfig = {
     archiving: { archivists: archivists.map(mod => mod.address) },
     schema: SentinelConfigSchema,
     synchronous: true,
     tasks: witnesses.map(mod => ({ mod: mod.address })),
   }
-  const account = await getAccount(WalletPaths.CryptoMarket.Sentinel.Market)
   const sentinel = await MemorySentinel.create({ account, config })
-  await node.register(sentinel)
-  await node.attach(account.address, true)
+
+  // Register and attach all modules to the node
+  const modules: AttachableModuleInstance[] = [bridge, ...witnesses, sentinel]
+  await Promise.all(
+    modules.map(async (mod) => {
+      await node.register(mod)
+      await node.attach(mod.address)
+    }),
+  )
+
+  // Report
   const report = await sentinel.report()
   return report
 }
