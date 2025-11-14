@@ -5,7 +5,7 @@ db = db.getSiblingDB('admin')
 
 // Create a read-only user for local development
 db.createUser({
-  user: 'readonly',
+  user: 'readonly_user',
   pwd: 'readonly_password',
   roles: [
     {
