@@ -56,6 +56,7 @@ export class MongoDBPayloadDiviner extends MongoDBDivinerBase {
     let result
 
     const filtered = await this.payloads.find(filter)
+    // eslint-disable-next-line unicorn/no-array-sort
     result = (await filtered.sort(sort).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(fromDbRepresentation)
     return result.map(fromDbRepresentation)
   }

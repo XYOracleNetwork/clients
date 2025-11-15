@@ -25,22 +25,22 @@
     "src"
   ],
   "dependencies": {
-    "@xylabs/express": "~5.0.11",
-    "@xyo-network/account-model": "~5.1.2",
+    "@xylabs/express": "~5.0.33",
+    "@xyo-network/account-model": "~5.1.22",
     "@xyo-network/express-node-server": "workspace:^",
     "@xyo-network/node-core-types": "workspace:^",
-    "@xyo-network/node-memory": "~5.1.2",
-    "@xyo-network/node-model": "~5.1.2",
-    "@xyo-network/payload-validator": "~5.1.2",
-    "@xyo-network/schema-name-validator": "~5.1.2",
-    "@xyo-network/wallet": "~5.1.2",
-    "dotenv": "~17.2.2"
+    "@xyo-network/node-memory": "~5.1.22",
+    "@xyo-network/node-model": "~5.1.22",
+    "@xyo-network/payload-validator": "~5.1.22",
+    "@xyo-network/schema-name-validator": "~5.1.22",
+    "@xyo-network/wallet": "~5.1.22",
+    "dotenv": "~17.2.3"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.1.7",
-    "@xylabs/tsconfig": "~7.1.7",
-    "@xylabs/vitest-extended": "~5.0.11",
-    "typescript": "~5.9.2",
+    "@xylabs/ts-scripts-yarn3": "~7.2.8",
+    "@xylabs/tsconfig": "~7.2.8",
+    "@xylabs/vitest-extended": "~5.0.33",
+    "typescript": "~5.9.3",
     "vitest": "~3.2.4"
   },
   "publishConfig": {

@@ -1,7 +1,7 @@
 services:
   mongo:
     container_name: mongo
-    image: mongo:8.0.15
+    image: mongo:8.2.1
     restart: always
     ports:
       - "27017:27017"
@@ -26,6 +26,7 @@ services:
       retries: 3
       start_period: 1s
     volumes:
+      - mongo_data:/data/db
       - ./scripts/mongo/opt/mongo:/opt/mongo
       - ./scripts/mongo/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     command:
@@ -38,23 +39,5 @@ services:
         "dbrs",
       ]
 
-  # ipfs:
-  #   image: ipfs/kubo:latest
-  #   container_name: ipfs
-  #   restart: unless-stopped
-  # environment:
-  # IPFS_PROFILE: server
-  # IPFS_PROFILE: default-networking
-  # IPFS_PROFILE: flatfs
-  # ports:
-  #   - "4001:4001"
-  #   - "5001:5001"
-  #   - "8080:8080"
-  # ipfs-gateway:
-  #   image: ipfs/bifrost-gateway:release
-  #   container_name: ipfs-gateway
-  #   restart: unless-stopped
-  #   environment:
-  #     PROXY_GATEWAY_URL: http://ipfs:8080
-  #   ports:
-  #     - "8081:8081"
+volumes:
+  mongo_data:

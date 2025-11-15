@@ -4,14 +4,9 @@ import { MongoClientWrapper } from '@xylabs/mongo'
 import { fulfilled, rejected } from '@xylabs/promise'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { SchemaStatsDiviner } from '@xyo-network/diviner-schema-stats-abstract'
-import type {
-  SchemaStatsPayload,
-  SchemaStatsQueryPayload,
-} from '@xyo-network/diviner-schema-stats-model'
+import type { SchemaStatsPayload, SchemaStatsQueryPayload } from '@xyo-network/diviner-schema-stats-model'
 import {
-  isSchemaStatsQueryPayload,
-  SchemaStatsDivinerConfigSchema,
-  SchemaStatsDivinerSchema,
+  isSchemaStatsQueryPayload, SchemaStatsDivinerConfigSchema, SchemaStatsDivinerSchema,
 } from '@xyo-network/diviner-schema-stats-model'
 import {
   COLLECTIONS, DATABASES, fromDbProperty, MongoDBModuleMixin, toDbProperty,
@@ -188,6 +183,7 @@ export class MongoDBSchemaStatsDiviner extends MongoDBDivinerBase implements Job
       const result: PayloadSchemaCountsAggregateResult[] = await this.boundWitnesses.useCollection((collection) => {
         return collection
           .aggregate()
+          // eslint-disable-next-line unicorn/no-array-sort
           .sort({ _timestamp: 1 })
           .match({ _timestamp: { $lt: sortStartTime }, addresses: { $in: [address] } })
           .skip(iteration * this.aggregateLimit)

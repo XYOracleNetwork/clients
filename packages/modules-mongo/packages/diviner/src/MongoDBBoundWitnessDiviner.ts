@@ -4,10 +4,7 @@ import { hexFromHexString } from '@xylabs/hex'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import { BoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-abstract'
 import type { BoundWitnessDivinerQueryPayload } from '@xyo-network/diviner-boundwitness-model'
-import {
-  BoundWitnessDivinerConfigSchema,
-  isBoundWitnessDivinerQueryPayload,
-} from '@xyo-network/diviner-boundwitness-model'
+import { BoundWitnessDivinerConfigSchema, isBoundWitnessDivinerQueryPayload } from '@xyo-network/diviner-boundwitness-model'
 import {
   DefaultLimit, DefaultMaxTimeMS, DefaultOrder, MongoDBModuleMixin,
 } from '@xyo-network/module-abstract-mongodb'
@@ -62,6 +59,7 @@ export class MongoDBBoundWitnessDiviner extends MongoDBDivinerBase {
     if (payload_schemas?.length) filter.payload_schemas = { $all: payload_schemas }
     if (sourceQuery) filter['_$sourceQuery'] = sourceQuery
     if (destination?.length) filter['_$destination'] = { $in: destination }
+    // eslint-disable-next-line unicorn/no-array-sort
     const result = (await (await this.boundWitnesses.find(filter)).sort(sort).limit(limit).maxTimeMS(DefaultMaxTimeMS).toArray()).map(
       fromDbRepresentation,
     ) as BoundWitness[]

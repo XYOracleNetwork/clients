@@ -52,12 +52,14 @@ export class MongoDBAddressHistoryDiviner extends MongoDBDivinerBase {
       let block: BoundWitnessWithMongoMeta | undefined = undefined
       const byDataHash: Filter<BoundWitnessWithMongoMeta> = { ...defaultFilter }
       if (nextHash) byDataHash._hash = nextHash
+      // eslint-disable-next-line unicorn/no-array-sort
       const foundByDataHash = (await (await this.boundWitnesses.find(byDataHash)).sort(sort).limit(1).maxTimeMS(DefaultMaxTimeMS).toArray()).pop()
       if (foundByDataHash) {
         block = foundByDataHash
       } else {
         const byRootHash: Filter<BoundWitnessWithMongoMeta> = { ...defaultFilter }
         if (nextHash) byRootHash._dataHash = nextHash
+        // eslint-disable-next-line unicorn/no-array-sort
         const foundByRootHash = (await (await this.boundWitnesses.find(byRootHash)).sort(sort).limit(1).maxTimeMS(DefaultMaxTimeMS).toArray()).pop()
         if (foundByRootHash) {
           block = foundByRootHash

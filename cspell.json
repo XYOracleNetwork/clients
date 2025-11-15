@@ -34,6 +34,7 @@
     "hashable",
     "Hasher",
     "hdnode",
+    "healthcheck",
     "healthz",
     "huri",
     "IDBP",
