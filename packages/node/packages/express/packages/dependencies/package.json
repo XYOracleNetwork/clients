@@ -18,7 +18,9 @@
   "types": "dist/node/index.d.ts",
   "files": [
     "dist",
-    "src"
+    "src",
+    "!**/*.spec.*",
+    "!**/*.test.*"
   ],
   "dependencies": {
     "@xylabs/assert": "~5.0.33",

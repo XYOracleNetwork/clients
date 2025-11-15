@@ -22,7 +22,9 @@
   "types": "dist/node/index.d.ts",
   "files": [
     "dist",
-    "src"
+    "src",
+    "!**/*.spec.*",
+    "!**/*.test.*"
   ],
   "dependencies": {
     "@xylabs/express": "~5.0.33",

@@ -39,7 +39,9 @@
   "types": "./dist/node/index.d.ts",
   "files": [
     "dist",
-    "src"
+    "src",
+    "!**/*.spec.*",
+    "!**/*.test.*"
   ],
   "workspaces": [
     "packages/**/*"

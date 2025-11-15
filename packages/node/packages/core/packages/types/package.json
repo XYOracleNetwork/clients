@@ -26,7 +26,9 @@
   "types": "dist/node/index.d.ts",
   "files": [
     "dist",
-    "src"
+    "src",
+    "!**/*.spec.*",
+    "!**/*.test.*"
   ],
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.2.8",

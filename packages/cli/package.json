@@ -37,7 +37,9 @@
   },
   "files": [
     "dist",
-    "src"
+    "src",
+    "!**/*.spec.*",
+    "!**/*.test.*"
   ],
   "dependencies": {
     "@scure/bip39": "~2.0.0",
