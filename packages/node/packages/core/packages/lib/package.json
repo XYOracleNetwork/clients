@@ -37,11 +37,11 @@
     "ajv": "~8.17.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.1.7",
-    "@xylabs/tsconfig": "~7.1.7",
+    "@xylabs/ts-scripts-yarn3": "~7.2.8",
+    "@xylabs/tsconfig": "~7.2.8",
     "@xyo-network/payload-builder": "~5.1.22",
     "@xyo-network/schema-payload-plugin": "~5.1.22",
-    "typescript": "~5.9.2",
+    "typescript": "~5.9.3",
     "vitest": "~3.2.4"
   },
   "publishConfig": {

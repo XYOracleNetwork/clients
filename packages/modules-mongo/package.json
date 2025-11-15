@@ -29,9 +29,9 @@
     "src"
   ],
   "dependencies": {
-    "@xylabs/assert": "~5.0.32",
-    "@xylabs/hex": "~5.0.32",
-    "@xylabs/mongo": "~5.0.32",
+    "@xylabs/assert": "~5.0.33",
+    "@xylabs/hex": "~5.0.33",
+    "@xylabs/mongo": "~5.0.33",
     "@xyo-network/account": "~5.1.22",
     "@xyo-network/archivist-mongodb": "~5.1.22",
     "@xyo-network/diviner-mongodb": "workspace:^",
@@ -42,18 +42,18 @@
     "@xyo-network/shared": "~5.1.22",
     "agenda": "~5.0.0",
     "inversify": "~5.1.1",
-    "mongodb": "~6.19.0",
+    "mongodb": "~6.20.0",
     "uuid": "~11.1.0"
   },
   "devDependencies": {
-    "@xylabs/exists": "~5.0.32",
-    "@xylabs/ts-scripts-yarn3": "~7.1.7",
-    "@xylabs/tsconfig": "~7.1.7",
-    "@xylabs/vitest-extended": "~5.0.32",
+    "@xylabs/exists": "~5.0.33",
+    "@xylabs/ts-scripts-yarn3": "~7.2.8",
+    "@xylabs/tsconfig": "~7.2.8",
+    "@xylabs/vitest-extended": "~5.0.33",
     "@xyo-network/module-factory-locator": "~5.1.22",
     "@xyo-network/module-model-mongodb": "~5.1.22",
     "reflect-metadata": "~0.2.2",
-    "typescript": "~5.9.2",
+    "typescript": "~5.9.3",
     "vitest": "~3.2.4",
     "vitest-mock-extended": "~3.1.0"
   },
