@@ -29,11 +29,11 @@
     "src"
   ],
   "dependencies": {
-    "@xylabs/assert": "~5.0.11",
-    "@xylabs/express": "~5.0.11",
-    "@xyo-network/module-model": "~5.1.2",
-    "@xyo-network/node-model": "~5.1.2",
-    "@xyo-network/payload-mongodb": "~5.1.2",
+    "@xylabs/assert": "~5.0.32",
+    "@xylabs/express": "~5.0.32",
+    "@xyo-network/module-model": "~5.1.22",
+    "@xyo-network/node-model": "~5.1.22",
+    "@xyo-network/payload-mongodb": "~5.1.22",
     "express": "~5.1.0"
   },
   "devDependencies": {
