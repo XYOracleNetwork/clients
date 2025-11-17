@@ -31,11 +31,11 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/assert": "~5.0.33",
-    "@xylabs/express": "~5.0.33",
-    "@xyo-network/module-model": "~5.1.22",
-    "@xyo-network/node-model": "~5.1.22",
-    "@xyo-network/payload-mongodb": "~5.1.22",
+    "@xylabs/assert": "~5.0.37",
+    "@xylabs/express": "~5.0.37",
+    "@xyo-network/module-model": "~5.1.23",
+    "@xyo-network/node-model": "~5.1.23",
+    "@xyo-network/payload-mongodb": "~5.1.23",
     "express": "~5.1.0"
   },
   "devDependencies": {

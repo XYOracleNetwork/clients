@@ -1,3 +1,4 @@
+import { isDefined } from '@xylabs/typeof'
 import { Account } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
@@ -54,7 +55,7 @@ export const expectError = (result: Payload, detail: string, status: string, tit
   expect(result).toBeObject()
   const body = result as unknown as { error: { detail: string; status: string; title?: string }[] }
   const error = body.error
-  const expected = title
+  const expected = isDefined(title)
     ? {
         detail, status, title,
       }

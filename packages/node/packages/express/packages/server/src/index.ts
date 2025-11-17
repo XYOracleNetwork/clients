@@ -1,4 +1,4 @@
-import type { Logger } from '@xylabs/express'
+import type { Logger } from '@xylabs/logger'
 import { configureDependencies, container } from '@xyo-network/express-node-dependencies'
 import { addRoutes } from '@xyo-network/express-node-routes'
 import { TYPES } from '@xyo-network/node-core-types'

@@ -1,6 +1,6 @@
 import { getDefaultLogger } from '@xylabs/express'
 
-import { sendTransaction } from '../../Chain/index.ts'
+import { getGateway } from '../../Chain/index.ts'
 import { reportStockPrice } from './reportStockPrices.ts'
 
 export const getTask = () => {
@@ -11,7 +11,7 @@ export const getTask = () => {
       const result = await reportStockPrice('XYLB')
       logger.log('Reported TZero Stock Prices')
       logger.log('Submit Transaction of TZero Stock Prices')
-      const tx = await sendTransaction([], [...result])
+      const tx = (await getGateway())?.addPayloadsToChain?.([], [...result])
       logger.log('Submitted Transaction of TZero Stock Prices', tx)
     } catch (error) {
       logger.error(error)

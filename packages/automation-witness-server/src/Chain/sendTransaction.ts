@@ -1,14 +1,12 @@
 import { assertEx } from '@xylabs/assert'
 import { isUndefined } from '@xylabs/typeof'
 import type { AccountInstance } from '@xyo-network/account-model'
-import type { Payload } from '@xyo-network/payload-model'
 import { HDWallet } from '@xyo-network/wallet'
-import type {
-  AllowedBlockPayload, SignedHydratedTransaction, XyoGatewayProvider,
-} from '@xyo-network/xl1-protocol'
+import type { XyoGatewayRunner } from '@xyo-network/xl1-protocol-sdk'
+import { SimpleXyoGatewayRunner, SimpleXyoSigner } from '@xyo-network/xl1-protocol-sdk'
 import type { RpcTransport } from '@xyo-network/xl1-rpc'
 import {
-  HttpRpcTransport, HttpRpcXyoConnection, MemoryXyoGateway, MemoryXyoSigner, XyoRunnerRpcSchemas, XyoViewerRpcSchemas,
+  HttpRpcTransport, HttpRpcXyoConnection, XyoRunnerRpcSchemas, XyoViewerRpcSchemas,
 } from '@xyo-network/xl1-rpc'
 
 const accountPath = "m/44'/60'/0'/0/0" as const
@@ -27,23 +25,14 @@ const getRpcTransport = (): RpcTransport<typeof XyoRunnerRpcSchemas & typeof Xyo
   return transport
 }
 
-const getGateway = async (): Promise<XyoGatewayProvider | undefined> => {
+export const getGateway = async (): Promise<XyoGatewayRunner | undefined> => {
   const account = await getAccount()
   if (!account) return
-  const signer = new MemoryXyoSigner(account)
+  const signer = new SimpleXyoSigner(account)
   const endpoint = assertEx(process.env.XYO_CHAIN_RPC_URL, () => 'XYO_CHAIN_RPC_URL must be set')
   const transport = getRpcTransport()
   if (!transport) return
-  const connection = new HttpRpcXyoConnection({ account, endpoint })
-  const gateway = new MemoryXyoGateway(signer, connection)
+  const connection = new HttpRpcXyoConnection({ endpoint })
+  const gateway = new SimpleXyoGatewayRunner(connection, signer)
   return gateway
-}
-
-export const sendTransaction = async (
-  elevatedPayloads: AllowedBlockPayload[],
-  additionalPayloads: Payload[],
-): Promise<SignedHydratedTransaction | undefined> => {
-  const gateway = await getGateway()
-  if (!gateway) return
-  return await gateway.submitTransaction?.(elevatedPayloads, additionalPayloads)
 }

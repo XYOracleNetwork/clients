@@ -26,7 +26,7 @@ export class MongoDBBoundWitnessDiviner extends MongoDBDivinerBase {
     const query = payloads?.find<BoundWitnessDivinerQueryPayload>(isBoundWitnessDivinerQueryPayload)
     // TODO: Support multiple queries
     if (!query) return []
-    // NOTE: We're supporting address (which is deprecated) until we can ensure that all
+    // TODO: We're supporting address (which is deprecated) until we can ensure that all
     // clients are using addresses
     const {
       address,
@@ -47,7 +47,7 @@ export class MongoDBBoundWitnessDiviner extends MongoDBDivinerBase {
       filter._sequence = order === 'desc' ? { $exists: true, $lt: cursor } : { $exists: true, $gt: cursor }
     }
 
-    // NOTE: Defaulting to $all since it makes the most sense when singing addresses are supplied
+    // TODO: Defaulting to $all since it makes the most sense when singing addresses are supplied
     // but based on how MongoDB implements multi-key indexes $in might be much faster and we could
     // solve the multi-sig problem via multiple API calls when multi-sig is desired instead of
     // potentially impacting performance for all single-address queries

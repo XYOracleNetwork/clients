@@ -1,3 +1,4 @@
+import { isDefined } from '@xylabs/typeof'
 import { Account } from '@xyo-network/account'
 import { QueryBoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import type { BoundWitness, QueryBoundWitness } from '@xyo-network/boundwitness-model'
@@ -69,7 +70,7 @@ describe('Node API', () => {
     })
     describe('POST', () => {
       const postModuleQuery = async (data: [QueryBoundWitness, Payload[]], address?: string): Promise<[BoundWitness, Payload[]]> => {
-        const path = address ? `/node/${address}` : '/node'
+        const path = isDefined(address) ? `/node/${address}` : '/node'
         const response = await client.post(path, data)
         expect(response).toBeTruthy()
         expect(response.data.data).toBeArray()

@@ -19,7 +19,7 @@ const runNodeScriptPath
  * @returns The process ID of the Node
  */
 export const start = async (daemonize = false, bin = 'node', args: ReadonlyArray<string> = [runNodeScriptPath]) => {
-  // NOTE: Sync FD here because async warns about closing
+  // TODO: Sync FD here because async warns about closing
   // when we background process as daemon
   const out = getOutFileDescriptor()
   const err = getErrFileDescriptor()

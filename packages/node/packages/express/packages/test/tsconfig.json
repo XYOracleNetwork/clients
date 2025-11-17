@@ -1,12 +1,5 @@
 {
-  "exclude": [
-    "**/build",
-    "**/dist",
-    "**/node_modules",
-    "**/*.stories.*",
-    "**/*.example.*",
-    "**/stories/*"
-  ],
+  "exclude": ["dist", "docs", "packages", "node_modules"],
   "extends": "@xylabs/tsconfig"
 }
 

@@ -3,7 +3,7 @@ import { getDefaultLogger } from '@xylabs/express'
 import { CryptoMarketAssetSchema } from '@xyo-network/crypto-asset-payload-plugin'
 import type { Job } from '@xyo-network/shared'
 
-import { sendTransaction } from '../../Chain/index.ts'
+import { getGateway } from '../../Chain/index.ts'
 import { getDiviner } from './getDiviner.ts'
 import { reportCryptoPrices } from './reportCryptoPrices.ts'
 import { reportDivinerResult } from './reportDivinerResult.ts'
@@ -25,10 +25,10 @@ export const getTask = (): Job['task'] => {
       await reportDivinerResult(answer)
       logger.log('Reported Aggregated Crypto Prices')
       logger.log('Submit Transaction of Aggregated Crypto Prices')
-      // NOTE: Create hash payload instead of non-elevated until validation passes for non-elevated
+      // TODO: Create hash payload instead of non-elevated until validation passes for non-elevated
       // const hash = await PayloadBuilder.hash(answer)
       // const hashPayload = new PayloadBuilder<HashPayload>({ schema: HashSchema }).fields({ hash }).build()
-      const tx = await sendTransaction([], [answer])
+      const tx = (await getGateway())?.addPayloadsToChain?.([], [answer])
       logger.log('Submitted Transaction of Aggregated Crypto Prices', tx)
     } catch (error) {
       logger.error(error)

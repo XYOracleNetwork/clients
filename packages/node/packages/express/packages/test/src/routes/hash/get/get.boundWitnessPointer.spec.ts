@@ -1,5 +1,6 @@
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
+import { isDefined } from '@xylabs/typeof'
 import { Account } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
@@ -57,7 +58,7 @@ const createPointer = async (
 const expectError = (result: Payload, detail: string, status: string, title?: string) => {
   expect(result).toBeObject()
   const error = (result as unknown as { error: { detail: string; status: string; title?: string } }).error
-  const expected = title
+  const expected = isDefined(title)
     ? {
         detail, status, title,
       }
@@ -198,7 +199,7 @@ describe('/:hash', () => {
         })
       })
       describe('multiple schema rules', () => {
-        // NOTE: Currently we don't differentiate between serial vs parallel
+        // TODO: Currently we don't differentiate between serial vs parallel
         // combination of schemas but in the future we should change the contract
         // to mean something like "AND" vs "OR" combination of schemas. When we do
         // these tests will need to be updated to reflect that.

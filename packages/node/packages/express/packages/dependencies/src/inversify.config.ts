@@ -1,8 +1,9 @@
 import 'reflect-metadata'
 
 import { assertEx } from '@xylabs/assert'
-import type { Logger, LoggerVerbosity } from '@xylabs/express'
+import type { LoggerVerbosity } from '@xylabs/express'
 import { getLogger } from '@xylabs/express'
+import type { Logger } from '@xylabs/logger'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { addMongoModules, canAddMongoModules } from '@xyo-network/node-core-modules-mongo'
 import { TYPES } from '@xyo-network/node-core-types'
