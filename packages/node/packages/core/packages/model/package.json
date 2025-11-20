@@ -31,15 +31,15 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/hex": "~5.0.37",
-    "@xylabs/object": "~5.0.37",
-    "@xyo-network/archivist-model": "~5.1.23",
-    "@xyo-network/boundwitness-model": "~5.1.23",
-    "@xyo-network/diviner-payload-model": "~5.1.23",
-    "@xyo-network/module-abstract": "~5.1.23",
-    "@xyo-network/payload-model": "~5.1.23",
-    "@xyo-network/payload-mongodb": "~5.1.23",
-    "@xyo-network/shared": "~5.1.23",
+    "@xylabs/hex": "~5.0.39",
+    "@xylabs/object": "~5.0.39",
+    "@xyo-network/archivist-model": "~5.1.24",
+    "@xyo-network/boundwitness-model": "~5.1.24",
+    "@xyo-network/diviner-payload-model": "~5.1.24",
+    "@xyo-network/module-abstract": "~5.1.24",
+    "@xyo-network/payload-model": "~5.1.24",
+    "@xyo-network/payload-mongodb": "~5.1.24",
+    "@xyo-network/shared": "~5.1.24",
     "ajv": "~8.17.1"
   },
   "devDependencies": {
