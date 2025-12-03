@@ -31,27 +31,27 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/assert": "~5.0.39",
-    "@xylabs/express": "~5.0.39",
+    "@xylabs/assert": "~5.0.50",
+    "@xylabs/express": "~5.0.50",
     "@xyo-network/express-node-dependencies": "workspace:^",
     "@xyo-network/express-node-routes": "workspace:^",
     "@xyo-network/node-core-types": "workspace:^",
-    "@xyo-network/node-memory": "~5.1.24",
-    "@xyo-network/node-model": "~5.1.24",
+    "@xyo-network/node-memory": "~5.2.16",
+    "@xyo-network/node-model": "~5.2.16",
     "compression": "~1.8.1",
     "cors": "~2.8.5",
-    "express": "~5.1.0"
+    "express": "~5.2.1"
   },
   "devDependencies": {
     "@types/compression": "~1.8.1",
     "@types/cors": "~2.8.19",
-    "@types/express": "~5.0.5",
+    "@types/express": "~5.0.6",
     "@types/nconf": "~0.10.7",
-    "@xylabs/logger": "~5.0.39",
+    "@xylabs/logger": "~5.0.50",
     "@xylabs/ts-scripts-yarn3": "~7.2.8",
     "@xylabs/tsconfig": "~7.2.8",
     "@xyo-network/node-core-model": "workspace:^",
-    "@xyo-network/shared": "~5.1.24",
+    "@xyo-network/shared": "~5.2.16",
     "nconf": "~0.13.0",
     "typescript": "~5.9.3"
   },
