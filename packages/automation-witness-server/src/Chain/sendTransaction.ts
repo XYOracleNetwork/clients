@@ -7,6 +7,7 @@ import type {
 import {
   buildJsonRpcProviderLocator, HttpRpcTransport, SimpleXyoGatewayRunner, SimpleXyoSigner,
   XyoConnectionMoniker,
+  XyoSignerMoniker,
 } from '@xyo-network/xl1-sdk'
 
 const accountPath = "m/44'/60'/0'/0/0" as const
@@ -30,12 +31,12 @@ export const getGateway = async (): Promise<XyoGatewayRunner | undefined> => {
   if (isUndefined(transportFactory)) return
   const account = await getAccount()
   if (isUndefined(account)) return
-  const locator = await buildJsonRpcProviderLocator({ context: {}, transportFactory })
+  const locator = await buildJsonRpcProviderLocator({ transportFactory })
   locator.register(
     SimpleXyoSigner.factory<SimpleXyoSigner>(SimpleXyoSigner.dependencies, { account }),
   )
   const connectionProvider = await locator.getInstance<XyoConnection>(XyoConnectionMoniker)
-  const signer = await SimpleXyoSigner.create({ account })
+  const signer = await locator.getInstance<SimpleXyoSigner>(XyoSignerMoniker)
   const gateway = new SimpleXyoGatewayRunner(connectionProvider, signer)
   return gateway
 }
