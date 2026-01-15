@@ -2893,12 +2893,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:~25.0.8":
-  version: 25.0.8
-  resolution: "@types/node@npm:25.0.8"
+"@types/node@npm:*, @types/node@npm:~25.0.9":
+  version: 25.0.9
+  resolution: "@types/node@npm:25.0.9"
   dependencies:
     undici-types: "npm:~7.16.0"
-  checksum: 10/b6efe998940678a0de0274dd84b1767a243c5d754b282e6df5da4d6985a1439b436a6d80d148925a974ecadda09fff4788d9cc0bb3a1f2554d54a3595146bd3b
+  checksum: 10/2c16f137ed3a952903b7641df5ce16663ad00911dc6a9010156602251420da127bf7dbd32d22aac9eda0cc430381164d55a36240039b7d06ab693b9aad5c3f23
   languageName: node
   linkType: hard
 
@@ -4386,8 +4386,7 @@ __metadata:
     "@xyo-network/wallet-model": "npm:~5.2.22"
     "@xyo-network/witness-adhoc": "npm:~5.2.22"
     "@xyo-network/witness-model": "npm:~5.2.22"
-    "@xyo-network/xl1-protocol-sdk": "npm:~1.18.14"
-    "@xyo-network/xl1-rpc": "npm:~1.18.14"
+    "@xyo-network/xl1-sdk": "npm:~1.18.2"
     agenda: "npm:~5.0.0"
     compression: "npm:~1.8.1"
     cors: "npm:~2.8.5"
@@ -4560,7 +4559,7 @@ __metadata:
   resolution: "@xyo-network/cli@workspace:packages/cli"
   dependencies:
     "@scure/bip39": "npm:~2.0.1"
-    "@types/node": "npm:~25.0.8"
+    "@types/node": "npm:~25.0.9"
     "@types/tail": "npm:~2.2.3"
     "@types/terminal-kit": "npm:~2.5.7"
     "@types/yargs": "npm:~17.0.35"
@@ -7002,7 +7001,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xyo-network/xl1-protocol-sdk@npm:~1.18.14":
+"@xyo-network/xl1-network-model@npm:~1.18.2":
+  version: 1.18.14
+  resolution: "@xyo-network/xl1-network-model@npm:1.18.14"
+  dependencies:
+    "@xylabs/sdk-js": "npm:~5.0.61"
+    "@xyo-network/manifest-model": "npm:~5.2.22"
+    "@xyo-network/manifest-wrapper": "npm:~5.2.22"
+    "@xyo-network/module-factory-locator": "npm:~5.2.22"
+    "@xyo-network/node-model": "npm:~5.2.22"
+    "@xyo-network/payload-model": "npm:~5.2.22"
+    "@xyo-network/wallet": "npm:~5.2.22"
+    "@xyo-network/xl1-protocol": "npm:~1.18.14"
+  checksum: 10/88fdafb17d46df1de4164dc4e16f8e8aa371ec6d430121c4354f298d3e4c74b1716bd5cce26b6168c88da28e988a3b3b99d711ba640692a7b30a792ad4f499ad
+  languageName: node
+  linkType: hard
+
+"@xyo-network/xl1-protocol-sdk@npm:~1.18.14, @xyo-network/xl1-protocol-sdk@npm:~1.18.2":
   version: 1.18.14
   resolution: "@xyo-network/xl1-protocol-sdk@npm:1.18.14"
   dependencies:
@@ -7030,7 +7045,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xyo-network/xl1-protocol@npm:~1.18.14":
+"@xyo-network/xl1-protocol@npm:~1.18.14, @xyo-network/xl1-protocol@npm:~1.18.2":
   version: 1.18.14
   resolution: "@xyo-network/xl1-protocol@npm:1.18.14"
   dependencies:
@@ -7054,7 +7069,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xyo-network/xl1-rpc@npm:~1.18.14":
+"@xyo-network/xl1-providers@npm:~1.18.2":
+  version: 1.18.14
+  resolution: "@xyo-network/xl1-providers@npm:1.18.14"
+  dependencies:
+    "@xylabs/sdk-js": "npm:~5.0.61"
+    "@xyo-network/archivist-model": "npm:~5.2.22"
+    "@xyo-network/boundwitness-model": "npm:~5.2.22"
+    "@xyo-network/diviner-model": "npm:~5.2.22"
+    "@xyo-network/xl1-protocol": "npm:~1.18.14"
+    "@xyo-network/xl1-protocol-sdk": "npm:~1.18.14"
+    "@xyo-network/xl1-rpc": "npm:~1.18.14"
+  peerDependencies:
+    axios: ^1.13.2
+  checksum: 10/98a942a794a50cb6feaac1796f0c5e44ca9841b53423067f85cb2bec8447565b0a50e0530f4365a1e105017d1e3d4d53546c42ed9d697f7441130128a98aa1b4
+  languageName: node
+  linkType: hard
+
+"@xyo-network/xl1-rpc@npm:~1.18.14, @xyo-network/xl1-rpc@npm:~1.18.2":
   version: 1.18.14
   resolution: "@xyo-network/xl1-rpc@npm:1.18.14"
   dependencies:
@@ -7071,6 +7103,76 @@ __metadata:
     uuid: "npm:~13.0.0"
     zod: "npm:~4.2.1"
   checksum: 10/f843b2210b6af3e86ec028df24401f551ce8e038b76842a19ff6c15f35602f4359021a35ab8df42439e013cd10cce33f8783fbb75f37d275dc62d78b7548edc5
+  languageName: node
+  linkType: hard
+
+"@xyo-network/xl1-schema@npm:~1.18.14, @xyo-network/xl1-schema@npm:~1.18.2":
+  version: 1.18.14
+  resolution: "@xyo-network/xl1-schema@npm:1.18.14"
+  dependencies:
+    "@xylabs/sdk-js": "npm:~5.0.61"
+    "@xyo-network/boundwitness-model": "npm:~5.2.22"
+    "@xyo-network/boundwitness-wrapper": "npm:~5.2.22"
+    "@xyo-network/payload-builder": "npm:~5.2.22"
+    "@xyo-network/payload-model": "npm:~5.2.22"
+    "@xyo-network/payload-wrapper": "npm:~5.2.22"
+    "@xyo-network/schema-payload-plugin": "npm:~5.2.22"
+    "@xyo-network/xl1-protocol": "npm:~1.18.14"
+  checksum: 10/bbf750c297c6cb0cc2015def8d2e5b485393a0d99f139cfaab06c7a07f28a735cd52f1f214ebe4faf08cf4c9e02b1f21021f146708753e653022bf780b4c8f1f
+  languageName: node
+  linkType: hard
+
+"@xyo-network/xl1-sdk@npm:~1.18.2":
+  version: 1.18.2
+  resolution: "@xyo-network/xl1-sdk@npm:1.18.2"
+  dependencies:
+    "@xyo-network/xl1-network-model": "npm:~1.18.2"
+    "@xyo-network/xl1-protocol": "npm:~1.18.2"
+    "@xyo-network/xl1-protocol-sdk": "npm:~1.18.2"
+    "@xyo-network/xl1-providers": "npm:~1.18.2"
+    "@xyo-network/xl1-rpc": "npm:~1.18.2"
+    "@xyo-network/xl1-schema": "npm:~1.18.2"
+    "@xyo-network/xl1-validation": "npm:~1.18.2"
+    "@xyo-network/xl1-wrappers": "npm:~1.18.2"
+  checksum: 10/e6a453b226ac7c64bede8d62bc416294fb8acf7582de130688eb2d9866097d4285a712fdf94d1e897576442ae0971edbef3efdda47d3b4995448e6e123d44d54
+  languageName: node
+  linkType: hard
+
+"@xyo-network/xl1-validation@npm:~1.18.14, @xyo-network/xl1-validation@npm:~1.18.2":
+  version: 1.18.14
+  resolution: "@xyo-network/xl1-validation@npm:1.18.14"
+  dependencies:
+    "@xylabs/sdk-js": "npm:~5.0.61"
+    "@xyo-network/boundwitness-builder": "npm:~5.2.22"
+    "@xyo-network/boundwitness-model": "npm:~5.2.22"
+    "@xyo-network/boundwitness-validator": "npm:~5.2.22"
+    "@xyo-network/payload-builder": "npm:~5.2.22"
+    "@xyo-network/payload-model": "npm:~5.2.22"
+    "@xyo-network/xl1-protocol": "npm:~1.18.14"
+    "@xyo-network/xl1-protocol-sdk": "npm:~1.18.14"
+    "@xyo-network/xl1-schema": "npm:~1.18.14"
+    ajv: "npm:~8.17.1"
+  peerDependencies:
+    axios: ^1.13.2
+  checksum: 10/99b879b9d4ceabd1ffcc6c98f3c0cb0aa8800977df318b7005fd8cf4b773d35bf1190f43a1ba83efeb831ab83cb3ab9535fbd67690982266c41d4e15b50ba372
+  languageName: node
+  linkType: hard
+
+"@xyo-network/xl1-wrappers@npm:~1.18.2":
+  version: 1.18.14
+  resolution: "@xyo-network/xl1-wrappers@npm:1.18.14"
+  dependencies:
+    "@xylabs/sdk-js": "npm:~5.0.61"
+    "@xyo-network/boundwitness-model": "npm:~5.2.22"
+    "@xyo-network/boundwitness-validator": "npm:~5.2.22"
+    "@xyo-network/payload-builder": "npm:~5.2.22"
+    "@xyo-network/payload-model": "npm:~5.2.22"
+    "@xyo-network/xl1-protocol": "npm:~1.18.14"
+    "@xyo-network/xl1-protocol-sdk": "npm:~1.18.14"
+    "@xyo-network/xl1-validation": "npm:~1.18.14"
+  peerDependencies:
+    axios: ^1.13.2
+  checksum: 10/91187453cb3bed8a71b32826b2d610f2eb1a7283c284a6dac11e70c33c36f659c2e96a6d642cdf4a1459cac2e3c83ab4d35e366e0740946126479ee68fa7235e
   languageName: node
   linkType: hard
 
