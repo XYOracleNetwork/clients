@@ -11,7 +11,8 @@ export const getTask = () => {
       const result = await reportStockPrice('XYLB')
       logger.log('Reported TZero Stock Prices')
       logger.log('Submit Transaction of TZero Stock Prices')
-      const tx = (await getGateway())?.addPayloadsToChain?.([], [...result])
+      const gateway = await getGateway()
+      const tx = await gateway?.addPayloadsToChain?.([], [...result])
       logger.log('Submitted Transaction of TZero Stock Prices', tx)
     } catch (error) {
       logger.error(error)

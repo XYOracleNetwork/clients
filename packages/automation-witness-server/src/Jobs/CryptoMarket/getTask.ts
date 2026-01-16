@@ -25,10 +25,8 @@ export const getTask = (): Job['task'] => {
       await reportDivinerResult(answer)
       logger.log('Reported Aggregated Crypto Prices')
       logger.log('Submit Transaction of Aggregated Crypto Prices')
-      // TODO: Create hash payload instead of non-elevated until validation passes for non-elevated
-      // const hash = await PayloadBuilder.hash(answer)
-      // const hashPayload = new PayloadBuilder<HashPayload>({ schema: HashSchema }).fields({ hash }).build()
-      const tx = (await getGateway())?.addPayloadsToChain?.([], [answer])
+      const gateway = await getGateway()
+      const tx = await gateway?.addPayloadsToChain?.([], [answer])
       logger.log('Submitted Transaction of Aggregated Crypto Prices', tx)
     } catch (error) {
       logger.error(error)
