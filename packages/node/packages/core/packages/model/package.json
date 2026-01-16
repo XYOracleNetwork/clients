@@ -33,13 +33,13 @@
   "dependencies": {
     "@xylabs/hex": "~5.0.61",
     "@xylabs/object": "~5.0.61",
-    "@xyo-network/archivist-model": "~5.2.22",
-    "@xyo-network/boundwitness-model": "~5.2.22",
-    "@xyo-network/diviner-payload-model": "~5.2.22",
-    "@xyo-network/module-abstract": "~5.2.22",
-    "@xyo-network/payload-model": "~5.2.22",
-    "@xyo-network/payload-mongodb": "~5.2.22",
-    "@xyo-network/shared": "~5.2.22",
+    "@xyo-network/archivist-model": "~5.2.24",
+    "@xyo-network/boundwitness-model": "~5.2.24",
+    "@xyo-network/diviner-payload-model": "~5.2.24",
+    "@xyo-network/module-abstract": "~5.2.24",
+    "@xyo-network/payload-model": "~5.2.24",
+    "@xyo-network/payload-mongodb": "~5.2.24",
+    "@xyo-network/shared": "~5.2.24",
     "ajv": "~8.17.1"
   },
   "devDependencies": {
