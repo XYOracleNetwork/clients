@@ -1,21 +1,18 @@
 import { isUndefined } from '@xylabs/typeof'
 import type { AccountInstance } from '@xyo-network/account-model'
-import { HDWallet } from '@xyo-network/wallet'
 import type {
   RpcSchemaMap, TransportFactory, XyoConnection, XyoGatewayRunner,
 } from '@xyo-network/xl1-sdk'
 import {
-  buildJsonRpcProviderLocator, HttpRpcTransport, SimpleXyoGatewayRunner, SimpleXyoSigner,
-  XyoConnectionMoniker,
+  ADDRESS_INDEX, buildJsonRpcProviderLocator, generateXyoBaseWalletFromPhrase, HttpRpcTransport, SimpleXyoGatewayRunner, SimpleXyoSigner, XyoConnectionMoniker,
   XyoSignerMoniker,
 } from '@xyo-network/xl1-sdk'
-
-const accountPath = "m/44'/60'/0'/0/0" as const
 
 const getAccount = async (): Promise<AccountInstance | undefined> => {
   const phrase = process.env.XYO_WALLET_MNEMONIC
   if (isUndefined(phrase)) return
-  const account = await HDWallet.fromPhrase(phrase, accountPath)
+  const wallet = await generateXyoBaseWalletFromPhrase(phrase)
+  const account = await wallet.derivePath(ADDRESS_INDEX.XYO)
   return account
 }
 
