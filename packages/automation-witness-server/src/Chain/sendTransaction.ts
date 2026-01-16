@@ -29,11 +29,9 @@ export const getGateway = async (): Promise<XyoGatewayRunner | undefined> => {
   const account = await getAccount()
   if (isUndefined(account)) return
   const locator = await buildJsonRpcProviderLocator({ transportFactory })
-  locator.register(
-    SimpleXyoSigner.factory<SimpleXyoSigner>(SimpleXyoSigner.dependencies, { account }),
-  )
-  const connectionProvider = await locator.getInstance<XyoConnection>(XyoConnectionMoniker)
+  locator.register(SimpleXyoSigner.factory<SimpleXyoSigner>(SimpleXyoSigner.dependencies, { account }))
+  const connection = await locator.getInstance<XyoConnection>(XyoConnectionMoniker)
   const signer = await locator.getInstance<SimpleXyoSigner>(XyoSignerMoniker)
-  const gateway = new SimpleXyoGatewayRunner(connectionProvider, signer)
+  const gateway = new SimpleXyoGatewayRunner(connection, signer)
   return gateway
 }
