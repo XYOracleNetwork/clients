@@ -40,15 +40,3 @@ export const getGateway = async (): Promise<XyoGatewayRunner | undefined> => {
   const gateway = new SimpleXyoGatewayRunner(connectionProvider, signer)
   return gateway
 }
-
-// export const getGateway = async (): Promise<XyoGatewayRunner | undefined> => {
-//   const account = await getAccount()
-//   if (!account) return
-//   const signer = new SimpleXyoSigner(account)
-//   const endpoint = assertEx(process.env.XYO_CHAIN_RPC_URL, () => 'XYO_CHAIN_RPC_URL must be set')
-//   const transport = getRpcTransport()
-//   if (!transport) return
-//   const connection = new HttpRpcXyoConnection({ endpoint })
-//   const gateway = new SimpleXyoGatewayRunner(connection, signer)
-//   return gateway
-// }
