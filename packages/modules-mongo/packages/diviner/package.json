@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/diviner-mongodb",
-  "version": "4.1.6",
+  "version": "4.1.7",
   "description": "Primary SDK for using XYO Protocol 2.0",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -76,8 +76,8 @@
     "@xyo-network/location-payload-plugin": "~5.2.4",
     "@xyo-network/module-abstract-mongodb": "~5.2.24",
     "@xyo-network/module-model": "~5.2.24",
-    "@xyo-network/node-core-model": "~4.1.6",
-    "@xyo-network/node-core-types": "~4.1.6",
+    "@xyo-network/node-core-model": "~4.1.7",
+    "@xyo-network/node-core-types": "~4.1.7",
     "@xyo-network/payload-builder": "~5.2.24",
     "@xyo-network/payload-model": "~5.2.24",
     "@xyo-network/payload-mongodb": "~5.2.24",
