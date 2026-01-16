@@ -31,7 +31,7 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xyo-network/node-core-model": "workspace:^",
+    "@xyo-network/node-core-model": "~4.1.6",
     "@xyo-network/payload-builder": "~5.2.24",
     "@xyo-network/payload-model": "~5.2.24",
     "@xyo-network/payload-mongodb": "~5.2.24",

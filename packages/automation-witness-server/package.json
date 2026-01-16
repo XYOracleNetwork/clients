@@ -49,7 +49,7 @@
     "@xyo-network/manifest": "~5.2.24",
     "@xyo-network/module-factory-locator": "~5.2.24",
     "@xyo-network/module-model": "~5.2.24",
-    "@xyo-network/node-core-model": "workspace:^",
+    "@xyo-network/node-core-model": "~4.1.6",
     "@xyo-network/node-memory": "~5.2.24",
     "@xyo-network/payload-model": "~5.2.24",
     "@xyo-network/sentinel-memory": "~5.2.24",

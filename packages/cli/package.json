@@ -55,7 +55,7 @@
     "@xyo-network/diviner-model": "~5.2.24",
     "@xyo-network/module-model": "~5.2.24",
     "@xyo-network/network": "~5.2.24",
-    "@xyo-network/node-app": "workspace:^",
+    "@xyo-network/node-app": "~4.1.6",
     "@xyo-network/node-model": "~5.2.24",
     "@xyo-network/payload-model": "~5.2.24",
     "@xyo-network/query-payload-plugin": "~5.2.24",

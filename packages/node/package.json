@@ -34,10 +34,10 @@
     "packages/**/*"
   ],
   "dependencies": {
-    "@xyo-network/express-node-dependencies": "workspace:^",
-    "@xyo-network/express-node-lib": "workspace:^",
-    "@xyo-network/express-node-routes": "workspace:^",
-    "@xyo-network/express-node-server": "workspace:^"
+    "@xyo-network/express-node-dependencies": "~4.1.6",
+    "@xyo-network/express-node-lib": "~4.1.6",
+    "@xyo-network/express-node-routes": "~4.1.6",
+    "@xyo-network/express-node-server": "~4.1.6"
   },
   "devDependencies": {
     "@swc/core": "~1.15.8",

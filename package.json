@@ -68,9 +68,9 @@
     "xyo-ts": "yarn workspace @xyo-network/node-cli xyo-ts"
   },
   "dependencies": {
-    "@xyo-network/automation-witness-server": "workspace:^",
-    "@xyo-network/cli": "workspace:^",
-    "@xyo-network/express-node": "workspace:^"
+    "@xyo-network/automation-witness-server": "~4.1.6",
+    "@xyo-network/cli": "~4.1.6",
+    "@xyo-network/express-node": "~4.1.6"
   },
   "devDependencies": {
     "@ethersproject/bignumber": "~5.8.0",

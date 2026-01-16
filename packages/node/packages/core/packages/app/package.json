@@ -28,8 +28,8 @@
   ],
   "dependencies": {
     "@xyo-network/account-model": "~5.2.24",
-    "@xyo-network/express-node-server": "workspace:^",
-    "@xyo-network/node-core-types": "workspace:^",
+    "@xyo-network/express-node-server": "~4.1.6",
+    "@xyo-network/node-core-types": "~4.1.6",
     "@xyo-network/node-memory": "~5.2.24",
     "@xyo-network/node-model": "~5.2.24",
     "@xyo-network/payload-validator": "~5.2.24",
